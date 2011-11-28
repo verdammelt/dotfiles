@@ -55,17 +55,29 @@
 (autoload 'gnus-agent-possibly-save-gcc "gnus-agent")
 (setq mail-user-agent 'gnus-user-agent)
 
+;; supercite setup
+(add-hook 'mail-citation-hook 'sc-cite-original)
+(setq message-cite-function 'message-cite-original)
+(eval-after-load 'sc '(bbdb-insinuate-sc))
+
+
 ;; getting bbdb in my message setup
 (add-hook 'message-setup-hook 'bbdb-insinuate-message)
 (add-hook 'message-setup-hook 'bbdb-define-all-aliases)
 (add-hook 'message-setup-hook 'bbdb-message-mode-keys)
+
+;; extra stuff for message buffers - spelling etc.
+(add-hook 'message-setup-hook 'footnote-mode)
+(add-hook 'message-setup-hook 'turn-on-flyspell)
+
+(add-hook 'message-send-hook 'ispell-message)
+
 
 ;; i want to read mail via gnus - duh!
 (setq read-mail-command 'gnus)
 
 ;; add in my requested attribution
 (setq message-default-headers "X-Attribution: MJS")
-
 
 (when window-system
   (scroll-bar-mode -1)
