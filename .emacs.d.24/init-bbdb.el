@@ -30,7 +30,4 @@
 (eval-after-load 'gnus '(bbdb-initialize 'gnus))
 (eval-after-load 'message '(bbdb-initialize 'message))
 
-(require 'midnight)
-(timer-activate midnight-timer)
-
 (provide 'init-bbdb)

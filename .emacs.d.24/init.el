@@ -36,6 +36,14 @@
 (autoload 'bbdb-expire-bbdb "bbdb-expire")
 (eval-after-load 'bbdb '(require 'init-bbdb))
 
+;; setup midnight hooks
+(require 'midnight)
+(timer-activate midnight-timer)
+
+;; setting up midnight-hook - do these things at midnight
+(add-hook 'midnight-hook #'bbdb-expire-bbdb)
+(add-hook 'midnight-hook #'clean-buffer-list)
+
 ;; set up mail
 (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
 
