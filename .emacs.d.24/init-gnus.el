@@ -176,7 +176,8 @@
 	("list\\.posterous"
 	 (split-regexp . "posterous\\.com"))
 	("list\\.twitter"
-	 (extra-aliases  "notices@twimailer.com"
+	 (extra-aliases  "*@postmaster.twitter.com"
+			 "notices@twimailer.com"
                          "sam@twittercounter.com"))
 	("list\\.linkedin"
 	 (split-regexp . "linkedin\\.com"))
