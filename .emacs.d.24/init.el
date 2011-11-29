@@ -29,7 +29,7 @@
 	(list user-emacs-directory 
 	      (locate-user-emacs-file "lisp")
 	      (locate-user-emacs-file "lisp/emacs-w3m")
-	      "/opt/local/share/emacs/site-lisp/bbdb/"))
+	      (locate-user-emacs-file "lisp/bbdb")))
 
 ;; bbdb stuff
 (require 'bbdb-autoloads)
@@ -93,6 +93,56 @@
 (savehist-mode)
 
 (setq version-control t
+      delete-old-versions t
       backup-directory-alist 
       (acons "." (locate-user-emacs-file ".backups") nil))
       
+
+;; keybinding for gnus
+(defun switch-to-gnus () 
+  (interactive) 
+  (let ((group-buffer (get-buffer "*Group*")))
+    (if group-buffer (switch-to-buffer group-buffer)
+	(gnus))))
+(global-set-key (kbd "<f6>") 'switch-to-gnus)
+
+;; remove splash screen crap
+(setq inhibit-splash-screen t
+      inhibit-startup-echo-area-message "damned")
+
+
+;; MacOSX sort of trash directory
+(setq delete-by-moving-to-trash t
+      trash-directory (expand-file-name "~/.Trash")) ; where to put the trash
+
+;; time display the way i like it
+(setq display-time-24hr-format t 
+      display-time-day-and-date t)
+
+;; making sure all buffers are named uniquely
+(setq uniquify-after-kill-buffer-p t
+      uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+(display-time)
+
+(ffap-bindings)
+
+;; set up tex/latex
+(require 'tex-site)
+(require 'tex)
+(TeX-global-PDF-mode)
+
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+
+;; TODO: something wrong here - no color - no duplex
+;; ps-printing via a shell script for ps2pdf
+(setq ps-lpr-command (expand-file-name "~/bin/psprint"))

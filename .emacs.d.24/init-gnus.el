@@ -1,4 +1,4 @@
-;;;;
+;;;
 ;;;; .gnus.el
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
@@ -6,12 +6,6 @@
 ;;;; Time-stamp: <2011-11-05 18:12:22 mark>
 ;;;;
 (require 'gnus-group-split-fancy)
-
-(require 'bbdb)
-(require 'bbdb-com)
-
-(autoload 'bbdb-search-simple "bbdb")
-(autoload 'bbdb-search "bbdb-com")
 
 (add-to-list 'auto-mode-alist '("SCORE$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("ADAPT$" . lisp-mode))
@@ -37,13 +31,6 @@
 ;; set timestamp on groups when we select them
 (add-hook 'gnus-select-group-hook 'gnus-group-set-timestamp)
 
-(add-hook 'display-time-hook		; to make sure everything fits on the mode line nicely
-	  (lambda () (setq gnus-mode-non-string-length
-			   (+ 21
-			      (if line-number-mode 5 0)
-			      (if column-number-mode 4 0)
-			      (length display-time-string)))))
-
 ;; line, mode-line formats
 (setq gnus-article-mode-line-format "%g [%z|%w] %S%m"
       gnus-group-line-format "%S%M%5y:%P %(%-30,30c%)%3O %-20,20ud %4us\n"
@@ -54,6 +41,17 @@
 				    ((gnus-seconds-month) . "%a %d")
 				    ((gnus-seconds-year) . "%b %d")
 				    (t . "%Y-%m-%d")))
+
+;;; util functions needed by article line format
+(defun gnus-user-format-function-d (headers)
+  (let ((time (gnus-group-timestamp gnus-tmp-group)))
+    (if time
+	(format-time-string "%Y-%m-%d %T" time)
+	"")))
+(defun gnus-user-format-function-s (headers)
+  (let ((score (gnus-info-score (nth 2 (gnus-group-entry gnus-tmp-group)))))
+    (if score (format "%d" score) "")))
+
 
 (setq gnus-article-sort-functions 
       '(gnus-article-sort-by-number gnus-article-sort-by-score) ; sort by score and number
@@ -143,20 +141,6 @@
       nntp-marks-directory (expand-file-name ".marks" gnus-directory) ; where to nntp marks
       )
 
-;; mail splitting
-;; split mails based upon:
-;; 1. where the parent message went
-;; 2. according to group parameters
-;; 3. according to spam setup
-;; 4. to 'inbox'
-(setq nnmail-split-methods 'nnmail-split-fancy
-      nnmail-split-fancy
-      '(| (: gnus-registry-split-fancy-with-parent)
-	  (: gnus-group-split-fancy)
-	  (: spam-split)
-	  "inbox")
-      gnus-group-split-default-catch-all-group "inbox" )
-
 ;; group parameters
 (setq gnus-parameters 
       '(("^nnfolder:.*"
@@ -230,40 +214,49 @@
 	("tnef"
 	 (to-address . "verdammelt@users.sourceforge.net"))
 	("inbox" 
-	 (spam-process '((ham spam-use-BBDB)))
 	 (display . [unread])
-	 (total-expire . t))
+	 (total-expire . t)
+	 (spam-process (ham spam-use-bogofilter)))
 	("spam$" 
+	 (spam-process (spam spam-use-bogofilter))
 	 (total-expire . t)
 	 (expiry-target . delete))
 	("archive\\.*" 
 	 (gnus-use-scoring nil) 
 	 (gnus-use-adaptive-scoring nil) )
 	("^gmane\\."
-	 (spam-process (gnus-group-spam-exit-processor-report-gmane)))))
+	 (spam-process (spam spam-use-gmane)))))
 
-;; spam setup
-(setq spam-log-to-registry t		; save spam/ham value
-      spam-use-BBDB t			; check in BBDB for info
-      spam-use-BBDB-exclusive t		; if sender not in BBDB then mail is spam!
-      spam-use-regex-headers t		; use regexp
-      gnus-spam-newsgroup-contents 	; anything in spam is spam, anything in inbox is ham
-      '(("spam" gnus-group-spam-classification-spam)
-	("inbox" gnus-group-spam-classification-ham))
-      gnus-spam-process-destinations '(("inbox" "nnfolder:spam")) ; if in inbox and marked spam - send to spam
-      gnus-ham-process-destinations '(("spam" "nnfolder:inbox"))  ; if in spam and marked ham - send to inbox
-      )
+(setq 
+ spam-log-to-registry t
+ ;; spam-use-BBDB t			; this is the problem!
+ spam-use-bogofilter t
+ spam-use-regex-headers t
+ spam-use-spamassassin-headers t
+
+ gnus-spam-newsgroup-contents 	; anything in spam is spam, anything in inbox is ham
+ '(("spam" gnus-group-spam-classification-spam)
+   ("inbox" gnus-group-spam-classification-ham))
+ gnus-spam-process-destinations '(("inbox" "nnfolder:spam")) ; if in inbox and marked spam - send to spam
+ gnus-ham-process-destinations '(("spam" "nnfolder:inbox"))  ; if in spam and marked ham - send to inbox
+
+ gnus-group-split-default-catch-all-group "inbox" 
+
+ ;; splitting:
+ ;; 1. split to where the parent went
+ ;; 2. split by group parameters
+ ;; 3. split by spam
+ ;; 4. dump into inbox
+ nnmail-split-methods 'nnmail-split-fancy
+ nnmail-split-fancy '(| (: gnus-registry-split-fancy-with-parent)
+			(: gnus-group-split-fancy)
+			(: spam-split)
+			"inbox"))
+
+(spam-initialize)			; initialize spam processing
 
 
-;;; util functions needed by article line format
-(defun gnus-user-format-function-d (headers)
-  (let ((time (gnus-group-timestamp gnus-tmp-group)))
-    (if time
-	(format-time-string "%Y-%m-%d %T" time)
-	"")))
-(defun gnus-user-format-function-s (headers)
-  (let ((score (gnus-info-score (nth 2 (gnus-group-entry gnus-tmp-group)))))
-    (if score (format "%d" score) "")))
+
 
 ;; makeing sure we can open urls in external browsers (f1 if hitting return didn't work)
 (eval-after-load "w3m"
@@ -277,10 +270,12 @@
 (gnus-demon-add-scanmail)		; get the new mails
 (gnus-demon-init)			; poke the daemon to get it going
 
-(setq gnus-registry-install t)		; yes we use the registry
+(setq gnus-registry-install t		; yes we use the registry
+      gnus-registry-split-strategy 'majority ; splitting to the place that gets the most 'votes'
+      gnus-registry-ignored-groups '(("nntp" t) ;don't do registry for these
+                                     ("spam" t))
+      gnus-registry-max-entries 50000)
 (gnus-registry-initialize)		; fire up the registry
-
-(spam-initialize)			; initialize spam processing
 
 (gnus-compile)		  ; doc claims that this will speed things up.
 
