@@ -55,9 +55,6 @@
 
 (setq gnus-article-sort-functions 
       '(gnus-article-sort-by-number gnus-article-sort-by-score) ; sort by score and number
-      gnus-agent-directory (expand-file-name ".agent" gnus-directory) ; TODO: revert to default?
-      gnus-cache-directory (expand-file-name ".cache" gnus-directory) ; TODO: revert to default?
-      gnus-duplicate-file (expand-file-name ".suppression" gnus-directory) ;TODO: revert to default?
       gnus-auto-extend-newsgroup t	; automatically pull more in when requested
       gnus-auto-expirable-newsgroups nil ; all newsgroups are expirable
       gnus-auto-select-first nil	 ; do not automatically open first article
@@ -89,7 +86,6 @@
       gnus-summary-ignore-duplicates t			     ; no duplicates!
       gnus-suppress-duplicates t                             ; automatically mark duplicates as read
       gnus-thread-hide-subtree t	; hide all threads initially
-      gnus-thread-indent-level 2	; how much to indent each thread TODO: revert to default? (4)
 
       gnus-thread-sort-functions 	; how to sort threads
       '(gnus-thread-sort-by-number (not gnus-thread-sort-by-most-recent-date) gnus-thread-sort-by-total-score)
@@ -97,7 +93,6 @@
       ;;
       ;; treatments
       ;;
-      gnus-treat-body-boundary 'head	; TODO: revert to default
       gnus-treat-strip-leading-blank-lines t ; get rid of any blank lines at start
       gnus-treat-strip-trailing-blank-lines t ; get rid of any blank lines at end
       gnus-treat-unsplit-urls t		      ; fix split urls
@@ -105,40 +100,22 @@
       gnus-visible-headers		; I want to see the spam score
       "^From:\\|^Newsgroups:\\|^Subject:\\|^Date:\\|^Followup-To:\\|^Reply-To:\\|^Organization:\\|^Summary:\\|^Keywords:\\|^To:\\|^[BGF]?Cc:\\|^Posted-To:\\|^Mail-Copies-To:\\|^Mail-Followup-To:\\|^Apparently-To:\\|^Gnus-Warning:\\|^Resent-From:\\|^X-Spam.*:"
 
-      mail-source-directory gnus-directory ; where the mail is located
+      mail-source-directory (concat gnus-directory "/incoming") ; where the mail is located
       message-directory gnus-directory	; where mail is located
 
       ;; delete incoming mail temp file after 1 day.
       mail-source-primary-source (car mail-sources) ;check for ne wmail
-      mail-source-delete-incoming 1		    ; delete incoming files after 1 day
-
-      ;; setup message rendering with w3m and inlin images.
-      mm-text-html-renderer 'w3m	; TODO: revert to default
-      mm-inline-large-images t		; show any size of images  TODO: revert to default
-      mm-inline-text-html-with-images t	; show images in inline html TODO: revert to default
-      mm-inline-text-html-with-w3m-keymap nil ; don't like the w3m keymaps
-      w3m-default-display-inline-images t     ; show inline images for w3m TODO: revert to default
-
-      ;; nnfolder TODO: revert to default on all these
-      nnfolder-active-file (expand-file-name ".active" gnus-directory) ; "/home/damned/Mail/.active" 
-      nnfolder-newsgroups-file (expand-file-name ".newsgroups" gnus-directory) ; "/home/damned/Mail/.newsgroups"
-      nnfolder-marks-directory (expand-file-name ".marks" gnus-directory) ; "/home/damned/Mail/.marks"
-      nnfolder-nov-directory (expand-file-name ".nov" gnus-directory) ; "/home/damned/Mail/.nov"
 
       ;; nnmail
       nnmail-crosspost nil		; if split matches multiple inboxes - crosspost
       nnmail-expiry-target 'nnmail-fancy-expiry-target ; fancy expiry
       nnmail-fancy-expiry-targets '(("from" ".*" "nnfolder:archive-%Y")) ; where to expire messages to
-      nnmail-expiry-wait 7		; expire after 7 days
+      nnmail-expiry-wait 7		       ; expire after 7 days
       nnmail-extra-headers '(To Newsgroups Cc) ; parse CC header as well
 
       nnmail-cache-accepted-message-ids t ; Gcc'd articles go in duplicate cache
 
-      nnmail-use-long-file-names t	; use group names as filenames instead of directory trees
-
-
-      ;; TODO: revert to default
-      nntp-marks-directory (expand-file-name ".marks" gnus-directory) ; where to nntp marks
+      nnmail-use-long-file-names t ; use group names as filenames instead of directory trees
       )
 
 ;; group parameters
@@ -227,36 +204,32 @@
 	("^gmane\\."
 	 (spam-process (spam spam-use-gmane)))))
 
-(setq 
- spam-log-to-registry t
- ;; spam-use-BBDB t			; this is the problem!
- spam-use-bogofilter t
- spam-use-regex-headers t
- spam-use-spamassassin-headers t
 
- gnus-spam-newsgroup-contents 	; anything in spam is spam, anything in inbox is ham
- '(("spam" gnus-group-spam-classification-spam)
-   ("inbox" gnus-group-spam-classification-ham))
- gnus-spam-process-destinations '(("inbox" "nnfolder:spam")) ; if in inbox and marked spam - send to spam
- gnus-ham-process-destinations '(("spam" "nnfolder:inbox"))  ; if in spam and marked ham - send to inbox
+;; splitting:
+;; 1. split to where the parent went
+;; 2. split by group parameters
+;; 3. split by spam
+;; 4. dump into inbox
+(setq  nnmail-split-methods 'nnmail-split-fancy
+       nnmail-split-fancy '(| (: gnus-registry-split-fancy-with-parent)
+			      (: gnus-group-split-fancy)
+			      (: spam-split)
+			      "inbox")
+       gnus-group-split-default-catch-all-group "inbox")
 
- gnus-group-split-default-catch-all-group "inbox" 
-
- ;; splitting:
- ;; 1. split to where the parent went
- ;; 2. split by group parameters
- ;; 3. split by spam
- ;; 4. dump into inbox
- nnmail-split-methods 'nnmail-split-fancy
- nnmail-split-fancy '(| (: gnus-registry-split-fancy-with-parent)
-			(: gnus-group-split-fancy)
-			(: spam-split)
-			"inbox"))
-
+;; spam setup
+(setq spam-log-to-registry t
+      ;; spam-use-BBDB t			; TODO: this is the problem!
+      spam-use-bogofilter t
+      spam-use-regex-headers t
+      spam-use-spamassassin-headers t
+      
+      gnus-spam-newsgroup-contents 	; anything in spam is spam, anything in inbox is ham
+      '(("spam" gnus-group-spam-classification-spam)
+	("inbox" gnus-group-spam-classification-ham))
+      gnus-spam-process-destinations '(("inbox" "nnfolder:spam")) ; if in inbox and marked spam - send to spam
+      gnus-ham-process-destinations '(("spam" "nnfolder:inbox")))  ; if in spam and marked ham - send to inbox
 (spam-initialize)			; initialize spam processing
-
-
-
 
 ;; makeing sure we can open urls in external browsers (f1 if hitting return didn't work)
 (eval-after-load "w3m"
