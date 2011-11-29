@@ -53,9 +53,11 @@
 	 (defun bbdb-message-mode-keys ()
 	   (define-key message-mode-map (kbd "M-TAB") 'bbdb-complete-name))
 	 
+	 (require 'supercite)
 	 (bbdb-insinuate-sc)
-	 (bbdb-insinuate-w3)
+	 (require 'gnus)
 	 (bbdb-initialize 'gnus)
+	 (require 'message)
 	 (bbdb-initialize 'messsage)
 	 (bbdb-expire-initialize)))
 
