@@ -5,6 +5,9 @@
 /.Trash
 /.CFUserTextEncoding
 /.DownloadManager
+/.viminfo
+/.bash_history
+/.fetchmail.pid
 Applications
 Desktop
 Documents
@@ -16,9 +19,6 @@ Music
 News
 Pictures
 Public
-SRC
 Sites
-.viminfo
+SRC
 LifeLines
-.bash_history
-.fetchmail.pid
