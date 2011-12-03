@@ -121,7 +121,11 @@
 ;; group parameters
 (setq gnus-parameters 
       '(("^nnfolder:.*"
-	 (gcc-self . t))
+	 (gcc-self . t)
+	 (spam-process-destination . "nnfolder:spam")
+	 (ham-process-destination . "nnfolder:inbox")
+	 (spam-process (ham spam-use-bogofilter))
+	 (spam-process (spam spam-use-bogofilter)))
 	("list\\..*" 
 	 (expiry-wait . 15)
 	 (banner . signature)
@@ -160,8 +164,7 @@
 	("list\\.fitnesse"
 	 (subscribed . t)
 	 (to-address . "fitnesse@yahoogroups.com")
-	 (posting-style
-	  (address "verdammelt@gmail.com")))
+	 (posting-style (address "verdammelt@gmail.com")))
 	("list\\.bikes"
 	 (extra-aliases "bostonareacycling@googlegroups.com" 
 			"baystatecycling@googlegroups.com" 
@@ -184,25 +187,35 @@
 	("list\\.mercuryapp"
 	 (subscribed . t)
 	 (split-regexp . "mercuryapp\\.com")
-         (posting-style
-	  (address "verdammelt@gmail.com")))
+         (posting-style (address "verdammelt@gmail.com")))
 	("list\\.dnd\\.forums"
 	 (extra-aliases "forums@dragonsfoot.org"
 			"admin@knights-n-knaves.com"))
+	("list\\.travis"
+	 (extra-alises "notifications@travis-ci.org"))
 	("tnef"
 	 (to-address . "verdammelt@users.sourceforge.net"))
 	("inbox" 
 	 (display . [unread])
-	 (total-expire . t)
-	 (spam-process (ham spam-use-bogofilter)))
+	 (total-expire . t))
 	("spam$" 
-	 (spam-process (spam spam-use-bogofilter))
+	 (spam-contents spam)
 	 (total-expire . t)
 	 (expiry-target . delete))
 	("archive\\.*" 
 	 (gnus-use-scoring nil) 
-	 (gnus-use-adaptive-scoring nil) )
+	 (gnus-use-adaptive-scoring nil)
+
+	 (spam-process-destination . "nnfolder:spam")
+	 (ham-process-destination . "nnfolder:inbox")
+	 (spam-process (ham spam-use-bogofilter))
+	 (spam-process (spam spam-use-bogofilter))
+
+)
 	("^gmane\\."
+	 (spam-autodetect . t)
+	 (spam-autodetect-methods spam-use-bogofilter 
+				  spam-use-regex-headers)
 	 (spam-process (spam spam-use-gmane)))))
 
 
@@ -212,14 +225,14 @@
 ;; 3. split by spam
 ;; 4. dump into inbox
 (setq  nnmail-split-methods 'nnmail-split-fancy
-       nnmail-split-fancy '(| (: gnus-registry-split-fancy-with-parent)
+       nnmail-split-fancy '(| ;(: gnus-registry-split-fancy-with-parent)
 			      (: gnus-group-split-fancy)
 			      (: spam-split)
 			      "inbox")
        gnus-group-split-default-catch-all-group "inbox")
 
 ;; spam setup
-(setq spam-log-to-registry t
+(setq spam-log-to-registry t		; to keep from multiply handling a piece of mail
       ;; spam-use-BBDB t			; TODO: this is the problem!
       spam-use-bogofilter t
       spam-use-regex-headers t
@@ -227,9 +240,8 @@
       
       gnus-spam-newsgroup-contents 	; anything in spam is spam, anything in inbox is ham
       '(("spam" gnus-group-spam-classification-spam)
-	("inbox" gnus-group-spam-classification-ham))
-      gnus-spam-process-destinations '(("inbox" "nnfolder:spam")) ; if in inbox and marked spam - send to spam
-      gnus-ham-process-destinations '(("spam" "nnfolder:inbox")))  ; if in spam and marked ham - send to inbox
+	("inbox" gnus-group-spam-classification-ham)))
+
 (spam-initialize)			; initialize spam processing
 
 ;; makeing sure we can open urls in external browsers (f1 if hitting return didn't work)
