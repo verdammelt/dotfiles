@@ -171,3 +171,5 @@
 ;; TODO: something wrong here - no color - no duplex
 ;; ps-printing via a shell script for ps2pdf
 (setq ps-lpr-command (expand-file-name "~/bin/psprint"))
+
+(add-to-list 'auto-mode-alist '("*.md$" . markdown-mode))
