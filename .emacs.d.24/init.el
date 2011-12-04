@@ -72,18 +72,18 @@
 ;; set up mail
 (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
 
-;; I like silly headers
-(autoload 'sm-add-random-header "silly-mail" nil t)
-(add-hook 'message-setup-hook 'sm-add-random-header)
+;; ;; I like silly headers
+;; (autoload 'sm-add-random-header "silly-mail" nil t)
+;; (add-hook 'message-setup-hook 'sm-add-random-header)
 
 ;; this way i have Gcc: etc. in my mail buffer
 (autoload 'gnus-agent-possibly-save-gcc "gnus-agent")
 (setq mail-user-agent 'gnus-user-agent)
 
-;; supercite setup
-(add-hook 'mail-citation-hook 'sc-cite-original)
-(setq message-cite-function 'message-cite-original)
-(eval-after-load 'sc '(bbdb-insinuate-sc))
+;; ;; supercite setup
+;; (add-hook 'mail-citation-hook 'sc-cite-original)
+;; (setq message-cite-function 'message-cite-original)
+;; (eval-after-load 'sc '(bbdb-insinuate-sc))
 
 
 ;; getting bbdb in my message setup
