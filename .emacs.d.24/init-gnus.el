@@ -5,7 +5,6 @@
 ;;;;
 ;;;; Time-stamp: <2011-11-05 18:12:22 mark>
 ;;;;
-(require 'gnus-group-split-fancy)
 
 ;;; 
 ;;; Select methods
@@ -21,11 +20,19 @@
  gnus-kill-files-directory (expand-file-name "score-files" gnus-directory) ;where to put the kill files
  )
 
-;;;
-;;; mail reading
+;;; 
+;;; Registry
 ;;;
 (setq
+ gnus-registry-install t		; yes we use the registry
+ gnus-registry-split-strategy 'majority ; splitting to the place that gets the most 'votes'
+)
+(gnus-registry-initialize)		; fire up the registry
 
+;;;
+;;; Mail
+;;;
+(setq
  ;; general
  message-directory gnus-directory	; where mail is located
  nnfolder-directory (concat gnus-directory "mail")
@@ -33,11 +40,42 @@
  mail-source-primary-source (car mail-sources) ;check for new mail
  mail-source-crash-box (concat gnus-directory "crash-box")
 
-
-;; archiving
+ ;; archiving
  gnus-update-message-archive-method t
 
+ ;; spam
+ spam-use-spamassassin-headers t    ; because my ISP runs spamassassin
+ spam-use-bogofilter t		    ; I want to fine tune the spam checking with local bogofilter
+
+ ;; splitting
+ nnmail-split-methods 'nnmail-split-fancy
+ nnmail-split-fancy '(| (: spam-split)
+			"mail.misc")
+ spam-split-group "spam.spam"
  )
+(spam-initialize)
+
+;;; 
+;;; Group Parameters
+;;;
+(setq gnus-parameters
+      '(("nnfolder.*"
+	 (spam-contents gnus-group-spam-classification-ham)
+	 (spam-process (ham spam-use-bogofilter)))
+	("spam.spam"
+	 (spam-contents gnus-group-spam-classification-spam)
+	 (spam-process (spam spam-use-bogofilter)))
+	("^gmane\."
+	 (spam-autodetect . t)
+	 (spam-autodetect-methods spam-use-bogofilter spam-use-regex-headers)
+	 (spam-process (spam spam-use-gmane)))))
+
+;;;
+;;; DEMONS
+;;;
+(gnus-demon-add-scan-timestamps)	; setting timestamps
+(gnus-demon-add-scanmail)		; get the new mails
+(gnus-demon-init)			; poke the daemon to get it going
 
 ;;;
 ;;; utility items
@@ -45,6 +83,10 @@
 (add-to-list 'auto-mode-alist '("SCORE$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("ADAPT$" . lisp-mode))
 
+(gnus-compile)		  ; doc claims that this will speed things up.
+
+
+;; (require 'gnus-group-split-fancy)
 ;; verify/decrypt only if mml knows about the protocol used
 ;; (setq mm-verify-option 'known)
 ;; (setq mm-decrypt-option 'known)
@@ -283,20 +325,3 @@
 ;;  '(progn 
 ;;     (add-to-list 'w3m-minor-mode-command-alist '(w3m-view-url-with-external-browser))
 ;;     (define-key gnus-article-mode-map (kbd "<f1>") 'w3m-view-url-with-external-browser)))
-
-
-;; DEMONS!
-(gnus-demon-add-scan-timestamps)	; setting timestamps
-(gnus-demon-add-scanmail)		; get the new mails
-(gnus-demon-init)			; poke the daemon to get it going
-
-(setq gnus-registry-install t		; yes we use the registry
-      gnus-registry-split-strategy 'majority ; splitting to the place that gets the most 'votes'
-      ;; gnus-registry-ignored-groups '(("nntp" t) ;don't do registry for these
-      ;;                                ("spam" t))
-      ;; gnus-registry-max-entries 50000
-      )
-(gnus-registry-initialize)		; fire up the registry
-
-(gnus-compile)		  ; doc claims that this will speed things up.
-
