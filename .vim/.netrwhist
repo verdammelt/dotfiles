@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/mark/SRC/practice_game_of_life'
+let g:netrw_dirhist_2='/Users/mark/SRC/practice_game_of_life/spec'
+let g:netrw_dirhist_3='/Users/mark/SRC/coderetreat-live'
+let g:netrw_dirhist_4='/Users/mark/SRC/rangehash'
