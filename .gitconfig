@@ -1,0 +1,26 @@
+[user]
+	name = Mark Simpson
+	email = verdammelt@gmail.com
+
+[color]
+	ui=auto
+
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	aa = add --all
+	di = diff
+	dc = diff --cached
+	lg = log --graph --abbrev-commit --date=relative
+	head = !git lg -1
+	recent = !git lg -20
+	rehead = reset --hard HEAD
+
+[format]
+    pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+	
+[github]
+	user = verdammelt
+[achievement]
+	upload = true
