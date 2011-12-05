@@ -1,0 +1,33 @@
+#!/bin/sh 
+
+proj=$1
+
+rails new $proj
+cd $proj
+echo "rvm use 1.8.7@$proj"
+rvm reload
+
+echo "gem 'rake'" >> Gemfile
+echo "group :development, :test do" >> Gemfile
+echo "  gem 'rspec-rails'" >> Gemfile
+echo "  gem 'cucumber-rails'" >> Gemfile
+echo "  gem 'database_cleaner'" >> Gemfile
+echo "  gem 'webrat'" >> Gemfile
+echo "end" >> Gemfile
+
+bundle install
+
+./script/rails generate rspec:install
+./script/rails generate cucumber:install
+
+rake db:migrate
+rake db:test:prepare
+rake spec
+rake cucumber
+
+echo "*~" >> .gitignore
+
+git init
+git add --all
+
+echo "enjoy!"

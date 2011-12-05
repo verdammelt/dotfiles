@@ -1,0 +1,19 @@
+#!/usr/bin/ruby
+
+path=ARGV[0]
+
+info_files = Dir.new(path).select{ |d| d =~ /\.info$/ }.map{ |d| d.sub(/\.info/, '') }
+output_lines = info_files.map { |i| '* ' +  i +  ': (' +  i +  ').' }
+
+puts ""
+puts "File: dir,	Node: Top	This is the top of the INFO tree"
+puts
+puts "* Menu:"
+puts
+header = "Info from " + path
+puts header
+header.size.times{ print "*" }
+puts
+puts
+puts output_lines
+
