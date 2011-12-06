@@ -10,6 +10,7 @@
 .aspell*
 .authinfo
 .bash_history
+.bbdb
 .bogofilter
 .bundler
 .cups
