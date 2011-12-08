@@ -18,6 +18,7 @@
 (setq 
  gnus-decay-scores t	  ; temporary scores should degrade over time.
  gnus-kill-files-directory (expand-file-name "score-files" gnus-directory) ;where to put the kill files
+ gnus-gcc-mark-as-read t	   ; carbon-copies should be auto-read
  )
 
 ;;; 
@@ -46,6 +47,7 @@
  ;; spam
  spam-use-spamassassin-headers t    ; because my ISP runs spamassassin
  spam-use-bogofilter t		    ; I want to fine tune the spam checking with local bogofilter
+ spam-mark-ham-unread-before-move-from-spam-group t ; ham moved from spam folders will be marked unread.
 
  ;; splitting
  nnmail-split-methods 'nnmail-split-fancy
@@ -61,10 +63,14 @@
 (setq gnus-parameters
       '(("nnfolder.*"
 	 (spam-contents gnus-group-spam-classification-ham)
-	 (spam-process (ham spam-use-bogofilter)))
+	 (spam-process (ham spam-use-bogofilter)
+		       (spam spam-use-bogofilter))
+	 (spam-process-destination "nnfolder:spam.spam"))
 	("spam.spam"
 	 (spam-contents gnus-group-spam-classification-spam)
-	 (spam-process (spam spam-use-bogofilter)))
+	 (spam-process (spam spam-use-bogofilter)
+		       (ham spam-use-bogofilter))
+	 (ham-process-destination "nnfolder:mail.misc"))
 	("^gmane\."
 	 (spam-autodetect . t)
 	 (spam-autodetect-methods spam-use-bogofilter spam-use-regex-headers)
