@@ -3,8 +3,11 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2011-11-05 18:12:22 mark>
+;;;; Time-stamp: <2011-12-08 00:01:19 mark>
 ;;;;
+
+;;; load special version of spam.el to get fix for bbdb bug
+(load "~/SRC/gnus/lisp/spam.el")
 
 ;;; 
 ;;; Select methods
@@ -63,17 +66,21 @@
 (setq gnus-parameters
       '(("nnfolder.*"
 	 (spam-contents gnus-group-spam-classification-ham)
-	 (spam-process (ham spam-use-bogofilter)
-		       (spam spam-use-bogofilter))
+	 (spam-process ((spam spam-use-bogofilter)
+			(ham spam-use-bogofilter)
+			(spam spam-use-BBDB)
+			(ham spam-use-BBDB)))
 	 (spam-process-destination "nnfolder:spam.spam"))
 	("spam.spam"
 	 (spam-contents gnus-group-spam-classification-spam)
-	 (spam-process (spam spam-use-bogofilter)
-		       (ham spam-use-bogofilter))
+	 (spam-process ((spam spam-use-bogofilter)
+			(ham spam-use-bogofilter)
+			(spam spam-use-BBDB)
+			(ham spam-use-BBDB)))
 	 (ham-process-destination "nnfolder:mail.misc"))
 	("^gmane\."
 	 (spam-autodetect . t)
-	 (spam-autodetect-methods spam-use-bogofilter spam-use-regex-headers)
+	 (spam-autodetect-methods spam-use-regex-headers)
 	 (spam-process (spam spam-use-gmane)))))
 
 ;;;
