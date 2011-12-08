@@ -2,9 +2,9 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2011-10-12 23:18:01 mark>
+;;;; Modified Time-stamp: <2011-12-08 00:01:12 mark>
 ;;;;
-(require 'cl)				; I can't live without common lisp extensions!
+(require 'cl)		; I can't live without common lisp extensions!
 
 ;; either of these can be useful for debugging an init time problem
 ;(toggle-debug-on-error)
@@ -173,3 +173,5 @@
 (setq ps-lpr-command (expand-file-name "~/bin/psprint"))
 
 (add-to-list 'auto-mode-alist '("*.md$" . markdown-mode))
+
+(add-hook 'before-save-hook 'time-stamp)
