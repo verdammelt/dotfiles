@@ -6,7 +6,8 @@
 	ui=auto
 
 [alias]
-	st = status
+	st = status --short
+    man = help
 	ci = commit
 	co = checkout
 	aa = add --all
