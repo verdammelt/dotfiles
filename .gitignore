@@ -30,6 +30,7 @@
 .lesshst
 .netrc
 .newsrc
+.newsrc-dribble
 .newsrc.eld
 .nnmail-cache
 .pry_history
