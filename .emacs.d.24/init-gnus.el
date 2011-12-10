@@ -87,14 +87,12 @@
 	 (spam-contents gnus-group-spam-classification-ham)
 	 (spam-process ((spam spam-use-bogofilter)
 			(ham spam-use-bogofilter)
-			(spam spam-use-BBDB)
 			(ham spam-use-BBDB)))
 	 (spam-process-destination "nnfolder:spam.spam"))
 	("spam.spam"
 	 (spam-contents gnus-group-spam-classification-spam)
 	 (spam-process ((spam spam-use-bogofilter)
 			(ham spam-use-bogofilter)
-			(spam spam-use-BBDB)
 			(ham spam-use-BBDB)))
 	 (ham-process-destination "nnfolder:mail.misc"))
 	("^gmane\."
