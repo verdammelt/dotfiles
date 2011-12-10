@@ -53,6 +53,9 @@
 			       (t . "%Y-%m-%d"))
 
 
+ ;; sorting of messages
+ gnus-thread-sort-functions '(gnus-thread-sort-by-number gnus-thread-sort-by-total-score)
+
  ;; archiving
  gnus-update-message-archive-method t
 
