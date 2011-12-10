@@ -83,7 +83,7 @@
 ;; (add-hook 'message-setup-hook 'sm-add-random-header)
 
 ;; this way i have Gcc: etc. in my mail buffer
-(autoload 'gnus-agent-possibly-save-gcc "gnus-agent")
+;; (autoload 'gnus-agent-possibly-save-gcc "gnus-agent")
 (setq mail-user-agent 'gnus-user-agent)
 
 ;; ;; supercite setup
