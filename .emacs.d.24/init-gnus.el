@@ -72,6 +72,13 @@
  )
 (spam-initialize)
 
+;;;
+;;; Scoring
+;;;
+(add-hook 'message-sent-hook 'gnus-score-followup-article)
+(add-hook 'message-sent-hook 'gnus-score-followup-thread)
+(setq gnus-use-adaptive-scoring t)
+
 ;;; 
 ;;; Group Parameters
 ;;;
