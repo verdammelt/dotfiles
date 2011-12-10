@@ -1,7 +1,7 @@
 ;;;
 ;;; BBDB
 ;;;
-;;; Modified Time-stamp: <2011-12-09 22:26:38 mark>
+;;; Modified Time-stamp: <2011-12-09 23:02:25 mark>
 ;;;
 (require 'bbdb-autoloads)
 (autoload 'bbdb-expire-bbdb "bbdb-expire" "Remove old items from BBDB" t)
@@ -32,8 +32,12 @@
        (add-hook 'bbdb-expire-post-expire-hook
 		 #'(lambda () (message "bbdb-expiry finish: %d records" 
 				       (length (bbdb-records)))))
+
        (bbdb-expire-initialize)))
 
   (add-hook 'midnight-hook #'bbdb-expire-bbdb))
+
+(defun bbdb-message-mode-keys ()
+  (define-key message-mode-map (kbd "M-TAB") 'bbdb-complete-name))
 
 (provide 'init-bbdb)
