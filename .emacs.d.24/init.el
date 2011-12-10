@@ -149,12 +149,11 @@
 ;; time display the way i like it
 (setq display-time-24hr-format t 
       display-time-day-and-date t)
+(display-time)
 
 ;; making sure all buffers are named uniquely
 (setq uniquify-after-kill-buffer-p t
       uniquify-buffer-name-style 'post-forward-angle-brackets)
-
-(display-time)
 
 (ffap-bindings)
 
