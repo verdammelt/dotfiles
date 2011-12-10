@@ -1,10 +1,17 @@
-;;;
+;;;;
 ;;;; .gnus.el
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2011-12-08 00:01:19 mark>
+;;;; Time-stamp: <2011-12-09 20:32:46 mark>
 ;;;;
+;;;
+;;; TODO: 
+;;; * summary/modelines formats 
+;;; * scoring
+;;; * expiry
+;;; * using gwene for rss for some things.
+;;;
 
 ;;; load special version of spam.el to get fix for bbdb bug
 (load "~/SRC/gnus/lisp/spam.el")
@@ -30,7 +37,7 @@
 (setq
  gnus-registry-install t		; yes we use the registry
  gnus-registry-split-strategy 'majority ; splitting to the place that gets the most 'votes'
-)
+ )
 (gnus-registry-initialize)		; fire up the registry
 
 ;;;
