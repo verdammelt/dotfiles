@@ -32,22 +32,25 @@
 	      (locate-user-emacs-file "lisp/bbdb")))
 
 ;; bbdb stuff
+;; do i need all this stuff?
 (require 'bbdb-autoloads)
 (autoload 'bbdb-expire-bbdb "bbdb-expire")
 (eval-after-load 'bbdb 
   (progn (require 'bbdb-expire)
 	 (setq bbdb-complete-name-allow-cycling t
-	       bbdb/news-auto-create-p t
-	       bbdb-expire-this-old-30)
+	       ;; bbdb/news-auto-create-p t
+	       bbd/mail-auto-create-p nil ; because we use bbdb for spam white listing.
+	       bbdb-quiet-about-name-mismatches 20
+	       bbdb-expire-this-old 30)
 	 
 	 (bbdb-expire-field-foo-p 'mail-alias)
 	 (add-to-list 'bbdb-expire-preservation-functions
 		      #'bbdb-expire-field-mail-alias-p)
 	 (add-hook 'bbdb-expire-pre-expire-hook
-		   #'(lambda () (message "bbdb expiry start: %d records"
-				(length (bbdb-records)))))
+		   #'(lambda () (message "bbdb expiry start: %d records" 
+					 (length (bbdb-records)))))
 	 (add-hook 'bbdb-expire-post-expire-hook
-		   #'(lambda () (message "bbdb-expiry finish: %d records"
+		   #'(lambda () (message "bbdb-expiry finish: %d records" 
 					 (length (bbdb-records)))))
 	 
 	 (defun bbdb-message-mode-keys ()
