@@ -44,6 +44,15 @@
  mail-source-primary-source (car mail-sources) ;check for new mail
  mail-source-crash-box (concat gnus-directory "crash-box")
 
+ ;; formatting the screen
+ gnus-summary-line-format "%10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
+ gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M")
+			       (604800 . "%a %H:%M")
+			       ((gnus-seconds-month) . "%a %d")
+			       ((gnus-seconds-year) . "%b %d")
+			       (t . "%Y-%m-%d"))
+
+
  ;; archiving
  gnus-update-message-archive-method t
 
