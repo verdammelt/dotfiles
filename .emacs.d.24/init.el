@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2011-12-08 00:01:12 mark>
+;;;; Modified Time-stamp: <2011-12-09 20:50:43 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 
@@ -64,6 +64,9 @@
 ;; setup midnight hooks
 (require 'midnight)
 (timer-activate midnight-timer)
+
+(require 'miniedit)
+(miniedit-install)
 
 ;; setting up midnight-hook - do these things at midnight
 (add-hook 'midnight-hook #'bbdb-expire-bbdb)
