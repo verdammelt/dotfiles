@@ -29,6 +29,21 @@
  gnus-decay-scores t	  ; temporary scores should degrade over time.
  gnus-kill-files-directory (expand-file-name "score-files" gnus-directory) ;where to put the kill files
  gnus-gcc-mark-as-read t	   ; carbon-copies should be auto-read
+
+ ;; formatting the screen
+ gnus-summary-line-format "%10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
+ gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") ;change date display depending upon age of article 
+			       (604800 . "%a %H:%M")
+			       ((gnus-seconds-month) . "%a %d")
+			       ((gnus-seconds-year) . "%b %d")
+			       (t . "%Y-%m-%d"))
+
+ ;; sorting of messages
+ gnus-thread-sort-functions '(gnus-thread-sort-by-number gnus-thread-sort-by-total-score)
+
+ ;; archiving
+ gnus-update-message-archive-method t	;always update archive method - let's us change it quickly
+
  )
 
 ;;; 
@@ -44,40 +59,32 @@
 ;;; Mail
 ;;;
 (setq
- ;; general
  message-directory gnus-directory	; where mail is located
  nnfolder-directory (concat gnus-directory "mail")
  mail-source-directory (concat gnus-directory "incoming") ; where the mail is located
  mail-source-primary-source (car mail-sources) ;check for new mail
  mail-source-crash-box (concat gnus-directory "crash-box")
+ )
 
- ;; formatting the screen
- gnus-summary-line-format "%10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
- gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M")
-			       (604800 . "%a %H:%M")
-			       ((gnus-seconds-month) . "%a %d")
-			       ((gnus-seconds-year) . "%b %d")
-			       (t . "%Y-%m-%d"))
-
-
- ;; sorting of messages
- gnus-thread-sort-functions '(gnus-thread-sort-by-number gnus-thread-sort-by-total-score)
-
- ;; archiving
- gnus-update-message-archive-method t
-
- ;; spam
+;;;
+;;; Spam
+;;;
+(setq
  spam-use-spamassassin-headers t    ; because my ISP runs spamassassin
  spam-use-bogofilter t		    ; I want to fine tune the spam checking with local bogofilter
  spam-mark-ham-unread-before-move-from-spam-group t ; ham moved from spam folders will be marked unread.
+ )
+(spam-initialize)
 
- ;; splitting
+;;;
+;;; Splitting
+;;;
+(setq
  nnmail-split-methods 'nnmail-split-fancy
  nnmail-split-fancy '(| (: spam-split)
 			"mail.misc")
  spam-split-group "spam.spam"
  )
-(spam-initialize)
 
 ;;;
 ;;; Scoring
