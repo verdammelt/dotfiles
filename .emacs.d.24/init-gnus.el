@@ -3,14 +3,17 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2011-12-09 20:32:46 mark>
+;;;; Time-stamp: <2011-12-14 07:35:44 mark>
 ;;;;
 ;;;
 ;;; TODO: 
 ;;; * summary/modelines formats 
+;;; * more splitting
 ;;; * scoring
 ;;; * expiry
 ;;; * using gwene for rss for some things.
+;;; * sorting articles
+;;; * sorting groups
 ;;;
 
 ;;; load special version of spam.el to get fix for bbdb bug
