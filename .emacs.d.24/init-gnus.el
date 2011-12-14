@@ -44,6 +44,10 @@
  ;; archiving
  gnus-update-message-archive-method t	;always update archive method - let's us change it quickly
 
+ ;; posting style - what my return address is:
+ gnus-posting-styles  '(("nnfolder:.*"
+			 (From (with-current-buffer gnus-article-buffer 
+				 (message-fetch-field "to")))))
  )
 
 ;;; 
