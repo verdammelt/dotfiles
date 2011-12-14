@@ -86,9 +86,11 @@
 (setq
  nnmail-split-methods 'nnmail-split-fancy
  nnmail-split-fancy '(| (: spam-split)
+			(: gnus-group-split-fancy)
 			"mail.misc")
  spam-split-group "spam.spam"
  )
+(load (locate-user-emacs-file "lisp/gnus-group-split-fancy"))		; patched version to reads from gnus-parameters correctly
 
 ;;;
 ;;; Scoring
@@ -107,18 +109,38 @@
 			(ham spam-use-bogofilter)
 			(ham spam-use-BBDB)))
 	 (spam-process-destination "nnfolder:spam.spam"))
-	("spam.spam"
+
+	("list\.awotd"
+	 (extra-aliases "wsmith@wordsmith.org"))
+	("list\.bank"
+	 (extra-aliases "email@transfers.ally.com"
+			"SchwabAlerts.AccountActivity@schwab.com"
+			"online.service@schwab.com"))
+	("list\.baznex"
+	 (to-address . "baznex@googlegroups.com"))
+	("list\.bikes"
+	 (extra-aliases "bikeinfo@massbike.org"))
+	("list\.dailylit"
+	 (extra-aliases "books@dailylit.com"))
+	("list\.misc"
+	 (extra-aliases "no-reply@posterous.com"
+			"info@meetup.com"))
+
+	("spam\.spam"
+	 (total-expire . t)
+	 (expiry-wait . 'immediate)
 	 (spam-contents gnus-group-spam-classification-spam)
 	 (spam-process ((spam spam-use-bogofilter)
 			(ham spam-use-bogofilter)
 			(ham spam-use-BBDB)))
 	 (ham-process-destination "nnfolder:mail.misc"))
+
 	("^gmane\."
 	 (spam-autodetect . t)
 	 (spam-autodetect-methods spam-use-regex-headers)
 	 (spam-process (spam spam-use-gmane)))))
 
-;;;
+;;;y
 ;;; DEMONS
 ;;;
 (gnus-demon-add-scan-timestamps)	; setting timestamps
