@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2011-12-14 07:35:44 mark>
+;;;; Time-stamp: <2011-12-14 19:22:41 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -11,7 +11,6 @@
 ;;; * more splitting
 ;;; * scoring
 ;;; * expiry
-;;; * using gwene for rss for some things.
 ;;; * sorting articles
 ;;; * sorting groups
 ;;;
@@ -122,7 +121,8 @@
 	("list\.baznex"
 	 (to-address . "baznex@googlegroups.com"))
 	("list\.bikes"
-	 (extra-aliases "bikeinfo@massbike.org"))
+	 (extra-aliases "bikeinfo@massbike.org"
+			"charlie@livablestreets.info"))
 	("list\.dailylit"
 	 (extra-aliases "books@dailylit.com"))
 	("list\.misc"
@@ -143,7 +143,7 @@
 	 (spam-autodetect-methods spam-use-regex-headers)
 	 (spam-process (spam spam-use-gmane)))))
 
-;;;y
+;;;
 ;;; DEMONS
 ;;;
 (gnus-demon-add-scan-timestamps)	; setting timestamps

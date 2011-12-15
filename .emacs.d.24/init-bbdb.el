@@ -1,7 +1,12 @@
 ;;;
 ;;; BBDB
 ;;;
-;;; Modified Time-stamp: <2011-12-09 23:02:25 mark>
+;;; Modified Time-stamp: <2011-12-14 07:56:56 mark>
+;;;
+;;; TODO
+;;; * v3 upgrade
+;;; * safer sync with google (merge in google contacts)
+;;; * two way sync?
 ;;;
 (require 'bbdb-autoloads)
 (autoload 'bbdb-expire-bbdb "bbdb-expire" "Remove old items from BBDB" t)
