@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2011-12-14 19:22:41 mark>
+;;;; Time-stamp: <2011-12-15 07:44:09 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -78,6 +78,8 @@
 (setq
  spam-use-spamassassin-headers t    ; because my ISP runs spamassassin
  spam-use-bogofilter t		    ; I want to fine tune the spam checking with local bogofilter
+ spam-use-BBDB t
+ spam-use-BBDB-exlusive t
  spam-mark-ham-unread-before-move-from-spam-group t ; ham moved from spam folders will be marked unread.
  )
 (spam-initialize)
