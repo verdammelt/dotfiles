@@ -3,14 +3,13 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2011-12-15 07:44:09 mark>
+;;;; Time-stamp: <2011-12-16 21:04:52 mark>
 ;;;;
 ;;;
 ;;; TODO: 
 ;;; * summary/modelines formats 
 ;;; * more splitting
 ;;; * scoring
-;;; * expiry
 ;;; * sorting articles
 ;;; * sorting groups
 ;;;
@@ -103,6 +102,15 @@
 (add-hook 'message-sent-hook 'gnus-score-followup-thread)
 (setq gnus-use-adaptive-scoring t)
 
+;;;
+;;; Expiry
+;;;
+;;; expire mail to an archive mailspool for the year.
+;;;
+(setq 
+ nnmail-expiry-target 'nnmail-fancy-expiry-target
+ nnmail-fancy-expiry-target '(("from" ".*" "nnfolder+archive:archive-%Y")))
+
 ;;; 
 ;;; Group Parameters
 ;;;
@@ -113,6 +121,13 @@
 			(ham spam-use-bogofilter)
 			(ham spam-use-BBDB)))
 	 (spam-process-destination "nnfolder:spam.spam"))
+
+	("mail.*"
+	 (total-expire . t))
+
+	("list.*"
+	 (total-expire . t)
+	 (expiry-target . delete))
 
 	("list\.awotd"
 	 (extra-aliases "wsmith@wordsmith.org"))
@@ -133,7 +148,8 @@
 
 	("spam\.spam"
 	 (total-expire . t)
-	 (expiry-wait . 'immediate)
+	 (expiry-wait . 1)
+	 (expiry-target . delete)
 	 (spam-contents gnus-group-spam-classification-spam)
 	 (spam-process ((spam spam-use-bogofilter)
 			(ham spam-use-bogofilter)
