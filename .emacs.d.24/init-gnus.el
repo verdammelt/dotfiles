@@ -91,7 +91,7 @@
  nnmail-split-methods 'nnmail-split-fancy
  nnmail-split-fancy '(| (: spam-split)
 			(: gnus-group-split-fancy)
-			"mail.misc")
+			"mail.inbox")
  spam-split-group "spam.spam"
  )
 (load (locate-user-emacs-file "lisp/gnus-group-split-fancy"))		; patched version to reads from gnus-parameters correctly
@@ -138,7 +138,7 @@
 	 (spam-process ((spam spam-use-bogofilter)
 			(ham spam-use-bogofilter)
 			(ham spam-use-BBDB)))
-	 (ham-process-destination "nnfolder:mail.misc"))
+	 (ham-process-destination "nnfolder:mail.inbox"))
 
 	("^gmane\."
 	 (spam-autodetect . t)
