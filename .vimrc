@@ -49,8 +49,6 @@ set showmatch
 
 set hidden
 
-hi CursorLine term=reverse cterm=reverse
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
