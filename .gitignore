@@ -27,6 +27,7 @@
 .gnupg
 .gnus.registry*
 .heroku
+.ispell*
 .lesshst
 .netrc
 .newsrc
