@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2011-12-16 21:04:52 mark>
+;;;; Time-stamp: <2012-01-02 21:07:53 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -78,7 +78,7 @@
  spam-use-spamassassin-headers t    ; because my ISP runs spamassassin
  spam-use-bogofilter t		    ; I want to fine tune the spam checking with local bogofilter
  spam-use-BBDB t
- spam-use-BBDB-exlusive t
+ spam-use-BBDB-exclusive t
  spam-mark-ham-unread-before-move-from-spam-group t ; ham moved from spam folders will be marked unread.
  )
 (spam-initialize)
@@ -88,8 +88,8 @@
 ;;;
 (setq
  nnmail-split-methods 'nnmail-split-fancy
- nnmail-split-fancy '(| (: spam-split)
-			(: gnus-group-split-fancy)
+ nnmail-split-fancy '(| (: gnus-group-split-fancy)
+			(: spam-split)
 			"mail.inbox")
  spam-split-group "spam.spam"
  )
@@ -139,9 +139,12 @@
 	 (to-address . "baznex@googlegroups.com"))
 	("list\.bikes"
 	 (extra-aliases "bikeinfo@massbike.org"
-			"charlie@livablestreets.info"))
+			"charlie@livablestreets.info"
+			"BostonAreaCycling@googlegroups.com"))
 	("list\.dailylit"
 	 (extra-aliases "books@dailylit.com"))
+	("list\.mercuryapp"
+	 (extra-aliases "feelings-unicorn@mercuryapp.com"))
 	("list\.misc"
 	 (extra-aliases "no-reply@posterous.com"
 			"info@meetup.com"))
