@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2011-12-09 22:14:39 mark>
+;;;; Modified Time-stamp: <2011-12-20 23:12:51 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -79,15 +79,22 @@
 (setq uniquify-after-kill-buffer-p t
       uniquify-buffer-name-style 'post-forward-angle-brackets)
 
+;; dislike the scrollback and toolbar
 (when window-system
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
+;; start server for emacsclient
 (server-start)
 
+;; blink matching parens
 (show-paren-mode)
 
+;; find file at point
 (ffap-bindings)
+
+;; highlight current line in all buffers
+(global-hl-line-mode)
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)
