@@ -28,7 +28,9 @@
 .gnus.registry*
 .heroku
 .ispell*
+.lein
 .lesshst
+.m2
 .netrc
 .newsrc
 .newsrc-dribble
