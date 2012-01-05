@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-01-02 21:07:53 mark>
+;;;; Time-stamp: <2012-01-03 07:07:24 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -144,9 +144,13 @@
 	("list\.dailylit"
 	 (extra-aliases "books@dailylit.com"))
 	("list\.mercuryapp"
+
 	 (extra-aliases "feelings-unicorn@mercuryapp.com"))
+
 	("list\.misc"
 	 (extra-aliases "no-reply@posterous.com"
+			"news@linkedin.com"
+			"ops@geekli.st"
 			"info@meetup.com"))
 
 	("spam\.spam"
