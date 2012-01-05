@@ -109,7 +109,7 @@
 ;;;
 (setq 
  nnmail-expiry-target 'nnmail-fancy-expiry-target
- nnmail-fancy-expiry-target '(("from" ".*" "nnfolder+archive:archive-%Y")))
+ nnmail-fancy-expiry-targets '(("from" ".*" "nnfolder+archive:archive-%Y")))
 
 ;;; 
 ;;; Group Parameters
