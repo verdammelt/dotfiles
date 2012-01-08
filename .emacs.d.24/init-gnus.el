@@ -144,6 +144,8 @@
 	 (total-expire . t)
 	 (expiry-target . delete))
 
+	("list\.agile-new-england"
+	 (extra-aliases "webmaster@agilenewengland.org"))
 	("list\.awotd"
 	 (extra-aliases "wsmith@wordsmith.org"))
 	("list\.bank"
@@ -156,17 +158,27 @@
 	 (extra-aliases "bikeinfo@massbike.org"
 			"charlie@livablestreets.info"
 			"BostonAreaCycling@googlegroups.com"))
+	("list\.boston-software-craftsmanship"
+	 (to-address . "boston-software-craftsmanship@googlegroups.com"))
 	("list\.dailylit"
 	 (extra-aliases "books@dailylit.com"))
 	("list\.mercuryapp"
-
 	 (extra-aliases "feelings-unicorn@mercuryapp.com"))
-
 	("list\.misc"
-	 (extra-aliases "no-reply@posterous.com"
-			"news@linkedin.com"
-			"ops@geekli.st"
-			"info@meetup.com"))
+	 (extra-aliases 
+	  "ELine@cambridgema.gov"
+	  "contact@flatearththeatre.com"
+	  "info@harvard.com"
+	  "underthehood@members.zipcarmail.com"
+	  ))
+	("list\.social-media"
+	 (split-regexp . ".*@facebookmail.com")
+	 (extra-aliases 
+	  "info@meetup.com"
+	  "news@linkedin.com"
+	  "no-reply@posterous.com"
+	  "ops@geekli.st"
+	  ))
 
 	("spam\.spam"
 	 (total-expire . t)
