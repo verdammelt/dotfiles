@@ -3,15 +3,12 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-01-03 07:07:24 mark>
+;;;; Time-stamp: <2012-01-07 21:47:05 mark>
 ;;;;
 ;;;
 ;;; TODO: 
-;;; * summary/modelines formats 
+;;; * sent mail goes to inbox.
 ;;; * more splitting
-;;; * scoring
-;;; * sorting articles
-;;; * sorting groups
 ;;;
 
 ;;; load special version of spam.el to get fix for bbdb bug
@@ -35,12 +32,9 @@
  gnus-summary-line-format "%10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
  gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") ;change date display depending upon age of article 
 			       (604800 . "%a %H:%M")
-			       ((gnus-seconds-month) . "%a %d")
-			       ((gnus-seconds-year) . "%b %d")
-			       (t . "%Y-%m-%d"))
-
- ;; sorting of messages
- gnus-thread-sort-functions '(gnus-thread-sort-by-number gnus-thread-sort-by-total-score)
+ 			       ((gnus-seconds-month) . "%a %d")
+ 			       ((gnus-seconds-year) . "%b %d")
+ 			       (t . "%Y-%m-%d"))
 
  ;; archiving
  gnus-update-message-archive-method t	;always update archive method - let's us change it quickly
@@ -49,6 +43,24 @@
  gnus-posting-styles  '(("nnfolder:.*"
 			 (From (with-current-buffer gnus-article-buffer 
 				 (message-fetch-field "to")))))
+ )
+
+;;;
+;;; Sorting Group List
+;;;
+(setq
+ gnus-group-sort-function '(gnus-group-sort-by-alphabet gnus-group-sort-by-rank)
+ )
+(add-hook 'gnus-summary-exit-hook 'gnus-summary-bubble-group)
+(add-hook 'gnus-summary-exit-hook 'gnus-group-sort-groups-by-rank)
+
+;;;
+;;; Sorting Articles in Summary Buffer
+;;;
+(setq
+ gnus-thread-sort-functions '(gnus-thread-sort-by-number 
+			      (not gnus-thread-sort-by-most-recent-date)
+			      gnus-thread-sort-by-total-score)
  )
 
 ;;; 
