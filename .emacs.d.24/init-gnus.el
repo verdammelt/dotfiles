@@ -112,7 +112,10 @@
 ;;;
 (add-hook 'message-sent-hook 'gnus-score-followup-article)
 (add-hook 'message-sent-hook 'gnus-score-followup-thread)
-(setq gnus-use-adaptive-scoring t)
+(setq 
+ gnus-use-adaptive-scoring t
+ gnus-score-find-score-files-function '(gnus-score-find-hierarchical)
+ )
 
 ;;;
 ;;; Expiry
