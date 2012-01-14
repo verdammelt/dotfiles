@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-01-07 21:47:05 mark>
+;;;; Time-stamp: <2012-01-12 21:44:00 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -172,10 +172,9 @@
 	  "underthehood@members.zipcarmail.com"
 	  ))
 	("list\.social-media"
-	 (split-regexp . ".*@facebookmail.com")
+	 (split-regexp . "facebookmail\\|twitter\\|linkedin")
 	 (extra-aliases 
 	  "info@meetup.com"
-	  "news@linkedin.com"
 	  "no-reply@posterous.com"
 	  "ops@geekli.st"
 	  ))
