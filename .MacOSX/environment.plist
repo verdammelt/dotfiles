@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>PATH</key>
-	<string>/Users/mark/Bin:/opt/local/bin:/Application/MacPorts/Emacs.App/Contents/MacOS:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin</string>
+	<string>/Users/mark/Bin:/opt/local/libexec/gnubin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin</string>
 </dict>
 </plist>

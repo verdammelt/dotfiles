@@ -5,7 +5,7 @@ export CLICOLOR=1
 alias ls="ls -F"
 alias rm="rm -i"
 
-PATH=$HOME/Bin:/opt/local/bin:/usr/local/bin:/Application/MacPorts/Emacs.App/Contents/MacOS:$PATH
+PATH=$HOME/Bin:/opt/local/libexec/gnubin:/opt/local/bin:/usr/local/bin:$PATH
 
 MANPATH=$MANPATH:/opt/local/man
 TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
