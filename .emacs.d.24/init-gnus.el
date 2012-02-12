@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-01-12 21:44:00 mark>
+;;;; Time-stamp: <2012-02-05 13:28:56 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -162,6 +162,8 @@
 	 (to-address . "boston-software-craftsmanship@googlegroups.com"))
 	("list\.dailylit"
 	 (extra-aliases "books@dailylit.com"))
+	("list\.germanpod"
+	 (split-regexp . ".*@germanpod101\.com"))
 	("list\.mercuryapp"
 	 (extra-aliases "feelings-unicorn@mercuryapp.com"))
 	("list\.misc"
