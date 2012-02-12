@@ -1,3 +1,7 @@
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -7,47 +11,62 @@ let mapleader=","
 set backupdir=~/.vim-tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,/var/tmp,/tmp
 
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+set shellslash  " change all slashes in completion to forward slash
 
-set shellslash
+set clipboard=unnamed " work with OS clipboard 
 
-set clipboard=unnamed
-
-set number
-set numberwidth=5
+set number          " line numbers
+set numberwidth=4   " number of columns for line numbers
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set visualbell
-set mousehide
+set mousehide "hide the mouse while typeing
 set scrolloff=5
-
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
 
 set history=500		" keep 500 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
-set cmdwinheight=5
-set cmdheight=1
 
+" dealing with tabs - 4 spaces - exapnd them.
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set autoindent
+set smarttab
 
-set laststatus=2
-set showmatch
+set autoindent " o and O auto indent
+set smartindent " figure out proper indenting
 
-set hidden
+set laststatus=2 " always show the status bar
+set statusline=%<%f\ (%{&ft})\ %-8(%m%r%)%=%-19(%3l,%02c%03V%)
+
+set showmatch " flash matching paren/bracket/etc
+
+set title " show the title
+
+set fileformat=unix
+
+" go wild!
+set wildmenu
+set wildignore+=*~
+set wildmode=longest,list
+
+" ignore case in patterns unless explicit capital used
+set ignorecase
+set smartcase
+
+" when changing put $ at end of changed area and overwrite as i type
+set cpoptions+=$
+
+set winwidth=84
+" must set winheight before setting winminheight and it must be bigger than
+" winminheight.  But setting it right away to 999 causes winminheight setting
+" to fail.
+set winheight=5
+set winminheight=5
+set winheight=999 " current windo should fill 'most' of the space
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -67,11 +86,13 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
   set cursorline
+  set background=dark
+"colorscheme solarized
+"colorscheme zenburn
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
@@ -102,9 +123,6 @@ if has("autocmd")
   autocmd BufWritePost .vimrc source $MYVIMRC
 
   augroup END
-
-else
-    set autoindent		" always set autoindenting on
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
@@ -115,24 +133,6 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-set wildmenu
-set wildignore+=*~
-set wildmode=longest,list
-set ignorecase
-set smartcase
-
-set statusline=%<%f\ (%{&ft})\ %-8(%m%r%)%=%-19(%3l,%02c%03V%)
-
-set t_Co=256
-set background=dark
-"colorscheme solarized
-"colorscheme zenburn
-set cursorline
-
-set cpoptions+=$
-
-
-:nnoremap <CR> :nohlsearch<cr>
 
 " Remap the tab key to do autocompletion or indentation depending on the
 " context (from http://www.vim.org/tips/tip.php?tip_id=102)
@@ -157,7 +157,7 @@ augroup END
 " Map ,e and ,v to open files in the same directory as the current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nmap <silent> <Leader>t :CommandT<CR>
-
+:nnoremap <CR> :nohlsearch<cr>
 map <leader>e :edit %%
 map <leader>f :CommandT<CR>
 map <leader>gb :Gblame<CR>
@@ -165,20 +165,10 @@ map <leader>gc :Gcommit<CR>
 map <leader>gd :Gdiff<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>r :wa<CR>:!rake<CR>
-"map <leader>t :wa<CR>:!./script/test %<CR>
 map <leader>v :edit $MYVIMRC<CR>
-
-set winwidth=84
-" must set winheight before setting winminheight and it must be bigger than
-" winminheight.  But setting it right away to 999 causes winminheight setting
-" to fail.
-set winheight=5
-set winminheight=5
-set winheight=999 " current windo should fill 'most' of the space
 
 nnoremap <leader><leader> <c-^>
 
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 function! g:ToggleNuMode() 
   if(&rnu == 1) 
@@ -241,10 +231,4 @@ map <leader>a :call RunTests('spec')<cr>
 map <leader>c :w\|:!cucumber<cr>
 map <leader>C :w\|:!cucumber --profile wip<cr>
 
-set title
-set smartindent
-set smarttab
-set magic
-set bs=indent,eol,start
-set fileformat=unix
 
