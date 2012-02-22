@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2011-12-20 23:12:51 mark>
+;;;; Modified Time-stamp: <2012-02-20 15:59:50 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -105,6 +105,19 @@
 ;; ps-lpr-command (expand-file-name "~/bin/psprint")
  ps-spool-duplex t
  )
+
+;; calendar
+(setq 
+ calendar-latitude +42.358056
+ calendar-location-name "Cambridge, MA"
+ calendar-longitude -71.113056
+ calendar-time-display-form '(24-hours ":" minutes (if time-zone " (") time-zone (if time-zone ")"))
+ diary-file "~/.diary"
+ calendary-date-style 'european
+ calendar-mark-diary-entries-flag t
+ calendar-mark-holidays-flag t
+ calendar-view-diary-initially-flag t
+ calendar-view-holidays-initially-flag t)
 
 ;; Auto-mode-alist additions
 (add-to-list 'auto-mode-alist '("*.md$" . markdown-mode))
