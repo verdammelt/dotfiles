@@ -4,6 +4,7 @@
 export CLICOLOR=1
 alias ls="ls -F"
 alias rm="rm -i"
+alias fat="(cd ~/SRC/thefattrack && rails s)"
 
 PATH=$HOME/Bin:$HOME/.rvm/bin:/opt/local/libexec/gnubin:/opt/local/bin:/usr/local/bin:$PATH
 
