@@ -7,6 +7,8 @@ call pathogen#helptags()
 
 let mapleader=","
 
+set hidden " allow hidding buffers which are not saved
+
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,/var/tmp,/tmp
