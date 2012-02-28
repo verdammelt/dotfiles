@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-02-05 13:28:56 mark>
+;;;; Time-stamp: <2012-02-26 14:48:20 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -139,6 +139,10 @@
 
 	("mail.*"
 	 (total-expire . t))
+
+	("mail.tnef"
+	 (total-expire . nil)
+	 (auto-expire . nil))
 
 	("list.*"
 	 (total-expire . t)
