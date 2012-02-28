@@ -4,4 +4,6 @@ fi
 
 . $HOME/.bashrc
 
+CDPATH=.:~:~/SRC:~/Documents:~/Movies
+
 
