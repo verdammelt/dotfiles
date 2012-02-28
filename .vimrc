@@ -9,7 +9,7 @@ call pathogen#helptags()
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+    set mouse=a
 endif
 
 set hidden " allow hidding buffers which are not saved
@@ -78,90 +78,64 @@ set winheight=999 " current windo should fill 'most' of the space
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo, so
-" that you can undo CTRL-U after inserting a line break.  inoremap <C-U>
-" <C-G>u<C-U>
-
-
 " Switch syntax highlighting on, when the terminal has colors.
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-  set cursorline
-  set cc=80
-  set background=dark
-  colorscheme grb256
-   " colorscheme solarized
-"colorscheme zenburn
+    syntax on
+    set hlsearch
+    set cursorline
+    set cc=80
+    set background=dark
+    colorscheme grb256
+    " colorscheme solarized
+    "colorscheme zenburn
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+    " Enable file type detection.
+    " Use the default filetype settings, so that mail gets 'tw' set to 72,
+    " 'cindent' is on in C files, etc.
+    " Also load indent files, to automatically do language-dependent
+    " indenting.
+    filetype plugin indent on
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-      au!
+    " Put these in an autocmd group, so that we can delete them easily.
+    augroup vimrcEx
+        au!
 
-      " For all text files set 'textwidth' to 78 characters.
-      au BufRead,BufNewFile *.txt		setfiletype text
-      autocmd FileType text 
-                  \ setlocal textwidth=78 |
-                  \ setlocal spell spelllang=en_us
-      autocmd FileType markdown
-                  \ setlocal textwidth=78 |
-                  \ setlocal spell spelllang=en_us
+        " For all text files set 'textwidth' to 78 characters.
+        au BufRead,BufNewFile *.txt		setfiletype text
+        autocmd FileType text 
+                    \ setlocal textwidth=78 |
+                    \ setlocal spell spelllang=en_us
+        autocmd FileType markdown
+                    \ setlocal textwidth=78 |
+                    \ setlocal spell spelllang=en_us
 
-      " When editing a file, always jump to the last known cursor position.
-      " Don't do it when the position is invalid or when inside an event
-      " handler (happens when dropping a file on gvim).  Also don't do it when
-      " the mark is in the first line, that is the default position when
-      " opening a file.
-      autocmd BufReadPost *
-                  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-                  \   exe "normal! g`\"" |
-                  \ endif
+        " When editing a file, always jump to the last known cursor position.
+        " Don't do it when the position is invalid or when inside an event
+        " handler (happens when dropping a file on gvim).  Also don't do it
+        " when the mark is in the first line, that is the default position
+        " when opening a file.
+        autocmd BufReadPost *
+                    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                    \   exe "normal! g`\"" |
+                    \ endif
 
-      " automatically source .vimrc when it is saved.
-      autocmd BufWritePost .vimrc source $MYVIMRC
+        " automatically source .vimrc when it is saved.
+        autocmd BufWritePost .vimrc source $MYVIMRC
 
-  augroup END
+    augroup END
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.  Only define it when not
 " defined already.
 if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+                \ | wincmd p | diffthis
 endif
-
-
-" Remap the tab key to do autocompletion or indentation depending on the
-" context (from http://www.vim.org/tips/tip.php?tip_id=102)
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"     if !col || getline('.')[col - 1] !~ '\k'
-"         return "\<tab>"
-"     else
-"         return "\<c-p>"
-"     endif
-" endfunction
-" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-" inoremap <s-tab> <c-n>
-
-" augroup myfiletypes
-"     "clear old autocmds in group
-"     autocmd!
-"     "for ruby, autoindent with two spaces, always expand tabs
-"     autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber \
-"         set ai sw=2 sts=2 et
-" augroup END
 
 " %% defined to be absolute path to current file
 cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
@@ -179,11 +153,11 @@ map <leader>v :edit $MYVIMRC<CR>
 nnoremap <leader><leader> <c-^>
 
 function! g:ToggleNuMode() 
-  if(&rnu == 1) 
-    set nu 
-  else 
-    set rnu 
-  endif 
+    if(&rnu == 1) 
+        set nu 
+    else 
+        set rnu 
+    endif 
 endfunc 
 nnoremap <C-L> :call g:ToggleNuMode()<cr> 
 
