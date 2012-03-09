@@ -1,5 +1,0 @@
-#!/bin/sh -x
-
-sudo port selfupdate | tee /tmp/port.log
-sudo port -Rup upgrade outdated | tee -a /tmp/port.log
-
