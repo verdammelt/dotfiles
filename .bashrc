@@ -36,39 +36,7 @@ green='\[\e[0;32m\]'
 blue='\[\e[0;34m\]'
 grey='\[\e[1;30m\]'
 
-function min_since_commit() {
-    min=`git_minutes_since_last_commit`
-    if [ "$min" -eq -1 ]; then
-        echo -n ""
-    else
-        if [ "$min" -gt 720 ]; then
-            color="$red"
-        elif [ "$min" -gt 120 ]; then
-            color=$yellow
-        elif [ "$min" -gt 60 ]; then
-            color=$purple
-        elif [ "$min" -gt 30 ]; then
-            color=$cyan
-        else
-            color=$green
-        fi
-        echo -e $color"${min}m"$reset
-    fi
-}
-
-function gitPS1() {
-    if [ $(__gitdir) ]; then
-#	prompt='('$(min_since_commit)'|'$purple$(__git_ps1 "%s")$reset')'
-prompt="\\[\\033[0;33m\\]$(__git_ps1)\\[\\033[0m\\]"
-    else
-        prompt=""
-    fi
-    echo $prompt
-}
-
 export PS1='\h:\W'$purple'$(__git_ps1 "(%s)")'$reset'> '
-
-alias git="git-achievements"
 
 function myip(){ 
     ip=`curl -s automation.whatismyip.com/n09230945.asp` 
