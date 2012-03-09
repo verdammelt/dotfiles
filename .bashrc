@@ -6,7 +6,7 @@ alias ls="ls -F"
 alias rm="rm -i"
 alias fat="(cd ~/SRC/thefattrack && rails s)"
 
-PATH=$HOME/Bin:$HOME/.rvm/bin:/opt/local/libexec/gnubin:/opt/local/bin:/usr/local/bin:$PATH
+PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:$PATH
 
 MANPATH=$MANPATH:/opt/local/man
 TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
@@ -21,7 +21,7 @@ export AUTOFEATURE=true
 
 alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
 
-alias llines='(cd $HOME/LifeLines ; /opt/local/bin/llines simpson)'
+alias llines='(cd $HOME/LifeLines ; llines simpson)'
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
