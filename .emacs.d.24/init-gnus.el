@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-02-26 14:48:20 mark>
+;;;; Time-stamp: <2012-03-08 20:16:56 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -40,9 +40,9 @@
  gnus-update-message-archive-method t	;always update archive method - let's us change it quickly
 
  ;; posting style - what my return address is:
- gnus-posting-styles  '(("nnfolder:.*"
-			 (From (with-current-buffer gnus-article-buffer 
-				 (message-fetch-field "to")))))
+ gnus-posting-styles  '(("nnfolder:mail\..*"
+                         (From (with-current-buffer gnus-article-buffer 
+                                 (message-fetch-field "to")))))
  )
 
 ;;;
@@ -123,6 +123,7 @@
 ;;; expire mail to an archive mailspool for the year.
 ;;;
 (setq 
+ gnus-message-archive-group '((format-time-string "archive-%Y"))
  nnmail-expiry-target 'nnmail-fancy-expiry-target
  nnmail-fancy-expiry-targets '(("from" ".*" "nnfolder+archive:archive-%Y")))
 
@@ -138,6 +139,7 @@
 	 (spam-process-destination "nnfolder:spam.spam"))
 
 	("mail.*"
+	 (gcc-self . t)
 	 (total-expire . t))
 
 	("mail.tnef"
