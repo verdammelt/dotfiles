@@ -12,9 +12,9 @@
 	co = checkout
 	aa = add --all
 	di = diff
-	dc = diff --cached
+	dc = di --cached
 	lg = log --graph --abbrev-commit --date=relative
-	head = !git lg -1
+	head = !git lg -5
 	recent = !git lg -20
 	rehead = reset --hard HEAD
 
