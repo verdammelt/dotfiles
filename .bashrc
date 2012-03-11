@@ -6,6 +6,7 @@ alias ls="ls -F"
 alias rm="rm -i"
 alias fat="(cd ~/SRC/thefattrack && rails s)"
 alias git=hub
+alias pdfopen='pdfopen -viewer xpdf'
 
 
 PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:$PATH
