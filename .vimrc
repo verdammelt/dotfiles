@@ -43,12 +43,12 @@ set softtabstop=4
 set shiftwidth=4
 set smarttab
 
+set formatoptions+=o
 set autoindent " o and O auto indent
 set smartindent " figure out proper indenting
 
 set laststatus=2 " always show the status bar
-set statusline=%<%f\ (%{&ft})\ %-8(%m%r%)%=%-19(%3l,%02c%03V%)
-
+set statusline=%<%f\ %-8(%y%m%r%)%=\ 0x%B\ %-20(%P\ %3l,%02c%03V%)
 set showmatch " flash matching paren/bracket/etc
 
 set title " show the title
@@ -71,7 +71,7 @@ set winwidth=80
 " must set winheight before setting winminheight and it must be bigger than
 " winminheight.  But setting it right away to 999 causes winminheight setting
 " to fail.
-set winheight=5
+set winheight=10
 set winminheight=5
 set winheight=999 " current windo should fill 'most' of the space
 
@@ -91,6 +91,11 @@ if &t_Co > 2 || has("gui_running")
     "colorscheme zenburn
 endif
 
+function! mjs:textish_mode()
+    setlocal textwidth=78
+    setlocal spell spelllang=en_us
+endfunction
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
     " Enable file type detection.
@@ -105,13 +110,15 @@ if has("autocmd")
         au!
 
         " For all text files set 'textwidth' to 78 characters.
-        au BufRead,BufNewFile *.txt		setfiletype text
-        autocmd FileType text 
-                    \ setlocal textwidth=78 |
-                    \ setlocal spell spelllang=en_us
-        autocmd FileType markdown
-                    \ setlocal textwidth=78 |
-                    \ setlocal spell spelllang=en_us
+        autocmd BufRead,BufNewFile *.txt setfiletype text
+        autocmd FileType text call mjs:textish_mode()
+        autocmd FileType tex call mjs:textish_mode()
+        autocmd FileType markdown call mjs:textish_mode()
+
+        autocmd FileType help
+            \ setlocal nospell |
+            \ nmap <buffer> <CR> <C-]> |
+            \ nmap <buffer> <BS> <C-T> 
 
         " When editing a file, always jump to the last known cursor position.
         " Don't do it when the position is invalid or when inside an event
@@ -119,9 +126,9 @@ if has("autocmd")
         " when the mark is in the first line, that is the default position
         " when opening a file.
         autocmd BufReadPost *
-                    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-                    \   exe "normal! g`\"" |
-                    \ endif
+            \ if line("'\"") > 1 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 
         " automatically source .vimrc when it is saved.
         autocmd BufWritePost .vimrc source $MYVIMRC
@@ -143,6 +150,7 @@ cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
 nnoremap <CR> :nohlsearch<cr>
 map <leader>e :edit %%
 map <leader>f :CommandT<CR>
+map <leader>F :CommandTFlush<CR>
 map <leader>gb :Gblame<CR>
 map <leader>gc :Gcommit<CR>
 map <leader>gd :Gdiff<CR>
@@ -160,4 +168,5 @@ function! g:ToggleNuMode()
     endif 
 endfunc 
 nnoremap <C-L> :call g:ToggleNuMode()<cr> 
+
 
