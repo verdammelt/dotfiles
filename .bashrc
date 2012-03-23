@@ -1,5 +1,6 @@
 [[ -s "/Users/mark/.rvm/scripts/rvm" ]] && source "/Users/mark/.rvm/scripts/rvm"
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+[[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
 
 export CLICOLOR=1
 alias ls="ls -F"

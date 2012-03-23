@@ -6,7 +6,7 @@
 	ui=auto
 
 [alias]
-	st = status 
+	st = status -s -b
     man = help
 	ci = commit
 	co = checkout
@@ -23,5 +23,9 @@
 	
 [github]
 	user = verdammelt
+
 [achievement]
 	upload = true
+
+[hub]
+	protocol = https

@@ -25,6 +25,7 @@
 .gconfd
 .gem
 .git-achievements*
+.githubtoken
 .gnupg
 .gnus.registry*
 .heroku
