@@ -15,7 +15,7 @@ MANPATH=$MANPATH:/opt/local/man
 TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
 EDITOR=vim
 VISUAL=vim
-export LLPROGRAMS=/opt/local/share/lifelines
+export LLPROGRAMS=/usr/local/share/lifelines
 export LLREPORTS=$HOME/LifeLines/output
 export LLARCHIVE=$HOME/LifeLines/archive
 export LLDATABASES=$HOME/LifeLines
@@ -29,6 +29,8 @@ alias llines='(cd $HOME/LifeLines ; llines simpson)'
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILED=1
+
+export HISTCONTROL=erasedups
 
 reset='\[\e[0m\]'
 cyan='\[\e[0;36m\]'
