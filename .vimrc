@@ -57,8 +57,10 @@ set fileformat=unix
 
 " go wild!
 set wildmenu
-set wildignore+=*~
 set wildmode=longest,list
+set wildignore+=*~
+set wildignore+=*.class
+set wildignore+=*.jar
 
 " ignore case in patterns unless explicit capital used
 set ignorecase
@@ -111,6 +113,7 @@ if has("autocmd")
 
         " For all text files set 'textwidth' to 78 characters.
         autocmd BufRead,BufNewFile *.txt setfiletype text
+        autocmd BufRead,BufNewFile *.clj setfiletype lisp
         autocmd FileType text call mjs:textish_mode()
         autocmd FileType tex call mjs:textish_mode()
         autocmd FileType markdown call mjs:textish_mode()
