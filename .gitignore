@@ -1,12 +1,10 @@
-*~
-\#*
-.\#*
-
 *.DS_Store
+*~
 .CFUserTextEncoding
 .DownloadManager
 .Trash
 .Xauthority
+.\#*
 .aspell*
 .authinfo
 .bash_history
@@ -26,10 +24,12 @@
 .gem
 .git-achievements*
 .githubtoken
+.gnome2
 .gnupg
 .gnus.registry*
 .heroku
 .ispell*
+.jline-clojure.main.history
 .lein
 .lesshst
 .m2
@@ -41,6 +41,7 @@
 .pry_history
 .rubyforge
 .rvm
+.serverauth.*
 .sh_history
 .sqlite_history
 .ssh
@@ -49,7 +50,6 @@
 .tramp_history
 .vim-tmp
 .viminfo
-
 Applications
 Desktop
 Documents
@@ -64,5 +64,4 @@ Pictures
 Public
 SRC
 Sites
-.gnome2
-.serverauth.*
+\#*
