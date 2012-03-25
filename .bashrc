@@ -3,6 +3,7 @@
 [[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
 
 export CLICOLOR=1
+alias df='df -h'
 alias ls="ls -F"
 alias rm="rm -i"
 alias fat="(cd ~/SRC/thefattrack && rails s)"
