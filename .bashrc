@@ -30,7 +30,8 @@ alias llines='(cd $HOME/LifeLines ; llines simpson)'
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILED=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 export HISTCONTROL=erasedups
 
