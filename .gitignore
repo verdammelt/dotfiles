@@ -48,6 +48,7 @@
 .sqlite_history
 .ssh
 .subversion
+.subversion_IDEA
 .texlive2010
 .tramp_history
 .vim-tmp
