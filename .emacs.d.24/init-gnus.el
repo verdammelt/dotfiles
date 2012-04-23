@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-03-08 20:16:56 mark>
+;;;; Time-stamp: <2012-04-19 07:31:37 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -38,11 +38,6 @@
 
  ;; archiving
  gnus-update-message-archive-method t	;always update archive method - let's us change it quickly
-
- ;; posting style - what my return address is:
- gnus-posting-styles  '(("nnfolder:mail\..*"
-                         (From (with-current-buffer gnus-article-buffer 
-                                 (message-fetch-field "to")))))
  )
 
 ;;;
