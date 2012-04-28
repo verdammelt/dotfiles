@@ -13,14 +13,13 @@
 	aa = add --all
 	di = diff
 	dc = diff --cached
-	lg = log --graph --abbrev-commit --date=relative
-	head = !git lg -5
-	recent = !git lg -20
+	l = "!source ~/.githelpers && pretty_git_log"
+    lg = !git l
+    la = !git l --all
+	r = !git l -10
+    ra = !git r --all
 	rehead = reset --hard HEAD
 
-[format]
-    pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
-	
 [github]
 	user = verdammelt
 
