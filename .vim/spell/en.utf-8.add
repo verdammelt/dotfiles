@@ -33,3 +33,5 @@ namespaces
 Clojure's
 namespace
 wiki
+pullquote
+endpullquote
