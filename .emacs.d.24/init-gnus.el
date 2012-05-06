@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-04-19 07:31:37 mark>
+;;;; Time-stamp: <2012-05-02 20:14:52 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -120,6 +120,7 @@
 (setq 
  gnus-message-archive-group '((format-time-string "archive-%Y"))
  nnmail-expiry-target 'nnmail-fancy-expiry-target
+ nnmail-expiry-wait 28
  nnmail-fancy-expiry-targets '(("from" ".*" "nnfolder+archive:archive-%Y")))
 
 ;;; 
