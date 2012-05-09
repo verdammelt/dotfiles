@@ -111,6 +111,9 @@ if has("autocmd")
     augroup vimrcEx
         au!
 
+        autocmd BufRead,BufNewFile *.markdown set filetype=octopress
+        autocmd BufRead,BufNewFile *.md set filetype=octopress
+
         " For all text files set 'textwidth' to 78 characters.
         autocmd FileType text call mjs:textish_mode()
         autocmd FileType tex call mjs:textish_mode()
