@@ -20,7 +20,7 @@ set directory=~/.vim-tmp,/var/tmp,/tmp
 
 set shellslash  " change all slashes in completion to forward slash
 
-set clipboard=unnamed " work with OS clipboard 
+"set clipboard=unnamed " work with OS clipboard 
 
 set number          " line numbers
 set numberwidth=4   " number of columns for line numbers
