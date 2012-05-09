@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-05-02 20:14:52 mark>
+;;;; Time-stamp: <2012-05-09 18:37:00 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -159,6 +159,7 @@
 	("list\.bikes"
 	 (extra-aliases "bikeinfo@massbike.org"
 			"charlie@livablestreets.info"
+			"baystatecycling@googlegroups.com"
 			"BostonAreaCycling@googlegroups.com"))
 	("list\.boston-software-craftsmanship"
 	 (to-address . "boston-software-craftsmanship@googlegroups.com"))
