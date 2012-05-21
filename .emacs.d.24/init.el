@@ -2,10 +2,15 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-02-20 15:59:50 mark>
+;;;; Modified Time-stamp: <2012-05-20 20:36:44 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
+
+
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/Users/mark/Bin")
+(add-to-list 'exec-path "/usr/texbin" :append)
 
 ;;;
 ;;; Customize
@@ -121,4 +126,6 @@
 
 ;; Auto-mode-alist additions
 (add-to-list 'auto-mode-alist '("*.md$" . markdown-mode))
+
+
 
