@@ -3,6 +3,7 @@
 set nocompatible
 
 let mapleader=","
+let maplocalleader=","
 
 call pathogen#infect()
 call pathogen#helptags()
