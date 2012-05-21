@@ -43,6 +43,9 @@ set softtabstop=4
 set shiftwidth=4
 set smarttab
 
+" want to keep from writing lines which are too long no matter what I am doing
+set textwidth=78
+
 set formatoptions+=o
 set autoindent " o and O auto indent
 set smartindent " figure out proper indenting
@@ -86,7 +89,7 @@ if &t_Co > 2 || has("gui_running")
     syntax on
     set hlsearch
     set cursorline
-    set cc=80
+    set colorcolumn=+1
     set background=dark
     colorscheme grb256
     " colorscheme solarized
@@ -94,7 +97,6 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 function! mjs:textish_mode()
-    setlocal textwidth=78
     setlocal spell spelllang=en_us
 endfunction
 
