@@ -45,6 +45,7 @@
 .rvm
 .serverauth.*
 .sh_history
+.slime-history.eld
 .sqlite_history
 .ssh
 .subversion
