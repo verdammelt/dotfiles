@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-05-20 20:36:44 mark>
+;;;; Modified Time-stamp: <2012-05-24 07:47:54 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -11,6 +11,9 @@
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/Users/mark/Bin")
 (add-to-list 'exec-path "/usr/texbin" :append)
+
+(setenv "PATH" (mapconcat 'identity exec-path ":"))
+ 
 
 ;;;
 ;;; Customize
