@@ -48,6 +48,7 @@
 .slime-history.eld
 .sqlite_history
 .ssh
+.ssl
 .subversion
 .subversion_IDEA
 .texlive2010
