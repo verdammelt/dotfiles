@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-05-09 18:37:00 mark>
+;;;; Time-stamp: <2012-05-27 09:45:54 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -148,12 +148,12 @@
 
 	("list\.agile-new-england"
 	 (extra-aliases "webmaster@agilenewengland.org"))
+
 	("list\.awotd"
 	 (extra-aliases "wsmith@wordsmith.org"))
+
 	("list\.bank"
-	 (extra-aliases "email@transfers.ally.com"
-			"SchwabAlerts.AccountActivity@schwab.com"
-			"online.service@schwab.com"))
+	 (split-regexp . "schwab\\|ally"))
 	("list\.baznex"
 	 (to-address . "baznex@googlegroups.com"))
 	("list\.bikes"
@@ -165,8 +165,6 @@
 	 (to-address . "boston-software-craftsmanship@googlegroups.com"))
 	("list\.dailylit"
 	 (extra-aliases "books@dailylit.com"))
-	("list\.germanpod"
-	 (split-regexp . ".*@germanpod101\.com"))
 	("list\.mercuryapp"
 	 (extra-aliases "feelings-unicorn@mercuryapp.com"))
 	("list\.misc"
