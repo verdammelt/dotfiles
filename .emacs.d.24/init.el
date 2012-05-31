@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-05-24 07:47:54 mark>
+;;;; Modified Time-stamp: <2012-05-30 21:30:15 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -110,7 +110,7 @@
 ;; TODO: something wrong here - no color - no duplex
 ;; ps-printing via a shell script for ps2pdf
 (setq 
-;; ps-lpr-command (expand-file-name "~/bin/psprint")
+ ps-lpr-command (expand-file-name "~/bin/psprint")
  ps-spool-duplex t
  )
 
