@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-05-27 09:45:54 mark>
+;;;; Time-stamp: <2012-06-13 20:13:08 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -76,6 +76,8 @@
  mail-source-directory (concat gnus-directory "incoming") ; where the mail is located
  mail-source-primary-source (car mail-sources) ;check for new mail
  mail-source-crash-box (concat gnus-directory "crash-box")
+ 
+ nnmail-treat-duplicates 'delete
  )
 
 ;;;
@@ -157,10 +159,12 @@
 	("list\.baznex"
 	 (to-address . "baznex@googlegroups.com"))
 	("list\.bikes"
-	 (extra-aliases "bikeinfo@massbike.org"
-			"charlie@livablestreets.info"
-			"baystatecycling@googlegroups.com"
-			"BostonAreaCycling@googlegroups.com"))
+	 (extra-aliases 
+	  "info@bostoncyclistsunion.org"
+	  "bikeinfo@massbike.org"
+	  "charlie@livablestreets.info"
+	  "baystatecycling@googlegroups.com"
+	  "BostonAreaCycling@googlegroups.com"))
 	("list\.boston-software-craftsmanship"
 	 (to-address . "boston-software-craftsmanship@googlegroups.com"))
 	("list\.dailylit"
@@ -175,8 +179,9 @@
 	  "underthehood@members.zipcarmail.com"
 	  ))
 	("list\.social-media"
-	 (split-regexp . "facebookmail\\|twitter\\|linkedin")
+	 (split-regexp . "flickr\\|facebookmail\\|twitter\\|linkedin")
 	 (extra-aliases 
+	  "action@ifttt.com"
 	  "info@meetup.com"
 	  "no-reply@posterous.com"
 	  "ops@geekli.st"
