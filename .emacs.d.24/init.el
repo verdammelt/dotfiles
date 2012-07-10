@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-05-30 21:30:15 mark>
+;;;; Modified Time-stamp: <2012-07-09 22:40:09 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -42,6 +42,7 @@
 (require 'init-bbdb)
 (require 'init-mail)
 (require 'init-latex)
+(require 'init-org)
 
 ;;; 
 ;;; Misc Settings
