@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-07-09 22:40:09 mark>
+;;;; Modified Time-stamp: <2012-07-15 16:46:51 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -112,8 +112,7 @@
 ;; ps-printing via a shell script for ps2pdf
 (setq 
  ps-lpr-command (expand-file-name "~/bin/psprint")
- ps-spool-duplex t
- )
+ ps-spool-duplex t)
 
 ;; calendar
 (setq 
@@ -132,4 +131,29 @@
 (add-to-list 'auto-mode-alist '("*.md$" . markdown-mode))
 
 
+;; playing with slime & clojure
+(add-to-list 'load-path "~/.emacs.d.24/lisp/slime")
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(require 'slime)
+(slime-setup)
+(require 'midje-mode)
+(require 'clojure-jump-to-file)
 
+(add-hook 'text-mode-hook 'turn-on-fci-mode)
+
+(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'turn-on-fci-mode)
+(add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'lisp-mode-hook 'paredit-mode)
+
+;; turning on eldoc
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+
+
+;; playing with evil mode
+(autoload 'turn-on-evil-mode "evil")
+(global-set-key (kbd "C-z") #'(lambda () (interactive) (turn-on-evil-mode)))
+	  
