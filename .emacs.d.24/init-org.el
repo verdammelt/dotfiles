@@ -1,34 +1,40 @@
 (require 'org)
 (require 'org-mobile)
+
+(setq org-id-locations-file 
+      (expand-file-name ".org-id-locations" user-emacs-directory))
+
 (setq org-directory (expand-file-name "~/Documents/GTD")
-      org-mobile-directory (expand-file-name "~/Dropbox/GTD/MobileOrg")
-      org-mobile-inbox-for-pull (expand-file-name "~/Documents/GTD/todo.org")
-      org-agenda-files '("~/Documents/GTD/todo.org")
       org-default-notes-file "~/Documents/GTD/todo.org"  
       org-use-property-inheritance t
       org-use-tag-inheritance t
       org-log-done t
-      org-agenda-sorting-strategy '((agenda habit-up time-up tag-up todo-state-up category-keep) 
-				    (todo todo-state-up tag-up category-keep)
-				    (tags todo-state-up category-keep)
-				    (search todo-state-up category-keep))
-      org-agenda-show-all-dates nil
       org-refile-use-outline-path 'file
       org-refile-targets '((nil :maxlevel . 9)))
 
-(setq org-agenda-custom-commands '(("W" "Office & Work lists"
-				    ((agenda "" ((org-agenda-show-all-dates nil)))
-				     (tags-todo "@WORK|@CALL|@ERRAND"
-						((org-agenda-tags-todo-honor-ignore-options t)
-						 (org-agenda-todo-ignore-scheduled t)))))
-				   ("H" "Home Lists"
-				    ((agenda "" ((org-agenda-show-all-dates nil))) 
-				     (tags-todo "-@WORK"
-						((org-agenda-tags-todo-honor-ignore-options t)
-						 (org-agenda-todo-ignore-scheduled t)))
-				     ))
-				   ("w" "Waiting"
-				    ((todo "WAITING")))))
+(setq org-mobile-directory (expand-file-name "~/Dropbox/GTD/MobileOrg")
+      org-mobile-inbox-for-pull (expand-file-name "~/Documents/GTD/todo.org"))
+
+(setq org-agenda-sorting-strategy 
+      '((agenda habit-up time-up tag-up todo-state-up category-keep) 
+	(todo todo-state-up tag-up category-keep)
+	(tags todo-state-up tag-up category-keep)
+	(search todo-state-up category-keep))
+      org-agenda-show-all-dates nil
+      org-agenda-files '("~/Documents/GTD/todo.org")
+      org-agenda-show-all-dates nil
+      org-agenda-tags-todo-honor-ignore-options t
+      org-agenda-todo-ignore-scheduled t
+      org-agenda-custom-commands 
+      '(("gW" "Office & Work lists"
+	 ((agenda "")
+	  (tags-todo "@WORK|@CALL|@ERRAND")))
+	("gh" "Home Lists"
+	 ((agenda "") 
+	  (tags-todo "-@WORK")))
+	("gt" "Today's TICKLER" tags "+CATEGORY=\"TICKLER\"+SCHEDULED=\"<today>\"")
+	("gw" "Waiting"
+	 ((todo "WAITING")))))
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
@@ -67,6 +73,8 @@
         (run-with-idle-timer (* 1 secs) repeat 'org-mobile-pull)))
 
 ;;
-;; push and pull every time we have 30 seconds idel
-(org-mobile-push-with-delay 30 :repeat)
-(org-mobile-push-with-delay 30 :repeat)
+;; push and pull every time we have 60 seconds idel
+(org-mobile-push-with-delay 120 :repeat)
+(org-mobile-pull-with-delay 120 :repeat)
+
+(provide 'init-org)
