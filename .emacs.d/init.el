@@ -36,7 +36,7 @@
 (mapcar #'(lambda (path) (add-to-list 'load-path path))
 	(list user-emacs-directory 
 	      (locate-user-emacs-file "lisp")
-	      (locate-user-emacs-file "lisp/emacs-w3m")
+	      (locate-user-emacs-file "lisp/slime")
 	      (locate-user-emacs-file "lisp/bbdb")))
 
 (require 'init-bbdb)
@@ -132,7 +132,6 @@
 
 
 ;; playing with slime & clojure
-(add-to-list 'load-path "~/.emacs.d.24/lisp/slime")
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (require 'slime)
 (slime-setup)
