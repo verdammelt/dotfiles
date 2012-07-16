@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-06-13 20:13:08 mark>
+;;;; Time-stamp: <2012-07-10 19:39:58 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -29,7 +29,7 @@
  gnus-gcc-mark-as-read t	   ; carbon-copies should be auto-read
 
  ;; formatting the screen
- gnus-summary-line-format "%10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
+ gnus-summary-line-format "[%4i/%4V] %10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
  gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") ;change date display depending upon age of article 
 			       (604800 . "%a %H:%M")
  			       ((gnus-seconds-month) . "%a %d")
@@ -56,6 +56,8 @@
  gnus-thread-sort-functions '(gnus-thread-sort-by-number 
 			      (not gnus-thread-sort-by-most-recent-date)
 			      gnus-thread-sort-by-total-score)
+ gnus-thread-hide-subtree t
+ gnus-thread-expunge-below -1000
  )
 
 ;;; 
@@ -112,6 +114,8 @@
 (setq 
  gnus-use-adaptive-scoring t
  gnus-score-find-score-files-function '(gnus-score-find-hierarchical)
+ gnus-adaptive-pretty-print t
+ gnus-adaptive-word-no-group-words t
  )
 
 ;;;
