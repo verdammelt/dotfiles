@@ -1,7 +1,7 @@
 ;;;
 ;;; Mail setup
 ;;;
-;;; Modified Time-stamp: <2011-12-09 22:29:08 mark>
+;;; Modified Time-stamp: <2012-07-15 14:52:20 mark>
 ;;;
 (setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
 (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
@@ -24,6 +24,8 @@
 
 ;; add in my requested attribution
 (setq message-default-headers "X-Attribution: MJS")
+
+(setq send-mail-function 'sendmail-send-it)
 
 ;; keybinding for gnus
 (defun switch-to-gnus () 
