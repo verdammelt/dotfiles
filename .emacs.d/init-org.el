@@ -13,7 +13,7 @@
       org-refile-targets '((nil :maxlevel . 9)))
 
 (setq org-mobile-directory (expand-file-name "~/Dropbox/GTD/MobileOrg")
-      org-mobile-inbox-for-pull (expand-file-name "~/Documents/GTD/todo.org"))
+      org-mobile-inbox-for-pull org-default-notes-file)
 
 (setq org-agenda-sorting-strategy 
       '((agenda habit-up time-up tag-up todo-state-up category-keep) 
@@ -32,7 +32,8 @@
 	("gh" "Home Lists"
 	 ((agenda "") 
 	  (tags-todo "-@WORK")))
-	("gt" "Today's TICKLER" tags "+CATEGORY=\"TICKLER\"+SCHEDULED=\"<today>\"")
+	("gt" "Today's TICKLER" tags 
+	 "+CATEGORY=\"TICKLER\"+SCHEDULED=\"<today>\"")
 	("gw" "Waiting"
 	 ((todo "WAITING")))))
 
