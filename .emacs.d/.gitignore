@@ -1,5 +1,7 @@
 .backups
 .history
 .places
+.org-id-locations
+bookmarks
 elpa
 url
