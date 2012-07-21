@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-07-10 19:39:58 mark>
+;;;; Time-stamp: <2012-07-21 14:19:56 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -145,6 +145,7 @@
 	 (total-expire . t))
 
 	("mail.tnef"
+	 (to-address . "noreply@sourceforge.net")
 	 (total-expire . nil)
 	 (auto-expire . nil))
 
