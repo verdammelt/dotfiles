@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-07-15 16:46:51 mark>
+;;;; Modified Time-stamp: <2012-07-15 21:49:28 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -137,6 +137,7 @@
 (slime-setup)
 (require 'midje-mode)
 (require 'clojure-jump-to-file)
+(require 'cljdoc)
 
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
@@ -150,7 +151,6 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
-
 
 ;; playing with evil mode
 (autoload 'turn-on-evil-mode "evil")
