@@ -1,0 +1,2 @@
+#!/bin/sh
+~/SRC/reply/bin/reply.sh --color $*
