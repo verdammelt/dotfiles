@@ -6,11 +6,14 @@
 
 (setq org-directory (expand-file-name "~/Documents/GTD")
       org-default-notes-file "~/Documents/GTD/todo.org"  
+      mjs-someday-maybe-file "~/Documents/GTD/somedaymaybe.org"
       org-use-property-inheritance t
       org-use-tag-inheritance t
       org-log-done t
       org-refile-use-outline-path 'file
-      org-refile-targets '((nil :maxlevel . 9)))
+      org-refile-targets `((,(list org-default-notes-file 
+				   mjs-someday-maybe-file) 
+			    :maxlevel . 9)))
 
 (setq org-mobile-directory (expand-file-name "~/Dropbox/GTD/MobileOrg")
       org-mobile-inbox-for-pull org-default-notes-file)
