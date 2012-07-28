@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-07-21 14:19:56 mark>
+;;;; Time-stamp: <2012-07-28 08:31:46 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -164,7 +164,9 @@
 	 (extra-aliases "wsmith@wordsmith.org"))
 
 	("list\.bank"
-	 (split-regexp . "schwab\\|ally"))
+	 (split-regexp . "schwab\\|ally")
+	 (extra-aliases "citizensbank_customerservice@customercenter.net"))
+
 	("list\.baznex"
 	 (to-address . "baznex@googlegroups.com"))
 	("list\.bikes"
