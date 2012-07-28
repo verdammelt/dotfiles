@@ -28,6 +28,7 @@
       org-agenda-show-all-dates nil
       org-agenda-tags-todo-honor-ignore-options t
       org-agenda-todo-ignore-scheduled t
+      org-agenda-start-on-weekday 0
       org-agenda-custom-commands 
       '(("gW" "Office & Work lists"
 	 ((agenda "")
