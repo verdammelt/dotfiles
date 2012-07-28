@@ -144,6 +144,10 @@
 	 (gcc-self . t)
 	 (total-expire . t))
 
+	("mail.codeandcocktails"
+	 (to-address . "codeandcocktails@gmail.com")
+	 (posting-style . "codeandcocktails@gmail.com"))
+
 	("mail.tnef"
 	 (to-address . "noreply@sourceforge.net")
 	 (total-expire . nil)
