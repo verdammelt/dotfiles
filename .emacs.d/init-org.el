@@ -41,6 +41,16 @@
 	("gw" "Waiting"
 	 ((todo "WAITING")))))
 
+(setq org-capture-templates
+      `(("t" "Task" entry (file+headline "" "Tasks")
+	 "* TODO %?\n  %U\n  %a\n")
+	("k" "Tickler" entry (file+headline "" "Tickler")
+	 "* TODO %?\n  %U\n  %a\n")
+	("n" "Note" entry (file+headline "" "Catpure / Notes")
+	 "* %?\n %U\n %a")
+	("s" "Someday/Maybe" entry (file ,mjs-someday-maybe-file)
+	 "* %?\n  %U\n %a\n")))
+
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
