@@ -27,7 +27,7 @@
 .gnus.registry*
 .heroku
 .ispell*
-.jline-clojure.main.history
+.jline-*.history
 .lein
 .lesshst
 .m2
