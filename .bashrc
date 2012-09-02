@@ -35,7 +35,9 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-export HISTCONTROL=erasedups
+# turning of erase dups because i want to use huffshell to suggest aliases
+#export HISTCONTROL=erasedups
+export HISTSIZE=1000
 
 reset='\[\e[0m\]'
 cyan='\[\e[0;36m\]'
