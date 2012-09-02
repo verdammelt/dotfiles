@@ -1,7 +1,7 @@
 ;;;
 ;;; Mail setup
 ;;;
-;;; Modified Time-stamp: <2012-07-15 14:52:20 mark>
+;;; Modified Time-stamp: <2012-07-29 13:15:21 mark>
 ;;;
 (setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
 (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
@@ -34,5 +34,7 @@
     (if group-buffer (switch-to-buffer group-buffer)
 	(gnus))))
 (global-set-key (kbd "<f6>") 'switch-to-gnus)
+
+(setq sc-preferred-header-style 1)
 
 (provide 'init-mail)
