@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-07-15 21:49:28 mark>
+;;;; Modified Time-stamp: <2012-09-02 13:05:18 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -27,7 +27,9 @@
 ;;; Package
 ;;;
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") :append)
+(add-to-list 'package-archives 
+	     '("marmalade" . "http://marmalade-repo.org/packages/") 
+	     :append)
 (package-initialize)
 
 ;;;
@@ -77,7 +79,7 @@
 
 ;; MacOSX sort of trash directory
 (setq delete-by-moving-to-trash t
-      trash-directory (expand-file-name "~/.Trash")) ; where to put the trash
+      trash-directory (expand-file-name "~/.Trash"))
 
 ;; time display the way i like it
 (setq display-time-24hr-format t 
@@ -108,8 +110,6 @@
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)
 
-;; TODO: something wrong here - no color - no duplex
-;; ps-printing via a shell script for ps2pdf
 (setq 
  ps-lpr-command (expand-file-name "~/bin/psprint")
  ps-spool-duplex t)
@@ -130,6 +130,8 @@
 ;; Auto-mode-alist additions
 (add-to-list 'auto-mode-alist '("*.md$" . markdown-mode))
 
+;; Editing text
+(add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 ;; playing with slime & clojure
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
@@ -139,7 +141,6 @@
 (require 'clojure-jump-to-file)
 (require 'cljdoc)
 
-(add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'turn-on-fci-mode)
