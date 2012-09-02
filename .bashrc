@@ -3,6 +3,8 @@
 [[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
 
 export CLICOLOR=1
+alias g='git'
+alias gd='git di'
 alias df='df -h'
 alias ls="ls -F"
 alias rm="rm -i"
