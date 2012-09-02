@@ -1,0 +1,10 @@
+#!/bin/bash -x
+
+tmutil startbackup -b
+
+sudo softwareupdate -i -a
+tmutil startbackup -b
+
+brewupdate
+tmutil startbackup -b
+
