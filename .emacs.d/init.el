@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-09-02 13:05:18 mark>
+;;;; Modified Time-stamp: <2012-09-02 13:10:41 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -128,7 +128,7 @@
  calendar-view-holidays-initially-flag t)
 
 ;; Auto-mode-alist additions
-(add-to-list 'auto-mode-alist '("*.md$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 ;; Editing text
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
@@ -136,11 +136,9 @@
 ;; playing with slime & clojure
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (require 'slime)
-(slime-setup)
-(require 'midje-mode)
-(require 'clojure-jump-to-file)
-(require 'cljdoc)
+(slime-setup '(slime-fancy))
 
+(require 'midje-mode)
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'turn-on-fci-mode)
@@ -153,7 +151,3 @@
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 
-;; playing with evil mode
-(autoload 'turn-on-evil-mode "evil")
-(global-set-key (kbd "C-z") #'(lambda () (interactive) (turn-on-evil-mode)))
-	  
