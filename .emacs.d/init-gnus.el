@@ -175,6 +175,8 @@
 	 (to-address . "baznex@googlegroups.com"))
 	("list\.bikes"
 	 (extra-aliases 
+	  "bostonbikes@cityofboston.gov"
+	  "kara@livablestreets.info"
 	  "info@bostoncyclistsunion.org"
 	  "bikeinfo@massbike.org"
 	  "charlie@livablestreets.info"
