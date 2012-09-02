@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-07-28 08:31:46 mark>
+;;;; Time-stamp: <2012-08-30 23:41:45 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -17,7 +17,8 @@
 ;;; 
 ;;; Select methods
 ;;;
-(setq gnus-select-method '(nntp "news.gmane.org") ; where to find my news.
+(setq 
+ gnus-select-method '(nntp "news.gmane.org") ; where to find my news.
  gnus-secondary-select-methods '((nnfolder ""))) ; where to find my mails
 
 ;;; 
@@ -29,23 +30,25 @@
  gnus-gcc-mark-as-read t	   ; carbon-copies should be auto-read
 
  ;; formatting the screen
- gnus-summary-line-format "[%4i/%4V] %10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
- gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") ;change date display depending upon age of article 
+ gnus-summary-line-format 
+ "[%4i/%4V] %10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
+
+ ;;change date display depending upon age of article 
+ gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") 
 			       (604800 . "%a %H:%M")
  			       ((gnus-seconds-month) . "%a %d")
  			       ((gnus-seconds-year) . "%b %d")
  			       (t . "%Y-%m-%d"))
 
- ;; archiving
- gnus-update-message-archive-method t	;always update archive method - let's us change it quickly
+ ;; archiving - always update (lets us change it quickly)
+ gnus-update-message-archive-method t
  )
 
 ;;;
 ;;; Sorting Group List
 ;;;
-(setq
- gnus-group-sort-function '(gnus-group-sort-by-alphabet gnus-group-sort-by-rank)
- )
+(setq gnus-group-sort-function 
+      '(gnus-group-sort-by-alphabet gnus-group-sort-by-rank))
 (add-hook 'gnus-summary-exit-hook 'gnus-summary-bubble-group)
 (add-hook 'gnus-summary-exit-hook 'gnus-group-sort-groups-by-rank)
 
@@ -63,11 +66,9 @@
 ;;; 
 ;;; Registry
 ;;;
-(setq
- gnus-registry-install t		; yes we use the registry
- gnus-registry-split-strategy 'majority ; splitting to the place that gets the most 'votes'
- )
-(gnus-registry-initialize)		; fire up the registry
+(setq gnus-registry-install t
+      gnus-registry-split-strategy 'majority)
+(gnus-registry-initialize)
 
 ;;;
 ;;; Mail
@@ -75,8 +76,8 @@
 (setq
  message-directory gnus-directory	; where mail is located
  nnfolder-directory (concat gnus-directory "mail")
- mail-source-directory (concat gnus-directory "incoming") ; where the mail is located
- mail-source-primary-source (car mail-sources) ;check for new mail
+ mail-source-directory (concat gnus-directory "incoming")
+ mail-source-primary-source (car mail-sources)
  mail-source-crash-box (concat gnus-directory "crash-box")
  
  nnmail-treat-duplicates 'delete
@@ -104,7 +105,8 @@
 			"mail.inbox")
  spam-split-group "spam.spam"
  )
-(load (locate-user-emacs-file "lisp/gnus-group-split-fancy"))		; patched version to reads from gnus-parameters correctly
+;; patched version to reads from gnus-parameters correctly
+(load (locate-user-emacs-file "lisp/gnus-group-split-fancy"))
 
 ;;;
 ;;; Scoring
@@ -124,7 +126,9 @@
 ;;; expire mail to an archive mailspool for the year.
 ;;;
 (setq 
- gnus-message-archive-group '((format-time-string "archive-%Y"))
+ gnus-message-archive-group 
+ '((concat "nnfolder+archive:" (format-time-string "archive-%Y")))
+
  nnmail-expiry-target 'nnmail-fancy-expiry-target
  nnmail-expiry-wait 28
  nnmail-fancy-expiry-targets '(("from" ".*" "nnfolder+archive:archive-%Y")))
