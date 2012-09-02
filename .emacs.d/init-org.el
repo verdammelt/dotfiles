@@ -32,12 +32,12 @@
       org-agenda-custom-commands 
       '(("gW" "Office & Work lists"
 	 ((agenda "")
-	  (tags-todo "@WORK|@CALL|@ERRAND")))
+	  (tags-todo "@WORK|@ERRAND|@CALL-@MAC|@WEB-@MAC")))
 	("gh" "Home Lists"
 	 ((agenda "") 
 	  (tags-todo "-@WORK")))
 	("gt" "Today's TICKLER" tags 
-	 "+CATEGORY=\"TICKLER\"+SCHEDULED=\"<today>\"")
+	 "+TODO=\"TODO\"+CATEGORY=\"TICKLER\"+SCHEDULED<=\"<today>\"+LEVEL=2")
 	("gw" "Waiting"
 	 ((todo "WAITING")))))
 
