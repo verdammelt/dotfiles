@@ -10,6 +10,7 @@
       org-use-property-inheritance t
       org-use-tag-inheritance t
       org-log-done t
+      org-refile-allow-creating-parent-nodes 'confirm
       org-refile-use-outline-path 'file
       org-refile-targets `((,(list org-default-notes-file 
 				   mjs-someday-maybe-file) 
