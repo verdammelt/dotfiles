@@ -36,6 +36,7 @@
 .newsrc-dribble
 .newsrc.eld
 .nnmail-cache
+.nrepl-history.eld
 .pow
 .pry_history
 .psql_history
