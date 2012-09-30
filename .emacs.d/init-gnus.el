@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-08-30 23:41:45 mark>
+;;;; Time-stamp: <2012-09-29 11:12:01 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -119,6 +119,8 @@
  gnus-adaptive-pretty-print t
  gnus-adaptive-word-no-group-words t
  )
+(add-to-list 'gnus-adaptive-score-alist
+	     '(gnus-ticked-mark (subject 10)))
 
 ;;;
 ;;; Expiry
