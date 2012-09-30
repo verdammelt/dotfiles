@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-09-29 11:12:01 mark>
+;;;; Time-stamp: <2012-09-30 16:00:58 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -111,6 +111,7 @@
 ;;;
 ;;; Scoring
 ;;;
+(require 'gnus-score)
 (add-hook 'message-sent-hook 'gnus-score-followup-article)
 (add-hook 'message-sent-hook 'gnus-score-followup-thread)
 (setq 
@@ -119,7 +120,7 @@
  gnus-adaptive-pretty-print t
  gnus-adaptive-word-no-group-words t
  )
-(add-to-list 'gnus-adaptive-score-alist
+(add-to-list 'gnus-default-adaptive-score-alist
 	     '(gnus-ticked-mark (subject 10)))
 
 ;;;
