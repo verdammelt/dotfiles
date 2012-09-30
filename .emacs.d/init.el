@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-09-02 13:10:41 mark>
+;;;; Modified Time-stamp: <2012-09-30 15:24:45 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -42,6 +42,7 @@
 	(list user-emacs-directory 
 	      (locate-user-emacs-file "lisp")
 	      (locate-user-emacs-file "lisp/slime")
+	      (locate-user-emacs-file "lisp/midje-mode-0.1.1")
 	      (locate-user-emacs-file "lisp/bbdb")))
 
 (require 'init-bbdb)
