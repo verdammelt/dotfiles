@@ -129,6 +129,7 @@
 
 ;; Auto-mode-alist additions
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 
 ;; Editing text
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
