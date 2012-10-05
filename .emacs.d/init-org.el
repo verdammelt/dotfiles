@@ -17,8 +17,12 @@
       org-use-property-inheritance t
       org-use-tag-inheritance t
       org-log-done t
+      org-log-states-order-reversed nil
+      org-completion-use-ido t
+      org-outline-path-complete-in-steps nil
       org-refile-allow-creating-parent-nodes 'confirm
       org-refile-use-outline-path 'file
+      org-refile-use-cache t
       org-refile-targets `((,(list org-default-notes-file 
 				   mjs-someday-maybe-file) 
 			    :maxlevel . 9)))
