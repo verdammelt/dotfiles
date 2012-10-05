@@ -106,9 +106,6 @@
 ;; blink matching parens
 (show-paren-mode)
 
-;; find file at point
-(ffap-bindings)
-
 ;; highlight current line in all buffers
 (global-hl-line-mode)
 
