@@ -70,3 +70,5 @@ Public
 SRC
 Sites
 \#*
+/.emacs.d/.smex-items
+/.ido.last
