@@ -58,6 +58,7 @@
 	 "* %?\n %U\n %a")
 	("s" "Someday/Maybe" entry (file ,mjs-someday-maybe-file)
 	 "* %?\n  %U\n %a\n")))
+(add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
