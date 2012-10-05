@@ -1,8 +1,10 @@
-;;;
-;;; Mail setup
-;;;
-;;; Modified Time-stamp: <2012-07-29 13:15:21 mark>
-;;;
+;;;;
+;;;; Mail setup
+;;;;
+;;;; [if found please return to damned@theworld.com]
+;;;;
+;;;; Modified Time-stamp: <2012-10-04 06:48:31 mark>
+;;;;
 (setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
 (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
 

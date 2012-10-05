@@ -1,3 +1,10 @@
+;;;;
+;;;; Org Setup
+;;;;
+;;;; [if found please return to damned@theworld.com]
+;;;;
+;;;; Modified Time-stamp: <2012-10-04 06:48:39 mark>
+;;;;
 (require 'org)
 (require 'org-mobile)
 

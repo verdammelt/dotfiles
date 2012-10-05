@@ -1,3 +1,12 @@
+;;;;
+;;;; Customize
+;;;;
+;;;; This file contains the custom-set-variables block. I use customize
+;;;; as little as possible
+;;;;
+;;;; Modified Time-stamp: <2012-10-04 06:47:10 mark>
+;;;;
+;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,9 +1,9 @@
 ;;;;
-;;;; .gnus.el
+;;;; GNUS
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-09-30 16:00:58 mark>
+;;;; Time-stamp: <2012-10-04 06:47:40 mark>
 ;;;;
 ;;;
 ;;; TODO: 

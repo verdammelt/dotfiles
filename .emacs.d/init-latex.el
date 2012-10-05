@@ -1,8 +1,10 @@
-;;;
-;;; Latex
-;;;
-;;; Modified Time-stamp: <2011-12-09 22:13:59 mark>
-;;;
+;;;;
+;;;; Latex
+;;;;
+;;;; [if found please return to damned@theworld.com]
+;;;;
+;;;; Modified Time-stamp: <2012-10-04 06:48:09 mark>
+;;;;
 (eval-after-load 'tex '(TeX-global-PDF-mode))
 
 (setq TeX-auto-save t)

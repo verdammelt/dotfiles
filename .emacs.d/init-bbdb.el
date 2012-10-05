@@ -1,7 +1,10 @@
-;;;
-;;; BBDB
-;;;
-;;; Modified Time-stamp: <2011-12-14 07:56:56 mark>
+;;;;
+;;;; BBDB
+;;;;
+;;;; [if found please return to damned@theworld.com]
+;;;;
+;;;; Modified Time-stamp: <2012-10-04 06:47:00 mark>
+;;;;
 ;;;
 ;;; TODO
 ;;; * v3 upgrade

@@ -2,11 +2,10 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-09-30 15:24:45 mark>
+;;;; Modified Time-stamp: <2012-10-04 06:48:49 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
-
 
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/Users/mark/Bin")
