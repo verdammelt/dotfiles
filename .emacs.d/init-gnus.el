@@ -1,9 +1,9 @@
-;;;;
+;;;
 ;;;; GNUS
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-10-04 06:47:40 mark>
+;;;; Time-stamp: <2012-10-05 22:30:23 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -238,3 +238,12 @@
 (add-to-list 'auto-mode-alist '("ADAPT$" . lisp-mode))
 
 (gnus-compile)		  ; doc claims that this will speed things up.
+
+;; keybinding for gnus
+(defun switch-to-gnus () 
+  (interactive) 
+  (let ((group-buffer (get-buffer "*Group*")))
+    (if group-buffer (switch-to-buffer group-buffer)
+	(gnus))))
+
+(global-set-key (kbd "<f6>") 'switch-to-gnus)

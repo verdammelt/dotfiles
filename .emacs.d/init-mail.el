@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-10-04 06:48:31 mark>
+;;;; Modified Time-stamp: <2012-10-05 22:28:32 mark>
 ;;;;
 (setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
 (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
@@ -28,14 +28,6 @@
 (setq message-default-headers "X-Attribution: MJS")
 
 (setq send-mail-function 'sendmail-send-it)
-
-;; keybinding for gnus
-(defun switch-to-gnus () 
-  (interactive) 
-  (let ((group-buffer (get-buffer "*Group*")))
-    (if group-buffer (switch-to-buffer group-buffer)
-	(gnus))))
-(global-set-key (kbd "<f6>") 'switch-to-gnus)
 
 (setq sc-preferred-header-style 1)
 
