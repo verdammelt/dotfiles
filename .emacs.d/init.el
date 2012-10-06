@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-10-04 06:48:49 mark>
+;;;; Modified Time-stamp: <2012-10-05 22:28:54 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -156,4 +156,6 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+
+(global-set-key (kbd "<f7>") 'magit-status)
 
