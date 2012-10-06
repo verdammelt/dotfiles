@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: describe
+# key: desc
+# --
+describe ${AThing} do
+    $0
+end

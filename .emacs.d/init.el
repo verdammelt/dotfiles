@@ -132,6 +132,10 @@
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 
+;; snippets
+(setq yas-also-auto-indent-first-line t)
+(yas-global-mode t)
+
 ;; Editing text
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 

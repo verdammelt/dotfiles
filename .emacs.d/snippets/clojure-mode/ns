@@ -1,0 +1,8 @@
+# name: ns
+# key: ns
+# --
+
+(ns $1
+    (:require [$2])
+    (:use [$3])
+    $0)
