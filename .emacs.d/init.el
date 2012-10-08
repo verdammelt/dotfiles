@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-10-05 22:28:54 mark>
+;;;; Modified Time-stamp: <2012-10-06 17:24:16 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -138,6 +138,7 @@
 (yas-global-mode t)
 
 ;; Editing text
+(setq fci-rule-color "red") 
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 ;; playing with slime & clojure
