@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-10-05 22:30:23 mark>
+;;;; Time-stamp: <2012-10-07 15:13:49 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -31,7 +31,7 @@
 
  ;; formatting the screen
  gnus-summary-line-format 
- "[%4i/%4V] %10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
+ "[%4iA/%4VT] %10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
 
  ;;change date display depending upon age of article 
  gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") 
