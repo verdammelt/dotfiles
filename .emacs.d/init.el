@@ -46,6 +46,7 @@
 
 (require 'init-bbdb)
 (require 'init-mail)
+(require 'init-gnus)
 (require 'init-latex)
 (require 'init-ido)
 (require 'init-org)

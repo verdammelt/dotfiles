@@ -247,3 +247,5 @@
 	(gnus))))
 
 (global-set-key (kbd "<f6>") 'switch-to-gnus)
+
+(provide 'init-gnus)
