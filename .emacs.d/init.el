@@ -159,5 +159,7 @@
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
 (global-set-key (kbd "<f7>") 'magit-status)
 
