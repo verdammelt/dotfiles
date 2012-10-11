@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-10-04 06:48:39 mark>
+;;;; Modified Time-stamp: <2012-10-08 09:07:56 mark>
 ;;;;
 (require 'org)
 (require 'org-mobile)
@@ -20,6 +20,12 @@
       org-log-states-order-reversed nil
       org-completion-use-ido t
       org-outline-path-complete-in-steps nil
+      org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" 
+				    "WAITING(w)" "|" 
+				    "DONE(d)" "CANCELLED(c)"))
+      org-tag-alist '(("@HOME" . ?h) ("@WORK" . ?w) ("@MAC" . ?m) 
+		      ("@CALL" . ?c) ("@ERRAND" . ?e) ("@WEB" . ?b) 
+		      ("@WENDY" . ?y))
       org-refile-allow-creating-parent-nodes 'confirm
       org-refile-use-outline-path 'file
       org-refile-use-cache t
@@ -105,5 +111,12 @@
 ;; push and pull every time we have 60 seconds idel
 (org-mobile-push-with-delay 120 :repeat)
 (org-mobile-pull-with-delay 120 :repeat)
+
+(eval-when (load 'yasnippet) 
+  (add-hook 'org-mode-hook 
+	    (lambda () 
+	      (define-key yas/keymap [tab] 
+		'yas/next-field-group))))
+
 
 (provide 'init-org)
