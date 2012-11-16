@@ -5,6 +5,14 @@ tmutil startbackup -b
 sudo softwareupdate -i -a
 tmutil startbackup -b
 
+echo "Check for updates via AppStore"
+read -p "Press Enter when done" FOO
+tmutil startbackup -b
+
 brewupdate
+tmutil startbackup -b
+
+emacsclient -e '(package-list-packages)'
+read -p "Press Enter when done" FOO
 tmutil startbackup -b
 
