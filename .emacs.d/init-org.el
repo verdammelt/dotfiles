@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-10-08 09:07:56 mark>
+;;;; Modified Time-stamp: <2012-10-14 17:47:35 mark>
 ;;;;
 (require 'org)
 (require 'org-mobile)
@@ -112,11 +112,18 @@
 (org-mobile-push-with-delay 120 :repeat)
 (org-mobile-pull-with-delay 120 :repeat)
 
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+(add-hook 'org-mode-hook 'flyspell-mode)
+
+(defun yas-org-very-safe-expand ()
+  (let ((yas-fallback-behavior 'return-nil)) (yas-expand)))
+(add-hook 'org-tab-first-hook 'yas-org-very-safe-expand)
+
 (eval-when (load 'yasnippet) 
   (add-hook 'org-mode-hook 
 	    (lambda () 
-	      (define-key yas/keymap [tab] 
-		'yas/next-field-group))))
-
+	      (make-variable-buffer-local 'yas-trigger-key)
+	      (org-set-local 'yas-trigger-key [tab])
+	      (define-key yas-keymap [tab] 'yas-next-field-group))))
 
 (provide 'init-org)
