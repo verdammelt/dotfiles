@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-10-14 17:47:35 mark>
+;;;; Modified Time-stamp: <2012-12-04 21:26:41 mark>
 ;;;;
 (require 'org)
 (require 'org-mobile)
@@ -19,6 +19,7 @@
       org-log-done t
       org-log-states-order-reversed nil
       org-completion-use-ido t
+      org-deadline-warning-days 7
       org-outline-path-complete-in-steps nil
       org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" 
 				    "WAITING(w)" "|" 
