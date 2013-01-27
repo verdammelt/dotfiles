@@ -17,7 +17,7 @@
       org-use-property-inheritance t
       org-use-tag-inheritance t
       org-log-done t
-      org-log-states-order-reversed nil
+      org-log-states-order-reversed t
       org-completion-use-ido t
       org-deadline-warning-days 7
       org-outline-path-complete-in-steps nil
