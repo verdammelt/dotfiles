@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2012-10-07 15:13:49 mark>
+;;;; Time-stamp: <2013-01-15 23:28:50 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -163,6 +163,9 @@
 	("list.*"
 	 (total-expire . t)
 	 (expiry-target . delete))
+
+	("list.bawch"
+	 (to-address . "discuss-bawch@googlegroups.com"))
 
 	("list\.agile-new-england"
 	 (extra-aliases "webmaster@agilenewengland.org"))
