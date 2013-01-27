@@ -189,3 +189,5 @@ inoremap <s-tab> <c-n>
 
 set exrc
 set secure
+
+set shortmess=aTI
