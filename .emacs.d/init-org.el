@@ -130,4 +130,32 @@
 	      (org-set-local 'yas-trigger-key [tab])
 	      (define-key yas-keymap [tab] 'yas-next-field-group))))
 
+(setq org-fontify-done-headline t)
+(set-face-attribute 'org-done nil :strike-through t)
+(set-face-attribute 'org-headline-done nil :strike-through t)
+
+;; testing these out
+(defun sacha/org-agenda-done (&optional arg)
+  "Mark current TODO as done.
+This changes the line at point, all other lines in the agenda referring to
+the same tree node, and the headline of the tree node in the Org-mode file."
+  (interactive "P")
+  (org-agenda-todo "DONE"))
+;; Override the key definition for org-exit
+(define-key org-agenda-mode-map "x" 'sacha/org-agenda-done)
+
+(defun sacha/org-agenda-mark-done-and-add-followup ()
+    "Mark the current TODO as done and add another task after it.
+Creates it at the same level as the previous task, so it's better to use
+this with to-do items than with projects or headings."
+    (interactive)
+    (org-agenda-todo "DONE")
+    (org-agenda-switch-to)
+    (org-up-element)
+    (open-line 1)
+    (org-capture 0 "t"))
+;; Override the key definition
+(define-key org-agenda-mode-map "X" 'sacha/org-agenda-mark-done-and-add-followup)
+
+
 (provide 'init-org)
