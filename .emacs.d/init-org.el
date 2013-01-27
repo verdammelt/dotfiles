@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-12-04 21:26:41 mark>
+;;;; Modified Time-stamp: <2013-01-14 22:04:14 mark>
 ;;;;
 (require 'org)
 (require 'org-mobile)
@@ -51,7 +51,10 @@
       org-agenda-custom-commands 
       '(("gW" "Office & Work lists"
 	 ((agenda "")
-	  (tags-todo "@WORK|@ERRAND|@CALL-@MAC|@WEB-@MAC")))
+	  (tags-todo "+@WORK")
+	  (tags-todo "+@ERRAND")
+	  (tags-todo "+@CALL-@MAC-@HOME")
+	  (tags-todo "+@WEB-@MAC-@HOME")))
 	("gh" "Home Lists"
 	 ((agenda "") 
 	  (tags-todo "-@WORK")))
