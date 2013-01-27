@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-10-06 17:24:16 mark>
+;;;; Modified Time-stamp: <2013-01-19 20:23:25 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -12,7 +12,6 @@
 (add-to-list 'exec-path "/usr/texbin" :append)
 
 (setenv "PATH" (mapconcat 'identity exec-path ":"))
- 
 
 ;;;
 ;;; Customize
@@ -40,7 +39,7 @@
 (mapcar #'(lambda (path) (add-to-list 'load-path path))
 	(list user-emacs-directory 
 	      (locate-user-emacs-file "lisp")
-	      (locate-user-emacs-file "lisp/slime")
+	      ;; (locate-user-emacs-file "lisp/slime")
 	      (locate-user-emacs-file "lisp/midje-mode-0.1.1")
 	      (locate-user-emacs-file "lisp/bbdb")))
 
@@ -141,18 +140,26 @@
 (setq fci-rule-color "red") 
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
-;; playing with slime & clojure
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
-(require 'slime)
-(slime-setup '(slime-fancy))
-
-(require 'midje-mode)
-
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'turn-on-fci-mode)
-(add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'lisp-mode-hook 'paredit-mode)
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'scheme-mode-hook 'paredit-mode)
+(add-hook 'scheme-mode-hook 'rainbow-delimiters-mode)
+
+(add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+
+(add-hook 'nrepl-mode-hook 'subword-mode)
+(add-hook 'nrepl-mode-hook 'paredit-mode)
+(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'nrepl-interaction-mode 'nrepl-turn-on-eldoc-mode)
+
+(eval-after-load "nrepl"
+  (setq nrepl-popup-stacktraces nil))
+
 
 ;; turning on eldoc
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -162,4 +169,6 @@
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
 (global-set-key (kbd "<f7>") 'magit-status)
+
+(global-set-key (kbd "s-z") 'ns-toggle-fullscreen)
 
