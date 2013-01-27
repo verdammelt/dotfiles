@@ -11,6 +11,9 @@ alias rm="rm -i"
 alias fat="(cd ~/SRC/thefattrack && rails s)"
 alias git=hub
 alias pdfopen='pdfopen -viewer xpdf'
+alias l=ls
+alias ll="ls -l"
+alias v=vi
 
 
 PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:$PATH
@@ -37,7 +40,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 # turning of erase dups because i want to use huffshell to suggest aliases
 #export HISTCONTROL=erasedups
-export HISTSIZE=1000
+export HISTSIZE=5000
 
 reset='\[\e[0m\]'
 cyan='\[\e[0;36m\]'
