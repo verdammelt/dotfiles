@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-01-14 22:04:14 mark>
+;;;; Modified Time-stamp: <2013-02-05 20:18:22 mark>
 ;;;;
 (require 'org)
 (require 'org-mobile)
@@ -18,6 +18,7 @@
       org-use-tag-inheritance t
       org-log-done t
       org-log-states-order-reversed t
+
       org-completion-use-ido t
       org-deadline-warning-days 7
       org-outline-path-complete-in-steps nil
@@ -51,10 +52,12 @@
       org-agenda-custom-commands 
       '(("gW" "Office & Work lists"
 	 ((agenda "")
-	  (tags-todo "+@WORK")
-	  (tags-todo "+@ERRAND")
-	  (tags-todo "+@CALL-@MAC-@HOME")
-	  (tags-todo "+@WEB-@MAC-@HOME")))
+	  (tags-todo "+@WORK")))
+	("ge" "Errands and Calls"
+	 ((tags-todo "+@ERRAND")
+	  (tags-todo "+@CALL")))
+	("gb" "Web"
+	 ((tags-todo "+@WEB")))
 	("gh" "Home Lists"
 	 ((agenda "") 
 	  (tags-todo "-@WORK")))
