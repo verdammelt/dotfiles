@@ -6,6 +6,7 @@ sudo softwareupdate -i -a
 tmutil startbackup -b
 
 open /Applications/App\ Store.app
+read -p "Press Enter when done" FOO
 tmutil startbackup -b
 
 brewupdate
