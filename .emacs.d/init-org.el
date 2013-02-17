@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-02-05 20:18:22 mark>
+;;;; Modified Time-stamp: <2013-02-17 09:23:40 mark>
 ;;;;
 (require 'org)
 (require 'org-mobile)
@@ -51,16 +51,14 @@
       org-agenda-start-on-weekday 0
       org-agenda-custom-commands 
       '(("gW" "Office & Work lists"
-	 ((agenda "")
-	  (tags-todo "+@WORK")))
+	 ((tags-todo "+@WORK")))
 	("ge" "Errands and Calls"
 	 ((tags-todo "+@ERRAND")
 	  (tags-todo "+@CALL")))
 	("gb" "Web"
 	 ((tags-todo "+@WEB")))
 	("gh" "Home Lists"
-	 ((agenda "") 
-	  (tags-todo "-@WORK")))
+	 ((tags-todo "-@WORK")))
 	("gt" "Today's TICKLER" tags 
 	 "+TODO=\"TODO\"+CATEGORY=\"TICKLER\"+SCHEDULED<=\"<today>\"+LEVEL=2")
 	("gw" "Waiting"
