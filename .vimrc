@@ -1,12 +1,9 @@
-" Use Vim settings, rather then Vi settings (much better!).  This must be
-" first, because it changes other options as a side effect.
-set nocompatible
+set nocompatible    " IMproved!
+
+source ~/.vim/vundle.vim
 
 let mapleader=","
 let maplocalleader=","
-
-call pathogen#infect()
-call pathogen#helptags()
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
