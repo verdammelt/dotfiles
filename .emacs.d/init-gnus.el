@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-01-15 23:28:50 mark>
+;;;; Time-stamp: <2013-03-29 17:41:46 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -31,7 +31,7 @@
 
  ;; formatting the screen
  gnus-summary-line-format 
- "[%4iA/%4VT] %10&user-date; %U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
+ "[%4i]%10&user-date;%U%R%z%I%(%[%4L: %-20,20uB%]%)%O%s\n"
 
  ;;change date display depending upon age of article 
  gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") 
@@ -239,8 +239,6 @@
 ;;;
 (add-to-list 'auto-mode-alist '("SCORE$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("ADAPT$" . lisp-mode))
-
-(gnus-compile)		  ; doc claims that this will speed things up.
 
 ;; keybinding for gnus
 (defun switch-to-gnus () 
