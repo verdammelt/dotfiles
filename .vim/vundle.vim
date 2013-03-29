@@ -17,6 +17,7 @@ Bundle 'textobj-rubyblock'
 Bundle 'textobj-user'
 Bundle 'vroom'
 Bundle 'Command-T'
+Bundle 'wikitopian/hardmode'
 
 filetype on
 

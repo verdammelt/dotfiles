@@ -161,8 +161,10 @@ map <leader>gd :Gdiff<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>r :wa<CR>:!rake<CR>
 map <leader>v :edit $MYVIMRC<CR>
-
 nnoremap <leader><leader> <c-^>
+
+" because I am INSANE!
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 function! g:ToggleNuMode() 
     if(&rnu == 1) 
