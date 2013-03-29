@@ -11,6 +11,7 @@
 .bbdb
 .bogofilter
 .bundler
+.cache
 .cups
 .cvspass
 .dropbox
