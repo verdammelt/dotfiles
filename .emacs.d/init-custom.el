@@ -4,7 +4,7 @@
 ;;;; This file contains the custom-set-variables block. I use customize
 ;;;; as little as possible
 ;;;;
-;;;; Modified Time-stamp: <2012-10-14 16:44:57 mark>
+;;;; Modified Time-stamp: <2013-03-24 10:29:51 mark>
 ;;;;
 ;;;
 (custom-set-variables
@@ -33,7 +33,7 @@
 			 :underline nil 
 			 :slant normal 
 			 :weight normal 
-			 :height 180 
+			 :height 140 
 			 :width normal 
 			 :foundry "apple" 
 			 :family "Source_Code_Pro")))))
