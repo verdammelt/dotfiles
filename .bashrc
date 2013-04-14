@@ -16,7 +16,7 @@ __git_complete g _git
 #alias g='git'
 alias ga='git add'
 alias gd='git di'
-alias gci='git ci'
+alias gci='git commit -v'
 alias df='df -h'
 alias ls="ls -F"
 alias rm="rm -i"

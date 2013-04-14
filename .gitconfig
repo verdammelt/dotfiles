@@ -7,7 +7,7 @@
 
 [alias]
     man = help
-	ci = commit
+	ci = commit -v
 	co = checkout
 	aa = add --all
 	di = diff
