@@ -3,8 +3,20 @@
 [[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
 
 export CLICOLOR=1
-alias g='git'
+
+function g {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
+__git_complete g _git
+
+#alias g='git'
+alias ga='git add'
 alias gd='git di'
+alias gci='git ci'
 alias df='df -h'
 alias ls="ls -F"
 alias rm="rm -i"
@@ -14,7 +26,6 @@ alias pdfopen='pdfopen -viewer xpdf'
 alias l=ls
 alias ll="ls -l"
 alias v=vi
-
 
 PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:$PATH
 NODE_PATH=/usr/local/lib/node_modules
