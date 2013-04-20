@@ -3,10 +3,12 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-02-17 09:23:40 mark>
+;;;; Modified Time-stamp: <2013-04-16 19:35:42 mark>
 ;;;;
 (require 'org)
-(require 'org-mobile)
+(require 'org-agenda)
+
+(require 'init-org-mobile)
 
 (setq org-id-locations-file 
       (expand-file-name ".org-id-locations" user-emacs-directory))
@@ -34,9 +36,6 @@
       org-refile-targets `((,(list org-default-notes-file 
 				   mjs-someday-maybe-file) 
 			    :maxlevel . 9)))
-
-(setq org-mobile-directory (expand-file-name "~/Dropbox/GTD/MobileOrg")
-      org-mobile-inbox-for-pull org-default-notes-file)
 
 (setq org-agenda-sorting-strategy 
       '((agenda habit-up time-up tag-up todo-state-up category-keep) 
@@ -81,41 +80,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-;;;
-;;; auto pull / push
-;;;
-
-;; push on save
-(add-hook 'after-save-hook 
- (lambda () 
-   (when (eq major-mode 'org-mode)
-     (dolist (file (org-mobile-files-alist))
-       (if (string= (expand-file-name (car file)) (buffer-file-name))
-           (org-mobile-push-with-delay 5))))))
-
-
-;;
-;; timer code for pushing/pushing
-;;
-(defvar org-mobile-push-timer nil
-  "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
-(defvar org-mobile-pull-timer nil
-  "Timer that `org-mobild-pull-timer' used to reschedule itself, or nil.")
-
-(defun org-mobile-push-with-delay (secs &optional repeat)
-  (when org-mobile-push-timer (cancel-timer org-mobile-push-timer))
-  (setq org-mobile-push-timer
-        (run-with-idle-timer (* 1 secs) repeat 'org-mobile-push)))
-
-(defun org-mobile-pull-with-delay (secs &optional repeat)
-  (when org-mobile-pull-timer (cancel-timer org-mobile-pull-timer))
-  (setq org-mobile-pull-timer
-        (run-with-idle-timer (* 1 secs) repeat 'org-mobile-pull)))
-
-;;
-;; push and pull every time we have 60 seconds idel
-(org-mobile-push-with-delay 120 :repeat)
-(org-mobile-pull-with-delay 120 :repeat)
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-mode-hook 'flyspell-mode)
