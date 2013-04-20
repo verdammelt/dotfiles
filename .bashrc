@@ -71,3 +71,16 @@ function myip(){
     echo $ip
 }
 
+function topcmd() {
+    history | \
+        awk "{a[\$2]++}END{print NR, \"((TOTAL))\"; for(i in a) print a[i], i}" | \
+        sort -rn | \
+        head -6
+}
+function top2cmd(){
+    history | \
+        awk "/$1/{a[\$2 \" \" \$3]++}END{for(i in a) print a[i], i}" | \
+        sort -rn | \
+        head -5
+}
+
