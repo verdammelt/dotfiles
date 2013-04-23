@@ -4,28 +4,25 @@
 
 export CLICOLOR=1
 
-function g {
-  if [[ $# > 0 ]]; then
-    git $@
-  else
-    git status
-  fi
+alias git=hub
+function g() {
+    git ${*:-status}
 }
-__git_complete g _git
+function ga() {
+    git add ${*:-.}
+}
 
-#alias g='git'
-alias ga='git add'
 alias gd='git di'
 alias gci='git commit -v'
+
 alias df='df -h'
 alias ls="ls -F"
 alias rm="rm -i"
-alias fat="(cd ~/SRC/thefattrack && rails s)"
-alias git=hub
-alias pdfopen='pdfopen -viewer xpdf'
 alias l=ls
 alias ll="ls -l"
 alias v=vi
+
+alias pdfopen='pdfopen -viewer xpdf'
 
 PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:$PATH
 NODE_PATH=/usr/local/lib/node_modules
