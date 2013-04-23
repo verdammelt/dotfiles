@@ -6,6 +6,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/fugitive.vim'
 Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-abolish'
 Bundle 'surround.vim'
 Bundle 'vim-octopress'
 Bundle 'Solarized'
