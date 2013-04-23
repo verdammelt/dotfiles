@@ -4,6 +4,36 @@
 
 export CLICOLOR=1
 
+alias df='df -h'
+alias ls='ls -F'
+alias rm='rm -i'
+alias l=ls
+alias ll='ls -l'
+alias v=vi
+alias m=mail
+
+alias pdfopen='pdfopen -viewer xpdf'
+alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
+
+PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:$PATH
+NODE_PATH=/usr/local/lib/node_modules
+MANPATH=$MANPATH:/opt/local/man
+TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
+EDITOR=vim
+VISUAL=vim
+
+export AUTOFEATURE=true
+
+## LifeLines (genealogy software)
+alias llines='(cd $HOME/LifeLines ; llines simpson)'
+export LLPROGRAMS=/usr/local/share/lifelines
+export LLREPORTS=$HOME/LifeLines/output
+export LLARCHIVE=$HOME/LifeLines/archive
+export LLDATABASES=$HOME/LifeLines
+
+###
+### GIT Stuff
+###
 alias git=hub
 function g() {
     git ${*:-status}
@@ -15,40 +45,11 @@ function ga() {
 alias gd='git di'
 alias gci='git commit -v'
 
-alias df='df -h'
-alias ls="ls -F"
-alias rm="rm -i"
-alias l=ls
-alias ll="ls -l"
-alias v=vi
-
-alias pdfopen='pdfopen -viewer xpdf'
-
-PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:$PATH
-NODE_PATH=/usr/local/lib/node_modules
-MANPATH=$MANPATH:/opt/local/man
-TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
-EDITOR=vim
-VISUAL=vim
-export LLPROGRAMS=/usr/local/share/lifelines
-export LLREPORTS=$HOME/LifeLines/output
-export LLARCHIVE=$HOME/LifeLines/archive
-export LLDATABASES=$HOME/LifeLines
-
-export AUTOFEATURE=true
-
-alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
-
-alias llines='(cd $HOME/LifeLines ; llines simpson)'
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 export GIT_PS1_SHOWUNTRACKEDFILES=1
-
-# turning of erase dups because i want to use huffshell to suggest aliases
-#export HISTCONTROL=erasedups
-export HISTSIZE=5000
 
 reset='\[\e[0m\]'
 cyan='\[\e[0;36m\]'
@@ -68,12 +69,18 @@ function myip(){
     echo $ip
 }
 
+# Keeping track of my commands
+#export HISTCONTROL=erasedups # turned off to keep all commands
+export HISTSIZE=5000
+
+# top 5 one-word commands (and total number)
 function topcmd() {
     history | \
         awk "{a[\$2]++}END{print NR, \"((TOTAL))\"; for(i in a) print a[i], i}" | \
         sort -rn | \
         head -6
 }
+# top 5 two-word commands
 function top2cmd(){
     history | \
         awk "/$1/{a[\$2 \" \" \$3]++}END{for(i in a) print a[i], i}" | \
