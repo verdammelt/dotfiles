@@ -11,6 +11,7 @@ alias l=ls
 alias ll='ls -l'
 alias v=vi
 alias m=mail
+alias frm='mail -H'
 
 alias pdfopen='pdfopen -viewer xpdf'
 alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
@@ -88,3 +89,8 @@ function top2cmd(){
         head -5
 }
 
+function batt() {
+    pmset -g batt | \
+        awk '/InternalBattery/{print $3 $2 "[" $4 "]"}' | \
+        sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;//g'
+}
