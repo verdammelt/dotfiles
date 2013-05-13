@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-01-19 20:23:25 mark>
+;;;; Modified Time-stamp: <2013-05-12 16:22:49 mark>
 ;;;;
 (require 'cl)		; I can't live without common lisp extensions!
 (setq message-log-max 10000)		; nice to see lots of messages
@@ -171,4 +171,6 @@
 (global-set-key (kbd "<f7>") 'magit-status)
 
 (global-set-key (kbd "s-z") 'ns-toggle-fullscreen)
+
+(setq battery-mode-line-format "[%b%p%% %t]")
 
