@@ -3,32 +3,32 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2012-10-05 22:28:32 mark>
+;;;; Modified Time-stamp: <2013-05-18 11:47:19 mark>
 ;;;;
 (setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
-(setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
 
 ;; this way i have Gcc: etc. in my mail buffer
 (setq mail-user-agent 'gnus-user-agent)
 
 ;; getting bbdb in my message setup
-(add-hook 'message-setup-hook 'bbdb-insinuate-message)
-(add-hook 'message-setup-hook 'bbdb-define-all-aliases)
-(add-hook 'message-setup-hook 'bbdb-message-mode-keys)
+(after 'message 
+  (after 'bbdb
+    (add-hook 'message-setup-hook 'bbdb-insinuate-message)
+    (add-hook 'message-setup-hook 'bbdb-define-all-aliases)
+    (defun bbdb-message-mode-keys ()
+      (define-key message-mode-map (kbd "M-TAB") 'bbdb-complete-name))
+    (add-hook 'message-setup-hook 'bbdb-message-mode-keys))
+  
+  ;; extra stuff for message buffers - spelling etc.
+  (add-hook 'message-setup-hook 'footnote-mode)
+  (add-hook 'message-setup-hook 'turn-on-flyspell)
+  (add-hook 'message-send-hook 'ispell-message)
 
-;; extra stuff for message buffers - spelling etc.
-(add-hook 'message-setup-hook 'footnote-mode)
-(add-hook 'message-setup-hook 'turn-on-flyspell)
-(add-hook 'message-send-hook 'ispell-message)
+  (setq message-default-headers "X-Attribution: MJS")
 
-;; i want to read mail via gnus - duh!
-(setq read-mail-command 'gnus)
-
-;; add in my requested attribution
-(setq message-default-headers "X-Attribution: MJS")
+  (after 'supercite
+    (setq sc-preferred-header-style 1)))
 
 (setq send-mail-function 'sendmail-send-it)
-
-(setq sc-preferred-header-style 1)
 
 (provide 'init-mail)
