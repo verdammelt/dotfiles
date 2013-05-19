@@ -2,20 +2,22 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-18 12:09:18 mark>
+;;;; Modified Time-stamp: <2013-05-19 13:34:53 mark>
 ;;;;
 
 ;;; 
 ;;; First Things First
 ;;;
 (require 'cl)		
-(setq message-log-max 10000)
+
+;; make sure the display is clean to start with
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message "damned")
 
+;; cute little wrapper around eval-after-load
 (defmacro after (mode &rest body)
   "`eval-after-load' MODE evaluate BODY."
   (declare (indent defun))
@@ -54,7 +56,6 @@
 ;;;
 (add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
-(add-to-list 'load-path (locate-user-emacs-file "lisp/midje-mode-0.1.1"))
 (add-to-list 'load-path (locate-user-emacs-file "lisp/bbdb"))
 
 ;;;
