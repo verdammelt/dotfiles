@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-18 11:04:48 mark>
+;;;; Modified Time-stamp: <2013-05-21 21:20:01 mark>
 ;;;;
 ;;;
 ;;; TODO
@@ -18,10 +18,9 @@
   (setup-bbdb-expire)
   
   (setq bbdb-complete-name-allow-cycling t
-	bbd/mail-auto-create-p nil ; because we use bbdb for spam white listing.
-	bbd/news-auto-create-p nil ; because we use bbdb for spam white listing.
+	bbdb/mail-auto-create-p nil ; because we use bbdb for spam white listing.
+	bbdb/news-auto-create-p nil ; because we use bbdb for spam white listing.
 	bbdb-quiet-about-name-mismatches 30) ; show name mismatches for a short time
-  
   
   (after 'supercite '(bbdb-insinuate-sc))
   (after 'gnus '(bbdb-initialize 'gnus))
