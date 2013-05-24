@@ -86,6 +86,7 @@
 ;;;
 ;;; Spam
 ;;;
+  (load (locate-user-emacs-file "lisp/gnus-spam-fixed-bbdb"))
   (setq
    spam-use-spamassassin-headers t  ; because my ISP runs spamassassin
    spam-use-bogofilter t ; I want to fine tune the spam checking with local bogofilter
