@@ -1,17 +1,15 @@
-;;;
+;;
 ;;;; GNUS
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-05-18 11:47:47 mark>
+;;;; Time-stamp: <2013-05-23 20:50:04 mark>
 ;;;;
 ;;;
 ;;; TODO: 
 ;;; * sent mail goes to inbox.
 ;;; * more splitting
 ;;;
-
-;(require 'gnus)
 
 ;;; 
 ;;; Select methods
@@ -113,17 +111,17 @@
 ;;;
 ;;; Scoring
 ;;;
-  (require 'gnus-score)
-  (add-hook 'message-sent-hook 'gnus-score-followup-article)
-  (add-hook 'message-sent-hook 'gnus-score-followup-thread)
-  (setq 
-   gnus-use-adaptive-scoring t
-   gnus-score-find-score-files-function '(gnus-score-find-hierarchical)
-   gnus-adaptive-pretty-print t
-   gnus-adaptive-word-no-group-words t
-   )
-  (add-to-list 'gnus-default-adaptive-score-alist
-	       '(gnus-ticked-mark (subject 10)))
+  (after 'gnus-score
+    (add-hook 'message-sent-hook 'gnus-score-followup-article)
+    (add-hook 'message-sent-hook 'gnus-score-followup-thread)
+    (setq 
+     gnus-use-adaptive-scoring t
+     gnus-score-find-score-files-function '(gnus-score-find-hierarchical)
+     gnus-adaptive-pretty-print t
+     gnus-adaptive-word-no-group-words t
+     )
+    (add-to-list 'gnus-default-adaptive-score-alist
+		 '(gnus-ticked-mark (subject 10))))
   
 ;;;
 ;;; Expiry
