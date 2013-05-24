@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: defn
-# key: defn
-# --
-(defn ${fn} [${args}]
-      $0)

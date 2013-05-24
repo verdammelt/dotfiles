@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: should
-# key: should
-# --
-$1.should $0
