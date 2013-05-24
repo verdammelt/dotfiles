@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-21 21:20:01 mark>
+;;;; Modified Time-stamp: <2013-05-24 18:37:53 mark>
 ;;;;
 ;;;
 ;;; TODO
@@ -17,14 +17,18 @@
 (after 'bbdb 
   (setup-bbdb-expire)
   
-  (setq bbdb-complete-name-allow-cycling t
-	bbdb/mail-auto-create-p nil ; because we use bbdb for spam white listing.
-	bbdb/news-auto-create-p nil ; because we use bbdb for spam white listing.
-	bbdb-quiet-about-name-mismatches 30) ; show name mismatches for a short time
+  (setq bbdb/mail-auto-create-p nil ; because we use bbdb for spam white listing.
+	bbdb/news-auto-create-p nil) ; because we use bbdb for spam white listing.
   
-  (after 'supercite '(bbdb-insinuate-sc))
-  (after 'gnus '(bbdb-initialize 'gnus))
-  (after 'message '(bbdb-initialize 'message)))
+  (after 'supercite 
+    (bbdb-initialize 'sc))
+  (after 'gnus 
+    (bbdb-initialize 'gnus 'message))
+  (after 'message 
+    (bbdb-initialize 'message)
+    (add-hook 'message-setup-hook 'bbdb-define-all-aliases))
+  (after 'sendmail
+    (bbdb-initialize 'sendmail)))
 
 (defun setup-bbdb-expire ()
   (after 'bbdb-expire
@@ -40,7 +44,7 @@
 	      #'(lambda () (message "bbdb-expiry finish: %d records" 
 				    (length (bbdb-records)))))
 
-    (bbdb-expire-initialize)
-    (add-hook 'midnight-hook #'bbdb-expire-bbdb)))
+    (bbdb-expire-initialize))
+  (add-hook 'midnight-hook #'bbdb-expire-bbdb))
 
 (provide 'init-bbdb)

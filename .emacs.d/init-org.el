@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-20 20:33:31 mark>
+;;;; Modified Time-stamp: <2013-05-24 18:29:03 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -13,12 +13,9 @@
 	org-default-notes-file "~/Documents/GTD/todo.org"  
 	mjs-someday-maybe-file "~/Documents/GTD/somedaymaybe.org"
 	org-use-property-inheritance t
-	org-use-tag-inheritance t
 	org-log-done t
-	org-log-states-order-reversed t
 
 	org-completion-use-ido t
-	org-deadline-warning-days 7
 	org-outline-path-complete-in-steps nil
 	org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(i)" 
 				      "WAITING(w)" "|" 
@@ -47,17 +44,6 @@
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (add-hook 'org-mode-hook 'flyspell-mode)
 
-  ;; (defun yas-org-very-safe-expand ()
-  ;;   (let ((yas-fallback-behavior 'return-nil)) (yas-expand)))
-  ;; (add-hook 'org-tab-first-hook 'yas-org-very-safe-expand)
-
-  ;; (eval-when (load 'yasnippet) 
-  ;;   (add-hook 'org-mode-hook 
-  ;; 	      (lambda () 
-  ;; 		(make-variable-buffer-local 'yas-trigger-key)
-  ;; 		(org-set-local 'yas-trigger-key [tab])
-  ;; 		(define-key yas-keymap [tab] 'yas-next-field-group))))
-
   (setq org-fontify-done-headline t)
   (set-face-attribute 'org-done nil :strike-through t)
   (set-face-attribute 'org-headline-done nil :strike-through t)
@@ -68,12 +54,8 @@
 	    (todo todo-state-up tag-up category-keep)
 	    (tags todo-state-up tag-up category-keep)
 	    (search todo-state-up category-keep))
-	  org-agenda-show-all-dates nil
 	  org-agenda-files '("~/Documents/GTD/todo.org")
-	  org-agenda-show-all-dates nil
-	  org-agenda-tags-todo-honor-ignore-options t
-	  org-agenda-todo-ignore-scheduled t
-	  org-agenda-start-on-weekday 0
+	  org-agenda-start-on-weekday nil
 	  org-agenda-custom-commands 
 	  '(("gW" "Office & Work lists"
 	     ((tags-todo "+@WORK")))
@@ -107,7 +89,6 @@ this with to-do items than with projects or headings."
       (org-up-element)
       (open-line 1)
     (org-capture 0 "t"))
-    
     
     (define-key org-agenda-mode-map "x" 'sacha/org-agenda-done)
     (define-key org-agenda-mode-map "X" 'sacha/org-agenda-mark-done-and-add-followup))

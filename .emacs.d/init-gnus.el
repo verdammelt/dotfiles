@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-05-23 20:50:04 mark>
+;;;; Time-stamp: <2013-05-23 22:27:59 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -134,7 +134,7 @@
    '((concat "nnfolder+archive:" (format-time-string "archive-%Y")))
    
    nnmail-expiry-target 'nnmail-fancy-expiry-target
-   nnmail-expiry-wait 28
+   nnmail-expiry-wait 28		; originally 7
    nnmail-fancy-expiry-targets '(("from" ".*" "nnfolder+archive:archive-%Y")))
   
 ;;; 
@@ -227,13 +227,6 @@
 	   (spam-autodetect . t)
 	   (spam-autodetect-methods spam-use-regex-headers)
 	   (spam-process (spam spam-use-gmane)))))
-
-;;;
-;;; DEMONS
-;;;
-  ;; (gnus-demon-add-scan-timestamps)	; setting timestamps
-  ;; (gnus-demon-add-scanmail)		; get the new mails
-  ;; (gnus-demon-init)			; poke the daemon to get it going
 
 ;;;
 ;;; utility items

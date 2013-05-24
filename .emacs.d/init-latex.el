@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-18 11:19:12 mark>
+;;;; Modified Time-stamp: <2013-05-24 18:25:15 mark>
 ;;;;
 (after 'tex 
   (TeX-global-PDF-mode)
@@ -17,7 +17,7 @@
   (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-  (after 'refex
+  (after 'reftex
     (setq reftex-plug-into-AUCTeX t)))
 
 (provide 'init-latex)

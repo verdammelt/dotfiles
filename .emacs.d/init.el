@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-19 13:34:53 mark>
+;;;; Modified Time-stamp: <2013-05-24 18:38:02 mark>
 ;;;;
 
 ;;; 
@@ -29,15 +29,13 @@
 ;;;
 ;; I want to keep the customize stuff out of this config file.  I
 ;; don't use customize for much so I don't generally want to see it.
-(setq custom-file (locate-user-emacs-file "init-custom.el"))
-(load-file custom-file)
+(load-file (locate-user-emacs-file "init-custom.el"))
 
 ;;;
 ;;; Package
 ;;;
 (require 'package)
-(add-to-list 'package-archives
-	     '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives 
 	     '("marmalade" . "http://marmalade-repo.org/packages/") 
 	     :append)
@@ -85,6 +83,11 @@
 (show-paren-mode)
 (global-hl-line-mode)
 (savehist-mode)
+
+;; ido mode
+(ido-mode)
+(ido-everywhere)
+(ido-ubiquitous)
 
 ;; setup midnight hooks
 (require 'midnight)
