@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-18 12:15:50 mark>
+;;;; Modified Time-stamp: <2013-05-20 20:33:31 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -124,6 +124,13 @@ this with to-do items than with projects or headings."
 		    (if (string= (expand-file-name (car file)) (buffer-file-name))
 			(org-mobile-push-with-delay 5))))))
 
+    (defvar org-mobile-push-timer nil
+  "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
+    
+    (defun org-mobile-push-with-delay (secs &optional repeat)
+      (when org-mobile-push-timer (cancel-timer org-mobile-push-timer))
+      (setq org-mobile-push-timer
+	    (run-with-idle-timer (* 1 secs) repeat 'org-mobile-push)))
     ))
 
 (global-set-key "\C-cl" 'org-store-link)
