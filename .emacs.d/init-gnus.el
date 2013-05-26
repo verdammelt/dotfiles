@@ -1,9 +1,9 @@
-;;
+;;;;
 ;;;; GNUS
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-05-23 22:27:59 mark>
+;;;; Time-stamp: <2013-05-25 21:53:47 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -15,6 +15,8 @@
 ;;; Select methods
 ;;;
 (after 'gnus
+  (require 'bbdb)
+
   (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
 
   (setq 
@@ -31,7 +33,7 @@
    
    ;; formatting the screen
    gnus-summary-line-format 
-   "[%4i]%U%R %10&user-date;%[%4L: %-20,20f%]%O%B%s\n"
+   "[%4i]%U%R %10&user-date;%[%4L: %-23,23uB%]%O%B%s\n"
    
    ;;change date display depending upon age of article 
    gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") 
