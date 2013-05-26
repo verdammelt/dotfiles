@@ -1,184 +1,171 @@
+# Makefile.in --- main Makefile for BBDB
+#
+# Copyright (C) 2011-2013 Roland Winkler <winkler@gnu.org>
+# 
+# This file is part of the Insidious Big Brother Database (aka BBDB),
+# 
+# BBDB is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# BBDB is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with BBDB.  If not, see <http://www.gnu.org/licenses/>.
+
+### Commentary:
+
+# make all	to compile and build BBDB.
+# make install	to install it.
+# make TAGS	to update tags tables.
+#
+# make clean
+#      Delete all files from the current directory that are normally
+#      created by building the program.	 Don't delete the files that
+#      record the configuration.  Also preserve files that could be made
+#      by building, but normally aren't because the distribution comes
+#      with them.
+#
+# make distclean
+#      Delete all files from the current directory that are created by
+#      configuring or building the program.  If you have unpacked the
+#      source and built the program without creating any other files,
+#      `make distclean' should leave only the files that were in the
+#      distribution.
+#
+# make maintainer-clean
+#      Delete everything from the current directory that can be
+#      reconstructed with this Makefile.  This typically includes
+#      everything deleted by distclean, plus more: .elc files,
+#      C source files produced by Bison, tags tables, info files,
+#      and so on.
+#
+# make extraclean
+#      Still more severe - delete backup and autosave files, too.
+
 @SET_MAKE@
 
-INSTALL = @INSTALL@
-INSTALL_PROGRAM = @INSTALL_PROGRAM@
-INSTALL_SCRIPT = @INSTALL_SCRIPT@
-INSTALL_DATA = @INSTALL_DATA@
+srcdir = @srcdir@
 
+TAR = @TAR@
+COMPRESS = @COMPRESS@
 RM   = @RM@
 LN_S = @LN_S@
 
-EMACS_PROG = @EMACS_PROG@ -no-site-file -no-init-file
-EMACS_FLAVOR = @EMACS_FLAVOR@
+ETAGS = @ETAGS@
 
-GNUSDIR = @GNUSDIR@
-MHEDIR = @MHEDIR@
-VMDIR = @VMDIR@
-OTHERDIRS = @OTHERDIRS@
+SUBDIR = lisp doc tex
 
-PACKAGEDIR = @PACKAGEDIR@
-SYMLINKS = @SYMLINKS@
-LINKPATH = @LINKPATH@
+SUBDIR_MAKEFILES= lisp/Makefile doc/Makefile tex/Makefile
 
-# this is lovely, isn't it?  Surprisingly enough, it seems to work...
-VM	= -eval '(if (> (length "$(VMDIR)") 0) \
-		   (setq load-path (cons "$(VMDIR)" load-path)))'
+TARFILES = COPYING ChangeLog INSTALL README              \
+           configure configure.ac install-sh Makefile.in \
+           lisp/*el tex/*tex doc/*texi               \
+           lisp/Makefile.in tex/Makefile.in doc/Makefile.in
 
-GNUS	= -eval '(if (> (length "$(GNUSDIR)") 0) \
-	           (setq load-path (cons "$(GNUSDIR)" load-path)))'
+all: Makefile info bbdb @BBDB_VM@
 
-MHE	= -eval '(if (> (length "$(MHEDIR)") 0) \
-	           (setq load-path (cons "$(MHEDIR)" load-path)))'
+Makefile: configure Makefile.in
+	@echo "Makefile.in or configure has changed.  Rerun configure!"
+	exit 1
 
-PUSHPATH=-l @top_srcdir@/@BBDB_LOADPATH@
+configure: configure.ac
+	@echo "configure.ac has changed.  Rerun autoconf!"
+	exit 1
 
-.SUFFIXES: .elc .el .tar .Z .gz .uu
+bbdb:
+	cd lisp; $(MAKE) bbdb
 
-DEPSRCS=	bbdb-com.el  bbdb-hooks.el  bbdb-gnus.el  bbdb-mhe.el \
-		bbdb-rmail.el bbdb-vm.el bbdb-ftp.el bbdb-whois.el \
-		bbdb-print.el bbdb-srv.el bbdb-reportmail.el \
-		bbdb-merge.el bbdb-migrate.el bbdb-gui.el
+vm:
+	cd lisp; $(MAKE) vm
 
-ifeq ($(EMACS_FLAVOR),xemacs)
-DEPSRCS+=	bbdb-xemacs.el 
-endif
+info:
+	cd doc; $(MAKE) info
 
-DEPBINS=	${DEPSRCS:.el=.elc}
-SRCS=		bbdb.el  $(DEPSRCS)
-BINS=		bbdb.elc $(DEPBINS)
+autoloads:
+	cd lisp; $(MAKE) autoloads
 
-all: Makefile @BBDB_RMAIL@ @BBDB_GNUS@ @BBDB_VM@ @BBDB_MHE@ bbdb autoloadsc
+.PHONY: install install-elc install-el install-info install-tex uninstall
 
-Makefile: Makefile.in
-	cd ..; ./config.status
+install: install-elc install-info install-tex
 
-install-pkg: uninstall-pkg bbdb autoloadsc
-	@if test "x$(SYMLINKS)" = "xno" ; then                 \
-          mkdir -p -m 0755 $(PACKAGEDIR)/lisp/bbdb;            \
-          for i in `ls *.elc` ; do                             \
-            $(INSTALL_DATA) `echo $$i | sed 's/c$$//g'`        \
-                            $(PACKAGEDIR)/lisp/bbdb ;          \
-            $(INSTALL_DATA) $$i $(PACKAGEDIR)/lisp/bbdb ;      \
-          done ;                                               \
-        else                                                   \
-          if test "x$(LINKPATH)" = "x" ; then                  \
-            $(LN_S) `pwd` $(PACKAGEDIR)/lisp/bbdb ;            \
-          else                                                 \
-            $(LN_S) $(LINKPATH)/lisp $(PACKAGEDIR)/lisp/bbdb ; \
-          fi ;                                                 \
+install-elc:
+	@(cd lisp && $(MAKE) install-elc)
+
+install-el:
+	@(cd lisp && $(MAKE) install-el)
+
+install-info:
+	@(cd doc && $(MAKE) install-info)
+
+install-tex:
+	@(cd tex && $(MAKE) install-tex)
+
+uninstall:
+	for i in ${SUBDIR}; do (cd $$i; $(MAKE) uninstall); done
+
+# ==================== Cleaning up and miscellanea ====================
+
+.PHONY: clean distclean maintainer-clean extraclean
+
+clean:
+	@for i in $(SUBDIR); do (cd $$i && $(MAKE) clean); done
+
+top_distclean=\
+	$(RM) config.cache config.log config.status; \
+	$(RM) Makefile ${SUBDIR_MAKEFILES}
+top_maintainer_clean=\
+	${top_distclean}; \
+	rm -fr autom4te.cache;
+
+distclean:
+	@for i in $(SUBDIR); do (cd $$i && $(MAKE) distclean); done
+	${top_distclean}
+
+maintainer-clean:
+	@for i in $(SUBDIR); do (cd $$i && $(MAKE) maintainer-clean); done
+	${top_maintainer_clean}
+
+extraclean:
+	for i in ${SUBDIR}; do (cd $$i; $(MAKE) extraclean); done
+	${top_maintainer_clean}
+	-$(RM) -f *~ \#*
+	-$(RM) *.tar *.tar.gz
+
+.PHONY: tar dist
+
+# tarball
+tar: $(TARFILES)
+	@if test "x$(TAR)" = "x" ; then                                    \
+          echo "Sorry, no \`tar' program available." ;                     \
+        else                                                               \
+          name=`sed -n 's/^(defconst bbdb-version "\([^"]*\)".*)/bbdb-\1/p' lisp/bbdb.el` ; \
+          $(RM) $${name} ; @LN_S@ . $${name} ;                             \
+          if test "x$(COMPRESS)" = "x" ; then                              \
+            echo "Sorry, no compression program available." ;              \
+            echo "The tarball will not be compressed." ;                   \
+            echo "creating tar file $${name}.tar..." ;                     \
+            $(TAR) --exclude-vcs --exclude=testing  --exclude=".*"         \
+            -vchf $${name}.tar                                             \
+            `echo $(TARFILES) | sed "s|^|$${name}/|g; s| | $${name}/|g"` ; \
+          else                                                             \
+            echo "creating tar file $${name}.tar.gz..." ;                  \
+            $(TAR) --exclude-vcs  --exclude=".*" -vchf - `echo $(TARFILES) \
+            | sed "s|^|$${name}/|g; s| | $${name}/|g"`                     \
+            | $(COMPRESS) > $${name}.tar.gz ;                              \
+          fi ;                                                             \
+          $(RM) $${name} ;                                                 \
         fi
 
-uninstall-pkg:
-	-$(RM) -r $(PACKAGEDIR)/lisp/bbdb
+dist: info autoloads tar
 
-bbdb-autoloads.el: $(DEPSRCS)
-	@-$(RM) $@;
-	@echo "(provide 'bbdb-autoloads)" > $@;
-	@echo "(eval-when-compile" >> $@;
-	@echo "  (condition-case ()" >> $@;
-	@echo "      (require 'custom)" >> $@;
-	@echo "    (error nil))" >> $@;
-	@echo "  (if (and (featurep 'custom) (fboundp 'custom-declare-variable))()" >> $@;
-	@echo "    (defmacro defgroup (&rest args)" >> $@;
-	@echo "      nil)" >> $@;
-	@echo "    (defmacro defcustom (var value doc &rest args)" >> $@;
-	@echo "      \`(defvar ,var ,value ,doc))" >> $@;
-	@echo "    (defmacro defface (var value doc &rest args)" >> $@;
-	@echo "      \`(make-face ,var))" >> $@;
-	@echo "    (defmacro define-widget (&rest args)" >> $@;
-	@echo "      nil)))" >> $@;
-	@echo "" >> $@;
-	@HUSHMAKE@$(EMACS_PROG) -batch -q -l autoload \
-		--eval '(setq generated-autoload-file "'`pwd`'/$@")' \
-		--eval "(if (featurep 'xemacs) (delete-file generated-autoload-file))" \
-		--eval '(setq make-backup-files nil)' \
-		--eval '(setq autoload-package-name "bbdb")' \
-		-f batch-update-autoloads `pwd`
-
-bbdb-autoloads.elc: bbdb-autoloads.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q -f batch-byte-compile ./$^
-
-bbdb.elc:            bbdb.el
-bbdb-com.elc:        bbdb.elc bbdb-com.el
-bbdb-ftp.elc:        bbdb.elc bbdb-ftp.el
-bbdb-gui.elc:		 bbdb.elc bbdb-gui.el
-bbdb-merge.elc:      bbdb-merge.el
-bbdb-migrate.elc:    bbdb.elc bbdb-migrate.el
-bbdb-print.elc:      bbdb.elc bbdb-print.el
-bbdb-snarf.elc:      bbdb.elc bbdb-snarf.el
-bbdb-whois.elc:      bbdb.elc bbdb-whois.el
-bbdb-w3.elc:         bbdb.elc bbdb-w3.el
-bbdb-xemacs.elc:     bbdb.elc bbdb-xemacs.el
-
-.el.elc:
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc -f batch-byte-compile $<
-
-bbdb.elc:	bbdb.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q -f batch-byte-compile ./bbdb.el
-
-bbdb-gnus.elc:	bbdb.elc bbdb-gnus.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc $(GNUS)   \
-		-f batch-byte-compile $(@:.elc=.el)
-bbdb-mhe.elc:	bbdb.elc bbdb-mhe.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc $(MHE)    \
-		-f batch-byte-compile $(@:.elc=.el)
-bbdb-rmail.elc:	bbdb.elc bbdb-rmail.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc $(RMAIL)  \
-		-f batch-byte-compile $(@:.elc=.el)
-bbdb-vm.elc:	bbdb.elc bbdb-vm.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc $(VM)     \
-		-f batch-byte-compile $(@:.elc=.el)
-
-bbdb-srv.elc:   bbdb.elc bbdb-srv.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc -eval '(progn (or (fboundp (quote define-obsolete-variable-alias)) (if (locate-library "gnuserv-compat") (load "gnuserv-compat" t t))) (if (and (locate-library "gnuserv") (locate-library "itimer")) (byte-compile-file "bbdb-srv.el") (message "Optional package bbdb-srv skipped - gnuserv not found")))'
-
-bbdb-reportmail.elc: bbdb.elc bbdb-reportmail.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc -eval '(if (locate-library "reportmail") (byte-compile-file "bbdb-reportmail.el") (message "Optional package bbdb-reportmail skipped - reportmail not found"))'
-
-bbdb-sc.elc: bbdb.elc bbdb-sc.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc -eval '(if (locate-library "supercite") (byte-compile-file "bbdb-sc.el") (message "Optional package bbdb-sc skipped - supercite not found"))'
-
-# bbdb-hooks uses VM macros if it can find VM.
-
-bbdb-hooks.elc:  bbdb.elc bbdb-hooks.el
-	@HUSHMAKE@$(EMACS_PROG) -batch -q $(PUSHPATH) -l ./bbdb.elc \
-	-eval '(and (not (string= "$(VMDIR)" "")) (setq load-path (cons "$(VMDIR)" load-path)) (load "vm" t t) (load "vm-vars" t t))' \
-	-f batch-byte-compile $(@:.elc=.el)
-
-autoloads: bbdb-autoloads.el
-
-autoloadsc: bbdb-autoloads.elc
-
-extras:: bbdb-print.elc bbdb-ftp.elc bbdb-whois.elc \
-	@BBDB_SRV@ @BBDB_REPORTMAIL@ bbdb-snarf.elc bbdb-w3.elc \
-	@BBDB_SC@ bbdb-merge.elc bbdb-migrate.elc bbdb-gui.elc
-ifeq ($(EMACS_FLAVOR),xemacs)
-extras:: bbdb-xemacs.elc
-endif
-
-bbdb:	bbdb.elc bbdb-com.elc bbdb-hooks.elc autoloadsc extras
-
-rmail:	bbdb bbdb-rmail.elc
-
-vm:	bbdb bbdb-vm.elc
-
-mhe:	bbdb bbdb-mhe.elc
-
-gnus:	bbdb bbdb-gnus.elc
-
-# aliases
-mh:	mhe
-mh-e:	mhe
-
-# Assorted clean-up targets
-clean:
-	-$(RM) bbdb*.elc
-
-distclean: clean
-
-# Backward compatibility
-reallyclean: distclean
-
-cvsclean: distclean
-	-$(RM) bbdb-autoloads.el  # Generated file
-	-$(RM) Makefile
+TAGS tags:
+	@if test "x$(ETAGS)" = "x" ; then                 \
+           echo "Sorry, no \`etags' program available." ; \
+         else                                             \
+           $(ETAGS) lisp/*.el doc/bbdb.texi ;            \
+         fi

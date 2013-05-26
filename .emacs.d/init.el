@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-24 18:38:02 mark>
+;;;; Modified Time-stamp: <2013-05-24 19:07:16 mark>
 ;;;;
 
 ;;; 
@@ -54,7 +54,6 @@
 ;;;
 (add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
-(add-to-list 'load-path (locate-user-emacs-file "lisp/bbdb"))
 
 ;;;
 ;;; Auto-mode-alist additions
