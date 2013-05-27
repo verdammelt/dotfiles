@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-24 18:29:03 mark>
+;;;; Modified Time-stamp: <2013-05-27 11:46:14 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -23,6 +23,7 @@
 	org-tag-alist '(("@HOME" . ?h) ("@WORK" . ?w) ("@MAC" . ?m) 
 			("@CALL" . ?c) ("@ERRAND" . ?e) ("@WEB" . ?b) 
 			("@WENDY" . ?y))
+
 	org-refile-allow-creating-parent-nodes 'confirm
 	org-refile-use-outline-path 'file
 	org-refile-use-cache t
@@ -49,27 +50,32 @@
   (set-face-attribute 'org-headline-done nil :strike-through t)
 
   (after 'org-agenda
-    (setq org-agenda-sorting-strategy 
-	  '((agenda habit-up time-up tag-up todo-state-up category-keep) 
-	    (todo todo-state-up tag-up category-keep)
-	    (tags todo-state-up tag-up category-keep)
-	    (search todo-state-up category-keep))
-	  org-agenda-files '("~/Documents/GTD/todo.org")
-	  org-agenda-start-on-weekday nil
-	  org-agenda-custom-commands 
-	  '(("gW" "Office & Work lists"
-	     ((tags-todo "+@WORK")))
-	    ("ge" "Errands and Calls"
-	     ((tags-todo "+@ERRAND")
-	      (tags-todo "+@CALL")))
-	    ("gb" "Web"
-	     ((tags-todo "+@WEB")))
-	    ("gh" "Home Lists"
-	     ((tags-todo "-@WORK")))
-	    ("gt" "Today's TICKLER" tags 
-	     "+TODO=\"TODO\"+CATEGORY=\"TICKLER\"+SCHEDULED<=\"<today>\"+LEVEL=2")
-	    ("gw" "Waiting"
-	     ((todo "WAITING")))))
+    (setq 
+     org-agenda-tags-todo-honor-ignore-options t
+     org-agenda-todo-ignore-scheduled 'future
+     org-agenda-todo-ignore-deadlines 'far
+     
+     org-agenda-sorting-strategy 
+     '((agenda habit-up time-up tag-up todo-state-up category-keep) 
+       (todo todo-state-up tag-up category-keep)
+       (tags todo-state-up tag-up category-keep)
+       (search todo-state-up category-keep))
+     org-agenda-files '("~/Documents/GTD/todo.org")
+     org-agenda-start-on-weekday nil
+     org-agenda-custom-commands 
+     '(("gW" "Office & Work lists"
+	((tags-todo "+@WORK")))
+       ("ge" "Errands and Calls"
+	((tags-todo "+@ERRAND")
+	 (tags-todo "+@CALL")))
+       ("gb" "Web"
+	((tags-todo "+@WEB")))
+       ("gh" "Home Lists"
+	((tags-todo "-@WORK")))
+       ("gt" "Today's TICKLER" tags 
+	"+TODO=\"TODO\"+CATEGORY=\"TICKLER\"+SCHEDULED<=\"<today>\"+LEVEL=2")
+       ("gw" "Waiting"
+	((todo "WAITING")))))
 
     ;; testing these out
     (defun sacha/org-agenda-done (&optional arg)
@@ -88,7 +94,7 @@ this with to-do items than with projects or headings."
       (org-agenda-switch-to)
       (org-up-element)
       (open-line 1)
-    (org-capture 0 "t"))
+      (org-capture 0 "t"))
     
     (define-key org-agenda-mode-map "x" 'sacha/org-agenda-done)
     (define-key org-agenda-mode-map "X" 'sacha/org-agenda-mark-done-and-add-followup))
@@ -106,7 +112,7 @@ this with to-do items than with projects or headings."
 			(org-mobile-push-with-delay 5))))))
 
     (defvar org-mobile-push-timer nil
-  "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
+      "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
     
     (defun org-mobile-push-with-delay (secs &optional repeat)
       (when org-mobile-push-timer (cancel-timer org-mobile-push-timer))
