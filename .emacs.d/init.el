@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-24 19:07:16 mark>
+;;;; Modified Time-stamp: <2013-05-27 14:33:40 mark>
 ;;;;
 
 ;;; 
@@ -29,7 +29,8 @@
 ;;;
 ;; I want to keep the customize stuff out of this config file.  I
 ;; don't use customize for much so I don't generally want to see it.
-(load-file (locate-user-emacs-file "init-custom.el"))
+(setq custom-file (locate-user-emacs-file "init-custom.el"))
+(load-file custom-file)
 
 ;;;
 ;;; Package
@@ -104,4 +105,3 @@
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)
-
