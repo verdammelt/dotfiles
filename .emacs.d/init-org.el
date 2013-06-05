@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-27 11:46:14 mark>
+;;;; Modified Time-stamp: <2013-06-05 19:19:32 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -56,24 +56,24 @@
      org-agenda-todo-ignore-deadlines 'far
      
      org-agenda-sorting-strategy 
-     '((agenda habit-up time-up tag-up todo-state-up category-keep) 
-       (todo todo-state-up tag-up category-keep)
-       (tags todo-state-up tag-up category-keep)
-       (search todo-state-up category-keep))
+     '((agenda habit-up time-up tag-up todo-state-up deadline-down alpha-up) 
+       (todo todo-state-up tag-up alpha-up)
+       (tags todo-state-up tag-up alpha-up)
+       (search todo-state-up))
      org-agenda-files '("~/Documents/GTD/todo.org")
      org-agenda-start-on-weekday nil
      org-agenda-custom-commands 
-     '(("gW" "Office & Work lists"
+     '(("gd" "daily"
+	((agenda "" ((org-agenda-span 'day)
+		     (org-agenda-use-time-grid nil)))
+	 (todo)))
+       ("gW" "Office & Work lists"
 	((tags-todo "+@WORK")))
        ("ge" "Errands and Calls"
 	((tags-todo "+@ERRAND")
 	 (tags-todo "+@CALL")))
-       ("gb" "Web"
-	((tags-todo "+@WEB")))
        ("gh" "Home Lists"
 	((tags-todo "-@WORK")))
-       ("gt" "Today's TICKLER" tags 
-	"+TODO=\"TODO\"+CATEGORY=\"TICKLER\"+SCHEDULED<=\"<today>\"+LEVEL=2")
        ("gw" "Waiting"
 	((todo "WAITING")))))
 
@@ -102,23 +102,7 @@ this with to-do items than with projects or headings."
   ;;; Mobile Setup
   (after 'org-mobile
     (setq org-mobile-directory (expand-file-name "~/Dropbox/GTD/MobileOrg"))
-    (setq org-mobile-inbox-for-pull "~/Documents/GTD/todo.org")
-    ;; push on save
-    (add-hook 'after-save-hook 
-	      (lambda () 
-		(when (eq major-mode 'org-mode)
-		  (dolist (file (org-mobile-files-alist))
-		    (if (string= (expand-file-name (car file)) (buffer-file-name))
-			(org-mobile-push-with-delay 5))))))
-
-    (defvar org-mobile-push-timer nil
-      "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
-    
-    (defun org-mobile-push-with-delay (secs &optional repeat)
-      (when org-mobile-push-timer (cancel-timer org-mobile-push-timer))
-      (setq org-mobile-push-timer
-	    (run-with-idle-timer (* 1 secs) repeat 'org-mobile-push)))
-    ))
+    (setq org-mobile-inbox-for-pull "~/Documents/GTD/todo.org")))
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
