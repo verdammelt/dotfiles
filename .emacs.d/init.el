@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-27 14:33:40 mark>
+;;;; Modified Time-stamp: <2013-06-07 17:48:45 mark>
 ;;;;
 
 ;;; 
@@ -73,6 +73,8 @@
 (require 'init-org)
 (require 'init-lisp)
 (require 'init-misc)
+
+(global-set-key [?\s-p] 'ps-print-buffer)
 
 ;;;
 ;;; turn on all things that need turning on.
