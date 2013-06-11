@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-24 20:42:07 mark>
+;;;; Modified Time-stamp: <2013-06-11 19:26:32 mark>
 ;;;;
 ;;;
 ;;; TODO
@@ -16,13 +16,13 @@
 (require 'bbdb-loaddefs)
 
 (after 'bbdb 
-  
-  (setq bbdb-pop-up-window-size 10)
 
   (define-key bbdb-mode-map "r" 'bbdb-merge-records)
 
-  (setq bbdb-mua-update-interactive-p '(query . create))
-  (setq bbdb-message-all-addresses t)
+  (setq bbdb-pop-up-window-size 10
+	bbdb-mua-update-interactive-p '(query . create)
+	bbdb-message-all-addresses t
+	bbdb-complete-mail-allow-cycling t)
   
   (after 'supercite 
     (bbdb-initialize 'sc))
