@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-06-05 19:19:32 mark>
+;;;; Modified Time-stamp: <2013-06-11 19:24:28 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -63,7 +63,7 @@
      org-agenda-files '("~/Documents/GTD/todo.org")
      org-agenda-start-on-weekday nil
      org-agenda-custom-commands 
-     '(("gd" "daily"
+     '(("d" "daily"
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid nil)))
 	 (todo)))
@@ -109,5 +109,26 @@ this with to-do items than with projects or headings."
 (global-set-key "\C-ct" (lambda () (interactive) (org-capture nil "t")))
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
+
+;;; experimental - auto push org mode
+(defvar org-mobile-push-timer nil
+  "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
+
+;; Push to mobile when the idle timer runs out
+(defun org-mobile-push-with-delay (secs)
+  (when org-mobile-push-timer
+    (cancel-timer org-mobile-push-timer))
+  (setq org-mobile-push-timer
+        (run-with-idle-timer
+         (* 1 secs) nil 'org-mobile-push)))
+
+(defun push-if-todo-file ()
+  (if (string= buffer-file-name 
+	       (expand-file-name org-default-notes-file)) 
+      (org-mobile-push-with-delay 5)))
+
+;; After saving files, start an idle timer after which we are going to push 
+(add-hook 'after-save-hook 'push-if-todo-file)
+
 
 (provide 'init-org)
