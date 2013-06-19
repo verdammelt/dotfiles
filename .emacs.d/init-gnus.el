@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-05-25 21:53:47 mark>
+;;;; Time-stamp: <2013-06-13 20:06:11 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -169,6 +169,9 @@
 
 	  ("list.bawch"
 	   (to-address . "discuss-bawch@googlegroups.com"))
+	  
+	  ("list.cleancode"
+	   (to-address . "clean-code-discussion@googlegroups.com"))
 
 	  ("list\.agile-new-england"
 	   (extra-aliases "webmaster@agilenewengland.org"))
