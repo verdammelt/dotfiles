@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-06-13 20:06:11 mark>
+;;;; Time-stamp: <2013-08-03 20:58:51 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -22,8 +22,18 @@
   (setq 
    gnus-select-method '(nntp "news.gmane.org") ; where to find my news.
    gnus-secondary-select-methods '((nnfolder ""))) ; where to find my mails
-  
-;;; 
+
+  (setq
+   gnus-treat-display-x-face (quote head)
+   gnus-treat-from-gravatar (quote head)
+   gnus-treat-from-picon (quote head)
+   gnus-treat-mail-gravatar (quote head)
+   gnus-treat-mail-picon (quote head)
+   gnus-treat-newsgroups-picon (quote head)
+   gnus-treat-unsplit-urls t
+   gnus-treat-x-pgp-sig t
+   )
+;; 
 ;;; General settings
 ;;;
   (setq 
