@@ -17,6 +17,8 @@
 .dropbox
 .dvdcss
 .elinks
+.exercism
+.fetchids
 .fetchmail.pid
 .fontconfig
 .gconfd
@@ -27,6 +29,7 @@
 .gnupg
 .gnus.registry*
 .heroku
+.irb-history
 .ispell*
 .jline-*.history
 .lein
@@ -37,6 +40,7 @@
 .newsrc-dribble
 .newsrc.eld
 .nnmail-cache
+.npm
 .nrepl-history.eld
 .pow
 .pry_history
