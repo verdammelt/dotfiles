@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-24 18:38:01 mark>
+;;;; Modified Time-stamp: <2013-08-15 21:46:38 mark>
 ;;;;
 (setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
 
@@ -20,11 +20,15 @@
   (add-hook 'message-send-hook 'ispell-message)
 
   (setq message-default-headers "X-Attribution: MJS")
+  
+  (setq message-sendmail-envelope-from 'header)
 
   (after 'supercite
     (setq sc-preferred-header-style 1)))
 
 (after 'sendmail 
-  (setq send-mail-function 'sendmail-send-it))
+  (setq send-mail-function 'sendmail-send-it)
+  (setq mail-specify-envelope-from t
+	mail-envelope-from 'header))
 
 (provide 'init-mail)
