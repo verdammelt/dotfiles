@@ -12,6 +12,8 @@ alias ll='ls -l'
 alias v=vi
 alias m=mail
 alias frm='mail -H'
+alias exersub='exercism submit'
+alias exerfetch='exercism fetch'
 
 alias pdfopen='pdfopen -viewer xpdf'
 alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."

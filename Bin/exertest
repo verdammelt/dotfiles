@@ -1,0 +1,17 @@
+#!/bin/sh
+
+langdir=`dirname $PWD`
+lang=`basename $langdir`
+case "$lang" in
+    "ruby" ) 
+        testcmd="ruby" ;;
+    "clojure" ) 
+        testcmd="lein exec" ;;
+    "javascript" ) 
+        testcmd="jasmine-node" ;;
+esac
+
+testfile=`ls -1 *test*`
+
+set -x
+$testcmd $testfile
