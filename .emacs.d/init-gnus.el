@@ -163,10 +163,10 @@
 	  ("mail.*"
 	   (gcc-self . t)
 	   (total-expire . t))
-	  
+
 	  ("mail.codeandcocktails"
 	   (to-address . "codeandcocktails@gmail.com")
-	   (posting-style . "codeandcocktails@gmail.com"))
+	   (posting-style  (address "codeandcocktails@gmail.com")))
 
 	  ("mail.tnef"
 	   (to-address . "noreply@sourceforge.net")
@@ -228,6 +228,15 @@
 	    "ops@geekli.st"
 	    ))
 
+	  ("cyrus.*"
+	   (gcc-self .t)
+	   (total-expire . nil)
+	   (posting-style (address "msimpson@cyrusinnovation.com")))
+
+	  ("cyrus.inbox"
+	   (to-address . "msimpson@cyrusinnovation.com")
+	   (split-regexp . "cyrusinnovation"))
+	  
 	  ("spam\.spam"
 	   (total-expire . t)
 	   (expiry-wait . 1)
