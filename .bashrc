@@ -18,7 +18,7 @@ alias exerfetch='exercism fetch'
 alias pdfopen='pdfopen -viewer xpdf'
 alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
 
-PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:$PATH
+PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 NODE_PATH=/usr/local/lib/node_modules
 MANPATH=$MANPATH:/opt/local/man
 TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
