@@ -18,8 +18,6 @@ set directory=~/.vim-tmp,/var/tmp,/tmp
 
 set shellslash  " change all slashes in completion to forward slash
 
-"set clipboard=unnamed " work with OS clipboard 
-
 set number          " line numbers
 set numberwidth=4   " number of columns for line numbers
 
@@ -34,7 +32,7 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" dealing with tabs - 4 spaces - exapnd them.
+" dealing with tabs - 4 spaces - expand them.
 set expandtab
 set tabstop=4
 set softtabstop=4
@@ -78,8 +76,10 @@ set winheight=10
 set winminheight=5
 set winheight=999 " current windo should fill 'most' of the space
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+set exrc
+set secure
+
+set shortmess=aTI
 
 " Switch syntax highlighting on, when the terminal has colors.
 " Also switch on highlighting the last used search pattern.
@@ -87,27 +87,14 @@ if &t_Co > 2 || has("gui_running")
     syntax on
     set hlsearch
     set cursorline
-    set colorcolumn=+1
+    set colorcolumn=+0
     set background=dark
     colorscheme grb256
-    " colorscheme solarized
-    "colorscheme zenburn
 endif
 
-function! mjs:textish_mode()
-    setlocal spell spelllang=en_us
-endfunction
-
-" Only do this part when compiled with support for autocommands.
 if has("autocmd")
-    " Enable file type detection.
-    " Use the default filetype settings, so that mail gets 'tw' set to 72,
-    " 'cindent' is on in C files, etc.
-    " Also load indent files, to automatically do language-dependent
-    " indenting.
     filetype plugin indent on
 
-    " Put these in an autocmd group, so that we can delete them easily.
     augroup vimrcEx
         au!
 
@@ -115,20 +102,15 @@ if has("autocmd")
         autocmd BufRead,BufNewFile *.md set filetype=octopress
 
         " For all text files set 'textwidth' to 78 characters.
-        autocmd FileType text call mjs:textish_mode()
-        autocmd FileType tex call mjs:textish_mode()
-        autocmd FileType markdown call mjs:textish_mode()
+        autocmd FileType text setlocal spell
+        autocmd FileType tex setlocal spell
+        autocmd FileType markdown setlocal spell
 
         autocmd FileType help
             \ setlocal nospell |
             \ nmap <buffer> <CR> <C-]> |
             \ nmap <buffer> <BS> <C-T> 
 
-        " When editing a file, always jump to the last known cursor position.
-        " Don't do it when the position is invalid or when inside an event
-        " handler (happens when dropping a file on gvim).  Also don't do it
-        " when the mark is in the first line, that is the default position
-        " when opening a file.
         autocmd BufReadPost *
             \ if line("'\"") > 1 && line("'\"") <= line("$") |
             \   exe "normal! g`\"" |
@@ -140,18 +122,11 @@ if has("autocmd")
     augroup END
 endif " has("autocmd")
 
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.  Only define it when not
-" defined already.
-if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-                \ | wincmd p | diffthis
-endif
-
 " %% defined to be absolute path to current file
 cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
 
 nnoremap <CR> :nohlsearch<cr>
+map Q gq " Don't use Ex mode, use Q for formatting
 map <leader>e :edit %%
 map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<CR>
@@ -166,34 +141,10 @@ nnoremap <leader><leader> <c-^>
 " because I am INSANE!
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
-function! g:ToggleNuMode() 
-    if(&rnu == 1) 
-        set nu 
-    else 
-        set rnu 
-    endif 
-endfunc 
-nnoremap <C-L> :call g:ToggleNuMode()<cr> 
-
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
-set exrc
-set secure
-
-set shortmess=aTI
-
 " Yank text to the OS X clipboard
 noremap <leader>y "*y
 noremap <leader>yy "*Y
 
 " Preserve indentation while pasting text from the OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
+
