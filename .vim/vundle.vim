@@ -17,7 +17,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'textobj-rubyblock'
 Bundle 'textobj-user'
 Bundle 'vroom'
-Bundle 'Command-T'
+Bundle 'ctrlp.vim'
 Bundle 'wikitopian/hardmode'
 
 filetype on

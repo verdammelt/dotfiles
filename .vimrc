@@ -153,8 +153,8 @@ cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
 
 nnoremap <CR> :nohlsearch<cr>
 map <leader>e :edit %%
-map <leader>f :CommandT<CR>
-map <leader>F :CommandTFlush<CR>
+map <leader>f :CtrlP<CR>
+map <leader>b :CtrlPBuffer<CR>
 map <leader>gb :Gblame<CR>
 map <leader>gc :Gcommit<CR>
 map <leader>gd :Gdiff<CR>
