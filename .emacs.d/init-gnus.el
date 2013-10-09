@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-08-03 20:58:51 mark>
+;;;; Time-stamp: <2013-09-26 11:40:36 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -190,7 +190,7 @@
 	   (extra-aliases "wsmith@wordsmith.org"))
 
 	  ("list\.bank"
-	   (split-regexp . "schwab\\|ally")
+	   (split-regexp . "schwab\\|ally\\|mint")
 	   (extra-aliases "citizensbank_customerservice@customercenter.net"))
 
 	  ("list\.baznex"
@@ -222,6 +222,7 @@
 	  ("list\.social-media"
 	   (split-regexp . "flickr\\|facebookmail\\|twitter\\|linkedin")
 	   (extra-aliases 
+	    "noreply@exercism.io"
 	    "action@ifttt.com"
 	    "info@meetup.com"
 	    "no-reply@posterous.com"
