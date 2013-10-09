@@ -175,14 +175,14 @@ function! g:ToggleNuMode()
 endfunc 
 nnoremap <C-L> :call g:ToggleNuMode()<cr> 
 
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+function! CleverTab()
+	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+		return "\<Tab>"
+	else
+		return "\<C-N>"
+	endif
 endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
@@ -197,3 +197,6 @@ noremap <leader>yy "*Y
 
 " Preserve indentation while pasting text from the OS X clipboard
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+set complete+=k
+set completeopt+=longest
+
