@@ -12,6 +12,7 @@ Bundle 'repeat.vim'
 Bundle 'textobj-user'
 Bundle 'ctrlp.vim'
 Bundle 'wikitopian/hardmode'
+Bundle 'applescript.vim'
 
 Bundle 'vim-octopress'
 Bundle 'tpope/vim-rails'
