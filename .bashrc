@@ -46,8 +46,12 @@ function ga() {
 }
 
 alias gd='git di'
+alias gdc='git dc'
 alias gci='git commit -v'
-
+alias gl='git l'
+alias gla='git la'
+alias gr='git r'
+alias gra='git ra'
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
