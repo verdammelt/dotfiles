@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-07-07 09:01:05 mark>
+;;;; Modified Time-stamp: <2013-10-16 20:47:40 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -66,16 +66,11 @@
      '(("d" "daily"
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid nil)))
-	 (todo)))
-       ("gW" "Office & Work lists"
-	((tags-todo "+@WORK")))
-       ("ge" "Errands and Calls"
-	((tags-todo "+@ERRAND")
-	 (tags-todo "+@CALL")))
-       ("gh" "Home Lists"
-	((tags-todo "-@WORK")))
-       ("gw" "Waiting"
-	((todo "WAITING")))))
+	 (tags-todo "+@WORK")
+	 (tags-todo "+@CALL|+@ERRAND")
+	 (tags-todo "+@MAC|+@WEB")
+	 (tags-todo "-@WORK&-@MAC&-@WEB&-@CALL&-@ERRAND")
+	 ))))
 
     ;; testing these out
     (defun sacha/org-agenda-done (&optional arg)
