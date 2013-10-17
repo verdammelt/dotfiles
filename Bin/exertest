@@ -9,6 +9,8 @@ case "$lang" in
         testcmd="lein exec" ;;
     "javascript" ) 
         testcmd="jasmine-node" ;;
+    "haskell" )
+        testcmd="runhaskell -Wall" ;;
 esac
 
 testfile=`ls -1 *test*`
