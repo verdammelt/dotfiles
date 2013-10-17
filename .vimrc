@@ -103,6 +103,7 @@ if has("autocmd")
 
         autocmd BufRead,BufNewFile *.markdown set filetype=octopress
         autocmd BufRead,BufNewFile *.md set filetype=octopress
+        autocmd BufRead,BufNewFile *.applescript set filetype=applescript
 
         " For all text files set 'textwidth' to 78 characters.
         autocmd FileType text setlocal spell

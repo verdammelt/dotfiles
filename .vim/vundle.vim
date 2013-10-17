@@ -13,6 +13,7 @@ Bundle 'tpope/vim-unimpaired'
 
 Bundle 'kien/ctrlp.vim'
 Bundle 'wikitopian/hardmode'
+Bundle 'applescript.vim'
 
 Bundle 'vim-octopress'
 Bundle 'tpope/vim-rails'
