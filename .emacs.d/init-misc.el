@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-18 12:09:50 mark>
+;;;; Modified Time-stamp: <2013-10-14 22:48:41 mark>
 ;;;;
 ;; Save my place in files
 (setq-default save-place t)
@@ -40,9 +40,9 @@
 ;; calendar
 (after 'calendar 
   (setq 
-   calendar-latitude +42.358056
-   calendar-location-name "Cambridge, MA"
-   calendar-longitude -71.113056
+   calendar-latitude +40.72541
+   calendar-longitude -73.70928
+   calendar-location-name "Floral Park, NY"
    calendar-time-display-form '(24-hours ":" minutes (if time-zone " (") time-zone (if time-zone ")"))
    diary-file "~/.diary"
    calendar-date-style 'european
