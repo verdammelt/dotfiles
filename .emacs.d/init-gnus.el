@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-09-26 11:40:36 mark>
+;;;; Time-stamp: <2013-10-11 14:02:46 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -237,6 +237,9 @@
 	  ("cyrus.inbox"
 	   (to-address . "msimpson@cyrusinnovation.com")
 	   (split-regexp . "cyrusinnovation"))
+
+	  ("cyrus.2u"
+	   (split-regexp . "2u"))
 	  
 	  ("spam\.spam"
 	   (total-expire . t)
