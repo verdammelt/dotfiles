@@ -142,6 +142,7 @@ map <leader>gd :Gdiff<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>r :wa<CR>:!rake<CR>
 map <leader>v :edit $MYVIMRC<CR>
+noremap \ ,
 noremap <leader>y "*y
 noremap <leader>yy "*Y
 noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
