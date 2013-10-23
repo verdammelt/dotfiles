@@ -11,6 +11,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 
+Bundle 'nelstrom/vim-qargs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'wikitopian/hardmode'
 Bundle 'applescript.vim'
