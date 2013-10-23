@@ -74,7 +74,8 @@ set winwidth=80
 " to fail.
 set winheight=10
 set winminheight=5
-set winheight=999 " current windo should fill 'most' of the space
+"set winheight=999 " current windo should fill 'most' of the space
+autocmd VimEnter set winheight=999
 
 set exrc
 set secure
