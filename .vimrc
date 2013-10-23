@@ -84,6 +84,7 @@ set shortmess=aTI
 
 set complete+=k
 set completeopt+=longest
+set dictionary+=/usr/share/dict/words
 
 " Switch syntax highlighting on, when the terminal has colors.
 " Also switch on highlighting the last used search pattern.
