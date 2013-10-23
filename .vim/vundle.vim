@@ -22,6 +22,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'textobj-user'
 Bundle 'textobj-rubyblock'
 Bundle 'applescript.vim'
+Bundle 'kchmck/vim-coffee-script'
 
 filetype on
 
