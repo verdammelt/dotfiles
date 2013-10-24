@@ -64,6 +64,7 @@ set wildignore+=*.jar
 " ignore case in patterns unless explicit capital used
 set ignorecase
 set smartcase
+set infercase
 
 " when changing put $ at end of changed area and overwrite as i type
 set cpoptions+=$
@@ -82,7 +83,7 @@ set secure
 
 set shortmess=aTI
 
-set complete+=k
+set complete+=kspell
 set completeopt+=longest
 set dictionary+=/usr/share/dict/words
 
@@ -111,6 +112,7 @@ if has("autocmd")
         autocmd FileType text setlocal spell
         autocmd FileType tex setlocal spell
         autocmd FileType markdown setlocal spell
+        autocmd FileType gitcommit setlocal spell
 
         autocmd FileType help
             \ setlocal nospell |
