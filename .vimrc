@@ -153,13 +153,13 @@ nnoremap <leader><leader> <c-^>
 " because I am INSANE!
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
-function! CleverTab()
-	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-		return "\<Tab>"
-	else
-		return "\<C-N>"
-	endif
-endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
-inoremap <s-tab> <C-P>
+"function! CleverTab()
+"	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+"		return "\<Tab>"
+"	else
+"		return "\<C-N>"
+"	endif
+"endfunction
+"inoremap <Tab> <C-R>=CleverTab()<CR>
+"inoremap <s-tab> <C-P>
 
