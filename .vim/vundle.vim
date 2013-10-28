@@ -25,6 +25,7 @@ Bundle 'textobj-user'
 Bundle 'textobj-rubyblock'
 Bundle 'applescript.vim'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'klen/python-mode'
 
 filetype on
 
