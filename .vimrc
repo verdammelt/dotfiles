@@ -136,8 +136,8 @@ endif " has("autocmd")
 " %% defined to be absolute path to current file
 cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
 
-nnoremap <CR> :nohlsearch<cr>
 map Q gq " Don't use Ex mode, use Q for formatting
+map <leader><Space> :nohlsearch<cr>
 map <leader>e :edit %%
 map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<CR>
