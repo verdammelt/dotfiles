@@ -60,6 +60,8 @@ set wildmode=longest,list
 set wildignore+=*~
 set wildignore+=*.class
 set wildignore+=*.jar
+set wildignore+=dist
+set wildignore+=node_modules
 
 " ignore case in patterns unless explicit capital used
 set ignorecase
