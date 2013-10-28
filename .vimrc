@@ -128,6 +128,7 @@ if has("autocmd")
 
         " automatically source .vimrc when it is saved.
         autocmd BufWritePost .vimrc source $MYVIMRC
+        autocmd BufWritePost vundle.vim source $MYVIMRC
 
     augroup END
 endif " has("autocmd")
