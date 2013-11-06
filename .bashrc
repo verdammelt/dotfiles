@@ -99,5 +99,5 @@ function top2cmd(){
 function batt() {
     pmset -g batt | \
         awk '/InternalBattery/{print $3 $2 " " $4 }' | \
-        sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;//g'
+        sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
 }
