@@ -13,6 +13,8 @@ Bundle 'tpope/vim-unimpaired'
 
 Bundle 'ervandew/supertab'
 
+Bundle 'airblade/vim-gitgutter'
+
 Bundle 'nelstrom/vim-qargs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'wikitopian/hardmode'
