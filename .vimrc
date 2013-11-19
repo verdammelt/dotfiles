@@ -95,7 +95,7 @@ if &t_Co > 2 || has("gui_running")
     syntax on
     set hlsearch
     set cursorline
-    set colorcolumn=+0
+    set colorcolumn=+1
     set background=dark
     colorscheme grb256
 endif
