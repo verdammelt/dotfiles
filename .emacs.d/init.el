@@ -79,7 +79,7 @@
 ;;;
 ;;; turn on all things that need turning on.
 ;;;
-; (display-battery-mode)
+;(display-battery-mode)
 (display-time)
 (server-start)
 (show-paren-mode)
