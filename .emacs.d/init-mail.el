@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-08-15 21:46:38 mark>
+;;;; Modified Time-stamp: <2013-11-18 22:54:01 mark>
 ;;;;
 (setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
 
@@ -28,6 +28,7 @@
 
 (after 'sendmail 
   (setq send-mail-function 'sendmail-send-it)
+  (add-hook 'mail-citation-hook 'sc-cite-original)
   (setq mail-specify-envelope-from t
 	mail-envelope-from 'header))
 
