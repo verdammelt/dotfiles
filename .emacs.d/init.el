@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-06-07 17:48:45 mark>
+;;;; Modified Time-stamp: <2013-11-17 19:13:59 mark>
 ;;;;
 
 ;;; 
@@ -103,6 +103,7 @@
 (miniedit-install)
 
 ;; turn on the column indicator
+(setq fill-column 78)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 ;; Update timestamps in file on save
