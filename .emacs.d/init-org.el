@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-10-16 20:47:40 mark>
+;;;; Modified Time-stamp: <2013-11-17 19:33:47 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -62,14 +62,18 @@
        (search todo-state-up))
      org-agenda-files '("~/Documents/GTD/todo.org")
      org-agenda-start-on-weekday nil
+     org-agenda-block-separator "==========================================================================="
      org-agenda-custom-commands 
      '(("d" "daily"
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid nil)))
-	 (tags-todo "+@WORK")
-	 (tags-todo "+@CALL|+@ERRAND")
-	 (tags-todo "+@MAC|+@WEB")
-	 (tags-todo "-@WORK&-@MAC&-@WEB&-@CALL&-@ERRAND")
+	 (tags-todo "+@WORK|+@WORKMAC/!-WAITING")
+	 (tags-todo "+@CALL|+@ERRAND/!-WAITING")
+	 (tags-todo "+@MAC|+@WEB/!-WAITING")
+	 (tags-todo "+@WENDY/!-WAITING")
+	 (tags-todo "-@WORK&-@WORKMAC&-@MAC&-@WEB&-@CALL&-@ERRAND&-@WENDY/!-WAITING")
+	 (tags-todo "/WAITING")
+	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\"")
 	 ))))
 
     ;; testing these out
