@@ -1,0 +1,119 @@
+
+GV.infoVerbose:		Errors
+GV.scale:		-6
+GV.scaleBase:		1
+GV.fallbackOrientation: Portrait
+GV.orientation:		Automatic
+GV.fallbackPageMedia:   A4
+GV.pageMedia:		Automatic
+GV.swapLandscape:       False
+GV.autoResize:		True
+GV.antialias:		True
+GV.watchFile:		True
+GV.ignoreEOF:		True
+GV.respectDSC:		True
+GV.version:		gv 3.6.7.90
+
+GV.screenSize_/tmp/launch-KxhP3b/org.macosforge_0_0:339 x 206
+GV.confirmQuit:		1
+GV.titleStyle:		1
+GV.useBackingPixmap:    True
+GV.autoCenter:		True
+GV.scrollingEyeGuide:   True
+GV.reverseScrolling:    False
+GV.confirmPrint:	True
+GV.printCommand:	lpr
+GV.scales:		Natural	size,	1.000,	screen\n\
+			Pixel based,	1.000,	pixel\n\
+			Arbitrary magnification,	-2\n\
+			Fit height to window,	-3\n\
+			Fit width to window,	-1\n\
+			Fit to window,	0.000\n\
+			0.100,		0.100\n\
+			0.125,		0.125\n\
+			0.250,		0.250\n\
+			0.500,		0.500\n\
+			0.707,		0.707\n\
+			1.000,		1.000\n\
+			1.414,		1.414\n\
+			2.000,		2.000\n\
+			4.000,		4.000\n\
+			8.000,		8.000\n\
+			10.00,		10.00
+GV.medias:		Letter,		612	792\n\
+			# LetterSmall,	612	792\n\
+			Legal,		612	1008\n\
+			Statement,	396	612\n\
+			Tabloid,		792	1224\n\
+			Ledger,		1224	792\n\
+			Folio,		612	936\n\
+			Quarto,		610	780\n\
+			# 7x9,		504	648\n\
+			# 9x11,		648	792\n\
+			# 9x12,		648	864\n\
+			# 10x13,		720	936\n\
+			10x14,		720	1008\n\
+			14x24,		1008	1728\n\
+			Executive,	540	720\n\
+			# A0,		2384	3370\n\
+			# A1,		1684	2384\n\
+			# A2,		1191	1684\n\
+			A3,		842	1191\n\
+			A4,		595	842\n\
+			# A4Small,	595	842\n\
+			A5,		420	595\n\
+			# A6,		297	420\n\
+			# A7,		210	297\n\
+			# A8,		148	210\n\
+			# A9,		105	148\n\
+			# A10,		73	105\n\
+			# B0,		2920	4127\n\
+			# B1,		2064	2920\n\
+			# B2,		1460	2064\n\
+			# B3,		1032	1460\n\
+			B4,		729	1032\n\
+			B5,		516	729\n\
+			# B6,		363	516\n\
+			# B7,		258	363\n\
+			# B8,		181	258\n\
+			# B9,		127	181\n\
+			# B10,		91	127\n\
+			# ISOB0,		2835	4008\n\
+			# ISOB1,		2004	2835\n\
+			# ISOB2,		1417	2004\n\
+			# ISOB3,		1001	1417\n\
+			# ISOB4,		709	1001\n\
+			# ISOB5,		499	709\n\
+			# ISOB6,		354	499\n\
+			# ISOB7,		249	354\n\
+			# ISOB8,		176	249\n\
+			# ISOB9,		125	176\n\
+			# ISOB10,	88	125\n\
+			# C0,		2599	3676\n\
+			# C1,		1837	2599\n\
+			# C2,		1298	1837\n\
+			# C3,		918	1296\n\
+			# C4,		649	918\n\
+			# C5,		459	649\n\
+			# C6,		323	459\n\
+			# C7,		230	323\n\
+			# DL,		312	624
+GV.magMenu:		2,	2\n\
+			4,	4\n\
+			8,	8\n\
+			16,	16\n\
+			32,	32\n\
+			64,	64
+GV.miscMenuEntries:     redisplay\n\
+			# update\n\
+			stop\n\
+			line\n\
+			toggle_current\n\
+			toggle_even\n\
+			toggle_odd\n\
+			unmark\n\
+			line\n\
+			print_all\n\
+			print_marked\n\
+			save_all\n\
+			save_marked
