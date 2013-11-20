@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-17 19:13:59 mark>
+;;;; Modified Time-stamp: <2013-11-19 21:51:12 mark>
 ;;;;
 
 ;;; 
@@ -108,3 +108,9 @@
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)
+
+;; Misc
+(after 'gnutls
+  (setq gnutls-min-prime-bits 1024))
+
+
