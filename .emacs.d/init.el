@@ -80,6 +80,8 @@
 (set-face-attribute 'default nil 
 		    :height 180 
 		    :family "Source_Code_Pro")
+(load-theme 'zenburn t)
+
 ;;;
 ;;; turn on all things that need turning on.
 ;;;
