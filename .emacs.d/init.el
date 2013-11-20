@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-19 21:51:12 mark>
+;;;; Modified Time-stamp: <2013-11-19 23:09:41 mark>
 ;;;;
 
 ;;; 
@@ -16,6 +16,11 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message "damned")
+
+;; set up the fonts / themes
+(set-face-attribute 'default nil 
+		    :height 180 
+		    :family "Source_Code_Pro")
 
 ;; cute little wrapper around eval-after-load
 (defmacro after (mode &rest body)
