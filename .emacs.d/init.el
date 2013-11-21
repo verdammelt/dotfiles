@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-20 09:46:24 mjs>
+;;;; Modified Time-stamp: <2013-11-20 23:20:49 mark>
 ;;;;
 
 ;;; 
@@ -35,12 +35,6 @@
 ;;;
 ;;; Package
 ;;;
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives 
-	     '("marmalade" . "http://marmalade-repo.org/packages/") 
-	     :append)
-(package-initialize)
 
 ;;;
 ;;; Exec Path
@@ -55,6 +49,7 @@
 ;;;
 (add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
+(require 'init-package)
 
 ;;;
 ;;; Auto-mode-alist additions
@@ -80,6 +75,8 @@
 (set-face-attribute 'default nil 
 		    :height 200
 		    :family "Source_Code_Pro")
+		    :height 200 
+		    :family "Source_Code_Pro") 
 (load-theme 'solarized-dark t)
 
 ;;;
