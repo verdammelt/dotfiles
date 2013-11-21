@@ -3,11 +3,15 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-24 18:25:46 mark>
+;;;; Modified Time-stamp: <2013-11-20 23:20:37 mark>
 ;;;;
 (after 'lisp-mode
-  (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+  (if (or (fboundp 'paredit-mode) 
+	  (autoloadp (symbol-function 'paredit-mode)))
+      (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
+  (if (or (fboundp 'rainbow-delimiters-mode)
+	  (autoloadp (symbol-function 'rainbow-delimiters-mode))) 
+      (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
   (add-hook 'lisp-mode-hook 'paredit-mode)
