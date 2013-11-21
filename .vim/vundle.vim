@@ -4,6 +4,9 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'jnurmine/Zenburn'
+
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-abolish'

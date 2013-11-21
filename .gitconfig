@@ -15,7 +15,7 @@
 	l = "!source ~/.githelpers && pretty_git_log"
     lg = !git l
     la = !git l --all
-	r = !git l -10
+	r = !git l -24
     ra = !git r --all
 	rehead = reset --hard HEAD
 

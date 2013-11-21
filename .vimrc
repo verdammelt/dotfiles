@@ -97,7 +97,7 @@ if &t_Co > 2 || has("gui_running")
     set cursorline
     set colorcolumn=+1
     set background=dark
-    colorscheme zenburn
+    colorscheme solarized
 endif
 
 if has("autocmd")
