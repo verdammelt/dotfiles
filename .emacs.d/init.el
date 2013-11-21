@@ -75,8 +75,6 @@
 (set-face-attribute 'default nil 
 		    :height 200
 		    :family "Source_Code_Pro")
-		    :height 200 
-		    :family "Source_Code_Pro") 
 (load-theme 'solarized-dark t)
 
 ;;;
