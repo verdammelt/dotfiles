@@ -14,13 +14,16 @@
 (setq save-packages-file (locate-user-emacs-file ".saved-packages"))
 
 ;; report if there are missing packages
+(defun missing-packages (file)
+  (let ((saved-packages 
+	  (car (read-from-string
+		(with-temp-buffer
+		  (insert-file-contents file)
+		  (buffer-string))))))
+    (remove-if 'package-installed-p saved-packages)))
+
 (if (file-exists-p save-packages-file)
-    (let* ((saved-packages 
-	    (car (read-from-string
-		  (with-temp-buffer
-		    (insert-file-contents save-packages-file)
-		    (buffer-string)))))
-	   (missing-packages (remove-if 'package-installed-p saved-packages)))
+    (let ((missing-packages (missing-packages save-packages-file)))
       (if (< 0 (length missing-packages))
 	  (progn 
 	    (message "Missing packages: %s" missing-packages)
