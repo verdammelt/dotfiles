@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-20 00:12:46 mark>
+;;;; Modified Time-stamp: <2013-11-20 19:33:22 mark>
 ;;;;
 
 ;;; 
@@ -78,9 +78,9 @@
 
 ;; set up the fonts / themes
 (set-face-attribute 'default nil 
-		    :height 180 
-		    :family "Source_Code_Pro")
-(load-theme 'zenburn t)
+		    :height 200 
+		    :family "Source_Code_Pro") 
+(load-theme 'solarized-dark t)
 
 ;;;
 ;;; turn on all things that need turning on.
