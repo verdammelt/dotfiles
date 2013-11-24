@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-20 23:20:49 mark>
+;;;; Modified Time-stamp: <2013-11-23 19:45:44 mark>
 ;;;;
 
 ;;; 
@@ -80,7 +80,8 @@
 ;;;
 ;;; turn on all things that need turning on.
 ;;;
-;(display-battery-mode)
+(require 'battery-patch)
+(display-battery-mode)
 (display-time)
 (server-start)
 (show-paren-mode)
