@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-23 19:45:44 mark>
+;;;; Modified Time-stamp: <2013-11-24 10:51:16 mark>
 ;;;;
 
 ;;; 
@@ -33,10 +33,6 @@
 (load-file custom-file)
 
 ;;;
-;;; Package
-;;;
-
-;;;
 ;;; Exec Path
 ;;;
 (add-to-list 'exec-path "/usr/local/bin")
@@ -49,6 +45,10 @@
 ;;;
 (add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
+
+;;;
+;;; Package
+;;;
 (require 'init-package)
 
 ;;;
