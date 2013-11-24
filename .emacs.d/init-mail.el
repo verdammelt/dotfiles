@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-18 22:54:01 mark>
+;;;; Modified Time-stamp: <2013-11-24 15:02:21 mark>
 ;;;;
 (setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
 
@@ -12,11 +12,12 @@
 
 ;; getting bbdb in my message setup
 (after 'message 
-  
-  
+  (autoload 'sm-add-random-header "silly-mail" nil t)
+
   ;; extra stuff for message buffers - spelling etc.
   (add-hook 'message-setup-hook 'footnote-mode)
   (add-hook 'message-setup-hook 'turn-on-flyspell)
+  (add-hook 'message-setup-hook 'sm-add-random-header)
   (add-hook 'message-send-hook 'ispell-message)
 
   (setq message-default-headers "X-Attribution: MJS")
@@ -25,6 +26,20 @@
 
   (after 'supercite
     (setq sc-preferred-header-style 1)))
+
+(after 'silly-mail
+  (setq sm-mail-header-table
+	'(sm-add-emacs-name
+	  sm-add-emacs-taunt
+	  (sm-add-flame               flame               "flame")
+	  (sm-add-horoscope           horoscope           "horoscope")
+	  (sm-add-kibology            kibologize          "kibologize")
+	  sm-add-meat
+	  (sm-add-shopping-list       shop-string         "shop")
+	  sm-add-tom-swifty
+	  sm-add-tomato
+	  (sm-add-uboat-death-message uboat-death-message "uboat")
+	  sm-add-zippy-quote)))
 
 (after 'sendmail 
   (setq send-mail-function 'sendmail-send-it)
