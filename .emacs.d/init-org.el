@@ -73,7 +73,8 @@
 	 (tags-todo "+@WENDY/!-WAITING")
 	 (tags-todo "-@WORK&-@WORKMAC&-@MAC&-@WEB&-@CALL&-@ERRAND&-@WENDY/!-WAITING")
 	 (tags-todo "/WAITING")
-	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\"")
+	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
+	       ((org-agenda-sorting-strategy '(category-keep))))
 	 ))))
 
     ;; testing these out
@@ -96,32 +97,7 @@ this with to-do items than with projects or headings."
       (org-capture 0 "t"))
     
     (define-key org-agenda-mode-map "x" 'sacha/org-agenda-done)
-    (define-key org-agenda-mode-map "X" 'sacha/org-agenda-mark-done-and-add-followup))
-  
-  ;;; Mobile Setup
-  (after 'org-mobile
-    (setq org-mobile-directory (expand-file-name "~/Dropbox/GTD/MobileOrg"))
-    (setq org-mobile-inbox-for-pull "~/Documents/GTD/todo.org"))
-
-  ;;; experimental - auto push org mode
-  (defvar org-mobile-push-timer nil
-    "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
-
-  ;; Push to mobile when the idle timer runs out
-  (defun org-mobile-push-with-delay (secs)
-    (when org-mobile-push-timer
-      (cancel-timer org-mobile-push-timer))
-    (setq org-mobile-push-timer
-	  (run-with-idle-timer
-	   (* 1 secs) nil 'org-mobile-push)))
-
-  (defun push-if-todo-file ()
-    (if (string= buffer-file-name 
-		 (expand-file-name org-default-notes-file)) 
-	(org-mobile-push-with-delay 5)))
-
-  ;; After saving files, start an idle timer after which we are going to push 
-  (add-hook 'after-save-hook 'push-if-todo-file))
+    (define-key org-agenda-mode-map "X" 'sacha/org-agenda-mark-done-and-add-followup)))
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
