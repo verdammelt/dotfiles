@@ -153,6 +153,8 @@ noremap <leader>yy "*Y
 noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 nnoremap <leader><leader> <c-^>
 
+map <f1> <NOP>
+
 " because I am INSANE!
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
