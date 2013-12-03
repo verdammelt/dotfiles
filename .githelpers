@@ -30,6 +30,13 @@ function pretty_git_log() {
         sed -Ee 's/(^[^<]*) ago)/\1)/' |
         # Replace (2 years, 5 months) with (2 years)
         sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?)/\1)/' |        
+        # replace 'years' with 'y'
+        sed -Ee 's/ year(s)?/y/' |
+        sed -Ee 's/ month(s)?/mon/' |
+        sed -Ee 's/ week(s)?/w/' |
+        sed -Ee 's/ day(s)?/d/' |
+        sed -Ee 's/ hour(s)?/h/' |
+        sed -Ee 's/ minute(s)?/min/' |
         # Line columns up based on } delimiter
         column -s '}' -t |
         # Page only if we need to
