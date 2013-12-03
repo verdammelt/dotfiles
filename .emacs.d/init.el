@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-24 10:51:16 mark>
+;;;; Modified Time-stamp: <2013-12-03 10:23:30 mjs>
 ;;;;
 
 ;;; 
@@ -73,7 +73,7 @@
 
 ;; set up the fonts / themes
 (set-face-attribute 'default nil 
-		    :height 200
+		    :height 180
 		    :family "Source_Code_Pro")
 (load-theme 'solarized-dark t)
 
