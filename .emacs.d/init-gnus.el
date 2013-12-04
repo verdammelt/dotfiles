@@ -147,7 +147,7 @@
 ;;;
   (setq 
    gnus-message-archive-group 
-   '((concat "nnfolder+archive:" (format-time-string "archive-%Y")))
+   '((format-time-string "archive-%Y"))
    
    nnmail-expiry-target 'nnmail-fancy-expiry-target
    nnmail-expiry-wait 28		; originally 7
