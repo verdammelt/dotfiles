@@ -25,12 +25,16 @@
 
   (setq
    gnus-treat-display-x-face (quote head)
+   gnus-treat-display-face 'head
    gnus-treat-from-gravatar (quote head)
    gnus-treat-from-picon (quote head)
    gnus-treat-mail-gravatar (quote head)
    gnus-treat-mail-picon (quote head)
    gnus-treat-newsgroups-picon (quote head)
+   gnus-treat-display-smileys t
    gnus-treat-unsplit-urls t
+   gnus-treat-strip-multiple-blank-lines t
+   gnus-treat-emphasis t
    gnus-treat-x-pgp-sig t
    )
 ;; 
