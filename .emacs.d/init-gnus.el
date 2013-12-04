@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-10-11 14:02:46 mark>
+;;;; Time-stamp: <2013-12-03 23:44:52 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -97,6 +97,8 @@
    mail-source-crash-box (concat gnus-directory "crash-box")
    
    nnmail-treat-duplicates 'delete
+   nnmail-cache-accepted-message-ids t
+   nnmail-message-id-cache-length 5000
    )
   
 ;;;
@@ -117,10 +119,36 @@
 ;;;
   (setq
    nnmail-split-methods 'nnmail-split-fancy
-   nnmail-split-fancy '(| (: gnus-group-split-fancy)
-			  (: spam-split)
-			  "mail.inbox")
    spam-split-group "spam.spam"
+   nnmail-split-fancy '(| 
+			(to "codeandcocktails@gmail.com" "mail.codeandcocktails")
+			(to "noreply@sourceforge.net" "mail.tnef")
+			(| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
+			   (any ".*cyrusinnovation.com" "cyrus.inbox")
+			   (any ".*cyruslists.com" "cyrus.inbox"))
+			(any ".*2u.com" "cyrus.2u")
+			(to "discuss-bawch@googlegroups.com" "list.bawch")
+			(to "clean-code-discussion@googlegroups.com" "list.cleancode")
+			(from "wsmith@wordsmith.org" "list.awotd")
+			(| (any ".*ally.*" "list.bank")
+			   (any ".*mint.*" "list.bank")
+			   (any ".*citizensbank.*" "list.bank"))
+			(to "boston-software-crafstmanship@googlegroups.com" "list.boston-software-crafstmanship")
+			(from "books@dailylit.com" "list.dailylit")
+			(| (any "ELine@cambridgema.gov" "list.misc")
+			   (any "info@harvard.com" "list.misc")
+			   (any ".*zipcarmail.com" "list.misc"))
+			(| (any ".*flickr" "list.social-media")
+			   (any ".*facebookmail" "list.social-media")
+			   (any ".*twitter" "list.social-media")
+			   (any ".*linkedin" "list.social-media")
+			   (any ".*@exercism.io" "list.social-media"))
+
+			(: gnus-registry-split-fancy-with-parent)
+			(: gnus-group-split-fancy nil t nil)
+			(: spam-split)
+
+			"mail.inbox")
    )
   ;; patched version to reads from gnus-parameters correctly
   (load (locate-user-emacs-file "lisp/gnus-group-split-fancy"))
@@ -169,11 +197,9 @@
 	   (total-expire . t))
 
 	  ("mail.codeandcocktails"
-	   (to-address . "codeandcocktails@gmail.com")
 	   (posting-style  (address "codeandcocktails@gmail.com")))
 
 	  ("mail.tnef"
-	   (to-address . "noreply@sourceforge.net")
 	   (total-expire . nil)
 	   (auto-expire . nil))
 
@@ -181,70 +207,11 @@
 	   (total-expire . t)
 	   (expiry-target . delete))
 
-	  ("list.bawch"
-	   (to-address . "discuss-bawch@googlegroups.com"))
-	  
-	  ("list.cleancode"
-	   (to-address . "clean-code-discussion@googlegroups.com"))
-
-	  ("list\.agile-new-england"
-	   (extra-aliases "webmaster@agilenewengland.org"))
-
-	  ("list\.awotd"
-	   (extra-aliases "wsmith@wordsmith.org"))
-
-	  ("list\.bank"
-	   (split-regexp . "schwab\\|ally\\|mint")
-	   (extra-aliases "citizensbank_customerservice@customercenter.net"))
-
-	  ("list\.baznex"
-	   (to-address . "baznex@googlegroups.com"))
-
-	  ("list\.bikes"
-	   (extra-aliases 
-	    "events@massbike.org"
-	    "bostonbikes@cityofboston.gov"
-	    "kara@livablestreets.info"
-	    "info@bostoncyclistsunion.org"
-	    "bikeinfo@massbike.org"
-	    "charlie@livablestreets.info"
-	    "baystatecycling@googlegroups.com"
-	    "BostonAreaCycling@googlegroups.com"))
-	  ("list\.boston-software-craftsmanship"
-	   (to-address . "boston-software-craftsmanship@googlegroups.com"))
-	  ("list\.dailylit"
-	   (extra-aliases "books@dailylit.com"))
-	  ("list\.mercuryapp"
-	   (extra-aliases "feelings-unicorn@mercuryapp.com"))
-	  ("list\.misc"
-	   (extra-aliases 
-	    "ELine@cambridgema.gov"
-	    "contact@flatearththeatre.com"
-	    "info@harvard.com"
-	    "underthehood@members.zipcarmail.com"
-	    ))
-	  ("list\.social-media"
-	   (split-regexp . "flickr\\|facebookmail\\|twitter\\|linkedin")
-	   (extra-aliases 
-	    "noreply@exercism.io"
-	    "action@ifttt.com"
-	    "info@meetup.com"
-	    "no-reply@posterous.com"
-	    "ops@geekli.st"
-	    ))
-
 	  ("cyrus.*"
 	   (gcc-self .t)
 	   (total-expire . nil)
 	   (posting-style (address "msimpson@cyrusinnovation.com")))
 
-	  ("cyrus.inbox"
-	   (to-address . "msimpson@cyrusinnovation.com")
-	   (split-regexp . "cyrusinnovation"))
-
-	  ("cyrus.2u"
-	   (split-regexp . "2u"))
-	  
 	  ("spam\.spam"
 	   (total-expire . t)
 	   (expiry-wait . 1)
