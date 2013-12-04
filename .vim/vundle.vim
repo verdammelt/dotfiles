@@ -23,6 +23,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'wikitopian/hardmode'
 Bundle 'applescript.vim'
 
+Bundle 'scrooloose/syntastic'
+
 Bundle 'vim-octopress'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'

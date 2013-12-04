@@ -30,7 +30,7 @@
 	    (sit-for 5))))
   (save-packages save-packages-file))
 
-(defadvice package-menu-execute (after save-package-list)
+(defadvice package-menu-execute (after save-package-list activate)
   "Save the new package list after a change"
   (message "Saving package list.")
   (save-packages))
