@@ -47,7 +47,8 @@ set autoindent " o and O auto indent
 set smartindent " figure out proper indenting
 
 set laststatus=2 " always show the status bar
-set statusline=%<%f\ %-8(%y%m%r%)%=\ 0x%B\ %-20(%P\ %3l,%02c%03V%)
+    "set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %-8(%y%m%r%)%{fugitive#statusline()}%=\ 0x%B\ %-20(%P\ %3l,%02c%03V%)
 set showmatch " flash matching paren/bracket/etc
 
 set title " show the title

@@ -22,6 +22,8 @@ Bundle 'nelstrom/vim-qargs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'wikitopian/hardmode'
 Bundle 'applescript.vim'
+Bundle 'airblade/vim-gitgutter'
+
 
 Bundle 'scrooloose/syntastic'
 

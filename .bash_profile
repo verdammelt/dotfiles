@@ -12,11 +12,11 @@ fi
 
 CDPATH=.:~:~/SRC:~/Documents:~/Movies
 
-alias sand='ssh -A -tt sandbox_dev'
-alias api='sand "(cd ~/SRC/api && emacs .)"'
-alias green='sand "(cd ~/SRC/greenlight && emacs .)"'
-alias portal='sand "(cd ~/SRC/portal && emacs . )"'
-alias klondike='sand "(cd ~/SRC/klondike && emacs .)"'
-alias ltail='sand tornadotail'
-alias atail='sand tornadotail api'
-alias gtail='sand tornadotail greenlight'
+alias api='cd ~/SRC/api && source ~/Bin/api.sh'
+alias portal='cd ~/SRC/portal'
+alias leadforms='cd ~/SRC/lead-forms'
+alias apidbconf='~/Bin/dbconf api'
+alias ffab='fab --set=DEV_SANDBOX=true,DONT_RELOAD_SANDBOX=true -H localhost setup_environment'
+
+complete -o bashdefault -o default -o nospace -F _git g 2> /dev/null \
+    || complete -o default -o nospace -F _git g

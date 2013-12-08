@@ -12,10 +12,10 @@
 	aa = add --all
 	di = diff
 	dc = diff --cached
-	l = "!source ~/.githelpers && pretty_git_log"
+	l = "!~/Bin/pretty-git-log $*"
     lg = !git l
     la = !git l --all
-	r = !git l -24
+	r = !git l -25
     ra = !git r --all
 	rehead = reset --hard HEAD
 
@@ -24,8 +24,5 @@
 
 [achievement]
 	upload = true
-[push]
-	default = simple
-
 [rerere]
         enabled = true
