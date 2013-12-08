@@ -61,6 +61,7 @@ set wildmode=longest,list
 set wildignore+=*~
 set wildignore+=*.class
 set wildignore+=*.jar
+set wildignore+=.tmp
 set wildignore+=dist
 set wildignore+=node_modules
 
@@ -111,6 +112,7 @@ if has("autocmd")
         autocmd BufRead,BufNewFile *.markdown set filetype=octopress
         autocmd BufRead,BufNewFile *.md set filetype=octopress
         autocmd BufRead,BufNewFile *.applescript set filetype=applescript
+        autocmd BufRead,BufNewFile *.less set filetype=scss
 
         " For all text files set 'textwidth' to 78 characters.
         autocmd FileType text setlocal spell

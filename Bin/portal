@@ -1,0 +1,26 @@
+#!/bin/bash -e
+
+function check_virtualenv() {
+    if [ -z "$VIRTUAL_ENV" ]; then
+        echo "activate a virtualenv you dope!"
+        exit 1
+    fi
+}
+
+cmd=$1 && shift
+
+case $cmd in
+    "build" )
+        ./bin/build $*
+        ;;
+
+    "full" | "deploy" )
+        check_virtualenv
+        ./bin/deploy $*
+        ;;
+
+    "start" | "stop" )
+        echo "Portal cannot be started or stopped"
+        exit 1
+        ;;
+esac

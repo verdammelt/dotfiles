@@ -1,0 +1,30 @@
+#!/bin/bash -e
+
+function check_virtualenv() {
+    if [ -z "$VIRTUAL_ENV" ]; then
+	echo "activate a virtualenv you dope!"
+	exit 1
+    fi
+}
+
+case $1 in
+    "build")
+	check_virtualenv
+	./scripts/jenkins-ci-build.sh
+	;;
+
+    "deploy")
+	check_virtualenv
+	./scripts/local-deploy.sh
+	;;
+
+    "full")
+	$0 build && $0 deploy
+	;;
+
+    "start" | "stop" )
+	(set -x && \
+		sudo supervisorctl -c /var/leadforms/${API_ENV}/supervisord.conf \
+		     $1 leadforms_${API_ENV})
+	;;
+esac

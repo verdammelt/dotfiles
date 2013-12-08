@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ORG=`echo $API_ENV | sed -e 's/^\(.*\)-\(.*\)$/-d \1 -e \2/'`
+
+APP=$1
+shift
+
+CMD="dbconf.py -R us-west-2 -i $ORG -a $APP $*"
+
+set -x
+$CMD

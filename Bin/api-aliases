@@ -1,0 +1,7 @@
+alias runit="fab clean_pyc && time nosetests -s tests/unit/testportal tests/unit/testleadform tests/unit/testservice"
+alias rfunc="fab clean_pyc && time nosetests -s tests/functional/testportal tests/functional/testleadform"
+alias rfuncd="time fab -H localhost run_functional_tests:suite=testportal --set=DEV_SANDBOX=true,DONT_RELOAD_SUPERVISOR=true"
+alias rinte="fab clean_pyc && time nosetests -s tests/integration/"
+alias rall="runit && rfuncd && rinte"
+
+export WORK_FACTOR=0

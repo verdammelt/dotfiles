@@ -1,0 +1,10 @@
+if [ "$1" = "-h" ]; then
+   echo "ex: tornadotail greenlight tornado api0 unc-mpa-sb02"
+fi
+
+proc=${1:-api}
+file=${2:-tornado}
+num=${3:-api0}
+env=${4:-unc-mpa-sb01}
+set -x
+ssh sandbox-lms-$num-qa.2u.com tail -F /var/$proc/$env/log/$file.log

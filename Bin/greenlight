@@ -1,0 +1,33 @@
+#!/bin/bash -e
+
+function check_virtualenv() {
+    if [ -z "$VIRTUAL_ENV" ]; then
+	echo "activate a virtualenv you dope!"
+	exit 1
+    fi
+}
+
+cmd=$1; shift
+
+case $cmd in
+    "build")
+	check_virtualenv
+	./scripts/jenkins-ci-build.sh
+	;;
+
+    "deploy")
+	check_virtualenv
+        ./scripts/deps.sh && ./scripts/local-deploy.sh $*
+	;;
+
+    "full")
+	$0 build && $0 deploy
+	;;
+
+    "start" | "stop" )
+	(set -x && \
+		sudo /var/greenlight/${API_ENV}/env/bin/supervisorctl \
+                     -c /var/greenlight/${API_ENV}/supervisord.conf \
+		     $cmd greenlight_${API_ENV})
+	;;
+esac

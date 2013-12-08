@@ -1,0 +1,50 @@
+#!/bin/bash -e
+
+export WORK_FACTOR=${WORK_FACTOR:-0}
+
+function check_virtualenv() {
+    if [ -z "$VIRTUAL_ENV" ]; then
+	echo "activate a virtualenv you dope!"
+	exit 1
+    fi
+}
+
+FAB=`which fab`
+function fab() {
+    $FAB -H localhost --set=DEV_SANDBOX=true,DONT_RELOAD_SUPERVISOR=true $*
+}
+
+cmd=$1; shift
+
+case $cmd in
+    "build")
+	check_virtualenv
+	time (set -x && \
+		     pip install -qr dev-requirements.txt && \
+		     fab clean_pyc && \
+		     fab setup_environment setup_config_file && \
+		     nosetests -s tests/unit/testportal tests/unit/testleadform tests/unit/testservices && \
+		     fab run_functional_tests:suite=testportal)
+	;;
+
+    "full")
+	check_virtualenv
+	time (set -x && \
+		     pip install -qr dev-requirements.txt && \
+		     fab setup_environment setup_config_file && \
+		     fab run_unit_tests run_functional_tests:suite=testportal && \
+		     nosetests -s tests/integration)
+	;;
+
+    "deploy")
+	check_virtualenv
+	time (set -x && \
+		     pip install -qr dev-requirements.txt && \
+		     fab setup_environment setup_config_file && \
+		     fab deploy_for_functional_tests)
+	;;
+
+    "start" | "stop" )
+	time (set -x && sudo supervisorctl $1 ${API_ENV}:*)
+	;;
+esac

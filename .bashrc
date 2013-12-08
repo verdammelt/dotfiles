@@ -7,9 +7,9 @@ PATH=$HOME/Bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 export CLICOLOR=1
 
 alias df='df -h'
-alias ls='ls -F'
 alias rm='rm -i'
-alias l=ls
+alias ls='ls -F --color'
+alias l='ls'
 alias ll='ls -l'
 alias v=vi
 alias m=mail
@@ -21,6 +21,7 @@ alias t='tree -C -F'
 alias pdfopen='pdfopen -viewer xpdf'
 alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
 
+PATH=$HOME/Bin:$HOME/.rvm/bin:/opt/emacs/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 NODE_PATH=/usr/local/lib/node_modules
 MANPATH=$MANPATH:/opt/local/man
 TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
@@ -30,6 +31,8 @@ VISUAL=emacsclient
 export AUTOFEATURE=true
 
 export PYTHONSTARTUP=$HOME/.pythonrc.py
+export API_ENV=unc-mpa-msimpson
+
 
 ## LifeLines (genealogy software)
 alias llines='(cd $HOME/LifeLines ; LANG=en_US llines simpson)'
@@ -106,3 +109,7 @@ function batt() {
 }
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+function activate() {
+    source ~/.virtualenvs/`basename $PWD`/bin/activate
+}
