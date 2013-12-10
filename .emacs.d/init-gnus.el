@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-12-03 23:44:52 mark>
+;;;; Time-stamp: <2013-12-10 12:54:37 mjs>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -69,14 +69,18 @@
   (add-hook 'gnus-summary-exit-hook 'gnus-group-sort-groups-by-rank)
   
 ;;;
-;;; Sorting Articles in Summary Buffer
+;;; Threading
 ;;;
-  (setq
+  (setq 
    gnus-thread-sort-functions '(gnus-thread-sort-by-number 
 				(not gnus-thread-sort-by-most-recent-date)
 				gnus-thread-sort-by-total-score)
-   gnus-thread-hide-subtree t
+   gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
    gnus-thread-expunge-below -1000
+   gnus-thread-hide-subtree t
+   gnus-summary-make-false-root dummy
+   gnus-summary-gather-subject-limit 'fuzzy
+   gnus-build-sparse-threads 'some
    )
   
 ;;; 
