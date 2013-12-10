@@ -34,6 +34,7 @@
 ;; look into el-get.
 
 ;;; Code:
+(load-library "cl-extra")
 
 (defgroup save-packages nil
   "Save and restore installed packages."
