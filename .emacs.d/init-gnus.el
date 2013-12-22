@@ -127,10 +127,10 @@
    nnmail-split-fancy '(| 
 			(to "codeandcocktails@gmail.com" "mail.codeandcocktails")
 			(to "noreply@sourceforge.net" "mail.tnef")
+			(any ".*2u.com" "cyrus.2u")
 			(| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
 			   (any ".*cyrusinnovation.com" "cyrus.inbox")
 			   (any ".*cyruslists.com" "cyrus.inbox"))
-			(any ".*2u.com" "cyrus.2u")
 			(to "discuss-bawch@googlegroups.com" "list.bawch")
 			(to "clean-code-discussion@googlegroups.com" "list.cleancode")
 			(from "wsmith@wordsmith.org" "list.awotd")
