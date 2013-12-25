@@ -3,8 +3,14 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-20 23:20:37 mark>
+;;;; Modified Time-stamp: <2013-12-24 22:58:13 mark>
 ;;;;
+
+(setq slime-lisp-implementations
+      '(("sbcl" ("sbcl"))
+	("cmucl" ("lisp"))))
+(slime-setup '(slime-fancy))
+
 (after 'lisp-mode
   (if (or (fboundp 'paredit-mode) 
 	  (autoloadp (symbol-function 'paredit-mode)))
