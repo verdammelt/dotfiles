@@ -114,5 +114,4 @@
 ;; Misc
 (after 'gnutls
   (setq gnutls-min-prime-bits 1024))
-
-
+(put 'narrow-to-region 'disabled nil)
