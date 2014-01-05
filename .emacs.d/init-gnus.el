@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-12-10 12:54:37 mjs>
+;;;; Time-stamp: <2013-12-24 22:41:33 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -87,7 +87,8 @@
 ;;; Registry
 ;;;
   (setq gnus-registry-install t
-	gnus-registry-split-strategy 'majority)
+	gnus-registry-split-strategy 'majority
+	gnus-registry-max-entries 50000)
   (gnus-registry-initialize)
   
 ;;;
