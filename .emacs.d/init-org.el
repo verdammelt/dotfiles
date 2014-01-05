@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-11-17 19:33:47 mark>
+;;;; Modified Time-stamp: <2014-01-04 17:30:35 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -33,7 +33,11 @@
 
   (setq org-capture-templates
 	`(("t" "Task" entry (file+headline "" "Tasks")
-	   "* TODO %?\n  %U\n  %a\n")
+	   "* TODO %?\n  %U\n"
+	   :empty-lines-after 1)
+	  ("p" "Project" entry (file+headline "" "Projects")
+	   "* %? \n %U\n" 
+	   :jump-to-captured t :empty-lines-after 1)
 	  ("k" "Tickler" entry (file+headline "" "Tickler")
 	   "* TODO %?\n  %U\n  %a\n")
 	  ("n" "Note" entry (file+headline "" "Catpure / Notes")
@@ -102,8 +106,8 @@ this with to-do items than with projects or headings."
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ct" (lambda () (interactive) (org-capture nil "t")))
+(global-set-key "\C-cp" (lambda () (interactive) (org-capture nil "p")))
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-
 
 (provide 'init-org)
