@@ -60,6 +60,10 @@
 .tramp_history
 .vim-tmp
 .viminfo
+.sbcl_history
+.lein_history
+.emacs.d/ac-comphist.dat
+.quicklisp/cache
 Applications
 Desktop
 Documents
@@ -75,6 +79,5 @@ Public
 SRC
 Sites
 \#*
-/.emacs.d/.smex-items
 /.ido.last
 DOS Games
