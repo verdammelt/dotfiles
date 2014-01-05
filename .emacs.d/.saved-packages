@@ -1,10 +1,10 @@
 
-(ac-nrepl ac-slime
-	  auctex
+(ac-slime auctex
 	  auto-complete
 	  browse-kill-ring
 	  cider
 	  cljdoc
+	  clojure-cheatsheet
 	  clojure-mode
 	  clojure-test-mode
 	  color-theme
@@ -19,13 +19,13 @@
 	  gh
 	  git-commit-mode
 	  git-rebase-mode
+	  helm
 	  ido-ubiquitous
 	  logito
 	  magit
 	  markdown-mode
 	  midje-mode
 	  mode-compile
-	  nrepl
 	  org
 	  paredit
 	  pcache
