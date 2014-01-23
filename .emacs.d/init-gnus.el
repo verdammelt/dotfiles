@@ -170,6 +170,7 @@
        gnus-score-find-hierarchical)
      gnus-adaptive-pretty-print t
      gnus-adaptive-word-no-group-words t
+     gnus-score-thread-simplify t
      )
     (add-to-list 'gnus-default-adaptive-score-alist
 		 '(gnus-ticked-mark (subject 10))))
