@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2013-12-24 22:41:33 mark>
+;;;; Time-stamp: <2014-01-22 20:10:55 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -76,7 +76,6 @@
 				(not gnus-thread-sort-by-most-recent-date)
 				gnus-thread-sort-by-total-score)
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
-   gnus-thread-expunge-below -1000
    gnus-thread-hide-subtree t
    gnus-summary-make-false-root 'dummy
    gnus-summary-gather-subject-limit 'fuzzy
@@ -166,7 +165,9 @@
     (add-hook 'message-sent-hook 'gnus-score-followup-thread)
     (setq 
      gnus-use-adaptive-scoring t
-     gnus-score-find-score-files-function '(gnus-score-find-hierarchical)
+     gnus-score-find-score-files-function 
+     '((lambda (group) '("SCORE")) 
+       gnus-score-find-hierarchical)
      gnus-adaptive-pretty-print t
      gnus-adaptive-word-no-group-words t
      )
