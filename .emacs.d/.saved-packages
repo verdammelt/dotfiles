@@ -20,7 +20,9 @@
 	  git-commit-mode
 	  git-rebase-mode
 	  helm
+	  ido-sort-mtime
 	  ido-ubiquitous
+	  ido-vertical-mode
 	  logito
 	  magit
 	  markdown-mode
