@@ -47,7 +47,7 @@
    
    ;; formatting the screen
    gnus-summary-line-format 
-   "[%4i]%U%R %10&user-date;%[%4L: %-23,23uB%]%O%B%s\n"
+   "[%4V:%4i]%U%R %10&user-date;%[%4L: %-23,23uB%]%O%B%s\n"
    
    ;;change date display depending upon age of article 
    gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") 
