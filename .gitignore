@@ -63,7 +63,7 @@
 .sbcl_history
 .lein_history
 .emacs.d/ac-comphist.dat
-.quicklisp/cache
+.quicklisp
 Applications
 Desktop
 Documents
