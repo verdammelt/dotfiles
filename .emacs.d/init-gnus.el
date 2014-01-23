@@ -72,8 +72,7 @@
 ;;; Threading
 ;;;
   (setq 
-   gnus-thread-sort-functions '(gnus-thread-sort-by-number 
-				(not gnus-thread-sort-by-most-recent-date)
+   gnus-thread-sort-functions '((not  gnus-thread-sort-by-number) 
 				gnus-thread-sort-by-total-score)
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
    gnus-thread-hide-subtree t
