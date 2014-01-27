@@ -1,8 +1,0 @@
-*.elc
-*.info
-/lisp/bbdb-loaddefs.el
-/lisp/TAGS
-Makefile
-/autom4te.cache
-/config.*
-/configure
