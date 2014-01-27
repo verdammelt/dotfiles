@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-10-14 22:48:41 mark>
+;;;; Modified Time-stamp: <2014-01-26 22:34:12 mark>
 ;;;;
 ;; Save my place in files
 (setq-default save-place t)
@@ -62,6 +62,17 @@
 (after 'simple
   (add-hook 'prog-mode-hook 'linum-mode)
   (add-hook 'prog-mode-hook 'turn-on-fci-mode))
+
+;; auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
+(after 'auto-complete (ac-ispell-setup))
+(add-hook 'text-mode 'ac-ispell-ac-setup)
+
+;; yasnippet
+(yas-global-mode 1)
+
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-set-key (kbd "<f7>") 'magit-status)
 
