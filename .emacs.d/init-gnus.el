@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2014-01-22 20:10:55 mark>
+;;;; Time-stamp: <2014-01-26 21:23:17 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -153,9 +153,7 @@
 
 			"mail.inbox")
    )
-  ;; patched version to reads from gnus-parameters correctly
-  (load (locate-user-emacs-file "lisp/gnus-group-split-fancy"))
-  
+
 ;;;
 ;;; Scoring
 ;;;
