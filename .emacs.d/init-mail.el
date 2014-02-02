@@ -3,9 +3,9 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-01-16 17:04:25 mjs>
+;;;; Modified Time-stamp: <2014-01-31 07:24:05 mark>
 ;;;;
-(setq user-mail-address "msimpson@cyrusinnovation.com") ; default would be wrong from my laptop
+(setq user-mail-address "damned@theworld.com") ; default would be wrong from my laptop
 
 ;; this way i have Gcc: etc. in my mail buffer
 (setq mail-user-agent 'gnus-user-agent)
