@@ -217,7 +217,7 @@
 	   (expiry-target . delete))
 
 	  ("cyrus.*"
-	   (gcc-self .t)
+	   (gcc-self . t)
 	   (total-expire . nil)
 	   (posting-style (address "msimpson@cyrusinnovation.com")))
 
