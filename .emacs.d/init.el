@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-12-03 23:48:53 mark>
+;;;; Modified Time-stamp: <2014-01-27 11:00:07 mjs>
 ;;;;
 
 ;;; 
@@ -35,6 +35,7 @@
 ;;;
 ;;; Exec Path
 ;;;
+(add-to-list 'exec-path "/usr/local/share/npm/bin")
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/Users/mark/Bin")
 (add-to-list 'exec-path "/usr/texbin" :append)
