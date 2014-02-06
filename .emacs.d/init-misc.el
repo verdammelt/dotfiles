@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-01-26 22:34:12 mark>
+;;;; Modified Time-stamp: <2014-01-30 10:19:02 mjs>
 ;;;;
 ;; Save my place in files
 (setq-default save-place t)
@@ -83,5 +83,8 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-set-key (kbd "<f7>") 'magit-status)
+
+(after 'coffee-mode
+  (setq coffee-tab-width 4))
 
 (provide 'init-misc)
