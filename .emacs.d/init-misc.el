@@ -72,6 +72,11 @@
 ;; yasnippet
 (yas-global-mode 1)
 
+(defun change-size (size)
+  (interactive "nsize: ")
+  (if (< size 100) (setq size (* 10 size)))
+  (set-face-attribute 'default nil :height size))
+(global-set-key (kbd "s-s") 'change-size)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-set-key (kbd "<f7>") 'magit-status)
