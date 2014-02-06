@@ -1,5 +1,6 @@
 
-(ac-ispell ac-slime
+(ac-ispell ac-nrepl
+	   ac-slime
 	   ace-jump-mode
 	   auctex
 	   auto-complete
@@ -7,6 +8,7 @@
 	   browse-kill-ring
 	   cider
 	   cljdoc
+	   clojure-cheatsheet
 	   clojure-mode
 	   clojure-test-mode
 	   coffee-mode
@@ -14,33 +16,38 @@
 	   dash
 	   expand-region
 	   fill-column-indicator
+	   flymake-coffee
 	   flymake-easy
+	   flymake-php
 	   flymake-ruby
+	   fringe-helper
 	   fuzzy
 	   geiser
 	   gh
 	   git-commit-mode
 	   git-rebase-mode
+	   helm
 	   ido-sort-mtime
 	   ido-ubiquitous
 	   ido-vertical-mode
-	   idomenu
 	   logito
 	   magit
 	   markdown-mode
 	   midje-mode
 	   mode-compile
-	   octomacs
+	   nrepl
 	   org
 	   paredit
 	   pcache
+	   php-mode
 	   pkg-info
 	   popup
 	   rainbow-delimiters
 	   rspec-mode
-	   ruby-mode
 	   rvm
 	   slime
 	   solarized-theme
+	   save-packages
+	   wgrep
 	   yasnippet
 	   zenburn-theme)
