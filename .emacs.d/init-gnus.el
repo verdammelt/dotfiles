@@ -168,8 +168,8 @@
      gnus-kill-files-directory (expand-file-name "score-files" gnus-directory) ;where to put the kill files
      gnus-use-adaptive-scoring t
      gnus-score-find-score-files-function 
-     '((lambda (group) '("SCORE")) 
-       gnus-score-find-hierarchical)
+     '(gnus-score-find-hierarchical
+       (lambda (group) '("SCORE")))
      gnus-adaptive-pretty-print t
      gnus-adaptive-word-no-group-words t
      gnus-score-thread-simplify t
