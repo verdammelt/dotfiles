@@ -247,7 +247,9 @@
 (defun switch-to-gnus () 
   (interactive) 
   (let ((group-buffer (get-buffer "*Group*")))
-    (if group-buffer (switch-to-buffer group-buffer)
+    (if group-buffer 
+	(progn (switch-to-buffer group-buffer)
+	       (gnus-group-get-new-news))
       (gnus))))
 
 (global-set-key (kbd "<f6>") 'switch-to-gnus)
