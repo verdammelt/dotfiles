@@ -41,8 +41,6 @@
 ;;; General settings
 ;;;
   (setq 
-   gnus-decay-scores t	  ; temporary scores should degrade over time.
-   gnus-kill-files-directory (expand-file-name "score-files" gnus-directory) ;where to put the kill files
    gnus-gcc-mark-as-read t	   ; carbon-copies should be auto-read
    
    ;; formatting the screen
@@ -166,6 +164,8 @@
     (add-hook 'message-sent-hook 'gnus-score-followup-article)
     (add-hook 'message-sent-hook 'gnus-score-followup-thread)
     (setq 
+     gnus-decay-scores t	  ; temporary scores should degrade over time.
+     gnus-kill-files-directory (expand-file-name "score-files" gnus-directory) ;where to put the kill files
      gnus-use-adaptive-scoring t
      gnus-score-find-score-files-function 
      '((lambda (group) '("SCORE")) 
