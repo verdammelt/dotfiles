@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2014-01-26 21:23:17 mark>
+;;;; Time-stamp: <2014-03-15 08:37:16 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -124,6 +124,7 @@
    nnmail-split-methods 'nnmail-split-fancy
    spam-split-group "spam.spam"
    nnmail-split-fancy '(| 
+			("subject" "Message left on server:.*" "mail.misc")
 			(to "codeandcocktails@gmail.com" "mail.codeandcocktails")
 			(to "noreply@sourceforge.net" "mail.tnef")
 			(any ".*2u.com" "cyrus.2u")
@@ -145,9 +146,12 @@
 			   (any ".*facebookmail" "list.social-media")
 			   (any ".*twitter" "list.social-media")
 			   (any ".*linkedin" "list.social-media")
-			   (any ".*@exercism.io" "list.social-media"))
+			   (any ".*@exercism.io" "list.social-media")
+			   (any ".*@github.com" "list.social-media")
+			   (any ".*@stackexchange.com" "list.social-media")
+			   (any ".*@postcrossing.com" "list.social-media"))
 
-			(: gnus-registry-split-fancy-with-parent)
+			;; (: gnus-registry-split-fancy-with-parent)
 			(: gnus-group-split-fancy nil t nil)
 			(: spam-split)
 
