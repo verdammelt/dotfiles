@@ -10,7 +10,6 @@
 	   clojure-mode
 	   clojure-test-mode
 	   color-theme
-	   color-theme-solarized
 	   dash
 	   epl
 	   expand-region
@@ -43,6 +42,7 @@
 	   rvm
 	   sea-before-storm-theme
 	   slime
+	   solarized-theme
 	   theme-changer
 	   tron-theme
 	   tronesque-theme
