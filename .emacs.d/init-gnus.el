@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2014-03-15 08:37:16 mark>
+;;;; Time-stamp: <2014-03-27 07:06:22 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -149,7 +149,8 @@
 			   (any ".*@exercism.io" "list.social-media")
 			   (any ".*@github.com" "list.social-media")
 			   (any ".*@stackexchange.com" "list.social-media")
-			   (any ".*@postcrossing.com" "list.social-media"))
+			   (any ".*@postcrossing.com" "list.social-media")
+			   (any ".*@meetup.com" "list.social-media"))
 
 			;; (: gnus-registry-split-fancy-with-parent)
 			(: gnus-group-split-fancy nil t nil)
