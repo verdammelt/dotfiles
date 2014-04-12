@@ -69,7 +69,7 @@ blue='\[\e[0;34m\]'
 grey='\[\e[1;30m\]'
 
 #export PS1='\[\033[G\]\h:\W'$purple'$(__git_ps1 "(%s)")'$reset'> '
-export PS1='\[\e[0;34m\e[40m\]\A \h:\W'$reset$purple'$(__git_ps1 "(%s)")'$reset'> '
+export PS1=$blue'\A \h:\W'$reset$purple'$(__git_ps1 "(%s)")'$reset'> '
 
 function myip(){ 
     ip=`curl -s automation.whatismyip.com/n09230945.asp` 
