@@ -81,3 +81,6 @@ Sites
 \#*
 /.ido.last
 DOS Games
+.node-gyp
+.keybase
+.keybase-installer
