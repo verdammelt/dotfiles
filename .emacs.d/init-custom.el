@@ -4,7 +4,7 @@
 ;;;; This file contains the custom-set-variables block. I use customize
 ;;;; as little as possible
 ;;;;
-;;;; Modified Time-stamp: <2013-11-19 23:15:05 mark>
+;;;; Modified Time-stamp: <2014-04-12 19:50:21 mark>
 ;;;;
 ;;;
 (custom-set-variables
@@ -12,4 +12,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(canlock-password "3852e20bef8b9ce61785cd355f16f621d317031e"))
+ '(canlock-password "3852e20bef8b9ce61785cd355f16f621d317031e")
+ '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
