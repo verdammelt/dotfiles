@@ -9,9 +9,9 @@
 	   cljdoc
 	   clojure-mode
 	   clojure-test-mode
+	   coffee-mode
 	   color-theme
 	   dash
-	   epl
 	   expand-region
 	   fill-column-indicator
 	   flymake-easy
@@ -40,12 +40,7 @@
 	   rspec-mode
 	   ruby-mode
 	   rvm
-	   sea-before-storm-theme
 	   slime
 	   solarized-theme
-	   theme-changer
-	   tron-theme
-	   tronesque-theme
-	   twilight-theme
 	   yasnippet
 	   zenburn-theme)
