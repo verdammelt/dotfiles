@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-01-04 17:30:35 mark>
+;;;; Modified Time-stamp: <2014-04-30 15:28:41 mjs>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -86,7 +86,13 @@
 	 (tags-todo "/WAITING")
 	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
 	       ((org-agenda-sorting-strategy '(category-keep))))
-	 ))))
+	 ))
+       ("w" "waiting" tags-todo "/WAITING")
+       ("k" "work" 
+	((tags-todo "+@WORK|+@WORKMAC|+2U"
+		    ((org-agenda-sorting-strategy '(todo-state-up tag-up))))
+	 (tags "+@WORK&+CATEGORY=\"PROJ\"&+LEVEL=2"
+	       ((org-agenda-sorting-strategy '(todo-state-down))))))))
 
     ;; testing these out
     (defun sacha/org-agenda-done (&optional arg)
