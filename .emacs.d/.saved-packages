@@ -15,8 +15,8 @@
 	   color-theme
 	   dash
 	   expand-region
+	   f
 	   fill-column-indicator
-	   flymake-coffee
 	   flymake-easy
 	   flymake-php
 	   flymake-ruby
@@ -25,11 +25,15 @@
 	   geiser
 	   gh
 	   git-commit-mode
+	   git-gutter
+	   git-gutter-fringe
 	   git-rebase-mode
 	   helm
+	   ido-gnus
 	   ido-sort-mtime
 	   ido-ubiquitous
 	   ido-vertical-mode
+	   jade-mode
 	   logito
 	   magit
 	   markdown-mode
