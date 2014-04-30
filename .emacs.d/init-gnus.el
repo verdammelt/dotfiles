@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2014-03-27 07:06:22 mark>
+;;;; Time-stamp: <2014-04-09 08:23:01 mjs>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -126,6 +126,8 @@
 			(to "codeandcocktails@gmail.com" "mail.codeandcocktails")
 			(to "noreply@sourceforge.net" "mail.tnef")
 			(any ".*2u.com" "cyrus.2u")
+			(| (from "noreply@outbound.getsentry.com" "cyrus.2u-errors")
+			   (from "noreply@newrelic.com" "cyrus.2u-errors"))
 			(| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
 			   (any ".*cyrusinnovation.com" "cyrus.inbox")
 			   (any ".*cyruslists.com" "cyrus.inbox"))
