@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-01-30 10:19:02 mjs>
+;;;; Modified Time-stamp: <2014-04-30 13:54:22 mjs>
 ;;;;
 ;; Save my place in files
 (setq-default save-place t)
@@ -66,8 +66,19 @@
 ;; auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
-(after 'auto-complete (ac-ispell-setup))
-(add-hook 'text-mode 'ac-ispell-ac-setup)
+(after 'auto-complete 
+  (ac-ispell-setup)
+  (setq ac-use-menu-map t))
+(global-auto-complete-mode t)
+
+(add-hook 'text-mode-hook 'ac-ispell-ac-setup)
+
+
+;; abbrevs
+(setq-default abbrev-mode t)
+
+;; flyspell
+(add-hook 'text-mode-hook 'flyspell-mode)
 
 ;; yasnippet
 (yas-global-mode 1)
@@ -85,6 +96,10 @@
 (global-set-key (kbd "<f7>") 'magit-status)
 
 (after 'coffee-mode
+  (add-to-list 'ac-modes 'coffee-mode)
+  (add-hook 'coffee-mode-hook 'whitespace-mode)
+  (setq whitespace-style '(face empty indentation trailing)
+	whitespace-action '(auto-cleanup warn-if-read-only))
   (setq coffee-tab-width 4))
 
 (provide 'init-misc)
