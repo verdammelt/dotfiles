@@ -31,6 +31,13 @@
 				     mjs-someday-maybe-file) 
 			      :maxlevel . 9)))
 
+  (setq org-clock-persist t
+	org-clock-idle-time 10
+	org-clock-persist-file (expand-file-name 
+				".org-clock-save.el" 
+				user-emacs-directory))
+  (org-clock-persistence-insinuate)
+
   (setq org-capture-templates
 	`(("t" "Task" entry (file+headline "" "Tasks")
 	   "* TODO %?\n  %U\n"
