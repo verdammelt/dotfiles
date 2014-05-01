@@ -165,11 +165,15 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table '())
+(define-abbrev-table 'python-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
 (define-abbrev-table 'sgml-mode-abbrev-table '())
+
+(define-abbrev-table 'sh-mode-abbrev-table '())
 
 (define-abbrev-table 'shell-mode-abbrev-table '())
 
@@ -207,6 +211,7 @@
   '(
     ("backend" "back end" nil 8)
     ("javascript" "JavaScript" nil 4)
+    ("standup" "stand up" nil 0)
    ))
 
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
