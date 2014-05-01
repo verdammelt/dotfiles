@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-04-30 13:54:22 mjs>
+;;;; Modified Time-stamp: <2014-05-01 16:18:22 mjs>
 ;;;;
 ;; Save my place in files
 (setq-default save-place t)
@@ -104,5 +104,11 @@
   (setq whitespace-style '(face empty indentation trailing)
 	whitespace-action '(auto-cleanup warn-if-read-only))
   (setq coffee-tab-width 4))
+
+(after 'markdown
+  (setq markdown-command "markdown | smartypants"))
+
+(after 'text
+  (setq sentence-end-double-space nil))
 
 (provide 'init-misc)
