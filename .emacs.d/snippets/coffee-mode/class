@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: class
+# key: class
+# contributor: Mark Simpson
+# exapnd-env: ((yas-indent-line 'fixed))
+# --
+class ${1:name}
+    constructor: (${2:args}) ->
+        $0
