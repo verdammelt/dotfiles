@@ -14,8 +14,8 @@
 	   coffee-mode
 	   color-theme
 	   dash
+	   epl
 	   expand-region
-	   f
 	   fill-column-indicator
 	   flymake-easy
 	   flymake-php
@@ -25,15 +25,12 @@
 	   geiser
 	   gh
 	   git-commit-mode
-	   git-gutter
-	   git-gutter-fringe
 	   git-rebase-mode
 	   helm
 	   ido-gnus
 	   ido-sort-mtime
 	   ido-ubiquitous
 	   ido-vertical-mode
-	   jade-mode
 	   logito
 	   magit
 	   markdown-mode
@@ -49,9 +46,12 @@
 	   rainbow-delimiters
 	   rspec-mode
 	   rvm
+	   save-packages
 	   slime
 	   solarized-theme
-	   save-packages
+	   sws-mode
+	   theme-changer
+	   twilight-theme
 	   wgrep
 	   yasnippet
 	   zenburn-theme)
