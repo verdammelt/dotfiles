@@ -31,7 +31,6 @@
   (setq sm-mail-header-table
 	'(sm-add-emacs-name
 	  sm-add-emacs-taunt
-	  (sm-add-flame               flame               "flame")
 	  (sm-add-horoscope           horoscope           "horoscope")
 	  (sm-add-kibology            kibologize          "kibologize")
 	  sm-add-meat
