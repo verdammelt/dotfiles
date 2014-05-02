@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: time-stamp
+# key: tstamp
+# --
+`(format-time-string "%Y-%m-%dT%T%z")` 
