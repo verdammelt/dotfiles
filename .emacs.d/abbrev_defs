@@ -190,9 +190,7 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -239,7 +237,9 @@
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("backend" "back end" nil 14)
+    ("hardcode" "hard-code" nil 0)
     ("javascript" "JavaScript" nil 5)
+    ("lf" "LeadForm" nil 17)
     ("segmentio" "Segment.io" nil 1)
     ("standup" "stand up" nil 1)
    ))
