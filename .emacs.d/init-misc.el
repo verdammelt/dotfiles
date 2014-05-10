@@ -116,4 +116,17 @@
 (after 'text
   (setq sentence-end-double-space nil))
 
+(require 'smex)
+(after 'smex
+  (setq smex-save-file (locate-user-emacs-file ".smex-items"))
+  (smex-initialize)
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+
+(require 'projectile)
+(after 'projectile
+  (setq projectile-mode-line-lighter " P")
+  (projectile-global-mode)
+  (setq projectile-switch-project-action 'projectile-dired))
+
 (provide 'init-misc)
