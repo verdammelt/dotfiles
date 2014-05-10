@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-01-27 11:00:07 mjs>
+;;;; Modified Time-stamp: <2014-05-09 22:57:59 mark>
 ;;;;
 
 ;;; 
@@ -99,15 +99,10 @@
 (timer-activate midnight-timer)
 
 (require 'uniquify)
-(require 'saveplace)
 
 ;; setup miniedit - multi-line editing of the mini-buffer
 (require 'miniedit)
 (miniedit-install)
-
-;; turn on the column indicator
-(setq fill-column 78)
-(add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)

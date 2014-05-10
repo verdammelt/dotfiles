@@ -3,9 +3,10 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-02 08:52:30 mjs>
+;;;; Modified Time-stamp: <2014-05-09 22:57:56 mark>
 ;;;;
 ;; Save my place in files
+(require 'saveplace)
 (setq-default save-place t)
 (after 'saveplace 
   (setq save-place-file (locate-user-emacs-file ".places")))
@@ -52,7 +53,9 @@
    calendar-view-holidays-initially-flag t))
 
 ;; Editing text
+(setq fill-column 78)
 (after 'fill-column-indicator
+  (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (setq fci-rule-color "red"))
 
 (after 'battery 
