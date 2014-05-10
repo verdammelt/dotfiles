@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-04-30 15:28:41 mjs>
+;;;; Modified Time-stamp: <2014-05-09 23:01:36 mark>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -82,7 +82,7 @@
 	 (tags-todo "+@CALL|+@ERRAND/!-WAITING")
 	 (tags-todo "+@MAC|+@WEB/!-WAITING")
 	 (tags-todo "+@WENDY/!-WAITING")
-	 (tags-todo "-@WORK&-@WORKMAC&-@MAC&-@WEB&-@CALL&-@ERRAND&-@WENDY/!-WAITING")
+	 (tags-todo "+@HOME|+@ANY/!-WAITING")
 	 (tags-todo "/WAITING")
 	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
 	       ((org-agenda-sorting-strategy '(category-keep))))
