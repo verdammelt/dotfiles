@@ -8,7 +8,6 @@
 	   browse-kill-ring
 	   cider
 	   cljdoc
-	   clojure-cheatsheet
 	   clojure-mode
 	   clojure-test-mode
 	   coffee-mode
@@ -26,8 +25,8 @@
 	   gh
 	   git-commit-mode
 	   git-rebase-mode
-	   helm
-	   ido-gnus
+	   haskell-mode
+	   ido-hacks
 	   ido-sort-mtime
 	   ido-ubiquitous
 	   ido-vertical-mode
@@ -46,12 +45,11 @@
 	   rainbow-delimiters
 	   rspec-mode
 	   rvm
+	   s
 	   save-packages
 	   slime
 	   solarized-theme
 	   sws-mode
-	   theme-changer
-	   twilight-theme
 	   wgrep
 	   yasnippet
 	   zenburn-theme)
