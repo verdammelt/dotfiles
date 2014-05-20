@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-01-27 11:00:07 mjs>
+;;;; Modified Time-stamp: <2014-05-19 12:14:48 mjs>
 ;;;;
 
 ;;; 
@@ -93,6 +93,8 @@
 (ido-mode)
 (ido-everywhere)
 (ido-ubiquitous)
+(require 'ido-hacks)
+(ido-hacks-mode)
 
 ;; setup midnight hooks
 (require 'midnight)
@@ -104,6 +106,10 @@
 ;; setup miniedit - multi-line editing of the mini-buffer
 (require 'miniedit)
 (miniedit-install)
+
+(projectile-global-mode)
+
+(yas-global-mode 1)
 
 ;; turn on the column indicator
 (setq fill-column 78)
