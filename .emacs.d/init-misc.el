@@ -107,6 +107,9 @@
   (setq projectile-switch-project-action 'projectile-dired
 	projectile-known-projects-file
 	(locate-user-emacs-file ".projectile-bookmarks.eld")))
+(after 'magit
+  (setq magit-default-tracking-name-function 
+	'magit-default-tracking-name-branch-only))
 (after 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
   (add-hook 'coffee-mode-hook 'whitespace-mode)
