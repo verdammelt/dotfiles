@@ -89,7 +89,6 @@
 (after 'yasnippet
   (setq yas-prompt-functions 
 	'(yas-ido-prompt yas-completing-prompt)))
-(yas-global-mode 1)
 
 (defun change-size (size)
   (interactive "nsize: ")
