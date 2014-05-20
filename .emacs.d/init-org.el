@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-04-30 15:28:41 mjs>
+;;;; Modified Time-stamp: <2014-05-14 13:53:56 mjs>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -23,6 +23,8 @@
 	org-tag-alist '(("@HOME" . ?h) ("@WORK" . ?w) ("@MAC" . ?m) 
 			("@CALL" . ?c) ("@ERRAND" . ?e) ("@WEB" . ?b) 
 			("@WENDY" . ?y))
+
+	org-goto-interface 'outline-path-completion
 
 	org-refile-allow-creating-parent-nodes 'confirm
 	org-refile-use-outline-path 'file
@@ -71,7 +73,7 @@
        (todo todo-state-up tag-up alpha-up)
        (tags todo-state-up tag-up alpha-up)
        (search todo-state-up))
-     org-agenda-files '("~/Documents/GTD/todo.org")
+     org-agenda-files '("~/Documents/GTD/todo.org" "~/Documents/GTD/work.org")
      org-agenda-start-on-weekday nil
      org-agenda-block-separator "==========================================================================="
      org-agenda-custom-commands 
