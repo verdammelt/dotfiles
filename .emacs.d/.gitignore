@@ -1,6 +1,7 @@
 .backups
 .history
 .places
+.projectile-bookmarks.eld
 .org-id-locations
 .org-clock-save.el
 bookmarks

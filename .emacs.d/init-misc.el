@@ -103,6 +103,11 @@
 
 (global-set-key (kbd "<f7>") 'magit-status)
 
+(setq projectile-keymap-prefix (kbd "C-c C-p"))
+(after 'projectile
+  (setq projectile-switch-project-action 'projectile-dired
+	projectile-known-projects-file
+	(locate-user-emacs-file ".projectile-bookmarks.eld")))
 (after 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
   (add-hook 'coffee-mode-hook 'whitespace-mode)

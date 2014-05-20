@@ -105,6 +105,7 @@
 (require 'miniedit)
 (miniedit-install)
 
+(projectile-global-mode)
 ;; turn on the column indicator
 (setq fill-column 78)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
