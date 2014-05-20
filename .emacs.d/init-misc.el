@@ -120,7 +120,7 @@
 (after 'markdown
   (setq markdown-command "markdown | smartypants"))
 
-(after 'text
+(after 'text-mode
   (setq sentence-end-double-space nil))
 
 (provide 'init-misc)
