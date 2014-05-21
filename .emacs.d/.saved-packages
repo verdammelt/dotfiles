@@ -23,6 +23,8 @@
 	   gh
 	   git-commit-mode
 	   git-rebase-mode
+	   haskell-mode
+	   ido-hacks
 	   ido-sort-mtime
 	   ido-ubiquitous
 	   ido-vertical-mode
@@ -44,8 +46,11 @@
 	   ruby-mode
 	   rvm
 	   s
+	   save-packages
 	   slime
 	   smex
 	   solarized-theme
+	   sws-mode
+	   wgrep
 	   yasnippet
 	   zenburn-theme)

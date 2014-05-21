@@ -92,7 +92,6 @@
 (after 'yasnippet
   (setq yas-prompt-functions 
 	'(yas-ido-prompt yas-completing-prompt)))
-(yas-global-mode 1)
 
 (defun change-size (size)
   (interactive "nsize: ")
@@ -106,6 +105,14 @@
 
 (global-set-key (kbd "<f7>") 'magit-status)
 
+(setq projectile-keymap-prefix (kbd "C-c C-p"))
+(after 'projectile
+  (setq projectile-switch-project-action 'projectile-dired
+	projectile-known-projects-file
+	(locate-user-emacs-file ".projectile-bookmarks.eld")))
+(after 'magit
+  (setq magit-default-tracking-name-function 
+	'magit-default-tracking-name-branch-only))
 (after 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
   (add-hook 'coffee-mode-hook 'whitespace-mode)
@@ -116,7 +123,7 @@
 (after 'markdown
   (setq markdown-command "markdown | smartypants"))
 
-(after 'text
+(after 'text-mode
   (setq sentence-end-double-space nil))
 
 (require 'smex)
