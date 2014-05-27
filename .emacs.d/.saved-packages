@@ -6,6 +6,7 @@
 	   auto-complete
 	   bbdb
 	   browse-kill-ring
+	   change-inner
 	   cider
 	   cljdoc
 	   clojure-mode
@@ -16,6 +17,8 @@
 	   epl
 	   expand-region
 	   fill-column-indicator
+	   flx
+	   flx-ido
 	   flymake-easy
 	   flymake-php
 	   flymake-ruby
@@ -42,12 +45,14 @@
 	   php-mode
 	   pkg-info
 	   popup
+	   projectile
 	   rainbow-delimiters
 	   rspec-mode
 	   rvm
 	   s
 	   save-packages
 	   slime
+	   smex
 	   solarized-theme
 	   sws-mode
 	   wgrep
