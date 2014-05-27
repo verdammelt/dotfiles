@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 09:38:26 mjs>
+;;;; Modified Time-stamp: <2014-05-27 18:17:06 mjs>
 ;;;;
 
 ;;; 
@@ -113,10 +113,6 @@
 (global-auto-complete-mode t)
 
 (yas-global-mode 1)
-
-;; turn on the column indicator
-(setq fill-column 78)
-(add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)

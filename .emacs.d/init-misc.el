@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 13:47:29 mjs>
+;;;; Modified Time-stamp: <2014-05-27 18:17:38 mjs>
 ;;;;
 ;; Save my place in files
 (require 'saveplace)
@@ -54,9 +54,8 @@
 
 ;; Editing text
 (setq fill-column 78)
-(after 'fill-column-indicator
-  (add-hook 'text-mode-hook 'turn-on-fci-mode)
-  (setq fci-rule-color "red"))
+(add-hook 'text-mode-hook 'turn-on-fci-mode)
+(after 'fill-column-indicator (setq fci-rule-color "red"))
 
 (after 'battery 
   (setq battery-mode-line-format "[%b%p%% %t]"))
@@ -118,8 +117,10 @@
 (after 'markdown
   (setq markdown-command "markdown | smartypants"))
 
-(after 'text-mode
+(defun setup-text-mode ()
   (setq sentence-end-double-space nil))
+(add-hook 'text-mode-hook 'setup-text-mode)
+(add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 (after 'ns-win 
   (setq mac-function-modifier 'hyper))
