@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-02 08:52:30 mjs>
+;;;; Modified Time-stamp: <2014-05-22 14:21:29 mjs>
 ;;;;
 ;; Save my place in files
 (setq-default save-place t)
@@ -70,13 +70,12 @@
   (ac-ispell-setup)
   (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
   (setq ac-use-menu-map t
-	ac-auto-show-menu t))
-
-(defun ac-text-mode-setup ()
-  (add-to-list 'ac-sources 'ac-source-words-in-buffer)
-  (ac-ispell-ac-setup)
-  (add-to-list 'ac-sources 'ac-source-yasnippet))
-(add-hook 'text-mode-hook 'ac-text-mode-setup)
+	ac-auto-show-menu t)
+  (defun ac-text-mode-setup ()
+    (add-to-list 'ac-sources 'ac-source-words-in-buffer)
+    (ac-ispell-ac-setup)
+    (add-to-list 'ac-sources 'ac-source-yasnippet))
+  (add-hook 'text-mode-hook 'ac-text-mode-setup))
 
 ;; abbrevs
 (setq-default abbrev-mode t)
