@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 09:29:56 mjs>
+;;;; Modified Time-stamp: <2014-05-27 13:47:29 mjs>
 ;;;;
 ;; Save my place in files
 (require 'saveplace)
@@ -129,10 +129,12 @@
 (after 'smex
   (setq smex-save-file (locate-user-emacs-file ".smex-items")))
 
-(setq projectile-keymap-prefix (kbd "C-c C-p"))
+(setq projectile-keymap-prefix (kbd "C-c C-p")
+      projectile-known-projects-file
+	(locate-user-emacs-file ".projectile-bookmarks.eld")
+	projectile-cache-file
+	(locate-user-emacs-file ".projectile.cache"))
 (after 'projectile
-  (setq projectile-switch-project-action 'projectile-dired
-	projectile-known-projects-file
-	(locate-user-emacs-file ".projectile-bookmarks.eld")))
+  (setq projectile-switch-project-action 'projectile-dired))
 
 (provide 'init-misc)
