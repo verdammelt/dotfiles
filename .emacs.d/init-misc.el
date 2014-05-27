@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-09 22:57:56 mark>
+;;;; Modified Time-stamp: <2014-05-27 07:52:50 mark>
 ;;;;
 ;; Save my place in files
 (require 'saveplace)
@@ -73,14 +73,12 @@
   (ac-ispell-setup)
   (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
   (setq ac-use-menu-map t
-	ac-auto-show-menu t))
-(global-auto-complete-mode t)
-
-(defun ac-text-mode-setup ()
-  (add-to-list 'ac-sources 'ac-source-words-in-buffer)
-  (ac-ispell-ac-setup)
-  (add-to-list 'ac-sources 'ac-source-yasnippet))
-(add-hook 'text-mode-hook 'ac-text-mode-setup)
+	ac-auto-show-menu t)
+  (defun ac-text-mode-setup ()
+    (add-to-list 'ac-sources 'ac-source-words-in-buffer)
+    (ac-ispell-ac-setup)
+    (add-to-list 'ac-sources 'ac-source-yasnippet))
+  (add-hook 'text-mode-hook 'ac-text-mode-setup))
 
 ;; abbrevs
 (setq-default abbrev-mode t)
@@ -105,11 +103,6 @@
 
 (global-set-key (kbd "<f7>") 'magit-status)
 
-(setq projectile-keymap-prefix (kbd "C-c C-p"))
-(after 'projectile
-  (setq projectile-switch-project-action 'projectile-dired
-	projectile-known-projects-file
-	(locate-user-emacs-file ".projectile-bookmarks.eld")))
 (after 'magit
   (setq magit-default-tracking-name-function 
 	'magit-default-tracking-name-branch-only))
@@ -126,17 +119,15 @@
 (after 'text-mode
   (setq sentence-end-double-space nil))
 
-(require 'smex)
+;; smex
 (after 'smex
-  (setq smex-save-file (locate-user-emacs-file ".smex-items"))
-  (smex-initialize)
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+  (setq smex-save-file (locate-user-emacs-file ".smex-items")))
 
-(require 'projectile)
+;; projectile
+(setq projectile-keymap-prefix (kbd "C-c C-p"))
 (after 'projectile
-  (setq projectile-mode-line-lighter " P")
-  (projectile-global-mode)
-  (setq projectile-switch-project-action 'projectile-dired))
+  (setq projectile-switch-project-action 'projectile-dired
+	projectile-known-projects-file
+	(locate-user-emacs-file ".projectile-bookmarks.eld")))
 
 (provide 'init-misc)
