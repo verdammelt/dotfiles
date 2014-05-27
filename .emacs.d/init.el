@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-19 12:14:48 mjs>
+;;;; Modified Time-stamp: <2014-05-22 14:08:49 mjs>
 ;;;;
 
 ;;; 
@@ -95,6 +95,8 @@
 (ido-ubiquitous)
 (require 'ido-hacks)
 (ido-hacks-mode)
+(flx-ido-mode 1)
+(smex-initialize)
 
 ;; setup midnight hooks
 (require 'midnight)
