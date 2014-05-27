@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-22 14:08:49 mjs>
+;;;; Modified Time-stamp: <2014-05-27 09:38:26 mjs>
 ;;;;
 
 ;;; 
@@ -74,9 +74,9 @@
 
 ;; set up the fonts / themes
 (set-face-attribute 'default nil 
-		    :height 180
+		    :height 140
 		    :family "Source_Code_Pro")
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 
 ;;;
 ;;; turn on all things that need turning on.
