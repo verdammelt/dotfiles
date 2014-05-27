@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-19 12:14:48 mjs>
+;;;; Modified Time-stamp: <2014-05-27 07:50:35 mark>
 ;;;;
 
 ;;; 
@@ -74,7 +74,7 @@
 
 ;; set up the fonts / themes
 (set-face-attribute 'default nil 
-		    :height 180
+		    :height 140
 		    :family "Source_Code_Pro")
 (load-theme 'solarized-dark t)
 
@@ -95,6 +95,8 @@
 (ido-ubiquitous)
 (require 'ido-hacks)
 (ido-hacks-mode)
+(flx-ido-mode 1)
+(smex-initialize)			; must be after ido-hacks!
 
 ;; setup midnight hooks
 (require 'midnight)
@@ -107,6 +109,8 @@
 (miniedit-install)
 
 (projectile-global-mode)
+
+(global-auto-complete-mode t)
 
 (yas-global-mode 1)
 
