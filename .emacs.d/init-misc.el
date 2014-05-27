@@ -84,6 +84,8 @@
 
 ;; flyspell
 (add-hook 'text-mode-hook 'flyspell-mode)
+(after 'flyspell 
+  (setq flyspell-abbrev-p t))
 
 ;; yasnippet
 (after 'yasnippet
