@@ -71,7 +71,6 @@
   (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
   (setq ac-use-menu-map t
 	ac-auto-show-menu t))
-(global-auto-complete-mode t)
 
 (defun ac-text-mode-setup ()
   (add-to-list 'ac-sources 'ac-source-words-in-buffer)

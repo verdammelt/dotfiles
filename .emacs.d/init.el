@@ -109,6 +109,8 @@
 
 (projectile-global-mode)
 
+(global-auto-complete-mode t)
+
 (yas-global-mode 1)
 
 ;; turn on the column indicator
