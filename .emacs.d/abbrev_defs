@@ -142,7 +142,9 @@
 
 (define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
 
-(define-abbrev-table 'mail-abbrevs '())
+(define-abbrev-table 'mail-abbrevs
+  '(
+   ))
 
 (define-abbrev-table 'markdown-mode-abbrev-table '())
 
@@ -173,17 +175,13 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -227,12 +225,16 @@
 
 (define-abbrev-table 'tar-mode-abbrev-table '())
 
+(define-abbrev-table 'term-mode-abbrev-table '())
+
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("decsion" "decision" nil 0)
+    ("definately" "definitely" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
     ("separete" "separate" nil 0)
+    ("tomororw" "tomorrow" nil 0)
    ))
 
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
