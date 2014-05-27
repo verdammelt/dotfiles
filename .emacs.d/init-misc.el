@@ -104,11 +104,13 @@
 
 (global-set-key (kbd "<f7>") 'magit-status)
 
-(setq projectile-keymap-prefix (kbd "C-c C-p"))
+(global-set-key (kbd "M-x") 'smex)
+
+(setq projectile-keymap-prefix (kbd "C-c C-p")
+      projectile-known-projects-file
+      (locate-user-emacs-file ".projectile-bookmarks.eld"))
 (after 'projectile
-  (setq projectile-switch-project-action 'projectile-dired
-	projectile-known-projects-file
-	(locate-user-emacs-file ".projectile-bookmarks.eld")))
+  (setq projectile-switch-project-action 'projectile-dired))
 (after 'magit
   (setq magit-default-tracking-name-function 
 	'magit-default-tracking-name-branch-only))
