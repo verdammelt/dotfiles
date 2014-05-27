@@ -1,10 +1,10 @@
 
-(ac-ispell ac-nrepl
-	   ac-slime
+(ac-ispell ac-slime
 	   ace-jump-mode
 	   auctex
 	   auto-complete
 	   bbdb
+	   bind-key
 	   browse-kill-ring
 	   change-inner
 	   cider
@@ -20,9 +20,7 @@
 	   flx
 	   flx-ido
 	   flymake-easy
-	   flymake-php
 	   flymake-ruby
-	   fringe-helper
 	   fuzzy
 	   geiser
 	   gh
@@ -33,21 +31,22 @@
 	   ido-sort-mtime
 	   ido-ubiquitous
 	   ido-vertical-mode
+	   idomenu
 	   logito
 	   magit
 	   markdown-mode
 	   midje-mode
 	   mode-compile
-	   nrepl
+	   octomacs
 	   org
 	   paredit
 	   pcache
-	   php-mode
 	   pkg-info
 	   popup
 	   projectile
 	   rainbow-delimiters
 	   rspec-mode
+	   ruby-mode
 	   rvm
 	   s
 	   save-packages

@@ -3,9 +3,10 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-22 14:21:29 mjs>
+;;;; Modified Time-stamp: <2014-05-27 09:29:56 mjs>
 ;;;;
 ;; Save my place in files
+(require 'saveplace)
 (setq-default save-place t)
 (after 'saveplace 
   (setq save-place-file (locate-user-emacs-file ".places")))
@@ -52,7 +53,9 @@
    calendar-view-holidays-initially-flag t))
 
 ;; Editing text
+(setq fill-column 78)
 (after 'fill-column-indicator
+  (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (setq fci-rule-color "red"))
 
 (after 'battery 
@@ -104,11 +107,6 @@
 
 (global-set-key (kbd "M-x") 'smex)
 
-(setq projectile-keymap-prefix (kbd "C-c C-p")
-      projectile-known-projects-file
-      (locate-user-emacs-file ".projectile-bookmarks.eld"))
-(after 'projectile
-  (setq projectile-switch-project-action 'projectile-dired))
 (after 'magit
   (setq magit-default-tracking-name-function 
 	'magit-default-tracking-name-branch-only))
@@ -127,5 +125,14 @@
 
 (after 'ns-win 
   (setq mac-function-modifier 'hyper))
+
+(after 'smex
+  (setq smex-save-file (locate-user-emacs-file ".smex-items")))
+
+(setq projectile-keymap-prefix (kbd "C-c C-p"))
+(after 'projectile
+  (setq projectile-switch-project-action 'projectile-dired
+	projectile-known-projects-file
+	(locate-user-emacs-file ".projectile-bookmarks.eld")))
 
 (provide 'init-misc)

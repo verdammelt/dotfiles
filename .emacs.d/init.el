@@ -37,7 +37,7 @@
 ;;;
 (add-to-list 'exec-path "/usr/local/share/npm/bin")
 (add-to-list 'exec-path "/usr/local/bin")
-(add-to-list 'exec-path "/Users/mark/Bin")
+(add-to-list 'exec-path (expand-file-name "~/Bin"))
 (add-to-list 'exec-path "/usr/texbin" :append)
 (setenv "PATH" (mapconcat 'identity exec-path ":"))
 
@@ -103,7 +103,6 @@
 (timer-activate midnight-timer)
 
 (require 'uniquify)
-(require 'saveplace)
 
 ;; setup miniedit - multi-line editing of the mini-buffer
 (require 'miniedit)

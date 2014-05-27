@@ -4,7 +4,9 @@
 .projectile-bookmarks.eld
 .org-id-locations
 .org-clock-save.el
+.smex-items
 bookmarks
 elpa
+projectile-bookmarks.eld
 url
 tramp

@@ -84,7 +84,7 @@
 	 (tags-todo "+@CALL|+@ERRAND/!-WAITING")
 	 (tags-todo "+@MAC|+@WEB/!-WAITING")
 	 (tags-todo "+@WENDY/!-WAITING")
-	 (tags-todo "-@WORK&-@WORKMAC&-@MAC&-@WEB&-@CALL&-@ERRAND&-@WENDY/!-WAITING")
+	 (tags-todo "+@HOME|+@ANY/!-WAITING")
 	 (tags-todo "/WAITING")
 	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
 	       ((org-agenda-sorting-strategy '(category-keep))))

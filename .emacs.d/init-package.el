@@ -1,16 +1,23 @@
+;;;;
+;;;; Package Setup
+;;;;
+;;;; [if found please return to damned@theworld.com]
+;;;;
+;;;; Modified Time-stamp: <2014-05-09 22:50:21 mark>
+;;;;
 (require 'save-packages)
 (setq save-packages-file (locate-user-emacs-file ".saved-packages"))
 
-;;; get Package set up properly and initializedn
+;;; get Package set up properly and initialized
 (require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives 
+	     '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
 
 ;; report if there are missing packages
-
 (if (file-exists-p save-packages-file)
     (let ((missing-packages (missing-packages save-packages-file)))
       (if (< 0 (length missing-packages))
