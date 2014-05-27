@@ -104,12 +104,10 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-set-key (kbd "<f7>") 'magit-status)
-
-(global-set-key (kbd "M-x") 'smex)
-
 (after 'magit
   (setq magit-default-tracking-name-function 
 	'magit-default-tracking-name-branch-only))
+
 (after 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
   (add-hook 'coffee-mode-hook 'whitespace-mode)
