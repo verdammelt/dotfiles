@@ -125,4 +125,7 @@
 (after 'text-mode
   (setq sentence-end-double-space nil))
 
+(after 'ns-win 
+  (setq mac-function-modifier 'hyper))
+
 (provide 'init-misc)
