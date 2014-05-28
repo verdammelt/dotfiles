@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 21:17:35 mark>
+;;;; Modified Time-stamp: <2014-05-28 10:15:09 mjs>
 ;;;;
 (require 'cl)
 
@@ -23,6 +23,7 @@
     auctex
     bbdb
     browse-kill-ring
+    change-inner
     clojure-mode
     coffee-mode
     expand-region
@@ -43,6 +44,7 @@
     slime
     smex
     solarized-theme
+    wgrep
     yasnippet
     ))
 
