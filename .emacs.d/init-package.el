@@ -3,10 +3,11 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-09 22:50:21 mark>
+;;;; Modified Time-stamp: <2014-05-27 21:17:35 mark>
 ;;;;
-(require 'save-packages)
-(setq save-packages-file (locate-user-emacs-file ".saved-packages"))
+(require 'cl)
+
+(setq message-log-max 10000)
 
 ;;; get Package set up properly and initialized
 (require 'package)
@@ -16,20 +17,48 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
+(defvar needed-packages
+  '(ac-ispell
+    ace-jump-mode
+    auctex
+    bbdb
+    browse-kill-ring
+    clojure-mode
+    coffee-mode
+    expand-region
+    fill-column-indicator
+    flx-ido
+    git-commit-mode
+    git-rebase-mode
+    ido-hacks
+    ido-sort-mtime
+    ido-ubiquitous
+    ido-vertical-mode
+    magit
+    markdown-mode
+    org
+    paredit
+    projectile
+    rainbow-delimiters
+    slime
+    smex
+    solarized-theme
+    yasnippet
+    ))
 
-;; report if there are missing packages
-(if (file-exists-p save-packages-file)
-    (let ((missing-packages (missing-packages save-packages-file)))
-      (if (< 0 (length missing-packages))
-	  (progn 
-	    (message "Missing packages: %s" missing-packages)
-	    (sit-for 5))))
-  (save-packages save-packages-file))
+(defun missing-packages ()
+  (remove-if #'package-installed-p needed-packages))
 
-(defadvice package-menu-execute (after save-package-list activate)
-  "Save the new package list after a change"
-  (message "Saving package list.")
-  (save-packages))
-(ad-activate 'package-menu-execute)
+(defun install-missing-packages ()
+  (let ((missing-packages (missing-packages)))
+    (when (and missing-packages
+	       (yes-or-no-p 
+		(format "Install missing packages: %s" missing-packages)))
+      (package-refresh-contents)
+      (mapc #'(lambda (p) 
+		(message "Installing %s" p)
+		(package-install p)) missing-packages))))
+
+(install-missing-packages)
 
 (provide 'init-package)
