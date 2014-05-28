@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 20:20:12 mark>
+;;;; Modified Time-stamp: <2014-05-27 21:37:42 mark>
 ;;;;
 
 ;;; 
@@ -51,12 +51,6 @@
 ;;; Package
 ;;;
 (require 'init-package)
-
-;;;
-;;; Auto-mode-alist additions
-;;;
-(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 
 ;;;
 ;;; Exterinalized config of specific things

@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 20:20:35 mark>
+;;;; Modified Time-stamp: <2014-05-27 21:38:18 mark>
 ;;;;
 ;; Save my place in files
 (require 'saveplace)
@@ -117,7 +117,10 @@
 	whitespace-action '(auto-cleanup warn-if-read-only))
   (setq coffee-tab-width 4))
 
-(after 'markdown
+;; markdown-mode
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+(after 'markdown-mode
   (setq markdown-command "markdown | smartypants"))
 
 (defun setup-text-mode ()
