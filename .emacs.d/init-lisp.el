@@ -35,13 +35,4 @@
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
 
-(after 'cider
-  (add-hook 'cider-mode-hook 'subword-mode)
-  (add-hook 'cider-mode-hook 'paredit-mode)
-  (add-hook 'cider-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'cider-interaction-mode 'cider-turn-on-eldoc-mode)
-  (setq nrepl-hide-special-buffers t
-	cider-popup-stacktraces nil
-	cider-repl-popup-stacktraces t))
-
 (provide 'init-lisp)
