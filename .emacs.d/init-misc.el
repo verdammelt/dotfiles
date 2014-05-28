@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 07:52:50 mark>
+;;;; Modified Time-stamp: <2014-05-27 20:14:56 mark>
 ;;;;
 ;; Save my place in files
 (require 'saveplace)
@@ -54,9 +54,8 @@
 
 ;; Editing text
 (setq fill-column 78)
-(after 'fill-column-indicator
-  (add-hook 'text-mode-hook 'turn-on-fci-mode)
-  (setq fci-rule-color "red"))
+(add-hook 'text-mode-hook 'turn-on-fci-mode)
+(after 'fill-column-indicator (setq fci-rule-color "red"))
 
 (after 'battery 
   (setq battery-mode-line-format "[%b%p%% %t]"))
@@ -85,6 +84,8 @@
 
 ;; flyspell
 (add-hook 'text-mode-hook 'flyspell-mode)
+(after 'flyspell 
+  (setq flyspell-abbrev-p t))
 
 ;; yasnippet
 (after 'yasnippet
@@ -106,6 +107,7 @@
 (after 'magit
   (setq magit-default-tracking-name-function 
 	'magit-default-tracking-name-branch-only))
+
 (after 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
   (add-hook 'coffee-mode-hook 'whitespace-mode)
@@ -116,18 +118,23 @@
 (after 'markdown
   (setq markdown-command "markdown | smartypants"))
 
-(after 'text-mode
+(defun setup-text-mode ()
   (setq sentence-end-double-space nil))
+(add-hook 'text-mode-hook 'setup-text-mode)
+(add-hook 'text-mode-hook 'turn-on-fci-mode)
 
-;; smex
+(after 'ns-win 
+  (setq mac-function-modifier 'hyper))
+
 (after 'smex
   (setq smex-save-file (locate-user-emacs-file ".smex-items")))
 
-;; projectile
-(setq projectile-keymap-prefix (kbd "C-c C-p"))
+(setq projectile-keymap-prefix (kbd "C-c C-p")
+      projectile-known-projects-file
+	(locate-user-emacs-file ".projectile-bookmarks.eld")
+	projectile-cache-file
+	(locate-user-emacs-file ".projectile.cache"))
 (after 'projectile
-  (setq projectile-switch-project-action 'projectile-dired
-	projectile-known-projects-file
-	(locate-user-emacs-file ".projectile-bookmarks.eld")))
+  (setq projectile-switch-project-action 'projectile-dired))
 
 (provide 'init-misc)

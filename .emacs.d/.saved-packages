@@ -6,6 +6,7 @@
 	   bbdb
 	   bind-key
 	   browse-kill-ring
+	   change-inner
 	   cider
 	   cljdoc
 	   clojure-mode
@@ -16,6 +17,8 @@
 	   epl
 	   expand-region
 	   fill-column-indicator
+	   flx
+	   flx-ido
 	   flymake-easy
 	   flymake-ruby
 	   fuzzy

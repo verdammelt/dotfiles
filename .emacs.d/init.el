@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 07:50:35 mark>
+;;;; Modified Time-stamp: <2014-05-27 20:15:44 mark>
 ;;;;
 
 ;;; 
@@ -76,7 +76,7 @@
 (set-face-attribute 'default nil 
 		    :height 140
 		    :family "Source_Code_Pro")
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 
 ;;;
 ;;; turn on all things that need turning on.
@@ -113,10 +113,6 @@
 (global-auto-complete-mode t)
 
 (yas-global-mode 1)
-
-;; turn on the column indicator
-(setq fill-column 78)
-(add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)
