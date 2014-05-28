@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 20:15:44 mark>
+;;;; Modified Time-stamp: <2014-05-27 20:20:12 mark>
 ;;;;
 
 ;;; 
@@ -70,8 +70,6 @@
 (require 'init-lisp)
 (require 'init-misc)
 
-(global-set-key [?\s-p] 'ps-print-buffer)
-
 ;; set up the fonts / themes
 (set-face-attribute 'default nil 
 		    :height 140
@@ -114,10 +112,3 @@
 
 (yas-global-mode 1)
 
-;; Update timestamps in file on save
-(add-hook 'before-save-hook 'time-stamp)
-
-;; Misc
-(after 'gnutls
-  (setq gnutls-min-prime-bits 1024))
-(put 'narrow-to-region 'disabled nil)

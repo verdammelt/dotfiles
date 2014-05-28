@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 20:14:56 mark>
+;;;; Modified Time-stamp: <2014-05-27 20:20:35 mark>
 ;;;;
 ;; Save my place in files
 (require 'saveplace)
@@ -104,6 +104,8 @@
 
 (global-set-key (kbd "<f7>") 'magit-status)
 
+(global-set-key (kbd "s-p") 'ps-print-buffer)
+
 (after 'magit
   (setq magit-default-tracking-name-function 
 	'magit-default-tracking-name-branch-only))
@@ -136,5 +138,13 @@
 	(locate-user-emacs-file ".projectile.cache"))
 (after 'projectile
   (setq projectile-switch-project-action 'projectile-dired))
+
+;; Update timestamps in file on save
+(add-hook 'before-save-hook 'time-stamp)
+
+;; Misc
+(after 'gnutls
+  (setq gnutls-min-prime-bits 1024))
+(put 'narrow-to-region 'disabled nil)
 
 (provide 'init-misc)
