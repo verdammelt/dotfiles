@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 21:38:18 mark>
+;;;; Modified Time-stamp: <2014-06-08 11:01:20 mark>
 ;;;;
 ;; Save my place in files
 (require 'saveplace)
@@ -33,6 +33,8 @@
   (setq uniquify-after-kill-buffer-p t
 	uniquify-buffer-name-style 'post-forward-angle-brackets))
 
+(global-set-key (kbd "s-p") 'ps-print-buffer)
+(global-set-key (kbd "s-P") 'ps-print-region)
 (after 'ps-print
   (setq 
    ps-lpr-command (expand-file-name "~/bin/psprint")
@@ -92,20 +94,7 @@
   (setq yas-prompt-functions 
 	'(yas-ido-prompt yas-completing-prompt)))
 
-(defun change-size (size)
-  (interactive "nsize: ")
-  (if (< size 100) (setq size (* 10 size)))
-  (set-face-attribute 'default nil :height size))
-(global-set-key (kbd "s-s") 'change-size)
-
-(global-set-key (kbd "s-f") 'ace-jump-mode)
-
-(global-set-key (kbd "C-=") 'er/expand-region)
-
 (global-set-key (kbd "<f7>") 'magit-status)
-
-(global-set-key (kbd "s-p") 'ps-print-buffer)
-
 (after 'magit
   (setq magit-default-tracking-name-function 
 	'magit-default-tracking-name-branch-only))
@@ -129,7 +118,9 @@
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 (after 'ns-win 
-  (setq mac-function-modifier 'hyper))
+  (setq mac-command-modifier 'meta
+	mac-option-modifier 'super
+	mac-function-modifier 'hyper))
 
 (after 'smex
   (setq smex-save-file (locate-user-emacs-file ".smex-items")))
@@ -139,8 +130,20 @@
 	(locate-user-emacs-file ".projectile-bookmarks.eld")
 	projectile-cache-file
 	(locate-user-emacs-file ".projectile.cache"))
+(global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
+(global-set-key (kbd "s-f") 'projectile-find-file)
+(global-set-key (kbd "s-s") 'projectile-switch-project)
 (after 'projectile
-  (setq projectile-switch-project-action 'projectile-dired))
+  (setq mjs/default-projectile-indexing-method projectile-indexing-method)
+  (defun mjs/setup-gtd-project-caching ()
+    (let ((new-value (if (string= (projectile-project-name) "GTD") 
+			 'native
+		       mjs/default-projectile-indexing-method)))
+      (setq projectile-indexing-method new-value)))
+  (add-hook 'projectile-switch-project-hook 'mjs/setup-gtd-project-caching)
+
+  (setq projectile-switch-project-action 'projectile-dired
+	projectile-enable-caching t))
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)
@@ -149,5 +152,20 @@
 (after 'gnutls
   (setq gnutls-min-prime-bits 1024))
 (put 'narrow-to-region 'disabled nil)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(defun change-size (size)
+  (interactive "nsize: ")
+  (if (< size 100) (setq size (* 10 size)))
+  (set-face-attribute 'default nil :height size))
+(global-set-key (kbd "H-s") 'change-size)
+
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "M-i") 'change-inner)
+(global-set-key (kbd "M-o") 'change-outer)
+(global-set-key (kbd "s-g") 'goto-line)
+(global-set-key (kbd "s-j") 'ace-jump-word-mode)
+(global-set-key (kbd "s-J") 'ace-jump-char-mode)
 
 (provide 'init-misc)

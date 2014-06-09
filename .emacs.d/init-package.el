@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-28 22:33:31 mark>
+;;;; Modified Time-stamp: <2014-06-08 09:12:58 mark>
 ;;;;
 (require 'cl)
 
@@ -21,6 +21,7 @@
   '(ac-ispell
     ace-jump-mode
     auctex
+    auto-complete
     bbdb
     browse-kill-ring
     change-inner

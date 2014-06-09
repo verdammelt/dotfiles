@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2014-04-09 08:23:01 mjs>
+;;;; Time-stamp: <2014-06-01 13:03:39 mark>
 ;;;;
 ;;;
 ;;; TODO: 
@@ -108,7 +108,6 @@
   (load (locate-user-emacs-file "lisp/gnus-spam-fixed-bbdb"))
   (setq
    spam-use-spamassassin-headers t  ; because my ISP runs spamassassin
-   spam-use-bogofilter t ; I want to fine tune the spam checking with local bogofilter
    spam-use-BBDB t
    spam-use-BBDB-exclusive t
    spam-mark-ham-unread-before-move-from-spam-group t ; ham moved from spam folders will be marked unread.
@@ -198,9 +197,7 @@
   (setq gnus-parameters
 	'(("nnfolder.*"
 	   (spam-contents gnus-group-spam-classification-ham)
-	   (spam-process ((spam spam-use-bogofilter)
-			  (ham spam-use-bogofilter)
-			  (ham spam-use-BBDB)))
+	   (spam-process ((ham spam-use-BBDB)))
 	   (spam-process-destination "nnfolder:spam.spam"))
 
 	  ("mail.*"
@@ -228,9 +225,7 @@
 	   (expiry-wait . 1)
 	   (expiry-target . delete)
 	   (spam-contents gnus-group-spam-classification-spam)
-	   (spam-process ((spam spam-use-bogofilter)
-			  (ham spam-use-bogofilter)
-			  (ham spam-use-BBDB)))
+	   (spam-process ((ham spam-use-BBDB)))
 	   (ham-process-destination "nnfolder:mail.inbox"))
 
 	  ("^gmane\."
