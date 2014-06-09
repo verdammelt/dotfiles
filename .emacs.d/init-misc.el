@@ -129,7 +129,9 @@
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 (after 'ns-win 
-  (setq mac-function-modifier 'hyper))
+  (setq mac-command-modifier 'meta
+	mac-option-modifier 'super
+	mac-function-modifier 'hyper))
 
 (after 'smex
   (setq smex-save-file (locate-user-emacs-file ".smex-items")))
