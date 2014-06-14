@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 20:15:10 mark>
+;;;; Modified Time-stamp: <2014-06-10 14:44:42 mjs>
 ;;;;
 (after 'org
   (setq org-id-locations-file 
@@ -80,9 +80,9 @@
      '(("d" "daily"
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid nil)))
-	 (tags-todo "+@WORK|+@WORKMAC/!-WAITING")
+	 (tags-todo "+@WORK/!-WAITING")
 	 (tags-todo "+@CALL|+@ERRAND/!-WAITING")
-	 (tags-todo "+@MAC|+@WEB/!-WAITING")
+	 (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAITING")
 	 (tags-todo "+@WENDY/!-WAITING")
 	 (tags-todo "+@HOME|+@ANY/!-WAITING")
 	 (tags-todo "/WAITING")
@@ -93,8 +93,9 @@
        ("k" "work" 
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid t)))
-	 (tags-todo "+@WORK|+@WORKMAC|+2U"
-		    ((org-agenda-sorting-strategy '(todo-state-up tag-up))))
+	 (tags-todo "+@WORK&+2U/!-WAITING" (todo-state-up tag-up))
+	 (tags-todo "+@WORK&-2U/!-WAITING" (todo-state-up tag-up))
+	 (tags-todo "+@WORK/WAITING")
 	 (tags "+@WORK&+CATEGORY=\"PROJ\"&+LEVEL=2"
 	       ((org-agenda-sorting-strategy '(todo-state-down))))))))
 
@@ -126,5 +127,7 @@ this with to-do items than with projects or headings."
 (global-set-key "\C-cp" (lambda () (interactive) (org-capture nil "p")))
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key (kbd "C-c s-s") 'org-save-all-org-buffers)
+(global-set-key (kbd "C-c s-u") 'org-revert-all-org-buffers)
 
 (provide 'init-org)
