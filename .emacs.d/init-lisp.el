@@ -3,13 +3,21 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-12-30 19:56:01 mark>
+;;;; Modified Time-stamp: <2014-06-10 17:54:58 mjs>
 ;;;;
 
 (setq slime-lisp-implementations
       '(("sbcl" ("sbcl"))
 	("cmucl" ("lisp"))))
 (slime-setup '(slime-fancy))
+
+(after "slime"
+  (setq common-lisp-hyperspec-root
+	"/usr/local/share/doc/hyperspec/HyperSpec/"
+	common-lisp-hyperspec-symbol-table
+	(concat common-lisp-hyperspec-root "Data/Map_Sym.txt")
+	common-lisp-hyperspec-issuex-table
+	(concat common-lisp-hyperspec-root "Data/Map_IssX.txt")))
 
 (after 'lisp-mode
   (if (or (fboundp 'paredit-mode) 

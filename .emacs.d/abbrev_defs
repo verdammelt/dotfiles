@@ -173,6 +173,7 @@
 (define-abbrev-table 'org-mode-abbrev-table
   '(
     ("backend" "back end" nil 1)
+    ("invstigate" "Instigate" nil 0)
     ("magicptrl" "MAGICPTRL" nil 0)
    ))
 
@@ -238,12 +239,16 @@
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
+    ("availablility" "availability" nil 0)
     ("convinience" "convenience" nil 0)
     ("decsion" "decision" nil 0)
     ("definately" "definitely" nil 1)
+    ("existance" "existence" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
+    ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
+    ("tia" "Thanks in advance" nil 3)
     ("tomororw" "tomorrow" nil 0)
    ))
 
