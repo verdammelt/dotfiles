@@ -46,6 +46,7 @@
     slime
     smex
     solarized-theme
+    wrap-region
     wgrep
     yasnippet
     ))
