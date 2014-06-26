@@ -46,18 +46,29 @@
   (org-clock-persistence-insinuate)
 
   (setq org-capture-templates
-	`(("t" "Task" entry (file+headline "" "Tasks")
+	`(("t" "Task" entry (file "" "Tasks")
 	   "* TODO %?\n  %U\n"
 	   :empty-lines-after 1)
-	  ("p" "Project" entry (file+headline "" "Projects")
+	  ("p" "Project" entry (file "" "Projects")
 	   "* %? \n %U\n" 
 	   :jump-to-captured t :empty-lines-after 1)
-	  ("k" "Tickler" entry (file+headline "" "Tickler")
+	  ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
 	   "* TODO %?\n  %U\n  %a\n")
-	  ("n" "Note" entry (file+headline "" "Catpure / Notes")
+	  ("n" "Note" entry (file "")
 	   "* %?\n %U\n %a")
 	  ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
 	   "* %?\n  %U\n %a\n")
+	  ("w" "Templates for work")
+	  ("wb" "Billable Task" entry (file "")
+	   "* TODO %? :2U:@WORK:\n %U\n"
+	   :clock-in t :clock-resume t)
+	  ("ww" "Non-Billable Task" entry (file "")
+	   "* TODO %? :@WORK:\n %U\n"
+	   :clock-in t :clock-resume t)
+	  ("wp" "Work Project" entry (file "")
+	   "* %? :@WORK:\n %U\n"
+	   :clock-in t :clock-resume t)
+	  ))
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
 
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
