@@ -5,13 +5,18 @@
 ;;;;
 ;;;; Modified Time-stamp: <2014-06-10 14:44:42 mjs>
 ;;;;
+(defun mjs/expand-org-file (f)
+  (let ((filename (if (string= (file-name-extension f) "org") 
+		      f
+		    (format "%s.org" f))))
+    (expand-file-name filename org-directory)))
+
 (after 'org
   (setq org-id-locations-file 
 	(expand-file-name ".org-id-locations" user-emacs-directory))
   
   (setq org-directory (expand-file-name "~/Documents/GTD")
-	org-default-notes-file "~/Documents/GTD/todo.org"  
-	mjs-someday-maybe-file "~/Documents/GTD/somedaymaybe.org"
+	org-default-notes-file (mjs/expand-org-file "inbox")
 	org-use-property-inheritance t
 	org-log-done t
 
@@ -29,8 +34,7 @@
 	org-refile-allow-creating-parent-nodes 'confirm
 	org-refile-use-outline-path 'file
 	org-refile-use-cache t
-	org-refile-targets `((,(list org-default-notes-file 
-				     mjs-someday-maybe-file) 
+	org-refile-targets `((,(mapcar #'mjs/expand-org-file '("todo" "work" "somedaymaybe"))
 			      :maxlevel . 9)))
 
   (setq org-clock-persist t
@@ -51,8 +55,8 @@
 	   "* TODO %?\n  %U\n  %a\n")
 	  ("n" "Note" entry (file+headline "" "Catpure / Notes")
 	   "* %?\n %U\n %a")
-	  ("s" "Someday/Maybe" entry (file ,mjs-someday-maybe-file)
-	   "* %?\n  %U\n %a\n")))
+	  ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
+	   "* %?\n  %U\n %a\n")
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
 
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
@@ -73,7 +77,7 @@
        (todo todo-state-up tag-up alpha-up)
        (tags todo-state-up tag-up alpha-up)
        (search todo-state-up))
-     org-agenda-files '("~/Documents/GTD/todo.org" "~/Documents/GTD/work.org")
+     org-agenda-files (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
      org-agenda-start-on-weekday nil
      org-agenda-block-separator "==========================================================================="
      org-agenda-custom-commands 
