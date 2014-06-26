@@ -19,6 +19,9 @@
 	org-default-notes-file (mjs/expand-org-file "inbox")
 	org-use-property-inheritance t
 	org-log-done t
+	org-special-ctrl-a/e t
+	org-yank-adjusted-subtrees t
+	org-special-ctrl-k t
 
 	org-completion-use-ido t
 	org-outline-path-complete-in-steps nil
