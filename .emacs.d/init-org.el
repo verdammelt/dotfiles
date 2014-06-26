@@ -19,6 +19,7 @@
 	org-default-notes-file (mjs/expand-org-file "inbox")
 	org-use-property-inheritance t
 	org-log-done t
+	org-link-mailto-program '(compose-mail "%a" "%s")
 	org-special-ctrl-a/e t
 	org-yank-adjusted-subtrees t
 	org-special-ctrl-k t
