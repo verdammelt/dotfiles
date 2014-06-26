@@ -130,4 +130,41 @@ this with to-do items than with projects or headings."
 (global-set-key (kbd "C-c s-s") 'org-save-all-org-buffers)
 (global-set-key (kbd "C-c s-u") 'org-revert-all-org-buffers)
 
+;; experimental stuff
+(after 'org
+  (setq mjs/default-task-id "963F688C-0EAD-4217-B84E-DDA7D94C0453"
+	mjs/keep-clock-running nil)
+  (defun mjs/punch-in ()
+    (interactive)
+    (setq mjs/keep-clock-running t)
+    (mjs/clock-in-default-task)
+    (message "Mornin' Sam"))
+  (defun mjs/punch-out ()
+    (interactive)
+    (setq mjs/keep-clock-running nil)
+    (when (org-clock-is-active)
+      (org-clock-out))
+    (message "Nice day eh Ralph?"))
+  (defun mjs/clock-in-default-task ()
+    (interactive)
+    (org-with-point-at (org-id-find mjs/default-task-id 'marker)
+      (org-clock-in '(16))))
+  (defun mjs/clock-out-maybe ()
+    (when (and mjs/keep-clock-running
+	       (not org-clock-clocking-in)
+	       (marker-buffer org-clock-default-task)
+	       (not org-clock-resolving-clocks-due-to-idleness))
+      (mjs/clock-in-default-task)))
+  (add-hook 'org-clock-out-hook 'mjs/clock-out-maybe 'append)
+
+  (defun mjs/morning-sam ()
+    (org-agenda nil "k")
+    (mjs/punch-in))
+
+  (global-set-key (kbd "<f9>") 'mjs/morning-sam)
+  (global-set-key (kbd "S-<f9>") 'mjs/punch-out)
+
+  (setq org-stuck-projects
+	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" (TODO WAITING) nil "")))
+
 (provide 'init-org)
