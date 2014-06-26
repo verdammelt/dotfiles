@@ -19,6 +19,8 @@
 	org-default-notes-file (mjs/expand-org-file "inbox")
 	org-use-property-inheritance t
 	org-log-done t
+	org-hide-leading-stars nil
+	org-startup-indented t
 	org-enable-priority-commands nil
 	org-link-mailto-program '(compose-mail "%a" "%s")
 	org-special-ctrl-a/e t
