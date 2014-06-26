@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-08 09:12:58 mark>
+;;;; Modified Time-stamp: <2014-06-25 18:57:08 mark>
 ;;;;
 (require 'cl)
 
@@ -27,6 +27,7 @@
     change-inner
     clojure-mode
     coffee-mode
+    elisp-slime-nav
     epl
     expand-region
     fill-column-indicator
@@ -39,7 +40,7 @@
     ido-vertical-mode
     magit
     markdown-mode
-    org
+    org-plus-contrib
     paredit
     projectile
     rainbow-delimiters

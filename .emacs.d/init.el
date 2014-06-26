@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 21:37:42 mark>
+;;;; Modified Time-stamp: <2014-06-22 17:31:03 mark>
 ;;;;
 
 ;;; 
@@ -79,6 +79,7 @@
 (server-start)
 (show-paren-mode)
 (global-hl-line-mode)
+(global-auto-revert-mode)
 (savehist-mode)
 
 ;; ido mode
