@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-10 14:44:42 mjs>
+;;;; Modified Time-stamp: <2014-06-25 21:37:12 mark>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -40,9 +40,26 @@
 
   (setq org-clock-persist t
 	org-clock-idle-time 10
+	org-time-clocksum-format 
+	'(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)
 	org-clock-persist-file (expand-file-name 
 				".org-clock-save.el" 
-				user-emacs-directory))
+				user-emacs-directory)
+	org-clock-out-remove-zero-time-clocks t
+	org-clock-report-include-clocking-task t
+	org-agenda-clockreport-parameter-plist 
+	'(:link t :maxlevel 2 :fileskip0 t :compact t :narrow 80)
+	org-agenda-clock-consistency-checks 
+	'(:max-duration "04:00" 
+			:min-duration 0 
+			:max-gap 0
+			:gap-ok-around ("04:00" "13:00");; what are good settings?
+			;; below is same as default
+			:default-face
+			((:background "DarkRed")
+			 (:foreground "white"))
+			:overlap-face nil :gap-face nil :no-end-time-face nil :long-face nil :short-face nil))
+
   (org-clock-persistence-insinuate)
 
   (setq org-capture-templates
