@@ -12,17 +12,23 @@
     (expand-file-name filename org-directory)))
 
 (after 'org
+  (require 'org-checklist)
   (setq org-id-locations-file 
 	(expand-file-name ".org-id-locations" user-emacs-directory))
   
   (setq org-directory (expand-file-name "~/Documents/GTD")
 	org-default-notes-file (mjs/expand-org-file "inbox")
 	org-use-property-inheritance t
-	org-log-done t
+	org-log-done 'time
+	org-log-into-drawer t
+
 	org-hide-leading-stars nil
 	org-startup-indented t
+
 	org-enable-priority-commands nil
+	
 	org-link-mailto-program '(compose-mail "%a" "%s")
+
 	org-special-ctrl-a/e t
 	org-yank-adjusted-subtrees t
 	org-special-ctrl-k t
