@@ -22,11 +22,13 @@
 
 	org-completion-use-ido t
 	org-outline-path-complete-in-steps nil
-	org-tag-alist '(("@HOME" . ?h) ("@WORK" . ?w) ("@MAC" . ?m) 
-			("@CALL" . ?c) ("@ERRAND" . ?e) ("@WEB" . ?b) 
-			("@WENDY" . ?y))
 	org-todo-keywords '((sequence "TODO(t)" "WAITING(w!)" "|" 
 				      "DONE(d!/@)" "CANCELLED(c@/@)"))
+	org-tag-alist '(("@HOME" . ?h)
+			("@CALL" . ?c) ("@ERRAND" . ?e)
+			("@MAC" . ?m) ("@WORKMAC" . ?a) ("@WEB" . ?b)
+			("@WORK" . ?k) ("2U" . ?2)
+			("@WENDY" . ?w))
 
 	org-goto-interface 'outline-path-completion
 
