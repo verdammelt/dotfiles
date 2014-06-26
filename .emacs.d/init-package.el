@@ -39,7 +39,7 @@
     ido-vertical-mode
     magit
     markdown-mode
-    org
+    org-plus-contrib
     paredit
     projectile
     rainbow-delimiters
