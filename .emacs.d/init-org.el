@@ -96,24 +96,41 @@
      '(("d" "daily"
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid nil)))
-	 (tags-todo "+@WORK/!-WAITING")
-	 (tags-todo "+@CALL|+@ERRAND/!-WAITING")
-	 (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAITING")
-	 (tags-todo "+@WENDY/!-WAITING")
-	 (tags-todo "+@HOME|+@ANY/!-WAITING")
-	 (tags-todo "/WAITING")
+	 (tags "REFILE"
+	       ((org-agenda-overriding-header "Tasks to Refile")))
+	 (tags-todo "+@CALL|+@ERRAND/!-WAITING"
+		    ((org-agenda-overriding-header "@CALL/@ERRAND")))
+	 (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAITING"
+		    ((org-agenda-overriding-header "@COMPUTER")))
+	 (tags-todo "+@HOME|+@ANY/!-WAITING"
+		    ((org-agenda-overriding-header "@HOME")))
+	 (tags-todo "+@WENDY/!-WAITING"
+		    ((org-agenda-overriding-header "@WENDY")))
+	 (tags-todo "+@WORK/!-WAITING"
+		    ((org-agenda-overriding-header "@WORK")))
+	 (tags-todo "/WAITING"
+		    ((org-agenda-overriding-header "WAITING-FOR")))
 	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
-	       ((org-agenda-sorting-strategy '(category-keep))))
+	       ((org-agenda-overriding-header "PROJECTS")
+		(org-agenda-sorting-strategy '(category-keep))))
 	 ))
        ("w" "waiting" tags-todo "/WAITING")
        ("k" "work" 
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid t)))
-	 (tags-todo "+@WORK&+2U/!-WAITING" (todo-state-up tag-up))
-	 (tags-todo "+@WORK&-2U/!-WAITING" (todo-state-up tag-up))
-	 (tags-todo "+@WORK/WAITING")
+	 (tags "REFILE"
+	       ((org-agenda-overriding-header "Tasks to Refile")))
+	 (tags-todo "+@WORK&+2U/!-WAITING" 
+		    ((org-agenda-sorting-strategy '(todo-state-up tag-up))
+		     (org-agenda-overriding-header "BILLABLE")))
+	 (tags-todo "+@WORK&-2U/!-WAITING" 
+		    ((org-agenda-sorting-strategy '(todo-state-up tag-up))
+		     (org-agenda-overriding-header "NON-BILLABLE")))
+	 (tags-todo "+@WORK/WAITING"
+		    ((org-agenda-overriding-header "WAITING-FOR")))
 	 (tags "+@WORK&+CATEGORY=\"PROJ\"&+LEVEL=2"
-	       ((org-agenda-sorting-strategy '(todo-state-down))))))))
+	       ((org-agenda-overriding-header "PROJECTS")
+		(org-agenda-sorting-strategy '(todo-state-down))))))))
 
     ;; testing these out
     (defun sacha/org-agenda-done (&optional arg)
