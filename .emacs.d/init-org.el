@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-25 21:37:12 mark>
+;;;; Modified Time-stamp: <2014-06-26 10:17:22 mark>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -229,6 +229,11 @@ this with to-do items than with projects or headings."
   (global-set-key (kbd "S-<f9>") 'mjs/punch-out)
 
   (setq org-stuck-projects
-	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" (TODO WAITING) nil "")))
+	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" (TODO WAITING) nil ""))
+
+  (require 'org-mobile)
+  (setq org-mobile-directory "~/Documents/Dropbox/GTD/MobileOrg"
+	org-mobile-inbox-for-pull (expand-file-name "mobileorg.org" org-mobile-directory)
+	))
 
 (provide 'init-org)
