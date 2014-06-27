@@ -21,6 +21,7 @@
 	org-use-property-inheritance t
 	org-log-done 'time
 	org-log-into-drawer t
+	org-treat-S-cursor-todo-selection-as-state-change nil
 
 	org-hide-leading-stars nil
 	org-startup-indented t
