@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-17 16:04:35 mjs>
+;;;; Modified Time-stamp: <2014-06-25 18:57:08 mark>
 ;;;;
 (require 'cl)
 
@@ -40,7 +40,7 @@
     ido-vertical-mode
     magit
     markdown-mode
-    org
+    org-plus-contrib
     paredit
     projectile
     rainbow-delimiters

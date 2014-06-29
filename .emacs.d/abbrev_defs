@@ -156,9 +156,7 @@
 
 (define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
 
-(define-abbrev-table 'mail-abbrevs
-  '(
-   ))
+(define-abbrev-table 'mail-abbrevs '())
 
 (define-abbrev-table 'markdown-mode-abbrev-table '())
 
@@ -185,8 +183,7 @@
     ("actionable" "actionable" nil 1)
     ("backend" "back end" nil 1)
     ("invstigate" "Instigate" nil 0)
-    ("magicptrl" "MAGICPTRL" nil 0)
-    ("todo" "TODO" nil 5)
+    ("jp" "MAGICPTRL-" nil 3)
    ))
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
@@ -256,8 +253,9 @@
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("availablility" "availability" nil 0)
+    ("convinience" "convenience" nil 0)
     ("decsion" "decision" nil 0)
-    ("definately" "definitely" nil 0)
+    ("definately" "definitely" nil 1)
     ("existance" "existence" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
