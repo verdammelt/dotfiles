@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-08 11:01:20 mark>
+;;;; Modified Time-stamp: <2014-06-27 08:55:47 mark>
 ;;;;
 ;; Save my place in files
 (require 'saveplace)
@@ -167,5 +167,10 @@
 (global-set-key (kbd "s-g") 'goto-line)
 (global-set-key (kbd "s-j") 'ace-jump-word-mode)
 (global-set-key (kbd "s-J") 'ace-jump-char-mode)
+
+(define-key 'help-command (kbd "C-l") 'find-library)
+(define-key 'help-command (kbd "C-f") 'find-function)
+(define-key 'help-command (kbd "C-k") 'find-function-on-key)
+(define-key 'help-command (kbd "C-v") 'find-variable)
 
 (provide 'init-misc)
