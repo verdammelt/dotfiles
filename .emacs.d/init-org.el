@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-25 21:43:48 mark>
+;;;; Modified Time-stamp: <2014-06-29 08:57:57 mark>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -21,6 +21,7 @@
 	org-use-property-inheritance t
 	org-log-done 'time
 	org-log-into-drawer t
+	org-treat-S-cursor-todo-selection-as-state-change nil
 
 	org-hide-leading-stars nil
 	org-startup-indented t
@@ -228,6 +229,11 @@ this with to-do items than with projects or headings."
   (global-set-key (kbd "S-<f9>") 'mjs/punch-out)
 
   (setq org-stuck-projects
-	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" (TODO WAITING) nil "")))
+	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAITING") nil ""))
+
+  (require 'org-mobile)
+  (setq org-mobile-directory "~/Documents/Dropbox/GTD/MobileOrg"
+	org-mobile-inbox-for-pull (expand-file-name "mobileorg.org" org-mobile-directory)
+	))
 
 (provide 'init-org)
