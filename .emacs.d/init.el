@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-27 21:37:42 mark>
+;;;; Modified Time-stamp: <2014-06-18 09:40:02 mjs>
 ;;;;
 
 ;;; 
@@ -105,4 +105,6 @@
 (global-auto-complete-mode t)
 
 (yas-global-mode 1)
+
+(wrap-region-global-mode t)
 
