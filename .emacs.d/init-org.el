@@ -227,6 +227,7 @@ this with to-do items than with projects or headings."
 
   (global-set-key (kbd "<f9>") 'mjs/morning-sam)
   (global-set-key (kbd "S-<f9>") 'mjs/punch-out)
+  (global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
 
   (setq org-stuck-projects
 	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAITING") nil ""))
