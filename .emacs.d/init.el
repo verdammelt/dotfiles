@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-22 17:31:03 mark>
+;;;; Modified Time-stamp: <2014-07-01 17:02:43 mjs>
 ;;;;
 
 ;;; 
@@ -109,3 +109,4 @@
 
 (wrap-region-global-mode t)
 
+(browse-kill-ring-default-keybindings)
