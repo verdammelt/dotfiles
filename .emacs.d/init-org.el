@@ -221,6 +221,7 @@ this with to-do items than with projects or headings."
   (add-hook 'org-clock-out-hook 'mjs/clock-out-maybe 'append)
 
   (defun mjs/morning-sam ()
+    (interactive)
     (org-agenda nil "k")
     (mjs/punch-in))
 
