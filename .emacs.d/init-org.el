@@ -90,14 +90,11 @@
 	  ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
 	   "* %?\n  %U\n %a\n")
 	  ("w" "Templates for work")
-	  ("wb" "Billable Task" entry (file "")
-	   "* TODO %? :2U:@WORK:\n %U\n"
+	  ("wb" "Billable Task" entry (file+headline "work.org" "Tasks")
+	   "* TODO %? %^g:2U:\n %U\n %a\n"
 	   :clock-in t :clock-resume t)
-	  ("ww" "Non-Billable Task" entry (file "")
-	   "* TODO %? :@WORK:\n %U\n"
-	   :clock-in t :clock-resume t)
-	  ("wp" "Work Project" entry (file "")
-	   "* %? :@WORK:\n %U\n"
+	  ("ww" "Non-Billable Task" entry (file+headline "work.org" "Tasks")
+	   "* TODO %? %^g\n %U\n %a\n"
 	   :clock-in t :clock-resume t)
 	  ))
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
