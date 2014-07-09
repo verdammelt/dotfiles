@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-29 08:57:57 mark>
+;;;; Modified Time-stamp: <2014-07-09 17:40:55 mjs>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -145,7 +145,9 @@
        ("w" "waiting" tags-todo "/WAITING")
        ("k" "work" 
 	((agenda "" ((org-agenda-span 'day)
-		     (org-agenda-use-time-grid t)))
+		     (org-agenda-use-time-grid t)
+		     (org-agenda-start-with-log-mode t)
+		     (org-agenda-start-with-clockreport-mode t)))
 	 (tags "REFILE"
 	       ((org-agenda-overriding-header "Tasks to Refile")))
 	 (tags-todo "+@WORK&+2U/!-WAITING" 
