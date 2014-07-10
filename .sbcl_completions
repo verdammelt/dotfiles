@@ -657,7 +657,6 @@ sb-alien-internals:define-alien-type-method
 sb-alien-internals:define-alien-type-translator
 sb-alien-internals:deport
 sb-alien-internals:deport-alloc
-sb-alien-internals:dispose-local-alien
 sb-alien-internals:enter-alien-callback
 sb-alien-internals:find-saved-fp-and-pc
 sb-alien-internals:heap-alien-info-p
@@ -1095,7 +1094,10 @@ sb-assem:segment-sync-posn
 sb-assem:segment-type
 sb-assem:segment-writers
 sb-assem:sset-adjoin
+sb-assem:sset-adjoin
 sb-assem:sset-delete
+sb-assem:sset-delete
+sb-assem:sset-empty
 sb-assem:sset-empty
 sb-assem:with-modified-segment-index-and-posn
 sb-assem:without-scheduling
@@ -1197,6 +1199,7 @@ sb-c:%allocate-closures-ltn-annotate-optimizer
 sb-c:%array-data-vector-derive-type-optimizer
 sb-c:%ash/right-derive-type-aux
 sb-c:%ash/right-derive-type-optimizer
+sb-c:%call-with-each-info
 sb-c:%caller-frame-ir2-convert-optimizer
 sb-c:%caller-pc-ir2-convert-optimizer
 sb-c:%cast-derive-type-optimizer
@@ -1244,7 +1247,10 @@ sb-c:%event
 sb-c:%find-position-or-find-position-if-vector-expansion
 sb-c:%funcall
 sb-c:%funcall-in-foomacrolet-lexenv
+sb-c:%get-info-value-initializing
+sb-c:%get-type-info-metadata
 sb-c:%heap-alien-addr-derive-type-optimizer
+sb-c:%interr-symbol-for-type-spec
 sb-c:%ldb-derive-type-optimizer
 sb-c:%lea-derive-type-optimizer
 sb-c:%lexical-exit-breakup-ir2-convert-optimizer
@@ -1254,6 +1260,7 @@ sb-c:%load-time-value-ir2-convert-optimizer
 sb-c:%local-alien-addr-derive-type-optimizer
 sb-c:%lvar-%externally-checkable-type
 sb-c:%lvar-derived-type
+sb-c:%make-array-derive-type-optimizer
 sb-c:%make-cast
 sb-c:%make-complex-stack-allocate-result-optimizer
 sb-c:%make-interval
@@ -1264,6 +1271,7 @@ sb-c:%negate-derive-type-optimizer
 sb-c:%nip-values-ir2-convert-optimizer
 sb-c:%nip-values-ltn-annotate-optimizer
 sb-c:%nlx-entry-ir2-convert-optimizer
+sb-c:%packed-info-insert
 sb-c:%policy-quality
 sb-c:%pop-values-ir2-convert-optimizer
 sb-c:%pop-values-ltn-annotate-optimizer
@@ -1294,6 +1302,7 @@ sb-c:%unary-truncate/single-float-derive-type-optimizer
 sb-c:%unwind-protect-ir2-convert-optimizer
 sb-c:%unwind-protect-ltn-annotate-optimizer
 sb-c:%use-ctran
+sb-c:%wait-for-rehash
 sb-c:%with-array-data-derive-type-optimizer
 sb-c:%with-array-data/fp-derive-type-optimizer
 sb-c:%with-compilation-unit
@@ -1322,7 +1331,6 @@ sb-c:add-complement-constraints
 sb-c:add-eql-var-var-constraint
 sb-c:add-global-conflict
 sb-c:add-lambda-vars-and-let-vars-to-closures
-sb-c:add-location-conflicts
 sb-c:add-lvar-use
 sb-c:add-representation-costs
 sb-c:add-test-constraint
@@ -1335,6 +1343,7 @@ sb-c:allocate-code-object
 sb-c:allocate-vector-ltn-annotate-optimizer
 sb-c:allocate-vector-stack-allocate-result-optimizer
 sb-c:almost-immediately-used-p
+sb-c:always-boundp
 sb-c:analyze-indirect-lambda-vars
 sb-c:annotate-1-value-lvar
 sb-c:annotate-fixed-values-lvar
@@ -1386,8 +1395,6 @@ sb-c:assign-ir2-nlx-info
 sb-c:assign-ir2-physenv
 sb-c:assign-lambda-var-tns
 sb-c:assign-return-locations
-sb-c:assign-tn-costs
-sb-c:assign-tn-depths
 sb-c:associate-args
 sb-c:assure-functional-live-p
 sb-c:assure-leaf-live-p
@@ -1420,7 +1427,6 @@ sb-c:basic-combination-source-path
 sb-c:basic-combination-step-info
 sb-c:basic-combination-tail-p
 sb-c:basic-combination-type-validated-for-leaf
-sb-c:basic-save-tn
 sb-c:basic-var-%source-name
 sb-c:basic-var-defined-type
 sb-c:basic-var-ever-used
@@ -1463,11 +1469,15 @@ sb-c:block-home-lambda
 sb-c:block-home-lambda-or-null
 sb-c:block-in
 sb-c:block-info
+sb-c:block-info
 sb-c:block-kill
 sb-c:block-label
 sb-c:block-last
+sb-c:block-last
+sb-c:block-loop
 sb-c:block-loop
 sb-c:block-loop-next
+sb-c:block-next
 sb-c:block-next
 sb-c:block-number
 sb-c:block-or-lose
@@ -1500,6 +1510,8 @@ sb-c:cached-block-physenv
 sb-c:call-full-like-p
 sb-c:call-move-fun
 sb-c:call-with-block-external-functionals
+sb-c:call-with-each-globaldb-name
+sb-c:call-with-each-info
 sb-c:callee-nfp-tn
 sb-c:callee-return-pc-tn
 sb-c:canonized-decl-spec
@@ -1527,6 +1539,8 @@ sb-c:cast-tail-p
 sb-c:cast-type-check
 sb-c:cast-type-to-check
 sb-c:cast-value
+sb-c:cast-vestigial-exit-entry-lexenv
+sb-c:cast-vestigial-exit-lexenv
 sb-c:cblocks-equivalent-p
 sb-c:cdr-derive-type-optimizer
 sb-c:ceiling-derive-type-optimizer
@@ -1569,8 +1583,6 @@ sb-c:check-more-tn-entry
 sb-c:check-move-fun-consistency
 sb-c:check-node-consistency
 sb-c:check-node-reached
-sb-c:check-ok-target
-sb-c:check-operand-restrictions
 sb-c:check-operand-type-scs
 sb-c:check-operand-types
 sb-c:check-pack-consistency
@@ -1579,16 +1591,12 @@ sb-c:check-tn-refs
 sb-c:check-transform-keys
 sb-c:check-vop-refs
 sb-c:cis-derive-type-optimizer
-sb-c:class-info-name
-sb-c:class-info-or-lose
-sb-c:class-info-p
-sb-c:class-info-types
 sb-c:clean-component
-sb-c:clean-up-pack-structures
 sb-c:cleanup-info
 sb-c:cleanup-kind
 sb-c:cleanup-mess-up
 sb-c:cleanup-p
+sb-c:clear-bit-vector
 sb-c:clear-bit-vector
 sb-c:clear-code-coverage
 sb-c:clear-constant-info
@@ -1638,15 +1646,6 @@ sb-c:combination-step-info
 sb-c:combination-tail-p
 sb-c:combination-type-validated-for-leaf
 sb-c:common-suffix
-sb-c:commutative-arg-swap
-sb-c:compact-info-env-entries
-sb-c:compact-info-env-entries-info
-sb-c:compact-info-env-index
-sb-c:compact-info-env-name
-sb-c:compact-info-env-p
-sb-c:compact-info-env-table
-sb-c:compact-info-lookup
-sb-c:compact-info-lookup-index
 sb-c:compile-component
 sb-c:compile-derive-type-optimizer
 sb-c:compile-in-lexenv
@@ -1701,6 +1700,7 @@ sb-c:component-delete-blocks
 sb-c:component-dx-lvars
 sb-c:component-failed-optimizations
 sb-c:component-head
+sb-c:component-head
 sb-c:component-header-length
 sb-c:component-info
 sb-c:component-inline-expansions
@@ -1718,6 +1718,7 @@ sb-c:component-reanalyze-functionals
 sb-c:component-reoptimize
 sb-c:component-sset-number
 sb-c:component-tail
+sb-c:component-tail
 sb-c:component-toplevelish-p
 sb-c:compute-1-debug-fun
 sb-c:compute-args
@@ -1730,20 +1731,20 @@ sb-c:compute-debug-returns
 sb-c:compute-deref-guts
 sb-c:compute-entry-info
 sb-c:compute-initial-conflicts
-sb-c:compute-live-tns
 sb-c:compute-live-vars
 sb-c:compute-loading-costs
 sb-c:compute-loading-costs-if-any
 sb-c:compute-minimal-vars
 sb-c:compute-move-costs
+sb-c:compute-packified-info-size
 sb-c:compute-parse-vop-operand-count
 sb-c:compute-ref-ordering
 sb-c:compute-save-set
 sb-c:compute-temporaries-description
+sb-c:compute-unpackified-info-size
 sb-c:compute-vars
 sb-c:conflict-analyze-1-block
 sb-c:conflictize-save-p-vop
-sb-c:conflicts-in-sc
 sb-c:conjugate-derive-type-optimizer
 sb-c:cons-stack-allocate-result-optimizer
 sb-c:conservative-array-type-complexp
@@ -1847,6 +1848,7 @@ sb-c:copy-fun-info
 sb-c:copy-functional
 sb-c:copy-global-var
 sb-c:copy-if
+sb-c:copy-info-hashtable
 sb-c:copy-interval
 sb-c:copy-interval-limit
 sb-c:copy-lambda
@@ -1865,6 +1867,7 @@ sb-c:copy-propagate
 sb-c:copy-return
 sb-c:copy-sb
 sb-c:copy-set
+sb-c:copy-sset
 sb-c:copy-sset
 sb-c:copy-tail-set
 sb-c:copy-template
@@ -1934,6 +1937,7 @@ sb-c:default-segment-inst-hook
 sb-c:default-segment-run-scheduler
 sb-c:defconstantp
 sb-c:defevent
+sb-c:defevent
 sb-c:define-assembly-routine
 sb-c:define-good-modular-fun
 sb-c:define-internal-pcl-function-name-syntax
@@ -1992,6 +1996,7 @@ sb-c:delete-tn-ref
 sb-c:delete-unreferenced-tns
 sb-c:delete-unused-ir2-blocks
 sb-c:delete-vop
+sb-c:delete-vop
 sb-c:deletef-in
 sb-c:depart-from-tail-set
 sb-c:derive-%with-array-data/mumble-type
@@ -1999,34 +2004,36 @@ sb-c:derive-append-type
 sb-c:derive-aref-type
 sb-c:derive-integer-type
 sb-c:derive-integer-type-aux
+sb-c:derive-make-array-type
 sb-c:derive-node-type
 sb-c:derive-symbol-value-type
 sb-c:describe-component
 sb-c:describe-ir2-component
-sb-c:describe-tn-use
 sb-c:dfo-as-needed
 sb-c:dfo-scavenge-dependency-graph
 sb-c:dfun-from-fun
 sb-c:discard-unused-values
 sb-c:do-blocks
 sb-c:do-blocks-backwards
-sb-c:do-compact-info
 sb-c:do-conset-constraints-intersection
 sb-c:do-core-fixups
 sb-c:do-eql-vars
 sb-c:do-forms-from-info
 sb-c:do-inheritable-constraints
 sb-c:do-ir2-blocks
+sb-c:do-ir2-blocks
+sb-c:do-live-tns
 sb-c:do-live-tns
 sb-c:do-nodes
 sb-c:do-nodes-backwards
 sb-c:do-nodes-carefully
+sb-c:do-packed-info-vector-aux-key
 sb-c:do-packed-tns
 sb-c:do-physenv-ir2-blocks
+sb-c:do-probe-sequence
 sb-c:do-propagatable-constraints
 sb-c:do-sc-pairs
 sb-c:do-uses
-sb-c:do-volatile-info
 sb-c:domain-subtypep
 sb-c:dominates-p
 sb-c:drop-thru-p
@@ -2054,6 +2061,7 @@ sb-c:emit-fixed-alloc
 sb-c:emit-inits
 sb-c:emit-label-elsewhere
 sb-c:emit-load-template
+sb-c:emit-load-template
 sb-c:emit-make-load-form
 sb-c:emit-make-value-cell
 sb-c:emit-move
@@ -2061,13 +2069,12 @@ sb-c:emit-move-arg-template
 sb-c:emit-move-template
 sb-c:emit-moves-and-coercions
 sb-c:emit-nlx-start
-sb-c:emit-operand-load
 sb-c:emit-psetq-moves
-sb-c:emit-saves
 sb-c:emit-step-p
 sb-c:emit-template
 sb-c:emit-type-check
 sb-c:emit-vop
+sb-c:ensure-block-has-ir2-block
 sb-c:ensure-block-start
 sb-c:ensure-global-tn
 sb-c:ensure-lvar-fun-form
@@ -2096,6 +2103,7 @@ sb-c:eq-comparable-type-p
 sb-c:error-optimizer-optimizer
 sb-c:eval-compile-toplevel
 sb-c:eval-info-args
+sb-c:event
 sb-c:event
 sb-c:event-action
 sb-c:event-count
@@ -2130,8 +2138,6 @@ sb-c:expt-derive-type-optimizer
 sb-c:extract-flet-vars
 sb-c:extract-fun-args
 sb-c:extract-let-vars
-sb-c:failed-to-pack-error
-sb-c:failed-to-pack-load-tn-error
 sb-c:fceiling-derive-type-optimizer
 sb-c:fceiling-quotient-bound-aux
 sb-c:ffloor-derive-type-optimizer
@@ -2164,6 +2170,7 @@ sb-c:find-free-fun
 sb-c:find-free-var
 sb-c:find-global-fun
 sb-c:find-in
+sb-c:find-in
 sb-c:find-in-bindings
 sb-c:find-in-bindings-or-fbindings
 sb-c:find-in-physenv
@@ -2172,9 +2179,7 @@ sb-c:find-initial-dfo-aux
 sb-c:find-keyword-lvar
 sb-c:find-lambda-types
 sb-c:find-lexically-apparent-fun
-sb-c:find-load-tn-target
 sb-c:find-local-references
-sb-c:find-location-usage
 sb-c:find-loop-blocks
 sb-c:find-modular-class
 sb-c:find-modular-version
@@ -2182,7 +2187,6 @@ sb-c:find-move-funs
 sb-c:find-move-vop
 sb-c:find-nlx-info
 sb-c:find-non-local-exits
-sb-c:find-ok-target-offset
 sb-c:find-operand
 sb-c:find-optional-dispatch-types
 sb-c:find-or-create-constraint
@@ -2194,7 +2198,6 @@ sb-c:find-result-type
 sb-c:find-rotated-loop-head
 sb-c:find-saetp
 sb-c:find-saetp-by-ctype
-sb-c:find-single-writer
 sb-c:find-slot-offset-and-type
 sb-c:find-source-paths
 sb-c:find-source-root
@@ -2211,21 +2214,31 @@ sb-c:find-uses
 sb-c:finish-block-compilation
 sb-c:finish-ir2-block
 sb-c:finite-sb-always-live
+sb-c:finite-sb-always-live
+sb-c:finite-sb-always-live-count
 sb-c:finite-sb-always-live-count
 sb-c:finite-sb-conflicts
+sb-c:finite-sb-conflicts
+sb-c:finite-sb-current-size
 sb-c:finite-sb-current-size
 sb-c:finite-sb-kind
 sb-c:finite-sb-last-block-count
+sb-c:finite-sb-last-block-count
 sb-c:finite-sb-last-offset
+sb-c:finite-sb-last-offset
+sb-c:finite-sb-live-tns
 sb-c:finite-sb-live-tns
 sb-c:finite-sb-name
 sb-c:finite-sb-p
 sb-c:finite-sb-size
 sb-c:finite-sb-size-alignment
+sb-c:finite-sb-size-alignment
+sb-c:finite-sb-size-increment
 sb-c:finite-sb-size-increment
 sb-c:fix-core-source-info
 sb-c:fixup-flavor
 sb-c:fixup-interval-expt
+sb-c:fixup-ir2-blocks-for-split-block
 sb-c:fixup-name
 sb-c:fixup-note-fixup
 sb-c:fixup-note-kind
@@ -2329,19 +2342,26 @@ sb-c:get-lambda-to-compile
 sb-c:get-node-physenv
 sb-c:get-old-vars
 sb-c:get-operand-info
+sb-c:get-operand-info
 sb-c:get-operand-name
 sb-c:get-source-path
 sb-c:get-source-stream
 sb-c:get-toplevelish-file-info
-sb-c:get-write-info-env
 sb-c:give-up-ir1-transform
 sb-c:global-conflicts-block
+sb-c:global-conflicts-block
+sb-c:global-conflicts-conflicts
 sb-c:global-conflicts-conflicts
 sb-c:global-conflicts-kind
+sb-c:global-conflicts-kind
+sb-c:global-conflicts-next-blockwise
 sb-c:global-conflicts-next-blockwise
 sb-c:global-conflicts-next-tnwise
+sb-c:global-conflicts-next-tnwise
+sb-c:global-conflicts-number
 sb-c:global-conflicts-number
 sb-c:global-conflicts-p
+sb-c:global-conflicts-tn
 sb-c:global-conflicts-tn
 sb-c:global-function
 sb-c:global-var-%source-name
@@ -2357,7 +2377,6 @@ sb-c:global-var-sets
 sb-c:global-var-type
 sb-c:global-var-where-from
 sb-c:globaldb-sxhashoid
-sb-c:grow-sc
 sb-c:gtn-analyze
 sb-c:hairy-data-vector-ref-derive-type-optimizer
 sb-c:hairy-data-vector-ref/check-bounds-derive-type-optimizer
@@ -2391,20 +2410,35 @@ sb-c:immediate-constant-sc
 sb-c:immediate-tn-p
 sb-c:immediately-used-p
 sb-c:implicit-value-cell-tn-p
-sb-c:info-env-name
-sb-c:info-env-p
+sb-c:info-cas
+sb-c:info-env-adjust-count
+sb-c:info-env-comparator
+sb-c:info-env-count
+sb-c:info-env-hash-function
+sb-c:info-env-mutex
+sb-c:info-env-rehash
+sb-c:info-env-storage
+sb-c:info-find-aux-key/unpacked
+sb-c:info-forwarding-pointer-target
+sb-c:info-hashtable-p
+sb-c:info-maphash
+sb-c:info-puthash
+sb-c:info-quickly-insertable-p
+sb-c:info-storage-capacity
+sb-c:info-storage-next
+sb-c:info-storage-threshold
+sb-c:info-value-moved-p
 sb-c:inherit-constraints
 sb-c:inherit-vop-info
 sb-c:init-assembler
 sb-c:init-copy-sets
 sb-c:init-global-conflict-kind
-sb-c:init-live-tns
-sb-c:init-sb-vectors
 sb-c:init-var-constraints
 sb-c:init-xep-environment
 sb-c:initialize-ir2-blocks-flow-info
 sb-c:initialize-vector-ir2-convert-optimizer
 sb-c:inline-expansion-ok
+sb-c:input-error-in-compile-file-invoker
 sb-c:input-error-in-compile-file-position
 sb-c:insert-block-global-conflict
 sb-c:insert-cast-before
@@ -2532,23 +2566,33 @@ sb-c:ir2-block-%label
 sb-c:ir2-block-%trampoline-label
 sb-c:ir2-block-block
 sb-c:ir2-block-count
+sb-c:ir2-block-count
 sb-c:ir2-block-dropped-thru-to
 sb-c:ir2-block-end-stack
 sb-c:ir2-block-global-tns
+sb-c:ir2-block-global-tns
 sb-c:ir2-block-last-vop
+sb-c:ir2-block-last-vop
+sb-c:ir2-block-live-in
 sb-c:ir2-block-live-in
 sb-c:ir2-block-live-out
 sb-c:ir2-block-local-tn-count
+sb-c:ir2-block-local-tn-count
+sb-c:ir2-block-local-tns
 sb-c:ir2-block-local-tns
 sb-c:ir2-block-locations
 sb-c:ir2-block-next
+sb-c:ir2-block-next
+sb-c:ir2-block-number
 sb-c:ir2-block-number
 sb-c:ir2-block-p
 sb-c:ir2-block-physenv
 sb-c:ir2-block-popped
 sb-c:ir2-block-prev
+sb-c:ir2-block-prev
 sb-c:ir2-block-pushed
 sb-c:ir2-block-start-stack
+sb-c:ir2-block-start-vop
 sb-c:ir2-block-start-vop
 sb-c:ir2-block-written
 sb-c:ir2-component-alias-tns
@@ -2558,14 +2602,20 @@ sb-c:ir2-component-constants
 sb-c:ir2-component-entries
 sb-c:ir2-component-format
 sb-c:ir2-component-global-tn-counter
+sb-c:ir2-component-global-tn-counter
 sb-c:ir2-component-nfp
+sb-c:ir2-component-normal-tns
 sb-c:ir2-component-normal-tns
 sb-c:ir2-component-p
 sb-c:ir2-component-restricted-tns
+sb-c:ir2-component-restricted-tns
 sb-c:ir2-component-specified-save-tns
 sb-c:ir2-component-spilled-tns
+sb-c:ir2-component-spilled-tns
+sb-c:ir2-component-spilled-vops
 sb-c:ir2-component-spilled-vops
 sb-c:ir2-component-values-receivers
+sb-c:ir2-component-wired-tns
 sb-c:ir2-component-wired-tns
 sb-c:ir2-convert
 sb-c:ir2-convert-assignment
@@ -2665,6 +2715,7 @@ sb-c:lambda-number
 sb-c:lambda-optional-dispatch
 sb-c:lambda-p
 sb-c:lambda-parent
+sb-c:lambda-parent
 sb-c:lambda-physenv
 sb-c:lambda-plist
 sb-c:lambda-refs
@@ -2737,6 +2788,7 @@ sb-c:lexenv-find
 sb-c:lexenv-funs
 sb-c:lexenv-handled-conditions
 sb-c:lexenv-lambda
+sb-c:lexenv-lambda
 sb-c:lexenv-p
 sb-c:lexenv-policy
 sb-c:lexenv-tags
@@ -2758,8 +2810,7 @@ sb-c:list-ir2-convert-optimizer
 sb-c:list-stack-allocate-result-optimizer
 sb-c:listify-conflicts-table
 sb-c:listify-restrictions
-sb-c:load-tn-conflicts-in-sc
-sb-c:load-tn-offset-conflicts-in-sb
+sb-c:listify-restrictions
 sb-c:locall-analyze-clambdas-until-done
 sb-c:locall-analyze-component
 sb-c:locall-analyze-fun-1
@@ -2796,6 +2847,7 @@ sb-c:logxor-derive-unsigned-bounds
 sb-c:looks-like-an-mv-bind
 sb-c:loop-analyze
 sb-c:loop-blocks
+sb-c:loop-depth
 sb-c:loop-depth
 sb-c:loop-exits
 sb-c:loop-head
@@ -2863,10 +2915,8 @@ sb-c:make-block
 sb-c:make-block-key
 sb-c:make-call-out-tns
 sb-c:make-cast
-sb-c:make-class-info
 sb-c:make-cleanup
 sb-c:make-combination
-sb-c:make-compact-info-env
 sb-c:make-compiled-debug-fun
 sb-c:make-compiled-debug-info
 sb-c:make-compiler-error-context
@@ -2908,7 +2958,12 @@ sb-c:make-functional-from-toplevel-lambda
 sb-c:make-generator-function
 sb-c:make-global-conflicts
 sb-c:make-global-var
+sb-c:make-globaldb-info-metadata
 sb-c:make-if
+sb-c:make-info-descriptor
+sb-c:make-info-forwarding-pointer
+sb-c:make-info-hashtable
+sb-c:make-info-storage
 sb-c:make-interval
 sb-c:make-ir2-block
 sb-c:make-ir2-component
@@ -2970,13 +3025,12 @@ sb-c:make-standard-value-tns
 sb-c:make-tail-set
 sb-c:make-template-result-tns
 sb-c:make-tn
+sb-c:make-tn
 sb-c:make-tn-ref
 sb-c:make-transform
 sb-c:make-type-check-form
-sb-c:make-type-info
 sb-c:make-undefined-warning
 sb-c:make-unknown-values-locations
-sb-c:make-volatile-info-env
 sb-c:make-vop
 sb-c:make-vop-info
 sb-c:make-vop-info-types
@@ -2995,6 +3049,7 @@ sb-c:mask-signed-field-derive-type-optimizer
 sb-c:mask-signed-field-ir2-convert-optimizer
 sb-c:mask-signed-field-optimizer-optimizer
 sb-c:massage-global-definition-type
+sb-c:may-delete-vestigial-exit
 sb-c:maybe-add-eql-var-lvar-constraint
 sb-c:maybe-add-eql-var-var-constraint
 sb-c:maybe-array-data-vector-type-specifier
@@ -3089,8 +3144,6 @@ sb-c:nlx-info-p
 sb-c:nlx-info-safe-p
 sb-c:nlx-info-target
 sb-c:no-fun-values-types
-sb-c:no-load-fun-error
-sb-c:no-load-scs-allowed-by-primitive-type-error
 sb-c:node-block
 sb-c:node-component
 sb-c:node-conservative-type
@@ -3100,6 +3153,7 @@ sb-c:node-dest
 sb-c:node-enclosing-cleanup
 sb-c:node-ends-block
 sb-c:node-home-lambda
+sb-c:node-lexenv
 sb-c:node-lexenv
 sb-c:node-ltn-policy
 sb-c:node-lvar
@@ -3137,7 +3191,6 @@ sb-c:note-number-stack-tn
 sb-c:note-rejected-templates
 sb-c:note-single-valuified-lvar
 sb-c:note-source-path
-sb-c:note-spilled-tn
 sb-c:note-this-location
 sb-c:note-top-level-form
 sb-c:note-undefined-reference
@@ -3153,7 +3206,6 @@ sb-c:numeric-type->interval
 sb-c:numeric-type-real-p
 sb-c:object-call-toplevel-lambda
 sb-c:observe-functional
-sb-c:offset-conflicts-in-sb
 sb-c:ok-copy-ref
 sb-c:ok-initial-convert-p
 sb-c:ok-lvar-lambda-var
@@ -3167,6 +3219,7 @@ sb-c:operand-parse-kind
 sb-c:operand-parse-load
 sb-c:operand-parse-load-tn
 sb-c:operand-parse-name
+sb-c:operand-parse-name
 sb-c:operand-parse-offset
 sb-c:operand-parse-p
 sb-c:operand-parse-sc
@@ -3174,8 +3227,6 @@ sb-c:operand-parse-scs
 sb-c:operand-parse-target
 sb-c:operand-parse-temp
 sb-c:operand-restriction-ok
-sb-c:optimized-emit-saves
-sb-c:optimized-emit-saves-block
 sb-c:optional-dispatch-%debug-name
 sb-c:optional-dispatch-%source-name
 sb-c:optional-dispatch-allocator
@@ -3211,15 +3262,12 @@ sb-c:optional-dispatch-xref
 sb-c:optional-rest-p
 sb-c:order-block-uvl-sets
 sb-c:order-uvl-sets
-sb-c:original-tn
-sb-c:pack
-sb-c:pack-load-tn
-sb-c:pack-load-tns
-sb-c:pack-save-tn
-sb-c:pack-tn
 sb-c:pack-trace-table
-sb-c:pack-wired-tn
 sb-c:pack-xref-data
+sb-c:packed-info-insert
+sb-c:packed-info-remove
+sb-c:packed-info-value-index
+sb-c:packify-infos
 sb-c:parse-define-vop
 sb-c:parse-deftransform
 sb-c:parse-eval-when-situations
@@ -3248,6 +3296,7 @@ sb-c:policy-quality-deprecation-warning
 sb-c:policy-quality-name-p
 sb-c:ponder-full-call
 sb-c:position-in
+sb-c:position-in
 sb-c:position-or-lose
 sb-c:possible-rest-arg-context
 sb-c:pre-pack-tn-stats
@@ -3266,6 +3315,7 @@ sb-c:primitive-type-name
 sb-c:primitive-type-of
 sb-c:primitive-type-or-lose
 sb-c:primitive-type-p
+sb-c:primitive-type-scs
 sb-c:primitive-type-scs
 sb-c:primitive-type-specifier
 sb-c:primitive-type-vop
@@ -3291,16 +3341,20 @@ sb-c:print-lvar-stack
 sb-c:print-nodes
 sb-c:print-operands
 sb-c:print-tn-guts
+sb-c:print-tn-guts
 sb-c:print-vop
 sb-c:print-vops
 sb-c:probable-type-check-p
 sb-c:process-1-decl
+sb-c:process-declaration-declaration
 sb-c:process-decls
 sb-c:process-extent-decl
+sb-c:process-freeze-type-declaration
 sb-c:process-ftype-decl
 sb-c:process-handle-conditions-decl
 sb-c:process-ignore-decl
 sb-c:process-inline-decl
+sb-c:process-inline-declaration
 sb-c:process-muffle-conditions-decl
 sb-c:process-optimize-decl
 sb-c:process-package-lock-decl
@@ -3312,7 +3366,10 @@ sb-c:process-toplevel-progn
 sb-c:process-type-decl
 sb-c:process-unhandle-conditions-decl
 sb-c:process-unmuffle-conditions-decl
+sb-c:process-variable-declaration
 sb-c:processing-decls
+sb-c:proclaim-ftype
+sb-c:proclaim-type
 sb-c:producing-fasl-file
 sb-c:propagate-copies
 sb-c:propagate-from-sets
@@ -3324,6 +3381,7 @@ sb-c:propagate-to-args
 sb-c:propagate-to-refs
 sb-c:push-in
 sb-c:quick-add-complement-constraints
+sb-c:quick-packed-info-insert
 sb-c:random-derive-type-aux
 sb-c:random-derive-type-optimizer
 sb-c:read-for-compile-file
@@ -3373,6 +3431,7 @@ sb-c:reg-spec-temp
 sb-c:register-constraint
 sb-c:register-drop-thru
 sb-c:register-entry-point
+sb-c:register-info-metadata
 sb-c:register-inline-constant
 sb-c:reinit-lambda-physenv
 sb-c:rem-result-type
@@ -3387,8 +3446,6 @@ sb-c:replace-toplevel-xeps
 sb-c:reset-code-coverage
 sb-c:reset-current-conflict
 sb-c:rest-var-more-context-ok
-sb-c:restore-single-writer-tn
-sb-c:restore-tn
 sb-c:result-type-first-arg
 sb-c:result-type-float-contagion
 sb-c:result-type-last-arg
@@ -3412,7 +3469,6 @@ sb-c:return-result-type
 sb-c:return-source-path
 sb-c:return-tail-p
 sb-c:return-value-efficiency-note
-sb-c:reverse-find-vop
 sb-c:revert-source-path
 sb-c:rewrite-initial-contents
 sb-c:row-major-aref-derive-type-optimizer
@@ -3422,27 +3478,33 @@ sb-c:safe-expt
 sb-c:safe-single-coercion-p
 sb-c:safely-binop
 sb-c:same-leaf-ref-p
-sb-c:save-complex-writer-tn
-sb-c:save-if-necessary
-sb-c:save-single-writer-tn
 sb-c:saved-after-read
 sb-c:sb-allocated-size
+sb-c:sb-kind
 sb-c:sb-kind
 sb-c:sb-name
 sb-c:sb-or-lose
 sb-c:sb-p
 sb-c:sb-size
+sb-c:sb-size
+sb-c:sc-alignment
 sb-c:sc-alignment
 sb-c:sc-allowed-by-primitive-type
+sb-c:sc-allowed-by-primitive-type
+sb-c:sc-alternate-scs
 sb-c:sc-alternate-scs
 sb-c:sc-case
 sb-c:sc-constant-scs
+sb-c:sc-constant-scs
+sb-c:sc-element-size
 sb-c:sc-element-size
 sb-c:sc-is
 sb-c:sc-load-costs
 sb-c:sc-locations
+sb-c:sc-locations
 sb-c:sc-move-arg-vops
 sb-c:sc-move-costs
+sb-c:sc-move-funs
 sb-c:sc-move-funs
 sb-c:sc-move-vops
 sb-c:sc-name
@@ -3454,6 +3516,8 @@ sb-c:sc-offset-scn
 sb-c:sc-or-lose
 sb-c:sc-p
 sb-c:sc-reserve-locations
+sb-c:sc-reserve-locations
+sb-c:sc-save-p
 sb-c:sc-save-p
 sb-c:sc-sb
 sb-c:scale-double-float-derive-type-optimizer
@@ -3461,17 +3525,18 @@ sb-c:scale-float-derive-type-aux
 sb-c:scale-single-float-derive-type-optimizer
 sb-c:scan-vop-refs
 sb-c:scavenge-home-dependency-graph
+sb-c:seal-class
 sb-c:select-component-format
-sb-c:select-load-tn-location
-sb-c:select-location
 sb-c:select-representations
 sb-c:select-tn-representation
 sb-c:separate-toplevelish-components
 sb-c:sequence-result-nth-arg
 sb-c:set-bit-vector
+sb-c:set-bit-vector
 sb-c:set-bound
 sb-c:set-derived-type
 sb-c:set-info-value
+sb-c:set-info-value-derive-type-optimizer
 sb-c:set-ir2-component-alias-tns
 sb-c:set-ir2-component-normal-tns
 sb-c:set-ir2-component-restricted-tns
@@ -3496,6 +3561,8 @@ sb-c:setq-var
 sb-c:setup-environment-live-conflicts
 sb-c:setup-environment-tn-conflict
 sb-c:setup-environment-tn-conflicts
+sb-c:show-info
+sb-c:show-info-env
 sb-c:signed-zero-<
 sb-c:signed-zero-<=
 sb-c:signed-zero-=
@@ -3557,6 +3624,7 @@ sb-c:sset-hash1
 sb-c:sset-hash2
 sb-c:sset-intersection
 sb-c:sset-member
+sb-c:sset-member
 sb-c:sset-p
 sb-c:sset-union
 sb-c:sset-union-of-difference
@@ -3591,7 +3659,6 @@ sb-c:tail-set-p
 sb-c:tail-set-type
 sb-c:tan-derive-type-optimizer
 sb-c:tanh-derive-type-optimizer
-sb-c:target-if-desirable
 sb-c:template-arg-types
 sb-c:template-args-ok
 sb-c:template-conditional-p
@@ -3601,6 +3668,7 @@ sb-c:template-info-arg-count
 sb-c:template-ltn-policy
 sb-c:template-more-args-type
 sb-c:template-more-results-type
+sb-c:template-name
 sb-c:template-name
 sb-c:template-note
 sb-c:template-or-lose
@@ -3615,24 +3683,35 @@ sb-c:test-array-element-type
 sb-c:the-in-policy
 sb-c:time-spec-order
 sb-c:tn-cost
+sb-c:tn-cost
 sb-c:tn-current-conflict
+sb-c:tn-global-conflicts
 sb-c:tn-global-conflicts
 sb-c:tn-id
 sb-c:tn-is-copy-of
 sb-c:tn-kind
+sb-c:tn-kind
 sb-c:tn-leaf
-sb-c:tn-lexical-depth
+sb-c:tn-leaf
+sb-c:tn-local
 sb-c:tn-local
 sb-c:tn-local-conflicts
+sb-c:tn-local-conflicts
+sb-c:tn-local-number
 sb-c:tn-local-number
 sb-c:tn-loop-depth
+sb-c:tn-loop-depth
+sb-c:tn-next
 sb-c:tn-next
 sb-c:tn-next*
+sb-c:tn-number
 sb-c:tn-number
 sb-c:tn-offset
 sb-c:tn-p
 sb-c:tn-physenv
 sb-c:tn-primitive-type
+sb-c:tn-primitive-type
+sb-c:tn-reads
 sb-c:tn-reads
 sb-c:tn-ref-across
 sb-c:tn-ref-load-tn
@@ -3644,12 +3723,17 @@ sb-c:tn-ref-tn
 sb-c:tn-ref-vop
 sb-c:tn-ref-write-p
 sb-c:tn-save-tn
+sb-c:tn-save-tn
 sb-c:tn-sc
 sb-c:tn-sc-offset
 sb-c:tn-value
 sb-c:tn-writes
+sb-c:tn-writes
+sb-c:tns-conflict
 sb-c:tns-conflict
 sb-c:tns-conflict-global-global
+sb-c:tns-conflict-global-global
+sb-c:tns-conflict-local-global
 sb-c:tns-conflict-local-global
 sb-c:trace-instruction
 sb-c:trace-table-entry
@@ -3687,7 +3771,8 @@ sb-c:type-info-name
 sb-c:type-info-number
 sb-c:type-info-or-lose
 sb-c:type-info-p
-sb-c:type-info-type
+sb-c:type-info-type-checker
+sb-c:type-info-type-spec
 sb-c:type-info-validate-function
 sb-c:type-needs-conservation-p
 sb-c:type-test-cost
@@ -3700,8 +3785,7 @@ sb-c:undefined-warning-p
 sb-c:undefined-warning-warnings
 sb-c:unlink-blocks
 sb-c:unlink-node
-sb-c:unpack-for-load-tn
-sb-c:unpack-tn
+sb-c:unpackify-infos
 sb-c:unsupplied-or-nil
 sb-c:update-block-in
 sb-c:update-block-succ
@@ -3725,22 +3809,20 @@ sb-c:values-list-optimizer-optimizer
 sb-c:varify-lambda-arg
 sb-c:vector-length
 sb-c:verify-source-file
-sb-c:volatile-info-env-count
-sb-c:volatile-info-env-name
-sb-c:volatile-info-env-p
-sb-c:volatile-info-env-table
-sb-c:volatile-info-env-threshold
-sb-c:volatile-info-lookup
+sb-c:vop
 sb-c:vop
 sb-c:vop*
+sb-c:vop-args
 sb-c:vop-args
 sb-c:vop-attributep
 sb-c:vop-attributes
 sb-c:vop-block
 sb-c:vop-codegen-info
 sb-c:vop-info
+sb-c:vop-info
 sb-c:vop-info-affected
 sb-c:vop-info-arg-costs
+sb-c:vop-info-arg-load-scs
 sb-c:vop-info-arg-load-scs
 sb-c:vop-info-arg-types
 sb-c:vop-info-cost
@@ -3754,6 +3836,8 @@ sb-c:vop-info-more-args-type
 sb-c:vop-info-more-result-costs
 sb-c:vop-info-more-results-type
 sb-c:vop-info-move-args
+sb-c:vop-info-move-args
+sb-c:vop-info-name
 sb-c:vop-info-name
 sb-c:vop-info-note
 sb-c:vop-info-num-args
@@ -3762,8 +3846,11 @@ sb-c:vop-info-p
 sb-c:vop-info-ref-ordering
 sb-c:vop-info-result-costs
 sb-c:vop-info-result-load-scs
+sb-c:vop-info-result-load-scs
 sb-c:vop-info-result-types
 sb-c:vop-info-save-p
+sb-c:vop-info-save-p
+sb-c:vop-info-target-fun
 sb-c:vop-info-target-fun
 sb-c:vop-info-targets
 sb-c:vop-info-temps
@@ -3771,6 +3858,8 @@ sb-c:vop-info-type
 sb-c:vop-info-variant
 sb-c:vop-name
 sb-c:vop-next
+sb-c:vop-next
+sb-c:vop-node
 sb-c:vop-node
 sb-c:vop-p
 sb-c:vop-parse-affected
@@ -3793,20 +3882,27 @@ sb-c:vop-parse-node-var
 sb-c:vop-parse-note
 sb-c:vop-parse-operands
 sb-c:vop-parse-or-lose
+sb-c:vop-parse-or-lose
 sb-c:vop-parse-p
 sb-c:vop-parse-result-types
 sb-c:vop-parse-results
 sb-c:vop-parse-save-p
+sb-c:vop-parse-temps
 sb-c:vop-parse-temps
 sb-c:vop-parse-translate
 sb-c:vop-parse-variant
 sb-c:vop-parse-variant-vars
 sb-c:vop-parse-vop-var
 sb-c:vop-prev
+sb-c:vop-prev
+sb-c:vop-refs
 sb-c:vop-refs
 sb-c:vop-results
+sb-c:vop-results
+sb-c:vop-save-set
 sb-c:vop-save-set
 sb-c:vop-spec-arg
+sb-c:vop-temps
 sb-c:vop-temps
 sb-c:warn-invalid-local-call
 sb-c:warn-optimizer-optimizer
@@ -3823,6 +3919,7 @@ sb-c:with-component-last-block
 sb-c:with-fun-name-leaf
 sb-c:with-ir1-environment-from-node
 sb-c:with-ir1-namespace
+sb-c:with-packed-info-iterator
 sb-c:with-source-location
 sb-c:with-source-paths
 sb-c:wrap-forms-in-debug-catch
@@ -4152,19 +4249,20 @@ sb-di:set-compiled-debug-var-slot
 sb-di:signal-context-frame
 sb-di:single-step-info-from-context
 sb-di:source-path-context
+sb-di:static-foreign-symbol-address
+sb-di:static-foreign-symbol-sap
 sb-di:sub-access-debug-var-slot
 sb-di:sub-activate-breakpoint
 sb-di:sub-compiled-code-location=
 sb-di:sub-set-debug-var-slot
 sb-di:top-frame
-sb-di:true-foreign-symbol-address
-sb-di:true-foreign-symbol-sap
 sb-di:unhandled-debug-condition-condition
 sb-di:unknown-code-location-code-location
 sb-di:unknown-debug-var-debug-fun
 sb-di:unknown-debug-var-debug-var
 sb-di:valid-lisp-pointer-p
 sb-di:x86-call-context
+sb-disassem:%make-arg
 sb-disassem:%make-dstate
 sb-disassem:%make-funstate
 sb-disassem:%make-segment
@@ -4181,6 +4279,7 @@ sb-disassem:align
 sb-disassem:aligned-p
 sb-disassem:alignment-hook
 sb-disassem:all-arg-refs-relevant-p
+sb-disassem:arg-access-macro
 sb-disassem:arg-fields
 sb-disassem:arg-form-kind-checker
 sb-disassem:arg-form-kind-names
@@ -4224,6 +4323,7 @@ sb-disassem:compile-printer-list
 sb-disassem:compile-test
 sb-disassem:compiled-funs-or-lose
 sb-disassem:compute-mask-id
+sb-disassem:copy-arg
 sb-disassem:copy-code-constant-raw
 sb-disassem:correct-dchunk-bytespec-for-endianness
 sb-disassem:dchunk-and
@@ -4246,6 +4346,7 @@ sb-disassem:dchunk=
 sb-disassem:def-arg-form-kind
 sb-disassem:define-arg-type
 sb-disassem:define-instruction-format
+sb-disassem:determine-opcode-bounds
 sb-disassem:disassem-state-p
 sb-disassem:disassemble-assem-segment
 sb-disassem:disassemble-code-component
@@ -4253,6 +4354,7 @@ sb-disassem:disassemble-fun
 sb-disassem:disassemble-memory
 sb-disassem:disassemble-segment
 sb-disassem:disassemble-segments
+sb-disassem:disassemble-unboxed-data
 sb-disassem:doesnt-need-wrapping-p
 sb-disassem:dstate-addr-print-len
 sb-disassem:dstate-alignment
@@ -4310,11 +4412,8 @@ sb-disassem:funstate-arg-temps
 sb-disassem:funstate-args
 sb-disassem:funstate-compatible-p
 sb-disassem:funstate-p
-sb-disassem:gen-arg-access-macro-def-form
 sb-disassem:gen-arg-forms
-sb-disassem:gen-arg-type-def-form
 sb-disassem:gen-args-def-form
-sb-disassem:gen-format-def-form
 sb-disassem:gen-printer-def-forms-def-form
 sb-disassem:get-arg-temp
 sb-disassem:get-code-constant
@@ -4368,10 +4467,10 @@ sb-disassem:make-dchunk
 sb-disassem:make-dstate
 sb-disassem:make-fun-cache
 sb-disassem:make-funstate
+sb-disassem:make-inst-format
 sb-disassem:make-inst-space
 sb-disassem:make-inst-space-choice
 sb-disassem:make-instruction
-sb-disassem:make-instruction-format
 sb-disassem:make-location-group
 sb-disassem:make-memory-segment
 sb-disassem:make-offs-hook
@@ -4389,8 +4488,10 @@ sb-disassem:maybe-note-associated-storage-ref
 sb-disassem:maybe-note-nil-indexed-object
 sb-disassem:maybe-note-nil-indexed-symbol-slot-ref
 sb-disassem:maybe-note-single-storage-ref
+sb-disassem:maybe-note-static-symbol
 sb-disassem:maybe-quote
 sb-disassem:memory-sap-maker
+sb-disassem:modify-arg
 sb-disassem:modify-or-add-arg
 sb-disassem:munge-fun-refs
 sb-disassem:note
@@ -4432,8 +4533,10 @@ sb-disassem:sap-ref-int
 sb-disassem:seg-code
 sb-disassem:seg-hooks
 sb-disassem:seg-length
+sb-disassem:seg-opcodes-length
 sb-disassem:seg-sap-maker
 sb-disassem:seg-storage-info
+sb-disassem:seg-unboxed-refs
 sb-disassem:seg-virtual-location
 sb-disassem:segment-offs-to-code-offs
 sb-disassem:segment-p
@@ -4452,6 +4555,7 @@ sb-disassem:source-form
 sb-disassem:source-form-cache-p
 sb-disassem:specialization-error
 sb-disassem:specializer-rank
+sb-disassem:standard-make-arg
 sb-disassem:storage-info-debug-vars
 sb-disassem:storage-info-for-debug-fun
 sb-disassem:storage-info-groups
@@ -4602,6 +4706,7 @@ sb-ext:defconstant-uneql-old-value
 sb-ext:defglobal
 sb-ext:define-cas-expander
 sb-ext:define-hash-table-test
+sb-ext:define-load-time-global
 sb-ext:define-source-context
 sb-ext:defined-type-name-p
 sb-ext:delete-directory
@@ -4851,7 +4956,6 @@ sb-fasl:fop-push-nil-if-skipping
 sb-fasl:fop-ratio
 sb-fasl:fop-rplaca
 sb-fasl:fop-rplacd
-sb-fasl:fop-sanctify-for-execution
 sb-fasl:fop-short-character
 sb-fasl:fop-simd-pack
 sb-fasl:fop-single-float
@@ -4873,6 +4977,7 @@ sb-fasl:fop-structset
 sb-fasl:fop-svset
 sb-fasl:fop-symbol-in-byte-package-save
 sb-fasl:fop-symbol-in-package-save
+sb-fasl:fop-symbol-tls-fixup
 sb-fasl:fop-truth
 sb-fasl:fop-uninterned-small-symbol-save
 sb-fasl:fop-uninterned-symbol-save
@@ -4899,6 +5004,7 @@ sb-fasl:load-s-integer
 sb-fasl:make-circularity
 sb-fasl:make-fasl-output
 sb-fasl:make-fop-vector
+sb-fasl:make-undefined-package
 sb-fasl:maybe-announce-load
 sb-fasl:maybe-skip-shebang-line
 sb-fasl:note-potential-circularity
@@ -4923,6 +5029,8 @@ sb-fasl:string-save-object
 sb-fasl:sub-dump-object
 sb-fasl:terminate-dotted-list
 sb-fasl:terminate-undotted-list
+sb-fasl:undefined-package-error
+sb-fasl:undefined-package-p
 sb-fasl:with-fop-stack
 sb-format:$-format-directive-expander
 sb-format:$-format-directive-interpreter
@@ -5095,7 +5203,9 @@ sb-gray:stream-write-byte
 sb-gray:stream-write-char
 sb-gray:stream-write-sequence
 sb-gray:stream-write-string
+sb-impl:%%compare-and-swap-symbol-plist
 sb-impl:%%puthash
+sb-impl:%%set-symbol-plist
 sb-impl:%%wait-for
 sb-impl:%array-diplaced-from
 sb-impl:%array-row-major-index
@@ -5104,6 +5214,7 @@ sb-impl:%check-defmacro-fun-name
 sb-impl:%check-macrolet-fun-name
 sb-impl:%check-setf-fun-name
 sb-impl:%clear-system-timer
+sb-impl:%compare-and-swap-symbol-plist
 sb-impl:%compiler-defglobal
 sb-impl:%compiler-deftype
 sb-impl:%compiler-defvar
@@ -5118,6 +5229,8 @@ sb-impl:%defsetf
 sb-impl:%deftype
 sb-impl:%defun
 sb-impl:%defvar
+sb-impl:%dispatch-macro-char-table
+sb-impl:%ensure-plist-holder
 sb-impl:%enter-new-nicknames
 sb-impl:%expander-for-defmacro
 sb-impl:%failed-aver
@@ -5131,6 +5244,7 @@ sb-impl:%handler-bind
 sb-impl:%hash-table-alist
 sb-impl:%hash-table-ctor-args
 sb-impl:%inspect
+sb-impl:%integer-vector-widetag-and-n-bits
 sb-impl:%logical-pathname-device
 sb-impl:%logical-pathname-directory
 sb-impl:%logical-pathname-host
@@ -5141,6 +5255,7 @@ sb-impl:%make-broadcast-stream
 sb-impl:%make-buffer
 sb-impl:%make-case-frob-stream
 sb-impl:%make-concatenated-stream
+sb-impl:%make-dispatch-macro-char
 sb-impl:%make-echo-stream
 sb-impl:%make-external-format
 sb-impl:%make-fd-stream
@@ -5230,6 +5345,7 @@ sb-impl:apply-key
 sb-impl:arch-write-linkage-table-jmp
 sb-impl:arch-write-linkage-table-ref
 sb-impl:array-psxhash
+sb-impl:array-underlying-widetag
 sb-impl:ascii->string-aref
 sb-impl:ascii->string-sap-ref-8
 sb-impl:assert-not-standard-readtable
@@ -5237,6 +5353,9 @@ sb-impl:assert-package-unlocked
 sb-impl:assert-prompt
 sb-impl:assign-setf-macro
 sb-impl:backq-append
+sb-impl:backq-comma-at-form
+sb-impl:backq-comma-dot-form
+sb-impl:backq-comma-form
 sb-impl:backq-cons
 sb-impl:backq-constant-p
 sb-impl:backq-list
@@ -5318,6 +5437,7 @@ sb-impl:bytes-for-char/koi8-r
 sb-impl:bytes-for-char/koi8-u
 sb-impl:bytes-for-char/latin-1
 sb-impl:bytes-for-char/latin-9
+sb-impl:bytes-for-char/mac-roman
 sb-impl:bytes-for-char/shift_jis
 sb-impl:bytes-for-char/ucs-2be
 sb-impl:bytes-for-char/ucs-2le
@@ -5456,11 +5576,15 @@ sb-impl:code->iso-8859-9-mapper
 sb-impl:code->koi8-r-mapper
 sb-impl:code->koi8-u-mapper
 sb-impl:code->latin-9-mapper
+sb-impl:code->mac-roman-mapper
 sb-impl:code->x-mac-cyrillic-mapper
 sb-impl:collect-list-expander
 sb-impl:collect-normal-expander
 sb-impl:comma
+sb-impl:comma-bits
+sb-impl:comma-expr
 sb-impl:comma-macro
+sb-impl:comma-p
 sb-impl:compare-component
 sb-impl:compatible-vector-and-stream-element-types-p
 sb-impl:components-match
@@ -5483,6 +5607,8 @@ sb-impl:concatenated-stream-sout
 sb-impl:constant-type-expander
 sb-impl:constituentp
 sb-impl:copy-buffer
+sb-impl:copy-cmt-entry
+sb-impl:copy-comma
 sb-impl:copy-descriptor-to-stream
 sb-impl:copy-hash-table
 sb-impl:copy-host
@@ -5718,6 +5844,8 @@ sb-impl:define-latin->string
 sb-impl:define-latin->string*
 sb-impl:define-latin1->string
 sb-impl:define-latin1->string*
+sb-impl:define-mac-roman->string
+sb-impl:define-mac-roman->string*
 sb-impl:define-mb->string-1
 sb-impl:define-multibyte-encoding
 sb-impl:define-multibyte-mapper
@@ -5809,6 +5937,8 @@ sb-impl:ef-write-n-bytes-fun
 sb-impl:elapsed-cycles
 sb-impl:emptyp
 sb-impl:enable-stepping
+sb-impl:encapsulate-generic-function
+sb-impl:encapsulated-generic-function-p
 sb-impl:encapsulation-info
 sb-impl:encapsulation-info-definition
 sb-impl:encapsulation-info-p
@@ -5922,6 +6052,7 @@ sb-impl:fd-stream-read-n-characters/koi8-r
 sb-impl:fd-stream-read-n-characters/koi8-u
 sb-impl:fd-stream-read-n-characters/latin-1
 sb-impl:fd-stream-read-n-characters/latin-9
+sb-impl:fd-stream-read-n-characters/mac-roman
 sb-impl:fd-stream-read-n-characters/shift_jis
 sb-impl:fd-stream-read-n-characters/ucs-2be
 sb-impl:fd-stream-read-n-characters/ucs-2le
@@ -5985,7 +6116,6 @@ sb-impl:generic-string-trim
 sb-impl:get-ascii-bytes
 sb-impl:get-buffer
 sb-impl:get-cat-entry
-sb-impl:get-coerced-cmt-entry
 sb-impl:get-constituent-trait
 sb-impl:get-cp1250-bytes
 sb-impl:get-cp1251-bytes
@@ -6011,6 +6141,7 @@ sb-impl:get-cp866-bytes
 sb-impl:get-cp869-bytes
 sb-impl:get-cp874-bytes
 sb-impl:get-descriptor-for
+sb-impl:get-dispatch-macro-char-table
 sb-impl:get-ebcdic-us-bytes
 sb-impl:get-external-format
 sb-impl:get-external-format-or-lose
@@ -6032,9 +6163,11 @@ sb-impl:get-koi8-u-bytes
 sb-impl:get-latin-9-bytes
 sb-impl:get-latin-bytes
 sb-impl:get-latin1-bytes
+sb-impl:get-mac-roman-bytes
 sb-impl:get-multibyte-mapper
 sb-impl:get-new-fill-pointer
 sb-impl:get-processes-status-changes
+sb-impl:get-raw-cmt-dispatch-entry
 sb-impl:get-raw-cmt-entry
 sb-impl:get-setf-method-inverse
 sb-impl:get-stream-fd-and-external-format
@@ -6081,6 +6214,7 @@ sb-impl:host-customary-case
 sb-impl:host-p
 sb-impl:host-parse
 sb-impl:host-parse-native
+sb-impl:host-simplify-namestring
 sb-impl:host-unparse
 sb-impl:host-unparse-directory
 sb-impl:host-unparse-directory-separator
@@ -6152,6 +6286,7 @@ sb-impl:input-char/koi8-r
 sb-impl:input-char/koi8-u
 sb-impl:input-char/latin-1
 sb-impl:input-char/latin-9
+sb-impl:input-char/mac-roman
 sb-impl:input-char/shift_jis
 sb-impl:input-char/ucs-2be
 sb-impl:input-char/ucs-2le
@@ -6297,6 +6432,7 @@ sb-impl:logical-host-name
 sb-impl:logical-host-p
 sb-impl:logical-host-parse
 sb-impl:logical-host-parse-native
+sb-impl:logical-host-simplify-namestring
 sb-impl:logical-host-translations
 sb-impl:logical-host-unparse
 sb-impl:logical-host-unparse-directory
@@ -6310,9 +6446,16 @@ sb-impl:logical-word-or-lose
 sb-impl:loop-elements-iteration-path
 sb-impl:lref
 sb-impl:lstring
+sb-impl:mac-roman->code-mapper
+sb-impl:mac-roman->string*-aref
+sb-impl:mac-roman->string*-sap-ref-8
+sb-impl:mac-roman->string-aref
+sb-impl:mac-roman->string-sap-ref-8
 sb-impl:macro-function-name
+sb-impl:make-backq-comma
+sb-impl:make-backq-comma-at
+sb-impl:make-backq-comma-dot
 sb-impl:make-cancellable-interruptor
-sb-impl:make-char-dispatch-table
 sb-impl:make-encapsulation-info
 sb-impl:make-eval-lambda
 sb-impl:make-fill-pointer-output-stream
@@ -6435,6 +6578,7 @@ sb-impl:output-bytes/koi8-r
 sb-impl:output-bytes/koi8-u
 sb-impl:output-bytes/latin-1
 sb-impl:output-bytes/latin-9
+sb-impl:output-bytes/mac-roman
 sb-impl:output-bytes/shift_jis
 sb-impl:output-bytes/ucs-2be
 sb-impl:output-bytes/ucs-2le
@@ -6578,6 +6722,9 @@ sb-impl:output-char-latin-9-full-buffered
 sb-impl:output-char-latin-9-line-buffered
 sb-impl:output-char-latin-9-none-buffered
 sb-impl:output-char-line-buffered
+sb-impl:output-char-mac-roman-full-buffered
+sb-impl:output-char-mac-roman-line-buffered
+sb-impl:output-char-mac-roman-none-buffered
 sb-impl:output-char-none-buffered
 sb-impl:output-char-shift_jis-full-buffered
 sb-impl:output-char-shift_jis-line-buffered
@@ -6685,6 +6832,7 @@ sb-impl:output-to-c-string/koi8-r
 sb-impl:output-to-c-string/koi8-u
 sb-impl:output-to-c-string/latin-1
 sb-impl:output-to-c-string/latin-9
+sb-impl:output-to-c-string/mac-roman
 sb-impl:output-to-c-string/shift_jis
 sb-impl:output-to-c-string/ucs-2be
 sb-impl:output-to-c-string/ucs-2le
@@ -6823,6 +6971,7 @@ sb-impl:read-from-c-string/koi8-r
 sb-impl:read-from-c-string/koi8-u
 sb-impl:read-from-c-string/latin-1
 sb-impl:read-from-c-string/latin-9
+sb-impl:read-from-c-string/mac-roman
 sb-impl:read-from-c-string/shift_jis
 sb-impl:read-from-c-string/ucs-2be
 sb-impl:read-from-c-string/ucs-2le
@@ -6851,11 +7000,12 @@ sb-impl:relative-decoded-times
 sb-impl:release-buffer
 sb-impl:release-fd-stream-buffers
 sb-impl:release-fd-stream-resources
-sb-impl:remove-backslashes
+sb-impl:remove-escape-characters
 sb-impl:rename-the-old-one
 sb-impl:repl-fun
 sb-impl:repl-prompt-fun
 sb-impl:repl-read-form-fun
+sb-impl:replace/eql-hash-table
 sb-impl:require-error
 sb-impl:reschedule-timer
 sb-impl:reset-buffer
@@ -6904,6 +7054,7 @@ sb-impl:resync/koi8-r
 sb-impl:resync/koi8-u
 sb-impl:resync/latin-1
 sb-impl:resync/latin-9
+sb-impl:resync/mac-roman
 sb-impl:resync/shift_jis
 sb-impl:resync/ucs-2be
 sb-impl:resync/ucs-2le
@@ -6925,10 +7076,13 @@ sb-impl:sap-ref-32be
 sb-impl:sap-ref-32le
 sb-impl:satisfies-the-test
 sb-impl:save
+sb-impl:save-with-multiple-threads-error-interactive-threads
+sb-impl:save-with-multiple-threads-error-other-threads
 sb-impl:scale-exponent
 sb-impl:seconds-to-internal-time
 sb-impl:select-descriptor-handlers
 sb-impl:seq-dispatch
+sb-impl:sequence-to-list
 sb-impl:sequence-to-vector*
 sb-impl:sequence-type-length-mismatch-error
 sb-impl:sequence-type-too-hairy
@@ -6940,7 +7094,6 @@ sb-impl:set-string-output-stream-file-position
 sb-impl:set-system-timer
 sb-impl:setf-expand-the
 sb-impl:setup-printer-state
-sb-impl:shallow-replace/eql-hash-table
 sb-impl:sharp-a
 sb-impl:sharp-b
 sb-impl:sharp-backslash
@@ -7075,6 +7228,7 @@ sb-impl:string->koi8-u
 sb-impl:string->latin%
 sb-impl:string->latin-9
 sb-impl:string->latin1
+sb-impl:string->mac-roman
 sb-impl:string->ucs-2be
 sb-impl:string->ucs-2le
 sb-impl:string->ucs-4be
@@ -7145,6 +7299,7 @@ sb-impl:sub-serve-event
 sb-impl:sub-sub-serve-event
 sb-impl:substitute-into
 sb-impl:sxhash-instance
+sb-impl:symbol-fdefn
 sb-impl:symbol-listify
 sb-impl:symbol-quotep
 sb-impl:synchronize-stream-output
@@ -7226,12 +7381,14 @@ sb-impl:ucs-to-gbk
 sb-impl:ucs-to-sjis
 sb-impl:undefined-macro-char
 sb-impl:under-scheduler-lock-p
+sb-impl:unencapsulate-generic-function
 sb-impl:uniquely-identified-by-print-p
 sb-impl:unix-environment-sbcl-from-cmucl
 sb-impl:unix-host-customary-case
 sb-impl:unix-host-p
 sb-impl:unix-host-parse
 sb-impl:unix-host-parse-native
+sb-impl:unix-host-simplify-namestring
 sb-impl:unix-host-unparse
 sb-impl:unix-host-unparse-directory
 sb-impl:unix-host-unparse-directory-separator
@@ -7249,12 +7406,14 @@ sb-impl:unparse-native-unix-namestring
 sb-impl:unparse-physical-directory
 sb-impl:unparse-physical-directory-list
 sb-impl:unparse-physical-piece
+sb-impl:unparse-unix-directory
 sb-impl:unparse-unix-enough
 sb-impl:unparse-unix-file
 sb-impl:unparse-unix-host
 sb-impl:unparse-unix-namestring
 sb-impl:unprintable-object-p
 sb-impl:unprintable-object-string
+sb-impl:unquote
 sb-impl:unread-buffer
 sb-impl:update-hash-table-cache
 sb-impl:update-package
@@ -7344,6 +7503,7 @@ sb-impl:whitespace[2]p
 sb-impl:with-active-processes-lock
 sb-impl:with-args
 sb-impl:with-available-buffers-lock
+sb-impl:with-char-macro-result
 sb-impl:with-concurrent-access-check
 sb-impl:with-default-decoding-replacement
 sb-impl:with-descriptor-handlers
@@ -7422,7 +7582,6 @@ sb-int:circular-list-error
 sb-int:clear-info
 sb-int:cold-fset
 sb-int:collect
-sb-int:compact-info-environment
 sb-int:compound-object-p
 sb-int:constant-form-value
 sb-int:constant-typep
@@ -7453,7 +7612,6 @@ sb-int:delq
 sb-int:deprecation-error
 sb-int:deprecation-warning
 sb-int:do-anonymous
-sb-int:do-info
 sb-int:dohash
 sb-int:done-with-fast-read-char
 sb-int:doplist
@@ -7478,6 +7636,7 @@ sb-int:fast-read-u-integer
 sb-int:fast-read-var-u-integer
 sb-int:featurep
 sb-int:file-name
+sb-int:find-fdefn
 sb-int:find-restart-or-control-error
 sb-int:find-undeleted-package-or-lose
 sb-int:fixnump
@@ -7490,8 +7649,12 @@ sb-int:fun-name-block-name
 sb-int:fun-name-inline-expansion
 sb-int:gensymify
 sb-int:get-floating-point-modes
+sb-int:get-info-value-initializing
 sb-int:hash-table-equalp
 sb-int:info
+sb-int:info-find-aux-key/packed
+sb-int:info-gethash
+sb-int:info-vector-fdefn
 sb-int:intern*
 sb-int:invalid-array-error
 sb-int:invalid-array-index-error
@@ -7508,7 +7671,6 @@ sb-int:long-float-p
 sb-int:looks-like-name-of-special-var-p
 sb-int:make-case-frob-stream
 sb-int:make-gensym-list
-sb-int:make-info-environment
 sb-int:make-static-vector
 sb-int:make-trivial-default-pathname
 sb-int:make-unprintable-object
@@ -7527,6 +7689,7 @@ sb-int:nth-but-with-sane-arg-order
 sb-int:once-only
 sb-int:package-external-symbol-count
 sb-int:package-internal-symbol-count
+sb-int:packed-info-field
 sb-int:parse-body
 sb-int:parse-lambda-list
 sb-int:parse-lambda-list-like-thing
@@ -7572,9 +7735,11 @@ sb-int:two-arg-char-not-lessp
 sb-int:type-bound-number
 sb-int:uncross
 sb-int:unencapsulate
+sb-int:update-symbol-info
 sb-int:valid-function-name-p
 sb-int:with-fast-read-byte
 sb-int:with-float-traps-masked
+sb-int:with-globaldb-name
 sb-int:with-locked-system-table
 sb-int:with-progressive-timeout
 sb-int:with-rebound-io-syntax
@@ -7640,13 +7805,9 @@ sb-kernel:%bit-position/1
 sb-kernel:%byte-blt
 sb-kernel:%caller-frame
 sb-kernel:%caller-pc
-sb-kernel:%ceiling
 sb-kernel:%charset
 sb-kernel:%check-bound
 sb-kernel:%check-generic-sequence-bounds
-sb-kernel:%check-structure-type-from-dd
-sb-kernel:%check-structure-type-from-layout
-sb-kernel:%check-structure-type-from-name
 sb-kernel:%check-vector-sequence-bounds
 sb-kernel:%clear-classoid
 sb-kernel:%closure-fun
@@ -7665,7 +7826,7 @@ sb-kernel:%compare-and-swap-car
 sb-kernel:%compare-and-swap-cdr
 sb-kernel:%compare-and-swap-instance-ref
 sb-kernel:%compare-and-swap-svref
-sb-kernel:%compare-and-swap-symbol-plist
+sb-kernel:%compare-and-swap-symbol-info
 sb-kernel:%compare-and-swap-symbol-value
 sb-kernel:%compiler-define-condition
 sb-kernel:%compiler-defstruct
@@ -7688,6 +7849,7 @@ sb-kernel:%ensure-classoid-valid
 sb-kernel:%eql
 sb-kernel:%exit
 sb-kernel:%exp
+sb-kernel:%expander-for-defstruct
 sb-kernel:%find-position
 sb-kernel:%find-position-if
 sb-kernel:%find-position-if-not
@@ -7695,7 +7857,6 @@ sb-kernel:%find-position-if-not-vector-macro
 sb-kernel:%find-position-if-vector-macro
 sb-kernel:%find-position-vector-macro
 sb-kernel:%find-restart
-sb-kernel:%floor
 sb-kernel:%fun-doc
 sb-kernel:%fun-fun
 sb-kernel:%fun-lambda-list
@@ -7723,6 +7884,7 @@ sb-kernel:%log
 sb-kernel:%log10
 sb-kernel:%log1p
 sb-kernel:%make-alien-type-type
+sb-kernel:%make-array
 sb-kernel:%make-array-type
 sb-kernel:%make-character-set-type
 sb-kernel:%make-condition-object
@@ -7763,6 +7925,7 @@ sb-kernel:%multiply-high
 sb-kernel:%negate
 sb-kernel:%note-type-defined
 sb-kernel:%other-pointer-p
+sb-kernel:%other-pointer-subtype-p
 sb-kernel:%other-pointer-widetag
 sb-kernel:%pow
 sb-kernel:%print-structure-sans-layout-info
@@ -7846,7 +8009,6 @@ sb-kernel:%single-float
 sb-kernel:%sinh
 sb-kernel:%sp-string-compare
 sb-kernel:%sqrt
-sb-kernel:%structure-object-typecheckfun
 sb-kernel:%svset
 sb-kernel:%sxhash-simple-string
 sb-kernel:%sxhash-simple-substring
@@ -7874,6 +8036,7 @@ sb-kernel:%vector-raw-bits
 sb-kernel:%with-array-data
 sb-kernel:%with-array-data-macro
 sb-kernel:%with-array-data/fp
+sb-kernel:accessor-definitions
 sb-kernel:accessor-inherited-data
 sb-kernel:alien-negate-type-method
 sb-kernel:alien-simple-=-type-method
@@ -7949,7 +8112,6 @@ sb-kernel:big-random-chunk
 sb-kernel:binding-stack-exhausted-error
 sb-kernel:binding-stack-pointer-sap
 sb-kernel:binding-stack-usage
-sb-kernel:bogus-arg-to-values-list-error-handler
 sb-kernel:bounding-indices-bad-object
 sb-kernel:build-ratio
 sb-kernel:built-in-classoid-class-info
@@ -8032,6 +8194,7 @@ sb-kernel:code-header-set
 sb-kernel:code-instructions
 sb-kernel:code-instructions
 sb-kernel:coerce-bound
+sb-kernel:coerce-symbol-to-fun
 sb-kernel:coerce-to-complex-type
 sb-kernel:coerce-to-condition
 sb-kernel:coerce-to-fun
@@ -8042,7 +8205,6 @@ sb-kernel:coerce-to-vector
 sb-kernel:coerced-float-bound
 sb-kernel:coerced-real-bound
 sb-kernel:collect-garbage
-sb-kernel:compact-environment-aux
 sb-kernel:compare-key-args
 sb-kernel:compare-slots
 sb-kernel:compiler-layout-or-lose
@@ -8137,9 +8299,11 @@ sb-kernel:constant-ub8-bash
 sb-kernel:constant-unparse-type-method
 sb-kernel:constructor-definitions
 sb-kernel:containing-integer-type
+sb-kernel:contains-unknown-type-p
 sb-kernel:control-stack-exhausted-error
 sb-kernel:control-stack-pointer-sap
 sb-kernel:control-stack-usage
+sb-kernel:copier-definition
 sb-kernel:copy-alien-value
 sb-kernel:copy-built-in-classoid
 sb-kernel:copy-byte-vector-to-system-area
@@ -8181,8 +8345,6 @@ sb-kernel:csubtypep
 sb-kernel:csubtypep-cache-clear
 sb-kernel:csubtypep-cache-enter
 sb-kernel:csubtypep-cache-lookup
-sb-kernel:ctype-is-common-typecheckfun-type-p
-sb-kernel:ctype-needs-to-be-interpreted-p
 sb-kernel:ctype-of
 sb-kernel:ctype-of-cache-clear
 sb-kernel:ctype-of-cache-enter
@@ -8242,6 +8404,7 @@ sb-kernel:defmacro-lambda-list-broken-key-list-error-info
 sb-kernel:defmacro-lambda-list-broken-key-list-error-problem
 sb-kernel:defstruct-description-p
 sb-kernel:defstruct-slot-description-p
+sb-kernel:delay-defstruct-functions
 sb-kernel:delegate-complex-intersection2
 sb-kernel:delegate-complex-subtypep-arg2
 sb-kernel:deprecated-eval-when-situations-situations
@@ -8250,8 +8413,8 @@ sb-kernel:deprecated-name-replacements
 sb-kernel:deprecated-name-runtime-error
 sb-kernel:deprecated-since
 sb-kernel:descend-into
+sb-kernel:determine-unsafe-slots
 sb-kernel:disabled-package-locks
-sb-kernel:division-by-zero-error-handler
 sb-kernel:do-closure-values
 sb-kernel:double-float-high-bits
 sb-kernel:double-float-low-bits
@@ -8273,7 +8436,6 @@ sb-kernel:error-number-or-lose
 sb-kernel:extended-char-p
 sb-kernel:extended-sequence-p
 sb-kernel:fallback-random-seed
-sb-kernel:fdefinition-object
 sb-kernel:fdefn-fun
 sb-kernel:fdefn-makunbound
 sb-kernel:fdefn-name
@@ -8291,6 +8453,7 @@ sb-kernel:find-defstruct-description
 sb-kernel:find-interrupted-name-and-frame
 sb-kernel:find-layout
 sb-kernel:find-name-indices
+sb-kernel:find-or-create-fdefn
 sb-kernel:find-slot-default
 sb-kernel:fixed-values-op
 sb-kernel:fixnum-mod-p
@@ -8303,6 +8466,7 @@ sb-kernel:float-ratio
 sb-kernel:floating-point-exception-traps
 sb-kernel:foreign-deinit
 sb-kernel:frob-dd-inclusion-stuff
+sb-kernel:ftype-proclamation-mismatch-warn
 sb-kernel:fun-code-header
 sb-kernel:fun-subtype
 sb-kernel:fun-type-allowp
@@ -8336,7 +8500,6 @@ sb-kernel:function-unparse-type-method
 sb-kernel:gc-reinit
 sb-kernel:gc-start-the-world
 sb-kernel:gc-stop-the-world
-sb-kernel:general-typecheckfun
 sb-kernel:generate-number-dispatch
 sb-kernel:get-closure-length
 sb-kernel:get-header-data
@@ -8387,7 +8550,6 @@ sb-kernel:integer-decode-single-float
 sb-kernel:interactive-restart-arguments
 sb-kernel:interesting-function-redefinition-warning-p
 sb-kernel:internal-error
-sb-kernel:interpreted-typecheckfun
 sb-kernel:intersect-type-pairs
 sb-kernel:intersection-complex-subtypep-arg1-type-method
 sb-kernel:intersection-complex-subtypep-arg2-type-method
@@ -8403,11 +8565,8 @@ sb-kernel:intersection-type-p
 sb-kernel:intersection-type-types
 sb-kernel:intersection-unparse-type-method
 sb-kernel:intexp
-sb-kernel:invalid-arg-count-error-handler
 sb-kernel:invalid-array-index-error-array
 sb-kernel:invalid-array-index-error-axis
-sb-kernel:invalid-array-index-error-handler
-sb-kernel:invalid-unwind-error-handler
 sb-kernel:invoke-complex-=-other-method
 sb-kernel:invoke-complex-subtypep-arg1-method
 sb-kernel:io-timeout-direction
@@ -8416,6 +8575,7 @@ sb-kernel:key-info-name
 sb-kernel:key-info-p
 sb-kernel:key-info-type
 sb-kernel:keyword-supplied-p
+sb-kernel:layout-%for-std-class-b
 sb-kernel:layout-classoid
 sb-kernel:layout-clos-hash
 sb-kernel:layout-depthoid
@@ -8423,13 +8583,13 @@ sb-kernel:layout-for-std-class-p
 sb-kernel:layout-info
 sb-kernel:layout-inherits
 sb-kernel:layout-invalid
-sb-kernel:layout-invalid-error-handler
 sb-kernel:layout-length
 sb-kernel:layout-n-untagged-slots
 sb-kernel:layout-of
 sb-kernel:layout-p
 sb-kernel:layout-proper-name
 sb-kernel:layout-pure
+sb-kernel:layout-slot-list
 sb-kernel:layout-slot-table
 sb-kernel:layout-source-location
 sb-kernel:lexical-environment-too-complex-form
@@ -8457,9 +8617,7 @@ sb-kernel:make-condition-slot
 sb-kernel:make-cons-type
 sb-kernel:make-constant-type
 sb-kernel:make-dd-with-alternate-metaclass
-sb-kernel:make-defstruct-copier
 sb-kernel:make-defstruct-description
-sb-kernel:make-defstruct-predicate
 sb-kernel:make-defstruct-slot-description
 sb-kernel:make-double-float
 sb-kernel:make-fdefn
@@ -8525,7 +8683,6 @@ sb-kernel:member-type-p
 sb-kernel:member-type-size
 sb-kernel:member-type-xset
 sb-kernel:member-unparse-type-method
-sb-kernel:memoized-typecheckfun-form
 sb-kernel:modified-numeric-type
 sb-kernel:muffle-warning-p
 sb-kernel:must-supply-this
@@ -8565,8 +8722,6 @@ sb-kernel:negation-type-might-contain-other-types-p
 sb-kernel:negation-type-p
 sb-kernel:negation-type-type
 sb-kernel:negation-unparse-type-method
-sb-kernel:nil-array-accessed-error-handler
-sb-kernel:nil-fun-returned-error-handler
 sb-kernel:note-name-defined
 sb-kernel:number-dispatch
 sb-kernel:number-negate-type-method
@@ -8593,68 +8748,6 @@ sb-kernel:numeric-type-might-contain-other-types-p
 sb-kernel:numeric-type-p
 sb-kernel:numeric-types-adjacent
 sb-kernel:numeric-types-intersect
-sb-kernel:object-not-array-error-handler
-sb-kernel:object-not-base-string-error-handler
-sb-kernel:object-not-bignum-error-handler
-sb-kernel:object-not-bit-vector-error-handler
-sb-kernel:object-not-character-error-handler
-sb-kernel:object-not-character-string-error-handler
-sb-kernel:object-not-complex-double-float-error-handler
-sb-kernel:object-not-complex-error-handler
-sb-kernel:object-not-complex-rational-error-handler
-sb-kernel:object-not-complex-single-float-error-handler
-sb-kernel:object-not-complex-vector-error-handler
-sb-kernel:object-not-cons-error-handler
-sb-kernel:object-not-double-float-error-handler
-sb-kernel:object-not-fixnum-error-handler
-sb-kernel:object-not-float-error-handler
-sb-kernel:object-not-fun-error-handler
-sb-kernel:object-not-instance-error-handler
-sb-kernel:object-not-integer-error-handler
-sb-kernel:object-not-list-error-handler
-sb-kernel:object-not-number-error-handler
-sb-kernel:object-not-ratio-error-handler
-sb-kernel:object-not-rational-error-handler
-sb-kernel:object-not-real-error-handler
-sb-kernel:object-not-sap-error-handler
-sb-kernel:object-not-signed-byte-32-error-handler
-sb-kernel:object-not-simd-pack-error-handler
-sb-kernel:object-not-simple-array-complex-double-float-error-handler
-sb-kernel:object-not-simple-array-complex-single-float-error-handler
-sb-kernel:object-not-simple-array-double-float-error-handler
-sb-kernel:object-not-simple-array-error-handler
-sb-kernel:object-not-simple-array-fixnum-error-handler
-sb-kernel:object-not-simple-array-nil-error-handler
-sb-kernel:object-not-simple-array-signed-byte-16-error-handler
-sb-kernel:object-not-simple-array-signed-byte-32-error-handler
-sb-kernel:object-not-simple-array-signed-byte-64-error-handler
-sb-kernel:object-not-simple-array-signed-byte-8-error-handler
-sb-kernel:object-not-simple-array-single-float-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-15-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-16-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-2-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-31-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-32-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-4-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-63-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-64-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-7-error-handler
-sb-kernel:object-not-simple-array-unsigned-byte-8-error-handler
-sb-kernel:object-not-simple-array-unsigned-fixnum-error-handler
-sb-kernel:object-not-simple-base-string-error-handler
-sb-kernel:object-not-simple-bit-vector-error-handler
-sb-kernel:object-not-simple-character-string-error-handler
-sb-kernel:object-not-simple-string-error-handler
-sb-kernel:object-not-simple-vector-error-handler
-sb-kernel:object-not-single-float-error-handler
-sb-kernel:object-not-string-error-handler
-sb-kernel:object-not-symbol-error-handler
-sb-kernel:object-not-type-error-handler
-sb-kernel:object-not-unsigned-byte-32-error-handler
-sb-kernel:object-not-vector-error-handler
-sb-kernel:object-not-vector-nil-error-handler
-sb-kernel:object-not-weak-pointer-error-handler
-sb-kernel:odd-key-args-error-handler
 sb-kernel:order-layout-inherits
 sb-kernel:os-random-seed
 sb-kernel:output-object
@@ -8679,8 +8772,11 @@ sb-kernel:parse-unknown-type-specifier
 sb-kernel:pointer-hash
 sb-kernel:post-gc
 sb-kernel:precompute-types
+sb-kernel:predicate-definition
 sb-kernel:print-reference
 sb-kernel:proclaim-as-fun-name
+sb-kernel:proclamation-mismatch-description
+sb-kernel:proclamation-mismatch-kind
 sb-kernel:proclamation-mismatch-name
 sb-kernel:proclamation-mismatch-new
 sb-kernel:proclamation-mismatch-old
@@ -8689,7 +8785,6 @@ sb-kernel:program-assert-symbol-home-package-unlocked
 sb-kernel:program-error-form
 sb-kernel:program-error-message
 sb-kernel:program-error-source
-sb-kernel:protect-cl
 sb-kernel:punt-print-if-too-long
 sb-kernel:push-let-binding
 sb-kernel:push-optional-binding
@@ -8705,6 +8800,7 @@ sb-kernel:raw-slot-data-alignment
 sb-kernel:raw-slot-data-comparer
 sb-kernel:raw-slot-data-init-vop
 sb-kernel:raw-slot-data-n-words
+sb-kernel:raw-slot-data-or-lose
 sb-kernel:raw-slot-data-raw-type
 sb-kernel:raw-slot-words
 sb-kernel:read-only-space-usage
@@ -8739,6 +8835,7 @@ sb-kernel:scale-double-float
 sb-kernel:scale-float-maybe-overflow
 sb-kernel:scale-float-maybe-underflow
 sb-kernel:scale-single-float
+sb-kernel:schwartzian-stable-sort-list
 sb-kernel:scrub-power-cache
 sb-kernel:sealed-class-intersection2
 sb-kernel:sequence-of-checked-length-given-type
@@ -8789,13 +8886,13 @@ sb-kernel:simple-base-string-p
 sb-kernel:simple-character-string-p
 sb-kernel:simple-condition-printer
 sb-kernel:simple-fun-p
+sb-kernel:simple-rank-1-array-*-p
 sb-kernel:simplify-intersections
 sb-kernel:simplify-unions
 sb-kernel:single-float-bits
 sb-kernel:single-from-bits
 sb-kernel:single-value-specifier-type
 sb-kernel:single-value-type
-sb-kernel:slot-accessor-funs
 sb-kernel:slot-accessor-transforms
 sb-kernel:slot-setter-lambda-form
 sb-kernel:specialize-array-type
@@ -8840,7 +8937,6 @@ sb-kernel:string>*
 sb-kernel:string>=*
 sb-kernel:structure!object-p
 sb-kernel:structure-classoid-class-info
-sb-kernel:structure-classoid-constructor
 sb-kernel:structure-classoid-direct-superclasses
 sb-kernel:structure-classoid-enumerable
 sb-kernel:structure-classoid-hash-value
@@ -8851,10 +8947,11 @@ sb-kernel:structure-classoid-p
 sb-kernel:structure-classoid-pcl-class
 sb-kernel:structure-classoid-state
 sb-kernel:structure-classoid-subclasses
-sb-kernel:structure-object-typecheckfun
 sb-kernel:structure-raw-slot-data
 sb-kernel:sub-gc
 sb-kernel:symbol-hash
+sb-kernel:symbol-info
+sb-kernel:symbol-info-vector
 sb-kernel:system-area-ub1-copy
 sb-kernel:system-area-ub1-fill
 sb-kernel:system-area-ub16-copy
@@ -8871,7 +8968,6 @@ sb-kernel:system-area-ub8-copy
 sb-kernel:system-area-ub8-fill
 sb-kernel:time-reinit
 sb-kernel:timeout-seconds
-sb-kernel:tls-exhausted-error-handler
 sb-kernel:topological-sort
 sb-kernel:two-arg-*
 sb-kernel:two-arg-+
@@ -8919,6 +9015,7 @@ sb-kernel:type-negation
 sb-kernel:type-negation-cache-clear
 sb-kernel:type-negation-cache-enter
 sb-kernel:type-negation-cache-lookup
+sb-kernel:type-proclamation-mismatch-warn
 sb-kernel:type-single-value-p
 sb-kernel:type-singleton-p
 sb-kernel:type-singleton-p-cache-clear
@@ -8939,14 +9036,11 @@ sb-kernel:type=-cache-enter
 sb-kernel:type=-cache-lookup
 sb-kernel:type=-list
 sb-kernel:type=-set
-sb-kernel:typecheck-failure
 sb-kernel:typed-accessor-definitions
 sb-kernel:typed-copier-definitions
 sb-kernel:typed-predicate-definitions
 sb-kernel:typed-structure-info-or-lose
-sb-kernel:typep-to-layout
 sb-kernel:types-equal-or-intersect
-sb-kernel:typespec-typecheckfun
 sb-kernel:ub1-bash-copy
 sb-kernel:ub1-bash-fill
 sb-kernel:ub16-bash-copy
@@ -8968,10 +9062,8 @@ sb-kernel:unary-ub32-bash
 sb-kernel:unary-ub4-bash
 sb-kernel:unary-ub64-bash
 sb-kernel:unary-ub8-bash
-sb-kernel:unbound-symbol-error-handler
 sb-kernel:undeclare-structure
 sb-kernel:undefine-fun-name
-sb-kernel:undefined-alien-fun-error-handler
 sb-kernel:undefined-alien-symbol
 sb-kernel:undefined-alien-variable-error
 sb-kernel:undefined-classoid-class-info
@@ -8985,7 +9077,6 @@ sb-kernel:undefined-classoid-p
 sb-kernel:undefined-classoid-pcl-class
 sb-kernel:undefined-classoid-state
 sb-kernel:undefined-classoid-subclasses
-sb-kernel:undefined-fun-error-handler
 sb-kernel:unhandled-trap-error
 sb-kernel:uninteresting-generic-function-redefinition-p
 sb-kernel:uninteresting-macro-redefinition-p
@@ -9008,8 +9099,10 @@ sb-kernel:union-type-might-contain-other-types-p
 sb-kernel:union-type-p
 sb-kernel:union-type-types
 sb-kernel:union-unparse-type-method
-sb-kernel:unknown-error-handler
-sb-kernel:unknown-key-arg-error-handler
+sb-kernel:unite-array-types-complexp
+sb-kernel:unite-array-types-dimensions
+sb-kernel:unite-array-types-element-types
+sb-kernel:unite-array-types-supertypes-compatible-p
 sb-kernel:unknown-type-class-info
 sb-kernel:unknown-type-enumerable
 sb-kernel:unknown-type-hash-value
@@ -9018,7 +9111,6 @@ sb-kernel:unknown-type-p
 sb-kernel:unknown-type-specifier
 sb-kernel:unparse-args-types
 sb-kernel:unsafe-clear-roots
-sb-kernel:unseen-throw-tag-error-handler
 sb-kernel:unsigned-byte-64-p
 sb-kernel:update-object-layout-or-invalid
 sb-kernel:values-complex-subtypep-arg2-type-method
@@ -9089,6 +9181,7 @@ sb-kernel:vector-unsigned-byte-7-p
 sb-kernel:vector-unsigned-byte-8-p
 sb-kernel:verify-keywords
 sb-kernel:widetag-of
+sb-kernel:widetags-from-union-type
 sb-kernel:with-array-data
 sb-kernel:with-circularity-detection
 sb-kernel:with-single-package-locked-error
@@ -9736,6 +9829,7 @@ sb-pcl:generate-fast-class-slot-access-p
 sb-pcl:generate-slotd-typecheck
 sb-pcl:generating-lisp
 sb-pcl:generic-clobbers-function
+sb-pcl:generic-function-encapsulations
 sb-pcl:generic-function-initial-methods
 sb-pcl:generic-function-name-p
 sb-pcl:generic-function-nreq
@@ -9757,7 +9851,6 @@ sb-pcl:get-fun-generator
 sb-pcl:get-fun1
 sb-pcl:get-generic-fun-info
 sb-pcl:get-instance-hash-code
-sb-pcl:get-instance-wrapper-or-nil
 sb-pcl:get-key-arg-tail
 sb-pcl:get-method
 sb-pcl:get-method-function
@@ -9826,6 +9919,9 @@ sb-pcl:interned-symbol-p
 sb-pcl:invalid-method-initarg
 sb-pcl:invalid-method-initarg-method
 sb-pcl:invalid-qualifiers
+sb-pcl:invalid-superclass
+sb-pcl:invalid-superclass-class
+sb-pcl:invalid-superclass-superclass
 sb-pcl:invalid-wrapper-p
 sb-pcl:invoke-effective-method-function
 sb-pcl:invoke-effective-method-function-fast
@@ -9956,6 +10052,7 @@ sb-pcl:map-specializers
 sb-pcl:maybe-call-ctor
 sb-pcl:maybe-car
 sb-pcl:maybe-class
+sb-pcl:maybe-encapsulate-discriminating-function
 sb-pcl:maybe-update-standard-slot-locations
 sb-pcl:mcase
 sb-pcl:mec-all-class-lists
@@ -10179,6 +10276,7 @@ sb-pcl:split-declarations
 sb-pcl:standard-accessor-method-p
 sb-pcl:standard-boundp-method-p
 sb-pcl:standard-class-p
+sb-pcl:standard-compute-discriminating-function
 sb-pcl:standard-compute-effective-method
 sb-pcl:standard-funcallable-instance-clos-slots
 sb-pcl:standard-funcallable-instance-hash-code
@@ -10271,23 +10369,8 @@ sb-pcl:wrap-in-allocate-forms
 sb-pcl:wrap-method-group-specifier-bindings
 sb-pcl:wrapper-class
 sb-pcl:wrapper-class*
-sb-pcl:wrapper-classoid
-sb-pcl:wrapper-clos-hash
-sb-pcl:wrapper-depthoid
 sb-pcl:wrapper-fetcher
-sb-pcl:wrapper-for-std-class-p
-sb-pcl:wrapper-info
-sb-pcl:wrapper-inherits
-sb-pcl:wrapper-invalid
-sb-pcl:wrapper-length
-sb-pcl:wrapper-n-untagged-slots
 sb-pcl:wrapper-no-of-instance-slots
-sb-pcl:wrapper-of
-sb-pcl:wrapper-p
-sb-pcl:wrapper-pure
-sb-pcl:wrapper-slot-table
-sb-pcl:wrapper-slots
-sb-pcl:wrapper-source-location
 sb-pretty:assert-not-standard-pprint-dispatch-table
 sb-pretty:block-end-p
 sb-pretty:block-end-posn
@@ -10399,6 +10482,7 @@ sb-pretty:pretty-stream-buffer
 sb-pretty:pretty-stream-buffer-fill-pointer
 sb-pretty:pretty-stream-buffer-offset
 sb-pretty:pretty-stream-buffer-start-column
+sb-pretty:pretty-stream-char-out-oneshot-hook
 sb-pretty:pretty-stream-cin-buffer
 sb-pretty:pretty-stream-in
 sb-pretty:pretty-stream-in-buffer
@@ -10474,6 +10558,110 @@ sb-profile:time-info-seconds
 sb-profile:unprofile
 sb-profile:unprofile-1-fun
 sb-profile:unprofile-all
+sb-regalloc:%call-with-target-tns
+sb-regalloc:%make-interference-graph
+sb-regalloc:add-location-conflicts
+sb-regalloc:assign-tn-costs
+sb-regalloc:assign-tn-depths
+sb-regalloc:basic-save-tn
+sb-regalloc:block-gtns
+sb-regalloc:check-ok-target
+sb-regalloc:check-operand-restrictions
+sb-regalloc:clean-up-pack-structures
+sb-regalloc:color-interference-graph
+sb-regalloc:color-no-conflicts-p
+sb-regalloc:compute-live-tns
+sb-regalloc:conflicts-in-sc
+sb-regalloc:copy-interference-graph
+sb-regalloc:copy-ordered-set
+sb-regalloc:copy-vertex
+sb-regalloc:describe-tn-use
+sb-regalloc:do-oset-elements
+sb-regalloc:do-target-tns
+sb-regalloc:emit-operand-load
+sb-regalloc:emit-saves
+sb-regalloc:failed-to-pack-error
+sb-regalloc:failed-to-pack-load-tn-error
+sb-regalloc:find-load-tn-target
+sb-regalloc:find-location-usage
+sb-regalloc:find-ok-target-offset
+sb-regalloc:find-single-writer
+sb-regalloc:find-vertex-color
+sb-regalloc:grow-sc
+sb-regalloc:ig-precolored-vertices
+sb-regalloc:ig-tn-vertex
+sb-regalloc:ig-tn-vertex-mapping
+sb-regalloc:ig-vertices
+sb-regalloc:init-live-tns
+sb-regalloc:init-sb-vectors
+sb-regalloc:insert-block-local-conflicts
+sb-regalloc:insert-block-local-conflicts-for
+sb-regalloc:insert-conflict-edges
+sb-regalloc:insert-one-edge
+sb-regalloc:interference-graph-p
+sb-regalloc:iterate-color
+sb-regalloc:load-tn-conflicts-in-sc
+sb-regalloc:load-tn-offset-conflicts-in-sb
+sb-regalloc:make-interference-graph
+sb-regalloc:make-ordered-set
+sb-regalloc:make-vertex
+sb-regalloc:no-load-fun-error
+sb-regalloc:no-load-scs-allowed-by-primitive-type-error
+sb-regalloc:note-spilled-tn
+sb-regalloc:offset-conflicts-in-sb
+sb-regalloc:optimized-emit-saves
+sb-regalloc:optimized-emit-saves-block
+sb-regalloc:ordered-set-p
+sb-regalloc:original-tn
+sb-regalloc:oset-adjoin
+sb-regalloc:oset-count
+sb-regalloc:oset-delete
+sb-regalloc:oset-free
+sb-regalloc:oset-member
+sb-regalloc:oset-members
+sb-regalloc:oset-vector
+sb-regalloc:pack
+sb-regalloc:pack-colored
+sb-regalloc:pack-greedy
+sb-regalloc:pack-iterative
+sb-regalloc:pack-load-tn
+sb-regalloc:pack-load-tns
+sb-regalloc:pack-save-tn
+sb-regalloc:pack-tn
+sb-regalloc:pack-wired-tn
+sb-regalloc:partition-and-order-vertices
+sb-regalloc:prepare-vertices
+sb-regalloc:remove-vertex-from-interference-graph
+sb-regalloc:restore-single-writer-tn
+sb-regalloc:restore-tn
+sb-regalloc:restricted-tn-locations
+sb-regalloc:reverse-find-vop
+sb-regalloc:save-complex-writer-tn
+sb-regalloc:save-if-necessary
+sb-regalloc:save-single-writer-tn
+sb-regalloc:select-load-tn-location
+sb-regalloc:select-location
+sb-regalloc:target-if-desirable
+sb-regalloc:tn-lexical-depth
+sb-regalloc:unbounded-sc-p
+sb-regalloc:unbounded-tn-p
+sb-regalloc:unpack-for-load-tn
+sb-regalloc:unpack-tn
+sb-regalloc:vertex-color
+sb-regalloc:vertex-color-possible-p
+sb-regalloc:vertex-domain
+sb-regalloc:vertex-incidence
+sb-regalloc:vertex-initial-domain
+sb-regalloc:vertex-initial-domain-size
+sb-regalloc:vertex-invisible
+sb-regalloc:vertex-number
+sb-regalloc:vertex-p
+sb-regalloc:vertex-pack-type
+sb-regalloc:vertex-sc
+sb-regalloc:vertex-spill-cost
+sb-regalloc:vertex-target-vertices
+sb-regalloc:vertex-tn
+sb-regalloc:vertices-best-color
 sb-sequence:adjust-sequence
 sb-sequence:canonize-key
 sb-sequence:canonize-test
@@ -10675,6 +10863,7 @@ sb-thread:holding-mutex-p
 sb-thread:init-initial-thread
 sb-thread:init-job-control
 sb-thread:initial-thread-function-trampoline
+sb-thread:interactive-threads
 sb-thread:interrupt-thread
 sb-thread:interrupt-thread-error-thread
 sb-thread:join-thread
@@ -10851,6 +11040,7 @@ sb-vm:%compiler-barrier
 sb-vm:%data-dependency-barrier
 sb-vm:%define-primitive-object
 sb-vm:%floating-point-modes-setter
+sb-vm:%lea-for-lowtag-test
 sb-vm:%lea-mod64
 sb-vm:%lea-modfx
 sb-vm:%logbitp
@@ -10919,6 +11109,7 @@ sb-vm:btc-inst-emitter
 sb-vm:btr-inst-emitter
 sb-vm:bts-inst-emitter
 sb-vm:byte-ea-p
+sb-vm:byte-imm-code
 sb-vm:byte-inst-emitter
 sb-vm:byte-reg-p
 sb-vm:cached-fun--add[(accum-imm ((op 2)))]-accum-imm-prefilter
@@ -10933,7 +11124,7 @@ sb-vm:cached-fun--blendpd[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 13)
 sb-vm:cached-fun--blendpd[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 13) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-rex-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--blendps[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 12) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--blendps[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 12) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-rex-2byte-xmm-xmm/mem-printer
-sb-vm:cached-fun--break[(word-imm ((op 2831)) '(name tab code) control #'break-control)]-word-imm-printer
+sb-vm:cached-fun--break[(word-imm ((op 2831)) (quote (name tab code)) control (function break-control))]-word-imm-printer
 sb-vm:cached-fun--bswap[(ext-reg-no-width ((op 25)))]-ext-reg-no-width-prefilter
 sb-vm:cached-fun--bswap[(ext-reg-no-width ((op 25)))]-ext-reg-no-width-printer
 sb-vm:cached-fun--bt[(ext-reg-reg/mem-no-width ((op 163) (reg/mem nil type sized-reg/mem)) (name tab reg/mem ,  reg))]-ext-reg-reg/mem-no-width-printer
@@ -10942,8 +11133,6 @@ sb-vm:cached-fun--bt[(ext-reg/mem-no-width+imm8 ((op (186 4))))]-ext-reg/mem-no-
 sb-vm:cached-fun--call[(near-jump ((op 232)))]-near-jump-prefilter
 sb-vm:cached-fun--call[(near-jump ((op 232)))]-near-jump-printer
 sb-vm:cached-fun--clc[(byte ((op 248)))]-byte-printer
-sb-vm:cached-fun--clflush[(ext-reg/mem-no-width ((op '(174 7))))]-ext-reg/mem-no-width-printer
-sb-vm:cached-fun--cmov[(cond-move nil)]-cond-move-prefilter
 sb-vm:cached-fun--cmov[(cond-move nil)]-cond-move-printer
 sb-vm:cached-fun--cmppd[(ext-rex-xmm-xmm/mem ((prefix 102) (op 194) (imm nil type sse-condition-code)) (cmp imm pd tab reg ...))]-ext-rex-xmm-xmm/mem-printer
 sb-vm:cached-fun--cmppd[(ext-xmm-xmm/mem ((prefix 102) (op 194) (imm nil type sse-condition-code)) (cmp imm pd tab reg ...))]-ext-xmm-xmm/mem-printer
@@ -10954,8 +11143,10 @@ sb-vm:cached-fun--cmpss[(ext-rex-xmm-xmm/mem ((prefix 243) (op 194) (imm nil typ
 sb-vm:cached-fun--cmpss[(ext-xmm-xmm/mem ((prefix 243) (op 194) (imm nil type sse-condition-code)) (cmp imm ss tab reg ...))]-ext-xmm-xmm/mem-printer
 sb-vm:cached-fun--cmps[(string-op ((op 83)))]-string-op-prefilter
 sb-vm:cached-fun--cmps[(string-op ((op 83)))]-string-op-printer
-sb-vm:cached-fun--cmpxchg[(ext-reg-reg/mem ((op 88)) '(name tab reg/mem ,  reg))]-ext-reg-reg/mem-prefilter
-sb-vm:cached-fun--cmpxchg[(ext-reg-reg/mem ((op 88)) '(name tab reg/mem ,  reg))]-ext-reg-reg/mem-printer
+sb-vm:cached-fun--cmpxchg16b[(ext-reg-reg/mem-no-width ((op 199)) (quote (name tab reg/mem)))]-ext-reg-reg/mem-no-width-prefilter
+sb-vm:cached-fun--cmpxchg16b[(ext-reg-reg/mem-no-width ((op 199)) (quote (name tab reg/mem)))]-ext-reg-reg/mem-no-width-printer
+sb-vm:cached-fun--cmpxchg[(ext-reg-reg/mem ((op 88)) (quote (name tab reg/mem ,  reg)))]-ext-reg-reg/mem-prefilter
+sb-vm:cached-fun--cmpxchg[(ext-reg-reg/mem ((op 88)) (quote (name tab reg/mem ,  reg)))]-ext-reg-reg/mem-printer
 sb-vm:cached-fun--crc32[(ext-2byte-prefix-reg-reg/mem ((prefix (242)) (op1 (56)) (op2 (240))))]-ext-2byte-prefix-reg-reg/mem-printer
 sb-vm:cached-fun--crc32[(ext-2byte-prefix-reg-reg/mem ((prefix (242)) (op1 (56)) (op2 (241))))]-ext-2byte-prefix-reg-reg/mem-printer
 sb-vm:cached-fun--crc32[(ext-rex-2byte-prefix-reg-reg/mem ((prefix (242)) (op1 (56)) (op2 (240))))]-ext-rex-2byte-prefix-reg-reg/mem-printer
@@ -10968,21 +11159,23 @@ sb-vm:cached-fun--dppd[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 65
 sb-vm:cached-fun--dpps[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 64) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--dpps[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 64) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-rex-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--enter[(enter-format ((op 200)))]-enter-format-printer
-sb-vm:cached-fun--imul[(reg-reg/mem ((op 52) (width 1) (imm nil type 'signed-imm-data)) '(name tab reg ,  reg/mem ...))]-reg-reg/mem-prefilter
-sb-vm:cached-fun--imul[(reg-reg/mem ((op 52) (width 1) (imm nil type 'signed-imm-data)) '(name tab reg ,  reg/mem ...))]-reg-reg/mem-printer
-sb-vm:cached-fun--imul[(reg-reg/mem ((op 53) (width 1) (imm nil type 'signed-imm-byte)) '(name tab reg ,  reg/mem ...))]-reg-reg/mem-prefilter
-sb-vm:cached-fun--imul[(reg-reg/mem ((op 53) (width 1) (imm nil type 'signed-imm-byte)) '(name tab reg ,  reg/mem ...))]-reg-reg/mem-printer
-sb-vm:cached-fun--inc[(reg/mem ((op '(127 0))))]-reg/mem-prefilter
-sb-vm:cached-fun--inc[(reg/mem ((op '(127 0))))]-reg/mem-printer
+sb-vm:cached-fun--imul[(reg-reg/mem ((op 52) (width 1) (imm nil type (quote signed-imm-data))) (quote (name tab reg ,  reg/mem ...)))]-reg-reg/mem-prefilter
+sb-vm:cached-fun--imul[(reg-reg/mem ((op 52) (width 1) (imm nil type (quote signed-imm-data))) (quote (name tab reg ,  reg/mem ...)))]-reg-reg/mem-printer
+sb-vm:cached-fun--imul[(reg-reg/mem ((op 53) (width 1) (imm nil type (quote signed-imm-byte))) (quote (name tab reg ,  reg/mem ...)))]-reg-reg/mem-prefilter
+sb-vm:cached-fun--imul[(reg-reg/mem ((op 53) (width 1) (imm nil type (quote signed-imm-byte))) (quote (name tab reg ,  reg/mem ...)))]-reg-reg/mem-printer
+sb-vm:cached-fun--inc[(reg/mem ((op (quote (127 0)))))]-reg/mem-prefilter
+sb-vm:cached-fun--inc[(reg/mem ((op (quote (127 0)))))]-reg/mem-printer
 sb-vm:cached-fun--int[(byte-imm ((op 205)))]-byte-imm-printer
-sb-vm:cached-fun--jmp[(near-cond-jump nil '('j cc tab label))]-near-cond-jump-prefilter
-sb-vm:cached-fun--jmp[(near-cond-jump nil '('j cc tab label))]-near-cond-jump-printer
-sb-vm:cached-fun--jmp[(short-cond-jump ((op 7)) '('j cc tab label))]-short-cond-jump-printer
+sb-vm:cached-fun--jmp[(near-cond-jump nil (quote ((quote j) cc tab label)))]-near-cond-jump-prefilter
+sb-vm:cached-fun--jmp[(near-cond-jump nil (quote ((quote j) cc tab label)))]-near-cond-jump-printer
+sb-vm:cached-fun--jmp[(short-cond-jump ((op 7)) (quote ((quote j) cc tab label)))]-short-cond-jump-printer
 sb-vm:cached-fun--jmp[(short-jump ((op 11)))]-short-jump-printer
 sb-vm:cached-fun--labeller-call[(near-jump ((op 232)))]
-sb-vm:cached-fun--labeller-jmp[(near-cond-jump nil '('j cc tab label))]
-sb-vm:cached-fun--labeller-jmp[(short-cond-jump ((op 7)) '('j cc tab label))]
+sb-vm:cached-fun--labeller-jmp[(near-cond-jump nil (quote ((quote j) cc tab label)))]
+sb-vm:cached-fun--labeller-jmp[(short-cond-jump ((op 7)) (quote ((quote j) cc tab label)))]
 sb-vm:cached-fun--labeller-jmp[(short-jump ((op 11)))]
+sb-vm:cached-fun--labeller-lea[(reg-reg/mem ((op 70) (width 1) (reg/mem nil use-label (function lea-compute-label) printer ...)))]
+sb-vm:cached-fun--lea[(reg-reg/mem ((op 70) (width 1) (reg/mem nil use-label (function lea-compute-label) printer ...)))]-reg-reg/mem-printer
 sb-vm:cached-fun--movapd[(ext-rex-xmm-xmm/mem ((prefix 102) (op 41)) (name tab reg/mem ,  reg))]-ext-rex-xmm-xmm/mem-printer
 sb-vm:cached-fun--movapd[(ext-xmm-xmm/mem ((prefix 102) (op 41)) (name tab reg/mem ,  reg))]-ext-xmm-xmm/mem-printer
 sb-vm:cached-fun--movaps[(xmm-xmm/mem ((op 41)) (name tab reg/mem ,  reg))]-xmm-xmm/mem-printer
@@ -11001,25 +11194,23 @@ sb-vm:cached-fun--movshdup[(ext-rex-xmm-xmm/mem ((prefix 243) (op 22)))]-ext-rex
 sb-vm:cached-fun--movshdup[(ext-rex-xmm-xmm/mem ((prefix 243) (op 22)))]-ext-rex-xmm-xmm/mem-printer
 sb-vm:cached-fun--movshdup[(ext-xmm-xmm/mem ((prefix 243) (op 22)))]-ext-xmm-xmm/mem-prefilter
 sb-vm:cached-fun--movshdup[(ext-xmm-xmm/mem ((prefix 243) (op 22)))]-ext-xmm-xmm/mem-printer
-sb-vm:cached-fun--movsxd[(reg-reg/mem ((op 49) (width 1) (reg/mem nil type 'sized-dword-reg/mem)))]-reg-reg/mem-printer
-sb-vm:cached-fun--movsx[(ext-reg-reg/mem-no-width ((op 190) (reg/mem nil type 'sized-byte-reg/mem)))]-ext-reg-reg/mem-no-width-prefilter
-sb-vm:cached-fun--movsx[(ext-reg-reg/mem-no-width ((op 190) (reg/mem nil type 'sized-byte-reg/mem)))]-ext-reg-reg/mem-no-width-printer
-sb-vm:cached-fun--movsx[(ext-reg-reg/mem-no-width ((op 191) (reg/mem nil type 'sized-word-reg/mem)))]-ext-reg-reg/mem-no-width-prefilter
-sb-vm:cached-fun--movsx[(ext-reg-reg/mem-no-width ((op 191) (reg/mem nil type 'sized-word-reg/mem)))]-ext-reg-reg/mem-no-width-printer
-sb-vm:cached-fun--mov[(reg ((op 11) (imm nil type 'signed-imm-data/asm-routine)) '(name tab reg ,  imm))]-reg-prefilter
-sb-vm:cached-fun--mov[(reg ((op 11) (imm nil type 'signed-imm-data/asm-routine)) '(name tab reg ,  imm))]-reg-printer
+sb-vm:cached-fun--movsxd[(reg-reg/mem ((op 49) (width 1) (reg/mem nil type (quote sized-dword-reg/mem))))]-reg-reg/mem-printer
+sb-vm:cached-fun--movsx[(move-with-extension ((op 95)))]-move-with-extension-prefilter
+sb-vm:cached-fun--movsx[(move-with-extension ((op 95)))]-move-with-extension-printer
+sb-vm:cached-fun--mov[(reg ((op 11) (imm nil type (quote signed-imm-data/asm-routine))) (quote (name tab reg ,  imm)))]-reg-prefilter
+sb-vm:cached-fun--mov[(reg ((op 11) (imm nil type (quote signed-imm-data/asm-routine))) (quote (name tab reg ,  imm)))]-reg-printer
 sb-vm:cached-fun--mov[(reg-reg/mem-dir ((op 34)))]-reg-reg/mem-dir-prefilter
 sb-vm:cached-fun--mov[(reg-reg/mem-dir ((op 34)))]-reg-reg/mem-dir-printer
-sb-vm:cached-fun--mov[(reg/mem-imm/asm-routine ((op '(99 0))))]-reg/mem-imm/asm-routine-prefilter
-sb-vm:cached-fun--mov[(reg/mem-imm/asm-routine ((op '(99 0))))]-reg/mem-imm/asm-routine-printer
-sb-vm:cached-fun--mov[(rex-reg ((op 11) (imm nil type 'signed-imm-data-upto-qword/asm-routine)) '(name tab reg ,  imm))]-rex-reg-prefilter
-sb-vm:cached-fun--mov[(rex-reg ((op 11) (imm nil type 'signed-imm-data-upto-qword/asm-routine)) '(name tab reg ,  imm))]-rex-reg-printer
-sb-vm:cached-fun--mov[(simple-dir ((op 40) (imm nil type 'imm-addr)) (backq-list 'name 'tab (swap-if 'dir 'accum ,  '([ imm ]))))]-simple-dir-prefilter
-sb-vm:cached-fun--mov[(simple-dir ((op 40) (imm nil type 'imm-addr)) (backq-list 'name 'tab (swap-if 'dir 'accum ,  '([ imm ]))))]-simple-dir-printer
+sb-vm:cached-fun--mov[(reg/mem-imm/asm-routine ((op (quote (99 0)))))]-reg/mem-imm/asm-routine-prefilter
+sb-vm:cached-fun--mov[(reg/mem-imm/asm-routine ((op (quote (99 0)))))]-reg/mem-imm/asm-routine-printer
+sb-vm:cached-fun--mov[(rex-reg ((op 11) (imm nil type (quote signed-imm-data-upto-qword/asm-routine))) (quote (name tab reg ,  imm)))]-rex-reg-prefilter
+sb-vm:cached-fun--mov[(rex-reg ((op 11) (imm nil type (quote signed-imm-data-upto-qword/asm-routine))) (quote (name tab reg ,  imm)))]-rex-reg-printer
+sb-vm:cached-fun--mov[(simple-dir ((op 40) (imm nil type (quote imm-addr))) (backq-list (quote name) (quote tab) (swap-if (quote dir) (quote accum) ,  (quote ([ imm ])))))]-simple-dir-prefilter
+sb-vm:cached-fun--mov[(simple-dir ((op 40) (imm nil type (quote imm-addr))) (backq-list (quote name) (quote tab) (swap-if (quote dir) (quote accum) ,  (quote ([ imm ])))))]-simple-dir-printer
 sb-vm:cached-fun--mpsadbw[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 66) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--mpsadbw[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 66) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-rex-2byte-xmm-xmm/mem-printer
-sb-vm:cached-fun--mul[(accum-reg/mem ((op '(123 4))))]-accum-reg/mem-printer
-sb-vm:cached-fun--nop[(ext-reg/mem-no-width ((op '(31 0))) '(name))]-ext-reg/mem-no-width-prefilter
+sb-vm:cached-fun--mul[(accum-reg/mem ((op (quote (123 4)))))]-accum-reg/mem-printer
+sb-vm:cached-fun--nop[(ext-reg/mem-no-width ((op (quote (31 0)))) (quote (name)))]-ext-reg/mem-no-width-prefilter
 sb-vm:cached-fun--palignr[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 15) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--palignr[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 15) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-rex-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--pblendvb[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 56) (op2 16)) (name tab reg ,  reg/mem ...))]-ext-2byte-xmm-xmm/mem-printer
@@ -11036,20 +11227,20 @@ sb-vm:cached-fun--pcmpistri[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 9
 sb-vm:cached-fun--pcmpistri[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 99) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-rex-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--pcmpistrm[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 98) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--pcmpistrm[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 98) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-rex-2byte-xmm-xmm/mem-printer
-sb-vm:cached-fun--pextrb[(ext-2byte-reg/mem-xmm ((prefix '(102)) (op1 '(58)) (op2 '(20)) (imm nil type 'imm-byte)) '(name tab reg/mem ,  reg ...))]-ext-2byte-reg/mem-xmm-printer
-sb-vm:cached-fun--pextrq[(ext-rex-2byte-reg/mem-xmm ((prefix '(102)) (op1 '(58)) (op2 '(22)) (imm nil type 'imm-byte)) '(name tab reg/mem ,  reg ...))]-ext-rex-2byte-reg/mem-xmm-prefilter
-sb-vm:cached-fun--pextrq[(ext-rex-2byte-reg/mem-xmm ((prefix '(102)) (op1 '(58)) (op2 '(22)) (imm nil type 'imm-byte)) '(name tab reg/mem ,  reg ...))]-ext-rex-2byte-reg/mem-xmm-printer
+sb-vm:cached-fun--pextrb[(ext-2byte-reg/mem-xmm ((prefix (quote (102))) (op1 (quote (58))) (op2 (quote (20))) (imm nil type (quote imm-byte))) (quote (name tab reg/mem ,  reg ...)))]-ext-2byte-reg/mem-xmm-printer
+sb-vm:cached-fun--pextrq[(ext-rex-2byte-reg/mem-xmm ((prefix (quote (102))) (op1 (quote (58))) (op2 (quote (22))) (imm nil type (quote imm-byte))) (quote (name tab reg/mem ,  reg ...)))]-ext-rex-2byte-reg/mem-xmm-prefilter
+sb-vm:cached-fun--pextrq[(ext-rex-2byte-reg/mem-xmm ((prefix (quote (102))) (op1 (quote (58))) (op2 (quote (22))) (imm nil type (quote imm-byte))) (quote (name tab reg/mem ,  reg ...)))]-ext-rex-2byte-reg/mem-xmm-printer
 sb-vm:cached-fun--pextrw[(ext-reg/mem-xmm ((prefix 102) (op 197) (imm nil type imm-byte)) (name tab reg/mem ,  reg ...))]-ext-reg/mem-xmm-printer
 sb-vm:cached-fun--pextrw[(ext-rex-reg/mem-xmm ((prefix 102) (op 197) (imm nil type imm-byte)) (name tab reg/mem ,  reg ...))]-ext-rex-reg/mem-xmm-printer
-sb-vm:cached-fun--pinsrb[(ext-2byte-xmm-reg/mem ((prefix '(102)) (op1 '(58)) (op2 '(32)) (imm nil type 'imm-byte)) '(name tab reg ,  reg/mem ...))]-ext-2byte-xmm-reg/mem-prefilter
-sb-vm:cached-fun--pinsrb[(ext-2byte-xmm-reg/mem ((prefix '(102)) (op1 '(58)) (op2 '(32)) (imm nil type 'imm-byte)) '(name tab reg ,  reg/mem ...))]-ext-2byte-xmm-reg/mem-printer
-sb-vm:cached-fun--pinsrw[(ext-xmm-reg/mem ((prefix '(102)) (op '(196)) (imm nil type 'imm-byte)) '(name tab reg ,  reg/mem ...))]-ext-xmm-reg/mem-printer
+sb-vm:cached-fun--pinsrb[(ext-2byte-xmm-reg/mem ((prefix (quote (102))) (op1 (quote (58))) (op2 (quote (32))) (imm nil type (quote imm-byte))) (quote (name tab reg ,  reg/mem ...)))]-ext-2byte-xmm-reg/mem-prefilter
+sb-vm:cached-fun--pinsrb[(ext-2byte-xmm-reg/mem ((prefix (quote (102))) (op1 (quote (58))) (op2 (quote (32))) (imm nil type (quote imm-byte))) (quote (name tab reg ,  reg/mem ...)))]-ext-2byte-xmm-reg/mem-printer
+sb-vm:cached-fun--pinsrw[(ext-xmm-reg/mem ((prefix (quote (102))) (op (quote (196))) (imm nil type (quote imm-byte))) (quote (name tab reg ,  reg/mem ...)))]-ext-xmm-reg/mem-printer
 sb-vm:cached-fun--popcnt[(f3-escape-reg-reg/mem ((op 184)))]-f3-escape-reg-reg/mem-printer
 sb-vm:cached-fun--popcnt[(rex-f3-escape-reg-reg/mem ((op 184)))]-rex-f3-escape-reg-reg/mem-printer
-sb-vm:cached-fun--prefetch[(ext-reg/mem-no-width ((op '(24 0))) '(prefetchnta tab reg/mem))]-ext-reg/mem-no-width-printer
-sb-vm:cached-fun--prefetch[(ext-reg/mem-no-width ((op '(24 1))) '(prefetcht0 tab reg/mem))]-ext-reg/mem-no-width-printer
-sb-vm:cached-fun--prefetch[(ext-reg/mem-no-width ((op '(24 2))) '(prefetcht1 tab reg/mem))]-ext-reg/mem-no-width-printer
-sb-vm:cached-fun--prefetch[(ext-reg/mem-no-width ((op '(24 3))) '(prefetcht2 tab reg/mem))]-ext-reg/mem-no-width-printer
+sb-vm:cached-fun--prefetch[(ext-reg/mem-no-width ((op (quote (24 0)))) (quote (prefetchnta tab reg/mem)))]-ext-reg/mem-no-width-printer
+sb-vm:cached-fun--prefetch[(ext-reg/mem-no-width ((op (quote (24 1)))) (quote (prefetcht0 tab reg/mem)))]-ext-reg/mem-no-width-printer
+sb-vm:cached-fun--prefetch[(ext-reg/mem-no-width ((op (quote (24 2)))) (quote (prefetcht1 tab reg/mem)))]-ext-reg/mem-no-width-printer
+sb-vm:cached-fun--prefetch[(ext-reg/mem-no-width ((op (quote (24 3)))) (quote (prefetcht2 tab reg/mem)))]-ext-reg/mem-no-width-printer
 sb-vm:cached-fun--pshufd[(ext-rex-xmm-xmm/mem ((prefix 102) (op 112) (imm nil type sse-shuffle-pattern-8-4)) (name tab reg ,  reg/mem ...))]-ext-rex-xmm-xmm/mem-prefilter
 sb-vm:cached-fun--pshufd[(ext-rex-xmm-xmm/mem ((prefix 102) (op 112) (imm nil type sse-shuffle-pattern-8-4)) (name tab reg ,  reg/mem ...))]-ext-rex-xmm-xmm/mem-printer
 sb-vm:cached-fun--pshufd[(ext-xmm-xmm/mem ((prefix 102) (op 112) (imm nil type sse-shuffle-pattern-8-4)) (name tab reg ,  reg/mem ...))]-ext-xmm-xmm/mem-prefilter
@@ -11058,19 +11249,18 @@ sb-vm:cached-fun--pslldq[(ext-rex-xmm-imm ((prefix 102) (op 115) (/i 7)))]-ext-r
 sb-vm:cached-fun--pslldq[(ext-rex-xmm-imm ((prefix 102) (op 115) (/i 7)))]-ext-rex-xmm-imm-printer
 sb-vm:cached-fun--pslldq[(ext-xmm-imm ((prefix 102) (op 115) (/i 7)))]-ext-xmm-imm-prefilter
 sb-vm:cached-fun--pslldq[(ext-xmm-imm ((prefix 102) (op 115) (/i 7)))]-ext-xmm-imm-printer
-sb-vm:cached-fun--push[(byte ((op 104) (imm nil type 'signed-imm-data-default-qword)) '(name tab imm))]-byte-prefilter
-sb-vm:cached-fun--push[(byte ((op 104) (imm nil type 'signed-imm-data-default-qword)) '(name tab imm))]-byte-printer
-sb-vm:cached-fun--push[(byte ((op 106) (imm nil type 'signed-imm-byte)) '(name tab imm))]-byte-prefilter
-sb-vm:cached-fun--push[(byte ((op 106) (imm nil type 'signed-imm-byte)) '(name tab imm))]-byte-printer
+sb-vm:cached-fun--push[(byte ((op 104) (imm nil type (quote signed-imm-data-default-qword))) (quote (name tab imm)))]-byte-prefilter
+sb-vm:cached-fun--push[(byte ((op 104) (imm nil type (quote signed-imm-data-default-qword))) (quote (name tab imm)))]-byte-printer
+sb-vm:cached-fun--push[(byte ((op 106) (imm nil type (quote signed-imm-byte))) (quote (name tab imm)))]-byte-prefilter
+sb-vm:cached-fun--push[(byte ((op 106) (imm nil type (quote signed-imm-byte))) (quote (name tab imm)))]-byte-printer
 sb-vm:cached-fun--push[(reg-no-width-default-qword ((op 10)))]-reg-no-width-default-qword-prefilter
 sb-vm:cached-fun--push[(reg-no-width-default-qword ((op 10)))]-reg-no-width-default-qword-printer
-sb-vm:cached-fun--push[(reg/mem-default-qword ((op '(255 6))))]-reg/mem-default-qword-prefilter
-sb-vm:cached-fun--push[(reg/mem-default-qword ((op '(255 6))))]-reg/mem-default-qword-printer
-sb-vm:cached-fun--ret[(byte ((op 194) (imm nil type 'imm-word-16)) '(name tab imm))]-byte-prefilter
+sb-vm:cached-fun--push[(reg/mem-default-qword ((op (quote (255 6)))))]-reg/mem-default-qword-prefilter
+sb-vm:cached-fun--push[(reg/mem-default-qword ((op (quote (255 6)))))]-reg/mem-default-qword-printer
+sb-vm:cached-fun--ret[(byte ((op 194) (imm nil type (quote imm-word-16))) (quote (name tab imm)))]-byte-prefilter
 sb-vm:cached-fun--rex[(rex nil nil print-name nil)]-rex-prefilter
-sb-vm:cached-fun--rol[(reg/mem ((op (104 0))) (name tab reg/mem , 1))]-reg/mem-printer
-sb-vm:cached-fun--rol[(reg/mem ((op (105 0))) (name tab reg/mem ,  'cl))]-reg/mem-printer
-sb-vm:cached-fun--rol[(reg/mem-imm ((op (96 0)) (imm nil type imm-byte)))]-reg/mem-imm-prefilter
+sb-vm:cached-fun--rol[(reg/mem-imm ((op (quote (96 0))) (imm nil type (quote imm-byte))))]-reg/mem-imm-prefilter
+sb-vm:cached-fun--rol[(shift-inst ((op (quote (52 0)))))]-shift-inst-printer
 sb-vm:cached-fun--roundpd[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 9) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--roundpd[(ext-rex-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 9) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-rex-2byte-xmm-xmm/mem-printer
 sb-vm:cached-fun--roundps[(ext-2byte-xmm-xmm/mem ((prefix 102) (op1 58) (op2 8) (imm nil type imm-byte)) (name tab reg ,  reg/mem ...))]-ext-2byte-xmm-xmm/mem-printer
@@ -11088,11 +11278,14 @@ sb-vm:cached-fun--shufpd[(ext-rex-xmm-xmm/mem ((prefix 102) (op 198) (imm nil ty
 sb-vm:cached-fun--shufpd[(ext-xmm-xmm/mem ((prefix 102) (op 198) (imm nil type sse-shuffle-pattern-2-2)) (name tab reg ,  reg/mem ...))]-ext-xmm-xmm/mem-printer
 sb-vm:cached-fun--shufps[(xmm-xmm/mem ((op 198) (imm nil type sse-shuffle-pattern-8-4)) (name tab reg ,  reg/mem ...))]-xmm-xmm/mem-printer
 sb-vm:cached-fun--x66[(x66 nil nil print-name nil)]-x66-prefilter
-sb-vm:cached-fun--xchg[(reg-no-width ((op 18)) '(name tab accum ,  reg))]-reg-no-width-printer
+sb-vm:cached-fun--xchg[(reg-no-width ((op 18)) (quote (name tab accum ,  reg)))]-reg-no-width-printer
 sb-vm:cached-fun--xchg[(reg-reg/mem ((op 67)))]-reg-reg/mem-printer
+sb-vm:cached-fun--xchg[(rex-accum-reg ((rex-b 1) (op 18) (reg 0)))]-rex-accum-reg-prefilter
+sb-vm:cached-fun--xchg[(rex-accum-reg ((rex-b 1) (op 18) (reg 0)))]-rex-accum-reg-printer
 sb-vm:call-indirect
 sb-vm:call-inst-emitter
 sb-vm:canonicalize-headers
+sb-vm:canonicalize-headers-and-exceptions
 sb-vm:canonicalize-inline-constant
 sb-vm:catch-block-ea
 sb-vm:cbw-inst-emitter
@@ -11112,6 +11305,7 @@ sb-vm:cmps-inst-emitter
 sb-vm:cmpsd-inst-emitter
 sb-vm:cmpss-inst-emitter
 sb-vm:cmpxchg-inst-emitter
+sb-vm:cmpxchg16b-inst-emitter
 sb-vm:comisd-inst-emitter
 sb-vm:comiss-inst-emitter
 sb-vm:conditional-opcode
@@ -11284,7 +11478,9 @@ sb-vm:jmp-inst-emitter
 sb-vm:jrcxz-inst-emitter
 sb-vm:lahf-inst-emitter
 sb-vm:ldmxcsr-inst-emitter
+sb-vm:lea-compute-label
 sb-vm:lea-inst-emitter
+sb-vm:lea-print-ea
 sb-vm:leave-inst-emitter
 sb-vm:lfence-inst-emitter
 sb-vm:list-allocated-objects
@@ -11308,6 +11504,7 @@ sb-vm:load-stack
 sb-vm:load-symbol
 sb-vm:load-symbol-value
 sb-vm:load-system-area-pointer
+sb-vm:load-time-tls-offset
 sb-vm:load-tl-symbol-value
 sb-vm:load-type
 sb-vm:loadw
@@ -11320,14 +11517,11 @@ sb-vm:loopnz-inst-emitter
 sb-vm:loopz-inst-emitter
 sb-vm:lra-header-word-inst-emitter
 sb-vm:make-arg-state
-sb-vm:make-byte-tn
-sb-vm:make-dword-tn
 sb-vm:make-ea
 sb-vm:make-ea-for-float-ref
 sb-vm:make-ea-for-object-slot
 sb-vm:make-ea-for-object-slot-half
 sb-vm:make-ea-for-raw-slot
-sb-vm:make-ea-for-symbol-tls-index
 sb-vm:make-ea-for-symbol-value
 sb-vm:make-primitive-object
 sb-vm:make-result-state
@@ -11501,6 +11695,8 @@ sb-vm:prefetch-inst-emitter
 sb-vm:prefilter-reg-b
 sb-vm:prefilter-reg-r
 sb-vm:prefilter-reg/mem
+sb-vm:prefilter-rex-b
+sb-vm:prefilter-rex-w
 sb-vm:prefilter-width
 sb-vm:prefilter-wrxb
 sb-vm:prefilter-x66
@@ -11522,7 +11718,7 @@ sb-vm:print-allocated-objects
 sb-vm:print-byte-reg
 sb-vm:print-imm/asm-routine
 sb-vm:print-label
-sb-vm:print-mem-access
+sb-vm:print-mem-ref
 sb-vm:print-reg
 sb-vm:print-reg-default-qword
 sb-vm:print-reg-with-width
@@ -11596,6 +11792,7 @@ sb-vm:receive-unknown-values
 sb-vm:reconstitute-object
 sb-vm:reconstitute-vector
 sb-vm:reg-in-size
+sb-vm:reg-r/m-inst-r/m-arg
 sb-vm:reg-tn-encoding
 sb-vm:register-p
 sb-vm:remove-keywords
@@ -11632,7 +11829,6 @@ sb-vm:saetp-primitive-type-name
 sb-vm:saetp-specifier
 sb-vm:saetp-typecode
 sb-vm:sahf-inst-emitter
-sb-vm:sanctify-for-execution
 sb-vm:sar-inst-emitter
 sb-vm:sbb-inst-emitter
 sb-vm:scas-inst-emitter
@@ -11655,6 +11851,7 @@ sb-vm:slot-name
 sb-vm:slot-offset
 sb-vm:slot-options
 sb-vm:slot-rest-p
+sb-vm:slot-special
 sb-vm:snarf-error-junk
 sb-vm:sort-inline-constants
 sb-vm:space-bounds
@@ -11671,6 +11868,7 @@ sb-vm:static-fun-template-name
 sb-vm:static-fun-template-vop
 sb-vm:static-symbol-offset
 sb-vm:static-symbol-p
+sb-vm:static-symbol-value-ea
 sb-vm:stc-inst-emitter
 sb-vm:std-inst-emitter
 sb-vm:sti-inst-emitter
@@ -11690,15 +11888,19 @@ sb-vm:storew
 sb-vm:stos-inst-emitter
 sb-vm:sub-inst-emitter
 sb-vm:subpd-inst-emitter
+sb-vm:subprimitive-tls-allocator
 sb-vm:subps-inst-emitter
 sb-vm:subsd-inst-emitter
 sb-vm:subss-inst-emitter
 sb-vm:swap-complex
 sb-vm:swap-complex-derive-type-optimizer
+sb-vm:symbol-always-thread-local-p
+sb-vm:symbol-known-tls-cell
 sb-vm:system-area-pointer-arg-tn-method
 sb-vm:system-area-pointer-result-tn-method
 sb-vm:test-inst-emitter
 sb-vm:test-type
+sb-vm:tls-index-of
 sb-vm:type-breakdown
 sb-vm:ucomisd-inst-emitter
 sb-vm:ucomiss-inst-emitter
@@ -11712,10 +11914,12 @@ sb-vm:values-result-tn-method
 sb-vm:vector-unsigned-byte-62-p
 sb-vm:wait-inst-emitter
 sb-vm:width-bits
+sb-vm:wired-tls-symbol-p
 sb-vm:with-adjustable-vector
 sb-vm:with-cycle-counter
 sb-vm:with-fixed-allocation
 sb-vm:word-ea-p
+sb-vm:word-imm-code
 sb-vm:word-inst-emitter
 sb-vm:word-reg-p
 sb-vm:word-sap-ref
