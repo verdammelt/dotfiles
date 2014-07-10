@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-25 18:57:08 mark>
+;;;; Modified Time-stamp: <2014-06-29 10:10:32 mark>
 ;;;;
 (require 'cl)
 
@@ -48,6 +48,7 @@
     smex
     solarized-theme
     wgrep
+    wrap-region
     yasnippet
     ))
 
