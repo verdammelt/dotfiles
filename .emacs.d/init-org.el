@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-29 08:57:57 mark>
+;;;; Modified Time-stamp: <2014-06-29 10:20:42 mark>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -222,6 +222,7 @@ this with to-do items than with projects or headings."
   (add-hook 'org-clock-out-hook 'mjs/clock-out-maybe 'append)
 
   (defun mjs/morning-sam ()
+    (interactive)
     (org-agenda nil "k")
     (mjs/punch-in))
 
