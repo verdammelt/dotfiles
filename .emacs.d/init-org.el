@@ -3,7 +3,11 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
+<<<<<<< HEAD
 ;;;; Modified Time-stamp: <2014-06-29 10:20:42 mark>
+=======
+;;;; Modified Time-stamp: <2014-07-09 17:40:55 mjs>
+>>>>>>> refs/remotes/origin/cyrus
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -90,14 +94,11 @@
 	  ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
 	   "* %?\n  %U\n %a\n")
 	  ("w" "Templates for work")
-	  ("wb" "Billable Task" entry (file "")
-	   "* TODO %? :2U:@WORK:\n %U\n"
+	  ("wb" "Billable Task" entry (file+headline "work.org" "Tasks")
+	   "* TODO %? %^g:2U:\n %U\n %a\n"
 	   :clock-in t :clock-resume t)
-	  ("ww" "Non-Billable Task" entry (file "")
-	   "* TODO %? :@WORK:\n %U\n"
-	   :clock-in t :clock-resume t)
-	  ("wp" "Work Project" entry (file "")
-	   "* %? :@WORK:\n %U\n"
+	  ("ww" "Non-Billable Task" entry (file+headline "work.org" "Tasks")
+	   "* TODO %? %^g\n %U\n %a\n"
 	   :clock-in t :clock-resume t)
 	  ))
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
@@ -148,7 +149,9 @@
        ("w" "waiting" tags-todo "/WAITING")
        ("k" "work" 
 	((agenda "" ((org-agenda-span 'day)
-		     (org-agenda-use-time-grid t)))
+		     (org-agenda-use-time-grid t)
+		     (org-agenda-start-with-log-mode t)
+		     (org-agenda-start-with-clockreport-mode t)))
 	 (tags "REFILE"
 	       ((org-agenda-overriding-header "Tasks to Refile")))
 	 (tags-todo "+@WORK&+2U/!-WAITING" 
@@ -228,6 +231,7 @@ this with to-do items than with projects or headings."
 
   (global-set-key (kbd "<f9>") 'mjs/morning-sam)
   (global-set-key (kbd "S-<f9>") 'mjs/punch-out)
+  (global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
 
   (setq org-stuck-projects
 	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAITING") nil ""))

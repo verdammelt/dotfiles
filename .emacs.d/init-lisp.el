@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-10 17:54:58 mjs>
+;;;; Modified Time-stamp: <2014-06-17 15:59:35 mjs>
 ;;;;
 
 (setq slime-lisp-implementations
@@ -27,13 +27,15 @@
 	  (autoloadp (symbol-function 'rainbow-delimiters-mode))) 
       (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
 
   (add-hook 'lisp-mode-hook 'paredit-mode)
   (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 
   (after 'ielm
-    (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)))
+    (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+    (add-hook 'ielm-mode-hook 'turn-on-elisp-slime-nav-mode)))
 
 (after 'scheme
   (add-hook 'scheme-mode-hook 'paredit-mode)
