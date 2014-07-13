@@ -92,7 +92,10 @@
 
 (define-abbrev-table 'gfm-mode-abbrev-table '())
 
-(define-abbrev-table 'git-commit-mode-abbrev-table '())
+(define-abbrev-table 'git-commit-mode-abbrev-table
+  '(
+    ("consitently" "consistently" nil 0)
+   ))
 
 (define-abbrev-table 'git-rebase-mode-abbrev-table '())
 
@@ -123,10 +126,6 @@
 (define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
-
-(define-abbrev-table 'inferior-scheme-mode-abbrev-table '())
-
-(define-abbrev-table 'jade-mode-abbrev-table '())
 
 (define-abbrev-table 'java-mode-abbrev-table
   '(
@@ -164,6 +163,18 @@
   '(
    ))
 
+(define-abbrev-table 'makefile-automake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-bsdmake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-gmake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-imake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-makepp-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-mode-abbrev-table '())
+
 (define-abbrev-table 'markdown-mode-abbrev-table '())
 
 (define-abbrev-table 'message-mode-abbrev-table '())
@@ -186,11 +197,9 @@
 
 (define-abbrev-table 'org-mode-abbrev-table
   '(
-    ("actionable" "actionable" nil 1)
-    ("backend" "back end" nil 2)
-    ("everytime" "every time" nil 0)
+    ("backend" "back end" nil 1)
     ("invstigate" "Instigate" nil 0)
-    ("jp" "MAGICPTRL" nil 18)
+    ("jp" "MAGICPTRL-" nil 3)
    ))
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
@@ -207,9 +216,7 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -251,8 +258,6 @@
 
 (define-abbrev-table 'speedbar-mode-abbrev-table '())
 
-(define-abbrev-table 'sws-mode-abbrev-table '())
-
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'tar-mode-abbrev-table '())
@@ -264,18 +269,14 @@
     ("availablility" "availability" nil 0)
     ("convinience" "convenience" nil 0)
     ("decsion" "decision" nil 0)
-    ("definately" "definitely" nil 2)
-    ("editted" "edited" nil 0)
+    ("definately" "definitely" nil 1)
     ("existance" "existence" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
-    ("hardcoded" "hard coded" nil 0)
-    ("independant" "independent" nil 0)
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
-    ("tia" "Thanks in advance" nil 10)
+    ("tia" "Thanks in advance" nil 5)
     ("tomororw" "tomorrow" nil 0)
-    ("unrealeased" "unreleased" nil 0)
    ))
 
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
