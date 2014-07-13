@@ -3,8 +3,11 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-27 08:55:47 mark>
+;;;; Modified Time-stamp: <2014-07-12 16:48:44 mark>
 ;;;;
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
 ;; Save my place in files
 (require 'saveplace)
 (setq-default save-place t)
