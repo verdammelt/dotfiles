@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-29 10:12:43 mark>
+;;;; Modified Time-stamp: <2014-07-13 10:00:30 mark>
 ;;;;
 
 ;;; 
@@ -109,3 +109,4 @@
 
 (yas-global-mode 1)
 
+(global-pretty-mode)

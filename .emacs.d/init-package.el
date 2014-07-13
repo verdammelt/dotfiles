@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-29 10:10:32 mark>
+;;;; Modified Time-stamp: <2014-07-13 09:59:21 mark>
 ;;;;
 (require 'cl)
 
@@ -42,6 +42,7 @@
     markdown-mode
     org-plus-contrib
     paredit
+    pretty-mode
     projectile
     rainbow-delimiters
     slime
