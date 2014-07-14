@@ -3,11 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-<<<<<<< HEAD
-;;;; Modified Time-stamp: <2014-06-29 10:20:42 mark>
-=======
 ;;;; Modified Time-stamp: <2014-07-09 17:40:55 mjs>
->>>>>>> refs/remotes/origin/cyrus
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
