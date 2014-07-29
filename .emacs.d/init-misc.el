@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-12 16:48:44 mark>
+;;;; Modified Time-stamp: <2014-07-29 19:51:23 mark>
 ;;;;
 (setq c-default-style "linux"
       c-basic-offset 4)
@@ -173,5 +173,9 @@
 (define-key 'help-command (kbd "C-f") 'find-function)
 (define-key 'help-command (kbd "C-k") 'find-function-on-key)
 (define-key 'help-command (kbd "C-v") 'find-variable)
+
+(autoload 'zap-up-to-char "misc" 
+  "Kill up to, but not including ARGth occurance of CHAR.")
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
 
 (provide 'init-misc)
