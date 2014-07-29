@@ -109,8 +109,6 @@
 
 (yas-global-mode 1)
 
-
 (global-pretty-mode)
 
 (browse-kill-ring-default-keybindings)
-
