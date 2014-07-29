@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-29 19:51:23 mark>
+;;;; Modified Time-stamp: <2014-07-29 20:21:34 mark>
 ;;;;
 (setq c-default-style "linux"
       c-basic-offset 4)
@@ -176,5 +176,16 @@
 (autoload 'zap-up-to-char "misc" 
   "Kill up to, but not including ARGth occurance of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+;; multiple-cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/mark-all-dwim)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+
+;; wrap-region
+(after 'wrap-region
+  (wrap-region-add-wrapper "+" "+" nil 'org-mode)
+  (wrap-region-add-wrapper "_" "_" nil 'markdown-mode)
+  (wrap-region-add-wrapper "*" "*" nil 'markdown-mode))
 
 (provide 'init-misc)
