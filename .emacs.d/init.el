@@ -112,3 +112,4 @@
 (global-pretty-mode)
 
 (browse-kill-ring-default-keybindings)
+
