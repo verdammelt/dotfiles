@@ -194,5 +194,4 @@ With argument, do this that many times.")
   (wrap-region-add-wrapper "_" "_" nil 'markdown-mode)
   (wrap-region-add-wrapper "*" "*" nil 'markdown-mode))
 
->>>>>>> Setting up multiple-cursors.
 (provide 'init-misc)
