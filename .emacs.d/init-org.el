@@ -3,6 +3,8 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
+;;;; Modified Time-stamp: <2014-07-29 20:29:32 mark>
+;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
 		      f
