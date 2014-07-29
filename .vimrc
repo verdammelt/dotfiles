@@ -96,8 +96,9 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
     set cursorline
     set colorcolumn=+1
-    set background=light
-    colorscheme solarized
+    "set background=light
+    "colorscheme solarized
+    colorscheme desert
 endif
 
 if has("autocmd")

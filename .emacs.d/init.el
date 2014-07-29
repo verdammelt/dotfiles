@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-29 20:18:11 mark>
+;;;; Modified Time-stamp: <2014-07-29 20:24:16 mark>
 ;;;;
 
 ;;; 
@@ -68,7 +68,10 @@
 (set-face-attribute 'default nil 
 		    :height 140
 		    :family "Source_Code_Pro")
-(load-theme 'solarized-light t)
+;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
+(load-theme 'tango)
+(set-face-attribute 'highlight nil
+		    :background (face-background 'mode-line))
 
 ;;;
 ;;; turn on all things that need turning on.
