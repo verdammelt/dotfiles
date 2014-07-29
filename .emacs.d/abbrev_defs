@@ -60,6 +60,8 @@
 
 (define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
 
+(define-abbrev-table 'context-mode-abbrev-table '())
+
 (define-abbrev-table 'css-mode-abbrev-table '())
 
 (define-abbrev-table 'diary-fancy-display-mode-abbrev-table '())
@@ -86,6 +88,8 @@
 
 (define-abbrev-table 'eshell-mode-abbrev-table '())
 
+(define-abbrev-table 'finder-mode-abbrev-table '())
+
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
 (define-abbrev-table 'gdb-script-mode-abbrev-table '())
@@ -95,6 +99,8 @@
 (define-abbrev-table 'git-commit-mode-abbrev-table
   '(
     ("consitently" "consistently" nil 0)
+    ("accessiblity" "accessibility" nil 0)
+    ("configuraable" "configurable" nil 0)
    ))
 
 (define-abbrev-table 'git-rebase-mode-abbrev-table '())
@@ -134,6 +140,8 @@
 (define-abbrev-table 'js-mode-abbrev-table '())
 
 (define-abbrev-table 'latex-mode-abbrev-table '())
+
+(define-abbrev-table 'less-css-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
@@ -199,7 +207,9 @@
   '(
     ("backend" "back end" nil 1)
     ("invstigate" "Instigate" nil 0)
-    ("jp" "MAGICPTRL-" nil 3)
+    ("jp" "MAGICPTRL" nil 25)
+    ("rearrangemnt" "rearrangement" nil 0)
+    ("recieved" "received" nil 0)
    ))
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
@@ -211,6 +221,8 @@
 (define-abbrev-table 'pike-mode-abbrev-table
   '(
    ))
+
+(define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -264,18 +276,29 @@
 
 (define-abbrev-table 'term-mode-abbrev-table '())
 
+(define-abbrev-table 'texinfo-mode-abbrev-table '())
+
 (define-abbrev-table 'text-mode-abbrev-table
   '(
+    ("accesibility" "accessibility" nil 0)
     ("availablility" "availability" nil 0)
+    ("certifiate" "Certificate" nil 0)
     ("convinience" "convenience" nil 0)
     ("decsion" "decision" nil 0)
-    ("definately" "definitely" nil 1)
+    ("definately" "definitely" nil 3)
+    ("editted" "edited" nil 0)
     ("existance" "existence" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
+    ("hardcoded" "hard coded" nil 0)
+    ("independant" "independent" nil 0)
+    ("jp" "MAGICPTRL" nil 4)
+    ("langauge" "language" nil 0)
+    ("marijhuana" "Marijuana" nil 0)
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
-    ("tia" "Thanks in advance" nil 5)
+    ("themed" "themed" nil 0)
+    ("tia" "Thanks in advance" nil 25)
     ("tomororw" "tomorrow" nil 0)
    ))
 
