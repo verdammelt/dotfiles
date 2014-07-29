@@ -3,6 +3,8 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
+;;;; Modified Time-stamp: <2014-07-29 20:29:57 mark>
+;;;;
 (require 'cl)
 
 (setq message-log-max 10000)
@@ -38,6 +40,7 @@
     ido-vertical-mode
     magit
     markdown-mode
+    multiple-cursors
     org-plus-contrib
     paredit
     pretty-mode
