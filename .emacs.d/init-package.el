@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-13 09:59:21 mark>
+;;;; Modified Time-stamp: <2014-07-29 19:56:01 mark>
 ;;;;
 (require 'cl)
 
@@ -105,5 +105,22 @@ requirements etc) for the given package."
 	 (epl-find-upgrades 
 	  (remove nil (mapcar #'epl-find-installed-package mjs/*needed-packages*)))))
     upgrades))
+
+(defun mjs/perform-updates ()
+  (interactive)
+  (epl-refresh)
+  (let ((needing-updates (mapcar #'epl-upgrade-installed (mjs/find-upgrades))))
+    (if (and needing-updates 
+	     (y-or-n-p 
+	      (format "Upgrade these packages? %S" (mapcar #'epl-package-name needing-updates))))
+	(epl-upgrade needing-updates)))
+  (let ((extra-packages (mjs/extra-packages)))
+    (if (and extra-packages
+	     (y-or-n-p
+	      (format "Delete any extra packages? %S" extra-packages)))
+	(mapcar #'(lambda (p)
+		    (if (y-or-n-p (format "Delete %S" p))
+			(epl-package-delete (epl-find-installed-package p))))
+		extra-packages))))
 
 (provide 'init-package)
