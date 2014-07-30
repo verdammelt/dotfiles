@@ -2,9 +2,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-29 20:24:16 mark>
-;;;;
-
 ;;; 
 ;;; First Things First
 ;;;

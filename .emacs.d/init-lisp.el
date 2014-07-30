@@ -3,9 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-06-17 15:59:35 mjs>
-;;;;
-
 (setq slime-lisp-implementations
       '(("sbcl" ("sbcl"))
 	("cmucl" ("lisp"))))

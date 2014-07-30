@@ -3,8 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-05-02 16:40:09 mjs>
-;;;;
 (setq user-mail-address "verdammelt@gmail.com")
 
 ;; this way i have Gcc: etc. in my mail buffer

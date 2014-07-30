@@ -3,8 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-29 20:21:34 mark>
-;;;;
 (setq c-default-style "linux"
       c-basic-offset 4)
 

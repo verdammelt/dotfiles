@@ -3,8 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Time-stamp: <2014-06-01 13:03:39 mark>
-;;;;
 ;;;
 ;;; TODO: 
 ;;; * sent mail goes to inbox.

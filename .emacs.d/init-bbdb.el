@@ -3,8 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-01-26 21:22:37 mark>
-;;;;
 ;;;
 ;;; TODO
 ;;; * safer sync with google (merge in google contacts)

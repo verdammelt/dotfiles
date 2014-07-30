@@ -4,8 +4,6 @@
 ;;;; This file contains the custom-set-variables block. I use customize
 ;;;; as little as possible
 ;;;;
-;;;; Modified Time-stamp: <2014-04-30 15:32:32 mjs>
-;;;;
 ;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

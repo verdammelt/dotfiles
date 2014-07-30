@@ -3,8 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2013-05-24 18:25:15 mark>
-;;;;
 (after 'tex 
   (TeX-global-PDF-mode)
   (setq TeX-auto-save t)
