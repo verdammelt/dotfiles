@@ -173,6 +173,14 @@
 
 (autoload 'zap-up-to-char "misc" 
   "Kill up to, but not including ARGth occurance of CHAR.")
+(autoload 'forward-to-word "misc"
+  "Move forward until encountering the beginning of a word. 
+With argument, do this that many times.")
+(autoload 'backward-to-word "misc"
+  "Move backward until encountering the end of a word. 
+With argument, do this that many times.")
+(global-set-key (kbd "M-F") 'forward-to-word)
+(global-set-key (kbd "M-B") 'backward-to-word)
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
 ;; multiple-cursors
