@@ -2,7 +2,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-13 10:00:30 mark>
+;;;; Modified Time-stamp: <2014-07-29 20:18:11 mark>
 ;;;;
 
 ;;; 
@@ -109,4 +109,8 @@
 
 (yas-global-mode 1)
 
+
 (global-pretty-mode)
+
+(browse-kill-ring-default-keybindings)
+
