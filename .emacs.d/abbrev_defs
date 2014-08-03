@@ -199,9 +199,11 @@
 
 (define-abbrev-table 'org-mode-abbrev-table
   '(
-    ("backend" "back end" nil 1)
+    ("actionable" "actionable" nil 1)
+    ("backend" "back end" nil 3)
+    ("everytime" "every time" nil 0)
     ("invstigate" "Instigate" nil 0)
-    ("jp" "MAGICPTRL" nil 25)
+    ("jp" "MAGICPTRL" nil 26)
     ("rearrangemnt" "rearrangement" nil 0)
     ("recieved" "received" nil 0)
    ))
@@ -220,7 +222,9 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table '())
+(define-abbrev-table 'python-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -276,13 +280,15 @@
     ("availablility" "availability" nil 0)
     ("certifiate" "Certificate" nil 0)
     ("convinience" "convenience" nil 0)
+    ("convinient" "convenient" nil 0)
     ("decsion" "decision" nil 0)
     ("definately" "definitely" nil 3)
+    ("dyanmic" "dynamic" nil 0)
     ("editted" "edited" nil 0)
     ("existance" "existence" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
-    ("hardcoded" "hard coded" nil 0)
+    ("hardcoded" "hard coded" nil 1)
     ("independant" "independent" nil 0)
     ("jp" "MAGICPTRL" nil 4)
     ("langauge" "language" nil 0)
@@ -290,7 +296,7 @@
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 25)
+    ("tia" "Thanks in advance" nil 27)
     ("tomororw" "tomorrow" nil 0)
    ))
 
