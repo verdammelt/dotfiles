@@ -203,7 +203,7 @@
     ("backend" "back end" nil 3)
     ("everytime" "every time" nil 0)
     ("invstigate" "Instigate" nil 0)
-    ("jp" "MAGICPTRL" nil 26)
+    ("jp" "MAGICPTRL" nil 28)
     ("rearrangemnt" "rearrangement" nil 0)
     ("recieved" "received" nil 0)
    ))
@@ -222,9 +222,7 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -266,6 +264,8 @@
 
 (define-abbrev-table 'speedbar-mode-abbrev-table '())
 
+(define-abbrev-table 'sql-mode-abbrev-table '())
+
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'tar-mode-abbrev-table '())
@@ -278,25 +278,30 @@
   '(
     ("accesibility" "accessibility" nil 0)
     ("availablility" "availability" nil 0)
+    ("cancelled" "canceled" nil 0)
     ("certifiate" "Certificate" nil 0)
     ("convinience" "convenience" nil 0)
     ("convinient" "convenient" nil 0)
+    ("curiousity" "curiosity" nil 0)
     ("decsion" "decision" nil 0)
     ("definately" "definitely" nil 3)
     ("dyanmic" "dynamic" nil 0)
     ("editted" "edited" nil 0)
+    ("excpetion" "exception" nil 0)
     ("existance" "existence" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
     ("hardcoded" "hard coded" nil 1)
     ("independant" "independent" nil 0)
-    ("jp" "MAGICPTRL" nil 4)
+    ("jp" "MAGICPTRL" nil 16)
     ("langauge" "language" nil 0)
     ("marijhuana" "Marijuana" nil 0)
+    ("reciept" "receipt" nil 0)
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
+    ("standup" "stand up" nil 0)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 27)
+    ("tia" "Thanks in advance" nil 32)
     ("tomororw" "tomorrow" nil 0)
    ))
 
