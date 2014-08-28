@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-29 20:29:32 mark>
+;;;; Modified Time-stamp: <2014-08-23 15:51:01 mark>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -36,8 +36,8 @@
 
 	org-completion-use-ido t
 	org-outline-path-complete-in-steps nil
-	org-todo-keywords '((sequence "TODO(t)" "WAITING(w!)" "|" 
-				      "DONE(d!/@)" "CANCELLED(c@/@)"))
+	org-todo-keywords '((sequence "TODO(t)" "WAIT(w!)" "|" 
+				      "DONE(d!/@)" "CNCL(c@/@)"))
 	org-tag-alist '(("@HOME" . ?h)
 			("@CALL" . ?c) ("@ERRAND" . ?e)
 			("@MAC" . ?m) ("@WORKMAC" . ?a) ("@WEB" . ?b)
@@ -126,23 +126,42 @@
 		     (org-agenda-use-time-grid nil)))
 	 (tags "REFILE"
 	       ((org-agenda-overriding-header "Tasks to Refile")))
-	 (tags-todo "+@CALL|+@ERRAND/!-WAITING"
+	 (tags-todo "+@CALL|+@ERRAND/!-WAIT"
 		    ((org-agenda-overriding-header "@CALL/@ERRAND")))
-	 (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAITING"
+	 (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAIT"
 		    ((org-agenda-overriding-header "@COMPUTER")))
-	 (tags-todo "+@HOME|+@ANY/!-WAITING"
+	 (tags-todo "+@HOME|+@ANY/!-WAIT"
 		    ((org-agenda-overriding-header "@HOME")))
-	 (tags-todo "+@WENDY/!-WAITING"
+	 (tags-todo "+@WENDY/!-WAIT"
 		    ((org-agenda-overriding-header "@WENDY")))
-	 (tags-todo "+@WORK/!-WAITING"
+	 (tags-todo "+@WORK/!-WAIT"
 		    ((org-agenda-overriding-header "@WORK")))
-	 (tags-todo "/WAITING"
+	 (tags-todo "/WAIT"
 		    ((org-agenda-overriding-header "WAITING-FOR")))
 	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
 	       ((org-agenda-overriding-header "PROJECTS")
 		(org-agenda-sorting-strategy '(category-keep))))
 	 ))
-       ("w" "waiting" tags-todo "/WAITING")
+       ("h" "Home"
+	((agenda "" ((org-agenda-span 'day)
+		     (org-agenda-use-time-grid nil)))
+	 (tags "REFILE"
+	       ((org-agenda-overriding-header "Tasks to Refile")))
+	 (tags-todo "+@CALL|!-WAIT"
+		    ((org-agenda-overriding-header "@CALL")))
+	 (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAIT"
+		    ((org-agenda-overriding-header "@COMPUTER")))
+	 (tags-todo "+@HOME|+@ANY/!-WAIT"
+		    ((org-agenda-overriding-header "@HOME")))
+	 (tags-todo "+@WENDY/!-WAIT"
+		    ((org-agenda-overriding-header "@WENDY")))
+	 (tags-todo "/WAIT"
+		    ((org-agenda-overriding-header "WAITING-FOR")))
+	 (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
+	       ((org-agenda-overriding-header "PROJECTS")
+		(org-agenda-sorting-strategy '(category-keep))))
+	 ))
+       ("w" "waiting" tags-todo "/WAIT")
        ("k" "work" 
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid t)
@@ -150,13 +169,13 @@
 		     (org-agenda-start-with-clockreport-mode t)))
 	 (tags "REFILE"
 	       ((org-agenda-overriding-header "Tasks to Refile")))
-	 (tags-todo "+@WORK&+2U/!-WAITING" 
+	 (tags-todo "+@WORK&+2U/!-WAIT" 
 		    ((org-agenda-sorting-strategy '(todo-state-up tag-up))
 		     (org-agenda-overriding-header "BILLABLE")))
-	 (tags-todo "+@WORK&-2U/!-WAITING" 
+	 (tags-todo "+@WORK&-2U/!-WAIT" 
 		    ((org-agenda-sorting-strategy '(todo-state-up tag-up))
 		     (org-agenda-overriding-header "NON-BILLABLE")))
-	 (tags-todo "+@WORK/WAITING"
+	 (tags-todo "+@WORK/WAIT"
 		    ((org-agenda-overriding-header "WAITING-FOR")))
 	 (tags "+@WORK&+CATEGORY=\"PROJ\"&+LEVEL=2"
 	       ((org-agenda-overriding-header "PROJECTS")
@@ -209,7 +228,7 @@
   (global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
 
   (setq org-stuck-projects
-	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAITING") nil ""))
+	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAIT") nil ""))
 
   (require 'org-mobile)
   (setq org-mobile-directory "~/Documents/Dropbox/GTD/MobileOrg"
