@@ -11,3 +11,12 @@ fi
 . $HOME/.bashrc
 
 CDPATH=.:~:~/SRC:~/Documents:~/Movies
+
+alias sand='ssh -A -tt sandbox_dev'
+alias api='sand "(cd ~/SRC/api && emacs .)"'
+alias green='sand "(cd ~/SRC/greenlight && emacs .)"'
+alias portal='sand "(cd ~/SRC/portal && emacs . )"'
+alias klondike='sand "(cd ~/SRC/klondike && emacs .)"'
+alias ltail='sand tornadotail'
+alias atail='sand tornadotail api'
+alias gtail='sand tornadotail greenlight'
