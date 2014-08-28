@@ -194,4 +194,8 @@ With argument, do this that many times.")
   (wrap-region-add-wrapper "_" "_" nil 'markdown-mode)
   (wrap-region-add-wrapper "*" "*" nil 'markdown-mode))
 
+(defun add-wgrep-key ()
+  (define-key grep-mode-map (kbd "C-x C-q") 'wgrep-change-to-wgrep-mode))
+(add-hook 'grep-mode-hook 'add-wgrep-key)
+
 (provide 'init-misc)
