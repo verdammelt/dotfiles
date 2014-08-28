@@ -6,7 +6,7 @@
 (declare-function if-work "init")
 (declare-function mjs/bbdb-init "init-bbdb")
 
-(setq user-mail-address (if-work "mark@defmethod.io" "verdammelt@gmail.com"))
+(setq user-mail-address (if-work "mark.simpson@defmethod.com" "verdammelt@gmail.com"))
 
 ;; this way i have Gcc: etc. in my mail buffer
 (setq mail-user-agent 'gnus-user-agent)
