@@ -41,6 +41,10 @@
   (setq 
    gnus-gcc-mark-as-read t	   ; carbon-copies should be auto-read
    
+   gnus-save-killed-list nil
+
+   gnus-default-directory gnus-directory
+
    ;; formatting the screen
    gnus-summary-line-format 
    "[%4V:%4i]%U%R %10&user-date;%[%4L: %-23,23uB%]%O%B%s\n"
@@ -95,6 +99,7 @@
    mail-source-primary-source (car mail-sources)
    mail-source-crash-box (concat gnus-directory "crash-box")
    
+   gnus-save-duplicate-list t
    nnmail-treat-duplicates 'delete
    nnmail-cache-accepted-message-ids t
    nnmail-message-id-cache-length 5000
@@ -181,14 +186,37 @@
 ;;;
 ;;; expire mail to an archive mailspool for the year.
 ;;;
+  (defun mjs/expiry-wait-calculator (group)
+    (let ((wait-days 
+	   (cond ((string-match "spam" group) 1)
+		 ((string-match "list\\.*" group) 28) ; to mimic existing behavior
+		 ((string-match "tnef" group) 'never)
+		 ((string-match "codeandcocktails" group) 'never)
+		 ((string-match "cyrus" group) 'never) ; to mimic existing behavior
+		 (t 28))))
+      (message "expiry-wait for %s is %d" group wait-days)
+      wait-days))
+
+  (defun mjs/expiry-target-calculator (group)
+    (let* ((expiry-target-file
+	    (cond ((string-match "list\\.*" group) "nnfolder:delete-me" ;; 'delete
+		   )
+		  ((string-match "spam\\.*" group) "nnfolder:delete-me" ;; 'delete
+		   )
+		  ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
+		  ((string-match "cyrus\\.2u" group) "nnfolder+archive:cyrus.2u-archive-%Y-%m")
+		  (t "nnfolder+archive:archive-%Y")))
+	   (nnmail-fancy-expiry-targets `(("from" ".*" ,expiry-target-file)))
+	   (target (nnmail-fancy-expiry-target group)))
+      (message "expiry-target for %s is '%s'" group target)
+      target))
+
   (setq 
-   gnus-message-archive-group 
-   '((format-time-string "archive-%Y"))
-   
-   nnmail-expiry-target 'nnmail-fancy-expiry-target
-   nnmail-expiry-wait 28		; originally 7
-   nnmail-fancy-expiry-targets '(("from" ".*" "nnfolder+archive:archive-%Y")))
-  
+   gnus-message-archive-group '((format-time-string "archive-%Y"))
+   nnmail-expiry-target 'mjs/expiry-target-calculator
+   nnmail-expiry-wait-function 'mjs/expiry-wait-calculator
+   )
+
 ;;; 
 ;;; Group Parameters
 ;;;
@@ -205,22 +233,16 @@
 	  ("mail.codeandcocktails"
 	   (posting-style  (address "codeandcocktails@gmail.com")))
 
-	  ("mail.tnef"
-	   (total-expire . nil)
-	   (auto-expire . nil))
-
 	  ("list.*"
 	   (total-expire . t)
 	   (expiry-target . delete))
 
 	  ("cyrus.*"
 	   (gcc-self . t)
-	   (total-expire . nil)
 	   (posting-style (address "msimpson@cyrusinnovation.com")))
 
 	  ("spam\.spam"
 	   (total-expire . t)
-	   (expiry-wait . 1)
 	   (expiry-target . delete)
 	   (spam-contents gnus-group-spam-classification-spam)
 	   (spam-process ((ham spam-use-BBDB)))
@@ -236,7 +258,6 @@
 ;;;
   (add-to-list 'auto-mode-alist '("SCORE$" . lisp-mode))
   (add-to-list 'auto-mode-alist '("ADAPT$" . lisp-mode)))
-
 
 ;; keybinding for gnus
 (defun switch-to-gnus () 
