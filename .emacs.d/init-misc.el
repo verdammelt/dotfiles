@@ -204,5 +204,3 @@ With argument, do this that many times.")
   (interactive (browse-url-interactive-arg "URL: "))
   (start-process (concat "open " url) nil "open" "-g" url))
 (setq browse-url-browser-function 'browse-url-default-macosx-browser-background)
-
-(provide 'init-misc)

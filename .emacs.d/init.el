@@ -27,7 +27,7 @@
 ;; I want to keep the customize stuff out of this config file.  I
 ;; don't use customize for much so I don't generally want to see it.
 (setq custom-file (locate-user-emacs-file "init-custom.el"))
-(load-file custom-file)
+(load custom-file)
 
 ;;;
 ;;; Exec Path
@@ -41,25 +41,26 @@
 ;;;
 ;;; Load Path
 ;;;
-(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
+(defun load-init-file (file)
+  (load (locate-user-emacs-file file)))
 
 ;;;
 ;;; Package
 ;;;
-(require 'init-package)
+(load-init-file "init-package")
 
 ;;;
 ;;; Exterinalized config of specific things
 ;;;
-(require 'init-bbdb)
-(require 'init-mail)
-(require 'init-gnus)
-(require 'init-latex)
-(require 'init-ido)
-(require 'init-org)
-(require 'init-lisp)
-(require 'init-misc)
+(load-init-file "init-bbdb")
+(load-init-file "init-mail")
+(load-init-file "init-gnus")
+(load-init-file "init-latex")
+(load-init-file "init-ido")
+(load-init-file "init-org")
+(load-init-file "init-lisp")
+(load-init-file "init-misc")
 
 ;; set up the fonts / themes
 (set-face-attribute 'default nil 

@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-09-14 11:22:37 mark>
+;;;; Modified Time-stamp: <2014-09-14 15:21:36 mark>
 ;;;;
 (require 'cl)
 
@@ -125,5 +125,3 @@ requirements etc) for the given package."
 		    (if (y-or-n-p (format "Delete %S" p))
 			(epl-package-delete (epl-find-installed-package p))))
 		extra-packages))))
-
-(provide 'init-package)

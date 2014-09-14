@@ -43,5 +43,3 @@
   (add-hook 'mail-citation-hook 'sc-cite-original)
   (setq mail-specify-envelope-from t
 	mail-envelope-from 'header))
-
-(provide 'init-mail)

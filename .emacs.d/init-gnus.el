@@ -271,5 +271,3 @@
 (global-set-key (kbd "<f6>") 'switch-to-gnus)
 
 (setq read-mail-command 'gnus)
-
-(provide 'init-gnus)

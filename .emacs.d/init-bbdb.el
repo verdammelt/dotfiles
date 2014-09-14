@@ -26,5 +26,3 @@
     (bbdb-initialize 'message)
     (bbdb-mua-auto-update-init 'message)
     (add-hook 'message-setup-hook 'bbdb-mail-aliases)))
-
-(provide 'init-bbdb)

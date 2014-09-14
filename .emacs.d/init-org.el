@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-09-01 09:42:23 mark>
+;;;; Modified Time-stamp: <2014-09-14 15:21:32 mark>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -234,5 +234,3 @@
   (setq org-mobile-directory "~/Documents/Dropbox/GTD/MobileOrg"
 	org-mobile-inbox-for-pull (expand-file-name "mobileorg.org" org-mobile-directory)
 	))
-
-(provide 'init-org)

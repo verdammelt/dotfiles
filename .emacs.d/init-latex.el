@@ -17,5 +17,3 @@
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   (after 'reftex
     (setq reftex-plug-into-AUCTeX t)))
-
-(provide 'init-latex)

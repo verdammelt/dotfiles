@@ -8,5 +8,3 @@
 	ido-enable-flex-matching t)
   (ido-vertical-mode)
   (ido-sort-mtime-mode))
-
-(provide 'init-ido)
