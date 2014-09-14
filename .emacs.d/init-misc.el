@@ -117,7 +117,8 @@
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 (after 'ns-win 
-  (setq mac-command-modifier 'meta
+  (setq ns-use-srgb-colorspace t
+	mac-command-modifier 'meta
 	mac-option-modifier 'super
 	mac-function-modifier 'hyper))
 
