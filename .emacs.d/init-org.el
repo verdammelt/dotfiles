@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-08-23 15:51:01 mark>
+;;;; Modified Time-stamp: <2014-09-01 09:42:23 mark>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -39,7 +39,7 @@
 	org-todo-keywords '((sequence "TODO(t)" "WAIT(w!)" "|" 
 				      "DONE(d!/@)" "CNCL(c@/@)"))
 	org-tag-alist '(("@HOME" . ?h)
-			("@CALL" . ?c) ("@ERRAND" . ?e)
+			("@CALL" . ?c) ("@EMAIL" . ?e) ("@ERRAND" . ?r)
 			("@MAC" . ?m) ("@WORKMAC" . ?a) ("@WEB" . ?b)
 			("@WORK" . ?k) ("2U" . ?2)
 			("@WENDY" . ?w))
@@ -85,8 +85,6 @@
 	   :jump-to-captured t :empty-lines-after 1)
 	  ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
 	   "* TODO %?\n  %U\n  %a\n")
-	  ("n" "Note" entry (file "")
-	   "* %?\n %U\n %a")
 	  ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
 	   "* %?\n  %U\n %a\n")
 	  ("w" "Templates for work")
@@ -126,8 +124,10 @@
 		     (org-agenda-use-time-grid nil)))
 	 (tags "REFILE"
 	       ((org-agenda-overriding-header "Tasks to Refile")))
-	 (tags-todo "+@CALL|+@ERRAND/!-WAIT"
-		    ((org-agenda-overriding-header "@CALL/@ERRAND")))
+	 (tags-todo "+@CALL|+@EMAIL/!-WAIT"
+		    ((org-agenda-overriding-header "@COMMUNICATE")))
+	 (tags-todo "+@ERRAND/!-WAIT"
+		    ((org-agenda-overriding-header "@ERRAND")))
 	 (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAIT"
 		    ((org-agenda-overriding-header "@COMPUTER")))
 	 (tags-todo "+@HOME|+@ANY/!-WAIT"
@@ -147,8 +147,8 @@
 		     (org-agenda-use-time-grid nil)))
 	 (tags "REFILE"
 	       ((org-agenda-overriding-header "Tasks to Refile")))
-	 (tags-todo "+@CALL|!-WAIT"
-		    ((org-agenda-overriding-header "@CALL")))
+	 (tags-todo "+@CALL|@EMAIL/!-WAIT"
+		    ((org-agenda-overriding-header "@COMMUNICATE")))
 	 (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAIT"
 		    ((org-agenda-overriding-header "@COMPUTER")))
 	 (tags-todo "+@HOME|+@ANY/!-WAIT"
