@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-07-29 20:29:57 mark>
+;;;; Modified Time-stamp: <2014-09-14 11:22:37 mark>
 ;;;;
 (require 'cl)
 
@@ -17,13 +17,15 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
-(defvar mjs/*needed-packages*
-  '(ac-ispell
+(setq mjs/*needed-packages*
+  '(ac-cider
+    ac-ispell
     ace-jump-mode
     auctex
     auto-complete
     bbdb
     browse-kill-ring
+    cider
     change-inner
     clojure-mode
     coffee-mode
