@@ -127,6 +127,8 @@
 			("subject" "Message left on server:.*" "mail.misc")
 			(to "codeandcocktails@gmail.com" "mail.codeandcocktails")
 			(to "noreply@sourceforge.net" "mail.tnef")
+			(| ("subject" "JIRA Tickets Created" "cyrus.2u-junk")
+			   ("subject" "JIRA Tickets Closed" "cyrus.2u-junk"))
 			(any ".*2u.com" "cyrus.2u")
 			(| (from "noreply@outbound.getsentry.com" "cyrus.2u-errors")
 			   (from "noreply@newrelic.com" "cyrus.2u-errors"))
