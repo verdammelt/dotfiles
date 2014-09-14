@@ -66,7 +66,7 @@
 		    :height 140
 		    :family "Source_Code_Pro")
 ;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
-(load-theme 'tango)
+(load-theme 'tango-dark)
 (set-face-attribute 'highlight nil
 		    :background (face-background 'mode-line))
 
