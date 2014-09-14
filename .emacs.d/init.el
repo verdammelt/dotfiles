@@ -73,7 +73,6 @@
 ;;;
 ;;; turn on all things that need turning on.
 ;;;
-(require 'battery-patch)
 (display-battery-mode)
 (display-time)
 (server-start)
