@@ -189,27 +189,26 @@
   (defun mjs/expiry-wait-calculator (group)
     (let ((wait-days 
 	   (cond ((string-match "spam" group) 1)
-		 ((string-match "list\\.*" group) 28) ; to mimic existing behavior
+		 ((string-match "list\\.*" group) 14)
 		 ((string-match "tnef" group) 'never)
 		 ((string-match "codeandcocktails" group) 'never)
 		 ((string-match "cyrus" group) 'never) ; to mimic existing behavior
 		 (t 28))))
-      (message "expiry-wait for %s is %d" group wait-days)
+      (message "expiry-wait for %s is %s" group wait-days)
       wait-days))
 
   (defun mjs/expiry-target-calculator (group)
     (let* ((expiry-target-file
-	    (cond ((string-match "list\\.*" group) "nnfolder:delete-me" ;; 'delete
-		   )
-		  ((string-match "spam\\.*" group) "nnfolder:delete-me" ;; 'delete
-		   )
+	    (cond ((string-match "list\\.*" group) 'delete)
+		  ((string-match "spam\\.*" group) 'delete)
 		  ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
 		  ((string-match "cyrus\\.2u" group) "nnfolder+archive:cyrus.2u-archive-%Y-%m")
-		  (t "nnfolder+archive:archive-%Y")))
-	   (nnmail-fancy-expiry-targets `(("from" ".*" ,expiry-target-file)))
-	   (target (nnmail-fancy-expiry-target group)))
-      (message "expiry-target for %s is '%s'" group target)
-      target))
+		  (t "nnfolder+archive:archive-%Y"))))
+      (message "expiry-target for %s is '%s'" group expiry-target-file)
+      (if (stringp expiry-target-file)
+	  (let ((nnmail-fancy-expiry-targets `(("from" ".*" ,expiry-target-file))))
+	    (nnmail-fancy-expiry-target group))
+	expiry-target-file)))
 
   (setq 
    gnus-message-archive-group '((format-time-string "archive-%Y"))
@@ -235,7 +234,8 @@
 
 	  ("list.*"
 	   (total-expire . t)
-	   (expiry-target . delete))
+	   ;; (expiry-target . delete)
+	   )
 
 	  ("cyrus.*"
 	   (gcc-self . t)
@@ -243,7 +243,7 @@
 
 	  ("spam\.spam"
 	   (total-expire . t)
-	   (expiry-target . delete)
+	   ;; (expiry-target . delete)
 	   (spam-contents gnus-group-spam-classification-spam)
 	   (spam-process ((ham spam-use-BBDB)))
 	   (ham-process-destination "nnfolder:mail.inbox"))
