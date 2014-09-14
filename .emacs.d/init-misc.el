@@ -199,4 +199,10 @@ With argument, do this that many times.")
   (define-key grep-mode-map (kbd "C-x C-q") 'wgrep-change-to-wgrep-mode))
 (add-hook 'grep-mode-hook 'add-wgrep-key)
 
+;; always want browser to open in background.
+(defun browse-url-default-macosx-browser-background (url &optional _new-window)
+  (interactive (browse-url-interactive-arg "URL: "))
+  (start-process (concat "open " url) nil "open" "-g" url))
+(setq browse-url-browser-function 'browse-url-default-macosx-browser-background)
+
 (provide 'init-misc)
