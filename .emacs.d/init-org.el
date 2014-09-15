@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-09-14 20:35:56 mjs>
+;;;; Modified Time-stamp: <2014-09-14 20:42:22 mjs>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -68,7 +68,7 @@
 	'(:max-duration "04:00" 
 			:min-duration 0 
 			:max-gap 0
-			:gap-ok-around ("04:00" "13:00");; what are good settings?
+			:gap-ok-around ("04:00" "09:00" "13:00" "17:00");; what are good settings?
 			;; below is same as default
 			:default-face
 			((:background "DarkRed")
