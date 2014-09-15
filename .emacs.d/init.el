@@ -57,6 +57,7 @@
 (load-init-file "init-org")
 (load-init-file "init-lisp")
 (load-init-file "init-misc")
+(load-init-file "init-irc")
 
 ;; set up the fonts / themes
 (set-face-attribute 'default nil

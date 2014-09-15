@@ -30,6 +30,9 @@
     coffee-mode
     elisp-slime-nav
     epl
+    erc
+    erc-image
+    erc-youtube
     expand-region
     fill-column-indicator
     flycheck

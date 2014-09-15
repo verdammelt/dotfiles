@@ -10,3 +10,4 @@ elpa
 projectile-bookmarks.eld
 url
 tramp
+init-secrets.el*
