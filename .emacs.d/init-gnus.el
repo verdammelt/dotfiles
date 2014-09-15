@@ -260,15 +260,7 @@
   (add-to-list 'auto-mode-alist '("SCORE$" . lisp-mode))
   (add-to-list 'auto-mode-alist '("ADAPT$" . lisp-mode)))
 
-;; keybinding for gnus
-(defun switch-to-gnus () 
-  (interactive) 
-  (let ((group-buffer (get-buffer "*Group*")))
-    (if group-buffer 
-	(progn (switch-to-buffer group-buffer)
-	       (gnus-group-get-new-news))
-      (gnus))))
 
-(global-set-key (kbd "<f6>") 'switch-to-gnus)
+(global-set-key (kbd "<f6>") 'gnus)
 
 (setq read-mail-command 'gnus)
