@@ -7,7 +7,9 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -15,13 +17,21 @@
 
 (define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())
 
+(define-abbrev-table 'bookmark-edit-annotation-mode-abbrev-table '())
+
 (define-abbrev-table 'browse-kill-ring-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
 
@@ -84,6 +94,8 @@
 
 (define-abbrev-table 'dsssl-mode-abbrev-table '())
 
+(define-abbrev-table 'edebug-eval-mode-abbrev-table '())
+
 (define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
@@ -95,6 +107,14 @@
 (define-abbrev-table 'epa-key-list-mode-abbrev-table '())
 
 (define-abbrev-table 'epa-key-mode-abbrev-table '())
+
+(define-abbrev-table 'erc-list-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'erc-mode-abbrev-table
+  '(
+    ("defintly" "defiantly" nil 0)
+    ("repetoire" "repertoire" nil 0)
+   ))
 
 (define-abbrev-table 'ert-results-mode-abbrev-table '())
 
@@ -115,6 +135,8 @@
     ("accessiblity" "accessibility" nil 0)
     ("configuraable" "configurable" nil 0)
     ("consitently" "consistently" nil 0)
+    ("diferent" "deferent" nil 0)
+    ("frist" "first" nil 0)
     ("multimethod" "multimethod" nil 0)
    ))
 
@@ -160,7 +182,9 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -212,17 +236,18 @@
   '(
     ("backend" "back end" nil 0)
     ("collegues" "colleagues" nil 0)
-    ("ulitimately" "ultimately" nil 0)
     ("nad" "and" nil 0)
     ("signup" "sign up" nil 0)
-   ))
-
-(define-abbrev-table 'message-mode-abbrev-table
-  '(
-    ("annilhator" "Annihilator" nil 0)
+    ("ulitimately" "ultimately" nil 0)
    ))
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
+(define-abbrev-table 'message-mode-abbrev-table
+  '(
+    ("annilhator" "Annihilator" nil 0)
+    ("ok" "OK" nil 0)
+   ))
+
 
 (define-abbrev-table 'nrepl-connections-buffer-mode-abbrev-table '())
 
@@ -230,7 +255,9 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -241,12 +268,15 @@
 (define-abbrev-table 'org-mode-abbrev-table
   '(
     ("actionable" "actionable" nil 1)
+    ("aka" "ALA" nil 0)
     ("backend" "back end" nil 3)
+    ("competancy" "competency" nil 0)
     ("everytime" "every time" nil 0)
     ("invstigate" "Instigate" nil 0)
-    ("jp" "MAGICPTRL" nil 30)
+    ("jp" "MAGICPTRL" nil 35)
     ("rearrangemnt" "rearrangement" nil 0)
     ("recieved" "received" nil 0)
+    ("repercusion" "repercussion" nil 0)
     ("subscriptional" "subscription" nil 0)
    ))
 
@@ -256,7 +286,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -264,9 +296,7 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -326,9 +356,10 @@
     ("certifiate" "Certificate" nil 0)
     ("convinience" "convenience" nil 0)
     ("convinient" "convenient" nil 0)
+    ("coudld" "could" nil 0)
     ("curiousity" "curiosity" nil 0)
     ("decsion" "decision" nil 0)
-    ("definately" "definitely" nil 4)
+    ("definately" "definitely" nil 8)
     ("dyanmic" "dynamic" nil 0)
     ("editted" "edited" nil 0)
     ("excpetion" "exception" nil 0)
@@ -337,14 +368,15 @@
     ("filepicker" "FilePicker" nil 3)
     ("hardcoded" "hard coded" nil 1)
     ("independant" "independent" nil 0)
-    ("jp" "MAGICPTRL" nil 16)
+    ("jp" "MAGICPTRL" nil 20)
     ("langauge" "language" nil 0)
     ("marijhuana" "Marijuana" nil 0)
     ("permisions" "permissions" nil 0)
     ("reciept" "receipt" nil 0)
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
-    ("standup" "stand up" nil 0)
+    ("signup" "sign-up" nil 0)
+    ("standup" "stand up" nil 2)
     ("themed" "themed" nil 0)
     ("tia" "Thanks in advance" nil 36)
     ("tomororw" "tomorrow" nil 0)
