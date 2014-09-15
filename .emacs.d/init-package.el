@@ -30,6 +30,9 @@
     edit-server
     edit-server-htmlize
     elisp-slime-nav
+    erc
+    erc-image
+    erc-youtube
     expand-region
     fill-column-indicator
     flycheck
