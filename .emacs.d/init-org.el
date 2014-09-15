@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-09-14 15:21:32 mark>
+;;;; Modified Time-stamp: <2014-09-14 20:35:56 mjs>
 ;;;;
 (defun mjs/expand-org-file (f)
   (let ((filename (if (string= (file-name-extension f) "org") 
@@ -54,6 +54,7 @@
 
   (setq org-clock-persist t
 	org-clock-idle-time 10
+	org-clock-mode-line-total 'today
 	org-time-clocksum-format 
 	'(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)
 	org-clock-persist-file (expand-file-name 
