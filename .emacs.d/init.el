@@ -97,8 +97,6 @@
 
 (require 'uniquify)
 
-;; setup miniedit - multi-line editing of the mini-buffer
-(require 'miniedit)
 (miniedit-install)
 
 (projectile-global-mode)

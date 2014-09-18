@@ -42,6 +42,7 @@
     ido-vertical-mode
     magit
     markdown-mode
+    miniedit
     multiple-cursors
     org-plus-contrib
     paredit
