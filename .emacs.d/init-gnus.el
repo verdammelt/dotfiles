@@ -76,7 +76,6 @@
 				gnus-thread-sort-by-total-score)
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
    gnus-thread-hide-subtree t
-   gnus-summary-make-false-root 'dummy
    gnus-summary-gather-subject-limit 'fuzzy
    gnus-build-sparse-threads 'some
    )
