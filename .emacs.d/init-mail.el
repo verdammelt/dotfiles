@@ -13,6 +13,7 @@
   (autoload 'sm-add-random-header "silly-mail" nil t)
 
   ;; extra stuff for message buffers - spelling etc.
+  (add-hook 'message-setup-hook 'message-sort-headers)
   (add-hook 'message-setup-hook 'footnote-mode)
   (add-hook 'message-setup-hook 'turn-on-flyspell)
   (add-hook 'message-setup-hook 'sm-add-random-header)
