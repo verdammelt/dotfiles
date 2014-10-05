@@ -128,6 +128,7 @@
 			(to "noreply@sourceforge.net" "mail.tnef")
 			(| ("subject" "JIRA Tickets Created" "cyrus.2u-junk")
 			   ("subject" "JIRA Tickets Closed" "cyrus.2u-junk")
+			   (from "HR@2u.com" "cyrus.2u-junk")
 			   (from "OnlineMPA@unc.edu" "cyrus.2u-junk"))
 			(any ".*2u.com" "cyrus.2u")
 			(| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
