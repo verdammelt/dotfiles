@@ -26,6 +26,10 @@
   (after 'supercite
     (setq sc-preferred-header-style 1)))
 
+(after 'mm-decode
+  (setq mm-default-directory (expand-file-name "~/Downloads"))
+  (add-to-list 'mm-file-name-rewrite-functions 'mm-file-name-replace-whitespace))
+
 (after 'silly-mail
   (setq sm-mail-header-table
 	'(sm-add-emacs-name
