@@ -207,3 +207,6 @@ With argument, do this that many times.")
 
 (after 'ediff
   (setq ediff-window-setup-function 'ediff-setup-windows-plain))
+
+(after 'shell
+  (add-to-list 'explicit-bash-args "--login"))
