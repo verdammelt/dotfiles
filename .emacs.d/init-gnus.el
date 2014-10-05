@@ -263,3 +263,9 @@
 (global-set-key (kbd "<f6>") 'gnus)
 
 (setq read-mail-command 'gnus)
+
+;; Improve colors used in shr. These settings are to make sure colors
+;; are distinct enough to be visible.
+(after 'shr
+  (setq shr-color-visible-distance-min 10
+	shr-color-visible-luminance-min 60))
