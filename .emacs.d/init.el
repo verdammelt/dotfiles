@@ -70,6 +70,8 @@
 (load-theme 'tango-dark)
 (set-face-attribute 'highlight nil
 		    :background (face-background 'mode-line))
+(set-face-attribute 'cursor nil
+		    :background "red")
 
 ;;;
 ;;; turn on all things that need turning on.
