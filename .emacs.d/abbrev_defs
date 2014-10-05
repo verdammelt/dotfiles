@@ -5,11 +5,11 @@
 
 (define-abbrev-table 'Info-edit-mode-abbrev-table '())
 
+(define-abbrev-table 'Man-mode-abbrev-table '())
+
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -23,13 +23,9 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -137,6 +133,7 @@
     ("consitently" "consistently" nil 0)
     ("diferent" "deferent" nil 0)
     ("frist" "first" nil 0)
+    ("impoving" "Improving" nil 0)
     ("multimethod" "multimethod" nil 0)
    ))
 
@@ -151,6 +148,8 @@
 (define-abbrev-table 'gnus-browse-mode-abbrev-table '())
 
 (define-abbrev-table 'gnus-category-mode-abbrev-table '())
+
+(define-abbrev-table 'gnus-edit-form-mode-abbrev-table '())
 
 (define-abbrev-table 'gnus-group-mode-abbrev-table '())
 
@@ -182,9 +181,7 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -241,13 +238,21 @@
     ("ulitimately" "ultimately" nil 0)
    ))
 
-(define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 (define-abbrev-table 'message-mode-abbrev-table
   '(
     ("annilhator" "Annihilator" nil 0)
-    ("ok" "OK" nil 0)
+    ("announcment" "announcement" nil 0)
+    ("cancelation" "cancellation" nil 0)
+    ("depencency" "dependency" nil 0)
+    ("implemntation" "Implementation" nil 0)
+    ("inconvinience" "inconvenience" nil 0)
+    ("ok" "OK" nil 2)
+    ("reconnaisance" "reconnaissance" nil 0)
+    ("separetely" "separately" nil 0)
+    ("stong" "strong" nil 0)
    ))
 
+(define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
 (define-abbrev-table 'nrepl-connections-buffer-mode-abbrev-table '())
 
@@ -255,9 +260,7 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -270,10 +273,11 @@
     ("actionable" "actionable" nil 1)
     ("aka" "ALA" nil 0)
     ("backend" "back end" nil 3)
+    ("communi" "communi" nil 0)
     ("competancy" "competency" nil 0)
     ("everytime" "every time" nil 0)
     ("invstigate" "Instigate" nil 0)
-    ("jp" "MAGICPTRL" nil 35)
+    ("jp" "MAGICPTRL" nil 41)
     ("rearrangemnt" "rearrangement" nil 0)
     ("recieved" "received" nil 0)
     ("repercusion" "repercussion" nil 0)
@@ -286,17 +290,21 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
+
+(define-abbrev-table 'proced-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
 (define-abbrev-table 'python-mode-abbrev-table '())
+
+(define-abbrev-table 'python-mode-skeleton-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -368,7 +376,7 @@
     ("filepicker" "FilePicker" nil 3)
     ("hardcoded" "hard coded" nil 1)
     ("independant" "independent" nil 0)
-    ("jp" "MAGICPTRL" nil 20)
+    ("jp" "MAGICPTRL" nil 24)
     ("langauge" "language" nil 0)
     ("marijhuana" "Marijuana" nil 0)
     ("permisions" "permissions" nil 0)
@@ -376,9 +384,9 @@
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
     ("signup" "sign-up" nil 0)
-    ("standup" "stand up" nil 2)
+    ("standup" "stand up" nil 4)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 36)
+    ("tia" "Thanks in advance" nil 46)
     ("tomororw" "tomorrow" nil 0)
    ))
 
