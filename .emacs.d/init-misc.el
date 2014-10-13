@@ -29,11 +29,6 @@
   (setq display-time-24hr-format t 
 	display-time-day-and-date t))
 
-;; making sure all buffers are named uniquely
-(after 'uniquify 
-  (setq uniquify-after-kill-buffer-p t
-	uniquify-buffer-name-style 'post-forward-angle-brackets))
-
 (global-set-key (kbd "s-p") 'ps-print-buffer)
 (global-set-key (kbd "s-P") 'ps-print-region)
 (after 'ps-print

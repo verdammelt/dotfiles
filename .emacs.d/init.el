@@ -97,8 +97,6 @@
 (require 'midnight)
 (timer-activate midnight-timer)
 
-(require 'uniquify)
-
 (miniedit-install)
 
 (projectile-global-mode)
