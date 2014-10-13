@@ -202,6 +202,7 @@
     (let* ((expiry-target-file
 	    (cond ((string-match "list\\.*" group) 'delete)
 		  ((string-match "spam\\.*" group) 'delete)
+		  ((string-match "mail.misc" group) 'delete)
 		  ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
 		  ((string-match "cyrus\\.2u" group) "nnfolder+archive:cyrus.2u-archive-%Y-%m")
 		  (t "nnfolder+archive:archive-%Y"))))
