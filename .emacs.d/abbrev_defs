@@ -250,6 +250,7 @@
     ("reconnaisance" "reconnaissance" nil 0)
     ("separetely" "separately" nil 0)
     ("stong" "strong" nil 0)
+    ("subscriptios" "Subscriptions" nil 0)
    ))
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
@@ -302,9 +303,7 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -386,7 +385,7 @@
     ("signup" "sign-up" nil 0)
     ("standup" "stand up" nil 4)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 46)
+    ("tia" "Thanks in advance" nil 48)
     ("tomororw" "tomorrow" nil 0)
    ))
 
