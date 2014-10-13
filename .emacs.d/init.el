@@ -14,12 +14,8 @@
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message "damned")
 
-;; cute little wrapper around eval-after-load
-(defmacro after (mode &rest body)
-  "`eval-after-load' MODE evaluate BODY."
-  (declare (indent defun))
-  `(eval-after-load ,mode
-     '(progn ,@body)))
+;; emacs 24.4 now comes with the macro I used to use (but with a longer name)
+(defalias 'after 'with-eval-after-load)
 
 ;;;
 ;;; Customize
