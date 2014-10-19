@@ -71,11 +71,11 @@
   (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
   (setq ac-use-menu-map t
 	ac-auto-show-menu t)
-  (defun ac-text-mode-setup ()
+  (defun mjs/ac-text-mode-setup ()
     (add-to-list 'ac-sources 'ac-source-words-in-buffer)
     (ac-ispell-ac-setup)
     (add-to-list 'ac-sources 'ac-source-yasnippet))
-  (add-hook 'text-mode-hook 'ac-text-mode-setup))
+  (add-hook 'text-mode-hook 'mjs/ac-text-mode-setup))
 
 ;; abbrevs
 (setq-default abbrev-mode t)
@@ -106,9 +106,9 @@
 (after 'markdown-mode
   (setq markdown-command "markdown | smartypants"))
 
-(defun setup-text-mode ()
+(defun mjs/setup-text-mode ()
   (setq sentence-end-double-space nil))
-(add-hook 'text-mode-hook 'setup-text-mode)
+(add-hook 'text-mode-hook 'mjs/setup-text-mode)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 (after 'ns-win 
@@ -150,11 +150,11 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(defun change-size (size)
+(defun mjs/change-size (size)
   (interactive "nsize: ")
   (if (< size 100) (setq size (* 10 size)))
   (set-face-attribute 'default nil :height size))
-(global-set-key (kbd "H-s") 'change-size)
+(global-set-key (kbd "H-s") 'mjs/change-size)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "M-i") 'change-inner)
@@ -190,15 +190,15 @@ With argument, do this that many times.")
   (wrap-region-add-wrapper "_" "_" nil 'markdown-mode)
   (wrap-region-add-wrapper "*" "*" nil 'markdown-mode))
 
-(defun add-wgrep-key ()
-  (define-key grep-mode-map (kbd "C-x C-q") 'wgrep-change-to-wgrep-mode))
-(add-hook 'grep-mode-hook 'add-wgrep-key)
+(defun mjs/add-wgrep-key ()
+  (define-key grep-mode-map (kbd "C-x C-q") 'mjs/wgrep-change-to-wgrep-mode))
+(add-hook 'grep-mode-hook 'mjs/add-wgrep-key)
 
 ;; always want browser to open in background.
-(defun browse-url-default-macosx-browser-background (url &optional _new-window)
+(defun mjs/browse-url-default-macosx-browser-background (url &optional _new-window)
   (interactive (browse-url-interactive-arg "URL: "))
   (start-process (concat "open " url) nil "open" "-g" url))
-(setq browse-url-browser-function 'browse-url-default-macosx-browser-background)
+(setq browse-url-browser-function 'mjs/browse-url-default-macosx-browser-background)
 
 (after 'ediff
   (setq ediff-window-setup-function 'ediff-setup-windows-plain))
