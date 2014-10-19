@@ -44,7 +44,6 @@
     multiple-cursors
     org-plus-contrib
     paredit
-    pretty-mode
     projectile
     rainbow-delimiters
     slime
