@@ -3,8 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;;; Modified Time-stamp: <2014-09-14 15:21:36 mark>
-;;;;
 (require 'cl)
 
 (setq message-log-max 10000)
