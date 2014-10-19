@@ -97,10 +97,13 @@
 
 (after 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
-  (add-hook 'coffee-mode-hook 'whitespace-mode)
-  (setq whitespace-style '(face empty indentation trailing)
-	whitespace-action '(auto-cleanup warn-if-read-only))
   (setq coffee-tab-width 4))
+
+(after 'simple
+  (add-hook 'prog-mode-hook 'whitespace-mode)
+  (setq whitespace-style '(face empty indentation trailing)
+	whitespace-action '(auto-cleanup warn-if-read-only)))
+
 
 ;; markdown-mode
 (after 'markdown-mode
@@ -111,7 +114,7 @@
 (add-hook 'text-mode-hook 'mjs/setup-text-mode)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
-(after 'ns-win 
+(after 'ns-win
   (setq ns-use-srgb-colorspace t
 	mac-command-modifier 'meta
 	mac-option-modifier 'super
