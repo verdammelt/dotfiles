@@ -241,6 +241,7 @@
 (define-abbrev-table 'message-mode-abbrev-table
   '(
     ("annilhator" "Annihilator" nil 0)
+    ("annivsery" "anniversary" nil 0)
     ("announcment" "announcement" nil 0)
     ("cancelation" "cancellation" nil 0)
     ("depencency" "dependency" nil 0)
@@ -283,6 +284,7 @@
     ("recieved" "received" nil 0)
     ("repercusion" "repercussion" nil 0)
     ("subscriptional" "subscription" nil 0)
+    ("unpersuadables" "Unstable" nil 0)
    ))
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
