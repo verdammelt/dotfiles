@@ -181,15 +181,6 @@
 		(org-agenda-sorting-strategy '(todo-state-down))))))))
     ))
 
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ct" (lambda () (interactive) (org-capture nil "t")))
-(global-set-key "\C-cp" (lambda () (interactive) (org-capture nil "p")))
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-(global-set-key (kbd "C-c s-s") 'org-save-all-org-buffers)
-(global-set-key (kbd "C-c s-u") 'org-revert-all-org-buffers)
-
 ;; experimental stuff
 (after 'org
   (setq mjs/default-task-id "963F688C-0EAD-4217-B84E-DDA7D94C0453"
@@ -222,9 +213,6 @@
     (org-agenda nil "k")
     (mjs/punch-in))
 
-  (global-set-key (kbd "<f9>") 'mjs/morning-sam)
-  (global-set-key (kbd "S-<f9>") 'mjs/punch-out)
-  (global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
 
   (setq org-stuck-projects
 	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAIT") nil ""))
@@ -233,3 +221,16 @@
   (setq org-mobile-directory "~/Documents/Dropbox/GTD/MobileOrg"
 	org-mobile-inbox-for-pull (expand-file-name "mobileorg.org" org-mobile-directory)
 	))
+
+
+(global-set-key (kbd "C-c a")  'org-agenda)
+(global-set-key (kbd "C-c b")  'org-iswitchb)
+(global-set-key (kbd "C-c c")  'org-capture)
+(global-set-key (kbd "C-c l")  'org-store-link)
+(global-set-key (kbd "C-c s-s") 'org-save-all-org-buffers)
+(global-set-key (kbd "C-c s-u") 'org-revert-all-org-buffers)
+
+(global-set-key (kbd "<f9>") 'mjs/morning-sam)
+(global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
+(global-set-key (kbd "S-<f9>") 'mjs/punch-out)
+
