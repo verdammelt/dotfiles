@@ -9,7 +9,9 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -23,9 +25,13 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -108,6 +114,7 @@
 
 (define-abbrev-table 'erc-mode-abbrev-table
   '(
+    ("conecting" "connecting" nil 0)
     ("defintly" "defiantly" nil 0)
     ("repetoire" "repertoire" nil 0)
    ))
@@ -129,6 +136,7 @@
 (define-abbrev-table 'git-commit-mode-abbrev-table
   '(
     ("accessiblity" "accessibility" nil 0)
+    ("arguemnt" "argument" nil 0)
     ("configuraable" "configurable" nil 0)
     ("consitently" "consistently" nil 0)
     ("diferent" "deferent" nil 0)
@@ -181,7 +189,9 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -243,11 +253,14 @@
     ("annilhator" "Annihilator" nil 0)
     ("annivsery" "anniversary" nil 0)
     ("announcment" "announcement" nil 0)
+    ("backend" "back end" nil 0)
     ("cancelation" "cancellation" nil 0)
+    ("coudl" "could" nil 0)
     ("depencency" "dependency" nil 0)
     ("implemntation" "Implementation" nil 0)
     ("inconvinience" "inconvenience" nil 0)
-    ("ok" "OK" nil 2)
+    ("ok" "OK" nil 3)
+    ("psuedo" "pseudo" nil 0)
     ("reconnaisance" "reconnaissance" nil 0)
     ("separetely" "separately" nil 0)
     ("stong" "strong" nil 0)
@@ -262,7 +275,9 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -279,7 +294,7 @@
     ("competancy" "competency" nil 0)
     ("everytime" "every time" nil 0)
     ("invstigate" "Instigate" nil 0)
-    ("jp" "MAGICPTRL" nil 41)
+    ("jp" "MAGICPTRL" nil 42)
     ("rearrangemnt" "rearrangement" nil 0)
     ("recieved" "received" nil 0)
     ("repercusion" "repercussion" nil 0)
@@ -293,7 +308,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -377,7 +394,7 @@
     ("filepicker" "FilePicker" nil 3)
     ("hardcoded" "hard coded" nil 1)
     ("independant" "independent" nil 0)
-    ("jp" "MAGICPTRL" nil 24)
+    ("jp" "MAGICPTRL" nil 25)
     ("langauge" "language" nil 0)
     ("marijhuana" "Marijuana" nil 0)
     ("permisions" "permissions" nil 0)
@@ -385,9 +402,9 @@
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
     ("signup" "sign-up" nil 0)
-    ("standup" "stand up" nil 4)
+    ("standup" "stand up" nil 5)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 48)
+    ("tia" "Thanks in advance" nil 49)
     ("tomororw" "tomorrow" nil 0)
    ))
 
