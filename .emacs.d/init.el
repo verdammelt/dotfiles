@@ -107,3 +107,4 @@
 
 (browse-kill-ring-default-keybindings)
 
+(electric-pair-mode)
