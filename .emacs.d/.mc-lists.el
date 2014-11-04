@@ -12,6 +12,8 @@
 	paredit-forward-barf-sexp
 	paredit-forward-delete
 	paredit-open-round
+	save-some-buffers
+	wgrep-finish-edit
 	yas-expand
 	))
 
