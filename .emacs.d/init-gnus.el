@@ -4,12 +4,12 @@
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
 ;;;
-;;; TODO: 
+;;; TODO:
 ;;; * sent mail goes to inbox.
 ;;; * more splitting
 ;;;
 
-;;; 
+;;;
 ;;; Select methods
 ;;;
 (after 'gnus
@@ -17,7 +17,7 @@
 
   (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
 
-  (setq 
+  (setq
    gnus-select-method '(nntp "news.gmane.org") ; where to find my news.
    gnus-secondary-select-methods '((nnfolder ""))) ; where to find my mails
 
@@ -35,59 +35,59 @@
    gnus-treat-emphasis t
    gnus-treat-x-pgp-sig t
    )
-;; 
+;;
 ;;; General settings
 ;;;
-  (setq 
+  (setq
    gnus-gcc-mark-as-read t	   ; carbon-copies should be auto-read
-   
+
    gnus-save-killed-list nil
 
    gnus-default-directory gnus-directory
 
    ;; formatting the screen
-   gnus-summary-line-format 
+   gnus-summary-line-format
    "[%4V:%4i]%U%R %10&user-date;%[%4L: %-23,23uB%]%O%B%s\n"
-   
-   ;;change date display depending upon age of article 
-   gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M") 
+
+   ;;change date display depending upon age of article
+   gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M")
 				 (604800 . "%a %H:%M")
 				 ((gnus-seconds-month) . "%a %d")
 				 ((gnus-seconds-year) . "%b %d")
 				 (t . "%Y-%m-%d"))
-   
+
    ;; archiving - always update (lets us change it quickly)
    gnus-update-message-archive-method t
    )
-  
+
 ;;;
 ;;; Sorting Group List
 ;;;
-  (setq gnus-group-sort-function 
+  (setq gnus-group-sort-function
 	'(gnus-group-sort-by-alphabet gnus-group-sort-by-rank))
   (add-hook 'gnus-summary-exit-hook 'gnus-summary-bubble-group)
   (add-hook 'gnus-summary-exit-hook 'gnus-group-sort-groups-by-rank)
-  
+
 ;;;
 ;;; Threading
 ;;;
-  (setq 
-   gnus-thread-sort-functions '((not  gnus-thread-sort-by-number) 
+  (setq
+   gnus-thread-sort-functions '((not  gnus-thread-sort-by-number)
 				gnus-thread-sort-by-total-score)
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
    gnus-thread-hide-subtree t
    gnus-summary-gather-subject-limit 'fuzzy
    gnus-build-sparse-threads 'some
    )
-  
-;;; 
+
+;;;
 ;;; Registry
 ;;;
   (setq gnus-registry-install t
 	gnus-registry-split-strategy 'majority
 	gnus-registry-max-entries 50000)
   (gnus-registry-initialize)
-  
+
 ;;;
 ;;; Mail
 ;;;
@@ -97,13 +97,13 @@
    mail-source-directory (concat gnus-directory "incoming")
    mail-source-primary-source (car mail-sources)
    mail-source-crash-box (concat gnus-directory "crash-box")
-   
+
    gnus-save-duplicate-list t
    nnmail-treat-duplicates 'delete
    nnmail-cache-accepted-message-ids t
    nnmail-message-id-cache-length 5000
    )
-  
+
 ;;;
 ;;; Spam
 ;;;
@@ -115,14 +115,14 @@
    spam-mark-ham-unread-before-move-from-spam-group t ; ham moved from spam folders will be marked unread.
    )
   (spam-initialize)
-  
+
 ;;;
 ;;; Splitting
 ;;;
   (setq
    nnmail-split-methods 'nnmail-split-fancy
    spam-split-group "spam.spam"
-   nnmail-split-fancy '(| 
+   nnmail-split-fancy '(|
 			("subject" "Message left on server:.*" "mail.misc")
 			(to "codeandcocktails@gmail.com" "mail.codeandcocktails")
 			(to "noreply@sourceforge.net" "mail.tnef")
@@ -169,11 +169,11 @@
   (after 'gnus-score
     (add-hook 'message-sent-hook 'gnus-score-followup-article)
     (add-hook 'message-sent-hook 'gnus-score-followup-thread)
-    (setq 
+    (setq
      gnus-decay-scores t	  ; temporary scores should degrade over time.
      gnus-kill-files-directory (expand-file-name "score-files" gnus-directory) ;where to put the kill files
      gnus-use-adaptive-scoring t
-     gnus-score-find-score-files-function 
+     gnus-score-find-score-files-function
      '(gnus-score-find-hierarchical
        (lambda (group) '("SCORE")))
      gnus-adaptive-pretty-print t
@@ -182,14 +182,14 @@
      )
     (add-to-list 'gnus-default-adaptive-score-alist
 		 '(gnus-ticked-mark (subject 10))))
-  
+
 ;;;
 ;;; Expiry
 ;;;
 ;;; expire mail to an archive mailspool for the year.
 ;;;
   (defun mjs/expiry-wait-calculator (group)
-    (let ((wait-days 
+    (let ((wait-days
 	   (cond ((string-match "spam" group) 1)
 		 ((string-match "list\\.*" group) 14)
 		 ((string-match "tnef" group) 'never)
@@ -213,13 +213,13 @@
 	    (nnmail-fancy-expiry-target group))
 	expiry-target-file)))
 
-  (setq 
+  (setq
    gnus-message-archive-group '((format-time-string "archive-%Y"))
    nnmail-expiry-target 'mjs/expiry-target-calculator
    nnmail-expiry-wait-function 'mjs/expiry-wait-calculator
    )
 
-;;; 
+;;;
 ;;; Group Parameters
 ;;;
   (setq gnus-parameters
