@@ -71,8 +71,8 @@ grey='\[\e[1;30m\]'
 #export PS1='\[\033[G\]\h:\W'$purple'$(__git_ps1 "(%s)")'$reset'> '
 export PS1=$blue'\A \h:\W'$reset$purple'$(__git_ps1 "(%s)")'$reset'> '
 
-function myip(){ 
-    ip=`curl -s automation.whatismyip.com/n09230945.asp` 
+function myip(){
+    ip=`curl -s automation.whatismyip.com/n09230945.asp`
     echo $ip | pbcopy
     echo $ip
 }
@@ -84,20 +84,20 @@ export HISTSIZE=5000
 # top 5 one-word commands (and total number)
 function topcmd() {
     history | \
-        awk "{a[\$2]++}END{print NR, \"((TOTAL))\"; for(i in a) print a[i], i}" | \
-        sort -rn | \
-        head -6
+	awk "{a[\$2]++}END{print NR, \"((TOTAL))\"; for(i in a) print a[i], i}" | \
+	sort -rn | \
+	head -6
 }
 # top 5 two-word commands
 function top2cmd(){
     history | \
-        awk "/$1/{a[\$2 \" \" \$3]++}END{for(i in a) print a[i], i}" | \
-        sort -rn | \
-        head -5
+	awk "/$1/{a[\$2 \" \" \$3]++}END{for(i in a) print a[i], i}" | \
+	sort -rn | \
+	head -5
 }
 
 function batt() {
     pmset -g batt | \
-        awk '/InternalBattery/{print $3 $2 " " $4 }' | \
-        sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
+	awk '/InternalBattery/{print $3 $2 " " $4 }' | \
+	sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
 }

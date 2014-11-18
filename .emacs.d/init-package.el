@@ -9,10 +9,10 @@
 
 ;;; get Package set up properly and initialized
 (require 'package)
-(add-to-list 'package-archives 
+(add-to-list 'package-archives
 	     '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/"))
+	     '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
 (setq mjs/*needed-packages*
@@ -63,17 +63,17 @@
   "Install any needed packages which are not installed."
   (let ((missing-packages (mjs/missing-packages)))
     (when (and missing-packages
-	       (yes-or-no-p 
+	       (yes-or-no-p
 		(format "Install missing packages: %s" missing-packages)))
       (package-refresh-contents)
-      (mapc #'(lambda (p) 
+      (mapc #'(lambda (p)
 		(message "Installing %s" p)
 		(package-install p)) missing-packages))))
 
 (mjs/install-missing-packages)
 
-(defun mjs/package-from-requirement (req) 
-  "Returns a package structure for the given requirement. 
+(defun mjs/package-from-requirement (req)
+  "Returns a package structure for the given requirement.
 NOTE: assumes that the package can be found amongst the installed packages."
   (epl-find-installed-package (epl-requirement-name req)))
 
@@ -92,9 +92,9 @@ requirements etc) for the given package."
 
 (defun mjs/extra-packages ()
   "List all installed packages which are not in the mjs/*needed-packages* list."
-  (let ((all-needed 
-	 (delete-duplicates 
-	  (mapcar #'epl-package-name 
+  (let ((all-needed
+	 (delete-duplicates
+	  (mapcar #'epl-package-name
 		  (mapcan #'mjs/all-required-packages-for
 			  (remove nil (mapcar #'epl-find-installed-package mjs/*needed-packages*))))))
 	(installed (mapcar #'epl-package-name (epl-installed-packages))))
@@ -102,8 +102,8 @@ requirements etc) for the given package."
 
 (defun mjs/find-upgrades ()
   "Find all needed packages that have an available upgrade."
-  (let ((upgrades 
-	 (epl-find-upgrades 
+  (let ((upgrades
+	 (epl-find-upgrades
 	  (remove nil (mapcar #'epl-find-installed-package mjs/*needed-packages*)))))
     upgrades))
 
@@ -111,8 +111,8 @@ requirements etc) for the given package."
   (interactive)
   (epl-refresh)
   (let ((needing-updates (mapcar #'epl-upgrade-installed (mjs/find-upgrades))))
-    (if (and needing-updates 
-	     (y-or-n-p 
+    (if (and needing-updates
+	     (y-or-n-p
 	      (format "Upgrade these packages? %S" (mapcar #'epl-package-name needing-updates))))
 	(epl-upgrade needing-updates)))
   (let ((extra-packages (mjs/extra-packages)))

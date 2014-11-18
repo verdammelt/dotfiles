@@ -2,10 +2,10 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-;;; 
+;;;
 ;;; First Things First
 ;;;
-(require 'cl)		
+(require 'cl)
 
 ;; make sure the display is clean to start with
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -59,7 +59,7 @@
 (load-init-file "init-misc")
 
 ;; set up the fonts / themes
-(set-face-attribute 'default nil 
+(set-face-attribute 'default nil
 		    :height 140
 		    :family "Source_Code_Pro")
 ;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
