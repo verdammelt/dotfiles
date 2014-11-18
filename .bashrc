@@ -1,3 +1,5 @@
+PATH=$HOME/Bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
+
 [[ -s "/Users/mark/.rvm/scripts/rvm" ]] && source "/Users/mark/.rvm/scripts/rvm"
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 [[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
@@ -19,7 +21,6 @@ alias t='tree -C -F'
 alias pdfopen='pdfopen -viewer xpdf'
 alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
 
-PATH=$HOME/Bin:$HOME/.rvm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 NODE_PATH=/usr/local/lib/node_modules
 MANPATH=$MANPATH:/opt/local/man
 TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
@@ -101,3 +102,5 @@ function batt() {
 	awk '/InternalBattery/{print $3 $2 " " $4 }' | \
 	sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
 }
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
