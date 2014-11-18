@@ -9,7 +9,7 @@
 ;; Save my place in files
 (require 'saveplace)
 (setq-default save-place t)
-(after 'saveplace 
+(after 'saveplace
   (setq save-place-file (locate-user-emacs-file ".places")))
 
 ;; Save minibuffer history
@@ -19,26 +19,26 @@
 (after 'files
   (setq version-control t
 	delete-old-versions t
-	backup-directory-alist 
+	backup-directory-alist
 	(acons "." (locate-user-emacs-file ".backups") nil)
 	delete-by-moving-to-trash t
 	trash-directory (expand-file-name "~/.Trash")))
 
 ;; time display the way i like it
 (after 'time
-  (setq display-time-24hr-format t 
+  (setq display-time-24hr-format t
 	display-time-day-and-date t))
 
 (global-set-key (kbd "s-p") 'ps-print-buffer)
 (global-set-key (kbd "s-P") 'ps-print-region)
 (after 'ps-print
-  (setq 
+  (setq
    ps-lpr-command (expand-file-name "~/bin/psprint")
    ps-spool-duplex t))
 
 ;; calendar
-(after 'calendar 
-  (setq 
+(after 'calendar
+  (setq
    calendar-latitude +40.72541
    calendar-longitude -73.70928
    calendar-location-name "Floral Park, NY"
@@ -55,7 +55,7 @@
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 (after 'fill-column-indicator (setq fci-rule-color "red"))
 
-(after 'battery 
+(after 'battery
   (setq battery-mode-line-format "[%b%p%% %t]"))
 
 ;; editing programs
@@ -66,7 +66,7 @@
 ;; auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
-(after 'auto-complete 
+(after 'auto-complete
   (ac-ispell-setup)
   (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
   (setq ac-use-menu-map t
@@ -82,17 +82,17 @@
 
 ;; flyspell
 (add-hook 'text-mode-hook 'flyspell-mode)
-(after 'flyspell 
+(after 'flyspell
   (setq flyspell-abbrev-p t))
 
 ;; yasnippet
 (after 'yasnippet
-  (setq yas-prompt-functions 
+  (setq yas-prompt-functions
 	'(yas-ido-prompt yas-completing-prompt)))
 
 (global-set-key (kbd "<f7>") 'magit-status)
 (after 'magit
-  (setq magit-default-tracking-name-function 
+  (setq magit-default-tracking-name-function
 	'magit-default-tracking-name-branch-only))
 
 (after 'coffee-mode
@@ -134,7 +134,7 @@
 (after 'projectile
   (setq mjs/default-projectile-indexing-method projectile-indexing-method)
   (defun mjs/setup-gtd-project-caching ()
-    (let ((new-value (if (string= (projectile-project-name) "GTD") 
+    (let ((new-value (if (string= (projectile-project-name) "GTD")
 			 'native
 		       mjs/default-projectile-indexing-method)))
       (setq projectile-indexing-method new-value)))
@@ -170,13 +170,13 @@
 (define-key 'help-command (kbd "C-k") 'find-function-on-key)
 (define-key 'help-command (kbd "C-v") 'find-variable)
 
-(autoload 'zap-up-to-char "misc" 
+(autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurance of CHAR.")
 (autoload 'forward-to-word "misc"
-  "Move forward until encountering the beginning of a word. 
+  "Move forward until encountering the beginning of a word.
 With argument, do this that many times.")
 (autoload 'backward-to-word "misc"
-  "Move backward until encountering the end of a word. 
+  "Move backward until encountering the end of a word.
 With argument, do this that many times.")
 (global-set-key (kbd "M-F") 'forward-to-word)
 (global-set-key (kbd "M-B") 'backward-to-word)

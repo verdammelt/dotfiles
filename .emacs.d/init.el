@@ -106,3 +106,5 @@
 (global-prettify-symbols-mode)
 
 (browse-kill-ring-default-keybindings)
+
+(venv-initialize-interactive-shells)

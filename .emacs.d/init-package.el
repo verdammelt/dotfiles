@@ -48,6 +48,7 @@
     rainbow-delimiters
     slime
     smex
+    virtualenvwrapper
     wrap-region
     wgrep
     wrap-region

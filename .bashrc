@@ -29,6 +29,8 @@ VISUAL=emacsclient
 
 export AUTOFEATURE=true
 
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+
 ## LifeLines (genealogy software)
 alias llines='(cd $HOME/LifeLines ; LANG=en_US llines simpson)'
 export LLPROGRAMS=/usr/local/share/lifelines
