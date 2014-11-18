@@ -106,6 +106,3 @@
 (global-prettify-symbols-mode)
 
 (browse-kill-ring-default-keybindings)
-
-(electric-pair-mode)
-
