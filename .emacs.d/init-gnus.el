@@ -126,11 +126,16 @@
 			("subject" "Message left on server:.*" "mail.misc")
 			(to "codeandcocktails@gmail.com" "mail.codeandcocktails")
 			(to "noreply@sourceforge.net" "mail.tnef")
-			(| ("subject" "JIRA Tickets Created" "cyrus.2u-junk")
-			   ("subject" "JIRA Tickets Closed" "cyrus.2u-junk")
+			("subject" "\\[JIRA\\]" "cyrus.2u-jira" t)
+			(| ("subject" "JIRA Tickets Closed" "cyrus.2u-junk")
+			   ("subject" "JIRA Tickets Created" "cyrus.2u-junk")
 			   (from "HR@2u.com" "cyrus.2u-junk")
+			   (from "OnlineMBA@unc.edu" "cyrus.2u-junk")
 			   (from "OnlineMPA@unc.edu" "cyrus.2u-junk")
-			   (from "OnlineMBA@unc.edu" "cyrus.2u-junk"))
+			   (from "events@2u.com" "cyrus.2u-junk")
+			   (from "noreply@2u.com" "cyrus.2u-junk")
+			   (from "payroll@2tor.com" "cyrus.2u-junk"))
+			(from ".*jenkins@2tor.com" "cyrus.2u-builds")
 			(any ".*2u.com" "cyrus.2u")
 			(| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
 			   (any ".*cyrusinnovation.com" "cyrus.inbox")
@@ -194,7 +199,9 @@
 		 ((string-match "list\\.*" group) 14)
 		 ((string-match "tnef" group) 'never)
 		 ((string-match "codeandcocktails" group) 'never)
-		 ((string-match "cyrus" group) 'never) ; to mimic existing behavior
+		 ((string-match "2u-junk" group) 1)
+		 ((string-match "2u-jira" group) 2)
+		 ((string-match "2u-builds" group) 2)
 		 (t 28))))
       (message "expiry-wait for %s is %s" group wait-days)
       wait-days))
@@ -205,6 +212,9 @@
 		  ((string-match "spam\\.*" group) 'delete)
 		  ((string-match "mail.misc" group) 'delete)
 		  ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
+		  ((string-match "cyrus\\.2u-junk" group) 'delete)
+		  ((string-match "cyrus\\.2u-jira" group) 'delete)
+		  ((string-match "cyrus\\.2u-builds" group) 'delete)
 		  ((string-match "cyrus\\.2u" group) "nnfolder+archive:cyrus.2u-archive-%Y-%m")
 		  (t "nnfolder+archive:archive-%Y"))))
       (message "expiry-target for %s is '%s'" group expiry-target-file)
@@ -242,6 +252,7 @@
 
 	  ("cyrus.*"
 	   (gcc-self . t)
+	   (total-expire . t)
 	   (posting-style (address "msimpson@cyrusinnovation.com")))
 
 	  ("spam\.spam"
