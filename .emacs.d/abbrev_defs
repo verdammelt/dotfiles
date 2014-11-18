@@ -250,19 +250,24 @@
     ("annivsery" "anniversary" nil 0)
     ("announcment" "announcement" nil 0)
     ("apprpopriate" "appropriate" nil 0)
-    ("backend" "back end" nil 0)
+    ("backend" "back end" nil 1)
     ("cancelation" "cancellation" nil 0)
-    ("coudl" "could" nil 0)
+    ("chagnes" "changes" nil 0)
+    ("coudl" "could" nil 1)
     ("depencency" "dependency" nil 0)
     ("everytime" "every time" nil 0)
+    ("greenlight" "Greenlight" nil 3)
     ("implemntation" "Implementation" nil 0)
     ("inconvinience" "inconvenience" nil 0)
+    ("internmittently" "intermittently" nil 0)
+    ("mobild" "mobile" nil 0)
     ("ok" "OK" nil 5)
     ("psuedo" "pseudo" nil 0)
     ("reconnaisance" "reconnaissance" nil 0)
     ("separetely" "separately" nil 0)
     ("stong" "strong" nil 0)
     ("subscriptios" "Subscriptions" nil 0)
+    ("teh" "eh" nil 0)
    ))
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
@@ -289,8 +294,9 @@
     ("communi" "communi" nil 0)
     ("competancy" "competency" nil 0)
     ("everytime" "every time" nil 0)
+    ("filetags" "FILE TAGS" nil 0)
     ("invstigate" "Instigate" nil 0)
-    ("jp" "MAGICPTRL" nil 43)
+    ("jp" "MAGICPTRL" nil 46)
     ("rearrangemnt" "rearrangement" nil 0)
     ("recieved" "received" nil 0)
     ("repercusion" "repercussion" nil 0)
@@ -316,11 +322,15 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
+
+(define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
+
+(define-abbrev-table 'rst-mode-abbrev-table
   '(
    ))
 
-(define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
+(define-abbrev-table 'rst-toc-mode-abbrev-table '())
 
 (define-abbrev-table 'ruby-mode-abbrev-table '())
 
@@ -400,7 +410,7 @@
     ("signup" "sign-up" nil 0)
     ("standup" "stand up" nil 5)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 52)
+    ("tia" "Thanks in advance" nil 58)
     ("tomororw" "tomorrow" nil 0)
    ))
 
