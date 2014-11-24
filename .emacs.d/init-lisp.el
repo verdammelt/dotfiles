@@ -38,8 +38,14 @@
   (add-hook 'scheme-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook 'rainbow-delimiters-mode))
 
-(after 'clojure-mode 
+(defun mjs/clj-refactor-setup ()
+  (clj-refactor-mode)
+  (cljr-add-keybindings-with-prefix "C-c C-m")
+  (add-hook 'nrepl-connected-hook #'cljr-update-artifact-cache))
+
+(after 'clojure-mode
   (add-hook 'clojure-mode-hook 'paredit-mode)
+  (add-hook 'clojure-mode-hook 'mjs/clj-refactor-setup)
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
 
 (after 'cider-repl
