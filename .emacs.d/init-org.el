@@ -77,13 +77,10 @@
 
   (setq org-capture-templates
 	`(("t" "Task" entry (file "" "Tasks")
-	   "* TODO %?\n  %U\n"
+	   "* TODO %? %^G\n  %U\n %a\n"
 	   :empty-lines-after 1)
-	  ("p" "Project" entry (file "" "Projects")
-	   "* %? \n %U\n"
-	   :jump-to-captured t :empty-lines-after 1)
 	  ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
-	   "* TODO %?\n  %U\n  %a\n")
+	   "* TODO %? %^G\n  %U\n  %a\n")
 	  ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
 	   "* %?\n  %U\n %a\n")
 	  ("w" "Templates for work")
@@ -93,6 +90,11 @@
 	  ("ww" "Non-Billable Task" entry (file+headline "work.org" "Tasks")
 	   "* TODO %? %^g\n %U\n %a\n"
 	   :clock-in t :clock-resume t)
+	  ("wi" "Interruption" entry (file+headline "work.org" "Tasks")
+	   "* TODO %? %^g\n %U\n %a\n"
+	   :clock-in t :clock-keep t :jump-to-captured t)
+	  ("wn" "New Task to clocked" entry (clock)
+	   "* TODO %? %^g\n %U\n %a\n")
 	  ))
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
 
