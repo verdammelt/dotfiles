@@ -9,7 +9,7 @@
 (setq mail-user-agent 'gnus-user-agent)
 
 ;; getting bbdb in my message setup
-(after 'message 
+(after 'message
   (autoload 'sm-add-random-header "silly-mail" nil t)
 
   ;; extra stuff for message buffers - spelling etc.
@@ -20,7 +20,7 @@
   (add-hook 'message-send-hook 'ispell-message)
 
   (setq message-default-headers "X-Attribution: MJS")
-  
+
   (setq message-sendmail-envelope-from 'header)
 
   (after 'supercite
@@ -43,7 +43,7 @@
 	  (sm-add-uboat-death-message uboat-death-message "uboat")
 	  sm-add-zippy-quote)))
 
-(after 'sendmail 
+(after 'sendmail
   (setq send-mail-function 'sendmail-send-it)
   (add-hook 'mail-citation-hook 'sc-cite-original)
   (setq mail-specify-envelope-from t

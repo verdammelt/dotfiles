@@ -8,7 +8,7 @@
 ;;; * safer sync with google (merge in google contacts)
 ;;; * two way sync?
 ;;;
-(after 'bbdb 
+(after 'bbdb
 
   (define-key bbdb-mode-map "r" 'bbdb-merge-records)
 
@@ -16,10 +16,10 @@
 	bbdb-mua-update-interactive-p '(query . create)
 	bbdb-message-all-addresses t
 	bbdb-complete-mail-allow-cycling t)
-  
-  (after 'supercite 
+
+  (after 'supercite
     (bbdb-initialize 'sc))
-  (after 'gnus 
+  (after 'gnus
     (bbdb-initialize 'gnus)
     (bbdb-mua-auto-update-init 'gnus))
   (after 'message

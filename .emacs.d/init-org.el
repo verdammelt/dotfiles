@@ -4,16 +4,16 @@
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
 (defun mjs/expand-org-file (f)
-  (let ((filename (if (string= (file-name-extension f) "org") 
+  (let ((filename (if (string= (file-name-extension f) "org")
 		      f
 		    (format "%s.org" f))))
     (expand-file-name filename org-directory)))
 
 (after 'org
   (require 'org-checklist)
-  (setq org-id-locations-file 
+  (setq org-id-locations-file
 	(expand-file-name ".org-id-locations" user-emacs-directory))
-  
+
   (setq org-directory (expand-file-name "~/Documents/GTD")
 	org-default-notes-file (mjs/expand-org-file "inbox")
 	org-use-property-inheritance t
@@ -25,7 +25,7 @@
 	org-startup-indented t
 
 	org-enable-priority-commands nil
-	
+
 	org-link-mailto-program '(compose-mail "%a" "%s")
 
 	org-special-ctrl-a/e t
@@ -34,7 +34,7 @@
 
 	org-completion-use-ido t
 	org-outline-path-complete-in-steps nil
-	org-todo-keywords '((sequence "TODO(t)" "WAIT(w!)" "|" 
+	org-todo-keywords '((sequence "TODO(t)" "WAIT(w!)" "|"
 				      "DONE(d!/@)" "CNCL(c@/@)"))
 	org-tag-alist '(("@HOME" . ?h)
 			("@CALL" . ?c) ("@EMAIL" . ?e) ("@ERRAND" . ?r)
@@ -53,18 +53,18 @@
   (setq org-clock-persist t
 	org-clock-idle-time 10
 	org-clock-mode-line-total 'today
-	org-time-clocksum-format 
+	org-time-clocksum-format
 	'(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)
-	org-clock-persist-file (expand-file-name 
-				".org-clock-save.el" 
+	org-clock-persist-file (expand-file-name
+				".org-clock-save.el"
 				user-emacs-directory)
 	org-clock-out-remove-zero-time-clocks t
 	org-clock-report-include-clocking-task t
-	org-agenda-clockreport-parameter-plist 
+	org-agenda-clockreport-parameter-plist
 	'(:link t :maxlevel 2 :fileskip0 t :compact t :narrow 80)
-	org-agenda-clock-consistency-checks 
-	'(:max-duration "04:00" 
-			:min-duration 0 
+	org-agenda-clock-consistency-checks
+	'(:max-duration "04:00"
+			:min-duration 0
 			:max-gap 0
 			:gap-ok-around ("04:00" "09:00" "13:00" "17:00");; what are good settings?
 			;; below is same as default
@@ -80,7 +80,7 @@
 	   "* TODO %?\n  %U\n"
 	   :empty-lines-after 1)
 	  ("p" "Project" entry (file "" "Projects")
-	   "* %? \n %U\n" 
+	   "* %? \n %U\n"
 	   :jump-to-captured t :empty-lines-after 1)
 	  ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
 	   "* TODO %?\n  %U\n  %a\n")
@@ -104,20 +104,20 @@
   (set-face-attribute 'org-headline-done nil :strike-through t)
 
   (after 'org-agenda
-    (setq 
+    (setq
      org-agenda-tags-todo-honor-ignore-options t
      org-agenda-todo-ignore-scheduled 'future
      org-agenda-todo-ignore-deadlines 'far
-     
-     org-agenda-sorting-strategy 
-     '((agenda habit-up time-up tag-up todo-state-up deadline-down alpha-up) 
+
+     org-agenda-sorting-strategy
+     '((agenda habit-up time-up tag-up todo-state-up deadline-down alpha-up)
        (todo todo-state-up tag-up alpha-up)
        (tags todo-state-up tag-up alpha-up)
        (search todo-state-up))
      org-agenda-files (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
      org-agenda-start-on-weekday nil
      org-agenda-block-separator "==========================================================================="
-     org-agenda-custom-commands 
+     org-agenda-custom-commands
      '(("d" "daily"
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid nil)))
@@ -161,17 +161,17 @@
 		(org-agenda-sorting-strategy '(category-keep))))
 	 ))
        ("w" "waiting" tags-todo "/WAIT")
-       ("k" "work" 
+       ("k" "work"
 	((agenda "" ((org-agenda-span 'day)
 		     (org-agenda-use-time-grid t)
 		     (org-agenda-start-with-log-mode t)
 		     (org-agenda-start-with-clockreport-mode t)))
 	 (tags "REFILE"
 	       ((org-agenda-overriding-header "Tasks to Refile")))
-	 (tags-todo "+@WORK&+2U/!-WAIT" 
+	 (tags-todo "+@WORK&+2U/!-WAIT"
 		    ((org-agenda-sorting-strategy '(todo-state-up tag-up))
 		     (org-agenda-overriding-header "BILLABLE")))
-	 (tags-todo "+@WORK&-2U/!-WAIT" 
+	 (tags-todo "+@WORK&-2U/!-WAIT"
 		    ((org-agenda-sorting-strategy '(todo-state-up tag-up))
 		     (org-agenda-overriding-header "NON-BILLABLE")))
 	 (tags-todo "+@WORK/WAIT"
@@ -233,4 +233,3 @@
 (global-set-key (kbd "<f9>") 'mjs/morning-sam)
 (global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
 (global-set-key (kbd "S-<f9>") 'mjs/punch-out)
-

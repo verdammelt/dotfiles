@@ -17,11 +17,11 @@
 	(concat common-lisp-hyperspec-root "Data/Map_IssX.txt")))
 
 (after 'lisp-mode
-  (if (or (fboundp 'paredit-mode) 
+  (if (or (fboundp 'paredit-mode)
 	  (autoloadp (symbol-function 'paredit-mode)))
       (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
   (if (or (fboundp 'rainbow-delimiters-mode)
-	  (autoloadp (symbol-function 'rainbow-delimiters-mode))) 
+	  (autoloadp (symbol-function 'rainbow-delimiters-mode)))
       (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
   (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
@@ -45,8 +45,8 @@
 
 (after 'clojure-mode
   (add-hook 'clojure-mode-hook 'paredit-mode)
-  (add-hook 'clojure-mode-hook 'mjs/clj-refactor-setup)
-  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
+  (add-hook add-hook 'mjs/clj-refactor-setup)
+  (add-hook add-hook 'rainbow-delimiters-mode))
 
 (after 'cider-repl
   (cider-repl-add-shortcut "quit" 'cider-quit))
