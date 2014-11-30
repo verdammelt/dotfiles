@@ -4,13 +4,17 @@
 (setq mc/cmds-to-run-for-all
       '(
 	backward-to-word
+	cljr-expand-let
 	forward-sentence
 	ido-hacks-execute-extended-command
 	kill-region
 	kill-sexp
 	paredit-backward
+	paredit-forward
 	paredit-forward-barf-sexp
 	paredit-forward-delete
+	paredit-forward-down
+	paredit-forward-kill-word
 	paredit-open-round
 	save-some-buffers
 	wgrep-finish-edit
