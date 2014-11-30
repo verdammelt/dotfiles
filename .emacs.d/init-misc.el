@@ -183,7 +183,7 @@ With argument, do this that many times.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
 ;; multiple-cursors
-(global-set-key (kbd "C-S-c C-S-c") 'mc/mark-all-dwim)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/mark-all-like-this-dwim)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
