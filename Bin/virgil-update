@@ -12,7 +12,6 @@ tmutil startbackup -b
 brewupdate
 tmutil startbackup -b
 
-emacsclient -e '(package-list-packages)'
+emacsclient -e '(mjs/perform-update)'
 read -p "Press Enter when done" FOO
 tmutil startbackup -b
-
