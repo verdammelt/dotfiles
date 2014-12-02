@@ -195,7 +195,7 @@ With argument, do this that many times.")
   (wrap-region-add-wrapper "*" "*" nil 'markdown-mode))
 
 (defun mjs/add-wgrep-key ()
-  (define-key grep-mode-map (kbd "C-x C-q") 'mjs/wgrep-change-to-wgrep-mode))
+  (define-key grep-mode-map (kbd "C-x C-q") 'wgrep-change-to-wgrep-mode))
 (add-hook 'grep-mode-hook 'mjs/add-wgrep-key)
 
 ;; always want browser to open in background.
