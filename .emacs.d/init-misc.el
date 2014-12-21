@@ -107,7 +107,6 @@
   (setq whitespace-style '(face empty trailing)
 	whitespace-action '(auto-cleanup warn-if-read-only)))
 
-
 ;; markdown-mode
 (after 'markdown-mode
   (setq markdown-command "markdown | smartypants"))
