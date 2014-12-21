@@ -9,7 +9,9 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -23,9 +25,13 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -184,7 +190,9 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -265,24 +273,29 @@
     ("inconvinience" "inconvenience" nil 0)
     ("internmittently" "intermittently" nil 0)
     ("mobild" "mobile" nil 0)
-    ("ok" "OK" nil 6)
+    ("mothership" "Mother ship" nil 1)
+    ("ok" "OK" nil 8)
     ("psuedo" "pseudo" nil 0)
     ("reconnaisance" "reconnaissance" nil 0)
     ("separetely" "separately" nil 0)
     ("stong" "strong" nil 0)
     ("subscriptios" "Subscriptions" nil 0)
-    ("teh" "eh" nil 0)
+    ("teh" "eh" nil 3)
    ))
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
 (define-abbrev-table 'nrepl-connections-buffer-mode-abbrev-table '())
 
+(define-abbrev-table 'nrepl-messages-mode-abbrev-table '())
+
 (define-abbrev-table 'nroff-mode-abbrev-table '())
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -314,7 +327,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -395,7 +410,7 @@
     ("coudld" "could" nil 0)
     ("curiousity" "curiosity" nil 0)
     ("decsion" "decision" nil 0)
-    ("definately" "definitely" nil 8)
+    ("definately" "definitely" nil 9)
     ("dyanmic" "dynamic" nil 0)
     ("editted" "edited" nil 0)
     ("excpetion" "exception" nil 0)
@@ -414,7 +429,7 @@
     ("signup" "sign-up" nil 0)
     ("standup" "stand up" nil 5)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 59)
+    ("tia" "Thanks in advance" nil 62)
     ("tomororw" "tomorrow" nil 0)
    ))
 
