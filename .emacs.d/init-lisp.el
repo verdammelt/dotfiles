@@ -45,8 +45,8 @@
 
 (after 'clojure-mode
   (add-hook 'clojure-mode-hook 'paredit-mode)
-  (add-hook add-hook 'mjs/clj-refactor-setup)
-  (add-hook add-hook 'rainbow-delimiters-mode))
+  (add-hook 'clojure-mode-hook 'mjs/clj-refactor-setup)
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
 
 (after 'cider-repl
   (cider-repl-add-shortcut "quit" 'cider-quit))
