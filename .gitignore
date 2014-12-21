@@ -87,3 +87,10 @@ DOS Games
 .dropbox-master
 .rnd
 /.emacs.d/.projectile.cache
+/.aqbanking/
+/.config/gtk-2.0/
+/.cpan/
+/.exercism.json
+/.gnumericrc
+/.gtkrc-2.0.gnucash
+/.local/
