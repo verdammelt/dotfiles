@@ -17,6 +17,7 @@
 	paredit-forward-kill-word
 	paredit-open-round
 	save-some-buffers
+	slime-autodoc-space
 	wgrep-finish-edit
 	yas-expand
 	))
