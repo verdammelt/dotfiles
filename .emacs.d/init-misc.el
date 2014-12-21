@@ -101,7 +101,8 @@
 
 (after 'simple
   (add-hook 'prog-mode-hook 'whitespace-mode)
-  (setq whitespace-style '(face empty indentation trailing)
+  (setq-default indent-tabs-mode nil)
+  (setq whitespace-style '(face empty trailing)
 	whitespace-action '(auto-cleanup warn-if-read-only)))
 
 
