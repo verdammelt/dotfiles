@@ -61,7 +61,9 @@
 ;; set up the fonts / themes
 (set-face-attribute 'default nil
 		    :height 140
-		    :family "Source_Code_Pro")
+                    :family "DejaVu Sans Mono"
+		    ;; :family "Source_Code_Pro"
+                    )
 ;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
 (load-theme 'tango-dark)
 (set-face-attribute 'highlight nil
