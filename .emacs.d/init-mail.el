@@ -28,6 +28,7 @@
 
 (after 'mm-decode
   (setq mm-default-directory (expand-file-name "~/Downloads"))
+  (setq mm-verify-option 'always)
   (add-to-list 'mm-file-name-rewrite-functions 'mm-file-name-replace-whitespace))
 
 (after 'silly-mail

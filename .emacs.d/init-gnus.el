@@ -284,3 +284,5 @@
 (after 'shr
   (setq shr-color-visible-distance-min 10
 	shr-color-visible-luminance-min 60))
+
+(setq gnus-buttonized-mime-types '("multipart/signed"))
