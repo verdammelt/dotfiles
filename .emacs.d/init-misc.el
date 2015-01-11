@@ -83,6 +83,7 @@
 ;; flyspell
 (add-hook 'text-mode-hook 'flyspell-mode)
 (after 'flyspell
+  (setq flyspell-use-meta-tab nil)
   (setq flyspell-abbrev-p t))
 
 ;; yasnippet
