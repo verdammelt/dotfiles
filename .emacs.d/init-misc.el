@@ -124,11 +124,10 @@
 (after 'smex
   (setq smex-save-file (locate-user-emacs-file ".smex-items")))
 
-(setq projectile-keymap-prefix (kbd "C-c C-p")
-      projectile-known-projects-file
-	(locate-user-emacs-file ".projectile-bookmarks.eld")
-	projectile-cache-file
-	(locate-user-emacs-file ".projectile.cache"))
+(setq projectile-known-projects-file
+      (locate-user-emacs-file ".projectile-bookmarks.eld")
+      projectile-cache-file
+      (locate-user-emacs-file ".projectile.cache"))
 (global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "s-f") 'projectile-find-file)
 (global-set-key (kbd "s-s") 'projectile-switch-project)
