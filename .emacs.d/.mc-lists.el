@@ -3,27 +3,28 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-	backward-to-word
-	cljr-expand-let
-	forward-sentence
-	ido-hacks-execute-extended-command
-	kill-region
-	kill-sexp
-	paredit-backward
-	paredit-forward
-	paredit-forward-barf-sexp
-	paredit-forward-delete
-	paredit-forward-down
-	paredit-forward-kill-word
-	paredit-open-round
-	save-some-buffers
-	slime-autodoc-space
-	wgrep-finish-edit
-	yas-expand
-	))
+        backward-to-word
+        cljr-expand-let
+        forward-sentence
+        ido-hacks-execute-extended-command
+        kill-region
+        kill-sexp
+        org-self-insert-command
+        paredit-backward
+        paredit-forward
+        paredit-forward-barf-sexp
+        paredit-forward-delete
+        paredit-forward-down
+        paredit-forward-kill-word
+        paredit-open-round
+        save-some-buffers
+        slime-autodoc-space
+        wgrep-finish-edit
+        yas-expand
+        ))
 
 (setq mc/cmds-to-run-once
       '(
-	dabbrev-completion
-	magit-status
-	))
+        dabbrev-completion
+        magit-status
+        ))
