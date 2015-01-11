@@ -213,6 +213,8 @@
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
 
+(define-abbrev-table 'log-view-mode-abbrev-table '())
+
 (define-abbrev-table 'magit-branch-manager-mode-abbrev-table '())
 
 (define-abbrev-table 'magit-cherry-mode-abbrev-table '())
@@ -325,6 +327,7 @@
     ("competancy" "competency" nil 0)
     ("everytime" "every time" nil 0)
     ("filetags" "FILE TAGS" nil 0)
+    ("finanical" "Financial" nil 0)
     ("invstigate" "Instigate" nil 0)
     ("jp" "PTRL" nil 49)
     ("rearrangemnt" "rearrangement" nil 0)
@@ -352,9 +355,7 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
