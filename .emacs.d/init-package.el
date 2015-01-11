@@ -25,6 +25,7 @@
     browse-kill-ring
     cider
     change-inner
+    clj-refactor
     clojure-mode
     coffee-mode
     elisp-slime-nav
@@ -49,7 +50,6 @@
     slime
     smex
     virtualenvwrapper
-    wrap-region
     wgrep
     wrap-region
     yasnippet
