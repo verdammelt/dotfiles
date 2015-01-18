@@ -25,6 +25,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        coffee-dedent-line-backspace
         dabbrev-completion
         magit-status
         ))
