@@ -45,6 +45,7 @@
 
 (after 'clojure-mode
   (add-hook 'clojure-mode-hook 'paredit-mode)
+  (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
   (add-hook 'clojure-mode-hook 'mjs/clj-refactor-setup)
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
 
