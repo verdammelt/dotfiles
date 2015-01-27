@@ -86,7 +86,6 @@
 (ido-mode)
 (ido-everywhere)
 (ido-ubiquitous)
-(require 'ido-hacks)
 (ido-hacks-mode)
 (flx-ido-mode 1)
 (smex-initialize)			; must be after ido-hacks!
