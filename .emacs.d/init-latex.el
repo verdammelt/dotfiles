@@ -4,7 +4,7 @@
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
 (after 'tex
-  (TeX-global-PDF-mode)
+  (TeX-global-PDF-mode 1)
   (setq TeX-auto-save t)
   (setq TeX-parse-self t)
   (setq-default TeX-master nil))
