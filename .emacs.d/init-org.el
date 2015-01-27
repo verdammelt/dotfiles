@@ -215,14 +215,15 @@
     (org-agenda nil "k")
     (mjs/punch-in))
 
-
   (setq org-stuck-projects
 	'("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAIT") nil ""))
 
   (require 'org-mobile)
   (setq org-mobile-directory "~/Documents/Dropbox/GTD/MobileOrg"
 	org-mobile-inbox-for-pull (expand-file-name "mobileorg.org" org-mobile-directory)
-	))
+	)
+
+  (fullframe org-agenda org-agenda-quit))
 
 
 (global-set-key (kbd "C-c a")  'org-agenda)
