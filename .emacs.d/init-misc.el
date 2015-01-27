@@ -225,3 +225,4 @@ symbol, not word, as I need this for programming the most."
      (when (and (not isearch-forward) isearch-other-end)
        (goto-char isearch-other-end))
      (thing-at-point 'symbol))))
+(setq confirm-kill-emacs 'yes-or-no-p )
