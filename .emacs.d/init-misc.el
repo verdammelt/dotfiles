@@ -94,7 +94,8 @@
 (global-set-key (kbd "<f7>") 'magit-status)
 (after 'magit
   (setq magit-default-tracking-name-function
-	'magit-default-tracking-name-branch-only))
+	'magit-default-tracking-name-branch-only)
+  (fullframe magit-status magit-mode-quit-window))
 
 (after 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
