@@ -33,6 +33,7 @@
     expand-region
     fill-column-indicator
     flx-ido
+    fullframe
     git-commit-mode
     git-rebase-mode
     ido-hacks
