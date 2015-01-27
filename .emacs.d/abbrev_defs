@@ -7,11 +7,13 @@
 
 (define-abbrev-table 'Man-mode-abbrev-table '())
 
+(define-abbrev-table 'TeX-error-overview-mode-abbrev-table '())
+
+(define-abbrev-table 'TeX-output-mode-abbrev-table '())
+
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -27,13 +29,9 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -137,6 +135,8 @@
 
 (define-abbrev-table 'finder-mode-abbrev-table '())
 
+(define-abbrev-table 'flycheck-error-list-mode-abbrev-table '())
+
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
 (define-abbrev-table 'gdb-script-mode-abbrev-table '())
@@ -199,9 +199,7 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -282,6 +280,7 @@
     ("depencency" "dependency" nil 0)
     ("everytime" "every time" nil 0)
     ("greenlight" "Greenlight" nil 11)
+    ("idiosyncracy" "idiosyncrasy" nil 0)
     ("implemntation" "Implementation" nil 0)
     ("inconvinience" "inconvenience" nil 0)
     ("interfereing" "interfering" nil 0)
@@ -294,7 +293,7 @@
     ("separetely" "separately" nil 0)
     ("stong" "strong" nil 0)
     ("subscriptios" "Subscriptions" nil 0)
-    ("teh" "eh" nil 3)
+    ("teh" "eh" nil 4)
     ("timesheet" "time sheet" nil 0)
     ("wenesday" "Wednesday" nil 0)
    ))
@@ -309,9 +308,7 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -332,6 +329,7 @@
     ("jp" "PTRL" nil 49)
     ("rearrangemnt" "rearrangement" nil 0)
     ("recieved" "received" nil 0)
+    ("refamiliarize" "re-familiarize" nil 0)
     ("repercusion" "repercussion" nil 0)
    ))
 
@@ -341,9 +339,7 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -355,7 +351,9 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
+(define-abbrev-table 'python-mode-skeleton-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -393,6 +391,8 @@
 
 (define-abbrev-table 'slime-xref-mode-abbrev-table '())
 
+(define-abbrev-table 'slitex-mode-abbrev-table '())
+
 (define-abbrev-table 'smime-mode-abbrev-table '())
 
 (define-abbrev-table 'snippet-mode-abbrev-table '())
@@ -408,6 +408,10 @@
 (define-abbrev-table 'tar-mode-abbrev-table '())
 
 (define-abbrev-table 'term-mode-abbrev-table '())
+
+(define-abbrev-table 'tex-mode-abbrev-table '())
+
+(define-abbrev-table 'tex-shell-abbrev-table '())
 
 (define-abbrev-table 'texinfo-mode-abbrev-table '())
 
@@ -441,7 +445,7 @@
     ("signup" "sign-up" nil 1)
     ("standup" "stand up" nil 6)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 64)
+    ("tia" "Thanks in advance" nil 65)
     ("tomororw" "tomorrow" nil 0)
    ))
 
@@ -449,7 +453,13 @@
 
 (define-abbrev-table 'vc-annotate-mode-abbrev-table '())
 
+(define-abbrev-table 'vc-bzr-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-dir-mode-abbrev-table '())
+
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
