@@ -109,3 +109,5 @@
 (browse-kill-ring-default-keybindings)
 
 (venv-initialize-interactive-shells)
+
+(global-flycheck-mode)

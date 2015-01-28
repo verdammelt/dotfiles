@@ -32,6 +32,7 @@
     epl
     expand-region
     fill-column-indicator
+    flycheck
     flx-ido
     fullframe
     git-commit-mode
