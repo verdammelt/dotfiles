@@ -228,4 +228,8 @@ symbol, not word, as I need this for programming the most."
 (setq confirm-kill-emacs 'yes-or-no-p )
 
 (add-hook 'after-save-hook
-  'executable-make-buffer-file-executable-if-script-p)
+          'executable-make-buffer-file-executable-if-script-p)
+
+(setq flycheck-completion-system 'ido)
+;; due to keyboard conflict and lack of checker.
+(add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
