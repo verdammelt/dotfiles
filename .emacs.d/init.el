@@ -98,11 +98,11 @@
 
 (projectile-global-mode)
 
-(global-auto-complete-mode t)
+(global-auto-complete-mode)
 
-(wrap-region-global-mode t)
+(wrap-region-global-mode)
 
-(yas-global-mode 1)
+(yas-global-mode)
 
 (global-prettify-symbols-mode)
 
