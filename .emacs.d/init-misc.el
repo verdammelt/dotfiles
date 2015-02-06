@@ -92,6 +92,7 @@
 	'(yas-ido-prompt yas-completing-prompt)))
 
 (global-set-key (kbd "<f7>") 'magit-status)
+(autoload 'magit-status-internal "magit")
 (after 'magit
   (setq magit-default-tracking-name-function
 	'magit-default-tracking-name-branch-only)
