@@ -63,6 +63,9 @@
   (add-hook 'prog-mode-hook 'linum-mode)
   (add-hook 'prog-mode-hook 'turn-on-fci-mode))
 
+(after 'python
+  (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
+
 ;; auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
