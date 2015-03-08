@@ -189,7 +189,10 @@
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
-(define-abbrev-table 'html-mode-abbrev-table '())
+(define-abbrev-table 'html-mode-abbrev-table
+  '(
+    ("javascript" "javascript" nil 1)
+   ))
 
 (define-abbrev-table 'ibuffer-mode-abbrev-table '())
 
@@ -262,6 +265,7 @@
     ("collegues" "colleagues" nil 0)
     ("ensentially" "essentially" nil 0)
     ("existant" "existent" nil 0)
+    ("geneology" "genealogy" nil 0)
     ("nad" "and" nil 0)
     ("negligble" "negligible" nil 0)
     ("signup" "sign up" nil 0)
@@ -278,8 +282,9 @@
     ("appendanges" "appendages" nil 0)
     ("apprpopriate" "appropriate" nil 0)
     ("backend" "back end" nil 10)
-    ("becuase" "because" nil 4)
+    ("becuase" "because" nil 5)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
+    ("caio" "Ciao" nil 0)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -289,6 +294,7 @@
     ("coudl" "could" nil 4)
     ("december" "December" nil 0)
     ("decidly" "decidly" nil 0)
+    ("deductable" "deductible" nil 0)
     ("depencency" "dependency" nil 0)
     ("depenedencies" "dependencies" nil 0)
     ("environemnt" "environment" nil 0)
@@ -299,6 +305,8 @@
     ("inconvinience" "inconvenience" nil 0)
     ("interfereing" "interfering" nil 0)
     ("internmittently" "intermittently" nil 0)
+    ("javascript" "JavaScript" nil 0)
+    ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 1)
     ("ok" "OK" nil 9)
@@ -307,11 +315,12 @@
     ("rememberance" "remembrance" nil 0)
     ("reproducable" "reproducible" nil 2)
     ("separetely" "separately" nil 0)
+    ("sharebuilder" "Share builder" nil 0)
     ("stong" "strong" nil 0)
     ("subscriptios" "Subscriptions" nil 0)
     ("succesful" "successful" nil 0)
     ("succesfully" "successfully" nil 0)
-    ("teh" "eh" nil 16)
+    ("teh" "eh" nil 20)
     ("timesheet" "time sheet" nil 0)
     ("wenesday" "Wednesday" nil 0)
    ))
@@ -466,7 +475,7 @@
     ("signup" "sign-up" nil 3)
     ("standup" "stand up" nil 10)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 71)
+    ("tia" "Thanks in advance" nil 75)
     ("tomororw" "tomorrow" nil 0)
    ))
 
