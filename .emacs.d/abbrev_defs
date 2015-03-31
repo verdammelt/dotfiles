@@ -300,7 +300,7 @@
     ("communciation" "communication" nil 0)
     ("comparitors" "comparators" nil 0)
     ("condolencses" "condolences" nil 0)
-    ("coudl" "could" nil 4)
+    ("coudl" "could" nil 5)
     ("december" "December" nil 0)
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
@@ -309,6 +309,7 @@
     ("dicussion" "discussion" nil 1)
     ("environemnt" "environment" nil 0)
     ("everytime" "every time" nil 0)
+    ("excercise" "exercises" nil 0)
     ("foward" "forward" nil 0)
     ("greenlight" "Greenlight" nil 12)
     ("idiosyncracy" "idiosyncrasy" nil 0)
@@ -321,7 +322,7 @@
     ("judgement" "judgment" nil 0)
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
-    ("mothership" "Mother ship" nil 4)
+    ("mothership" "Mother ship" nil 5)
     ("ok" "OK" nil 10)
     ("psuedo" "pseudo" nil 0)
     ("receieved" "received" nil 0)
@@ -336,6 +337,7 @@
     ("succesful" "successful" nil 0)
     ("succesfully" "successfully" nil 0)
     ("timesheet" "time sheet" nil 0)
+    ("tommorrow" "Tomorrow" nil 0)
     ("wenesday" "Wednesday" nil 0)
    ))
 
@@ -401,9 +403,7 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -495,7 +495,7 @@
     ("signup" "sign-up" nil 5)
     ("standup" "stand up" nil 11)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 82)
+    ("tia" "Thanks in advance" nil 84)
     ("tomororw" "tomorrow" nil 0)
    ))
 
