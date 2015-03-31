@@ -27,7 +27,8 @@
 ;; time display the way i like it
 (after 'time
   (setq display-time-24hr-format t
-        display-time-day-and-date t))
+        display-time-day-and-date t
+        display-time-use-mail-icon t))
 
 (global-set-key (kbd "s-p") 'ps-print-buffer)
 (global-set-key (kbd "s-P") 'ps-print-region)
