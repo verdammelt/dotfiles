@@ -28,6 +28,7 @@
     clj-refactor
     clojure-mode
     coffee-mode
+    diminish
     elisp-slime-nav
     epl
     expand-region

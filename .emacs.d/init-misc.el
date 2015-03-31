@@ -28,7 +28,8 @@
 (after 'time
   (setq display-time-24hr-format t
         display-time-day-and-date t
-        display-time-use-mail-icon t))
+        display-time-use-mail-icon t
+        display-time-format "%Y-%m-%dT%R"))
 
 (global-set-key (kbd "s-p") 'ps-print-buffer)
 (global-set-key (kbd "s-P") 'ps-print-region)
@@ -57,7 +58,7 @@
 (after 'fill-column-indicator (setq fci-rule-color "red"))
 
 (after 'battery
-  (setq battery-mode-line-format "[%b%p%% %t]"))
+  (setq battery-mode-line-format "[%b%p%% %t] "))
 
 ;; editing programs
 (after 'simple
@@ -71,6 +72,7 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (after 'auto-complete
+  (diminish 'auto-complete-mode)
   (ac-ispell-setup)
   (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
   (setq ac-use-menu-map t
@@ -83,21 +85,25 @@
 
 ;; abbrevs
 (setq-default abbrev-mode t)
+(after 'abbrev (diminish 'abbrev-mode))
 
 ;; flyspell
 (add-hook 'text-mode-hook 'flyspell-mode)
 (after 'flyspell
+  (diminish 'flyspell-mode)
   (setq flyspell-use-meta-tab nil)
   (setq flyspell-abbrev-p t))
 
 ;; yasnippet
 (after 'yasnippet
+  (diminish 'yas-minor-mode)
   (setq yas-prompt-functions
         '(yas-ido-prompt yas-completing-prompt)))
 
 (global-set-key (kbd "<f7>") 'magit-status)
 (autoload 'magit-status-internal "magit")
 (after 'magit
+  (diminish 'magit-auto-revert-mode)
   (setq magit-default-tracking-name-function
         'magit-default-tracking-name-branch-only)
   (fullframe magit-status magit-mode-quit-window))
@@ -111,6 +117,8 @@
   (setq-default indent-tabs-mode nil)
   (setq whitespace-style '(face indentation empty trailing)
         whitespace-action '(auto-cleanup warn-if-read-only)))
+(after 'whitespace
+  (diminish 'whitespace-mode))
 
 ;; markdown-mode
 (after 'markdown-mode
@@ -138,6 +146,9 @@
 (global-set-key (kbd "s-f") 'projectile-find-file)
 (global-set-key (kbd "s-s") 'projectile-switch-project)
 (after 'projectile
+  (setq projectile-mode-line
+        '(:eval (propertize (format " :%s:" (projectile-project-name))
+                            'face 'bold)))
   (setq mjs/default-projectile-indexing-method projectile-indexing-method)
   (defun mjs/setup-gtd-project-caching ()
     (let ((new-value (if (string= (projectile-project-name) "GTD")
@@ -195,6 +206,7 @@ With argument, do this that many times.")
 
 ;; wrap-region
 (after 'wrap-region
+  (diminish 'wrap-region-mode)
   (wrap-region-add-wrapper "+" "+" nil 'org-mode)
   (wrap-region-add-wrapper "_" "_" nil 'markdown-mode)
   (wrap-region-add-wrapper "*" "*" nil 'markdown-mode))
@@ -238,3 +250,5 @@ symbol, not word, as I need this for programming the most."
 (setq flycheck-completion-system 'ido)
 ;; due to keyboard conflict and lack of checker.
 (add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
+
+(setq mode-line-format)
