@@ -82,14 +82,6 @@
 (global-auto-revert-mode)
 (savehist-mode)
 
-;; ido mode
-(ido-mode)
-(ido-everywhere)
-(ido-ubiquitous-mode)
-(ido-hacks-mode)
-(flx-ido-mode 1)
-(smex-initialize)			; must be after ido-hacks!
-
 ;; setup midnight hooks
 (require 'midnight)
 (timer-activate midnight-timer)
