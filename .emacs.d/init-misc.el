@@ -18,16 +18,16 @@
 ;; Backup files
 (after 'files
   (setq version-control t
-	delete-old-versions t
-	backup-directory-alist
-	(acons "." (locate-user-emacs-file ".backups") nil)
-	delete-by-moving-to-trash t
-	trash-directory (expand-file-name "~/.Trash")))
+        delete-old-versions t
+        backup-directory-alist
+        (acons "." (locate-user-emacs-file ".backups") nil)
+        delete-by-moving-to-trash t
+        trash-directory (expand-file-name "~/.Trash")))
 
 ;; time display the way i like it
 (after 'time
   (setq display-time-24hr-format t
-	display-time-day-and-date t))
+        display-time-day-and-date t))
 
 (global-set-key (kbd "s-p") 'ps-print-buffer)
 (global-set-key (kbd "s-P") 'ps-print-region)
@@ -73,7 +73,7 @@
   (ac-ispell-setup)
   (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
   (setq ac-use-menu-map t
-	ac-auto-show-menu t)
+        ac-auto-show-menu t)
   (defun mjs/ac-text-mode-setup ()
     (add-to-list 'ac-sources 'ac-source-words-in-buffer)
     (ac-ispell-ac-setup)
@@ -92,13 +92,13 @@
 ;; yasnippet
 (after 'yasnippet
   (setq yas-prompt-functions
-	'(yas-ido-prompt yas-completing-prompt)))
+        '(yas-ido-prompt yas-completing-prompt)))
 
 (global-set-key (kbd "<f7>") 'magit-status)
 (autoload 'magit-status-internal "magit")
 (after 'magit
   (setq magit-default-tracking-name-function
-	'magit-default-tracking-name-branch-only)
+        'magit-default-tracking-name-branch-only)
   (fullframe magit-status magit-mode-quit-window))
 
 (after 'coffee-mode
@@ -122,9 +122,9 @@
 
 (after 'ns-win
   (setq ns-use-srgb-colorspace t
-	mac-command-modifier 'meta
-	mac-option-modifier 'super
-	mac-function-modifier 'hyper))
+        mac-command-modifier 'meta
+        mac-option-modifier 'super
+        mac-function-modifier 'hyper))
 
 (after 'smex
   (setq smex-save-file (locate-user-emacs-file ".smex-items")))
@@ -140,13 +140,13 @@
   (setq mjs/default-projectile-indexing-method projectile-indexing-method)
   (defun mjs/setup-gtd-project-caching ()
     (let ((new-value (if (string= (projectile-project-name) "GTD")
-			 'native
-		       mjs/default-projectile-indexing-method)))
+                         'native
+                       mjs/default-projectile-indexing-method)))
       (setq projectile-indexing-method new-value)))
   (add-hook 'projectile-switch-project-hook 'mjs/setup-gtd-project-caching)
 
   (setq projectile-switch-project-action 'projectile-dired
-	projectile-enable-caching t))
+        projectile-enable-caching t))
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)

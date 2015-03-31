@@ -13,9 +13,9 @@
   (define-key bbdb-mode-map "r" 'bbdb-merge-records)
 
   (setq bbdb-pop-up-window-size 10
-	bbdb-mua-update-interactive-p '(query . create)
-	bbdb-message-all-addresses t
-	bbdb-complete-mail-allow-cycling t)
+        bbdb-mua-update-interactive-p '(query . create)
+        bbdb-message-all-addresses t
+        bbdb-complete-mail-allow-cycling t)
 
   (after 'supercite
     (bbdb-initialize 'sc))

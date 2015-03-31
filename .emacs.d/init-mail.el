@@ -33,19 +33,19 @@
 
 (after 'silly-mail
   (setq sm-mail-header-table
-	'(sm-add-emacs-name
-	  sm-add-emacs-taunt
-	  (sm-add-horoscope           horoscope           "horoscope")
-	  (sm-add-kibology            kibologize          "kibologize")
-	  sm-add-meat
-	  (sm-add-shopping-list       shop-string         "shop")
-	  sm-add-tom-swifty
-	  sm-add-tomato
-	  (sm-add-uboat-death-message uboat-death-message "uboat")
-	  sm-add-zippy-quote)))
+        '(sm-add-emacs-name
+          sm-add-emacs-taunt
+          (sm-add-horoscope           horoscope           "horoscope")
+          (sm-add-kibology            kibologize          "kibologize")
+          sm-add-meat
+          (sm-add-shopping-list       shop-string         "shop")
+          sm-add-tom-swifty
+          sm-add-tomato
+          (sm-add-uboat-death-message uboat-death-message "uboat")
+          sm-add-zippy-quote)))
 
 (after 'sendmail
   (setq send-mail-function 'sendmail-send-it)
   (add-hook 'mail-citation-hook 'sc-cite-original)
   (setq mail-specify-envelope-from t
-	mail-envelope-from 'header))
+        mail-envelope-from 'header))

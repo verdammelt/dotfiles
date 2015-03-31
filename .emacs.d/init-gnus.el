@@ -51,10 +51,10 @@
 
    ;;change date display depending upon age of article
    gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M")
-				 (604800 . "%a %H:%M")
-				 ((gnus-seconds-month) . "%a %d")
-				 ((gnus-seconds-year) . "%b %d")
-				 (t . "%Y-%m-%d"))
+                                 (604800 . "%a %H:%M")
+                                 ((gnus-seconds-month) . "%a %d")
+                                 ((gnus-seconds-year) . "%b %d")
+                                 (t . "%Y-%m-%d"))
 
    ;; archiving - always update (lets us change it quickly)
    gnus-update-message-archive-method t
@@ -64,7 +64,7 @@
 ;;; Sorting Group List
 ;;;
   (setq gnus-group-sort-function
-	'(gnus-group-sort-by-alphabet gnus-group-sort-by-rank))
+        '(gnus-group-sort-by-alphabet gnus-group-sort-by-rank))
   (add-hook 'gnus-summary-exit-hook 'gnus-summary-bubble-group)
   (add-hook 'gnus-summary-exit-hook 'gnus-group-sort-groups-by-rank)
 
@@ -73,7 +73,7 @@
 ;;;
   (setq
    gnus-thread-sort-functions '((not  gnus-thread-sort-by-number)
-				gnus-thread-sort-by-total-score)
+                                gnus-thread-sort-by-total-score)
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
    gnus-thread-hide-subtree t
    gnus-summary-gather-subject-limit 'fuzzy
@@ -84,8 +84,8 @@
 ;;; Registry
 ;;;
   (setq gnus-registry-install t
-	gnus-registry-split-strategy 'majority
-	gnus-registry-max-entries 50000)
+        gnus-registry-split-strategy 'majority
+        gnus-registry-max-entries 50000)
   (gnus-registry-initialize)
 
 ;;;
@@ -123,50 +123,50 @@
    nnmail-split-methods 'nnmail-split-fancy
    spam-split-group "spam.spam"
    nnmail-split-fancy '(|
-			("subject" "Message left on server:.*" "mail.misc")
-			(to "codeandcocktails@gmail.com" "mail.codeandcocktails")
-			(to "noreply@sourceforge.net" "mail.tnef")
-			("subject" "\\[JIRA\\]" "cyrus.2u-jira" t)
-			(| ("subject" "JIRA Tickets Closed" "cyrus.2u-junk")
-			   ("subject" "JIRA Tickets Created" "cyrus.2u-junk")
-			   (from "HR@2u.com" "cyrus.2u-junk")
-			   (from "OnlineMBA@unc.edu" "cyrus.2u-junk")
-			   (from "OnlineMPA@unc.edu" "cyrus.2u-junk")
-			   (from "events@2u.com" "cyrus.2u-junk")
-			   (from "noreply@2u.com" "cyrus.2u-junk")
-			   (from "payroll@2tor.com" "cyrus.2u-junk"))
-			(from ".*jenkins@2tor.com" "cyrus.2u-builds")
-			(any ".*2u.com" "cyrus.2u")
-			(| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
-			   (any ".*cyrusinnovation.com" "cyrus.inbox")
-			   (any ".*cyruslists.com" "cyrus.inbox"))
-			(to "discuss-bawch@googlegroups.com" "list.bawch")
-			(to "clean-code-discussion@googlegroups.com" "list.cleancode")
-			(from "wsmith@wordsmith.org" "list.awotd")
-			(| (any ".*ally.*" "list.bank")
-			   (any ".*mint.*" "list.bank")
-			   (any ".*citizensbank.*" "list.bank")
-			   (any ".*@mail.fidelity.com" "list.bank"))
-			(to "boston-software-crafstmanship@googlegroups.com" "list.boston-software-crafstmanship")
-			(from "books@dailylit.com" "list.dailylit")
-			(| (any "ELine@cambridgema.gov" "list.misc")
-			   (any "info@harvard.com" "list.misc")
-			   (any ".*zipcarmail.com" "list.misc"))
-			(| (any ".*flickr" "list.social-media")
-			   (any ".*facebookmail" "list.social-media")
-			   (any ".*twitter" "list.social-media")
-			   (any ".*linkedin" "list.social-media")
-			   (any ".*@exercism.io" "list.social-media")
-			   (any ".*@github.com" "list.social-media")
-			   (any ".*@stackexchange.com" "list.social-media")
-			   (any ".*@postcrossing.com" "list.social-media")
-			   (any ".*@meetup.com" "list.social-media"))
+                        ("subject" "Message left on server:.*" "mail.misc")
+                        (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
+                        (to "noreply@sourceforge.net" "mail.tnef")
+                        ("subject" "\\[JIRA\\]" "cyrus.2u-jira" t)
+                        (| ("subject" "JIRA Tickets Closed" "cyrus.2u-junk")
+                           ("subject" "JIRA Tickets Created" "cyrus.2u-junk")
+                           (from "HR@2u.com" "cyrus.2u-junk")
+                           (from "OnlineMBA@unc.edu" "cyrus.2u-junk")
+                           (from "OnlineMPA@unc.edu" "cyrus.2u-junk")
+                           (from "events@2u.com" "cyrus.2u-junk")
+                           (from "noreply@2u.com" "cyrus.2u-junk")
+                           (from "payroll@2tor.com" "cyrus.2u-junk"))
+                        (from ".*jenkins@2tor.com" "cyrus.2u-builds")
+                        (any ".*2u.com" "cyrus.2u")
+                        (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
+                           (any ".*cyrusinnovation.com" "cyrus.inbox")
+                           (any ".*cyruslists.com" "cyrus.inbox"))
+                        (to "discuss-bawch@googlegroups.com" "list.bawch")
+                        (to "clean-code-discussion@googlegroups.com" "list.cleancode")
+                        (from "wsmith@wordsmith.org" "list.awotd")
+                        (| (any ".*ally.*" "list.bank")
+                           (any ".*mint.*" "list.bank")
+                           (any ".*citizensbank.*" "list.bank")
+                           (any ".*@mail.fidelity.com" "list.bank"))
+                        (to "boston-software-crafstmanship@googlegroups.com" "list.boston-software-crafstmanship")
+                        (from "books@dailylit.com" "list.dailylit")
+                        (| (any "ELine@cambridgema.gov" "list.misc")
+                           (any "info@harvard.com" "list.misc")
+                           (any ".*zipcarmail.com" "list.misc"))
+                        (| (any ".*flickr" "list.social-media")
+                           (any ".*facebookmail" "list.social-media")
+                           (any ".*twitter" "list.social-media")
+                           (any ".*linkedin" "list.social-media")
+                           (any ".*@exercism.io" "list.social-media")
+                           (any ".*@github.com" "list.social-media")
+                           (any ".*@stackexchange.com" "list.social-media")
+                           (any ".*@postcrossing.com" "list.social-media")
+                           (any ".*@meetup.com" "list.social-media"))
 
-			;; (: gnus-registry-split-fancy-with-parent)
-			(: gnus-group-split-fancy nil t nil)
-			(: spam-split)
+                        ;; (: gnus-registry-split-fancy-with-parent)
+                        (: gnus-group-split-fancy nil t nil)
+                        (: spam-split)
 
-			"mail.inbox")
+                        "mail.inbox")
    )
 
 ;;;
@@ -187,7 +187,7 @@
      gnus-score-thread-simplify t
      )
     (add-to-list 'gnus-default-adaptive-score-alist
-		 '(gnus-ticked-mark (subject 10))))
+                 '(gnus-ticked-mark (subject 10))))
 
 ;;;
 ;;; Expiry
@@ -196,33 +196,33 @@
 ;;;
   (defun mjs/expiry-wait-calculator (group)
     (let ((wait-days
-	   (cond ((string-match "spam" group) 1)
-		 ((string-match "list\\.*" group) 14)
-		 ((string-match "tnef" group) 'never)
-		 ((string-match "codeandcocktails" group) 'never)
-		 ((string-match "2u-junk" group) 1)
-		 ((string-match "2u-jira" group) 2)
-		 ((string-match "2u-builds" group) 2)
-		 (t 28))))
+           (cond ((string-match "spam" group) 1)
+                 ((string-match "list\\.*" group) 14)
+                 ((string-match "tnef" group) 'never)
+                 ((string-match "codeandcocktails" group) 'never)
+                 ((string-match "2u-junk" group) 1)
+                 ((string-match "2u-jira" group) 2)
+                 ((string-match "2u-builds" group) 2)
+                 (t 28))))
       (message "expiry-wait for %s is %s" group wait-days)
       wait-days))
 
   (defun mjs/expiry-target-calculator (group)
     (let* ((expiry-target-file
-	    (cond ((string-match "list\\.*" group) 'delete)
-		  ((string-match "spam\\.*" group) 'delete)
-		  ((string-match "mail.misc" group) 'delete)
-		  ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
-		  ((string-match "cyrus\\.2u-junk" group) 'delete)
-		  ((string-match "cyrus\\.2u-jira" group) 'delete)
-		  ((string-match "cyrus\\.2u-builds" group) 'delete)
-		  ((string-match "cyrus\\.2u" group) "nnfolder+archive:cyrus.2u-archive-%Y-%m")
-		  (t "nnfolder+archive:archive-%Y"))))
+            (cond ((string-match "list\\.*" group) 'delete)
+                  ((string-match "spam\\.*" group) 'delete)
+                  ((string-match "mail.misc" group) 'delete)
+                  ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
+                  ((string-match "cyrus\\.2u-junk" group) 'delete)
+                  ((string-match "cyrus\\.2u-jira" group) 'delete)
+                  ((string-match "cyrus\\.2u-builds" group) 'delete)
+                  ((string-match "cyrus\\.2u" group) "nnfolder+archive:cyrus.2u-archive-%Y-%m")
+                  (t "nnfolder+archive:archive-%Y"))))
       (message "expiry-target for %s is '%s'" group expiry-target-file)
       (if (stringp expiry-target-file)
-	  (let ((nnmail-fancy-expiry-targets `(("from" ".*" ,expiry-target-file))))
-	    (nnmail-fancy-expiry-target group))
-	expiry-target-file)))
+          (let ((nnmail-fancy-expiry-targets `(("from" ".*" ,expiry-target-file))))
+            (nnmail-fancy-expiry-target group))
+        expiry-target-file)))
 
   (setq
    gnus-message-archive-group '((format-time-string "archive-%Y"))
@@ -234,39 +234,39 @@
 ;;; Group Parameters
 ;;;
   (setq gnus-parameters
-	'(("nnfolder.*"
-	   (spam-contents gnus-group-spam-classification-ham)
-	   (spam-process ((ham spam-use-BBDB)))
-	   (spam-process-destination "nnfolder:spam.spam"))
+        '(("nnfolder.*"
+           (spam-contents gnus-group-spam-classification-ham)
+           (spam-process ((ham spam-use-BBDB)))
+           (spam-process-destination "nnfolder:spam.spam"))
 
-	  ("mail.*"
-	   (gcc-self . t)
-	   (total-expire . t))
+          ("mail.*"
+           (gcc-self . t)
+           (total-expire . t))
 
-	  ("mail.codeandcocktails"
-	   (posting-style  (address "codeandcocktails@gmail.com")))
+          ("mail.codeandcocktails"
+           (posting-style  (address "codeandcocktails@gmail.com")))
 
-	  ("list.*"
-	   (total-expire . t)
-	   ;; (expiry-target . delete)
-	   )
+          ("list.*"
+           (total-expire . t)
+           ;; (expiry-target . delete)
+           )
 
-	  ("cyrus.*"
-	   (gcc-self . t)
-	   (total-expire . t)
-	   (posting-style (address "msimpson@cyrusinnovation.com")))
+          ("cyrus.*"
+           (gcc-self . t)
+           (total-expire . t)
+           (posting-style (address "msimpson@cyrusinnovation.com")))
 
-	  ("spam\.spam"
-	   (total-expire . t)
-	   ;; (expiry-target . delete)
-	   (spam-contents gnus-group-spam-classification-spam)
-	   (spam-process ((ham spam-use-BBDB)))
-	   (ham-process-destination "nnfolder:mail.inbox"))
+          ("spam\.spam"
+           (total-expire . t)
+           ;; (expiry-target . delete)
+           (spam-contents gnus-group-spam-classification-spam)
+           (spam-process ((ham spam-use-BBDB)))
+           (ham-process-destination "nnfolder:mail.inbox"))
 
-	  ("^gmane\."
-	   (spam-autodetect . t)
-	   (spam-autodetect-methods spam-use-regex-headers)
-	   (spam-process (spam spam-use-gmane)))))
+          ("^gmane\."
+           (spam-autodetect . t)
+           (spam-autodetect-methods spam-use-regex-headers)
+           (spam-process (spam spam-use-gmane)))))
 
 ;;;
 ;;; utility items
@@ -283,6 +283,6 @@
 ;; are distinct enough to be visible.
 (after 'shr
   (setq shr-color-visible-distance-min 10
-	shr-color-visible-luminance-min 60))
+        shr-color-visible-luminance-min 60))
 
 (setq gnus-buttonized-mime-types '("multipart/signed"))

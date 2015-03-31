@@ -60,16 +60,16 @@
 
 ;; set up the fonts / themes
 (set-face-attribute 'default nil
-		    :height 140
+                    :height 140
                     :family "DejaVu Sans Mono"
-		    ;; :family "Source_Code_Pro"
+                    ;; :family "Source_Code_Pro"
                     )
 ;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
 (load-theme 'tango-dark)
 (set-face-attribute 'highlight nil
-		    :background (face-background 'mode-line))
+                    :background (face-background 'mode-line))
 (set-face-attribute 'cursor nil
-		    :background "red")
+                    :background "red")
 
 ;;;
 ;;; turn on all things that need turning on.
