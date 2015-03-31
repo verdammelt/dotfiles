@@ -1,6 +1,6 @@
 PATH=$HOME/Bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
-[[ -s "/Users/mark/.rvm/scripts/rvm" ]] && source "/Users/mark/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 [[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
 
