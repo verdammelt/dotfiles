@@ -29,6 +29,7 @@
   (setq display-time-24hr-format t
         display-time-day-and-date t
         display-time-use-mail-icon t
+        display-time-mail-face 'cursor ; (only background color used)
         display-time-format "%Y-%m-%dT%R"))
 
 (global-set-key (kbd "s-p") 'ps-print-buffer)
