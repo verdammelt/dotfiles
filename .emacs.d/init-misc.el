@@ -156,7 +156,9 @@
                          'native
                        mjs/default-projectile-indexing-method)))
       (setq projectile-indexing-method new-value)))
+  (add-hook 'projectile-mode-hook 'projectile-rails-on)
   (add-hook 'projectile-switch-project-hook 'mjs/setup-gtd-project-caching)
+  (add-hook 'projectile-switch-project-hook 'rvm-activate-corresponding-ruby)
 
   (setq projectile-switch-project-action 'projectile-dired
         projectile-enable-caching t))
@@ -252,6 +254,8 @@ symbol, not word, as I need this for programming the most."
 (setq flycheck-completion-system 'ido)
 ;; due to keyboard conflict and lack of checker.
 (add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
+
+(rvm-use-default)
 
 (define-key global-map [remap list-buffers] 'ibuffer)
 
