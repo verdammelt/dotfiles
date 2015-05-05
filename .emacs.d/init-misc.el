@@ -180,6 +180,7 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "M-i") 'change-inner)
 (global-set-key (kbd "M-o") 'change-outer)
+
 (global-set-key (kbd "s-j") 'ace-jump-word-mode)
 (global-set-key (kbd "s-J") 'ace-jump-char-mode)
 
@@ -252,4 +253,4 @@ symbol, not word, as I need this for programming the most."
 ;; due to keyboard conflict and lack of checker.
 (add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
 
-(setq mode-line-format)
+(define-key global-map [remap list-buffers] 'ibuffer)
