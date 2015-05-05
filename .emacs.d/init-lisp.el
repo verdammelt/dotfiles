@@ -61,3 +61,6 @@
 
 (after 'cider-repl
   (cider-repl-add-shortcut "quit" 'cider-quit))
+
+(after 'simple
+  (add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode))
