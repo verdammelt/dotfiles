@@ -18,9 +18,9 @@
 (setq mjs/*needed-packages*
   '(ac-cider
     ac-ispell
-    ace-jump-mode
     auctex
     auto-complete
+    avy
     bbdb
     browse-kill-ring
     cider

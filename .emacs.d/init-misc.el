@@ -183,8 +183,9 @@
 (global-set-key (kbd "M-i") 'change-inner)
 (global-set-key (kbd "M-o") 'change-outer)
 
-(global-set-key (kbd "s-j") 'ace-jump-word-mode)
-(global-set-key (kbd "s-J") 'ace-jump-char-mode)
+(global-set-key (kbd "s-j") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "s-J") 'avy-goto-char-2)
+(avy-setup-default)
 
 (define-key 'help-command (kbd "C-l") 'find-library)
 (define-key 'help-command (kbd "C-f") 'find-function)
