@@ -254,3 +254,5 @@ symbol, not word, as I need this for programming the most."
 (add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
 
 (define-key global-map [remap list-buffers] 'ibuffer)
+
+(setq scroll-preserve-screen-position t)
