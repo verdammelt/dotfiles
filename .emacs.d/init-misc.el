@@ -256,3 +256,13 @@ symbol, not word, as I need this for programming the most."
 (define-key global-map [remap list-buffers] 'ibuffer)
 
 (setq scroll-preserve-screen-position t)
+
+;; Setup Hyperspec info file
+(add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
+
+(require 'info-look)
+(info-lookup-add-help
+ :mode 'lisp-mode
+ :regexp "[^][()'\" \t\n]+"
+ :ignore-case t
+ :doc-spec '(("(ansicl)Symbol Index" nil nil nil)))

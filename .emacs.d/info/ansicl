@@ -1,0 +1,1469 @@
+This is ansicl, produced by makeinfo version 4.8 from temp.texi.
+
+INFO-DIR-SECTION Programming
+START-INFO-DIR-ENTRY
+* ANSI Common Lisp: (ansicl).    Draft ANSI Common Lisp standard (dpANS3R).
+END-INFO-DIR-ENTRY
+
+
+Indirect:
+ansicl-1: 212
+ansicl-2: 308068
+ansicl-3: 607720
+ansicl-4: 905302
+ansicl-5: 1204946
+ansicl-6: 1503117
+ansicl-7: 1801688
+ansicl-8: 2101688
+ansicl-9: 2402751
+ansicl-10: 2698610
+
+Tag Table:
+(Indirect)
+Node: Top212
+Ref: Top-Footnote-11063
+Node: Credits1136
+Node: Introduction17987
+Node: Scope; Purpose; and History18348
+Node: Scope and Purpose18565
+Node: History19012
+Node: Organization of the Document28586
+Node: Referenced Publications31186
+Node: Definitions34822
+Node: Notational Conventions35197
+Ref: ModifiedBNF37230
+Ref: CaseInSymbols45787
+Ref: fig1.148311
+Ref: Designators49740
+Node: Error Terminology52533
+Node: Sections Not Formally Part Of This Standard59901
+Node: Interpreting Dictionary Entries61397
+Ref: TypeSpecEntries64744
+Node: Conformance79672
+Node: Conforming Implementations80071
+Ref: ReqLangFeatures80396
+Node: Conforming Programs83990
+Ref: ReadTimeConditionals85995
+Node: Language Extensions87065
+Node: Language Subsets89365
+Node: Deprecated Language Features90057
+Node: Deprecated Functions90911
+Ref: fig1.291136
+Node: Deprecated Argument Conventions91438
+Ref: fig1.391813
+Node: Deprecated Variables92448
+Node: Deprecated Reader Syntax92697
+Node: Symbols in the COMMON-LISP Package93201
+Ref: fig1.493524
+Ref: fig1.595095
+Ref: fig1.697158
+Ref: fig1.799578
+Ref: fig1.8101242
+Ref: fig1.9103160
+Ref: fig1.10105253
+Ref: fig1.11107148
+Ref: fig1.12108623
+Ref: fig1.13110194
+Ref: fig1.14111971
+Ref: fig1.15113493
+Node: Syntax115284
+Node: Character Syntax115511
+Node: Readtables116264
+Ref: fig2.1116671
+Ref: CurrentReadtable117090
+Node: Variables that affect the Lisp Reader118282
+Ref: fig2.2118693
+Node: Standard Characters118850
+Ref: fig2.3119399
+Ref: fig2.4121308
+Ref: StdCharsThree121849
+Node: Character Syntax Types123531
+Ref: PossibleSyntaxTypes124332
+Ref: CharSyntaxTypesInStdSyntax124799
+Ref: ConstituentChars127311
+Ref: ConstituentTraits127841
+Ref: ConstituentTraitsOfStdChars128690
+Ref: MacroChars131778
+Ref: MultipleEscapeChar134478
+Ref: SingleEscapeChar135276
+Ref: WhitespaceChars135900
+Node: Reader Algorithm136223
+Node: Interpretation of Tokens142774
+Node: Numbers as Tokens143132
+Ref: SyntaxForNumericTokens143466
+Ref: PotentialNumbersAsTokens144166
+Ref: EscCharsAndPotentialNums146485
+Ref: fig2.10147276
+Ref: fig2.11147645
+Ref: fig2.12147915
+Node: Constructing Numbers from Tokens148024
+Ref: SyntaxOfIntegers148992
+Ref: SyntaxOfRatios149506
+Ref: fig2.13149763
+Ref: SyntaxOfFloats150436
+Ref: fig2.14151603
+Ref: SyntaxOfComplexes152954
+Node: The Consing Dot153706
+Node: Symbols as Tokens154262
+Ref: fig2.15155005
+Ref: fig2.16155946
+Node: Valid Patterns for Tokens157773
+Ref: fig2.17158052
+Node: Package System Consistency Rules161142
+Node: Standard Macro Characters162855
+Node: Left-Parenthesis163622
+Node: Right-Parenthesis165113
+Node: Single-Quote165468
+Node: Semicolon166015
+Node: Double-Quote168960
+Ref: fig2.18169764
+Node: Backquote170420
+Node: Comma175204
+Node: Sharpsign175518
+Ref: fig2.19176455
+Ref: SharpsignBackslash179869
+Ref: SharpsignQuote180999
+Ref: SharpsignLeftParen181352
+Ref: SharpsignStar182750
+Ref: SharpsignColon184187
+Ref: SharpsignDot184611
+Ref: SharpsignB185192
+Ref: SharpsignO185473
+Ref: SharpsignX185765
+Ref: SharpsignR186173
+Ref: fig2.20186804
+Ref: SharpsignC187400
+Ref: fig2.21188039
+Ref: SharpsignA188509
+Ref: SharpsignS189747
+Ref: SharpsignP190782
+Ref: SharpsignLeftAngle197406
+Node: Re-Reading Abbreviated Expressions198079
+Node: Evaluation and Compilation198584
+Node: Evaluation199439
+Node: Introduction to Environments200769
+Ref: NullLexicalEnv204112
+Ref: EnvObjs204462
+Node: The Evaluation Model205285
+Ref: SymbolsAsForms205883
+Ref: fig3.1207413
+Ref: ConstantVars210332
+Ref: CLSpecialOps213330
+Ref: fig3.3215327
+Ref: FunctionForms215530
+Ref: fig3.4217422
+Ref: LambdaForms217896
+Node: Lambda Expressions219300
+Node: Closures and Lexical Binding219957
+Node: Shadowing223546
+Node: Extent226650
+Node: Return Values228911
+Ref: fig3.5229739
+Node: Compilation230269
+Node: Compiler Terminology230574
+Node: Compilation Semantics234898
+Ref: CompilerMacros235400
+Ref: fig3.6236738
+Ref: MinimalCompilation241774
+Ref: SemanticConstraints242788
+Node: File Compilation246272
+Ref: TopLevelForms248244
+Ref: fig3.7249600
+Ref: fig3.8254116
+Node: Literal Objects in Compiled Files255128
+Ref: Similarity257852
+Ref: CallingMakeLoadForm265801
+Node: Exceptional Situations in the Compiler268238
+Node: Declarations270347
+Node: Minimal Declaration Processing Requirements271131
+Node: Declaration Specifiers272278
+Node: Declaration Identifiers272785
+Ref: fig3.9273059
+Node: Declaration Scope273790
+Node: Lambda Lists278704
+Ref: fig3.10279069
+Ref: fig3.11280782
+Node: Ordinary Lambda Lists281270
+Ref: fig3.12281618
+Ref: fig3.13281919
+Ref: SuppressingKeyArgChecks290130
+Node: Generic Function Lambda Lists295679
+Ref: fig3.14296546
+Node: Specialized Lambda Lists297074
+Ref: fig3.15297580
+Ref: fig3.16297768
+Node: Macro Lambda Lists298410
+Ref: fig3.17298688
+Ref: fig3.18299826
+Ref: DestructuringByLambdaLists303324
+Node: Destructuring Lambda Lists308068
+Node: Boa Lambda Lists309362
+Node: Defsetf Lambda Lists313172
+Ref: fig3.19313776
+Node: Deftype Lambda Lists314119
+Node: Define-modify-macro Lambda Lists314735
+Ref: fig3.20315145
+Node: Define-method-combination Arguments Lambda Lists315615
+Ref: fig3.21316165
+Node: Syntactic Interaction of Documentation Strings and Declarations316472
+Node: Error Checking in Function Calls317218
+Node: Argument Mismatch Detection317487
+Ref: SafeAndUnsafeCalls317708
+Ref: UnrecognizedKeyArgs321595
+Ref: InvalidKeyArgs322091
+Ref: OddNumberOfKeyArgs322581
+Ref: DestructuringMismatch323031
+Node: Traversal Rules and Side Effects324225
+Node: Destructive Operations325471
+Node: Modification of Literal Objects325772
+Node: Transfer of Control during a Destructive Operation328177
+Node: lambda (Symbol)329203
+Node: lambda (Macro)330532
+Node: compile331614
+Node: eval334734
+Node: eval-when336675
+Node: load-time-value342922
+Node: quote348697
+Node: compiler-macro-function350264
+Node: define-compiler-macro351256
+Node: defmacro358093
+Node: macro-function364135
+Node: macroexpand; macroexpand-1366336
+Ref: macroexpand366548
+Ref: macroexpand-1366548
+Node: define-symbol-macro371087
+Node: symbol-macrolet373597
+Node: *macroexpand-hook*376741
+Node: proclaim378948
+Ref: fig3.22379750
+Node: declaim381035
+Node: declare381840
+Ref: fig3.23382505
+Ref: fig3.24384039
+Node: ignore; ignorable385855
+Ref: ignore386034
+Ref: ignorable386034
+Node: dynamic-extent387885
+Node: type393876
+Node: inline; notinline400362
+Ref: inline400529
+Ref: notinline400529
+Node: ftype404069
+Node: declaration405573
+Node: optimize406433
+Ref: fig3.25407096
+Node: special408639
+Node: locally412804
+Node: the414854
+Node: special-operator-p417149
+Node: constantp418033
+Node: Types and Classes420939
+Node: Introduction to Types and Classes421803
+Node: Types424098
+Node: Data Type Definition424309
+Ref: TypeInfoXrefs424745
+Node: Type Relationships425858
+Node: Type Specifiers427622
+Ref: StandardizedAtomicTypeSpecs428212
+Ref: StandardizedCompoundTypeSpecNames431760
+Ref: fig4.4432403
+Ref: TypesAndDeclsNames433159
+Ref: StandardizedTypeSpecifierNames433690
+Node: Classes436180
+Ref: ObjectSystemClasses436546
+Node: Introduction to Classes437028
+Node: Defining Classes442605
+Node: Creating Instances of Classes444256
+Node: Inheritance445097
+Node: Determining the Class Precedence List447049
+Node: Redefining Classes454418
+Node: Integrating Types and Classes460979
+Ref: ClassTypeCorrespondence464919
+Node: nil (Type)467375
+Node: boolean467791
+Node: function (System Class)468593
+Node: compiled-function472921
+Node: generic-function473778
+Node: standard-generic-function474795
+Node: class475303
+Node: built-in-class475811
+Node: structure-class476723
+Node: standard-class477113
+Node: method477484
+Node: standard-method478632
+Node: structure-object479038
+Node: standard-object479683
+Node: method-combination480100
+Node: t (System Class)480734
+Node: satisfies481074
+Node: member (Type Specifier)482207
+Node: not (Type Specifier)483186
+Node: and (Type Specifier)483856
+Node: or (Type Specifier)484652
+Node: values (Type Specifier)485653
+Node: eql (Type Specifier)486848
+Node: coerce487593
+Node: deftype492235
+Node: subtypep495422
+Ref: fig4.9496557
+Node: type-of502415
+Node: typep505159
+Node: type-error508567
+Node: type-error-datum; type-error-expected-type509288
+Ref: type-error-datum509533
+Ref: type-error-expected-type509533
+Node: simple-type-error510611
+Node: Data and Control Flow511388
+Node: Generalized Reference512854
+Node: Overview of Places and Generalized Reference513149
+Ref: fig5.1514366
+Ref: fig5.2514814
+Ref: GenRefSubFormEval515476
+Ref: SetfExpansions518271
+Ref: fig5.3520277
+Ref: fig5.4520545
+Ref: fig5.5520920
+Ref: fig5.6521617
+Node: Kinds of Places522111
+Ref: FnFormsAsGenRefs522697
+Ref: fig5.7522899
+Ref: fig5.8525063
+Ref: SETFofVALUES530129
+Ref: SETFofAPPLY531435
+Node: Treatment of Other Macros Based on SETF534407
+Ref: fig5.9535722
+Node: Transfer of Control to an Exit Point535802
+Node: apply537600
+Node: defun539617
+Node: fdefinition543315
+Node: fboundp545141
+Node: fmakunbound546789
+Node: flet; labels; macrolet547712
+Ref: flet547908
+Ref: labels547908
+Ref: macrolet547908
+Node: funcall555490
+Node: function (Special Operator)557164
+Node: function-lambda-expression559347
+Node: functionp562388
+Node: compiled-function-p563254
+Node: call-arguments-limit564276
+Node: lambda-list-keywords564879
+Node: lambda-parameters-limit565647
+Node: defconstant566267
+Node: defparameter; defvar568937
+Ref: defparameter569116
+Ref: defvar569116
+Node: destructuring-bind575330
+Node: let; let*576678
+Ref: let576840
+Node: progv579813
+Node: setq581291
+Node: psetq582848
+Node: block584673
+Node: catch586407
+Node: go589101
+Node: return-from590531
+Node: return592588
+Node: tagbody593524
+Ref: fig5.10595570
+Node: throw595758
+Node: unwind-protect598397
+Node: nil (Constant Variable)603254
+Node: not (Function)603661
+Node: t (Constant Variable)604520
+Node: eq605469
+Ref: fig5.11607575
+Node: eql (Function)607720
+Node: equal610575
+Ref: fig5.12612462
+Node: equalp614157
+Ref: fig5.13616162
+Node: identity618003
+Node: complement618731
+Node: constantly620369
+Node: every; some; notevery; notany621310
+Ref: every621514
+Ref: some621514
+Node: and (Macro)624346
+Node: cond626060
+Node: if627601
+Node: or (Macro)628759
+Node: when; unless630111
+Ref: when630265
+Ref: unless630265
+Node: case; ccase; ecase632532
+Ref: case632718
+Ref: ccase632718
+Node: typecase; ctypecase; etypecase637427
+Ref: typecase637644
+Ref: ctypecase637644
+Node: multiple-value-bind642805
+Node: multiple-value-call644627
+Node: multiple-value-list645820
+Node: multiple-value-prog1646610
+Node: multiple-value-setq647528
+Node: values (Accessor)649060
+Node: values-list650932
+Node: multiple-values-limit651875
+Node: nth-value652668
+Node: prog; prog*653886
+Node: prog1; prog2657438
+Ref: prog1657580
+Ref: prog2657580
+Node: progn659412
+Node: define-modify-macro660775
+Node: defsetf663259
+Node: define-setf-expander669180
+Node: get-setf-expansion673904
+Node: setf; psetf675599
+Ref: setf675746
+Ref: psetf675746
+Node: shiftf678034
+Node: rotatef680509
+Node: control-error682236
+Node: program-error682846
+Node: undefined-function683375
+Node: Iteration683960
+Node: The LOOP Facility684180
+Node: Overview of the Loop Facility684613
+Ref: SimpleLoop685063
+Ref: DestructuringLOOPVars698938
+Node: Variable Initialization and Stepping Clauses703123
+Node: Value Accumulation Clauses722130
+Node: Termination Test Clauses729751
+Node: Unconditional Execution Clauses736448
+Node: Conditional Execution Clauses737581
+Node: Miscellaneous Clauses740633
+Node: Examples of Miscellaneous Loop Features743301
+Node: Notes about Loop746199
+Node: do; do*747206
+Ref: do747329
+Node: dotimes755370
+Node: dolist758636
+Node: loop760826
+Node: loop-finish766444
+Node: Objects769081
+Node: Object Creation and Initialization770296
+Node: Initialization Arguments774212
+Node: Declaring the Validity of Initialization Arguments776772
+Node: Defaulting of Initialization Arguments780251
+Node: Rules for Initialization Arguments783524
+Node: Shared-Initialize786964
+Node: Initialize-Instance789705
+Node: Definitions of Make-Instance and Initialize-Instance792459
+Node: Changing the Class of an Instance794527
+Node: Modifying the Structure of the Instance795740
+Node: Initializing Newly Added Local Slots796588
+Node: Customizing the Change of Class of an Instance798367
+Node: Reinitializing an Instance799170
+Node: Customizing Reinitialization800703
+Node: Meta-Objects801368
+Node: Standard Meta-objects801892
+Node: Slots802832
+Node: Introduction to Slots803054
+Node: Accessing Slots805521
+Node: Inheritance of Slots and Slot Options808111
+Node: Generic Functions and Methods812840
+Node: Introduction to Generic Functions813332
+Ref: StdMethDefOps816395
+Node: Introduction to Methods816805
+Node: Agreement on Parameter Specializers and Qualifiers823067
+Node: Congruent Lambda-lists for all Methods of a Generic Function824054
+Node: Keyword Arguments in Generic Functions and Methods826207
+Node: Method Selection and Combination828975
+Ref: DeterminingtheEffectiveMethod830271
+Ref: SelApplMeth830680
+Ref: ApplyMethCombToSortedMethods832832
+Ref: StdMethComb834719
+Ref: BuiltInMethCombTypes840239
+Ref: fig7.2840702
+Node: Inheritance of Methods844104
+Node: function-keywords844715
+Node: ensure-generic-function846226
+Node: allocate-instance849392
+Node: reinitialize-instance850988
+Node: shared-initialize (Standard Generic Function)853455
+Node: update-instance-for-different-class858224
+Node: update-instance-for-redefined-class862658
+Node: change-class867915
+Node: slot-boundp871902
+Node: slot-exists-p873655
+Node: slot-makunbound874444
+Node: slot-missing875954
+Node: slot-unbound878270
+Node: slot-value879916
+Node: method-qualifiers882564
+Node: no-applicable-method883308
+Node: no-next-method884411
+Node: remove-method885546
+Node: make-instance886349
+Node: make-instances-obsolete887856
+Node: make-load-form889174
+Node: make-load-form-saving-slots900623
+Node: with-accessors902563
+Node: with-slots905302
+Node: defclass908437
+Node: defgeneric920979
+Node: defmethod930980
+Node: find-class938340
+Node: next-method-p940376
+Node: call-method; make-method941461
+Ref: call-method941650
+Node: call-next-method944401
+Node: compute-applicable-methods947566
+Node: define-method-combination948704
+Node: find-method972027
+Node: add-method974749
+Node: initialize-instance (Standard Generic Function)976054
+Node: class-name978049
+Node: setf class-name978848
+Node: class-of979480
+Node: unbound-slot980404
+Node: unbound-slot-instance981103
+Node: Structures981707
+Node: defstruct981870
+Node: copy-structure1021704
+Node: Conditions1022287
+Node: Condition System Concepts1023425
+Node: Condition Types1027041
+Ref: StandardizedConditionTypes1027315
+Ref: fig9.21028838
+Ref: fig9.31029007
+Node: Creating Conditions1029680
+Ref: ConditionDesignators1030278
+Node: Printing Conditions1031906
+Node: Signaling and Handling Conditions1036860
+Ref: fig9.41038821
+Ref: Signaling1038959
+Ref: fig9.51039836
+Ref: Restarts1040936
+Ref: InterfacesToRestarts1044044
+Ref: fig9.61044425
+Ref: AssocRestartWithCond1045200
+Node: Assertions1045878
+Ref: fig9.71046267
+Node: Notes about the Condition System's Background1046375
+Node: condition1046866
+Node: warning1048569
+Node: style-warning1048911
+Node: serious-condition1050088
+Node: error (Condition Type)1051307
+Node: cell-error1051653
+Node: cell-error-name1052245
+Node: parse-error1053306
+Node: storage-condition1053756
+Node: assert1055331
+Node: error (Function)1059097
+Node: cerror1062577
+Node: check-type1067004
+Node: simple-error1070959
+Node: invalid-method-error1071437
+Node: method-combination-error1072999
+Node: signal1074128
+Node: simple-condition1076628
+Node: simple-condition-format-control; simple-condition-format-arguments1077567
+Ref: simple-condition-format-control1077870
+Ref: simple-condition-format-arguments1077870
+Node: warn1078924
+Node: simple-warning1081270
+Node: invoke-debugger1081718
+Node: break1083185
+Node: *debugger-hook*1085544
+Node: *break-on-signals*1087852
+Node: handler-bind1090304
+Node: handler-case1092785
+Node: ignore-errors1097741
+Node: define-condition1099591
+Node: make-condition1110262
+Node: restart1111511
+Node: compute-restarts1112115
+Node: find-restart1114696
+Node: invoke-restart1116633
+Node: invoke-restart-interactively1118286
+Node: restart-bind1120506
+Node: restart-case1124552
+Node: restart-name1133884
+Node: with-condition-restarts1134780
+Node: with-simple-restart1136136
+Node: abort (Restart)1139346
+Node: continue (Restart)1140376
+Node: muffle-warning (Restart)1141549
+Node: store-value (Restart)1143077
+Node: use-value (Restart)1144334
+Node: abort; continue; muffle-warning; store-value; use-value1145066
+Ref: abort1145326
+Ref: continue1145326
+Ref: muffle-warning1145326
+Ref: store-value1145326
+Ref: use-value1145326
+Node: Symbols1150874
+Node: Symbol Concepts1151306
+Ref: fig10.11151514
+Ref: fig10.21151694
+Node: symbol1151864
+Node: keyword1157017
+Node: symbolp1157588
+Node: keywordp1158279
+Node: make-symbol1159064
+Node: copy-symbol1160615
+Node: gensym1162860
+Node: *gensym-counter*1165109
+Node: gentemp1165847
+Node: symbol-function1168620
+Node: symbol-name1171346
+Node: symbol-package1172009
+Node: symbol-plist1173683
+Node: symbol-value1174807
+Node: get1176607
+Node: remprop1179632
+Node: boundp1182070
+Node: makunbound1182996
+Node: set1183709
+Node: unbound-variable1185224
+Node: Packages1185773
+Node: Package Concepts1186479
+Node: Introduction to Packages1186661
+Ref: fig11.11187540
+Node: Standardized Packages1195607
+Ref: fig11.21195958
+Node: package1204946
+Node: export1205503
+Node: find-symbol1208566
+Node: find-package1210852
+Node: find-all-symbols1211847
+Node: import1212714
+Node: list-all-packages1215188
+Node: rename-package1215828
+Node: shadow1217049
+Node: shadowing-import1219323
+Node: delete-package1221184
+Node: make-package1225829
+Node: with-package-iterator1227824
+Node: unexport1233314
+Node: unintern1234835
+Node: in-package1236913
+Node: unuse-package1237875
+Node: use-package1239212
+Node: defpackage1241268
+Node: do-symbols; do-external-symbols; do-all-symbols1249588
+Node: intern1253133
+Node: package-name1255497
+Node: package-nicknames1256494
+Node: package-shadowing-symbols1257240
+Node: package-use-list1258410
+Node: package-used-by-list1259266
+Node: packagep1260100
+Node: *package*1260707
+Node: package-error1261940
+Node: package-error-package1262602
+Node: Numbers1263270
+Node: Number Concepts1265296
+Node: Numeric Operations1265624
+Ref: fig12.11266073
+Ref: fig12.21266305
+Ref: fig12.31266631
+Ref: fig12.41266874
+Ref: NumericContagionRules1269905
+Ref: fig12.51270794
+Ref: fig12.61271809
+Node: Implementation-Dependent Numeric Constants1271986
+Ref: fig12.71272330
+Node: Rational Computations1273160
+Ref: FloatSubstitutability1274719
+Ref: fig12.81276300
+Node: Floating-point Computations1277231
+Ref: RuleOfFloatAndRationalContagion1277587
+Ref: RuleOfFloatPrecisionContagion1280334
+Node: Complex Computations1280459
+Ref: RuleOfComplexContagion1281023
+Ref: RuleOfCanonRepForComplexRationals1281291
+Ref: fig12.91283162
+Ref: fig12.101283548
+Node: Interval Designators1284063
+Node: Random-State Operations1285558
+Ref: fig12.111285800
+Node: number1285919
+Node: complex (System Class)1287066
+Node: real1289232
+Node: float (System Class)1290368
+Node: short-float; single-float; double-float; long-float1292913
+Ref: fig12.121294070
+Node: rational (System Class)1296861
+Node: ratio1297897
+Node: integer1298579
+Node: signed-byte1300038
+Node: unsigned-byte1301045
+Node: mod (Type Specifier)1302151
+Node: bit (Type)1302847
+Node: fixnum1303183
+Node: bignum1303642
+Node: =; /=; <; >; <=; >=1303941
+Ref: =1304094
+Ref: fig12.131305676
+Node: max; min1307299
+Node: minusp; plusp1309172
+Node: zerop1310080
+Node: floor; ffloor; ceiling; fceiling; truncate; ftruncate; round; fround1311052
+Ref: floor1311356
+Ref: ceiling1311356
+Ref: truncate1311356
+Ref: round1311356
+Node: sin; cos; tan1315847
+Node: asin; acos; atan1316792
+Ref: asin1316937
+Ref: acos1316937
+Ref: atan1316937
+Ref: fig12.141317576
+Ref: fig12.151321344
+Node: pi1323362
+Node: sinh; cosh; tanh; asinh; acosh; atanh1324428
+Ref: fig12.161325173
+Node: * (Function)1328997
+Node: + (Function)1330008
+Node: - (Function)1330952
+Node: / (Function)1332235
+Node: 1+; 1-1333866
+Ref: 1+1333981
+Ref: 1- (Function)1333981
+Node: abs1334797
+Node: evenp; oddp1336160
+Node: exp; expt1337039
+Ref: exp1337162
+Ref: expt1337162
+Node: gcd1340232
+Node: incf; decf1341190
+Ref: incf1341302
+Ref: decf1341302
+Node: lcm1342386
+Node: log1343411
+Node: mod; rem1345472
+Node: signum1346669
+Node: sqrt; isqrt1348296
+Ref: sqrt1348429
+Node: random-state1350300
+Node: make-random-state1351161
+Node: random1353013
+Node: random-state-p1354461
+Node: *random-state*1355187
+Node: numberp1356507
+Node: cis1357120
+Node: complex (Function)1357721
+Node: complexp1359286
+Node: conjugate1359922
+Node: phase1360623
+Node: realpart; imagpart1362148
+Ref: realpart1362315
+Ref: imagpart1362315
+Node: upgraded-complex-part-type1363126
+Node: realp1364121
+Node: numerator; denominator1364713
+Node: rational; rationalize1365735
+Ref: rational1365911
+Node: rationalp1367240
+Node: ash1367852
+Node: integer-length1369300
+Node: integerp1370819
+Node: parse-integer1371415
+Node: boole1373499
+Ref: fig12.171374251
+Node: boole-1; boole-2; boole-and; boole-andc1; boole-andc2; boole-c1; boole-+1377822
+Node: logand; logandc1; logandc2; logeqv; logior; lognand; lognor; lognot; lo+1378969
+Ref: logand1379388
+Ref: lognot1379388
+Ref: fig12.181380624
+Node: logbitp1382944
+Node: logcount1384133
+Node: logtest1385439
+Node: byte; byte-size; byte-position1386478
+Ref: byte1386670
+Ref: byte-size1386670
+Ref: byte-position1386670
+Node: deposit-field1387688
+Node: dpb1388687
+Node: ldb1390014
+Node: ldb-test1391515
+Node: mask-field1392289
+Node: most-positive-fixnum; most-negative-fixnum1393553
+Node: decode-float; scale-float; float-radix; float-sign; float-digits; float+1394271
+Node: float (Function)1399881
+Node: floatp1400804
+Node: most-positive-short-float; least-positive-short-float; least-positive-n+1401446
+Node: short-float-epsilon; short-float-negative-epsilon; single-float-epsilon+1405800
+Node: arithmetic-error1407167
+Node: arithmetic-error-operands; arithmetic-error-operation1407993
+Ref: arithmetic-error-operands1408266
+Ref: arithmetic-error-operation1408266
+Node: division-by-zero1408959
+Node: floating-point-invalid-operation1409446
+Node: floating-point-inexact1410212
+Node: floating-point-overflow1410945
+Node: floating-point-underflow1411435
+Node: Characters1411899
+Node: Character Concepts1412516
+Node: Introduction to Characters1412992
+Ref: fig13.11413720
+Ref: fig13.21414193
+Node: Introduction to Scripts and Repertoires1414357
+Ref: CharScripts1414660
+Ref: CharRepertoires1415506
+Node: Character Attributes1416228
+Node: Character Categories1417240
+Ref: GraphicChars1418210
+Ref: CharactersWithCase1419572
+Ref: Digits1421775
+Node: Identity of Characters1422373
+Node: Ordering of Characters1422649
+Node: Character Names1424268
+Node: Treatment of Newline during Input and Output1425425
+Node: Character Encodings1425978
+Node: Documentation of Implementation-Defined Scripts1426775
+Node: character (System Class)1428266
+Node: base-char1428988
+Node: standard-char1430962
+Node: extended-char1431537
+Node: char=; char/=; char<; char>; char<=; char>=; char-equal; char-not-equal+1432045
+Ref: char=1432501
+Ref: char-equal1432501
+Node: character (Function)1438052
+Node: characterp1438943
+Node: alpha-char-p1439823
+Node: alphanumericp1440989
+Node: digit-char1442332
+Node: digit-char-p1443397
+Node: graphic-char-p1444781
+Node: standard-char-p1445713
+Node: char-upcase; char-downcase1446529
+Ref: char-upcase1446746
+Ref: char-downcase1446746
+Node: upper-case-p; lower-case-p; both-case-p1448973
+Ref: upper-case-p1449210
+Node: char-code1450594
+Node: char-int1451307
+Node: code-char1452254
+Node: char-code-limit1452983
+Node: char-name1453612
+Node: name-char1455505
+Node: Conses1456335
+Node: Cons Concepts1457527
+Ref: fig14.11457731
+Node: Conses as Trees1458047
+Ref: fig14.21458500
+Node: Conses as Lists1459246
+Ref: fig14.31460066
+Ref: fig14.41460788
+Ref: fig14.51461117
+Node: list (System Class)1461873
+Node: null (System Class)1463156
+Node: cons (System Class)1463729
+Node: atom (Type)1464991
+Node: cons (Function)1465217
+Node: consp1466052
+Node: atom (Function)1466741
+Node: rplaca; rplacd1467396
+Ref: rplaca1467606
+Node: car; cdr; caar; cadr; cdar; cddr; caaar; caadr; cadar; caddr; cdaar; cd+1468487
+Ref: car1469095
+Ref: cdr1469095
+Ref: fig14.61471620
+Node: copy-tree1474255
+Node: sublis; nsublis1475811
+Node: subst; subst-if; subst-if-not; nsubst; nsubst-if; nsubst-if-not1479478
+Ref: subst1479773
+Ref: nsubst1479773
+Node: tree-equal1483785
+Node: copy-list1485597
+Node: list; list*1486789
+Ref: list1486923
+Node: list-length1488302
+Node: listp1490049
+Node: make-list1490798
+Node: push1491701
+Node: pop1492918
+Node: first; second; third; fourth; fifth; sixth; seventh; eighth; ninth; ten+1494276
+Ref: first1494581
+Node: nth1496887
+Node: endp1497909
+Node: null (Function)1499293
+Node: nconc1500077
+Node: append1502046
+Node: revappend; nreconc1503117
+Node: butlast; nbutlast1505146
+Ref: butlast1505300
+Node: last1506823
+Node: ldiff; tailp1508419
+Node: nthcdr1511784
+Node: rest1512859
+Node: member; member-if; member-if-not1513781
+Ref: member1514005
+Node: mapc; mapcar; mapcan; mapl; maplist; mapcon1516096
+Node: acons1520244
+Node: assoc; assoc-if; assoc-if-not1521237
+Ref: assoc1521420
+Node: copy-alist1524370
+Node: pairlis1525567
+Node: rassoc; rassoc-if; rassoc-if-not1527026
+Ref: rassoc1527224
+Node: get-properties1529140
+Node: getf1530478
+Node: remf1533180
+Node: intersection; nintersection1534525
+Ref: intersection1534697
+Node: adjoin1538427
+Node: pushnew1540261
+Node: set-difference; nset-difference1542960
+Ref: set-difference1543176
+Node: set-exclusive-or; nset-exclusive-or1546305
+Node: subsetp1549407
+Node: union; nunion1551431
+Ref: union1551549
+Node: Arrays1554496
+Node: Array Concepts1555403
+Node: Array Elements1555562
+Node: Specialized Arrays1558639
+Ref: fig15.11559318
+Ref: ArrayUpgrading1559957
+Ref: RequiredSpecializedArrays1561231
+Ref: fig15.21561671
+Ref: fig15.31562376
+Node: array1562567
+Node: simple-array1565685
+Node: vector (System Class)1567612
+Node: simple-vector1569862
+Node: bit-vector1570848
+Node: simple-bit-vector1571975
+Node: make-array1572933
+Node: adjust-array1581249
+Node: adjustable-array-p1589117
+Node: aref1590043
+Node: array-dimension1591649
+Node: array-dimensions1592469
+Node: array-element-type1593282
+Node: array-has-fill-pointer-p1594629
+Node: array-displacement1595732
+Node: array-in-bounds-p1597353
+Node: array-rank1598460
+Node: array-row-major-index1599188
+Node: array-total-size1600621
+Node: arrayp1601813
+Node: fill-pointer1602504
+Node: row-major-aref1603561
+Node: upgraded-array-element-type1604590
+Node: array-dimension-limit1606175
+Node: array-rank-limit1606663
+Node: array-total-size-limit1607116
+Node: simple-vector-p1607841
+Node: svref1608562
+Node: vector (Function)1609630
+Node: vector-pop1610475
+Node: vector-push; vector-push-extend1611709
+Ref: vector-push1611900
+Ref: vector-push-extend1611900
+Node: vectorp1614453
+Node: bit; sbit1615117
+Ref: bit1615304
+Ref: sbit1615304
+Node: bit-and; bit-andc1; bit-andc2; bit-eqv; bit-ior; bit-nand; bit-nor; bit+1616380
+Ref: fig15.41618886
+Node: bit-vector-p1619841
+Node: simple-bit-vector-p1620653
+Node: Strings1621323
+Node: String Concepts1621840
+Node: Implications of Strings Being Arrays1622041
+Node: Subtypes of STRING1622530
+Node: string (System Class)1622932
+Node: base-string1624068
+Node: simple-string1624983
+Node: simple-base-string1626005
+Node: simple-string-p1626893
+Node: char; schar1627615
+Ref: char1627762
+Ref: schar1627762
+Node: string (Function)1628988
+Node: string-upcase; string-downcase; string-capitalize; nstring-upcase; nstr+1630316
+Node: string-trim; string-left-trim; string-right-trim1634366
+Node: string=; string/=; string<; string>; string<=; string>=; string-equal; +1636094
+Ref: string=1636617
+Ref: string-equal1636617
+Node: stringp1641784
+Node: make-string1642452
+Node: Sequences1643365
+Node: Sequence Concepts1644066
+Ref: SequenceFunctions1644819
+Node: General Restrictions on Parameters that must be Sequences1645698
+Node: Rules about Test Functions1646055
+Node: Satisfying a Two-Argument Test1646310
+Ref: SatisfyingTheTwoArgTest1646514
+Ref: fig17.21646855
+Node: Satisfying a One-Argument Test1649682
+Ref: fig17.31650249
+Node: sequence1651947
+Node: copy-seq1652633
+Node: elt1653740
+Node: fill1654796
+Node: make-sequence1656134
+Node: subseq1658180
+Node: map1660190
+Node: map-into1663032
+Node: reduce1665814
+Node: count; count-if; count-if-not1669059
+Node: length1671243
+Node: reverse; nreverse1672205
+Ref: reverse1672363
+Ref: nreverse1672363
+Node: sort; stable-sort1674308
+Ref: sort1674486
+Ref: stable-sort1674486
+Node: find; find-if; find-if-not1679714
+Ref: find1679931
+Node: position; position-if; position-if-not1682082
+Ref: position1682312
+Node: search1684314
+Node: mismatch1686290
+Node: replace1688590
+Node: substitute; substitute-if; substitute-if-not; nsubstitute; nsubstitute-+1690914
+Ref: substitute1691274
+Ref: nsubstitute1691274
+Node: concatenate1696862
+Node: merge1699007
+Node: remove; remove-if; remove-if-not; delete; delete-if; delete-if-not1703278
+Node: remove-duplicates; delete-duplicates1709594
+Node: Hash Tables1713223
+Node: Hash Table Concepts1713643
+Node: Hash-Table Operations1713841
+Ref: fig18.11715647
+Node: Modifying Hash Table Keys1715814
+Ref: VisModEQL1717293
+Ref: VisModEQUAL1717535
+Node: hash-table1720521
+Node: make-hash-table1721341
+Node: hash-table-p1724167
+Node: hash-table-count1724862
+Node: hash-table-rehash-size1726164
+Node: hash-table-rehash-threshold1727647
+Node: hash-table-size1728666
+Node: hash-table-test1729432
+Node: gethash1730284
+Node: remhash1732277
+Node: maphash1733057
+Node: with-hash-table-iterator1734804
+Node: clrhash1738153
+Node: sxhash1738937
+Node: Filenames1741956
+Node: Overview of Filenames1742693
+Node: Namestrings as Filenames1743469
+Node: Pathnames as Filenames1744582
+Ref: fig19.11747366
+Node: Parsing Namestrings Into Pathnames1747930
+Node: Pathnames1748659
+Node: Pathname Components1748895
+Node: Interpreting Pathname Component Values1750674
+Ref: PathnameComponentCase1751752
+Ref: PathnameCaseFuns1752111
+Ref: SpecialComponentValues1753633
+Ref: WildComponents1754120
+Ref: UnspecificComponent1754990
+Ref: WildcardRestrictions1756858
+Ref: fig19.31760919
+Ref: ConstructingPathnames1764522
+Node: Merging Pathnames1765798
+Node: Logical Pathnames1767235
+Node: Syntax of Logical Pathname Namestrings1767475
+Node: Logical Pathname Components1771664
+Ref: LogicalPathCompUnspecific1771965
+Node: pathname (System Class)1772296
+Node: logical-pathname (System Class)1772707
+Node: pathname (Function)1773416
+Node: make-pathname1776059
+Node: pathnamep1780597
+Node: pathname-host; pathname-device; pathname-directory; pathname-name; path+1781453
+Ref: pathname-host1781848
+Node: load-logical-pathname-translations1785985
+Node: logical-pathname-translations1787838
+Node: logical-pathname (Function)1795275
+Node: *default-pathname-defaults*1796712
+Node: namestring; file-namestring; directory-namestring; host-namestring; eno+1797910
+Ref: namestring1798279
+Node: parse-namestring1801688
+Node: wild-pathname-p1806532
+Node: pathname-match-p1808793
+Node: translate-logical-pathname1810118
+Node: translate-pathname1812813
+Node: merge-pathnames1819329
+Node: Files1824027
+Node: File System Concepts1824346
+Ref: fig20.11824997
+Node: Coercion of Streams to Pathnames1825325
+Node: File Operations on Open and Closed Streams1826232
+Ref: fig20.21826784
+Ref: fig20.31827424
+Node: Truenames1827525
+Node: directory1829897
+Node: probe-file1831580
+Node: ensure-directories-exist1832981
+Node: truename1834631
+Node: file-author1837245
+Node: file-write-date1838358
+Node: rename-file1839693
+Node: delete-file1842276
+Node: file-error1844122
+Node: file-error-pathname1844869
+Node: Streams1845436
+Node: Stream Concepts1846910
+Node: Introduction to Streams1847166
+Ref: fig21.11847763
+Ref: InputStreamOps1848603
+Ref: OutputStreamOps1848926
+Ref: fig21.41849666
+Ref: InteractiveStreams1850644
+Ref: fig21.51852690
+Node: Stream Variables1853701
+Ref: StandardizedStreamVars1854344
+Node: Stream Arguments to Standardized Functions1855033
+Ref: OpenOrClosedStreamOps1855393
+Ref: fig21.81856389
+Node: Restrictions on Composite Streams1857627
+Node: stream1858129
+Node: broadcast-stream1858827
+Node: concatenated-stream1861612
+Node: echo-stream1862825
+Node: file-stream1863564
+Node: string-stream1864111
+Node: synonym-stream1864703
+Node: two-way-stream1865496
+Node: input-stream-p; output-stream-p1866055
+Ref: input-stream-p1866264
+Ref: output-stream-p1866264
+Node: interactive-stream-p1867134
+Node: open-stream-p1868246
+Node: stream-element-type1869131
+Node: streamp1870394
+Node: read-byte1871018
+Node: write-byte1872375
+Node: peek-char1873454
+Node: read-char1876226
+Node: read-char-no-hang1878001
+Node: terpri; fresh-line1880085
+Node: unread-char1881518
+Node: write-char1883510
+Node: read-line1884324
+Node: write-string; write-line1886272
+Ref: write-string1886448
+Ref: write-line1886448
+Node: read-sequence1887790
+Node: write-sequence1890096
+Node: file-length1891732
+Node: file-position1892714
+Node: file-string-length1896392
+Node: open1897162
+Node: stream-external-format1906989
+Node: with-open-file1907852
+Node: close1911074
+Node: with-open-stream1913224
+Node: listen1914434
+Node: clear-input1915502
+Node: finish-output; force-output; clear-output1917161
+Ref: clear-output1917398
+Node: y-or-n-p; yes-or-no-p1918849
+Node: make-synonym-stream1921474
+Node: synonym-stream-symbol1922536
+Node: broadcast-stream-streams1923048
+Node: make-broadcast-stream1923581
+Node: make-two-way-stream1924584
+Node: two-way-stream-input-stream; two-way-stream-output-stream1925651
+Ref: two-way-stream-input-stream1925974
+Ref: two-way-stream-output-stream1925974
+Node: echo-stream-input-stream; echo-stream-output-stream1926503
+Ref: echo-stream-input-stream1926811
+Ref: echo-stream-output-stream1926811
+Node: make-echo-stream1927316
+Node: concatenated-stream-streams1928359
+Node: make-concatenated-stream1929126
+Node: get-output-stream-string1930004
+Node: make-string-input-stream1931536
+Node: make-string-output-stream1932661
+Node: with-input-from-string1933741
+Node: with-output-to-string1936257
+Node: *debug-io*; *error-output*; *query-io*; *standard-input*; *standard-out+1938976
+Ref: *debug-io*1939346
+Ref: *error-output*1939346
+Ref: *query-io*1939346
+Ref: *standard-input*1939346
+Ref: *standard-output*1939346
+Ref: *trace-output*1939346
+Node: *terminal-io*1943592
+Node: stream-error1945132
+Node: stream-error-stream1945762
+Node: end-of-file1946500
+Node: Printer1946969
+Node: The Lisp Printer1947909
+Node: Overview of The Lisp Printer1948174
+Ref: StdPrinterControlVars1950043
+Ref: fig22.21950523
+Node: Printer Dispatching1951497
+Node: Default Print-Object Methods1952145
+Ref: PrintingIntegers1952570
+Ref: PrintingRatios1953214
+Ref: PrintingFloats1953879
+Ref: PrintingComplexes1955436
+Ref: PrintingCharacters1956114
+Ref: PrintingSymbols1956932
+Ref: ReadtableCasePrintEffect1960247
+Ref: ReadtableCasePrintExamples1961913
+Ref: PrintingStrings1964836
+Ref: PrintingListsAndConses1965326
+Ref: PrintingBitVectors1967552
+Ref: PrintingOtherVectors1967995
+Ref: PrintingOtherArrays1969390
+Ref: PrintingRandomStates1972079
+Ref: PrintingPathnames1972805
+Ref: PrintingStructures1973279
+Ref: PrintingOtherObjects1974111
+Node: Examples of Printer Behavior1974872
+Node: The Lisp Pretty Printer1976087
+Node: Pretty Printer Concepts1976385
+Ref: DynamicControlofOutput1977898
+Ref: fig22.31980156
+Ref: fig22.41980936
+Ref: fig22.51981630
+Ref: CompilingFormatStrings1981813
+Ref: PPrintDispatchTables1982307
+Node: Examples of using the Pretty Printer1984076
+Node: Notes about the Pretty Printer's Background1995232
+Node: Formatted Output1995753
+Ref: fig22.61998315
+Node: FORMAT Basic Output2000274
+Node: FORMAT Radix Control2002783
+Node: FORMAT Floating-Point Printers2006294
+Node: FORMAT Printer Operations2018619
+Node: FORMAT Pretty Printer Operations2021005
+Ref: TildeUnderscore2021389
+Ref: TildeLessThanLogicalBlock2021704
+Ref: TildeI2025111
+Node: FORMAT Layout Control2027046
+Ref: TildeLessThanJustification2029448
+Node: FORMAT Control-Flow Operations2032916
+Node: FORMAT Miscellaneous Operations2040653
+Node: FORMAT Miscellaneous Pseudo-Operations2042759
+Node: Additional Information about FORMAT Operations2047601
+Node: Examples of FORMAT2049804
+Node: Notes about FORMAT2053446
+Node: copy-pprint-dispatch2054099
+Node: formatter2054839
+Node: pprint-dispatch2055958
+Node: pprint-exit-if-list-exhausted2057456
+Node: pprint-fill; pprint-linear; pprint-tabular2059117
+Ref: pprint-fill2059367
+Node: pprint-indent2062594
+Node: pprint-logical-block2064494
+Node: pprint-newline2070058
+Node: pprint-pop2074529
+Node: pprint-tab2077806
+Node: print-object2079181
+Node: print-unreadable-object2084426
+Node: set-pprint-dispatch2086206
+Node: write; prin1; print; pprint; princ2088411
+Ref: write2088663
+Ref: fig22.72090565
+Node: write-to-string; prin1-to-string; princ-to-string2093381
+Ref: write-to-string2093657
+Node: *print-array*2096302
+Node: *print-base*; *print-radix*2097242
+Node: *print-case*2099424
+Node: *print-circle*2101688
+Node: *print-escape*2103220
+Node: *print-gensym*2104334
+Node: *print-level*; *print-length*2104947
+Ref: *print-length*2105143
+Node: *print-lines*2107739
+Node: *print-miser-width*2109073
+Node: *print-pprint-dispatch*2109588
+Node: *print-pretty*2110951
+Node: *print-readably*2112638
+Node: *print-right-margin*2116167
+Node: print-not-readable2117011
+Node: print-not-readable-object2117840
+Node: format2118434
+Node: Reader2120298
+Node: Reader Concepts2120908
+Node: Dynamic Control of the Lisp Reader2121169
+Node: Effect of Readtable Case on the Lisp Reader2121609
+Ref: ReadtableCaseReadExamples2122743
+Node: Argument Conventions of Some Reader Functions2123858
+Node: readtable2128178
+Node: copy-readtable2129038
+Node: make-dispatch-macro-character2130855
+Node: read; read-preserving-whitespace2132110
+Ref: read2132335
+Ref: read-preserving-whitespace2132335
+Node: read-delimited-list2137292
+Node: read-from-string2140958
+Node: readtable-case2143402
+Node: readtablep2144822
+Node: set-dispatch-macro-character; get-dispatch-macro-character2145481
+Ref: set-dispatch-macro-character2145786
+Node: set-macro-character; get-macro-character2148522
+Ref: set-macro-character2148801
+Node: set-syntax-from-char2151051
+Node: with-standard-io-syntax2153248
+Ref: fig23.12153951
+Node: *read-base*2155242
+Node: *read-default-float-format*2156493
+Node: *read-eval*2157956
+Node: *read-suppress*2158649
+Node: *readtable*2162279
+Node: reader-error2163298
+Node: System Construction2163842
+Node: System Construction Concepts2164324
+Node: Loading2164528
+Node: Features2165468
+Ref: FeatureExpressions2165968
+Ref: FeatureExpExamples2166909
+Ref: fig24.12167335
+Node: compile-file2168632
+Node: compile-file-pathname2173707
+Node: load2175876
+Node: with-compilation-unit2181319
+Node: *features*2183490
+Node: *compile-file-pathname*; *compile-file-truename*2189021
+Node: *load-pathname*; *load-truename*2190357
+Node: *compile-print*; *compile-verbose*2191629
+Node: *load-print*; *load-verbose*2192258
+Ref: *load-verbose*2192479
+Node: *modules*2192914
+Node: provide; require2193469
+Ref: provide2193611
+Ref: require2193611
+Node: Environment2196319
+Node: The External Environment2197158
+Node: Top level loop2197402
+Ref: fig25.12198106
+Node: Debugging Utilities2198228
+Ref: fig25.22198469
+Node: Environment Inquiry2198725
+Ref: fig25.32199117
+Node: Time2199423
+Ref: fig25.42200353
+Ref: DecodedTime2200621
+Ref: fig25.52201957
+Ref: UniversalTime2202108
+Ref: fig25.62202890
+Ref: InternalTime2203068
+Ref: fig25.72203369
+Ref: fig25.82203928
+Node: decode-universal-time2203993
+Node: encode-universal-time2205891
+Node: get-universal-time; get-decoded-time2207032
+Ref: get-universal-time2207252
+Ref: get-decoded-time2207252
+Node: sleep2209155
+Node: apropos; apropos-list2210216
+Node: describe2211761
+Node: describe-object2213623
+Node: trace; untrace2216450
+Ref: trace2216591
+Node: step2219219
+Node: time (Macro)2220547
+Node: internal-time-units-per-second2222408
+Node: get-internal-real-time2222990
+Node: get-internal-run-time2223833
+Node: disassemble2225156
+Node: documentation; setf documentation2226517
+Ref: documentation2226755
+Node: room2233148
+Node: ed2234262
+Node: inspect2235775
+Node: dribble2236659
+Node: - (Variable)2238570
+Node: +; ++; +++2239242
+Node: *; **; ***2240277
+Node: /; //; ///2241766
+Node: lisp-implementation-type; lisp-implementation-version2242965
+Node: short-site-name; long-site-name2244131
+Node: machine-instance2245096
+Node: machine-type2245872
+Node: machine-version2246500
+Node: software-type; software-version2247209
+Node: user-homedir-pathname2248223
+Node: Glossary2249566
+Node: Glossary Notation2249860
+Node: Non-alphabetic2252751
+Ref: glos-()2252875
+Node: A2253004
+Ref: glos-absolute2253092
+Ref: glos-actual adjustability2254452
+Ref: glos-association list2259894
+Node: B2261793
+Ref: glos-binary2262429
+Ref: glos-boolean2265477
+Ref: glos-bound2265872
+Node: C2269091
+Ref: glos-cell2271777
+Ref: glos-character2272006
+Ref: glos-close2275138
+Node: D2291872
+Ref: glos-decoded time2293432
+Ref: glos-denormalized2295427
+Node: E2301295
+Ref: glos-empty list2303475
+Ref: fig26.12309058
+Ref: glos-expressed adjustability2309600
+Ref: glos-extended function designator2312066
+Node: F2314580
+Ref: glos-function designator2322514
+Node: G2324973
+Ref: glos-generalized boolean2325179
+Node: H2328185
+Node: I2328907
+Ref: fig26.22329198
+Ref: glos-improper list2331825
+Ref: glos-indefinite extent2331969
+Ref: fig26.32336769
+Node: K2337093
+Node: L2338108
+Node: M2347630
+Ref: glos-modified lambda list2351251
+Node: N2352601
+Ref: glos-nil2354870
+Ref: glos-non-graphic2355871
+Node: O2358733
+Ref: glos-ordinary lambda list2361075
+Node: P2361727
+Ref: glos-parallel2363668
+Ref: glos-proper list2371107
+Node: Q2373081
+Node: R2373759
+Ref: glos-reader2375289
+Ref: glos-relative2377691
+Ref: fig26.42379626
+Node: S2380631
+Ref: glos-sequential2385093
+Ref: glos-subclass2399535
+Ref: glos-subtype2400293
+Ref: glos-supplied-p parameter2400872
+Node: T2402751
+Ref: glos-t2402819
+Node: U2408680
+Ref: glos-unbound2408754
+Node: V2412593
+Node: W2417055
+Node: Y2418586
+Node: Appendix2418760
+Node: Removed Language Features2418915
+Node: Requirements for removed and deprecated features2419257
+Node: Removed Types2420465
+Node: Removed Operators2420696
+Node: Removed Argument Conventions2421074
+Node: Removed Variables2421390
+Node: Removed Reader Syntax2421752
+Node: Packages No Longer Required2422006
+Node: Index2422377
+Node: Symbol Index2588683
+Node: List of Figures2698610
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
