@@ -126,7 +126,8 @@
                         ("subject" "Message left on server:.*" "mail.misc")
                         (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
                         (to "noreply@sourceforge.net" "mail.tnef")
-                        (any "voxy.com" "cyrus.voxy")
+                        (| (any "voxy.com" "cyrus.voxy")
+                           (any ".*asana.com" "cyrus.voxy"))
                         (|
                          ("subject" "\\[JIRA\\]" "cyrus.tracker-tool" t)
                          (from ".*pivotaltracker.com" "cyrus.tracker-tool"))
