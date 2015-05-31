@@ -50,6 +50,7 @@
     paredit
     projectile
     rainbow-delimiters
+    rvm
     slime
     smex
     virtualenvwrapper
