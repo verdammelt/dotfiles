@@ -252,6 +252,7 @@ symbol, not word, as I need this for programming the most."
           'executable-make-buffer-file-executable-if-script-p)
 
 (setq flycheck-completion-system 'ido)
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 ;; due to keyboard conflict and lack of checker.
 (add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
 
