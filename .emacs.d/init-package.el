@@ -111,7 +111,6 @@ requirements etc) for the given package."
 
 (defun mjs/perform-updates ()
   (interactive)
-  (load-library "epl")
   (package-refresh-contents)
   (let ((needing-updates (mapcar #'epl-upgrade-installed (mjs/find-upgrades))))
     (if (and needing-updates
