@@ -123,7 +123,13 @@ requirements etc) for the given package."
               (format "Delete any extra packages? %S" extra-packages)))
         (mapcar #'(lambda (p)
                     (if (y-or-n-p (format "Delete %S" p))
-                        (epl-package-delete (epl-find-installed-package p))))
+                        (package-delete (epl-package-description
+                                         (epl-find-installed-package p)))))
                 extra-packages))))
 
 (mjs/install-missing-packages)
+
+;; TODO: also remove duplicate package installs.
+;; (cdr (assq name package-alist)) => list of installed versions
+;; first one is newest.
+;; use package-delete on the others
