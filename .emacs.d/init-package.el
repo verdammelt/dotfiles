@@ -15,9 +15,7 @@
              '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-(require 'epl)
-
-(defvar mjs/*needed-packages*
+(defvar mjs/*needed-package-names*
   '(ac-cider
     ac-ispell
     auctex
@@ -32,7 +30,6 @@
     coffee-mode
     diminish
     elisp-slime-nav
-    epl
     expand-region
     fill-column-indicator
     flycheck
@@ -61,10 +58,107 @@
     yasnippet
     ))
 
-(defun mjs/missing-packages ()
-  "Return a list of needed packages which are not installed."
-  (cl-remove-if #'package-installed-p mjs/*needed-packages*))
 
+(defun mjs/find-installed-package (name)
+  "Returns the newest package description matching NAME from
+PACKAGE-ALIST or PACKAGE--BUILTINS."
+  (if (package-built-in-p name)
+      (package--from-builtin (assq name package--builtins))
+    (cadr (assq name package-alist))))
+
+(defun mjs/find-available-package (name)
+  (cadr (assq name package-archive-contents)))
+
+(defun mjs/needed-packages ()
+  (mapcar #'mjs/find-installed-package
+          mjs/*needed-package-names*))
+
+(defun mjs/missing-packages ()
+  (cl-remove-if #'package-installed-p
+                mjs/*needed-package-names*))
+
+;;;
+;;; Extra package detection and cleanup
+;;;
+(defun mjs/required-packages (package)
+  "Returns a list of packages required by the given package."
+  (cl-flet ((package-from-requirement
+             (req)
+             (mjs/find-installed-package (car req))))
+    (mapcar #'package-from-requirement (package-desc-reqs package))))
+
+(defun mjs/all-required-packages-for (package)
+  "Compute all the required packages (inluding requirements of
+requirements etc) for the given package."
+  (if (null package) nil
+    (let ((reqs (mjs/required-packages package)))
+      (cl-delete-duplicates
+       (append (list package) reqs
+               (cl-mapcan #'mjs/all-required-packages-for reqs))))))
+
+(defun mjs/extra-packages ()
+  "List all installed packages which are not in the
+mjs/*needed-package-names* list."
+  (let ((all-needed
+         (cl-delete-duplicates
+          (mapcar #'package-desc-name
+                  (cl-mapcan #'mjs/all-required-packages-for
+                             (mjs/needed-packages)))))
+        (installed (mapcar #'car package-alist)))
+    (cl-remove-if #'(lambda (p) (member p all-needed)) installed)))
+
+(defun mjs/remove-extra-packages ()
+  (let ((extra-packages (mjs/extra-packages)))
+    (if (and extra-packages
+             (y-or-n-p
+              (format "Delete any extra packages? %S" extra-packages)))
+        (mapcar #'(lambda (p)
+                    (if (y-or-n-p (format "Delete %S" p))
+                        (package-delete (mjs/find-installed-package p))))
+                extra-packages))))
+
+;;;
+;;; Upgrading
+;;;
+(defun mjs/find-upgrades ()
+  "Find all needed packages that have an available upgrade."
+  (let ((upgrades (list)))
+    (dolist (pkg (mjs/needed-packages) upgrades)
+      (cl-flet ((package-version (p) (when p (package-desc-version p))))
+        (let ((available-pkg
+               (mjs/find-available-package (package-desc-name pkg))))
+          (when (version-list-<
+                 (package-version pkg)
+                 (package-version available-pkg))
+            (push available-pkg upgrades)))))))
+
+(defun mjs/upgrade-packages ()
+  (let ((needing-updates (mjs/find-upgrades)))
+    (if (and needing-updates
+             (y-or-n-p
+              (format "Upgrade these packages? %S"
+                      (mapcar #'package-desc-name needing-updates))))
+        (dolist (pkg needing-updates (package-install pkg))))))
+
+;;;
+;;; Extra Version Cleanup
+;;;
+(defun mjs/remove-extra-versions ()
+  (cl-flet ((has-only-one-version (p) (= (length (cdr p)) 1))
+            (old-versions (p) (cl-copy-list (cddr p))))
+    (let ((extra-versions (cl-remove-if
+                           #'has-only-one-version
+                           package-alist)))
+      (if (and extra-versions
+               (y-or-n-p
+                (format "Delete old package versions? %S"
+                        (mapcar #'car extra-versions))))
+          (mapcar #'package-delete
+                  (cl-mapcan #'old-versions extra-versions))))))
+
+;;;
+;;; Installing Missing Packages
+;;;
 (defun mjs/install-missing-packages ()
   "Install any needed packages which are not installed."
   (let ((missing-packages (mjs/missing-packages)))
@@ -76,62 +170,18 @@
                 (message "Installing %s" p)
                 (package-install p)) missing-packages))))
 
-(defun mjs/package-from-requirement (req)
-  "Returns a package structure for the given requirement.
-NOTE: assumes that the package can be found amongst the installed packages."
-  (epl-find-installed-package (epl-requirement-name req)))
-
-(defun mjs/required-packages (package)
-  "Returns a list of packgaes required by the given package."
-  (mapcar #'mjs/package-from-requirement (epl-package-requirements package)))
-
-(defun mjs/all-required-packages-for (package)
-  "Compute all the required packages (inluding requirements of
-requirements etc) for the given package."
-  (cond ((null package) nil)
-        (t (let ((reqs (remove nil (mjs/required-packages package))))
-             (cl-delete-duplicates
-              (append (list package) reqs
-                      (cl-mapcan #'mjs/all-required-packages-for reqs)))))))
-
-(defun mjs/extra-packages ()
-  "List all installed packages which are not in the mjs/*needed-packages* list."
-  (let ((all-needed
-         (cl-delete-duplicates
-          (mapcar #'epl-package-name
-                  (cl-mapcan #'mjs/all-required-packages-for
-                             (remove nil (mapcar #'epl-find-installed-package mjs/*needed-packages*))))))
-        (installed (mapcar #'epl-package-name (epl-installed-packages))))
-    (cl-remove-if #'(lambda (p) (member p all-needed)) installed)))
-
-(defun mjs/find-upgrades ()
-  "Find all needed packages that have an available upgrade."
-  (let ((upgrades
-         (epl-find-upgrades
-          (remove nil (mapcar #'epl-find-installed-package mjs/*needed-packages*)))))
-    upgrades))
-
+;;;
+;;; Perform Updates/Cleanups
+;;;
 (defun mjs/perform-updates ()
   (interactive)
   (package-refresh-contents)
-  (let ((needing-updates (mapcar #'epl-upgrade-installed (mjs/find-upgrades))))
-    (if (and needing-updates
-             (y-or-n-p
-              (format "Upgrade these packages? %S" (mapcar #'epl-package-name needing-updates))))
-        (epl-upgrade needing-updates)))
-  (let ((extra-packages (mjs/extra-packages)))
-    (if (and extra-packages
-             (y-or-n-p
-              (format "Delete any extra packages? %S" extra-packages)))
-        (mapcar #'(lambda (p)
-                    (if (y-or-n-p (format "Delete %S" p))
-                        (package-delete (epl-package-description
-                                         (epl-find-installed-package p)))))
-                extra-packages))))
+
+  (message "Starting Updates")
+  (mjs/install-missing-packages)
+  (mjs/upgrade-packages)
+  (mjs/remove-extra-packages)
+  (mjs/remove-extra-versions)
+  (message "Updates completed"))
 
 (mjs/install-missing-packages)
-
-;; TODO: also remove duplicate package installs.
-;; (cdr (assq name package-alist)) => list of installed versions
-;; first one is newest.
-;; use package-delete on the others
