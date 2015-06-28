@@ -3,9 +3,12 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(setq slime-lisp-implementations
-      '(("sbcl" ("sbcl"))
-        ("cmucl" ("lisp"))))
+(setq-default slime-lisp-implementations
+              '((sbcl ("~/.cim/bin/sbcl"))
+                (clisp ("~/.cim/bin/clisp"))
+                (ccl ("~/.cim/bin/ccl"))
+                (ecl ("~/.cim/bin/ecl"))))
+
 (slime-setup '(slime-fancy))
 
 (after "slime"
