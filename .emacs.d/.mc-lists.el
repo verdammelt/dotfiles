@@ -28,4 +28,5 @@
         coffee-dedent-line-backspace
         dabbrev-completion
         magit-status
+        paredit-doublequote
         ))
