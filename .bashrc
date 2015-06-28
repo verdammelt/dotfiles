@@ -87,22 +87,23 @@ export HISTSIZE=5000
 # top 5 one-word commands (and total number)
 function topcmd() {
     history | \
-	awk "{a[\$2]++}END{print NR, \"((TOTAL))\"; for(i in a) print a[i], i}" | \
-	sort -rn | \
-	head -6
+        awk "{a[\$2]++}END{print NR, \"((TOTAL))\"; for(i in a) print a[i], i}" | \
+        sort -rn | \
+        head -6
 }
 # top 5 two-word commands
 function top2cmd(){
     history | \
-	awk "/$1/{a[\$2 \" \" \$3]++}END{for(i in a) print a[i], i}" | \
-	sort -rn | \
-	head -5
+        awk "/$1/{a[\$2 \" \" \$3]++}END{for(i in a) print a[i], i}" | \
+        sort -rn | \
+        head -5
 }
 
 function batt() {
     pmset -g batt | \
-	awk '/InternalBattery/{print $3 $2 " " $4 }' | \
-	sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
+        awk '/InternalBattery/{print $3 $2 " " $4 }' | \
+        sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
 }
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+CIM_HOME=$HOME/.cim; [ -s "$CIM_HOME/init.sh" ] && . "$CIM_HOME/init.sh"
