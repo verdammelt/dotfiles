@@ -151,6 +151,7 @@
                            (any ".*linkedin" "list.social-media")
                            (any ".*@exercism.io" "list.social-media")
                            (any ".*@github.com" "list.social-media")
+                           (any ".*@travis-ci.com" "list.social-media")
                            (any ".*@stackexchange.com" "list.social-media")
                            (any ".*@postcrossing.com" "list.social-media")
                            (any ".*@meetup.com" "list.social-media"))
