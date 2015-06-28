@@ -13,7 +13,11 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'asm-mode-abbrev-table '())
+
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -29,9 +33,13 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -53,7 +61,10 @@
 
 (define-abbrev-table 'clojure-mode-abbrev-table '())
 
-(define-abbrev-table 'coffee-mode-abbrev-table '())
+(define-abbrev-table 'coffee-mode-abbrev-table
+  '(
+    ("createive" "creative" nil 0)
+   ))
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
@@ -99,7 +110,10 @@
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
-(define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
+(define-abbrev-table 'emacs-lisp-mode-abbrev-table
+  '(
+    ("foop" "coop" nil 0)
+   ))
 
 (define-abbrev-table 'epa-info-mode-abbrev-table '())
 
@@ -109,7 +123,15 @@
 
 (define-abbrev-table 'erc-list-menu-mode-abbrev-table '())
 
-(define-abbrev-table 'erc-mode-abbrev-table '())
+(define-abbrev-table 'erc-mode-abbrev-table
+  '(
+    ("conecting" "connecting" nil 0)
+    ("defintly" "defiantly" nil 0)
+    ("malfunctino" "malfunction" nil 0)
+    ("repetoire" "repertoire" nil 0)
+    ("transfering" "transferring" nil 0)
+    ("woudl" "would" nil 0)
+   ))
 
 (define-abbrev-table 'ert-results-mode-abbrev-table '())
 
@@ -133,13 +155,27 @@
 
 (define-abbrev-table 'gfm-mode-abbrev-table '())
 
-(define-abbrev-table 'gist-list-mode-abbrev-table '())
-
-(define-abbrev-table 'git-commit-mode-abbrev-table '())
+(define-abbrev-table 'git-commit-mode-abbrev-table
+  '(
+    ("accessiblity" "accessibility" nil 0)
+    ("arguemnt" "argument" nil 0)
+    ("configuraable" "configurable" nil 0)
+    ("consitently" "consistently" nil 0)
+    ("diferent" "deferent" nil 0)
+    ("formm" "form" nil 0)
+    ("frist" "first" nil 0)
+    ("impoving" "Improving" nil 0)
+    ("multimethod" "multimethod" nil 0)
+    ("pacakge" "package" nil 0)
+    ("paramater" "parameter" nil 0)
+   ))
 
 (define-abbrev-table 'git-rebase-mode-abbrev-table '())
 
-(define-abbrev-table 'global-abbrev-table '())
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("tia" "Thanks in advance" nil 2)
+   ))
 
 (define-abbrev-table 'gnus-article-edit-mode-abbrev-table '())
 
@@ -161,13 +197,14 @@
 
 (define-abbrev-table 'gud-mode-abbrev-table '())
 
-(define-abbrev-table 'handlebars-mode-abbrev-table '())
-
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
-(define-abbrev-table 'html-mode-abbrev-table '())
+(define-abbrev-table 'html-mode-abbrev-table
+  '(
+    ("javascript" "javascript" nil 1)
+   ))
 
 (define-abbrev-table 'ibuffer-mode-abbrev-table '())
 
@@ -183,11 +220,11 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-mode-abbrev-table '())
-
-(define-abbrev-table 'js2-mode-abbrev-table '())
 
 (define-abbrev-table 'latex-mode-abbrev-table '())
 
@@ -219,7 +256,9 @@
 
 (define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
 
-(define-abbrev-table 'mail-abbrevs '())
+(define-abbrev-table 'mail-abbrevs
+  '(
+   ))
 
 (define-abbrev-table 'makefile-automake-mode-abbrev-table '())
 
@@ -233,12 +272,94 @@
 
 (define-abbrev-table 'makefile-mode-abbrev-table '())
 
-(define-abbrev-table 'markdown-mode-abbrev-table '())
+(define-abbrev-table 'markdown-mode-abbrev-table
+  '(
+    ("amature" "maturer" nil 0)
+    ("backend" "back end" nil 0)
+    ("collegues" "colleagues" nil 0)
+    ("differnt" "different" nil 0)
+    ("ensentially" "essentially" nil 0)
+    ("existant" "existent" nil 0)
+    ("geneology" "genealogy" nil 0)
+    ("implmentation" "implementation" nil 0)
+    ("nad" "and" nil 0)
+    ("negligble" "negligible" nil 0)
+    ("retreived" "retrieved" nil 0)
+    ("signup" "sign up" nil 0)
+    ("suguar" "sugar" nil 0)
+    ("ulitimately" "ultimately" nil 0)
+    ("whisky" "whiskey" nil 0)
+   ))
 
 (define-abbrev-table 'message-mode-abbrev-table
   '(
-    ("definately" "definitely" nil 0)
-    ("javascript" "JavaScript" nil 0)
+    ("annilhator" "Annihilator" nil 0)
+    ("annivsery" "anniversary" nil 0)
+    ("announcment" "announcement" nil 0)
+    ("appendanges" "appendages" nil 0)
+    ("apprpopriate" "appropriate" nil 0)
+    ("backend" "back end" nil 10)
+    ("becuase" "because" nil 5)
+    ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
+    ("caio" "Ciao" nil 2)
+    ("cancelation" "cancellation" nil 0)
+    ("chagnes" "changes" nil 2)
+    ("commited" "committed" nil 0)
+    ("communciation" "communication" nil 0)
+    ("comparitors" "comparators" nil 0)
+    ("condolencses" "condolences" nil 0)
+    ("coudl" "could" nil 5)
+    ("december" "December" nil 0)
+    ("decidly" "decidly" nil 0)
+    ("deductable" "deductible" nil 0)
+    ("definately" "definitely" nil 3)
+    ("depencency" "dependency" nil 0)
+    ("depenedencies" "dependencies" nil 0)
+    ("descisions" "decisions" nil 0)
+    ("dicussion" "discussion" nil 1)
+    ("environemnt" "environment" nil 0)
+    ("everytime" "every time" nil 0)
+    ("excercise" "exercises" nil 0)
+    ("foward" "forward" nil 0)
+    ("greenlight" "Greenlight" nil 12)
+    ("havent" "haven't" nil 0)
+    ("hte" "the" nil 0)
+    ("idiosyncracy" "idiosyncrasy" nil 0)
+    ("immidiately" "immediately" nil 0)
+    ("implemntation" "Implementation" nil 0)
+    ("inconvinience" "inconvenience" nil 0)
+    ("intenstines" "intestines" nil 0)
+    ("interfereing" "interfering" nil 0)
+    ("internmittently" "intermittently" nil 0)
+    ("javascript" "JavaScript" nil 3)
+    ("judgement" "judgment" nil 0)
+    ("limitied" "limited" nil 0)
+    ("ludicrious" "ludicrous" nil 0)
+    ("millenium" "Millennium" nil 0)
+    ("mobild" "mobile" nil 0)
+    ("mothership" "Mother ship" nil 5)
+    ("ok" "OK" nil 15)
+    ("perscription" "prescription" nil 0)
+    ("precidence" "precedence" nil 0)
+    ("psuedo" "pseudo" nil 0)
+    ("receieved" "received" nil 0)
+    ("reconnaisance" "reconnaissance" nil 0)
+    ("rememberance" "remembrance" nil 0)
+    ("reproducable" "reproducible" nil 2)
+    ("rumblings" "crumblings" nil 0)
+    ("separetely" "separately" nil 0)
+    ("sharebuilder" "Share builder" nil 0)
+    ("stong" "strong" nil 0)
+    ("subscriptios" "Subscriptions" nil 0)
+    ("succesful" "successful" nil 0)
+    ("succesfully" "successfully" nil 0)
+    ("timesheet" "time sheet" nil 0)
+    ("tommorrow" "Tomorrow" nil 0)
+    ("unfortunatly" "Unfortunately" nil 0)
+    ("unfrotunately" "unfortunately" nil 0)
+    ("username" "user name" nil 0)
+    ("wenesday" "Wednesday" nil 0)
+    ("yesteday" "yesterday" nil 0)
    ))
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
@@ -251,7 +372,9 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -264,11 +387,11 @@
     ("actionable" "actionable" nil 1)
     ("aka" "AKA" nil 0)
     ("availabilty" "availability" nil 0)
-    ("backend" "back end" nil 3)
+    ("backend" "back end" nil 6)
     ("changig" "changing" nil 0)
     ("competancy" "competency" nil 0)
     ("conf" "con" nil 0)
-    ("dan" "Dan" nil 3)
+    ("dan" "Dan" nil 4)
     ("dropbox" "drop box" nil 0)
     ("everytime" "every time" nil 0)
     ("filetags" "FILE TAGS" nil 0)
@@ -291,7 +414,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -301,17 +426,9 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'projectile-rails-compilation-mode-abbrev-table '())
-
-(define-abbrev-table 'projectile-rails-generate-mode-abbrev-table '())
-
-(define-abbrev-table 'projectile-rails-server-mode-abbrev-table '())
-
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'rake-compilation-mode-abbrev-table '())
 
@@ -363,6 +480,14 @@
 
 (define-abbrev-table 'sql-mode-abbrev-table '())
 
+(define-abbrev-table 'sx-compose-mode-abbrev-table '())
+
+(define-abbrev-table 'sx-inbox-mode-abbrev-table '())
+
+(define-abbrev-table 'sx-question-list-mode-abbrev-table '())
+
+(define-abbrev-table 'sx-question-mode-abbrev-table '())
+
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'tar-mode-abbrev-table '())
@@ -375,7 +500,41 @@
 
 (define-abbrev-table 'texinfo-mode-abbrev-table '())
 
-(define-abbrev-table 'text-mode-abbrev-table '())
+(define-abbrev-table 'text-mode-abbrev-table
+  '(
+    ("accesibility" "accessibility" nil 0)
+    ("availablility" "availability" nil 0)
+    ("cancelled" "canceled" nil 0)
+    ("certifiate" "Certificate" nil 0)
+    ("convinience" "convenience" nil 0)
+    ("convinient" "convenient" nil 4)
+    ("coudld" "could" nil 0)
+    ("curiousity" "curiosity" nil 0)
+    ("decsion" "decision" nil 0)
+    ("definately" "definitely" nil 11)
+    ("dyanmic" "dynamic" nil 0)
+    ("editted" "edited" nil 0)
+    ("excpetion" "exception" nil 0)
+    ("existance" "existence" nil 0)
+    ("filepath" "file path" nil 0)
+    ("filepicker" "FilePicker" nil 3)
+    ("hardcoded" "hard coded" nil 1)
+    ("independant" "independent" nil 0)
+    ("jp" "PRTL" nil 39)
+    ("langauge" "language" nil 0)
+    ("marijhuana" "Marijuana" nil 0)
+    ("permisions" "permissions" nil 0)
+    ("reciept" "receipt" nil 0)
+    ("retrospecitive" "retrospective" nil 0)
+    ("separete" "separate" nil 0)
+    ("signup" "sign-up" nil 5)
+    ("standup" "stand up" nil 11)
+    ("themed" "themed" nil 0)
+    ("tia" "Thanks in advance" nil 95)
+    ("tomororw" "tomorrow" nil 0)
+   ))
+
+(define-abbrev-table 'twittering-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'url-cookie-mode-abbrev-table '())
 
@@ -388,10 +547,6 @@
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
-
-(define-abbrev-table 'vc-hg-log-view-mode-abbrev-table '())
-
-(define-abbrev-table 'vc-mtn-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
