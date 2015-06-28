@@ -39,7 +39,7 @@
         org-tag-alist '(("@HOME" . ?h)
                         ("@CALL" . ?c) ("@EMAIL" . ?e) ("@ERRAND" . ?r)
                         ("@MAC" . ?m) ("@WORKMAC" . ?a) ("@WEB" . ?b)
-                        ("@WORK" . ?k) ("2U" . ?2)
+                        ("@WORK" . ?k) ("VOXY" . ?v)
                         ("@WENDY" . ?w))
 
         org-goto-interface 'outline-path-completion
