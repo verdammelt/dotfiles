@@ -73,8 +73,6 @@
                 (message "Installing %s" p)
                 (package-install p)) missing-packages))))
 
-(mjs/install-missing-packages)
-
 (defun mjs/package-from-requirement (req)
   "Returns a package structure for the given requirement.
 NOTE: assumes that the package can be found amongst the installed packages."
@@ -112,7 +110,8 @@ requirements etc) for the given package."
 
 (defun mjs/perform-updates ()
   (interactive)
-  (epl-refresh)
+  (load-library "epl")
+  (package-refresh-contents)
   (let ((needing-updates (mapcar #'epl-upgrade-installed (mjs/find-upgrades))))
     (if (and needing-updates
              (y-or-n-p
@@ -126,3 +125,5 @@ requirements etc) for the given package."
                     (if (y-or-n-p (format "Delete %S" p))
                         (epl-package-delete (epl-find-installed-package p))))
                 extra-packages))))
+
+(mjs/install-missing-packages)
