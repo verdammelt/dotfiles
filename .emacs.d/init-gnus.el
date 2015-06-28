@@ -125,6 +125,7 @@
    nnmail-split-fancy '(|
                         ("subject" "Message left on server:.*" "mail.misc")
                         (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
+                        (to "clojure-dev@googlegroups.com" "list.clojure-dev")
                         (to "noreply@sourceforge.net" "mail.tnef")
                         (| (any "voxy.com" "cyrus.voxy")
                            (any ".*asana.com" "cyrus.voxy"))
