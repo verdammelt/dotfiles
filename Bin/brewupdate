@@ -2,7 +2,6 @@
 
 brew update
 brew upgrade --all
-brew upgrade brew-cask
 brew cleanup
 brew cask cleanup
 brew prune
