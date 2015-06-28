@@ -156,7 +156,6 @@
                          'native
                        mjs/default-projectile-indexing-method)))
       (setq projectile-indexing-method new-value)))
-  (add-hook 'projectile-mode-hook 'projectile-rails-on)
   (add-hook 'projectile-switch-project-hook 'mjs/setup-gtd-project-caching)
   (add-hook 'projectile-switch-project-hook 'rvm-activate-corresponding-ruby)
 
