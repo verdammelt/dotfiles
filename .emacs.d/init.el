@@ -14,9 +14,6 @@
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message "damned")
 
-;; emacs 24.4 now comes with the macro I used to use (but with a longer name)
-(defalias 'after 'with-eval-after-load)
-
 ;;;
 ;;; Customize
 ;;;

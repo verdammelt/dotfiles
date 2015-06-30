@@ -12,7 +12,7 @@
 ;;;
 ;;; Select methods
 ;;;
-(after 'gnus
+(with-eval-after-load 'gnus
   (require 'bbdb)
 
   (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
@@ -168,7 +168,7 @@
 ;;;
 ;;; Scoring
 ;;;
-  (after 'gnus-score
+  (with-eval-after-load 'gnus-score
     (add-hook 'message-sent-hook 'gnus-score-followup-article)
     (add-hook 'message-sent-hook 'gnus-score-followup-thread)
     (setq
@@ -273,7 +273,7 @@
 
 ;; Improve colors used in shr. These settings are to make sure colors
 ;; are distinct enough to be visible.
-(after 'shr
+(with-eval-after-load 'shr
   (setq shr-color-visible-distance-min 10
         shr-color-visible-luminance-min 60))
 

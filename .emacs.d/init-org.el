@@ -9,7 +9,7 @@
                     (format "%s.org" f))))
     (expand-file-name filename org-directory)))
 
-(after 'org
+(with-eval-after-load 'org
   (require 'org-checklist)
   (setq org-id-locations-file
         (expand-file-name ".org-id-locations" user-emacs-directory))
@@ -105,7 +105,7 @@
   (set-face-attribute 'org-done nil :strike-through t)
   (set-face-attribute 'org-headline-done nil :strike-through t)
 
-  (after 'org-agenda
+  (with-eval-after-load 'org-agenda
     (setq
      org-agenda-tags-todo-honor-ignore-options t
      org-agenda-todo-ignore-scheduled 'future
@@ -184,7 +184,7 @@
     ))
 
 ;; experimental stuff
-(after 'org
+(with-eval-after-load 'org
   (setq mjs/default-task-id "963F688C-0EAD-4217-B84E-DDA7D94C0453"
         mjs/keep-clock-running nil)
   (defun mjs/punch-in ()

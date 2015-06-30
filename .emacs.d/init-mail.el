@@ -9,7 +9,7 @@
 (setq mail-user-agent 'gnus-user-agent)
 
 ;; getting bbdb in my message setup
-(after 'message
+(with-eval-after-load 'message
   (autoload 'sm-add-random-header "silly-mail" nil t)
 
   ;; extra stuff for message buffers - spelling etc.
@@ -23,15 +23,15 @@
 
   (setq message-sendmail-envelope-from 'header)
 
-  (after 'supercite
+  (with-eval-after-load 'supercite
     (setq sc-preferred-header-style 1)))
 
-(after 'mm-decode
+(with-eval-after-load 'mm-decode
   (setq mm-default-directory (expand-file-name "~/Downloads"))
   (setq mm-verify-option 'always)
   (add-to-list 'mm-file-name-rewrite-functions 'mm-file-name-replace-whitespace))
 
-(after 'silly-mail
+(with-eval-after-load 'silly-mail
   (setq sm-mail-header-table
         '(sm-add-emacs-name
           sm-add-emacs-taunt
@@ -44,7 +44,7 @@
           (sm-add-uboat-death-message uboat-death-message "uboat")
           sm-add-zippy-quote)))
 
-(after 'sendmail
+(with-eval-after-load 'sendmail
   (setq send-mail-function 'sendmail-send-it)
   (add-hook 'mail-citation-hook 'sc-cite-original)
   (setq mail-specify-envelope-from t

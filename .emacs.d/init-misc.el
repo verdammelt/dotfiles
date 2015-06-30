@@ -9,14 +9,14 @@
 ;; Save my place in files
 (require 'saveplace)
 (setq-default save-place t)
-(after 'saveplace
+(with-eval-after-load 'saveplace
   (setq save-place-file (locate-user-emacs-file ".places")))
 
 ;; Save minibuffer history
 (setq savehist-file (locate-user-emacs-file ".history"))
 
 ;; Backup files
-(after 'files
+(with-eval-after-load 'files
   (setq version-control t
         delete-old-versions t
         backup-directory-alist
@@ -25,7 +25,7 @@
         trash-directory (expand-file-name "~/.Trash")))
 
 ;; time display the way i like it
-(after 'time
+(with-eval-after-load 'time
   (setq display-time-24hr-format t
         display-time-day-and-date t
         display-time-use-mail-icon t
@@ -34,13 +34,13 @@
 
 (global-set-key (kbd "s-p") 'ps-print-buffer)
 (global-set-key (kbd "s-P") 'ps-print-region)
-(after 'ps-print
+(with-eval-after-load 'ps-print
   (setq
    ps-lpr-command (expand-file-name "~/bin/psprint")
    ps-spool-duplex t))
 
 ;; calendar
-(after 'calendar
+(with-eval-after-load 'calendar
   (setq
    calendar-latitude +40.72541
    calendar-longitude -73.70928
@@ -56,23 +56,23 @@
 ;; Editing text
 (setq fill-column 78)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
-(after 'fill-column-indicator (setq fci-rule-color "red"))
+(with-eval-after-load 'fill-column-indicator (setq fci-rule-color "red"))
 
-(after 'battery
+(with-eval-after-load 'battery
   (setq battery-mode-line-format "[%b%p%% %t] "))
 
 ;; editing programs
-(after 'simple
+(with-eval-after-load 'simple
   (add-hook 'prog-mode-hook 'linum-mode)
   (add-hook 'prog-mode-hook 'turn-on-fci-mode))
 
-(after 'python
+(with-eval-after-load 'python
   (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
 
 ;; auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
-(after 'auto-complete
+(with-eval-after-load 'auto-complete
   (diminish 'auto-complete-mode)
   (ac-ispell-setup)
   (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
@@ -86,43 +86,43 @@
 
 ;; abbrevs
 (setq-default abbrev-mode t)
-(after 'abbrev (diminish 'abbrev-mode))
+(with-eval-after-load 'abbrev (diminish 'abbrev-mode))
 
 ;; flyspell
 (add-hook 'text-mode-hook 'flyspell-mode)
-(after 'flyspell
+(with-eval-after-load 'flyspell
   (diminish 'flyspell-mode)
   (setq flyspell-use-meta-tab nil)
   (setq flyspell-abbrev-p t))
 
 ;; yasnippet
-(after 'yasnippet
+(with-eval-after-load 'yasnippet
   (diminish 'yas-minor-mode)
   (setq yas-prompt-functions
         '(yas-ido-prompt yas-completing-prompt)))
 
 (global-set-key (kbd "<f7>") 'magit-status)
 (autoload 'magit-status-internal "magit")
-(after 'magit
+(with-eval-after-load 'magit
   (diminish 'magit-auto-revert-mode)
   (setq magit-default-tracking-name-function
         'magit-default-tracking-name-branch-only)
   (fullframe magit-status magit-mode-quit-window))
 
-(after 'coffee-mode
+(with-eval-after-load 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
   (setq coffee-tab-width 4))
 
-(after 'simple
+(with-eval-after-load 'simple
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (setq-default indent-tabs-mode nil)
   (setq whitespace-style '(face indentation empty trailing)
         whitespace-action '(auto-cleanup warn-if-read-only)))
-(after 'whitespace
+(with-eval-after-load 'whitespace
   (diminish 'whitespace-mode))
 
 ;; markdown-mode
-(after 'markdown-mode
+(with-eval-after-load 'markdown-mode
   (setq markdown-command "markdown | smartypants"))
 
 (defun mjs/setup-text-mode ()
@@ -130,13 +130,13 @@
 (add-hook 'text-mode-hook 'mjs/setup-text-mode)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
-(after 'ns-win
+(with-eval-after-load 'ns-win
   (setq ns-use-srgb-colorspace t
         mac-command-modifier 'meta
         mac-option-modifier 'super
         mac-function-modifier 'hyper))
 
-(after 'smex
+(with-eval-after-load 'smex
   (setq smex-save-file (locate-user-emacs-file ".smex-items")))
 
 (setq projectile-known-projects-file
@@ -146,7 +146,7 @@
 (global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "s-f") 'projectile-find-file)
 (global-set-key (kbd "s-s") 'projectile-switch-project)
-(after 'projectile
+(with-eval-after-load 'projectile
   (setq projectile-mode-line
         '(:eval (propertize (format " :%s:" (projectile-project-name))
                             'face 'bold)))
@@ -166,7 +166,7 @@
 (add-hook 'before-save-hook 'time-stamp)
 
 ;; Misc
-(after 'gnutls
+(with-eval-after-load 'gnutls
   (setq gnutls-min-prime-bits 1024))
 (put 'narrow-to-region 'disabled nil)
 
@@ -209,7 +209,7 @@ With argument, do this that many times.")
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
 ;; wrap-region
-(after 'wrap-region
+(with-eval-after-load 'wrap-region
   (diminish 'wrap-region-mode)
   (wrap-region-add-wrapper "+" "+" nil 'org-mode)
   (wrap-region-add-wrapper "_" "_" nil 'markdown-mode)
@@ -225,10 +225,10 @@ With argument, do this that many times.")
   (start-process (concat "open " url) nil "open" "-g" url))
 (setq browse-url-browser-function 'mjs/browse-url-default-macosx-browser-background)
 
-(after 'ediff
+(with-eval-after-load 'ediff
   (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
-(after 'shell
+(with-eval-after-load 'shell
   (add-to-list 'explicit-bash-args "--login"))
 
 ;; search for symbol at point (by Jorgen Schäfer)
