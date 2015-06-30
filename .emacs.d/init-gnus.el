@@ -23,10 +23,7 @@
 
   (setq
    gnus-treat-from-gravatar 'head
-   gnus-treat-from-picon 'head
    gnus-treat-mail-gravatar 'head
-   gnus-treat-mail-picon 'head
-   gnus-treat-newsgroups-picon 'head
    gnus-treat-unsplit-urls t
    gnus-treat-strip-multiple-blank-lines t
    gnus-treat-x-pgp-sig t
