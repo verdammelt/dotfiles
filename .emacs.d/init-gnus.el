@@ -22,13 +22,13 @@
    gnus-secondary-select-methods '((nnfolder ""))) ; where to find my mails
 
   (setq
-   gnus-treat-display-x-face (quote head)
+   gnus-treat-display-x-face 'head
    gnus-treat-display-face 'head
-   gnus-treat-from-gravatar (quote head)
-   gnus-treat-from-picon (quote head)
-   gnus-treat-mail-gravatar (quote head)
-   gnus-treat-mail-picon (quote head)
-   gnus-treat-newsgroups-picon (quote head)
+   gnus-treat-from-gravatar 'head
+   gnus-treat-from-picon 'head
+   gnus-treat-mail-gravatar 'head
+   gnus-treat-mail-picon 'head
+   gnus-treat-newsgroups-picon 'head
    gnus-treat-display-smileys t
    gnus-treat-unsplit-urls t
    gnus-treat-strip-multiple-blank-lines t
