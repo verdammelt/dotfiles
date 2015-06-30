@@ -20,7 +20,7 @@
   (setq version-control t
         delete-old-versions t
         backup-directory-alist
-        (acons "." (locate-user-emacs-file ".backups") nil)
+        (cl-acons "." (locate-user-emacs-file ".backups") nil)
         delete-by-moving-to-trash t
         trash-directory (expand-file-name "~/.Trash")))
 

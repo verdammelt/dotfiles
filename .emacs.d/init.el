@@ -5,7 +5,7 @@
 ;;;
 ;;; First Things First
 ;;;
-(require 'cl)
+(require 'cl-lib)
 
 ;; make sure the display is clean to start with
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
