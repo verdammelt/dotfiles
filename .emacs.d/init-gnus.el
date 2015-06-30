@@ -32,7 +32,6 @@
    gnus-treat-display-smileys t
    gnus-treat-unsplit-urls t
    gnus-treat-strip-multiple-blank-lines t
-   gnus-treat-emphasis t
    gnus-treat-x-pgp-sig t
    )
 ;;
