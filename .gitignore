@@ -7,11 +7,13 @@
 .\#*
 .aspell*
 .authinfo
+.aws
 .bash_history
 .bbdb
 .bogofilter
 .bundler
 .cache
+.cim
 .cups
 .cvspass
 .dropbox
