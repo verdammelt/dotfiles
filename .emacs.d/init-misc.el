@@ -169,6 +169,7 @@
 (with-eval-after-load 'gnutls
   (setq gnutls-min-prime-bits 1024))
 (put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
