@@ -171,8 +171,7 @@ The choice of available headers is taken from sm-mail-header-table."
                            (goto-char (point-max))
                            (delete-char -1)))
                     (= (count-lines (point-min) (point-max)) 1)))))
-    (save-excursion
-      (set-buffer buf)
+    (with-current-buffer buf
       (insert contents)
       (cond
        ((funcall do-fill (- single-width header-length)))
@@ -186,6 +185,10 @@ The choice of available headers is taken from sm-mail-header-table."
       (kill-buffer buf)))
   (sm-put-header header contents))
 
+(defsubst sm-put-header-contents (header items &optional separator)
+  (sm-put-header header
+    (mapconcat 'identity items (or separator " "))))
+
 (defsubst sm-put-random-sequence-items (header sequence &optional range)
   (sm-put-header-contents header
     (apply 'sm-random-sequence-items sequence range)))
@@ -195,9 +198,6 @@ The choice of available headers is taken from sm-mail-header-table."
     items
     (concat "\n" (make-string sm-fill-indent-width ?\040))))
 
-(defsubst sm-put-header-contents (header items &optional separator)
-  (sm-put-header header
-    (mapconcat 'identity items (or separator " "))))
 
 (defun sm-put-random-sequence-items-to-eol (header sequence &optional sep)
   (or sep (setq sep " "))
@@ -208,14 +208,14 @@ The choice of available headers is taken from sm-mail-header-table."
         items tem new-len)
     (while continuep
       (setq tem (sm-sequence-item sequence (random seqlen)))
-      (setq newlen (+ len (length sep) (length tem)))
-      (cond ((and (> newlen width)
+      (setq new-len (+ len (length sep) (length tem)))
+      (cond ((and (> new-len width)
                   (consp items))
              (setq continuep nil))
             ((memq tem items))
             (t
              (setq items (cons tem items))
-             (setq len newlen))))
+             (setq len new-len))))
     (sm-put-header header (mapconcat 'identity items sep))))
 
 ;; Add the specified header to the current mail message, with the given
@@ -407,8 +407,6 @@ The choice of available headers is taken from sm-mail-header-table."
   (interactive)
   (sm-put-header sm-emacs-taunt-header
     (sm-random-sequence-item sm-emacs-taunt-table)))
-
-(setq bizarre-gratuitous-variable '(miscellaneous gratuitous list))
 
 
 ;; Add an insulting flame into your mail headers.
