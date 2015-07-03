@@ -63,9 +63,7 @@
 ;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
 (load-theme 'tango-dark)
 (set-face-attribute 'highlight nil
-                    :background (face-background 'mode-line))
-(set-face-attribute 'hl-line nil
-                    :background "thistle4")
+                    :background "gray30")
 (set-face-attribute 'cursor nil
                     :background "red")
 
