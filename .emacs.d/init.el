@@ -64,6 +64,8 @@
 (load-theme 'tango-dark)
 (set-face-attribute 'highlight nil
                     :background (face-background 'mode-line))
+(set-face-attribute 'hl-line nil
+                    :background "thistle4")
 (set-face-attribute 'cursor nil
                     :background "red")
 

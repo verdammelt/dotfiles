@@ -35,8 +35,6 @@
     flycheck
     flx-ido
     fullframe
-    git-commit-mode
-    git-rebase-mode
     ido-hacks
     ido-sort-mtime
     ido-ubiquitous

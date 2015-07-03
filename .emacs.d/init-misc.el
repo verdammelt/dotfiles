@@ -104,9 +104,6 @@
 (global-set-key (kbd "<f7>") 'magit-status)
 (autoload 'magit-status-internal "magit")
 (with-eval-after-load 'magit
-  (diminish 'magit-auto-revert-mode)
-  (setq magit-default-tracking-name-function
-        'magit-default-tracking-name-branch-only)
   (fullframe magit-status magit-mode-quit-window))
 
 (with-eval-after-load 'coffee-mode
