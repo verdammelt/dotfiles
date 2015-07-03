@@ -40,6 +40,8 @@
   (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 
+  (put 'define-test 'lisp-indent-function 1)
+
   (with-eval-after-load 'ielm
     (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
     (add-hook 'ielm-mode-hook 'turn-on-elisp-slime-nav-mode)))
