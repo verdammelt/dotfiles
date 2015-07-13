@@ -136,7 +136,7 @@ mjs/*needed-package-names* list."
              (y-or-n-p
               (format "Upgrade these packages? %S"
                       (mapcar #'package-desc-name needing-updates))))
-        (dolist (pkg needing-updates (package-install pkg))))))
+        (dolist (pkg needing-updates) (package-install pkg)))))
 
 ;;;
 ;;; Extra Version Cleanup
