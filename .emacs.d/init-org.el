@@ -39,7 +39,7 @@
         org-tag-alist '(("@HOME" . ?h)
                         ("@CALL" . ?c) ("@EMAIL" . ?e) ("@ERRAND" . ?r)
                         ("@MAC" . ?m) ("@WORKMAC" . ?a) ("@WEB" . ?b)
-                        ("@WORK" . ?k) ("VOXY" . ?v)
+                        ("@WORK" . ?k) ("@CLIENT" . ?l)
                         ("@WENDY" . ?w))
 
         org-goto-interface 'outline-path-completion
@@ -85,7 +85,7 @@
            "* %?\n  %U\n %a\n")
           ("w" "Templates for work")
           ("wb" "Billable Task" entry (file+headline "work.org" "Tasks")
-           "* TODO %? %^g:2U:\n %U\n %a\n"
+           "* TODO %? %^g:@CLIENT:\n %U\n %a\n"
            :clock-in t :clock-resume t)
           ("ww" "Non-Billable Task" entry (file+headline "work.org" "Tasks")
            "* TODO %? %^g\n %U\n %a\n"
@@ -170,10 +170,10 @@
                      (org-agenda-start-with-clockreport-mode t)))
          (tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")))
-         (tags-todo "+@WORK&+2U/!-WAIT"
+         (tags-todo "+@WORK&+@CLIENT/!-WAIT"
                     ((org-agenda-sorting-strategy '(todo-state-up tag-up))
                      (org-agenda-overriding-header "BILLABLE")))
-         (tags-todo "+@WORK&-2U/!-WAIT"
+         (tags-todo "+@WORK&-@CLIENT/!-WAIT"
                     ((org-agenda-sorting-strategy '(todo-state-up tag-up))
                      (org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK/WAIT"
