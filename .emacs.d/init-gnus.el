@@ -120,11 +120,10 @@
                         (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
                         (to "clojure-dev@googlegroups.com" "list.clojure-dev")
                         (to "noreply@sourceforge.net" "mail.tnef")
-                        (| (any "voxy.com" "cyrus.voxy")
-                           (any ".*asana.com" "cyrus.voxy"))
                         (|
-                         ("subject" "\\[JIRA\\]" "cyrus.tracker-tool" t)
-                         (from ".*pivotaltracker.com" "cyrus.tracker-tool"))
+                         (from "nomail@mobicorp.com" "cyrus.mobi-jenkins")
+                         (from "noreply-mobiDevelopment@mobicorp.com" "cyrus.mobi-jira")
+                         (from ".*@mobicorp.com" "cyrus.mobi"))
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
@@ -155,8 +154,7 @@
                         (: gnus-group-split-fancy nil t nil)
                         (: spam-split)
 
-                        "mail.inbox")
-   )
+                        "mail.inbox"))
 
 ;;;
 ;;; Scoring
@@ -190,6 +188,8 @@
                  ((string-match "tnef" group) 'never)
                  ((string-match "codeandcocktails" group) 'never)
                  ((string-match "tracker-tool" group) 2)
+                 ((string-match "jenkins" group) 2)
+                 ((string-match "jira" group) 2)
                  (t 28))))
       (message "expiry-wait for %s is %s" group wait-days)
       wait-days))
@@ -201,6 +201,9 @@
                   ((string-match "mail.misc" group) 'delete)
                   ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
                   ((string-match "cyrus\\.voxy" group) "nnfolder+archive:cyrus.voxy-archive-%Y")
+                  ((string-match "cyrus\\.mobi" group) "nnfolder+archive:cyrus.mobi-archive-%Y")
+                  ((string-match "cyrus\\.mobi-jenkins" group) 'delete)
+                  ((string-match "cyrus\\.mobi-jira" group) 'delete)
                   ((string-match "cyrus\\.tracker-tool" group) 'delete)
                   (t "nnfolder+archive:archive-%Y"))))
       (message "expiry-target for %s is '%s'" group expiry-target-file)
