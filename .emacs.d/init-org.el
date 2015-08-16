@@ -79,6 +79,12 @@
         `(("t" "Task" entry (file "" "Tasks")
            "* TODO %? %^G\n  %U\n %a\n"
            :empty-lines-after 1)
+          ("r" "Respond to email" entry (file "")
+           "* TODO Respond to %:from on %:subject :@EMAIL:\nSCHEDULED: %t\n%U\n%a\n"
+           :clock-in t :clock-resume t :immediate-finish t)
+          ("n" "Take a note" entry (file "")
+           "* %U %? :NOTE:\n%U\n%a\n"
+           :clock-in t :clock-resume t)
           ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
            "* TODO %? %^G\n  %U\n  %a\n")
           ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
