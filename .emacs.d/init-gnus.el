@@ -70,7 +70,8 @@
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
    gnus-thread-hide-subtree t
    gnus-summary-gather-subject-limit 'fuzzy
-   gnus-build-sparse-threads 'some
+   gnus-build-sparse-threads nil
+   gnus-fetch-old-headers 5000
    )
 
 ;;;
