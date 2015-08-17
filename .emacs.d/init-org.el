@@ -61,7 +61,7 @@
         org-clock-out-remove-zero-time-clocks t
         org-clock-report-include-clocking-task t
         org-agenda-clockreport-parameter-plist
-        '(:link t :maxlevel 2 :fileskip0 t :compact t :narrow 80)
+        '(:link t :maxlevel 4 :fileskip0 t :compact t :narrow 100)
         org-agenda-clock-consistency-checks
         '(:max-duration "04:00"
                         :min-duration 0
