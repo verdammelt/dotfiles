@@ -61,11 +61,7 @@
                     :family "DejaVu Sans Mono"
                     )
 ;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
-(load-theme 'tango-dark)
-(set-face-attribute 'highlight nil
-                    :background "gray30")
-(set-face-attribute 'cursor nil
-                    :background "red")
+(load-theme 'tango)
 
 ;;;
 ;;; turn on all things that need turning on.
