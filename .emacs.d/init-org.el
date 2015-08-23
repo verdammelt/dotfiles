@@ -135,34 +135,15 @@
                     ((org-agenda-overriding-header "@COMMUNICATE")))
          (tags-todo "+@ERRAND/!-WAIT"
                     ((org-agenda-overriding-header "@ERRAND")))
-         (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAIT"
-                    ((org-agenda-overriding-header "@COMPUTER")))
          (tags-todo "+@HOME|+@ANY/!-WAIT"
                     ((org-agenda-overriding-header "@HOME")))
+         (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAIT"
+                    ((org-agenda-overriding-header "@COMPUTER")))
          (tags-todo "+@WENDY/!-WAIT"
                     ((org-agenda-overriding-header "@WENDY")))
          (tags-todo "+@WORK/!-WAIT"
                     ((org-agenda-overriding-header "@WORK")))
          (tags-todo "/WAIT"
-                    ((org-agenda-overriding-header "WAITING-FOR")))
-         (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
-               ((org-agenda-overriding-header "PROJECTS")
-                (org-agenda-sorting-strategy '(category-keep))))
-         ))
-       ("h" "Home"
-        ((agenda "" ((org-agenda-span 'day)
-                     (org-agenda-use-time-grid nil)))
-         (tags "REFILE"
-               ((org-agenda-overriding-header "Tasks to Refile")))
-         (tags-todo "+@HOME|+@ANY/!-WAIT"
-                    ((org-agenda-overriding-header "@HOME")))
-         (tags-todo "+@CALL|@EMAIL/!-WAIT"
-                    ((org-agenda-overriding-header "@COMMUNICATE")))
-         (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAIT"
-                    ((org-agenda-overriding-header "@COMPUTER")))
-         (tags-todo "+@WENDY/!-WAIT"
-                    ((org-agenda-overriding-header "@WENDY")))
-         (tags-todo "-@WORK/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))
          (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
                ((org-agenda-overriding-header "PROJECTS")
