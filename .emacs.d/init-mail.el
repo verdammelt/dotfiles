@@ -24,7 +24,8 @@
   (setq message-sendmail-envelope-from 'header)
 
   (with-eval-after-load 'supercite
-    (setq sc-preferred-header-style 1)))
+    (setq sc-preferred-header-style 1
+          sc-citation-leader "  ")))
 
 (with-eval-after-load 'mm-decode
   (setq mm-default-directory (expand-file-name "~/Downloads"))
