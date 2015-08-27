@@ -11,6 +11,7 @@
 
 (with-eval-after-load 'org
   (require 'org-checklist)
+  (diminish 'org-indent-mode)
   (setq org-id-locations-file
         (expand-file-name ".org-id-locations" user-emacs-directory))
 
