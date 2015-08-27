@@ -52,7 +52,8 @@
                               :maxlevel . 9)))
 
   (setq org-clock-persist t
-        org-clock-idle-time 10
+        org-clock-idle-time 30
+        org-clock-history-length 10
         org-clock-mode-line-total 'today
         org-time-clocksum-format
         '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)
@@ -65,14 +66,16 @@
         '(:link t :maxlevel 4 :fileskip0 t :compact t :narrow 100)
         org-agenda-clock-consistency-checks
         '(:max-duration "04:00"
+                        :max-duration "04:00"
                         :min-duration 0
                         :max-gap 0
-                        :gap-ok-around ("04:00" "09:00" "13:00" "17:00");; what are good settings?
-                        ;; below is same as default
+                        :gap-ok-around ("04:00" "09:00" "13:00" "18:00");; what are good settings?
                         :default-face
                         ((:background "DarkRed")
                          (:foreground "white"))
-                        :overlap-face nil :gap-face nil :no-end-time-face nil :long-face nil :short-face nil))
+                        :overlap-face nil :gap-face nil
+                        :no-end-time-face nil
+                        :long-face nil :short-face nil))
 
   (org-clock-persistence-insinuate)
 
