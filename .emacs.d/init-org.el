@@ -86,7 +86,7 @@
           ("r" "Respond to email" entry (file "")
            "* TODO Respond to %:from on %:subject :@EMAIL:\nSCHEDULED: %t\n%U\n%a\n"
            :clock-in t :clock-resume t :immediate-finish t)
-          ("n" "Take a note" entry (file "")
+          ("n" "Take a note" entry (file "" "Notes")
            "* %U %? :NOTE:\n%U\n%a\n"
            :clock-in t :clock-resume t)
           ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
