@@ -124,6 +124,7 @@
                         (|
                          (from "nomail@mobicorp.com" "cyrus.mobi-jenkins")
                          (from "noreply-mobiDevelopment@mobicorp.com" "cyrus.mobi-jira")
+                         (from "confluence@pointserve.com" "cyrus.mobi-jira")
                          (from ".*@mobicorp.com" "cyrus.mobi"))
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
