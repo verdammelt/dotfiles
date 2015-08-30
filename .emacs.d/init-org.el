@@ -11,7 +11,10 @@
 
 (with-eval-after-load 'org
   (require 'org-checklist)
-  (diminish 'org-indent-mode)
+
+  (with-eval-after-load 'org-indent
+    (diminish 'org-indent-mode))
+
   (setq org-id-locations-file
         (expand-file-name ".org-id-locations" user-emacs-directory))
 
@@ -63,7 +66,7 @@
         org-clock-out-remove-zero-time-clocks t
         org-clock-report-include-clocking-task t
         org-agenda-clockreport-parameter-plist
-        '(:link t :maxlevel 4 :fileskip0 t :compact t :narrow 100)
+        '(:link t :maxlevel 4 :fileskip0 t :compact t :narrow 80)
         org-agenda-clock-consistency-checks
         '(:max-duration "04:00"
                         :max-duration "04:00"
