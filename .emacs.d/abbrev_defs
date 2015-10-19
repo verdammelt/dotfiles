@@ -15,7 +15,9 @@
 
 (define-abbrev-table 'asm-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -31,9 +33,13 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -44,6 +50,8 @@
 (define-abbrev-table 'checkdoc-output-mode-abbrev-table '())
 
 (define-abbrev-table 'cider-browse-ns-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-connections-buffer-mode-abbrev-table '())
 
 (define-abbrev-table 'cider-docview-mode-abbrev-table '())
 
@@ -58,6 +66,12 @@
 (define-abbrev-table 'cljsbuild-compilation-mode-abbrev-table '())
 
 (define-abbrev-table 'clojure-mode-abbrev-table '())
+
+(define-abbrev-table 'clojurec-mode-abbrev-table '())
+
+(define-abbrev-table 'clojurescript-mode-abbrev-table '())
+
+(define-abbrev-table 'clojurex-mode-abbrev-table '())
 
 (define-abbrev-table 'coffee-mode-abbrev-table
   '(
@@ -218,7 +232,9 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -310,15 +326,17 @@
     ("appendanges" "appendages" nil 0)
     ("approximatly" "approximately" nil 0)
     ("apprpopriate" "appropriate" nil 0)
+    ("assessements" "assessments" nil 0)
     ("backend" "back end" nil 12)
-    ("becuase" "because" nil 5)
+    ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 10)
+    ("caio" "Ciao" nil 13)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
     ("communciation" "communication" nil 0)
     ("comparitors" "comparators" nil 0)
+    ("condecension" "condescension" nil 0)
     ("condolencses" "condolences" nil 0)
     ("coudl" "could" nil 6)
     ("december" "December" nil 0)
@@ -328,8 +346,9 @@
     ("depencency" "dependency" nil 0)
     ("dependancy" "dependency" nil 0)
     ("depenedencies" "dependencies" nil 0)
-    ("descisions" "decisions" nil 0)
+    ("descisions" "decisions" nil 1)
     ("dicussion" "discussion" nil 1)
+    ("disfunction" "disfunction" nil 0)
     ("downtime" "down time" nil 0)
     ("environemnt" "environment" nil 0)
     ("everytime" "every time" nil 0)
@@ -337,11 +356,13 @@
     ("foward" "forward" nil 0)
     ("greenlight" "Greenlight" nil 12)
     ("havent" "haven't" nil 0)
-    ("hte" "the" nil 4)
+    ("hte" "the" nil 9)
     ("idiosyncracy" "idiosyncrasy" nil 0)
     ("immidiately" "immediately" nil 0)
     ("implemnetation" "implementation" nil 0)
     ("implemntation" "Implementation" nil 0)
+    ("imposter" "impostor" nil 0)
+    ("implmentations" "implementations" nil 0)
     ("inconvinience" "inconvenience" nil 0)
     ("intenstines" "intestines" nil 0)
     ("interfereing" "interfering" nil 0)
@@ -350,18 +371,20 @@
     ("judgement" "judgment" nil 0)
     ("limitied" "limited" nil 0)
     ("ludicrious" "ludicrous" nil 0)
-    ("mattias" "Mattias" nil 0)
+    ("mattias" "Mattias" nil 1)
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 7)
-    ("ok" "OK" nil 22)
+    ("ok" "OK" nil 30)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
     ("psuedo" "pseudo" nil 0)
     ("receieved" "received" nil 0)
     ("reconnaisance" "reconnaissance" nil 0)
     ("rememberance" "remembrance" nil 0)
+    ("remmeber" "remember" nil 0)
     ("reproducable" "reproducible" nil 2)
+    ("requiremnts" "requirements" nil 0)
     ("rumblings" "crumblings" nil 0)
     ("rythm" "rhythm" nil 0)
     ("separetely" "separately" nil 0)
@@ -374,10 +397,14 @@
     ("thourough" "thorough" nil 0)
     ("timesheet" "time sheet" nil 0)
     ("tommorrow" "Tomorrow" nil 0)
+    ("tomorow" "tomorrow" nil 0)
+    ("triplicated" "triplicate" nil 1)
     ("unfortunatly" "Unfortunately" nil 0)
     ("unfrotunately" "unfortunately" nil 0)
     ("username" "user name" nil 0)
+    ("wednesday" "Wednesday" nil 0)
     ("wenesday" "Wednesday" nil 0)
+    ("whiteboarding" "white boarding" nil 0)
     ("yesteday" "yesterday" nil 0)
    ))
 
@@ -391,7 +418,9 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -402,16 +431,20 @@
 (define-abbrev-table 'org-mode-abbrev-table
   '(
     ("actionable" "actionable" nil 1)
+    ("agressive" "aggressive" nil 0)
     ("aka" "AKA" nil 0)
     ("availabilty" "availability" nil 0)
     ("backend" "back end" nil 6)
+    ("becuase" "because" nil 0)
     ("changig" "changing" nil 0)
+    ("collegue" "colleague" nil 0)
     ("competancy" "competency" nil 0)
     ("conf" "con" nil 0)
     ("dan" "Dan" nil 4)
     ("dropbox" "drop box" nil 0)
+    ("eh" "tech" nil 0)
     ("everytime" "every time" nil 0)
-    ("filetags" "FILE TAGS" nil 0)
+    ("filetags" "FILE TAGS" nil 1)
     ("finanical" "Financial" nil 0)
     ("invstigate" "Instigate" nil 0)
     ("jp" "PTRL" nil 53)
@@ -422,6 +455,9 @@
     ("recieved" "received" nil 0)
     ("refamiliarize" "re-familiarize" nil 0)
     ("repercusion" "repercussion" nil 0)
+    ("shedule" "schedule" nil 0)
+    ("teh" "th" nil 0)
+    ("unconciously" "unconsciously" nil 0)
     ("woudl" "would" nil 0)
    ))
 
@@ -431,7 +467,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -534,7 +572,7 @@
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
     ("hardcoded" "hard coded" nil 1)
-    ("independant" "independent" nil 0)
+    ("independant" "independent" nil 1)
     ("jp" "PRTL" nil 39)
     ("langauge" "language" nil 0)
     ("marijhuana" "Marijuana" nil 0)
@@ -543,9 +581,9 @@
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
     ("signup" "sign-up" nil 6)
-    ("standup" "stand up" nil 14)
+    ("standup" "stand-up" nil 17)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 104)
+    ("tia" "Thanks in advance" nil 114)
     ("tomororw" "tomorrow" nil 0)
    ))
 
