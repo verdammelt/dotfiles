@@ -125,7 +125,7 @@
      org-agenda-todo-ignore-deadlines 'far
 
      org-agenda-sorting-strategy
-     '((agenda habit-up time-up tag-up todo-state-up deadline-down alpha-up)
+     '((agenda time-up scheduled-up deadline-up tag-up todo-state-up alpha-up)
        (todo todo-state-up tag-up alpha-up)
        (tags todo-state-up tag-up alpha-up)
        (search todo-state-up))
