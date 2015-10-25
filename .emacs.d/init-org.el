@@ -4,10 +4,12 @@
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
 (defun mjs/expand-org-file (f)
-  (let ((filename (if (string= (file-name-extension f) "org")
-                      f
-                    (format "%s.org" f))))
-    (expand-file-name filename org-directory)))
+  (cond ((file-exists-p (expand-file-name f org-directory))
+         (expand-file-name f org-directory))
+        ((string= (file-name-extension f) "org")
+         (expand-file-name f org-directory))
+        (t
+         (expand-file-name (format "%s.org" f) org-directory))))
 
 (with-eval-after-load 'org
   (require 'org-checklist)
