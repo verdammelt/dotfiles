@@ -84,31 +84,37 @@
   (org-clock-persistence-insinuate)
 
   (setq org-capture-templates
-        `(("t" "Task" entry (file "" "Tasks")
+        `(("t" "Task" entry (file "")
            "* TODO %? %^G\n  %U\n %a\n"
+           :clock-in t :clock-resume t
            :empty-lines-after 1)
           ("r" "Respond to email" entry (file "")
            "* TODO Respond to %:from on %:subject :@EMAIL:\nSCHEDULED: %t\n%U\n%a\n"
-           :clock-in t :clock-resume t :immediate-finish t)
-          ("n" "Take a note" entry (file "" "Notes")
+           :clock-in t :clock-resume t
+           :immediate-finish t)
+          ("n" "Take a note" entry (file "")
            "* %U %? :NOTE:\n%a\n"
            :clock-in t :clock-resume t)
           ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
-           "* TODO %? %^G\n  %U\n  %a\n")
+           "* TODO %? %^G\n  %U\n  %a\n"
+           :clock-in t :clock-resume t)
           ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
-           "* %?\n  %U\n %a\n")
+           "* %?\n  %U\n %a\n"
+           :clock-in t :clock-resume t)
           ("w" "Templates for work")
-          ("wb" "Billable Task" entry (file+headline "work.org" "Tasks")
+          ("wb" "Billable Task" entry (file "")
            "* TODO %? %^g:@CLIENT:\n %U\n %a\n"
            :clock-in t :clock-resume t)
-          ("ww" "Non-Billable Task" entry (file+headline "work.org" "Tasks")
-           "* TODO %? %^g\n %U\n %a\n"
+          ("ww" "Non-Billable Task" entry (file "")
+           "* TODO %? %^g:@WORK:\n %U\n %a\n"
            :clock-in t :clock-resume t)
-          ("wi" "Interruption" entry (file+headline "work.org" "Tasks")
-           "* TODO %? %^g\n %U\n %a\n"
-           :clock-in t :clock-keep t :jump-to-captured t)
+          ("wi" "Interruption" entry (file "")
+           "* TODO %? %^g:@WORK:\n %U\n %a\n"
+           :clock-in t :clock-keep t
+           :jump-to-captured t)
           ("wn" "New Task to clocked" entry (clock)
-           "* TODO %? %^g\n %U\n %a\n")
+           "* TODO %? %^g\n %U\n %a\n"
+           :clock-in t :clock-resumt t)
           ))
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
 
