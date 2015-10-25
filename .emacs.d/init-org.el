@@ -155,11 +155,7 @@
          (tags-todo "+@WORK/!-WAIT"
                     ((org-agenda-overriding-header "@WORK")))
          (tags-todo "/WAIT"
-                    ((org-agenda-overriding-header "WAITING-FOR")))
-         (tags "+CATEGORY=\"PROJ\"&+LEVEL=2&-TODO=\"DONE\""
-               ((org-agenda-overriding-header "PROJECTS")
-                (org-agenda-sorting-strategy '(category-keep))))
-         ))
+                    ((org-agenda-overriding-header "WAITING-FOR")))))
        ("w" "waiting" tags-todo "/WAIT")
        ("k" "work"
         ((agenda "" ((org-agenda-span 'day)
@@ -175,10 +171,7 @@
                     ((org-agenda-sorting-strategy '(todo-state-up tag-up))
                      (org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK/WAIT"
-                    ((org-agenda-overriding-header "WAITING-FOR")))
-         (tags "+@WORK&+CATEGORY=\"PROJ\"&+LEVEL=2"
-               ((org-agenda-overriding-header "PROJECTS")
-                (org-agenda-sorting-strategy '(todo-state-down))))))))
+                    ((org-agenda-overriding-header "WAITING-FOR")))))))
     ))
 
 ;; experimental stuff
