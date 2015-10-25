@@ -51,8 +51,9 @@
         org-refile-allow-creating-parent-nodes 'confirm
         org-refile-use-outline-path 'file
         org-refile-use-cache t
-        org-refile-targets `((,(mapcar #'mjs/expand-org-file '("todo" "work" "somedaymaybe"))
-                              :maxlevel . 9)))
+        org-refile-targets `((nil :maxlevel . 9)
+                             (org-agenda-files :maxlevel . 9)
+                             (,(mjs/expand-org-file "somedaymaybe") :maxlevel . 9)))
 
   (setq org-clock-persist t
         org-clock-idle-time 30
@@ -129,7 +130,10 @@
        (todo todo-state-up tag-up alpha-up)
        (tags todo-state-up tag-up alpha-up)
        (search todo-state-up))
-     org-agenda-files (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
+     org-agenda-files (list (mjs/expand-org-file "todo")
+                            (mjs/expand-org-file "inbox")
+                            (expand-file-name "work" org-directory))
+
      org-agenda-start-on-weekday nil
      org-agenda-block-separator "==========================================================================="
      org-agenda-custom-commands
