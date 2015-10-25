@@ -212,6 +212,15 @@
     (org-agenda nil "k")
     (mjs/punch-in))
 
+  (setq
+   org-clocktable-defaults (plist-put org-clocktable-defaults :stepskip0 t)
+   org-clocktable-defaults (plist-put org-clocktable-defaults :fileskip0 t)
+   org-clocktable-defaults (plist-put org-clocktable-defaults :wstart0 0)
+   org-clocktable-defaults (plist-put org-clocktable-defaults :link t)
+   org-clocktable-defaults (plist-put org-clocktable-defaults :compact t)
+   org-clocktable-defaults (plist-put org-clocktable-defaults :maxlevel 9)
+   )
+
   (setq org-stuck-projects
         '("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAIT") nil ""))
 
