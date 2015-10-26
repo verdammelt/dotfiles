@@ -325,6 +325,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
   ;; ====================
   ;;
 
+  (defun mjs/insert-heading-inactive-timestamp ()
+    (save-excursion
+      (org-return)
+      (org-cycle)
+      (org-insert-time-stamp nil t t nil nil nil)))
+
+  (add-hook 'org-insert-heading-hook 'mjs/insert-heading-inactive-timestamp 'append)
+
   (fullframe org-agenda org-agenda-quit))
 
 
