@@ -129,19 +129,15 @@
 
   (with-eval-after-load 'org-agenda
     (setq
-     org-agenda-tags-todo-honor-ignore-options t
-     org-agenda-todo-ignore-scheduled 'future
-     org-agenda-todo-ignore-deadlines 'far
+     org-agenda-files
+     (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
 
      org-agenda-sorting-strategy
      '((agenda time-up user-defined-up category-keep)
        (todo todo-state-up tag-up alpha-up)
        (tags todo-state-up tag-up alpha-up)
        (search todo-state-up))
-     org-agenda-files (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
 
-     org-agenda-start-on-weekday 0
-     org-agenda-compact-blocks t
      org-agenda-custom-commands
      '(("d" "daily"
         ((agenda "" ((org-agenda-span 'day)
@@ -177,10 +173,27 @@
                     ((org-agenda-sorting-strategy '(todo-state-up tag-up))
                      (org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK/WAIT"
-                    ((org-agenda-overriding-header "WAITING-FOR")))))))
-    ))
+                    ((org-agenda-overriding-header "WAITING-FOR"))))))
 
-;; experimental stuff
+     org-stuck-projects
+     '("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAIT") nil "")
+
+     org-agenda-tags-todo-honor-ignore-options t
+     org-agenda-todo-ignore-scheduled 'future
+     org-agenda-todo-ignore-deadlines 'far
+     org-agenda-start-on-weekday 0
+     org-agenda-compact-blocks t)))
+
+(with-eval-after-load 'org-clock
+  (setq
+    org-clocktable-defaults (plist-put org-clocktable-defaults :stepskip0 t)
+    org-clocktable-defaults (plist-put org-clocktable-defaults :fileskip0 t)
+    org-clocktable-defaults (plist-put org-clocktable-defaults :wstart0 0)
+    org-clocktable-defaults (plist-put org-clocktable-defaults :link t)
+    org-clocktable-defaults (plist-put org-clocktable-defaults :compact t)
+    org-clocktable-defaults (plist-put org-clocktable-defaults :maxlevel 9)))
+
+;; clocking setup
 (with-eval-after-load 'org
   (setq mjs/default-task-id "963F688C-0EAD-4217-B84E-DDA7D94C0453"
         mjs/keep-clock-running nil)
@@ -220,9 +233,6 @@
    org-clocktable-defaults (plist-put org-clocktable-defaults :compact t)
    org-clocktable-defaults (plist-put org-clocktable-defaults :maxlevel 9)
    )
-
-  (setq org-stuck-projects
-        '("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAIT") nil ""))
 
   ;;
   ;; Agenda sorting functions
