@@ -140,7 +140,7 @@
        (search todo-state-up))
      org-agenda-files (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
 
-     org-agenda-start-on-weekday nil
+     org-agenda-start-on-weekday 0
      org-agenda-block-separator "==========================================================================="
      org-agenda-custom-commands
      '(("d" "daily"
