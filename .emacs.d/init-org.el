@@ -138,9 +138,7 @@
        (todo todo-state-up tag-up alpha-up)
        (tags todo-state-up tag-up alpha-up)
        (search todo-state-up))
-     org-agenda-files (list (mjs/expand-org-file "todo")
-                            (mjs/expand-org-file "inbox")
-                            (expand-file-name "work" org-directory))
+     org-agenda-files (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
 
      org-agenda-start-on-weekday nil
      org-agenda-block-separator "==========================================================================="
