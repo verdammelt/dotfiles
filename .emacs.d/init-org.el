@@ -141,7 +141,7 @@
      org-agenda-files (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
 
      org-agenda-start-on-weekday 0
-     org-agenda-block-separator "==========================================================================="
+     org-agenda-compact-blocks t
      org-agenda-custom-commands
      '(("d" "daily"
         ((agenda "" ((org-agenda-span 'day)
