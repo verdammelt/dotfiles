@@ -206,7 +206,7 @@
     (interactive)
     (setq mjs/keep-clock-running nil)
     (when (org-clock-is-active)
-      (org-clock-out))
+      (org-clock-out nil t))
     (message "Nice day eh Ralph?"))
   (defun mjs/clock-in-default-task ()
     (interactive)
