@@ -177,7 +177,7 @@
        ("p" "projects" tags "+CATEGORY=\"PROJ\"+LEVEL=2"))
 
      org-stuck-projects
-     '("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAIT") nil "")
+     '("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"&-TODO=\"CNCL\"" ("TODO" "WAIT") nil "")
 
      org-agenda-tags-todo-honor-ignore-options t
      org-agenda-todo-ignore-scheduled 'future
