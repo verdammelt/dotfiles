@@ -158,7 +158,6 @@
                     ((org-agenda-overriding-header "@WORK")))
          (tags-todo "/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
-       ("w" "waiting" tags-todo "/WAIT")
        ("k" "work"
         ((agenda "" ((org-agenda-span 'day)
                      (org-agenda-use-time-grid t)
@@ -173,7 +172,9 @@
                     ((org-agenda-sorting-strategy '(todo-state-up tag-up))
                      (org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK/WAIT"
-                    ((org-agenda-overriding-header "WAITING-FOR"))))))
+                    ((org-agenda-overriding-header "WAITING-FOR")))))
+       ("w" "waiting" tags-todo "/WAIT")
+       ("p" "projects" tags "+CATEGORY=\"PROJ\"+LEVEL=2"))
 
      org-stuck-projects
      '("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"" ("TODO" "WAIT") nil "")
