@@ -126,6 +126,9 @@
                          (from "noreply-mobiDevelopment@mobicorp.com" "cyrus.mobi-jira")
                          (from "confluence@pointserve.com" "cyrus.mobi-jira")
                          (from ".*@mobicorp.com" "cyrus.mobi"))
+                        (|
+                         (any "*@aetna.com" "cyrus.aetna")
+                         (any "*@itriagehealth.com" "cyrus.aetna"))
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
@@ -202,6 +205,7 @@
                   ((string-match "spam\\.*" group) 'delete)
                   ((string-match "mail.misc" group) 'delete)
                   ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
+                  ((string-match "cyrus\\.aetna" group) "nnfolder+archive:cyrus.aetna-archive-%Y")
                   ((string-match "cyrus\\.voxy" group) "nnfolder+archive:cyrus.voxy-archive-%Y")
                   ((string-match "cyrus\\.mobi" group) "nnfolder+archive:cyrus.mobi-archive-%Y")
                   ((string-match "cyrus\\.mobi-jenkins" group) 'delete)
