@@ -344,7 +344,11 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (global-set-key (kbd "C-c s-s") 'org-save-all-org-buffers)
 (global-set-key (kbd "C-c s-u") 'org-revert-all-org-buffers)
 
-(global-set-key (kbd "<f9>") 'org-clock-in)
+(global-set-key (kbd "<f9>") #'(lambda ()
+                                 (interactive)
+                                 (if (eq major-mode 'org-agenda-mode)
+                                     (org-agenda-clock-in)
+                                   (org-clock-in))))
 (global-set-key (kbd "S-<f9>") #'(lambda () (interactive) (org-clock-out nil t)))
 (global-set-key (kbd "M-<f9>") #'(lambda () (interactive) (org-clock-in '(4))))
 (global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
