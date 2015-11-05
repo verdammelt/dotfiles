@@ -152,11 +152,13 @@
                     ((org-agenda-overriding-header "@ERRAND")))
          (tags-todo "+@HOME|+@ANY/!-WAIT"
                     ((org-agenda-overriding-header "@HOME")))
-         (tags-todo "+@MAC|+@WORKMAC|+@WEB/!-WAIT"
+         (tags-todo "+@MAC&-@WEB&-@WORK/!-WAIT"
                     ((org-agenda-overriding-header "@COMPUTER")))
+         (tags-todo "+@WEB&-@WORK/!-WAIT"
+                    ((org-agenda-overriding-header "@WEB")))
          (tags-todo "+@WENDY/!-WAIT"
                     ((org-agenda-overriding-header "@WENDY")))
-         (tags-todo "+@WORK/!-WAIT"
+         (tags-todo "+@WORK|+@WORKMAC/!-WAIT"
                     ((org-agenda-overriding-header "@WORK")))
          (tags-todo "/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
