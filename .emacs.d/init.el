@@ -61,7 +61,7 @@
                     :family "DejaVu Sans Mono"
                     )
 ;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
-(load-theme 'tango)
+(load-theme 'tango-dark)
 (set-face-attribute 'highlight nil :background "#d3d7cf")
 (set-face-attribute 'cursor nil :background "red")
 
