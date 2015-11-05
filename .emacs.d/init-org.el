@@ -50,6 +50,8 @@
 
         org-goto-interface 'outline-path-completion
 
+        org-use-speed-commands t
+
         org-refile-allow-creating-parent-nodes 'confirm
         org-refile-use-outline-path 'file
         org-refile-use-cache t
