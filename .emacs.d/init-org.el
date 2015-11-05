@@ -137,7 +137,7 @@
      org-agenda-sorting-strategy
      '((agenda time-up user-defined-up category-keep)
        (todo todo-state-up tag-up alpha-up)
-       (tags todo-state-up tag-up alpha-up)
+       (tags todo-state-down tag-up alpha-up)
        (search todo-state-up))
 
      org-agenda-custom-commands
