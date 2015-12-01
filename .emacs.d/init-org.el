@@ -177,6 +177,7 @@
                      (org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
+       ("x" "lost tasks" tags-todo "-{^@}")
        ("w" "waiting" tags-todo "/WAIT")
        ("p" "projects" tags "+CATEGORY=\"PROJ\"+LEVEL=2"))
 
