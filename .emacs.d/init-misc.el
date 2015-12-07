@@ -1,4 +1,4 @@
-;;;;
+>;;;;
 ;;;; MISC
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
@@ -259,6 +259,9 @@ symbol, not word, as I need this for programming the most."
 (define-key global-map [remap list-buffers] 'ibuffer)
 
 (setq scroll-preserve-screen-position t)
+
+(with-eval-after-load 'compile
+  (setq compilation-scroll-output 'first-error))
 
 ;; Setup Hyperspec info file
 (add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
