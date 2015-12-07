@@ -108,7 +108,7 @@
 
 (with-eval-after-load 'coffee-mode
   (add-to-list 'ac-modes 'coffee-mode)
-  (setq coffee-tab-width 4))
+  (setq coffee-tab-width 2))
 
 (with-eval-after-load 'simple
   (add-hook 'prog-mode-hook 'whitespace-mode)
