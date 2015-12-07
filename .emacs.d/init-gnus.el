@@ -127,8 +127,9 @@
                          (from "confluence@pointserve.com" "cyrus.mobi-jira")
                          (from ".*@mobicorp.com" "cyrus.mobi"))
                         (|
-                         (any "*@aetna.com" "cyrus.aetna")
-                         (any "*@itriagehealth.com" "cyrus.aetna"))
+                         (to "msimpson+aetna@cyrusinnovation.com" "cyrus.aetna")
+                         (any ".*@aetna.com" "cyrus.aetna")
+                         (any ".*@itriagehealth.com" "cyrus.aetna"))
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
