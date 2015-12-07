@@ -207,6 +207,10 @@
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
+(define-abbrev-table 'groovy-mode-abbrev-table
+  '(
+   ))
+
 (define-abbrev-table 'gud-mode-abbrev-table '())
 
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
@@ -342,7 +346,7 @@
     ("condecension" "condescension" nil 0)
     ("condolencses" "condolences" nil 0)
     ("coudl" "could" nil 6)
-    ("december" "December" nil 2)
+    ("december" "December" nil 3)
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
     ("definately" "definitely" nil 3)
@@ -359,7 +363,7 @@
     ("foward" "forward" nil 0)
     ("greenlight" "Greenlight" nil 12)
     ("havent" "haven't" nil 0)
-    ("hte" "the" nil 10)
+    ("hte" "the" nil 14)
     ("idiosyncracy" "idiosyncrasy" nil 0)
     ("immidiately" "immediately" nil 0)
     ("implemnetation" "implementation" nil 0)
@@ -435,6 +439,7 @@
   '(
     ("acheive" "achieve" nil 0)
     ("actionable" "actionable" nil 1)
+    ("actionbar" "actionbar" nil 0)
     ("adn" "and" nil 0)
     ("agressive" "aggressive" nil 0)
     ("aka" "AKA" nil 0)
@@ -461,11 +466,12 @@
     ("rearrangemnt" "rearrangement" nil 0)
     ("reciepts" "receipts" nil 0)
     ("recieved" "received" nil 0)
+    ("refactored" "Refactored" nil 0)
     ("refamiliarize" "re-familiarize" nil 0)
     ("repercusion" "repercussion" nil 0)
     ("shedule" "schedule" nil 0)
     ("shoudl" "should" nil 0)
-    ("teh" "th" nil 3)
+    ("teh" "th" nil 6)
     ("termintes" "terminates" nil 0)
     ("unconciously" "unconsciously" nil 0)
     ("woudl" "would" nil 0)
@@ -491,7 +497,9 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
+(define-abbrev-table 'python-mode-skeleton-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'rake-compilation-mode-abbrev-table '())
 
@@ -591,9 +599,9 @@
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
     ("signup" "sign-up" nil 6)
-    ("standup" "stand-up" nil 17)
+    ("standup" "stand-up" nil 21)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 118)
+    ("tia" "Thanks in advance" nil 121)
     ("tomororw" "tomorrow" nil 0)
    ))
 
@@ -610,6 +618,10 @@
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-hg-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-mtn-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
