@@ -106,3 +106,5 @@ function batt() {
 }
 
 CIM_HOME=$HOME/.cim; [ -s "$CIM_HOME/init.sh" ] && . "$CIM_HOME/init.sh"
+
+export ANDROID_HOME=/usr/local/Cellar/android-sdk/24.4.1_1/
