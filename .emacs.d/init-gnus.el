@@ -135,7 +135,7 @@
                         (to "discuss-bawch@googlegroups.com" "list.bawch")
                         (to "clean-code-discussion@googlegroups.com" "list.cleancode")
                         (from "wsmith@wordsmith.org" "list.awotd")
-                        (| (any ".*ally.*" "list.bank")
+                        (| (any "ally.*" "list.bank")
                            (any ".*mint.*" "list.bank")
                            (any ".*citizensbank.*" "list.bank")
                            (any ".*@mail.fidelity.com" "list.bank"))
