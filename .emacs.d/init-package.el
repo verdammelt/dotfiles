@@ -18,6 +18,7 @@
 (defvar mjs/*needed-package-names*
   '(ac-cider
     ac-ispell
+    ac-slime
     auctex
     auto-complete
     avy

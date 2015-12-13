@@ -17,7 +17,13 @@
         common-lisp-hyperspec-symbol-table
         (concat common-lisp-hyperspec-root "Data/Map_Sym.txt")
         common-lisp-hyperspec-issuex-table
-        (concat common-lisp-hyperspec-root "Data/Map_IssX.txt")))
+        (concat common-lisp-hyperspec-root "Data/Map_IssX.txt"))
+
+
+  (add-hook 'slime-mode-hook (lambda () (set-up-slime-ac t)))
+  (add-hook 'slime-repl-mode-hook (lambda () (set-up-slime-ac t)))
+  (eval-after-load "auto-complete"
+    '(add-to-list 'ac-modes 'slime-repl-mode)))
 
 (with-eval-after-load 'eldoc (diminish 'eldoc-mode))
 (with-eval-after-load 'elisp-slime-nav (diminish 'elisp-slime-nav-mode))
