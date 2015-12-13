@@ -71,6 +71,7 @@
 (display-battery-mode)
 (display-time)
 (server-start)
+(edit-server-start)
 (show-paren-mode)
 (global-hl-line-mode)
 (global-auto-revert-mode)

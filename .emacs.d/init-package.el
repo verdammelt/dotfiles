@@ -30,6 +30,8 @@
     clojure-mode
     coffee-mode
     diminish
+    edit-server
+    edit-server-htmlize
     elisp-slime-nav
     expand-region
     fill-column-indicator

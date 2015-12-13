@@ -269,3 +269,7 @@ symbol, not word, as I need this for programming the most."
  :regexp "[^][()'\" \t\n]+"
  :ignore-case t
  :doc-spec '(("(ansicl)Symbol Index" nil nil nil)))
+
+(add-hook 'edit-server-start-hook 'edit-server-maybe-dehtmlize-buffer)
+(add-hook 'edit-server-done-hook 'edit-server-maybe-htmlize-buffer)
+(add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))
