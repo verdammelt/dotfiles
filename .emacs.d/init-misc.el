@@ -102,7 +102,6 @@
         '(yas-ido-prompt yas-completing-prompt)))
 
 (global-set-key (kbd "<f7>") 'magit-status)
-(autoload 'magit-status-internal "magit")
 (with-eval-after-load 'magit
   (fullframe magit-status magit-mode-quit-window))
 
