@@ -53,6 +53,7 @@
     rvm
     slime
     smex
+    tango
     virtualenvwrapper
     wgrep
     wrap-region

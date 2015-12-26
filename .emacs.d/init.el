@@ -57,13 +57,10 @@
 
 ;; set up the fonts / themes
 (set-face-attribute 'default nil
-                    :height 150
+                    :height 180
                     :family "DejaVu Sans Mono"
                     )
-;; file:/usr/local/Cellar/emacs/24.3/share/emacs/24.3/etc/themes/tango-theme.el
-(load-theme 'tango-dark)
-(set-face-attribute 'highlight nil :background "grey")
-(set-face-attribute 'highlight nil :foreground "blue")
+(load-theme 'tango-2)
 (set-face-attribute 'cursor nil :background "red")
 
 ;;;
