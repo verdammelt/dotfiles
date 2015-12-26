@@ -15,6 +15,7 @@ alias frm='mail -H'
 alias exersub='exercism submit'
 alias exerfetch='exercism fetch'
 alias t='tree -C -F'
+alias gpg=gpg2
 
 alias pdfopen='pdfopen -viewer xpdf'
 alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
