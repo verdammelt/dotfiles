@@ -207,9 +207,7 @@
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
-(define-abbrev-table 'groovy-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'groovy-mode-abbrev-table '())
 
 (define-abbrev-table 'gud-mode-abbrev-table '())
 
@@ -334,10 +332,11 @@
     ("approximatly" "approximately" nil 0)
     ("apprpopriate" "appropriate" nil 0)
     ("assessements" "assessments" nil 0)
+    ("attachement" "attachment" nil 0)
     ("backend" "back end" nil 12)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 16)
+    ("caio" "Ciao" nil 18)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -361,9 +360,10 @@
     ("everytime" "every time" nil 0)
     ("excercise" "exercises" nil 0)
     ("foward" "forward" nil 0)
+    ("ggroup" "group" nil 0)
     ("greenlight" "Greenlight" nil 12)
     ("havent" "haven't" nil 0)
-    ("hte" "the" nil 14)
+    ("hte" "the" nil 15)
     ("idiosyncracy" "idiosyncrasy" nil 0)
     ("immidiately" "immediately" nil 0)
     ("implemnetation" "implementation" nil 0)
@@ -409,7 +409,7 @@
     ("unfortunatly" "Unfortunately" nil 0)
     ("unfrotunately" "unfortunately" nil 0)
     ("username" "user name" nil 0)
-    ("wednesday" "Wednesday" nil 2)
+    ("wednesday" "Wednesday" nil 3)
     ("wenesday" "Wednesday" nil 0)
     ("whiteboarding" "white boarding" nil 0)
     ("yesteday" "yesterday" nil 0)
@@ -446,6 +446,7 @@
     ("availabilty" "availability" nil 0)
     ("backend" "back end" nil 6)
     ("becuase" "because" nil 0)
+    ("carraige" "Carriage" nil 0)
     ("changig" "changing" nil 0)
     ("collegue" "colleague" nil 0)
     ("competancy" "competency" nil 0)
@@ -459,6 +460,7 @@
     ("finanical" "Financial" nil 0)
     ("invstigate" "Instigate" nil 0)
     ("jp" "PTRL" nil 53)
+    ("moustaches" "mustaches" nil 0)
     ("mumured" "murmured" nil 0)
     ("pertty" "pertty" nil 0)
     ("portugese" "Portuguese" nil 0)
@@ -497,9 +499,7 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'rake-compilation-mode-abbrev-table '())
 
