@@ -194,8 +194,6 @@
                  ((string-match "tnef" group) 'never)
                  ((string-match "codeandcocktails" group) 'never)
                  ((string-match "tracker-tool" group) 2)
-                 ((string-match "jenkins" group) 2)
-                 ((string-match "jira" group) 2)
                  (t 28))))
       (message "expiry-wait for %s is %s" group wait-days)
       wait-days))
@@ -205,13 +203,11 @@
             (cond ((string-match "list\\.*" group) 'delete)
                   ((string-match "spam\\.*" group) 'delete)
                   ((string-match "mail.misc" group) 'delete)
-                  ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y-%m")
-                  ((string-match "cyrus\\.aetna" group) "nnfolder+archive:cyrus.aetna-archive-%Y")
-                  ((string-match "cyrus\\.voxy" group) "nnfolder+archive:cyrus.voxy-archive-%Y")
-                  ((string-match "cyrus\\.mobi" group) "nnfolder+archive:cyrus.mobi-archive-%Y")
-                  ((string-match "cyrus\\.mobi-jenkins" group) 'delete)
-                  ((string-match "cyrus\\.mobi-jira" group) 'delete)
                   ((string-match "cyrus\\.tracker-tool" group) 'delete)
+                  ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y")
+                  ((string-match "cyrus\\.aetna" group) "nnfolder+archive:cyrus.aetna-archive-%Y")
+                  ((string-match "cyrus\\.mobi" group) "nnfolder+archive:cyrus.mobi-archive-%Y")
+                  ((string-match "cyrus\\.voxy" group) "nnfolder+archive:cyrus.voxy-archive-%Y")
                   (t "nnfolder+archive:archive-%Y"))))
       (message "expiry-target for %s is '%s'" group expiry-target-file)
       (if (stringp expiry-target-file)
@@ -243,7 +239,6 @@
 
           ("list.*"
            (total-expire . t)
-           ;; (expiry-target . delete)
            )
 
           ("cyrus.*"
