@@ -276,3 +276,7 @@
         shr-color-visible-luminance-min 60))
 
 (setq gnus-buttonized-mime-types '("multipart/signed"))
+
+;; encrypt/decrypt/signing
+(setq gnus-message-replysign t
+      gnus-message-replyencrypt t)
