@@ -15,9 +15,7 @@
 
 (define-abbrev-table 'asm-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -33,13 +31,9 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -234,9 +228,7 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -425,9 +417,7 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -446,6 +436,7 @@
     ("availabilty" "availability" nil 0)
     ("backend" "back end" nil 6)
     ("becuase" "because" nil 0)
+    ("carb" "Crab" nil 0)
     ("carraige" "Carriage" nil 0)
     ("changig" "changing" nil 0)
     ("collegue" "colleague" nil 0)
@@ -485,9 +476,7 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
