@@ -12,8 +12,9 @@ fi
 
 CDPATH=.:~:~/SRC:~/Documents:~/Movies
 
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion"
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
