@@ -1,0 +1,10 @@
+#!/bin/sh -x
+
+if [ -x /usr/local/bin/keybase ]; then
+    keybase pgp pull
+fi
+
+gpg2 --refresh-keys
+
+PRIV_KEYS=`gpg2 -K | grep -e '^sec' | awk '{print $2}' | awk -F/ '{print $2}'`
+gpg2 --send-keys $PRIV_KEYS
