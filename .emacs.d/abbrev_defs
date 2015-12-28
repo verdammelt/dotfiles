@@ -326,7 +326,7 @@
     ("assessements" "assessments" nil 0)
     ("attachement" "attachment" nil 0)
     ("backend" "back end" nil 12)
-    ("becuase" "because" nil 6)
+    ("becuase" "because" nil 7)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
     ("caio" "Ciao" nil 18)
     ("cancelation" "cancellation" nil 0)
@@ -336,7 +336,7 @@
     ("comparitors" "comparators" nil 0)
     ("condecension" "condescension" nil 0)
     ("condolencses" "condolences" nil 0)
-    ("coudl" "could" nil 6)
+    ("coudl" "could" nil 8)
     ("december" "December" nil 3)
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
@@ -368,13 +368,14 @@
     ("internmittently" "intermittently" nil 0)
     ("javascript" "JavaScript" nil 3)
     ("judgement" "judgment" nil 0)
+    ("limitiation" "limitation" nil 1)
     ("limitied" "limited" nil 0)
     ("ludicrious" "ludicrous" nil 0)
     ("mattias" "Mattias" nil 1)
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 7)
-    ("ok" "OK" nil 31)
+    ("ok" "OK" nil 32)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
     ("psuedo" "pseudo" nil 0)
@@ -395,6 +396,7 @@
     ("succesfully" "successfully" nil 0)
     ("thourough" "thorough" nil 0)
     ("timesheet" "time sheet" nil 0)
+    ("todo" "Todd" nil 0)
     ("tommorrow" "Tomorrow" nil 0)
     ("tomorow" "tomorrow" nil 0)
     ("triplicated" "triplicate" nil 1)
@@ -540,6 +542,10 @@
 
 (define-abbrev-table 'sql-mode-abbrev-table '())
 
+(define-abbrev-table 'swift-mode-abbrev-table '())
+
+(define-abbrev-table 'swift-repl-mode-abbrev-table '())
+
 (define-abbrev-table 'sx-compose-mode-abbrev-table '())
 
 (define-abbrev-table 'sx-inbox-mode-abbrev-table '())
@@ -590,7 +596,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 21)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 121)
+    ("tia" "Thanks in advance" nil 128)
     ("tomororw" "tomorrow" nil 0)
    ))
 
