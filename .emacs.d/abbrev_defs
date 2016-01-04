@@ -15,7 +15,9 @@
 
 (define-abbrev-table 'asm-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
@@ -31,9 +33,13 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -228,7 +234,9 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -326,7 +334,7 @@
     ("assessements" "assessments" nil 0)
     ("attachement" "attachment" nil 0)
     ("backend" "back end" nil 12)
-    ("becuase" "because" nil 7)
+    ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
     ("caio" "Ciao" nil 18)
     ("cancelation" "cancellation" nil 0)
@@ -336,7 +344,7 @@
     ("comparitors" "comparators" nil 0)
     ("condecension" "condescension" nil 0)
     ("condolencses" "condolences" nil 0)
-    ("coudl" "could" nil 8)
+    ("coudl" "could" nil 6)
     ("december" "December" nil 3)
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
@@ -368,14 +376,13 @@
     ("internmittently" "intermittently" nil 0)
     ("javascript" "JavaScript" nil 3)
     ("judgement" "judgment" nil 0)
-    ("limitiation" "limitation" nil 1)
     ("limitied" "limited" nil 0)
     ("ludicrious" "ludicrous" nil 0)
     ("mattias" "Mattias" nil 1)
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 7)
-    ("ok" "OK" nil 32)
+    ("ok" "OK" nil 31)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
     ("psuedo" "pseudo" nil 0)
@@ -396,7 +403,6 @@
     ("succesfully" "successfully" nil 0)
     ("thourough" "thorough" nil 0)
     ("timesheet" "time sheet" nil 0)
-    ("todo" "Todd" nil 0)
     ("tommorrow" "Tomorrow" nil 0)
     ("tomorow" "tomorrow" nil 0)
     ("triplicated" "triplicate" nil 1)
@@ -419,7 +425,9 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -432,7 +440,7 @@
     ("acheive" "achieve" nil 0)
     ("actionable" "actionable" nil 1)
     ("actionbar" "actionbar" nil 0)
-    ("adn" "and" nil 0)
+    ("adn" "and" nil 1)
     ("agressive" "aggressive" nil 0)
     ("aka" "AKA" nil 0)
     ("availabilty" "availability" nil 0)
@@ -445,10 +453,12 @@
     ("competancy" "competency" nil 0)
     ("conf" "con" nil 0)
     ("dan" "Dan" nil 4)
+    ("differnet" "different" nil 0)
     ("dropbox" "drop box" nil 0)
     ("eh" "tech" nil 0)
     ("everytime" "every time" nil 0)
     ("exericse" "exercise" nil 0)
+    ("extrememly" "extremely" nil 0)
     ("filetags" "FILE TAGS" nil 5)
     ("finanical" "Financial" nil 0)
     ("invstigate" "Instigate" nil 0)
@@ -466,7 +476,7 @@
     ("repercusion" "repercussion" nil 0)
     ("shedule" "schedule" nil 0)
     ("shoudl" "should" nil 0)
-    ("teh" "th" nil 6)
+    ("teh" "th" nil 7)
     ("termintes" "terminates" nil 0)
     ("unconciously" "unconsciously" nil 0)
     ("woudl" "would" nil 0)
@@ -478,7 +488,9 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -542,10 +554,6 @@
 
 (define-abbrev-table 'sql-mode-abbrev-table '())
 
-(define-abbrev-table 'swift-mode-abbrev-table '())
-
-(define-abbrev-table 'swift-repl-mode-abbrev-table '())
-
 (define-abbrev-table 'sx-compose-mode-abbrev-table '())
 
 (define-abbrev-table 'sx-inbox-mode-abbrev-table '())
@@ -596,7 +604,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 21)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 128)
+    ("tia" "Thanks in advance" nil 121)
     ("tomororw" "tomorrow" nil 0)
    ))
 
