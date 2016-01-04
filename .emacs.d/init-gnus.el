@@ -40,7 +40,10 @@
 
    ;; formatting the screen
    gnus-summary-line-format
-   "%U%R%z %10&user-date;%[%4L: %-23,23uB%]%O%B%s\n"
+   "%3t|%5V %U%R%[%10&user-date;/%(%*%-23,23uB%]%B%s%)\n"
+
+   gnus-sum-thread-tree-false-root "< "
+   gnus-sum-thread-tree-single-indent "= "
 
    ;;change date display depending upon age of article
    gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M")
