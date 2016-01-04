@@ -246,44 +246,43 @@
 Late deadlines first, then scheduled, then non-late deadlines"
     (let (result num-a num-b)
       (cond
-                                        ; time specific items are already sorted first by org-agenda-sorting-strategy
-
-                                        ; non-deadline and non-scheduled items next
+       ;; time specific items are already sorted first by org-agenda-sorting-strategy
+       ;; non-deadline and non-scheduled items next
        ((bh/agenda-sort-test 'bh/is-not-scheduled-or-deadline a b))
 
-                                        ; deadlines for today next
-       ((bh/agenda-sort-test 'bh/is-due-deadline a b))
-
-                                        ; late deadlines next
+       ;; late deadlines next
        ((bh/agenda-sort-test-num 'bh/is-late-deadline '> a b))
 
-                                        ; scheduled items for today next
+       ;; deadlines for today next
+       ((bh/agenda-sort-test 'bh/is-due-deadline a b))
+
+       ;; scheduled items for today next
        ((bh/agenda-sort-test 'bh/is-scheduled-today a b))
 
-                                        ; late scheduled items next
+       ;; late scheduled items next
        ((bh/agenda-sort-test-num 'bh/is-scheduled-late '> a b))
 
-                                        ; pending deadlines last
+       ;; pending deadlines last
        ((bh/agenda-sort-test-num 'bh/is-pending-deadline '< a b))
 
-                                        ; finally default to unsorted
+       ;; finally default to unsorted
        (t (setq result nil)))
       result))
 
   (defmacro bh/agenda-sort-test (fn a b)
     "Test for agenda sort"
     `(cond
-                                        ; if both match leave them unsorted
+      ;; if both match leave them unsorted
       ((and (apply ,fn (list ,a))
             (apply ,fn (list ,b)))
        (setq result nil))
-                                        ; if a matches put a first
+      ;; if a matches put a first
       ((apply ,fn (list ,a))
        (setq result -1))
-                                        ; otherwise if b matches put b first
+      ;; otherwise if b matches put b first
       ((apply ,fn (list ,b))
        (setq result 1))
-                                        ; if none match leave them unsorted
+      ;; if none match leave them unsorted
       (t nil)))
 
   (defmacro bh/agenda-sort-test-num (fn compfn a b)
