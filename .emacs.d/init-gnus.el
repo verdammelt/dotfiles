@@ -68,9 +68,11 @@
 ;;; Threading
 ;;;
   (setq
-   gnus-thread-sort-functions '((not  gnus-thread-sort-by-number)
+   gnus-thread-sort-functions '(gnus-thread-sort-by-number
+                                gnus-thread-sort-by-subject
                                 gnus-thread-sort-by-total-score)
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
+   gnus-thread-score-function 'max
    gnus-thread-hide-subtree t
    gnus-summary-gather-subject-limit 'fuzzy
    gnus-build-sparse-threads nil
