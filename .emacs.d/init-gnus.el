@@ -74,6 +74,7 @@
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
    gnus-thread-score-function 'max
    gnus-thread-hide-subtree t
+   gnus-auto-select-first nil
    gnus-summary-gather-subject-limit 'fuzzy
    gnus-build-sparse-threads nil
    gnus-fetch-old-headers 5000
