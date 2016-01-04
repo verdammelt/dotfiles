@@ -96,3 +96,5 @@
 (venv-initialize-interactive-shells)
 
 (global-flycheck-mode)
+
+(global-git-commit-mode)
