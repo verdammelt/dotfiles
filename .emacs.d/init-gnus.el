@@ -139,6 +139,9 @@
                          (to "msimpson+aetna@cyrusinnovation.com" "cyrus.aetna")
                          (any ".*@aetna.com" "cyrus.aetna")
                          (any ".*@itriagehealth.com" "cyrus.aetna"))
+                        (|
+                         (any ".*@upsider.co" "cyrus.upsider")
+                         (any ".*@aycron.com" "cyrus.upsider"))
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
@@ -220,6 +223,7 @@
                   ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y")
                   ((string-match "cyrus\\.aetna" group) "nnfolder+archive:cyrus.aetna-archive-%Y")
                   ((string-match "cyrus\\.mobi" group) "nnfolder+archive:cyrus.mobi-archive-%Y")
+                  ((string-match "cyrus\\.upsider" group) "nnfolder+archive:cyrus.upsider-archive-%Y")
                   ((string-match "cyrus\\.voxy" group) "nnfolder+archive:cyrus.voxy-archive-%Y")
                   (t "nnfolder+archive:archive-%Y"))))
       (message "expiry-target for %s is '%s'" group expiry-target-file)
