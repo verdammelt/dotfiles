@@ -5,6 +5,7 @@
 ;;;
 ;;; First Things First
 ;;;
+(package-initialize)
 (require 'cl-lib)
 
 ;; make sure the display is clean to start with
