@@ -205,7 +205,8 @@
 ;;;
   (defun mjs/expiry-wait-calculator (group)
     (let ((wait-days
-           (cond ((string-match "spam" group) 1)
+           (cond ((string-match "archive" group) 'never)
+                 ((string-match "spam" group) 1)
                  ((string-match "list\\.*" group) 14)
                  ((string-match "tnef" group) 'never)
                  ((string-match "codeandcocktails" group) 'never)
@@ -269,6 +270,10 @@
            (spam-contents gnus-group-spam-classification-spam)
            (spam-process ((ham spam-use-BBDB)))
            (ham-process-destination "nnfolder:mail.inbox"))
+
+          ("nnfolder+archive.*"
+           (total-expire . nil)
+           ())
 
           ("^gmane\."
            (spam-autodetect . t)
