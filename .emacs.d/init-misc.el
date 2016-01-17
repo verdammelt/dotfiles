@@ -275,3 +275,5 @@ symbol, not word, as I need this for programming the most."
 (add-hook 'edit-server-start-hook 'edit-server-maybe-dehtmlize-buffer)
 (add-hook 'edit-server-done-hook 'edit-server-maybe-htmlize-buffer)
 (add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))
+
+(add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
