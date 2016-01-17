@@ -211,6 +211,8 @@
 
 (define-abbrev-table 'gud-mode-abbrev-table '())
 
+(define-abbrev-table 'haml-mode-abbrev-table '())
+
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
@@ -336,7 +338,7 @@
     ("backend" "back end" nil 12)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 18)
+    ("caio" "Ciao" nil 21)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -344,7 +346,8 @@
     ("comparitors" "comparators" nil 0)
     ("condecension" "condescension" nil 0)
     ("condolencses" "condolences" nil 0)
-    ("coudl" "could" nil 6)
+    ("coudl" "could" nil 7)
+    ("daniel" "Daniel" nil 3)
     ("december" "December" nil 3)
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
@@ -357,13 +360,13 @@
     ("disfunction" "disfunction" nil 0)
     ("downtime" "down time" nil 0)
     ("environemnt" "environment" nil 0)
-    ("everytime" "every time" nil 0)
+    ("everytime" "every time" nil 1)
     ("excercise" "exercises" nil 0)
     ("foward" "forward" nil 0)
     ("ggroup" "group" nil 0)
     ("greenlight" "Greenlight" nil 12)
     ("havent" "haven't" nil 0)
-    ("hte" "the" nil 15)
+    ("hte" "the" nil 17)
     ("idiosyncracy" "idiosyncrasy" nil 0)
     ("immidiately" "immediately" nil 0)
     ("implemnetation" "implementation" nil 0)
@@ -374,7 +377,7 @@
     ("intenstines" "intestines" nil 0)
     ("interfereing" "interfering" nil 0)
     ("internmittently" "intermittently" nil 0)
-    ("javascript" "JavaScript" nil 3)
+    ("javascript" "JavaScript" nil 9)
     ("judgement" "judgment" nil 0)
     ("limitied" "limited" nil 0)
     ("ludicrious" "ludicrous" nil 0)
@@ -409,7 +412,7 @@
     ("unfortunatly" "Unfortunately" nil 0)
     ("unfrotunately" "unfortunately" nil 0)
     ("username" "user name" nil 0)
-    ("wednesday" "Wednesday" nil 3)
+    ("wednesday" "Wednesday" nil 6)
     ("wenesday" "Wednesday" nil 0)
     ("whiteboarding" "white boarding" nil 0)
     ("yesteday" "yesterday" nil 0)
@@ -500,6 +503,12 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
+(define-abbrev-table 'projectile-rails-compilation-mode-abbrev-table '())
+
+(define-abbrev-table 'projectile-rails-generate-mode-abbrev-table '())
+
+(define-abbrev-table 'projectile-rails-server-mode-abbrev-table '())
+
 (define-abbrev-table 'python-mode-abbrev-table '())
 
 (define-abbrev-table 'python-mode-skeleton-abbrev-table '())
@@ -515,6 +524,8 @@
 (define-abbrev-table 'ruby-mode-abbrev-table '())
 
 (define-abbrev-table 'scheme-mode-abbrev-table '())
+
+(define-abbrev-table 'scss-mode-abbrev-table '())
 
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
@@ -592,7 +603,7 @@
     ("existance" "existence" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
-    ("hardcoded" "hard coded" nil 1)
+    ("hardcoded" "hard coded" nil 2)
     ("independant" "independent" nil 1)
     ("jp" "PRTL" nil 39)
     ("langauge" "language" nil 0)
@@ -604,7 +615,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 21)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 121)
+    ("tia" "Thanks in advance" nil 126)
     ("tomororw" "tomorrow" nil 0)
    ))
 
@@ -627,4 +638,8 @@
 (define-abbrev-table 'vc-mtn-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'web-mode-abbrev-table '())
+
+(define-abbrev-table 'yaml-mode-abbrev-table '())
 
