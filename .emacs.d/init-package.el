@@ -38,6 +38,7 @@
     flycheck
     flx-ido
     fullframe
+    haml-mode
     ido-hacks
     ido-sort-mtime
     ido-ubiquitous
@@ -46,17 +47,22 @@
     markdown-mode
     miniedit
     multiple-cursors
+    nvm
     org-plus-contrib
     paredit
     projectile
+    projectile-rails
     rainbow-delimiters
     rvm
+    scss-mode
     slime
     smex
     tango-2-theme
     virtualenvwrapper
+    web-mode
     wgrep
     wrap-region
+    yaml-mode
     yasnippet
     ))
 
