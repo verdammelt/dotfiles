@@ -40,7 +40,7 @@
 
         org-completion-use-ido t
         org-outline-path-complete-in-steps nil
-        org-todo-keywords '((sequence "TODO(t)" "WAIT(w!)" "BLKD(b@/!)" "|"
+        org-todo-keywords '((sequence "TODO(t)" "WAIT(w!)" "BLKD(b@/!)" "DOIN(i)" "|"
                                       "DONE(d!/@)" "CNCL(c@/@)"))
         org-tag-alist '(("@HOME" . ?h)
                         ("@CALL" . ?c) ("@EMAIL" . ?e) ("@ERRAND" . ?r)
