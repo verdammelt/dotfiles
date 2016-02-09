@@ -40,7 +40,7 @@
 
    ;; formatting the screen
    gnus-summary-line-format
-   "%3t|%5V %U%R%[%10&user-date;/%(%*%-23,23uB%]%B%s%)\n"
+   "%5V%U%R%[%10&user-date;%*%(%1{%-21,21uB%)%}%]%B%s\n"
 
    gnus-sum-thread-tree-false-root "< "
    gnus-sum-thread-tree-single-indent "= "
