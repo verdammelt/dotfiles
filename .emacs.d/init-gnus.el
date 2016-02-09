@@ -142,6 +142,8 @@
                         (|
                          (any ".*@upsider.co" "cyrus.upsider")
                          (any ".*@aycron.com" "cyrus.upsider"))
+                        (|
+                         (any ".*@flashpoint-intel.com" "cyrus.flashpoint"))
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
@@ -223,6 +225,7 @@
                   ((string-match "cyrus\\.tracker-tool" group) 'delete)
                   ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y")
                   ((string-match "cyrus\\.aetna" group) "nnfolder+archive:cyrus.aetna-archive-%Y")
+                  ((string-match "cyrus\\.flashpoint" group) "nnfolder+archive:cyrus.flashpoint-archive-%Y")
                   ((string-match "cyrus\\.mobi" group) "nnfolder+archive:cyrus.mobi-archive-%Y")
                   ((string-match "cyrus\\.upsider" group) "nnfolder+archive:cyrus.upsider-archive-%Y")
                   ((string-match "cyrus\\.voxy" group) "nnfolder+archive:cyrus.voxy-archive-%Y")
