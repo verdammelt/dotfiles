@@ -67,12 +67,15 @@
 ;;;
 ;;; Threading
 ;;;
+  (defun mjs/average-score (&rest scores)
+    (/ (apply #'+ scores) (length scores)))
+
   (setq
    gnus-thread-sort-functions '(gnus-thread-sort-by-number
                                 gnus-thread-sort-by-subject
                                 gnus-thread-sort-by-total-score)
    gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
-   gnus-thread-score-function 'max
+   gnus-thread-score-function 'mjs/average-score
    gnus-thread-hide-subtree t
    gnus-auto-select-first nil
    gnus-summary-gather-subject-limit 'fuzzy
