@@ -12,6 +12,8 @@
 
   (define-key bbdb-mode-map "r" 'bbdb-merge-records)
 
+  (add-hook 'bbdb-after-change-hook (lambda (arg) (bbdb-save)))
+
   (setq bbdb-pop-up-window-size 10
         bbdb-mua-update-interactive-p '(query . create)
         bbdb-message-all-addresses t
