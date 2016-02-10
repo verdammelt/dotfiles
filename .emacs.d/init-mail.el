@@ -21,11 +21,7 @@
 
   (setq message-default-headers "X-Attribution: MJS")
 
-  (setq message-sendmail-envelope-from 'header)
-
-  (with-eval-after-load 'supercite
-    (setq sc-preferred-header-style 1
-          sc-citation-leader "  ")))
+  (setq message-sendmail-envelope-from 'header))
 
 (with-eval-after-load 'mm-decode
   (setq mm-default-directory (expand-file-name "~/Downloads"))
