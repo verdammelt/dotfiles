@@ -19,6 +19,30 @@
         common-lisp-hyperspec-issuex-table
         (concat common-lisp-hyperspec-root "Data/Map_IssX.txt"))
 
+  (defun mjs/string-starts-with (string prefix)
+    "Return t if STRING starts with prefix."
+    (string-match (rx-to-string `(: bos ,prefix) t)
+                    string))
+
+  (defun mjs/browse-file-url-with-eww (next-method &rest args)
+    (let ((browse-url-browser-function
+           (lambda (file &optional new-window)
+             (ignore new-window)
+             (let ((file (if (mjs/string-starts-with file "file://")
+                             (subseq file (length "file://"))
+                           file)))
+               (pop-to-buffer (get-buffer-create "*eww*"))
+               (eww-open-file file)))))
+      (apply next-method args)))
+
+  (mapc (lambda (symbol)
+          (advice-add symbol :around #'mjs/browse-file-url-with-eww))
+        '(common-lisp-hyperspec
+          common-lisp-hyperspec-format
+          common-lisp-hyperspec-lookup-reader-macro))
+
+  (advice-add 'common-lisp-hyperspec :around #'mjs/browse-file-url-with-eww)
+
 
   (add-hook 'slime-mode-hook (lambda () (set-up-slime-ac t)))
   (add-hook 'slime-repl-mode-hook (lambda () (set-up-slime-ac t)))
