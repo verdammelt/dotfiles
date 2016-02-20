@@ -251,6 +251,11 @@
            (spam-process ((ham spam-use-BBDB)))
            (spam-process-destination "nnfolder:spam.spam"))
 
+          ("nnfolder+archive.*"
+           (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
+          ("nndraft:.*"
+           (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
+
           ("mail.*"
            (gcc-self . t)
            (total-expire . t))
