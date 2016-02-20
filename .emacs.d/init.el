@@ -56,11 +56,15 @@
 (load-init-file "init-lisp")
 (load-init-file "init-misc")
 
-;; set up the fonts / themes
+;;;
+;;; set up the fonts / themes
+;;;
+;; Fallback font - helps with Unicode
+(set-fontset-font "fontset-default" nil
+                  (font-spec :size 20 :name "Symbola"))
 (set-face-attribute 'default nil
                     :height 180
-                    :family "DejaVu Sans Mono"
-                    )
+                    :family "DejaVu Sans Mono")
 (load-theme 'tango-2)
 (set-face-attribute 'cursor nil :background "red")
 
