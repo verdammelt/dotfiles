@@ -92,8 +92,8 @@
            "* TODO %? %^G\n  %U\n %a\n"
            :clock-in t :clock-resume t
            :empty-lines-after 1)
-          ("r" "Respond to email" entry (file "")
-           "* TODO Respond to %:from on %:subject :@EMAIL:\nSCHEDULED: %t\n%U\n%a\n"
+          ("r" "Process email" entry (file "")
+           "* TODO Process '%:subject' from '%:from' :@EMAIL:\nSCHEDULED: %t\n%U\n%a\n"
            :clock-in t :clock-resume t
            :immediate-finish t)
           ("n" "Take a note" entry (file "")
