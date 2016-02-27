@@ -119,10 +119,8 @@
 (with-eval-after-load 'markdown-mode
   (setq markdown-command "markdown | smartypants"))
 
-(defun mjs/setup-text-mode ()
+(with-eval-after-load 'paragraphs
   (setq sentence-end-double-space nil))
-(add-hook 'text-mode-hook 'mjs/setup-text-mode)
-(add-hook 'text-mode-hook 'turn-on-fci-mode)
 
 (with-eval-after-load 'ns-win
   (setq ns-use-srgb-colorspace t
