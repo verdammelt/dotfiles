@@ -3,8 +3,9 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(setq c-default-style "linux"
-      c-basic-offset 4)
+(with-eval-after-load 'cc-vars
+  (setq c-default-style "linux"
+        c-basic-offset 4))
 
 ;; Save my place in files
 (with-eval-after-load 'saveplace
