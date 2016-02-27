@@ -5,8 +5,6 @@
 ;;;;
 (require 'cl-lib)
 
-(setq message-log-max 10000)
-
 ;;; get Package set up properly and initialized
 (require 'package)
 (add-to-list 'package-archives

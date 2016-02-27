@@ -5,6 +5,7 @@
 ;;;
 ;;; First Things First
 ;;;
+(setq message-log-max 10000)
 (package-initialize)
 (require 'cl-lib)
 
