@@ -68,8 +68,6 @@
   (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
 
 ;; auto-complete
-(require 'auto-complete-config)
-(ac-config-default)
 (with-eval-after-load 'auto-complete
   (diminish 'auto-complete-mode)
   (ac-ispell-setup)

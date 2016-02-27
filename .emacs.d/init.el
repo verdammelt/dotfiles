@@ -102,4 +102,7 @@
 (global-flycheck-mode)
 
 (global-git-commit-mode)
+
+(ac-config-default)
+
 (keyfreq-mode)
