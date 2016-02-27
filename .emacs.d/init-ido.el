@@ -14,9 +14,10 @@
   (global-set-key (kbd "M-x") 'smex))
 (add-hook 'ido-hacks-mode-hook 'mjs/setup-smex)
 
-(ido-mode)
-(ido-everywhere)
-(ido-ubiquitous-mode)
-(ido-hacks-mode)
-(flx-ido-mode 1)
-(smex-initialize)			; must be after ido-hacks!
+(defun mjs/turn-on-ido ()
+  (ido-mode)
+  (ido-everywhere)
+  (ido-ubiquitous-mode)
+  (ido-hacks-mode)
+  (flx-ido-mode 1)
+  (smex-initialize))			; must be after ido-hacks!

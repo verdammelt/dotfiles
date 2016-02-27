@@ -9,8 +9,6 @@
                 (ccl ("~/.cim/bin/ccl"))
                 (ecl ("~/.cim/bin/ecl"))))
 
-(slime-setup '(slime-fancy))
-
 (with-eval-after-load "slime"
   (setq common-lisp-hyperspec-root
         "/usr/local/share/doc/hyperspec/HyperSpec/"

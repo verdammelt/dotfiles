@@ -106,3 +106,7 @@
 (ac-config-default)
 
 (keyfreq-mode)
+
+(mjs/turn-on-ido)
+
+(slime-setup '(slime-fancy))
