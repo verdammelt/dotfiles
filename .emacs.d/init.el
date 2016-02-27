@@ -81,9 +81,7 @@
 (savehist-mode)
 (save-place-mode t)
 
-;; setup midnight hooks
-(require 'midnight)
-(timer-activate midnight-timer)
+(midnight-mode t)
 
 (miniedit-install)
 
