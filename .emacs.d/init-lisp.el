@@ -95,7 +95,8 @@
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
 
 (with-eval-after-load 'cider-repl
-  (cider-repl-add-shortcut "quit" 'cider-quit))
+  (cider-repl-add-shortcut "quit" 'cider-quit)
+  (setq cider-repl-display-help-banner nil))
 
 (with-eval-after-load 'simple
   (add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode))
