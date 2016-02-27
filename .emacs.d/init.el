@@ -79,6 +79,7 @@
 (global-hl-line-mode)
 (global-auto-revert-mode)
 (savehist-mode)
+(save-place-mode t)
 
 ;; setup midnight hooks
 (require 'midnight)

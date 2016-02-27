@@ -7,8 +7,6 @@
       c-basic-offset 4)
 
 ;; Save my place in files
-(require 'saveplace)
-(setq-default save-place t)
 (with-eval-after-load 'saveplace
   (setq save-place-file (locate-user-emacs-file ".places")))
 
