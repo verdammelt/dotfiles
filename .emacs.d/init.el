@@ -103,3 +103,4 @@
 (global-flycheck-mode)
 
 (global-git-commit-mode)
+(keyfreq-mode)

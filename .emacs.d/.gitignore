@@ -1,5 +1,7 @@
 .backups
 .history
+.keyfreq
+.keyfreq.lock
 .places
 .projectile-bookmarks.eld
 .org-id-locations

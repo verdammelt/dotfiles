@@ -43,6 +43,7 @@
     ido-sort-mtime
     ido-ubiquitous
     ido-vertical-mode
+    keyfreq
     magit
     markdown-mode
     miniedit

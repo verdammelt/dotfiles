@@ -277,3 +277,9 @@ symbol, not word, as I need this for programming the most."
 (add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))
 
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+
+(with-eval-after-load 'keyfreq
+  (defvar keyfreq-file)
+  (defvar keyfreq-file-lock)
+  (setq keyfreq-file (locate-user-emacs-file ".keyfreq")
+        keyfreq-file-lock (concat keyfreq-file ".lock")))
