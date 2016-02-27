@@ -11,7 +11,8 @@
   (setq save-place-file (locate-user-emacs-file ".places")))
 
 ;; Save minibuffer history
-(setq savehist-file (locate-user-emacs-file ".history"))
+(with-eval-after-load 'savehist
+  (setq savehist-file (locate-user-emacs-file ".history")))
 
 ;; Backup files
 (with-eval-after-load 'files
