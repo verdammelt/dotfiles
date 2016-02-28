@@ -341,6 +341,9 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
   (fullframe org-agenda org-agenda-quit))
 
+(with-eval-after-load 'org-mobile
+  (setq org-mobile-directory (expand-file-name "MobileOrg" org-directory)
+        org-mobile-inbox-for-pull (mjs/expand-org-file "inbox")))
 
 (global-set-key (kbd "C-c a")  'org-agenda)
 (global-set-key (kbd "C-c b")  'org-iswitchb)
