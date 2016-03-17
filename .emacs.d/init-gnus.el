@@ -154,6 +154,7 @@
                         (| (any "ally.*" "list.bank")
                            (any ".*mint.*" "list.bank")
                            (any ".*citizensbank.*" "list.bank")
+                           (from "CitizensOneCustomerService@ha.edelivery-view.com")
                            (any ".*@mail.fidelity.com" "list.bank"))
                         (to "boston-software-crafstmanship@googlegroups.com" "list.boston-software-crafstmanship")
                         (from "books@dailylit.com" "list.dailylit")
