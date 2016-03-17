@@ -144,6 +144,8 @@
                          (any ".*@aycron.com" "cyrus.upsider"))
                         (|
                          (any ".*@flashpoint-intel.com" "cyrus.flashpoint"))
+                        (|
+                         (any ".*@cocoran.com" "cyrus.corcoran"))
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
