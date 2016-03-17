@@ -135,10 +135,10 @@
      (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
 
      org-agenda-sorting-strategy
-     '((agenda time-up user-defined-up category-keep)
-       (todo todo-state-up tag-up alpha-up)
-       (tags todo-state-down tag-up alpha-up)
-       (search todo-state-up))
+     '((agenda user-defined-up)
+       (todo todo-state-up timestamp-up alpha-up)
+       (tags todo-state-up timestamp-up alpha-up)
+       (search todo-state-up timestamp-up alpha-up))
 
      org-agenda-custom-commands
      '(("d" "daily"
@@ -170,11 +170,9 @@
          (tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")))
          (tags-todo "+@WORK&+@CLIENT/!-WAIT"
-                    ((org-agenda-sorting-strategy '(todo-state-up tag-up))
-                     (org-agenda-overriding-header "BILLABLE")))
+                    ((org-agenda-overriding-header "BILLABLE")))
          (tags-todo "+@WORK&-@CLIENT/!-WAIT"
-                    ((org-agenda-sorting-strategy '(todo-state-up tag-up))
-                     (org-agenda-overriding-header "NON-BILLABLE")))
+                    ((org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("x" "lost tasks" tags-todo "-{^@}")
