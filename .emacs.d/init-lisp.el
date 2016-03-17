@@ -97,4 +97,5 @@
   (setq cider-repl-display-help-banner nil))
 
 (with-eval-after-load 'simple
-  (add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode))
+  (add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode))
