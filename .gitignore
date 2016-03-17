@@ -43,6 +43,7 @@
 .newsrc.eld
 .nnmail-cache
 .npm
+.nvm
 .nrepl-history.eld
 .pow
 .pry_history
