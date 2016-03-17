@@ -63,6 +63,8 @@
 
 (define-abbrev-table 'cider-test-report-mode-abbrev-table '())
 
+(define-abbrev-table 'cljr--change-signature-mode-abbrev-table '())
+
 (define-abbrev-table 'cljsbuild-compilation-mode-abbrev-table '())
 
 (define-abbrev-table 'clojure-mode-abbrev-table '())
@@ -119,6 +121,8 @@
 (define-abbrev-table 'edebug-eval-mode-abbrev-table '())
 
 (define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())
+
+(define-abbrev-table 'elisp-byte-code-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
@@ -288,9 +292,7 @@
 
 (define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
 
-(define-abbrev-table 'mail-abbrevs
-  '(
-   ))
+(define-abbrev-table 'mail-abbrevs '())
 
 (define-abbrev-table 'makefile-automake-mode-abbrev-table '())
 
@@ -309,6 +311,9 @@
     ("amature" "maturer" nil 0)
     ("backend" "back end" nil 0)
     ("collegues" "colleagues" nil 0)
+    ("crafstmanship" "craftsmanship" nil 0)
+    ("crafstpeople" "Craftspeople" nil 0)
+    ("craftsperson" "craftsperson" nil 0)
     ("differnt" "different" nil 0)
     ("ensentially" "essentially" nil 0)
     ("existant" "existent" nil 0)
@@ -633,6 +638,8 @@
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
 
+(define-abbrev-table 'vc-git-region-history-mode-abbrev-table '())
+
 (define-abbrev-table 'vc-hg-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-mtn-log-view-mode-abbrev-table '())
@@ -640,6 +647,8 @@
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'web-mode-abbrev-table '())
+
+(define-abbrev-table 'xref--xref-buffer-mode-abbrev-table '())
 
 (define-abbrev-table 'yaml-mode-abbrev-table '())
 
