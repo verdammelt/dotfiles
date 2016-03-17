@@ -19,8 +19,6 @@
         bbdb-message-all-addresses t
         bbdb-complete-mail-allow-cycling t)
 
-  (with-eval-after-load 'supercite
-    (bbdb-initialize 'sc))
   (with-eval-after-load 'gnus
     (bbdb-initialize 'gnus)
     (bbdb-mua-auto-update-init 'gnus))
