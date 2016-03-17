@@ -19,6 +19,8 @@
   '(
    ))
 
+(define-abbrev-table 'bat-mode-abbrev-table '())
+
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
 (define-abbrev-table 'bibtex-mode-abbrev-table '())
@@ -244,6 +246,8 @@
   '(
    ))
 
+(define-abbrev-table 'js-jsx-mode-abbrev-table '())
+
 (define-abbrev-table 'js-mode-abbrev-table '())
 
 (define-abbrev-table 'latex-mode-abbrev-table '())
@@ -343,7 +347,7 @@
     ("backend" "back end" nil 12)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 21)
+    ("caio" "Ciao" nil 33)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -367,11 +371,12 @@
     ("environemnt" "environment" nil 0)
     ("everytime" "every time" nil 1)
     ("excercise" "exercises" nil 0)
+    ("flashpoint" "flash point" nil 1)
     ("foward" "forward" nil 0)
     ("ggroup" "group" nil 0)
     ("greenlight" "Greenlight" nil 12)
     ("havent" "haven't" nil 0)
-    ("hte" "the" nil 17)
+    ("hte" "the" nil 20)
     ("idiosyncracy" "idiosyncrasy" nil 0)
     ("immidiately" "immediately" nil 0)
     ("implemnetation" "implementation" nil 0)
@@ -393,6 +398,7 @@
     ("ok" "OK" nil 31)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
+    ("probaby" "probably" nil 0)
     ("psuedo" "pseudo" nil 0)
     ("receieved" "received" nil 0)
     ("reconnaisance" "reconnaissance" nil 0)
@@ -404,6 +410,7 @@
     ("rythm" "rhythm" nil 0)
     ("separetely" "separately" nil 0)
     ("sharebuilder" "Share builder" nil 0)
+    ("standups" "stand-ups" nil 0)
     ("stong" "strong" nil 0)
     ("subconcious" "subconscious" nil 0)
     ("subscriptios" "Subscriptions" nil 0)
@@ -417,7 +424,7 @@
     ("unfortunatly" "Unfortunately" nil 0)
     ("unfrotunately" "unfortunately" nil 0)
     ("username" "user name" nil 0)
-    ("wednesday" "Wednesday" nil 6)
+    ("wednesday" "Wednesday" nil 9)
     ("wenesday" "Wednesday" nil 0)
     ("whiteboarding" "white boarding" nil 0)
     ("yesteday" "yesterday" nil 0)
@@ -484,9 +491,10 @@
     ("repercusion" "repercussion" nil 0)
     ("shedule" "schedule" nil 0)
     ("shoudl" "should" nil 0)
-    ("teh" "th" nil 7)
+    ("teh" "th" nil 9)
     ("termintes" "terminates" nil 0)
     ("unconciously" "unconsciously" nil 0)
+    ("wifi" "wifi" nil 0)
     ("woudl" "would" nil 0)
    ))
 
@@ -519,6 +527,8 @@
 (define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'rake-compilation-mode-abbrev-table '())
+
+(define-abbrev-table 'restclient-mode-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
 
@@ -597,7 +607,7 @@
     ("cancelled" "canceled" nil 0)
     ("certifiate" "Certificate" nil 0)
     ("convinience" "convenience" nil 0)
-    ("convinient" "convenient" nil 5)
+    ("convinient" "convenient" nil 6)
     ("coudld" "could" nil 0)
     ("curiousity" "curiosity" nil 0)
     ("decsion" "decision" nil 0)
@@ -614,17 +624,19 @@
     ("langauge" "language" nil 0)
     ("marijhuana" "Marijuana" nil 0)
     ("permisions" "permissions" nil 0)
-    ("reciept" "receipt" nil 0)
+    ("reciept" "receipt" nil 1)
     ("retrospecitive" "retrospective" nil 0)
     ("separete" "separate" nil 0)
     ("signup" "sign-up" nil 6)
-    ("standup" "stand-up" nil 21)
+    ("standup" "stand-up" nil 30)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 126)
+    ("tia" "Thanks in advance" nil 128)
     ("tomororw" "tomorrow" nil 0)
    ))
 
 (define-abbrev-table 'twittering-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'typescript-mode-abbrev-table '())
 
 (define-abbrev-table 'url-cookie-mode-abbrev-table '())
 
