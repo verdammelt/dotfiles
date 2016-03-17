@@ -41,6 +41,7 @@
     ido-sort-mtime
     ido-ubiquitous
     ido-vertical-mode
+    js2-mode
     keyfreq
     magit
     markdown-mode
@@ -58,7 +59,6 @@
     smex
     tango-2-theme
     virtualenvwrapper
-    web-mode
     wgrep
     wrap-region
     yaml-mode
