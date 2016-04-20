@@ -1,5 +1,5 @@
 ;;;
 ;;; Astronomical items
 ;;;
-&%%(diary-phases-of-moon)
+&%%(diary-lunar-phases)
 &%%(diary-sunrise-sunset)
