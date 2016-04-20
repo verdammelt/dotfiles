@@ -11,12 +11,15 @@
         kill-sexp
         org-self-insert-command
         paredit-backward
+        paredit-backward-up
         paredit-forward
         paredit-forward-barf-sexp
         paredit-forward-delete
         paredit-forward-down
         paredit-forward-kill-word
+        paredit-kill
         paredit-open-round
+        paredit-wrap-round
         save-some-buffers
         slime-autodoc-space
         wgrep-finish-edit
