@@ -135,7 +135,7 @@
      (mapcar #'mjs/expand-org-file '("todo" "work" "inbox"))
 
      org-agenda-sorting-strategy
-     '((agenda user-defined-up)
+     '((agenda time-up user-defined-up category-keep)
        (todo todo-state-up timestamp-up alpha-up)
        (tags todo-state-up timestamp-up alpha-up)
        (search todo-state-up timestamp-up alpha-up))
