@@ -278,3 +278,10 @@ symbol, not word, as I need this for programming the most."
   (defvar keyfreq-file-lock)
   (setq keyfreq-file (locate-user-emacs-file ".keyfreq")
         keyfreq-file-lock (concat keyfreq-file ".lock")))
+
+(with-eval-after-load 'calc
+  (setq math-additional-units
+        '((fort "14 day" "Fortnight")
+          (bit nil "Bit")
+          (byte "8 bit" "Byte"))
+        math-units-table nil))
