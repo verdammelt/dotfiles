@@ -371,3 +371,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
 (global-set-key (kbd "s-<f9>") 'mjs/morning-sam)
 (global-set-key (kbd "S-s-<f9>") 'mjs/punch-out)
+
+;;
+;; org-trello setup
+;;
+(add-to-list 'auto-mode-alist '("\\.trello" . org-mode))
+(defun mjs/maybe-turn-on-org-trello-mode ()
+  (let ((filename (buffer-file-name (current-buffer))))
+    (when (and filename (string= "trello"
+                                 (file-name-extension filename)))
+      (org-trello-mode))))
+(add-hook 'org-mode-hook 'mjs/maybe-turn-on-org-trello-mode)
