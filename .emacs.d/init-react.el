@@ -36,6 +36,7 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
   (defvar js-indent-level)
   (diminish 'js2-mode "JS")
   (diminish 'js2-jsx-mode "JSX")
+  (setq js-indent-level 2)
   (setq sgml-basic-offset js-indent-level
         sgml-attribute-offset js-indent-level))
 
