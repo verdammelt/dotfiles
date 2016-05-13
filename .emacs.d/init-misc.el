@@ -255,7 +255,20 @@ symbol, not word, as I need this for programming the most."
 (setq scroll-preserve-screen-position t)
 
 (with-eval-after-load 'compile
-  (setq compilation-scroll-output 'first-error))
+  (defvar compilation-filter-start)
+  (defvar compilation-scroll-output)
+
+  (setq compilation-scroll-output 'first-error)
+
+  (require 'ansi-color)
+
+  (defun mjs/colorize-compilation ()
+    (let ((inhibit-read-only t))
+      (ansi-color-apply-on-region
+       compilation-filter-start (point))))
+
+  (add-hook 'compilation-filter-hook
+            #'mjs/colorize-compilation))
 
 ;; Setup Hyperspec info file
 (add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
