@@ -150,6 +150,7 @@
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
                         (to "lisp@lispnyc.org" "list.lispnyc")
+                        (from "ArqBackupSystem@virgil.local" "list.arqbackup")
                         (to "discuss-bawch@googlegroups.com" "list.bawch")
                         (to "clean-code-discussion@googlegroups.com" "list.cleancode")
                         (from "wsmith@wordsmith.org" "list.awotd")
