@@ -138,6 +138,7 @@
 (global-set-key (kbd "s-f") 'projectile-find-file)
 (global-set-key (kbd "s-s") 'projectile-switch-project)
 (with-eval-after-load 'projectile
+  (add-to-list 'projectile-globally-ignored-directories "node_modules")
   (setq projectile-mode-line
         '(:eval (propertize (format " :%s:" (projectile-project-name))
                             'face 'bold)))
