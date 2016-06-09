@@ -14,10 +14,7 @@
 (package-initialize)
 
 (defvar mjs/*needed-package-names*
-  '(ac-cider
-    ac-ispell
-    ac-slime
-    auctex
+  '(auctex
     auto-complete
     avy
     bbdb
@@ -27,6 +24,8 @@
     clj-refactor
     clojure-mode
     coffee-mode
+    company
+    company-quickhelp
     diminish
     edit-server
     edit-server-htmlize
@@ -56,6 +55,7 @@
     rvm
     scss-mode
     slime
+    slime-company
     smex
     tango-2-theme
     virtualenvwrapper

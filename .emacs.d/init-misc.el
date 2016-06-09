@@ -68,18 +68,10 @@
 (with-eval-after-load 'python
   (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
 
-;; auto-complete
-(with-eval-after-load 'auto-complete
-  (diminish 'auto-complete-mode)
-  (ac-ispell-setup)
-  (setf (cdr (assoc 'symbol ac-source-ispell)) "d")
-  (setq ac-use-menu-map t
-        ac-auto-show-menu t)
-  (defun mjs/ac-text-mode-setup ()
-    (add-to-list 'ac-sources 'ac-source-words-in-buffer)
-    (ac-ispell-ac-setup)
-    (add-to-list 'ac-sources 'ac-source-yasnippet))
-  (add-hook 'text-mode-hook 'mjs/ac-text-mode-setup))
+(with-eval-after-load 'company
+  (setq company-idle-delay .25
+        company-show-numbers t
+        company-selection-wrap-around t))
 
 ;; abbrevs
 (setq-default abbrev-mode t)
@@ -103,7 +95,6 @@
   (fullframe magit-status magit-mode-quit-window))
 
 (with-eval-after-load 'coffee-mode
-  (add-to-list 'ac-modes 'coffee-mode)
   (setq coffee-tab-width 2))
 
 (with-eval-after-load 'simple

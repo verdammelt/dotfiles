@@ -39,13 +39,10 @@
           common-lisp-hyperspec-format
           common-lisp-hyperspec-lookup-reader-macro))
 
-  (advice-add 'common-lisp-hyperspec :around #'mjs/browse-file-url-with-eww)
+  (advice-add 'common-lisp-hyperspec :around #'mjs/browse-file-url-with-eww))
 
-
-  (add-hook 'slime-mode-hook (lambda () (set-up-slime-ac t)))
-  (add-hook 'slime-repl-mode-hook (lambda () (set-up-slime-ac t)))
-  (eval-after-load "auto-complete"
-    '(add-to-list 'ac-modes 'slime-repl-mode)))
+(with-eval-after-load 'slime-company
+  (setq slime-company-completion 'fuzzy))
 
 (with-eval-after-load 'eldoc (diminish 'eldoc-mode))
 (with-eval-after-load 'elisp-slime-nav (diminish 'elisp-slime-nav-mode))

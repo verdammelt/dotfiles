@@ -72,12 +72,12 @@
 ;;;
 ;;; turn on all things that need turning on.
 ;;;
-(ac-config-default)
 (browse-kill-ring-default-keybindings)
 (display-battery-mode)
 (display-time)
 (edit-server-start)
-(global-auto-complete-mode)
+(global-company-mode)
+(company-quickhelp-mode)
 (global-auto-revert-mode)
 (global-flycheck-mode)
 (global-git-commit-mode)
@@ -92,7 +92,7 @@
 (savehist-mode)
 (server-start)
 (show-paren-mode)
-(slime-setup '(slime-fancy))
+(slime-setup '(slime-fancy slime-company))
 (venv-initialize-interactive-shells)
 (wrap-region-global-mode)
 (yas-global-mode)
