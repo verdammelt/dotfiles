@@ -4,6 +4,7 @@
 ;;;
 (require 'nvm)
 (nvm-use (caar (last (nvm--installed-versions))))
+(add-to-list 'exec-path (getenv "NVM_BIN"))
 
 ;;;
 ;;; I don't like installing project dev tools globally (I have run into
@@ -12,7 +13,20 @@
 ;;; directory and use that as the executable for flycheck.
 ;;;
 (with-eval-after-load 'projectile
-  (add-hook 'projectile-after-switch-project-hook 'mjs/setup-local-eslint))
+  (add-hook 'projectile-after-switch-project-hook 'mjs/add-node-modules-in-path))
+
+(defvar mjs/project-node-module-special-cases (list))
+(add-to-list 'mjs/project-node-module-special-cases "VestaWeb")
+
+(defun mjs/add-node-modules-in-path ()
+  (interactive)
+  (let* ((all-possibilities
+          (mapcar #'(lambda (dir) (expand-file-name "./node_modules/.bin" dir))
+                  (cons "./" mjs/project-node-module-special-cases)))
+         (node-modules-bind-dir
+          (cl-find-if #'file-exists-p all-possibilities)))
+    (when node-modules-bind-dir
+      (cl-pushnew node-modules-bind-dir exec-path))))
 
 (defun mjs/setup-local-eslint ()
     "If ESLint found in node_modules directory - use that for flycheck.
