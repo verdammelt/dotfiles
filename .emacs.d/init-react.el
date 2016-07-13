@@ -57,8 +57,12 @@ Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
   (setq sgml-basic-offset js-indent-level
         sgml-attribute-offset js-indent-level))
 
-;;;
-;;; Javascript mode is used for JSON files. I'd like its identation to
-;;; match the code.
-;;;
-(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(defun mjs/toggle-indent-level ()
+  (interactive)
+  (defvar js-indent-level)
+  (defvar sgml-attribute-offset)
+  (defvar sgml-basic-offset)
+  (let ((offset (if (= js-indent-level 2) 4 2)))
+    (setq js-indent-level offset
+          sgml-basic-offset offset
+          sgml-attribute-offset offset)))
