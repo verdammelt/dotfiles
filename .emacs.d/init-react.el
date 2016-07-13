@@ -28,6 +28,9 @@
     (when node-modules-bind-dir
       (cl-pushnew node-modules-bind-dir exec-path))))
 
+(with-eval-after-load 'typescript
+  (add-hook 'typescript-mode-hook 'tide-setup))
+
 (defun mjs/setup-local-eslint ()
     "If ESLint found in node_modules directory - use that for flycheck.
 Intended for use in PROJECTILE-AFTER-SWITCH-PROJECT-HOOK."
