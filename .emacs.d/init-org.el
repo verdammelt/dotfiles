@@ -100,11 +100,11 @@
           ("n" "Take a note" entry (file "")
            "* %U %? :NOTE:\n%a\n"
            :clock-in t :clock-resume t)
-          ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
+          ("k" "Tickler" entry (file+headline ,(mjs/expand-org-file "todo.org") "Tickler")
            "* TODO %? %^G\n  %U\n  %a\n"
            :clock-in t :clock-resume t)
           ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
-           "* %?\n  %U\n %a\n"
+           "* %{headline}\n  %U\n %a\n%?"
            :clock-in t :clock-resume t)
           ("w" "Templates for work")
           ("wb" "Billable Task" entry (file "")
