@@ -128,8 +128,13 @@
    nnmail-split-fancy '(|
                         ("subject" "Message left on server:.*" "mail.misc")
                         (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
-                        (to "clojure-dev@googlegroups.com" "list.clojure-dev")
                         (to "noreply@sourceforge.net" "mail.tnef")
+
+                        ;; Work mail: defmethod
+                        (| (to "msimpson@defmethod.io" "defmethod.inbox")
+                           (to "all@defmethod.io" "defmethod.inbox"))
+
+                        ;; Work mail: cyrus
                         (|
                          (from "nomail@mobicorp.com" "cyrus.mobi-jenkins")
                          (from "noreply-mobiDevelopment@mobicorp.com" "cyrus.mobi-jira")
@@ -149,6 +154,10 @@
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
+
+
+                        ;; Mailing lists.
+                        (to "clojure-dev@googlegroups.com" "list.clojure-dev")
                         (to "lisp@lispnyc.org" "list.lispnyc")
                         (from "ArqBackupSystem@virgil.local" "list.arqbackup")
                         (to "discuss-bawch@googlegroups.com" "list.bawch")
@@ -216,7 +225,6 @@
                  ((string-match "list\\.*" group) 14)
                  ((string-match "tnef" group) 'never)
                  ((string-match "codeandcocktails" group) 'never)
-                 ((string-match "tracker-tool" group) 2)
                  (t 28))))
       (message "expiry-wait for %s is %s" group wait-days)
       wait-days))
@@ -226,8 +234,10 @@
             (cond ((string-match "list\\.*" group) 'delete)
                   ((string-match "spam\\.*" group) 'delete)
                   ((string-match "mail.misc" group) 'delete)
-                  ((string-match "cyrus\\.tracker-tool" group) 'delete)
+                  ((string-match "defmethod.inbox" group) "nnfolder+archive:defmethod.archive-%Y")
+                  ((string-match "defmethod\\.datapipe" group) "nnfolder+archive:defmethod.datapipe-archive-%Y")
                   ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y")
+                  ((string-match "cyrus\\.corcoran" group) "nnfolder+archive:cyrus.corcoran-archive-%Y")
                   ((string-match "cyrus\\.aetna" group) "nnfolder+archive:cyrus.aetna-archive-%Y")
                   ((string-match "cyrus\\.flashpoint" group) "nnfolder+archive:cyrus.flashpoint-archive-%Y")
                   ((string-match "cyrus\\.mobi" group) "nnfolder+archive:cyrus.mobi-archive-%Y")
@@ -275,6 +285,12 @@
            (gcc-self . t)
            (total-expire . t)
            (posting-style (address "msimpson@cyrusinnovation.com")))
+
+          ("defmethod.*"
+           (gcc-self . t)
+           (total-expire . t)
+           (posting-style (address "msimpson@defmethod.io")))
+
 
           ("spam\.spam"
            (total-expire . t)
