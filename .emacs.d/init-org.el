@@ -24,7 +24,10 @@
         org-default-notes-file (mjs/expand-org-file "inbox")
         org-use-property-inheritance t
         org-log-done 'time
+        org-log-redeadline 'note
         org-log-reschedule 'note
+        org-log-refile 'time
+        org-log-repeat 'time
         org-log-into-drawer t
         org-treat-S-cursor-todo-selection-as-state-change nil
 
