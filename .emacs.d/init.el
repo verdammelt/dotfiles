@@ -55,6 +55,7 @@
 (load-init-file "init-ido")
 (load-init-file "init-org")
 (load-init-file "init-lisp")
+(load-init-file "init-javascript")
 (load-init-file "init-misc")
 
 ;;;
