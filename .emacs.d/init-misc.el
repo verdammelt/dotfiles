@@ -63,12 +63,21 @@
 ;; editing programs
 (with-eval-after-load 'simple
   (add-hook 'prog-mode-hook 'linum-mode)
-  (add-hook 'prog-mode-hook 'ruler-mode))
+                                        ;(add-hook 'prog-mode-hook 'ruler-mode)
+  (add-hook 'prod-mode-hook 'fci-mode))
 
 (with-eval-after-load 'python
   (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
 
 (with-eval-after-load 'company
+  ;; due to a bug/incompatibility between company-mode and fci-mode
+  (defun on-off-fci-before-company(command)
+    (when (string= "show" command)
+      (turn-off-fci-mode))
+    (when (string= "hide" command)
+      (turn-on-fci-mode)))
+  (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
+
   (set-face-attribute 'company-tooltip nil :background "white" :foreground "black")
   (set-face-attribute 'company-tooltip-selection nil :background "grey" :foreground "red")
   (set-face-attribute 'company-tooltip-common nil :slant 'italic :foreground "blue")
