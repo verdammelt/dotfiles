@@ -256,6 +256,8 @@
 
 (define-abbrev-table 'js2-mode-abbrev-table '())
 
+(define-abbrev-table 'json-mode-abbrev-table '())
+
 (define-abbrev-table 'latex-mode-abbrev-table '())
 
 (define-abbrev-table 'less-css-mode-abbrev-table '())
@@ -357,7 +359,7 @@
     ("backend" "back end" nil 14)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 37)
+    ("caio" "Ciao" nil 39)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -371,6 +373,7 @@
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
     ("definately" "definitely" nil 3)
+    ("defmethod" "Def Method" nil 1)
     ("depencency" "dependency" nil 0)
     ("dependancy" "dependency" nil 0)
     ("depenedencies" "dependencies" nil 0)
@@ -470,7 +473,7 @@
     ("aka" "AKA" nil 0)
     ("announcemnet" "announcement" nil 0)
     ("availabilty" "availability" nil 0)
-    ("backend" "back end" nil 9)
+    ("backend" "back end" nil 10)
     ("becuase" "because" nil 0)
     ("carb" "Crab" nil 0)
     ("carraige" "Carriage" nil 0)
@@ -485,7 +488,7 @@
     ("exericse" "exercise" nil 0)
     ("extrememly" "extremely" nil 0)
     ("finanical" "Financial" nil 0)
-    ("interpretting" "interpreting" nil 0)
+    ("interpretting" "interpreting" nil 1)
     ("invstigate" "Instigate" nil 0)
     ("jp" "PTRL" nil 53)
     ("lagnuages" "languages" nil 0)
@@ -643,7 +646,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 32)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 132)
+    ("tia" "Thanks in advance" nil 134)
     ("tomororw" "tomorrow" nil 0)
    ))
 
