@@ -54,4 +54,7 @@ mjs/project-node-module-special-cases."
           sgml-attribute-offset offset)))
 
 (with-eval-after-load 'typescript
-  (add-hook 'typescript-mode-hook 'tide-setup))
+  (defun setup-tide ()
+    (tide-setup)
+    (eldoc-mode +1))
+  (add-hook 'typescript-mode-hook 'setup-tide))
