@@ -55,7 +55,8 @@
 
 ;; Editing text
 (setq fill-column 78)
-(add-hook 'text-mode-hook 'ruler-mode)
+(add-hook 'text-mode-hook 'fci-mode)
+
 
 (with-eval-after-load 'battery
   (setq battery-mode-line-format "[%b%p%% %t] "))
@@ -63,8 +64,10 @@
 ;; editing programs
 (with-eval-after-load 'simple
   (add-hook 'prog-mode-hook 'linum-mode)
-                                        ;(add-hook 'prog-mode-hook 'ruler-mode)
-  (add-hook 'prod-mode-hook 'fci-mode))
+  (add-hook 'prog-mode-hook 'fci-mode))
+
+(with-eval-after-load 'fill-column-indicator
+  (setq fci-rule-color "red"))
 
 (with-eval-after-load 'python
   (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
