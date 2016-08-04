@@ -83,6 +83,7 @@
   (set-face-attribute 'company-tooltip-common nil :slant 'italic :foreground "blue")
   (set-face-attribute 'company-scrollbar-fg nil :background "black")
   (set-face-attribute 'company-scrollbar-bg nil :background "grey")
+  (set-face-attribute 'tooltip nil :background "white" :inherit 'default)
   (defvar company-active-map)
   (defvar company-idle-delay)
   (defvar company-show-numbers)
@@ -94,6 +95,7 @@
   (diminish 'company)
   (setq company-idle-delay .25
         company-show-numbers t
+        company-tooltip-align-annotations t
         company-selection-wrap-around t))
 
 ;; abbrevs
