@@ -131,8 +131,9 @@
                         (to "noreply@sourceforge.net" "mail.tnef")
 
                         ;; Work mail: defmethod
-                        (| (to "msimpson@defmethod.io" "defmethod.inbox")
-                           (to "all@defmethod.io" "defmethod.inbox"))
+                        (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
+                           (to "all@defmethod\\.io" "defmethod.inbox")
+                           (from ".*@defmethod\\..*" "defmethod.inbox"))
 
                         ;; Work mail: cyrus
                         (|
