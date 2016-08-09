@@ -151,6 +151,7 @@
                         (|
                          (any ".*@flashpoint-intel.com" "cyrus.flashpoint"))
                         (|
+                         (any ".*@corcorangroup.atlassian.net" "cyrus.corcoran")
                          (any ".*@corcoran.com" "cyrus.corcoran"))
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
