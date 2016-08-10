@@ -122,7 +122,7 @@
            :jump-to-captured t)
           ("wn" "New Task to clocked" entry (clock)
            "* TODO %? %^g\n %U\n %a\n"
-           :clock-in t :clock-resumt t)
+           :clock-in t :clock-resume t)
           ))
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
 
