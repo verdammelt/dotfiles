@@ -181,10 +181,10 @@
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("x" "lost tasks" tags-todo "-{^@}")
        ("w" "waiting" tags-todo "/WAIT")
-       ("p" "projects" tags "+CATEGORY=\"PROJ\"+LEVEL=2"))
+       ("p" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2"))
 
      org-stuck-projects
-     '("+CATEGORY=\"PROJ\"+LEVEL=2&-TODO=\"DONE\"&-TODO=\"CNCL\"" ("TODO" "WAIT") nil "")
+     '("+PROJECT=\"TRUE\"+LEVEL=2" ("TODO" "WAIT") nil "")
 
      org-agenda-tags-todo-honor-ignore-options t
      org-agenda-todo-ignore-scheduled 'future
