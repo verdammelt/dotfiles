@@ -24,6 +24,7 @@
     clj-refactor
     clojure-mode
     company
+    company-dict
     company-quickhelp
     diminish
     edit-server
@@ -40,6 +41,7 @@
     ido-ubiquitous
     ido-vertical-mode
     js2-mode
+    js2-refactor
     keyfreq
     magit
     markdown-mode
@@ -53,10 +55,13 @@
     rainbow-delimiters
     rvm
     scss-mode
+    sicp
     slime
     slime-company
     smex
     tango-2-theme
+    tide
+    typescript-mode
     virtualenvwrapper
     wgrep
     wrap-region
