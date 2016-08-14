@@ -19,6 +19,7 @@
 (with-eval-after-load 'files
   (setq version-control t
         delete-old-versions t
+        backup-by-copying-when-linked t
         backup-directory-alist
         (cl-acons "." (locate-user-emacs-file ".backups") nil)
         delete-by-moving-to-trash t
