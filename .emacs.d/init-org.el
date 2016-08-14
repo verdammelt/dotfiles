@@ -181,7 +181,8 @@
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("x" "lost tasks" tags-todo "-{^@}")
        ("w" "waiting" tags-todo "/WAIT")
-       ("p" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2"))
+       ("p" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2")
+       ("l" "last week's ntes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\""))
 
      org-stuck-projects
      '("+PROJECT=\"TRUE\"+LEVEL=2" ("TODO" "WAIT") nil "")
@@ -190,7 +191,9 @@
      org-agenda-todo-ignore-scheduled 'future
      org-agenda-todo-ignore-deadlines 'far
      org-agenda-start-on-weekday 0
-     org-agenda-compact-blocks t)))
+     org-agenda-compact-blocks t
+     org-agenda-follow-mode t
+     )))
 
 (with-eval-after-load 'org-clock
   (setq
