@@ -29,7 +29,6 @@
 (setq mc/cmds-to-run-once
       '(
         beginning-of-buffer
-        coffee-dedent-line-backspace
         dabbrev-completion
         magit-status
         paredit-doublequote

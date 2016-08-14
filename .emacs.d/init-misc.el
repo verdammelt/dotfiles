@@ -123,9 +123,6 @@
 (with-eval-after-load 'magit
   (fullframe magit-status magit-mode-quit-window))
 
-(with-eval-after-load 'coffee-mode
-  (setq coffee-tab-width 2))
-
 (with-eval-after-load 'simple
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (setq-default indent-tabs-mode nil)

@@ -23,7 +23,6 @@
     change-inner
     clj-refactor
     clojure-mode
-    coffee-mode
     company
     company-quickhelp
     diminish

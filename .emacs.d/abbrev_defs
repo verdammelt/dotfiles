@@ -79,11 +79,6 @@
 
 (define-abbrev-table 'clojurex-mode-abbrev-table '())
 
-(define-abbrev-table 'coffee-mode-abbrev-table
-  '(
-    ("createive" "creative" nil 0)
-   ))
-
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
