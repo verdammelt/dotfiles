@@ -1,5 +1,5 @@
 (require 'nvm)
-(nvm-use (caar (last (nvm--installed-versions)))) ; cavalierly use first one
+(nvm-use (caar (last (nvm--installed-versions)))) ; cavalierly use last one
 (add-to-list 'exec-path (getenv "NVM_BIN"))
 
 (with-eval-after-load 'projectile

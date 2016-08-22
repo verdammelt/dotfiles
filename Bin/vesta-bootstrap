@@ -1,0 +1,8 @@
+#!/bin/sh -ex
+
+npm run clean
+rm -rf node_modules
+npm install
+$(npm bin)/gulp MoveNodeModules UpdateBowerFiles
+npm run build
+npm run test
