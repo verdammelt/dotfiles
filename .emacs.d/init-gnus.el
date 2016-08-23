@@ -7,6 +7,8 @@
 ;;; TODO:
 ;;; * sent mail goes to inbox.
 ;;; * more splitting
+;;; * refactor to keep some things together like splitting/archive
+;;;   (especially work related)
 ;;;
 
 ;;;
@@ -28,7 +30,7 @@
    gnus-treat-strip-multiple-blank-lines t
    gnus-treat-x-pgp-sig t
    )
-;;
+  ;;
 ;;; General settings
 ;;;
   (setq
@@ -202,7 +204,7 @@
     (add-hook 'message-sent-hook 'gnus-score-followup-article)
     (add-hook 'message-sent-hook 'gnus-score-followup-thread)
     (setq
-     gnus-decay-scores t	  ; temporary scores should degrade over time.
+     gnus-decay-scores t  ; temporary scores should degrade over time.
      gnus-kill-files-directory (expand-file-name "score-files" gnus-directory) ;where to put the kill files
      gnus-use-adaptive-scoring t
      gnus-score-find-score-files-function

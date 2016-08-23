@@ -7,6 +7,7 @@
 ;;; TODO
 ;;; * safer sync with google (merge in google contacts)
 ;;; * two way sync?
+;;; * expiry
 ;;;
 (with-eval-after-load 'bbdb
 
