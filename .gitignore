@@ -101,3 +101,4 @@ DOS Games
 /.gpg-agent-info
 /.emacs.d/network-security.data
 .oracle_jre_usage
+/.emacs.d/var/pcache/cache
