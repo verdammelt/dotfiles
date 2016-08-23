@@ -39,7 +39,9 @@
           common-lisp-hyperspec-format
           common-lisp-hyperspec-lookup-reader-macro))
 
-  (advice-add 'common-lisp-hyperspec :around #'mjs/browse-file-url-with-eww))
+  (add-hook 'slime-repl-mode-hook 'paredit-mode)
+  (add-hook 'slime-repl-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'slime-repl-mode-hook 'turn-on-eldoc-mode))
 
 (with-eval-after-load 'slime-company
   (setq slime-company-completion 'fuzzy))
@@ -63,11 +65,15 @@
 
   (add-hook 'lisp-mode-hook 'paredit-mode)
   (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'lisp-interaction-mode-hook 'paredit-mode)
   (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
 
   (put 'define-test 'lisp-indent-function 1)
 
   (with-eval-after-load 'ielm
+    (add-hook 'ielm-mode-hook 'paredit-mode)
+    (add-hook 'ielm-mode-hook 'rainbow-delimiters-mode)
     (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
     (add-hook 'ielm-mode-hook 'turn-on-elisp-slime-nav-mode)))
 
