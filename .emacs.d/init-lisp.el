@@ -3,6 +3,10 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
+(defun mjs/setup-lispy-mode (hook)
+  (mapcar (lambda (f) (add-hook hook f))
+          '(paredit-mode rainbow-delimiters-mode turn-on-eldoc-mode)))
+
 (setq-default slime-lisp-implementations
               '((sbcl ("~/.cim/bin/sbcl"))
                 (clisp ("~/.cim/bin/clisp"))
@@ -39,9 +43,7 @@
           common-lisp-hyperspec-format
           common-lisp-hyperspec-lookup-reader-macro))
 
-  (add-hook 'slime-repl-mode-hook 'paredit-mode)
-  (add-hook 'slime-repl-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'slime-repl-mode-hook 'turn-on-eldoc-mode))
+  (mjs/setup-lispy-mode 'slime-repl-mode-hook))
 
 (with-eval-after-load 'slime-company
   (setq slime-company-completion 'fuzzy))
@@ -53,33 +55,21 @@
 (defun mjs/emacs-lisp-mode-setup () (setq mode-name "Elisp"))
 
 (with-eval-after-load 'lisp-mode
-  (if (or (fboundp 'paredit-mode)
-          (autoloadp (symbol-function 'paredit-mode)))
-      (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
-  (if (or (fboundp 'rainbow-delimiters-mode)
-          (autoloadp (symbol-function 'rainbow-delimiters-mode)))
-      (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (mjs/setup-lispy-mode 'emacs-lisp-mode-hook)
   (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
   (add-hook 'emacs-lisp-mode-hook 'mjs/emacs-lisp-mode-setup)
 
-  (add-hook 'lisp-mode-hook 'paredit-mode)
-  (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'lisp-interaction-mode-hook 'paredit-mode)
-  (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
-  (add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
+  (mjs/setup-lispy-mode 'lisp-mode-hook)
+  (mjs/setup-lispy-mode 'lisp-interaction-mode-hook)
 
   (put 'define-test 'lisp-indent-function 1)
 
   (with-eval-after-load 'ielm
-    (add-hook 'ielm-mode-hook 'paredit-mode)
-    (add-hook 'ielm-mode-hook 'rainbow-delimiters-mode)
-    (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+    (mjs/setup-lispy-mode 'ielm-mode-hook)
     (add-hook 'ielm-mode-hook 'turn-on-elisp-slime-nav-mode)))
 
 (with-eval-after-load 'scheme
-  (add-hook 'scheme-mode-hook 'paredit-mode)
-  (add-hook 'scheme-mode-hook 'rainbow-delimiters-mode))
+  (mjs/setup-lispy-mode 'scheme-mode-hook))
 
 (defun mjs/clj-refactor-setup ()
   (setq mode-name "CLJ")
@@ -90,15 +80,13 @@
 (with-eval-after-load 'clj-refactor (diminish 'clj-refactor-mode))
 
 (with-eval-after-load 'clojure-mode
-  (add-hook 'clojure-mode-hook 'paredit-mode)
-  (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
-  (add-hook 'clojure-mode-hook 'mjs/clj-refactor-setup)
-  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
+  (mjs/setup-lispy-mode 'clojure-mode-hook)
+  (add-hook 'clojure-mode-hook 'mjs/clj-refactor-setup))
 
 (with-eval-after-load 'cider-repl
+  (mjs/setup-lispy-mode 'cider-repl-mode-hook)
   (cider-repl-add-shortcut "quit" 'cider-quit)
   (setq cider-repl-display-help-banner nil))
 
 (with-eval-after-load 'simple
-  (add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode)
-  (add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode))
+  (mjs/setup-lispy-mode 'eval-expression-minibuffer-setup-hook))
