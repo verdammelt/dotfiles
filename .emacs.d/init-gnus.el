@@ -133,6 +133,9 @@
                         (to "noreply@sourceforge.net" "mail.tnef")
 
                         ;; Work mail: defmethod
+                        (| (to "msimpson@datapipe.com" "defmethod.datapipe")
+                           (from ".*@datapipe.com" "defmethod.datapipe"))
+
                         (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
                            (to "all@defmethod\\.io" "defmethod.inbox")
                            (from ".*@defmethod\\..*" "defmethod.inbox"))
