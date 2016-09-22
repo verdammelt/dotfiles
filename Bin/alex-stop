@@ -1,0 +1,3 @@
+#!/bin/sh
+pkill node
+pkill -f rails

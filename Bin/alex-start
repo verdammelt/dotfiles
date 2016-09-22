@@ -1,0 +1,6 @@
+#!/bin/sh -ex
+
+rails s --binding 127.0.0.1 -p 4000 &
+pushd client
+npm start &
+popd client
