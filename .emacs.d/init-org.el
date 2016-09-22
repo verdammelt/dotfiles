@@ -14,6 +14,9 @@
 (with-eval-after-load 'org
   (require 'org-checklist)
 
+  (set-face-attribute 'org-upcoming-deadline nil
+                      :foreground "green")
+
   (with-eval-after-load 'org-indent
     (diminish 'org-indent-mode))
 
