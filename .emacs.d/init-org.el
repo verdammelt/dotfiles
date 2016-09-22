@@ -196,6 +196,7 @@
      org-agenda-start-on-weekday 0
      org-agenda-compact-blocks t
      org-agenda-follow-mode t
+     org-agenda-include-diary t
      )))
 
 (with-eval-after-load 'org-clock
