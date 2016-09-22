@@ -24,6 +24,7 @@
         slime-autodoc-space
         wgrep-finish-edit
         yas-expand
+        zap-up-to-char
         ))
 
 (setq mc/cmds-to-run-once
