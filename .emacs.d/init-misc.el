@@ -69,15 +69,17 @@
   (calendar-set-date-style 'iso))
 
 ;; Editing text
-(setq fill-column 78)
 (add-hook 'text-mode-hook 'fci-mode)
-
 
 (with-eval-after-load 'battery
   (setq battery-mode-line-format "[%b%p%% %t] "))
 
 ;; editing programs
+(defun mjs/prog-fill-column ()
+  (setq fill-column 80))
+
 (with-eval-after-load 'simple
+  (add-hook 'prog-mode-hook 'mjs/prog-fill-column)
   (add-hook 'prog-mode-hook 'linum-mode)
   (add-hook 'prog-mode-hook 'fci-mode))
 
