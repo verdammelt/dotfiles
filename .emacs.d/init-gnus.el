@@ -132,7 +132,18 @@
                         (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
                         (to "noreply@sourceforge.net" "mail.tnef")
 
+                        ;;
                         ;; Work mail: defmethod
+                        ;;
+                        (| (from "confluence@datapipe.atlassian.net"
+                                 "defmethod.datapipe-confluence")
+
+                           (from "jira@datapipe.atlassian.net"
+                                 "defmethod.datapipe-stories"))
+
+                        (from "noreply@github.datapipe.net"
+                              "defmethod.datapipe-stories")
+
                         (| (to "msimpson@datapipe.com" "defmethod.datapipe")
                            (from ".*@datapipe.com" "defmethod.datapipe"))
 
@@ -140,7 +151,9 @@
                            (to "all@defmethod\\.io" "defmethod.inbox")
                            (from ".*@defmethod\\..*" "defmethod.inbox"))
 
+                        ;;
                         ;; Work mail: cyrus
+                        ;;
                         (|
                          (from "nomail@mobicorp.com" "cyrus.mobi-jenkins")
                          (from "noreply-mobiDevelopment@mobicorp.com" "cyrus.mobi-jira")
@@ -153,17 +166,19 @@
                         (|
                          (any ".*@upsider.co" "cyrus.upsider")
                          (any ".*@aycron.com" "cyrus.upsider"))
-                        (|
-                         (any ".*@flashpoint-intel.com" "cyrus.flashpoint"))
-                        (|
-                         (any ".*@corcorangroup.atlassian.net" "cyrus.corcoran")
-                         (any ".*@corcoran.com" "cyrus.corcoran"))
+                        (any ".*@flashpoint-intel.com" "cyrus.flashpoint")
+                        (from "confluence@corcorangroup.atlassian.net"
+                              "cyrus.corcoran-confluence")
+                        (any ".*@corcoran.com" "cyrus.corcoran")
+
                         (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyrusinnovation.com" "cyrus.inbox")
                            (any ".*cyruslists.com" "cyrus.inbox"))
 
 
+                        ;;
                         ;; Mailing lists.
+                        ;;
                         (to "clojure-dev@googlegroups.com" "list.clojure-dev")
                         (to "lisp@lispnyc.org" "list.lispnyc")
                         (from "ArqBackupSystem@virgil.local" "list.arqbackup")
@@ -230,6 +245,8 @@
            (cond ((string-match "archive" group) 'never)
                  ((string-match "spam" group) 1)
                  ((string-match "list\\.*" group) 14)
+                 ((string-match "defmethod\\.datapipe-confluence" group) 7)
+                 ((string-match "cyrus\\.corcoran-confluence" group) 7)
                  ((string-match "tnef" group) 'never)
                  ((string-match "codeandcocktails" group) 'never)
                  (t 28))))
@@ -243,8 +260,10 @@
                   ((string-match "mail.misc" group) 'delete)
                   ((string-match "defmethod.inbox" group) "nnfolder+archive:defmethod.archive-%Y")
                   ((string-match "defmethod\\.datapipe" group) "nnfolder+archive:defmethod.datapipe-archive-%Y")
+                  ((string-match "defmethod\\.datapipe-confluence" group) 'delete)
                   ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y")
                   ((string-match "cyrus\\.corcoran" group) "nnfolder+archive:cyrus.corcoran-archive-%Y")
+                  ((string-match "cyrus\\.corcoran-confluence" group) 'delete)
                   ((string-match "cyrus\\.aetna" group) "nnfolder+archive:cyrus.aetna-archive-%Y")
                   ((string-match "cyrus\\.flashpoint" group) "nnfolder+archive:cyrus.flashpoint-archive-%Y")
                   ((string-match "cyrus\\.mobi" group) "nnfolder+archive:cyrus.mobi-archive-%Y")
@@ -285,8 +304,7 @@
            (posting-style  (address "codeandcocktails@gmail.com")))
 
           ("list.*"
-           (total-expire . t)
-           )
+           (total-expire . t))
 
           ("cyrus.*"
            (gcc-self . t)
