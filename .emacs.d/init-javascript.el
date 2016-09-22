@@ -61,14 +61,18 @@ mjs/project-node-module-special-cases."
   "Some projects use 4 spaces, some use 2."
   (interactive)
   (defvar js-indent-level)
+  (defvar typescript-indent-level)
   (defvar sgml-attribute-offset)
   (defvar sgml-basic-offset)
   (let ((offset (if (= js-indent-level 2) 4 2)))
     (setq js-indent-level offset
+          typescript-indent-level offset
           sgml-basic-offset offset
           sgml-attribute-offset offset)))
 
-(with-eval-after-load 'typescript
+(with-eval-after-load 'typescript-mode
+  (defvar typescript-indent-level)
+  (setq typescript-indent-level 2)
   (defun setup-tide ()
     (tide-setup)
     (eldoc-mode +1))
