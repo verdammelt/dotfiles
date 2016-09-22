@@ -3,3 +3,5 @@
 ;;;
 &%%(diary-lunar-phases)
 &%%(diary-sunrise-sunset)
+
+#include "~/.diary.imported"

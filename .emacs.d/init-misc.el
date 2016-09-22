@@ -42,6 +42,9 @@
 
 ;; calendar
 (with-eval-after-load 'calendar
+  (add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
+  (add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)
+
   (setq
    calendar-latitude +40.72541
    calendar-longitude -73.70928
@@ -316,3 +319,34 @@ symbol, not word, as I need this for programming the most."
           (bit nil "Bit")
           (byte "8 bit" "Byte"))
         math-units-table nil))
+
+
+;;;;
+;;;; ========== experimental calendar loading ==========
+;;;;
+
+(advice-add 'icalendar--convert-recurring-to-diary :filter-return #'string-trim)
+
+(defun mjs/eradicate-file (file)
+  (let ((buffer (find-buffer-visiting file))
+        (file-exists-p (file-exists-p file)))
+    (and buffer (kill-buffer buffer))
+    (and file-exists-p (delete-file file))))
+
+(defun mjs/import-calendars (calendars)
+  (let ((current-buffer (current-buffer)))
+    (let ((diary-file "~/.diary.imported"))
+      (mjs/eradicate-file diary-file)
+      (mapc (lambda (cal)
+              (let ((tmpfile (url-file-local-copy cal)))
+                (icalendar-import-file tmpfile diary-file)
+                (mjs/eradicate-file tmpfile)))
+            calendars))
+    (switch-to-buffer current-buffer)))
+
+(defun mjs/import-all-calendars ()
+  (defvar google-calendars)
+  (load "~/.diary.calendars-to-import.el")
+  (mjs/import-calendars google-calendars))
+
+(run-with-idle-timer (* 60 5) t #'mjs/import-all-calendars)

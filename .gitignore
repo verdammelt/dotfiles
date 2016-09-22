@@ -102,3 +102,5 @@ DOS Games
 /.emacs.d/network-security.data
 .oracle_jre_usage
 /.emacs.d/var/pcache/cache
+/.diary.calendars-to-import.el
+/.diary.imported
