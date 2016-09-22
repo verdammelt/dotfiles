@@ -51,11 +51,11 @@
    calendar-location-name "Floral Park, NY"
    calendar-time-display-form '(24-hours ":" minutes (if time-zone " (") time-zone (if time-zone ")"))
    diary-file "~/.diary"
-   calendar-date-style 'iso
    calendar-mark-diary-entries-flag t
    calendar-mark-holidays-flag t
    calendar-view-diary-initially-flag t
-   calendar-view-holidays-initially-flag t))
+   calendar-view-holidays-initially-flag t)
+  (calendar-set-date-style 'iso))
 
 ;; Editing text
 (setq fill-column 78)
