@@ -41,6 +41,17 @@
    ps-spool-duplex t))
 
 ;; calendar
+(setq holiday-hebrew-holidays nil
+      holiday-islamic-holidays nil
+      holiday-oriental-holidays nil
+      holiday-bahai-holidays nil)
+(setq holiday-other-holidays
+      '((holiday-sexp '(if (zerop (% year 4))
+                           (calendar-gregorian-from-absolute
+                            (1+ (calendar-dayname-on-or-before
+                                 1 (+ 6 (calendar-absolute-from-gregorian
+                                         (list 11 1 year)))))))
+                      "US Presidential Election")))
 (with-eval-after-load 'calendar
   (add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
   (add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)
