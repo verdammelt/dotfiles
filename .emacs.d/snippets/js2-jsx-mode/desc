@@ -2,6 +2,6 @@
 # name: desc
 # key: desc
 # --
-describe("$1", () => {
+describe('$1', () => {
                $0
 });
