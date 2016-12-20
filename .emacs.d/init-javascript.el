@@ -8,6 +8,7 @@
 directory. If there is a .nvmrc file use that - otherwise pick
 one of the installed versions (arbitrarily: the last)."
   (when mjs/previous-node-version
+    (message "removing old node version: %s" mjs/previous-node-version)
     (setq exec-path
           (cl-remove mjs/previous-node-version exec-path
                      :test #'string=)
@@ -15,6 +16,8 @@ one of the installed versions (arbitrarily: the last)."
   (if (file-exists-p ".nvmrc")
       (nvm-use-for ".")
     (nvm-use (caar (last (nvm--installed-versions)))))
+
+  (message "selecting new node-version: %s" (getenv "NVM_BIN"))
   (setq mjs/previous-node-version (getenv "NVM_BIN")
         exec-path (cl-pushnew mjs/previous-node-version exec-path
                               :test #'string=)))
@@ -35,12 +38,16 @@ mjs/project-node-module-special-cases."
                   (cons "./" mjs/project-node-module-special-cases)))
          (node-modules-bind-dir
           (cl-find-if #'file-exists-p all-possibilities)))
+
     (when mjs/previous-node-modules-added-to-path
+      (message "removing old node-modules path: %s"
+               mjs/previous-node-modules-added-to-path)
       (setq exec-path
             (cl-remove mjs/previous-node-modules-added-to-path exec-path
                        :test #'string=)
             mjs/previous-node-modules-added-to-path nil))
     (when node-modules-bind-dir
+      (message "adding new node-modules path: %s" node-modules-bind-dir)
       (setq mjs/previous-node-modules-added-to-path node-modules-bind-dir
             exec-path (cl-pushnew node-modules-bind-dir exec-path
                                   :test #'string=)))))
