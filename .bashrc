@@ -1,4 +1,4 @@
-PATH=$HOME/Bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
+PATH=$HOME/Bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 [[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
 
@@ -57,32 +57,9 @@ alias gla='git la'
 alias gr='git r'
 alias gra='git ra'
 
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUPSTREAM="auto"
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-
-reset='\[\e[0m\]'
-cyan='\[\e[0;36m\]'
-yellow='\[\e[0;33m\]'
-red='\[\e[0;31m\]'
-purple='\[\e[0;35m\]'
-green='\[\e[0;32m\]'
-blue='\[\e[0;34m\]'
-grey='\[\e[1;30m\]'
-
-#export PS1='\[\033[G\]\h:\W'$purple'$(__git_ps1 "(%s)")'$reset'> '
-export PS1=$blue'\A \h:\W'$reset$purple'$(__git_ps1 "(%s)")'$reset'> '
-
-function myip(){
-    ip=`curl -s automation.whatismyip.com/n09230945.asp`
-    echo $ip | pbcopy
-    echo $ip
-}
-
 # Keeping track of my commands
 #export HISTCONTROL=erasedups # turned off to keep all commands
-export HISTSIZE=5000
+export HISTSIZE=10000
 
 # top 5 one-word commands (and total number)
 function topcmd() {
@@ -91,6 +68,7 @@ function topcmd() {
         sort -rn | \
         head -6
 }
+
 # top 5 two-word commands
 function top2cmd(){
     history | \
@@ -104,5 +82,3 @@ function batt() {
         awk '/InternalBattery/{print $3 $2 " " $4 }' | \
         sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
 }
-
-CIM_HOME=$HOME/.cim; [ -s "$CIM_HOME/init.sh" ] && . "$CIM_HOME/init.sh"
