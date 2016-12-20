@@ -12,6 +12,8 @@
 (with-eval-after-load 'message
   (autoload 'sm-add-random-header "silly-mail" nil t)
 
+  (setq message-citation-line-function 'message-insert-formatted-citation-line)
+
   ;; extra stuff for message buffers - spelling etc.
   (add-hook 'message-setup-hook 'message-sort-headers)
   (add-hook 'message-setup-hook 'footnote-mode)
@@ -43,6 +45,5 @@
 
 (with-eval-after-load 'sendmail
   (setq send-mail-function 'sendmail-send-it)
-  (add-hook 'mail-citation-hook 'sc-cite-original)
   (setq mail-specify-envelope-from t
         mail-envelope-from 'header))
