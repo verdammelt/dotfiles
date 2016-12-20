@@ -70,6 +70,7 @@
 
 ;; Editing text
 (add-hook 'text-mode-hook 'fci-mode)
+(setq sentence-end-double-space nil)
 
 (with-eval-after-load 'battery
   (setq battery-mode-line-format "[%b%p%% %t] "))
@@ -202,6 +203,7 @@
   (interactive "nsize: ")
   (if (< size 100) (setq size (* 10 size)))
   (set-face-attribute 'default nil :height size))
+
 (global-set-key (kbd "H-s") 'mjs/change-size)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
