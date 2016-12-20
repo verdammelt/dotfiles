@@ -348,11 +348,11 @@ symbol, not word, as I need this for programming the most."
 
 (defun mjs/import-calendars (calendars)
   (let ((current-buffer (current-buffer)))
-    (let ((diary-file "~/.diary.imported"))
-      (mjs/eradicate-file diary-file)
+    (let ((diary-import-file "~/.diary.imported"))
+      (mjs/eradicate-file diary-import-file)
       (mapc (lambda (cal)
               (let ((tmpfile (url-file-local-copy cal)))
-                (icalendar-import-file tmpfile diary-file)
+                (icalendar-import-file tmpfile diary-import-file)
                 (mjs/eradicate-file tmpfile)))
             calendars))
     (switch-to-buffer current-buffer)))
@@ -362,4 +362,5 @@ symbol, not word, as I need this for programming the most."
   (load "~/.diary.calendars-to-import.el")
   (mjs/import-calendars google-calendars))
 
-(run-with-idle-timer (* 60 5) t #'mjs/import-all-calendars)
+(defvar mjs/calendar-import-timer
+  (run-with-idle-timer (* 60 5) t #'mjs/import-all-calendars))
