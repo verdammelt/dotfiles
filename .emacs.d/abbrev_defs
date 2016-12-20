@@ -233,6 +233,8 @@
 
 (define-abbrev-table 'image-dired-thumbnail-mode-abbrev-table '())
 
+(define-abbrev-table 'inf-ruby-mode-abbrev-table '())
+
 (define-abbrev-table 'inferior-emacs-lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
@@ -354,7 +356,7 @@
     ("backend" "back end" nil 14)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 39)
+    ("caio" "Ciao" nil 43)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -403,7 +405,7 @@
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 7)
-    ("ok" "OK" nil 33)
+    ("ok" "OK" nil 35)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
     ("probaby" "probably" nil 0)
@@ -631,6 +633,7 @@
     ("existance" "existence" nil 0)
     ("filepath" "file path" nil 0)
     ("filepicker" "FilePicker" nil 3)
+    ("fivespair" "Fives Pair" nil 0)
     ("hardcoded" "hard coded" nil 2)
     ("independant" "independent" nil 1)
     ("jp" "PRTL" nil 39)
@@ -643,7 +646,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 32)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 134)
+    ("tia" "Thanks in advance" nil 136)
     ("tomororw" "tomorrow" nil 0)
    ))
 
