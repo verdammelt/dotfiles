@@ -20,6 +20,7 @@
   (add-hook 'message-setup-hook 'turn-on-flyspell)
   (add-hook 'message-setup-hook 'sm-add-random-header)
   (add-hook 'message-send-hook 'ispell-message)
+  (add-hook 'message-setup-hook 'mml-secure-message-sign)
 
   (setq message-default-headers "X-Attribution: MJS")
 
@@ -27,7 +28,11 @@
 
 (with-eval-after-load 'mm-decode
   (setq mm-default-directory (expand-file-name "~/Downloads"))
-  (setq mm-verify-option 'always)
+  (setq mm-verify-option 'always
+        mm-decrypt-option 'ask
+        mm-sign-option nil
+        mm-encrypt-option 'guided
+        mml-secure-openpgp-encrypt-to-self t)
   (add-to-list 'mm-file-name-rewrite-functions 'mm-file-name-replace-whitespace))
 
 (with-eval-after-load 'silly-mail
