@@ -75,7 +75,7 @@ mjs/project-node-module-special-cases."
     (setq js-indent-level offset
           typescript-indent-level offset
           sgml-basic-offset offset
-          sgml-attribute-offset offset)))
+          sgml-attribute-offset 0)))
 
 (with-eval-after-load 'typescript-mode
   (defvar typescript-indent-level)
