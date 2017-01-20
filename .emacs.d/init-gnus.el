@@ -137,15 +137,18 @@
                         ;;
                         (| (from "confluence@datapipe.atlassian.net"
                                  "defmethod.datapipe-confluence")
-
                            (from "jira@datapipe.atlassian.net"
-                                 "defmethod.datapipe-stories"))
-
-                        (from "noreply@github.datapipe.net"
-                              "defmethod.datapipe-stories")
-
-                        (| (to "msimpson@datapipe.com" "defmethod.datapipe")
+                                 "defmethod.datapipe-stories")
+                           (from "noreply@github.datapipe.net"
+                                 "defmethod.datapipe-stories")
+                           (to "msimpson@datapipe.com" "defmethod.datapipe")
                            (from ".*@datapipe.com" "defmethod.datapipe"))
+
+                        (| (from ".*@pivotaltracker.com" "defmethod.dependable")
+                           (from ".*@3.basecamp.com" "defmethod.dependable")
+                           (from ".*@cloud66mail.com" "defmethod.dependable")
+                           ("subject" "defmethodinc/dependable-.*"
+                            "defmethod.dependable"))
 
                         (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
                            (to "all@defmethod\\.io" "defmethod.inbox")
