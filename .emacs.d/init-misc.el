@@ -188,6 +188,9 @@
   (setq projectile-switch-project-action 'projectile-dired
         projectile-enable-caching t))
 
+(with-eval-after-load 'ruby
+  (setq ruby-insert-encoding-magic-comment nil))
+
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)
 
