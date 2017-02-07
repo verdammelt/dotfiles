@@ -22,8 +22,10 @@
 (defun mjs/sort-packages (&optional value)
   ;; Must return a list because this we are going to call (APPLY OLDFUNC VALUE)
   ;; with this return value.
-  (list (cl-sort (or value (copy-seq package-selected-packages)) #'string<
-                 :key #'symbol-name)))
+  (list
+   (cl-sort (copy-seq (or (car value) package-selected-packages))
+            #'string<
+            :key #'symbol-name)))
 
 (advice-add 'package--save-selected-packages :filter-args #'mjs/sort-packages)
 
