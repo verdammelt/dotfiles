@@ -262,11 +262,11 @@ Late deadlines first, then scheduled, then non-late deadlines"
        ;; late deadlines next
        ((bh/agenda-sort-test-num 'bh/is-late-deadline '> a b))
 
-       ;; deadlines for today next
-       ((bh/agenda-sort-test 'bh/is-due-deadline a b))
-
        ;; late scheduled items next
        ((bh/agenda-sort-test-num 'bh/is-scheduled-late '> a b))
+
+       ;; deadlines for today next
+       ((bh/agenda-sort-test 'bh/is-due-deadline a b))
 
        ;; scheduled items for today next
        ((bh/agenda-sort-test 'bh/is-scheduled-today a b))
