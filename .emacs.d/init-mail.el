@@ -32,7 +32,8 @@
         mm-decrypt-option 'ask
         mm-sign-option nil
         mm-encrypt-option 'guided
-        mml-secure-openpgp-encrypt-to-self t)
+        mml-secure-openpgp-encrypt-to-self t
+        mml-secure-openpgp-sign-with-sender t)
   (add-to-list 'mm-file-name-rewrite-functions 'mm-file-name-replace-whitespace))
 
 (with-eval-after-load 'silly-mail
