@@ -282,8 +282,6 @@ symbol, not word, as I need this for programming the most."
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
-(setq flycheck-completion-system 'ido)
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 ;; due to keyboard conflict and lack of checker.
 (add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
 
@@ -338,6 +336,10 @@ symbol, not word, as I need this for programming the most."
           (byte "8 bit" "Byte"))
         math-units-table nil))
 
+(with-eval-after-load 'flycheck
+  (setq flycheck-completing-read-function 'ido-completing-read)
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  (flycheck-credo-setup))
 
 ;;;;
 ;;;; ========== experimental calendar loading ==========
@@ -369,3 +371,7 @@ symbol, not word, as I need this for programming the most."
 
 (defvar mjs/calendar-import-timer
   (run-with-idle-timer (* 60 5) t #'mjs/import-all-calendars))
+
+(with-eval-after-load 'elixir
+  (require 'flycheck-elixir)
+  (add-hook 'elixir-mode-hook 'alchemist-mode-hook))
