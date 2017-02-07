@@ -16,6 +16,11 @@ function nvm () {
     source "$(brew --prefix nvm)/nvm.sh"
     nvm $@
 }
+function npm () {
+    unset -f npm
+    source "$(brew --prefix nvm)/nvm.sh"
+    npm $@
+}
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
