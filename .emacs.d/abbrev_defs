@@ -61,6 +61,8 @@
 
 (define-abbrev-table 'cider-inspector-mode-abbrev-table '())
 
+(define-abbrev-table 'cider-repl-history-mode-abbrev-table '())
+
 (define-abbrev-table 'cider-repl-mode-abbrev-table '())
 
 (define-abbrev-table 'cider-stacktrace-mode-abbrev-table '())
@@ -216,6 +218,22 @@
 
 (define-abbrev-table 'haml-mode-abbrev-table '())
 
+(define-abbrev-table 'haskell-cabal-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-compilation-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-debug-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-error-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-interactive-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-presentation-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-yesod-parse-routes-mode-abbrev-table '())
+
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
@@ -236,6 +254,8 @@
 (define-abbrev-table 'inf-ruby-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-emacs-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
 
@@ -260,6 +280,8 @@
 (define-abbrev-table 'less-css-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'literate-haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
 
@@ -364,13 +386,13 @@
     ("comparitors" "comparators" nil 0)
     ("condecension" "condescension" nil 0)
     ("condolencses" "condolences" nil 0)
-    ("coudl" "could" nil 7)
+    ("coudl" "could" nil 10)
     ("daniel" "Daniel" nil 3)
     ("december" "December" nil 3)
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
     ("definately" "definitely" nil 3)
-    ("defmethod" "Def Method" nil 2)
+    ("defmethod" "Def Method" nil 4)
     ("depencency" "dependency" nil 0)
     ("dependancy" "dependency" nil 0)
     ("depenedencies" "dependencies" nil 0)
@@ -386,7 +408,7 @@
     ("ggroup" "group" nil 0)
     ("greenlight" "Greenlight" nil 12)
     ("havent" "haven't" nil 0)
-    ("hte" "the" nil 23)
+    ("hte" "the" nil 26)
     ("idiosyncracy" "idiosyncrasy" nil 0)
     ("immidiately" "immediately" nil 0)
     ("implemnetation" "implementation" nil 0)
@@ -397,7 +419,7 @@
     ("intenstines" "intestines" nil 0)
     ("interfereing" "interfering" nil 0)
     ("internmittently" "intermittently" nil 0)
-    ("javascript" "JavaScript" nil 9)
+    ("javascript" "JavaScript" nil 11)
     ("judgement" "judgment" nil 0)
     ("limitied" "limited" nil 0)
     ("ludicrious" "ludicrous" nil 0)
@@ -405,7 +427,7 @@
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 7)
-    ("ok" "OK" nil 35)
+    ("ok" "OK" nil 38)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
     ("probaby" "probably" nil 0)
@@ -427,7 +449,7 @@
     ("succesful" "successful" nil 0)
     ("succesfully" "successfully" nil 0)
     ("thourough" "thorough" nil 0)
-    ("timesheet" "time sheet" nil 0)
+    ("timesheet" "time sheet" nil 1)
     ("tommorrow" "Tomorrow" nil 0)
     ("tomorow" "tomorrow" nil 0)
     ("triplicated" "triplicate" nil 1)
@@ -475,12 +497,13 @@
     ("carb" "Crab" nil 0)
     ("carraige" "Carriage" nil 0)
     ("changig" "changing" nil 0)
+    ("codeship" "Code ship" nil 0)
     ("collegue" "colleague" nil 0)
     ("competancy" "competency" nil 0)
     ("dan" "Dan" nil 4)
     ("defmethod" "Def Method" nil 3)
     ("differnet" "different" nil 0)
-    ("dropbox" "drop box" nil 0)
+    ("dropbox" "drop box" nil 2)
     ("eh" "tech" nil 0)
     ("everytime" "every time" nil 0)
     ("exericse" "exercise" nil 0)
@@ -538,7 +561,9 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
+(define-abbrev-table 'python-mode-skeleton-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'rake-compilation-mode-abbrev-table '())
 
@@ -646,7 +671,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 32)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 136)
+    ("tia" "Thanks in advance" nil 138)
     ("tomororw" "tomorrow" nil 0)
    ))
 
