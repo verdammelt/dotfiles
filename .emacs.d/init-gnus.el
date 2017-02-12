@@ -144,8 +144,9 @@
                            (to "msimpson@datapipe.com" "defmethod.datapipe")
                            (from ".*@datapipe.com" "defmethod.datapipe"))
 
-                        (| (from ".*@pivotaltracker.com" "defmethod.dependable")
-                           (from ".*@3.basecamp.com" "defmethod.dependable")
+                        (| ("subject" "Upstack Marketplace" "defmethod.upstack"))
+
+                        (| (from ".*@3.basecamp.com" "defmethod.dependable")
                            (from ".*@cloud66mail.com" "defmethod.dependable")
                            ("subject" "defmethodinc/dependable-.*"
                             "defmethod.dependable"))
