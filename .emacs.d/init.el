@@ -68,7 +68,7 @@
                     :height 180
                     :family "DejaVu Sans Mono")
 (load-theme 'tango-2)
-(set-face-attribute 'cursor nil :background "red")
+(set-cursor-color "red")
 
 ;;;
 ;;; turn on all things that need turning on.
