@@ -191,8 +191,8 @@
      '("+PROJECT=\"TRUE\"+LEVEL=2" ("TODO" "WAIT") nil "")
 
      org-agenda-tags-todo-honor-ignore-options t
-     org-agenda-todo-ignore-scheduled 'future
-     org-agenda-todo-ignore-deadlines 'far
+     org-agenda-todo-ignore-scheduled 'all
+     org-agenda-todo-ignore-deadlines nil
      org-agenda-start-on-weekday 0
      org-agenda-compact-blocks t
      org-agenda-follow-mode t
@@ -265,11 +265,11 @@ Late deadlines first, then scheduled, then non-late deadlines"
        ;; deadlines for today next
        ((bh/agenda-sort-test 'bh/is-due-deadline a b))
 
-       ;; scheduled items for today next
-       ((bh/agenda-sort-test 'bh/is-scheduled-today a b))
-
        ;; late scheduled items next
        ((bh/agenda-sort-test-num 'bh/is-scheduled-late '> a b))
+
+       ;; scheduled items for today next
+       ((bh/agenda-sort-test 'bh/is-scheduled-today a b))
 
        ;; pending deadlines last
        ((bh/agenda-sort-test-num 'bh/is-pending-deadline '< a b))
