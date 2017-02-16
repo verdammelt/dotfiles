@@ -138,7 +138,13 @@
 
 (global-set-key (kbd "<f7>") 'magit-status)
 (with-eval-after-load 'magit
-  (fullframe magit-status magit-mode-quit-window))
+  (fullframe magit-status magit-mode-quit-window)
+  (magithub-feature-autoinject t))
+
+(autoload 'magithub-feature-autoinject "magithub")
+(with-eval-after-load 'magithub
+  (magithub-toggle-issues)
+  (magithub-toggle-pull-requests))
 
 (with-eval-after-load 'simple
   (add-hook 'prog-mode-hook 'whitespace-mode)
