@@ -193,8 +193,8 @@
      '("+PROJECT=\"TRUE\"+LEVEL=2" ("TODO" "WAIT") nil "")
 
      org-agenda-tags-todo-honor-ignore-options t
-     org-agenda-todo-ignore-scheduled 'all
-     org-agenda-todo-ignore-deadlines nil
+     org-agenda-todo-ignore-scheduled 'future
+     org-agenda-todo-ignore-deadlines 'far
      org-agenda-start-on-weekday 0
      org-agenda-compact-blocks t
      org-agenda-follow-mode t
