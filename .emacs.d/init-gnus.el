@@ -144,7 +144,15 @@
                            (to "msimpson@datapipe.com" "defmethod.datapipe")
                            (from ".*@datapipe.com" "defmethod.datapipe"))
 
-                        (| ("subject" "Upstack Marketplace" "defmethod.upstack"))
+                        (| ("subject" "Upstack Marketplace" "defmethod.upstack")
+                           (to "upstack_marketplace@noreply.github.com"
+                               "defmethod.upstack")
+                           (from "confluence@upstack.atlassian.net"
+                                 "defmethod.upstack")
+                           ("subject" "TrappPartners/upstack_marketplace"
+                            "defmethod.upstack")
+                           ("subject" "[Slack] Notifications from the UpStack"
+                            "defmethod.upstack"))
 
                         (| (from ".*@3.basecamp.com" "defmethod.dependable")
                            (from ".*@cloud66mail.com" "defmethod.dependable")
@@ -265,6 +273,7 @@
                   ((string-match "defmethod.inbox" group) "nnfolder+archive:defmethod.archive-%Y")
                   ((string-match "defmethod\\.datapipe" group) "nnfolder+archive:defmethod.datapipe-archive-%Y")
                   ((string-match "defmethod\\.datapipe-confluence" group) 'delete)
+                  ((string-match "defmethod\\.upstack" group) "nnfolder+archive:defmethod.upstack-archive-%Y")
                   ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y")
                   ((string-match "cyrus\\.corcoran" group) "nnfolder+archive:cyrus.corcoran-archive-%Y")
                   ((string-match "cyrus\\.corcoran-confluence" group) 'delete)
