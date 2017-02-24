@@ -12,6 +12,8 @@
          (expand-file-name (format "%s.org" f) org-directory))))
 
 (with-eval-after-load 'org
+  (add-to-list 'org-modules 'org-habit)
+
   (require 'org-checklist)
 
   (set-face-attribute 'org-upcoming-deadline nil
