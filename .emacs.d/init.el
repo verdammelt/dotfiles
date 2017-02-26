@@ -56,6 +56,7 @@
 (load-init-file "init-org")
 (load-init-file "init-lisp")
 (load-init-file "init-javascript")
+(load-init-file "init-prog-elixir")
 (load-init-file "init-misc")
 
 ;;;
@@ -66,7 +67,9 @@
                   (font-spec :size 20 :name "Symbola"))
 (set-face-attribute 'default nil
                     :height 180
-                    :family "DejaVu Sans Mono")
+                    :family "DejaVu Sans Mono"
+                    ;; :family "Hack"
+                    )
 (load-theme 'tango-2)
 (set-cursor-color "red")
 

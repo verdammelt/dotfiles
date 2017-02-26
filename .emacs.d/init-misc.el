@@ -377,7 +377,3 @@ symbol, not word, as I need this for programming the most."
 
 (defvar mjs/calendar-import-timer
   (run-with-idle-timer (* 60 5) t #'mjs/import-all-calendars))
-
-(with-eval-after-load 'elixir
-  (setq flycheck-elixir-credo-strict t)
-  (add-hook 'elixir-mode-hook 'alchemist-mode-hook))

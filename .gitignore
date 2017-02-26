@@ -31,12 +31,14 @@
 .gnupg
 .gnus.registry*
 .heroku
+.hex
 .irb-history
 .ispell*
 .jline-*.history
 .lein
 .lesshst
 .m2
+.mix
 .netrc
 .newsrc
 .newsrc-dribble
