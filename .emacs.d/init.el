@@ -76,7 +76,7 @@
 (midnight-mode)
 (miniedit-install)
 (mjs/turn-on-ido)
-(projectile-global-mode)
+(projectile-mode)
 (save-place-mode)
 (savehist-mode)
 (server-start)
