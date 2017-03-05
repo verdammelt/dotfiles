@@ -3,57 +3,53 @@
 (autoload 'nvm--installed-versions "nvm")
 
 (defvar mjs/previous-node-version nil)
-(defun mjs/choose-node-version ()
-  "Choose and use the correct version of node for this current
-directory. If there is a .nvmrc file use that - otherwise pick
-one of the installed versions (arbitrarily: the last)."
-  (when mjs/previous-node-version
-    (message "removing old node version: %s" mjs/previous-node-version)
-    (setq exec-path
-          (cl-remove mjs/previous-node-version exec-path
-                     :test #'string=)
-          mjs/previous-node-version nil))
+(defun mjs/remove-node-from-path ()
+  (message "Removing %s from path" mjs/previous-node-version)
+  (setq exec-path
+        (cl-remove mjs/previous-node-version exec-path :test #'string=)
+        mjs/previous-node-version nil)
+  (mjs/set-path-envvar-from-exec-path))
+
+(defun mjs/add-node-to-path ()
   (if (file-exists-p ".nvmrc")
       (nvm-use-for ".")
     (nvm-use (caar (last (nvm--installed-versions)))))
-
-  (message "selecting new node-version: %s" (getenv "NVM_BIN"))
   (setq mjs/previous-node-version (getenv "NVM_BIN")
         exec-path (cl-pushnew mjs/previous-node-version exec-path
-                              :test #'string=)))
+                              :test #'string=))
+  (mjs/set-path-envvar-from-exec-path)
+  (message "Added %s to path" mjs/previous-node-version))
 
 (defvar mjs/project-node-module-special-cases (list)
   "Some projects may not have their node_modules directory at
-  their top level.")
+  their top level. (Or may have additional node_modules that need
+  to be checked for as well.")
 (defvar mjs/previous-node-modules-added-to-path nil)
+(defun mjs/remove-node-modules-from-path ()
+  (message "Removed %s from path" mjs/previous-node-modules-added-to-path)
+  (setq exec-path
+        (cl-remove-if
+         #'(lambda (p) (member p mjs/previous-node-modules-added-to-path))
+         exec-path)
+        mjs/previous-node-modules-added-to-path nil)
+  (mjs/set-path-envvar-from-exec-path))
+
 (defun mjs/add-node-modules-in-path ()
   "I don't install project dependencies globally so I need to add
 the .node_modules/.bin directory to the exec path. Sometimes the
 node_modules directory is not in the project root, add special
-case subdirectory names to
-mjs/project-node-module-special-cases."
-  (interactive)
+case subdirectory names to mjs/project-node-module-special-cases."
   (let* ((all-possibilities
           (mapcar #'(lambda (dir) (expand-file-name "./node_modules/.bin" dir))
                   (cons "./" mjs/project-node-module-special-cases)))
-         (node-modules-bind-dirs
+         (node-modules-bin-dirs
           (cl-remove-if-not #'file-exists-p all-possibilities)))
-
-    (when mjs/previous-node-modules-added-to-path
-      (message "removing old node-modules path: %s"
-               mjs/previous-node-modules-added-to-path)
-      (setq exec-path
-            (cl-remove-if
-             #'(lambda (p) (member p mjs/previous-node-modules-added-to-path))
-             exec-path)
-            mjs/previous-node-modules-added-to-path nil))
-
-    (when node-modules-bind-dirs
-      (message "adding new node-modules path: %s" node-modules-bind-dirs)
-      (setq mjs/previous-node-modules-added-to-path node-modules-bind-dirs
+    (when node-modules-bin-dirs
+      (setq mjs/previous-node-modules-added-to-path node-modules-bin-dirs
             exec-path (cl-remove-duplicates
-                       (append node-modules-bind-dirs exec-path))))))
-
+                       (append node-modules-bin-dirs exec-path)))
+      (mjs/set-path-envvar-from-exec-path))
+    (message "Added %s to path" mjs/previous-node-modules-added-to-path)))
 
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . js2-jsx-mode))
 (with-eval-after-load 'js2-mode
@@ -88,7 +84,7 @@ mjs/project-node-module-special-cases."
   (add-hook 'typescript-mode-hook 'setup-tide))
 
 (with-eval-after-load 'projectile
+  (add-hook 'projectile-before-switch-project-hook 'mjs/remove-node-from-path)
   (add-hook 'projectile-after-switch-project-hook 'mjs/add-node-modules-in-path)
-  (add-hook 'projectile-after-switch-project-hook 'mjs/choose-node-version))
-
-(mjs/choose-node-version)
+  (add-hook 'projectile-before-switch-project-hook 'mjs/remove-node-from-path)
+  (add-hook 'projectile-after-switch-project-hook 'mjs/add-node-to-path))
