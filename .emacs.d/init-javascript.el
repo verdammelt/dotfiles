@@ -36,21 +36,23 @@ mjs/project-node-module-special-cases."
   (let* ((all-possibilities
           (mapcar #'(lambda (dir) (expand-file-name "./node_modules/.bin" dir))
                   (cons "./" mjs/project-node-module-special-cases)))
-         (node-modules-bind-dir
-          (cl-find-if #'file-exists-p all-possibilities)))
+         (node-modules-bind-dirs
+          (cl-remove-if-not #'file-exists-p all-possibilities)))
 
     (when mjs/previous-node-modules-added-to-path
       (message "removing old node-modules path: %s"
                mjs/previous-node-modules-added-to-path)
       (setq exec-path
-            (cl-remove mjs/previous-node-modules-added-to-path exec-path
-                       :test #'string=)
+            (cl-remove-if
+             #'(lambda (p) (member p mjs/previous-node-modules-added-to-path))
+             exec-path)
             mjs/previous-node-modules-added-to-path nil))
-    (when node-modules-bind-dir
-      (message "adding new node-modules path: %s" node-modules-bind-dir)
-      (setq mjs/previous-node-modules-added-to-path node-modules-bind-dir
-            exec-path (cl-pushnew node-modules-bind-dir exec-path
-                                  :test #'string=)))))
+
+    (when node-modules-bind-dirs
+      (message "adding new node-modules path: %s" node-modules-bind-dirs)
+      (setq mjs/previous-node-modules-added-to-path node-modules-bind-dirs
+            exec-path (cl-remove-duplicates
+                       (append node-modules-bind-dirs exec-path))))))
 
 
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . js2-jsx-mode))
