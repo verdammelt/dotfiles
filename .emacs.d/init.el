@@ -9,13 +9,6 @@
 (package-initialize)
 (require 'cl-lib)
 
-;; make sure the display is clean to start with
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(setq inhibit-splash-screen t
-      inhibit-startup-echo-area-message "damned")
-
 ;;;
 ;;; Customize
 ;;;
@@ -58,20 +51,8 @@
 (load-init-file "init-javascript")
 (load-init-file "init-prog-elixir")
 (load-init-file "init-misc")
-
-;;;
-;;; set up the fonts / themes
-;;;
-;; Fallback font - helps with Unicode
-(set-fontset-font "fontset-default" nil
-                  (font-spec :size 20 :name "Symbola"))
-(set-face-attribute 'default nil
-                    :height 180
-                    :family "DejaVu Sans Mono"
-                    ;; :family "Hack"
-                    )
-(load-theme 'tango-2)
-(set-cursor-color "red")
+(load-init-file "init-irc")
+(load-init-file "init-display")
 
 ;;;
 ;;; turn on all things that need turning on.
