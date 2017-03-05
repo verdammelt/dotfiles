@@ -38,6 +38,9 @@
 
 (package-install-selected-packages)
 
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
+
 (eval-when-compile
   (require 'use-package)
   (setq use-package-always-ensure t
