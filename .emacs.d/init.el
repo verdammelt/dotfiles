@@ -24,7 +24,11 @@
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path (expand-file-name "~/Bin"))
 (add-to-list 'exec-path "/Library/TeX/texbin" :append)
-(setenv "PATH" (mapconcat 'identity exec-path ":"))
+
+(defun mjs/set-path-envvar-from-exec-path ()
+  (setenv "PATH" (mapconcat 'identity exec-path ":")))
+
+(mjs/set-path-envvar-from-exec-path)
 
 ;;;
 ;;; Load Path
