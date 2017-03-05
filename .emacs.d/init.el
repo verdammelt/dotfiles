@@ -33,30 +33,30 @@
 ;;; Load Path
 ;;;
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
-(defun load-init-file (file)
+(defun mjs/load-init-file (file)
   (load (locate-user-emacs-file file)))
 
 ;;;
 ;;; Package
 ;;;
 (package-initialize)
-(load-init-file "init-package")
+(mjs/load-init-file "init-package")
 
 ;;;
 ;;; Exterinalized config of specific things
 ;;;
-(load-init-file "init-bbdb")
-(load-init-file "init-mail")
-(load-init-file "init-gnus")
-(load-init-file "init-latex")
-(load-init-file "init-ido")
-(load-init-file "init-org")
-(load-init-file "init-lisp")
-(load-init-file "init-javascript")
-(load-init-file "init-prog-elixir")
-(load-init-file "init-misc")
-(load-init-file "init-irc")
-(load-init-file "init-display")
+(mjs/load-init-file "init-bbdb")
+(mjs/load-init-file "init-display")
+(mjs/load-init-file "init-gnus")
+(mjs/load-init-file "init-ido")
+(mjs/load-init-file "init-irc")
+(mjs/load-init-file "init-javascript")
+(mjs/load-init-file "init-latex")
+(mjs/load-init-file "init-lisp")
+(mjs/load-init-file "init-mail")
+(mjs/load-init-file "init-misc")
+(mjs/load-init-file "init-org")
+(mjs/load-init-file "init-prog-elixir")
 
 ;;;
 ;;; turn on all things that need turning on.
