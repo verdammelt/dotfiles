@@ -82,3 +82,6 @@ function batt() {
         awk '/InternalBattery/{print $3 $2 " " $4 }' | \
         sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
 }
+
+# added by travis gem
+[ -f /Users/mjs/.travis/travis.sh ] && source /Users/mjs/.travis/travis.sh
