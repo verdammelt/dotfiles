@@ -15,7 +15,7 @@
 ;;; Select methods
 ;;;
 (with-eval-after-load 'gnus
-  (require 'bbdb)
+  (mjs/bbdb-init 'gnus)
 
   (setq gnus-init-file (locate-user-emacs-file "init-gnus.el"))
 

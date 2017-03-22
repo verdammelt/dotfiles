@@ -9,21 +9,20 @@
 ;;; * two way sync?
 ;;; * expiry
 ;;;
-(with-eval-after-load 'bbdb
+(use-package bbdb
+  :bind (:map bbdb-mode-map
+              ("r" . bbdb-merge-records))
+  :config
+  (progn
+    (declare-function bbdb-save "bbdb")
+    (add-hook 'bbdb-after-change-hook (lambda (arg) (bbdb-save)))
+    (setq bbdb-pop-up-window-size 10
+          bbdb-mua-pop-up-window-size 5
+          bbdb-mua-update-interactive-p '(query . create)
+          bbdb-message-all-addresses t
+          bbdb-complete-mail-allow-cycling t)))
 
-  (define-key bbdb-mode-map "r" 'bbdb-merge-records)
-
-  (add-hook 'bbdb-after-change-hook (lambda (arg) (bbdb-save)))
-
-  (setq bbdb-pop-up-window-size 10
-        bbdb-mua-update-interactive-p '(query . create)
-        bbdb-message-all-addresses t
-        bbdb-complete-mail-allow-cycling t)
-
-  (with-eval-after-load 'gnus
-    (bbdb-initialize 'gnus)
-    (bbdb-mua-auto-update-init 'gnus))
-  (with-eval-after-load 'message
-    (bbdb-initialize 'message)
-    (bbdb-mua-auto-update-init 'message)
-    (add-hook 'message-setup-hook 'bbdb-mail-aliases)))
+(defun mjs/bbdb-init (package)
+  (message "Initialize BBDB for %s" package)
+  (bbdb-initialize package)
+  (bbdb-mua-auto-update-init package))

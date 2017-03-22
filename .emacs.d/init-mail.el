@@ -10,7 +10,11 @@
 
 ;; getting bbdb in my message setup
 (with-eval-after-load 'message
+  (mjs/bbdb-init 'message)
+
   (autoload 'sm-add-random-header "silly-mail" nil t)
+
+  (add-hook 'message-setup-hook 'bbdb-mail-aliases)
 
   (setq message-citation-line-function 'message-insert-formatted-citation-line)
 
