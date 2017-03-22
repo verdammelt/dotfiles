@@ -3,14 +3,20 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(require 'cl-lib)
-
-;;; get Package set up properly and initialized
 (require 'package)
+
+(advice-add 'package--save-selected-packages :filter-args #'mjs/sort-packages)
+
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
+(package-initialize)
+(package-install-selected-packages)
 
 (defun mjs/perform-updates ()
   (interactive)
   (progn
+    (save-some-buffers 'save-silently)
     (package-refresh-contents)
     (package-show-package-list)
     (let ((package-menu-async nil)) (package-menu-refresh))
@@ -27,19 +33,11 @@
             #'string<
             :key #'symbol-name)))
 
-(advice-add 'package--save-selected-packages :filter-args #'mjs/sort-packages)
-
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-
-(package-initialize)
-
-(package-install-selected-packages)
-
-(when (not (package-installed-p 'use-package))
-  (package-install 'use-package))
-
-(eval-when-compile
-  (require 'use-package)
+;;; USE-PACKAGE boostrapping
+(unless (package-installed-p 'use-package) (package-install 'use-package))
+(eval-when-compile (require 'use-package))
+(use-package use-package
+  :init
   (setq use-package-always-ensure t
+        use-package-always-defer t
         use-package-verbose t))
