@@ -149,6 +149,10 @@
        (tags todo-state-up timestamp-up alpha-up)
        (search todo-state-up timestamp-up alpha-up))
 
+     mjs/skip-habits-and-scheduled-and-deadlines
+     '(or (mjs/org-skip-subtree-if-habit)
+          (org-agenda-skip-if nil '(scheduled deadline)))
+
      org-agenda-custom-commands
      '(("d" "daily"
         ((agenda "" ((org-agenda-span 'day)
@@ -156,19 +160,33 @@
          (tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")))
          (tags-todo "+@CALL|+@EMAIL/!-WAIT"
-                    ((org-agenda-overriding-header "@COMMUNICATE")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@COMMUNICATE")))
          (tags-todo "+@ERRAND/!-WAIT"
-                    ((org-agenda-overriding-header "@ERRAND")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@ERRAND")))
          (tags-todo "+@HOME|+@ANY/!-WAIT"
-                    ((org-agenda-overriding-header "@HOME")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@HOME")))
          (tags-todo "+@MAC&-@WEB&-@WORK/!-WAIT"
-                    ((org-agenda-overriding-header "@COMPUTER")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@COMPUTER")))
          (tags-todo "+@WEB&-@WORK/!-WAIT"
-                    ((org-agenda-overriding-header "@WEB")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@WEB")))
          (tags-todo "+@WENDY/!-WAIT"
-                    ((org-agenda-overriding-header "@WENDY")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@WENDY")))
          (tags-todo "+@WORK|+@WORKMAC/!-WAIT"
-                    ((org-agenda-overriding-header "@WORK")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@WORK")))
          (tags-todo "/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("k" "work"
@@ -179,9 +197,13 @@
          (tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")))
          (tags-todo "+@WORK&+@CLIENT/!-WAIT"
-                    ((org-agenda-overriding-header "BILLABLE")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "BILLABLE")))
          (tags-todo "+@WORK&-@CLIENT/!-WAIT"
-                    ((org-agenda-overriding-header "NON-BILLABLE")))
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("x" "lost tasks" tags-todo "-{^@}")
@@ -373,3 +395,11 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (global-set-key (kbd "C-<f9>") 'org-clock-jump-to-current-clock)
 (global-set-key (kbd "s-<f9>") 'mjs/morning-sam)
 (global-set-key (kbd "S-s-<f9>") 'mjs/punch-out)
+
+;; cribbed from https://blog.aaronbieber.com/2016/09/24/an-agenda-for-life-with-org-mode.html
+(defun mjs/org-skip-subtree-if-habit ()
+  "Skip an agenda entry if it has a STYLE property equal to \"habit\"."
+  (let ((subtree-end (save-excursion (org-end-of-subtree t))))
+    (if (string= (org-entry-get nil "STYLE") "habit")
+        subtree-end
+      nil)))
