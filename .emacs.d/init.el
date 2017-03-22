@@ -49,12 +49,14 @@
 (mjs/load-init-file "init-display")
 (mjs/load-init-file "init-gnus")
 (mjs/load-init-file "init-ido")
-(mjs/load-init-file "init-javascript")
 (mjs/load-init-file "init-latex")
 (mjs/load-init-file "init-lisp")
 (mjs/load-init-file "init-mail")
 (mjs/load-init-file "init-misc")
 (mjs/load-init-file "init-org")
+(mjs/load-init-file "init-projectile")
+(mjs/load-init-file "init-prog-javascript")
+(mjs/load-init-file "init-prog-typescript")
 (mjs/load-init-file "init-prog-elixir")
 
 ;;;

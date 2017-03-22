@@ -1,6 +1,17 @@
-(autoload 'nvm-use "nvm")
-(autoload 'nvm-use-for "nvm")
-(autoload 'nvm--installed-versions "nvm")
+(declare-function mjs/set-path-envvar-from-exec-path "init")
+
+(use-package nvm
+  :commands (nvm-use nvm-use-for nvm--installed-versions))
+
+(use-package js2-mode
+  :mode ("\\.jsx?$" . js2-jsx-mode)
+  :config
+  (progn (setq js2-basic-offset 2)
+         (add-hook 'js2-jsx-mode-hook 'mjs/setup-jsx-inentation)))
+
+(defun mjs/setup-jsx-inentation ()
+  (setq-local sgml-basic-offset js2-basic-offset)
+  (setq-local sgml-attribute-offset js2-basic-offset))
 
 (defvar mjs/previous-node-version nil)
 (defun mjs/remove-node-from-path ()
@@ -50,41 +61,3 @@ case subdirectory names to mjs/project-node-module-special-cases."
                        (append node-modules-bin-dirs exec-path)))
       (mjs/set-path-envvar-from-exec-path))
     (message "Added %s to path" mjs/previous-node-modules-added-to-path)))
-
-(add-to-list 'auto-mode-alist '("\\.jsx?$" . js2-jsx-mode))
-(with-eval-after-load 'js2-mode
-  (defvar sgml-basic-offset)
-  (defvar sgml-attribute-offset)
-  (defvar js-indent-level)
-  (diminish 'js2-mode "JS")
-  (diminish 'js2-jsx-mode "JSX")
-  (setq js-indent-level 2)
-  (setq sgml-basic-offset js-indent-level
-        sgml-attribute-offset js-indent-level))
-
-(defun mjs/toggle-indent-level ()
-  "Some projects use 4 spaces, some use 2."
-  (interactive)
-  (defvar js-indent-level)
-  (defvar typescript-indent-level)
-  (defvar sgml-attribute-offset)
-  (defvar sgml-basic-offset)
-  (let ((offset (if (= js-indent-level 2) 4 2)))
-    (setq js-indent-level offset
-          typescript-indent-level offset
-          sgml-basic-offset offset
-          sgml-attribute-offset 0)))
-
-(with-eval-after-load 'typescript-mode
-  (defvar typescript-indent-level)
-  (setq typescript-indent-level 2)
-  (defun setup-tide ()
-    (tide-setup)
-    (eldoc-mode +1))
-  (add-hook 'typescript-mode-hook 'setup-tide))
-
-(with-eval-after-load 'projectile
-  (add-hook 'projectile-before-switch-project-hook 'mjs/remove-node-from-path)
-  (add-hook 'projectile-after-switch-project-hook 'mjs/add-node-modules-in-path)
-  (add-hook 'projectile-before-switch-project-hook 'mjs/remove-node-from-path)
-  (add-hook 'projectile-after-switch-project-hook 'mjs/add-node-to-path))
