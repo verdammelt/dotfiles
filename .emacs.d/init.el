@@ -49,7 +49,6 @@
 (mjs/load-init-file "init-display")
 (mjs/load-init-file "init-gnus")
 (mjs/load-init-file "init-ido")
-(mjs/load-init-file "init-irc")
 (mjs/load-init-file "init-javascript")
 (mjs/load-init-file "init-latex")
 (mjs/load-init-file "init-lisp")
