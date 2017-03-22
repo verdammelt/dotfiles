@@ -187,7 +187,7 @@
        ("x" "lost tasks" tags-todo "-{^@}")
        ("w" "waiting" tags-todo "/WAIT")
        ("p" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2")
-       ("l" "last week's ntes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\""))
+       ("l" "last week's notes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\""))
 
      org-stuck-projects
      '("+PROJECT=\"TRUE\"+LEVEL=2" ("TODO" "WAIT") nil "")
