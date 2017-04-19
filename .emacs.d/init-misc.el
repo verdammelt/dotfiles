@@ -376,4 +376,4 @@ symbol, not word, as I need this for programming the most."
   (mjs/import-calendars google-calendars))
 
 (defvar mjs/calendar-import-timer
-  (run-with-idle-timer (* 60 5) t #'mjs/import-all-calendars))
+  (run-with-idle-timer (* 60 10) t #'mjs/import-all-calendars))
