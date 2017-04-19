@@ -98,7 +98,7 @@
 
   (setq org-capture-templates
         `(("t" "Task" entry (file "")
-           "* TODO %? %^G\n  %U\n %a\n"
+           "* TODO %?\n  %U\n %a\n"
            :clock-in t :clock-resume t
            :empty-lines-after 1)
           ("r" "Process email" entry (file "")
@@ -109,24 +109,24 @@
            "* %U %? :NOTE:\n%a\n"
            :clock-in t :clock-resume t)
           ("k" "Tickler" entry (file+headline ,(mjs/expand-org-file "todo.org") "Tickler")
-           "* TODO %? %^G\n  %U\n  %a\n"
+           "* TODO %?\n  %U\n  %a\n"
            :clock-in t :clock-resume t)
           ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
            "* %{headline}\n  %U\n %a\n%?"
            :clock-in t :clock-resume t)
           ("w" "Templates for work")
           ("wb" "Billable Task" entry (file "")
-           "* TODO %? %^g:@CLIENT:\n %U\n %a\n"
+           "* TODO %? :@CLIENT:\n %U\n %a\n"
            :clock-in t :clock-resume t)
           ("ww" "Non-Billable Task" entry (file "")
-           "* TODO %? %^g:@WORK:\n %U\n %a\n"
+           "* TODO %? :@WORK:\n %U\n %a\n"
            :clock-in t :clock-resume t)
           ("wi" "Interruption" entry (file "")
-           "* TODO %? %^g:@WORK:\n %U\n %a\n"
+           "* TODO %? :@WORK:\n %U\n %a\n"
            :clock-in t :clock-keep t
            :jump-to-captured t)
           ("wn" "New Task to clocked" entry (clock)
-           "* TODO %? %^g\n %U\n %a\n"
+           "* TODO %?\n %U\n %a\n"
            :clock-in t :clock-resume t)
           ))
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
