@@ -11,6 +11,18 @@
 
 (define-abbrev-table 'TeX-output-mode-abbrev-table '())
 
+(define-abbrev-table 'alchemist-compile-mode-abbrev-table '())
+
+(define-abbrev-table 'alchemist-execute-mode-abbrev-table '())
+
+(define-abbrev-table 'alchemist-iex-mode-abbrev-table '())
+
+(define-abbrev-table 'alchemist-mix-mode-abbrev-table '())
+
+(define-abbrev-table 'alchemist-refcard-mode-abbrev-table '())
+
+(define-abbrev-table 'alchemist-test-report-mode-abbrev-table '())
+
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
 (define-abbrev-table 'asm-mode-abbrev-table '())
@@ -124,6 +136,8 @@
 (define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())
 
 (define-abbrev-table 'elisp-byte-code-mode-abbrev-table '())
+
+(define-abbrev-table 'elixir-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
@@ -269,7 +283,10 @@
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
-(define-abbrev-table 'js2-jsx-mode-abbrev-table '())
+(define-abbrev-table 'js2-jsx-mode-abbrev-table
+  '(
+    ("improt" "import" nil 1)
+   ))
 
 (define-abbrev-table 'js2-mode-abbrev-table '())
 
@@ -378,7 +395,7 @@
     ("backend" "back end" nil 14)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 43)
+    ("caio" "Ciao" nil 45)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -386,13 +403,13 @@
     ("comparitors" "comparators" nil 0)
     ("condecension" "condescension" nil 0)
     ("condolencses" "condolences" nil 0)
-    ("coudl" "could" nil 10)
+    ("coudl" "could" nil 11)
     ("daniel" "Daniel" nil 3)
     ("december" "December" nil 3)
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
     ("definately" "definitely" nil 3)
-    ("defmethod" "Def Method" nil 4)
+    ("defmethod" "Def Method" nil 5)
     ("depencency" "dependency" nil 0)
     ("dependancy" "dependency" nil 0)
     ("depenedencies" "dependencies" nil 0)
@@ -427,7 +444,7 @@
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 7)
-    ("ok" "OK" nil 38)
+    ("ok" "OK" nil 39)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
     ("probaby" "probably" nil 0)
@@ -561,9 +578,7 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'rake-compilation-mode-abbrev-table '())
 
@@ -671,8 +686,8 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 32)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 138)
-    ("tomororw" "tomorrow" nil 0)
+    ("tia" "Thanks in advance" nil 140)
+    ("tomororw" "tomorrow" nil 1)
    ))
 
 (define-abbrev-table 'tide-references-mode-abbrev-table '())
