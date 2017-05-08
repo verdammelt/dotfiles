@@ -293,7 +293,8 @@
         expiry-target-file)))
 
   (setq
-   gnus-message-archive-group '((format-time-string "archive-%Y"))
+   gnus-message-archive-group (if-work "nnfolder:defmethod.inbox"
+                                       '((format-time-string "archive-%Y")))
    nnmail-expiry-target 'mjs/expiry-target-calculator
    nnmail-expiry-wait-function 'mjs/expiry-wait-calculator
    )
