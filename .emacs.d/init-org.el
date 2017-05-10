@@ -227,10 +227,13 @@
   (setq
    org-clocktable-defaults (plist-put org-clocktable-defaults :stepskip0 t)
    org-clocktable-defaults (plist-put org-clocktable-defaults :fileskip0 t)
-   org-clocktable-defaults (plist-put org-clocktable-defaults :wstart0 0)
+   org-clocktable-defaults (plist-put org-clocktable-defaults :wstart 0)
    org-clocktable-defaults (plist-put org-clocktable-defaults :link t)
-   org-clocktable-defaults (plist-put org-clocktable-defaults :compact t)
-   org-clocktable-defaults (plist-put org-clocktable-defaults :maxlevel 9)))
+   org-clocktable-defaults (plist-put org-clocktable-defaults :maxlevel 3)
+   org-clocktable-defaults (plist-put org-clocktable-defaults
+                                      :scope 'agenda-with-archives)
+   org-clocktable-defaults (plist-put org-clocktable-defaults :step 'day)
+   ))
 
 ;; clocking setup
 (with-eval-after-load 'org
