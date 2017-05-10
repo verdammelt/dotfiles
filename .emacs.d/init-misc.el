@@ -375,5 +375,6 @@ symbol, not word, as I need this for programming the most."
   (load "~/.diary.calendars-to-import.el")
   (mjs/import-calendars google-calendars))
 
-(defvar mjs/calendar-import-timer
-  (run-with-idle-timer (* 60 10) t #'mjs/import-all-calendars))
+;; turning off for now - re-evaluate [2017-04-30]
+;; (defvar mjs/calendar-import-timer
+;;   (run-with-idle-timer (* 60 10) t #'mjs/import-all-calendars))
