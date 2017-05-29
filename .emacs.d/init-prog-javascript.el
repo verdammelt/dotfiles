@@ -1,17 +1,22 @@
 (declare-function mjs/set-path-envvar-from-exec-path "init")
+(declare-function turn-off-fci-mode "fill-column-indicator")
+(declare-function turn-on-fci-mode "fill-column-indicator")
 
 (use-package nvm
   :commands (nvm-use nvm-use-for nvm--installed-versions))
 
 (use-package js2-mode
-  :mode ("\\.jsx?$" . js2-jsx-mode)
   :config
-  (progn (setq js2-basic-offset 2)
-         (add-hook 'js2-jsx-mode-hook 'mjs/setup-jsx-inentation)))
+  (setq js2-basic-offset 2))
 
-(defun mjs/setup-jsx-inentation ()
-  (setq-local sgml-basic-offset js2-basic-offset)
-  (setq-local sgml-attribute-offset js2-basic-offset))
+(use-package rjsx-mode
+  :config
+  (advice-add 'rjsx-electric-lt :around
+              #'(lambda (next &rest args)
+                  (unwind-protect
+                      (progn (turn-off-fci-mode)
+                             (apply next args))
+                    (turn-on-fci-mode)))))
 
 (defvar mjs/previous-node-version nil)
 (defun mjs/remove-node-from-path ()
