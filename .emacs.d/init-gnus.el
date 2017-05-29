@@ -154,8 +154,7 @@
                            ("subject" "[Slack] Notifications from the UpStack"
                             "defmethod.upstack"))
 
-                        (| ("subject" "defmethodinc/nyvb-onboard-"
-                            "defmethod.nyvb.builds"))
+                        (| ("subject" "defmethodinc/nyvb" "defmethod.nyvb.builds"))
 
                         (| (from ".*@3.basecamp.com" "defmethod.dependable")
                            (from ".*@cloud66mail.com" "defmethod.dependable")
@@ -277,6 +276,8 @@
                   ((string-match "defmethod\\.datapipe" group) "nnfolder+archive:defmethod.datapipe-archive-%Y")
                   ((string-match "defmethod\\.datapipe-confluence" group) 'delete)
                   ((string-match "defmethod\\.upstack" group) "nnfolder+archive:defmethod.upstack-archive-%Y")
+                  ((string-match "defmethod\\.nyvb\\.inbox" group) "nnfolder+archive:defmethod.nyvb-archive-%Y")
+                  ((string-match "defmethod\\.nyvb\\.builds" group) 'delete)
                   ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y")
                   ((string-match "cyrus\\.corcoran" group) "nnfolder+archive:cyrus.corcoran-archive-%Y")
                   ((string-match "cyrus\\.corcoran-confluence" group) 'delete)
