@@ -378,3 +378,7 @@ symbol, not word, as I need this for programming the most."
 ;; turning off for now - re-evaluate [2017-04-30]
 ;; (defvar mjs/calendar-import-timer
 ;;   (run-with-idle-timer (* 60 10) t #'mjs/import-all-calendars))
+
+(use-package browse-kill-ring
+  :defer 2
+  :config (browse-kill-ring-default-keybindings))

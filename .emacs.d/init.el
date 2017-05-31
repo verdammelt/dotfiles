@@ -66,7 +66,6 @@
 ;;;
 ;;; turn on all things that need turning on.
 ;;;
-(browse-kill-ring-default-keybindings)
 (display-battery-mode)
 (display-time)
 (edit-server-start)
