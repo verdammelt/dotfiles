@@ -196,15 +196,15 @@
                      (org-agenda-start-with-clockreport-mode t)))
          (tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")))
-         (tags-todo "+@WORK&+@CLIENT/!-WAIT"
+         (tags-todo "+@WORK&+@CLIENT|+@WORK&+@CLIENT/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "BILLABLE")))
-         (tags-todo "+@WORK&-@CLIENT/!-WAIT"
+         (tags-todo "+@WORK&-@CLIENT|+@WORKMAC&-@CLIENT/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "NON-BILLABLE")))
-         (tags-todo "+@WORK/WAIT"
+         (tags-todo "+@WORK|+@WORKMAC/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("x" "lost tasks" tags-todo "-{^@}")
        ("w" "waiting" tags-todo "/WAIT")
