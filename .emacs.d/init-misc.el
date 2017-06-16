@@ -113,7 +113,7 @@
   (define-key company-active-map (kbd "\C-p") 'company-select-previous)
   (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
   (define-key company-active-map (kbd "M-.") 'company-show-location)
-  (diminish 'company)
+  (diminish 'company-mode)
   (setq company-idle-delay .25
         company-show-numbers t
         company-tooltip-align-annotations t
