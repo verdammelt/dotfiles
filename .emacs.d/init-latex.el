@@ -5,7 +5,7 @@
 ;;;;
 (use-package tex
   :ensure nil
-  :functions (TeX-global-PDF-mode)
+  :commands TeX-global-PDF-mode
   :init (setq-default TeX-master nil)
   :config
   (progn (TeX-global-PDF-mode 1)

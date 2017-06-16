@@ -3,6 +3,9 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
+(declare-function if-work "init")
+(declare-function mjs/bbdb-init "init-bbdb")
+
 (setq user-mail-address (if-work "msimpson@defmethod.io" "verdammelt@gmail.com"))
 
 ;; this way i have Gcc: etc. in my mail buffer
