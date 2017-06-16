@@ -51,9 +51,16 @@
 
 (use-package slime-company :config (setq slime-company-completion 'fuzzy))
 
-(use-package eldoc :ensure nil :config (eldoc-mode))
-(use-package elisp-slime-nav :config (elisp-slime-nav-mode))
-(use-package paredit :config (paredit-mode))
+(use-package eldoc
+  :ensure nil
+  :diminish (eldoc-mode)
+  :config (eldoc-mode))
+(use-package elisp-slime-nav
+  :diminish (elisp-slime-nav-mode)
+  :config (elisp-slime-nav-mode))
+(use-package paredit
+  :diminish (paredit-mode)
+  :config (paredit-mode))
 
 (defun mjs/emacs-lisp-mode-setup () (setq mode-name "Elisp"))
 
