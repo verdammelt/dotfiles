@@ -3,13 +3,9 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(with-eval-after-load 'cc-vars
-  (setq c-default-style "linux"
-        c-basic-offset 4))
-
 ;; Save my place in files
-(with-eval-after-load 'saveplace
-  (setq save-place-file (locate-user-emacs-file ".places")))
+(use-package saveplace
+  :config (setq save-place-file (locate-user-emacs-file ".places")))
 
 ;; Save minibuffer history
 (with-eval-after-load 'savehist
@@ -75,49 +71,8 @@
 (with-eval-after-load 'battery
   (setq battery-mode-line-format "[%b%p%% %t] "))
 
-;; editing programs
-(defun mjs/prog-fill-column ()
-  (setq fill-column 80))
-
-(with-eval-after-load 'simple
-  (add-hook 'prog-mode-hook 'mjs/prog-fill-column)
-  (add-hook 'prog-mode-hook 'linum-mode)
-  (add-hook 'prog-mode-hook 'fci-mode))
-
 (with-eval-after-load 'fill-column-indicator
   (setq fci-rule-color "red"))
-
-(with-eval-after-load 'python
-  (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
-
-(with-eval-after-load 'company
-  ;; due to a bug/incompatibility between company-mode and fci-mode
-  (defun on-off-fci-before-company(command)
-    (when (string= "show" command)
-      (turn-off-fci-mode))
-    (when (string= "hide" command)
-      (turn-on-fci-mode)))
-  (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
-
-  (set-face-attribute 'company-tooltip nil :background "white" :foreground "black")
-  (set-face-attribute 'company-tooltip-selection nil :background "grey" :foreground "red")
-  (set-face-attribute 'company-tooltip-common nil :slant 'italic :foreground "blue")
-  (set-face-attribute 'company-scrollbar-fg nil :background "black")
-  (set-face-attribute 'company-scrollbar-bg nil :background "grey")
-  (set-face-attribute 'tooltip nil :background "white" :inherit 'default)
-  (defvar company-active-map)
-  (defvar company-idle-delay)
-  (defvar company-show-numbers)
-  (defvar company-selection-wrap-around)
-  (define-key company-active-map (kbd "\C-n") 'company-select-next)
-  (define-key company-active-map (kbd "\C-p") 'company-select-previous)
-  (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
-  (define-key company-active-map (kbd "M-.") 'company-show-location)
-  (diminish 'company-mode)
-  (setq company-idle-delay .25
-        company-show-numbers t
-        company-tooltip-align-annotations t
-        company-selection-wrap-around t))
 
 ;; abbrevs
 (setq-default abbrev-mode t)
@@ -147,7 +102,7 @@
   (magithub-toggle-pull-requests))
 
 (with-eval-after-load 'simple
-  (add-hook 'prog-mode-hook 'whitespace-mode)
+
   (setq-default indent-tabs-mode nil)
   (setq whitespace-style '(face indentation empty trailing)
         whitespace-action '(auto-cleanup warn-if-read-only)))
@@ -169,33 +124,6 @@
 
 (with-eval-after-load 'smex
   (setq smex-save-file (locate-user-emacs-file ".smex-items")))
-
-(setq projectile-known-projects-file
-      (locate-user-emacs-file ".projectile-bookmarks.eld")
-      projectile-cache-file
-      (locate-user-emacs-file ".projectile.cache"))
-(global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
-(global-set-key (kbd "s-f") 'projectile-find-file)
-(global-set-key (kbd "s-s") 'projectile-switch-project)
-(with-eval-after-load 'projectile
-  (add-to-list 'projectile-globally-ignored-directories "node_modules")
-  (setq projectile-mode-line
-        '(:eval (propertize (format " :%s:" (projectile-project-name))
-                            'face 'bold)))
-  (setq mjs/default-projectile-indexing-method projectile-indexing-method)
-  (defun mjs/setup-gtd-project-caching ()
-    (let ((new-value (if (string= (projectile-project-name) "GTD")
-                         'native
-                       mjs/default-projectile-indexing-method)))
-      (setq projectile-indexing-method new-value)))
-  (add-hook 'projectile-after-switch-project-hook 'mjs/setup-gtd-project-caching)
-  (add-hook 'projectile-after-switch-project-hook 'rvm-activate-corresponding-ruby)
-  (add-hook 'projectile-mode-hook 'projectile-rails-on)
-  (setq projectile-switch-project-action 'projectile-dired
-        projectile-enable-caching t))
-
-(with-eval-after-load 'ruby
-  (setq ruby-insert-encoding-magic-comment nil))
 
 ;; Update timestamps in file on save
 (add-hook 'before-save-hook 'time-stamp)
@@ -288,27 +216,9 @@ symbol, not word, as I need this for programming the most."
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
-(rvm-use-default)
-
 (define-key global-map [remap list-buffers] 'ibuffer)
 
 (setq scroll-preserve-screen-position t)
-
-(with-eval-after-load 'compile
-  (defvar compilation-filter-start)
-  (defvar compilation-scroll-output)
-
-  (setq compilation-scroll-output 'first-error)
-
-  (require 'ansi-color)
-
-  (defun mjs/colorize-compilation ()
-    (let ((inhibit-read-only t))
-      (ansi-color-apply-on-region
-       compilation-filter-start (point))))
-
-  (add-hook 'compilation-filter-hook
-            #'mjs/colorize-compilation))
 
 ;; Setup Hyperspec info file
 (add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
@@ -379,5 +289,3 @@ symbol, not word, as I need this for programming the most."
 (use-package browse-kill-ring
   :defer 2
   :config (browse-kill-ring-default-keybindings))
-
-(use-package less-css-mode)

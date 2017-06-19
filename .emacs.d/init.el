@@ -50,18 +50,20 @@
 ;;; Exterinalized config of specific things
 ;;;
 (mjs/load-init-file "init-bbdb")
+(mjs/load-init-file "init-company")
 (mjs/load-init-file "init-display")
 (mjs/load-init-file "init-gnus")
 (mjs/load-init-file "init-ido")
 (mjs/load-init-file "init-latex")
-(mjs/load-init-file "init-lisp")
 (mjs/load-init-file "init-mail")
 (mjs/load-init-file "init-misc")
 (mjs/load-init-file "init-org")
-(mjs/load-init-file "init-projectile")
-(mjs/load-init-file "init-prog-javascript")
-(mjs/load-init-file "init-prog-typescript")
+(mjs/load-init-file "init-prog")
 (mjs/load-init-file "init-prog-elixir")
+(mjs/load-init-file "init-prog-javascript")
+(mjs/load-init-file "init-prog-lisp")
+(mjs/load-init-file "init-prog-typescript")
+(mjs/load-init-file "init-projectile")
 
 ;;;
 ;;; turn on all things that need turning on.
