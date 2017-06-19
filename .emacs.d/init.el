@@ -79,7 +79,6 @@
 (keyfreq-mode)
 (midnight-mode)
 (miniedit-install)
-(mjs/turn-on-ido)
 (projectile-mode)
 (save-place-mode)
 (savehist-mode)
