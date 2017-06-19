@@ -15,8 +15,7 @@
                  '((sbcl ("~/.cim/bin/sbcl"))
                    (clisp ("~/.cim/bin/clisp"))
                    (ccl ("~/.cim/bin/ccl"))
-                   (ecl ("~/.cim/bin/ecl"))))
-         (slime-setup '(slime-fancy slime-company)))
+                   (ecl ("~/.cim/bin/ecl")))))
   :config
   (progn
     (setq common-lisp-hyperspec-root
@@ -32,7 +31,9 @@
             common-lisp-hyperspec-format
             common-lisp-hyperspec-lookup-reader-macro))
 
-    (mjs/setup-lispy-mode 'slime-repl-mode-hook)))
+    (mjs/setup-lispy-mode 'slime-repl-mode-hook)
+
+    (slime-setup '(slime-fancy slime-company))))
 
 (defun mjs/string-starts-with (string prefix)
   "Return t if STRING starts with prefix."

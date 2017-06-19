@@ -85,7 +85,6 @@
 (savehist-mode)
 (server-start)
 (show-paren-mode)
-(slime-setup '(slime-fancy slime-company))
 (venv-initialize-interactive-shells)
 (wrap-region-global-mode)
 (yas-global-mode)
