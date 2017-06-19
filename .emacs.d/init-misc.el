@@ -379,3 +379,5 @@ symbol, not word, as I need this for programming the most."
 (use-package browse-kill-ring
   :defer 2
   :config (browse-kill-ring-default-keybindings))
+
+(use-package less-css-mode)
