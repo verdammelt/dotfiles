@@ -401,3 +401,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
     (if (string= (org-entry-get nil "STYLE") "habit")
         subtree-end
       nil)))
+
+;; due to keyboard conflict and lack of checker.
+(add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))

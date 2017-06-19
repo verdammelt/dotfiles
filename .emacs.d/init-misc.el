@@ -288,9 +288,6 @@ symbol, not word, as I need this for programming the most."
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
-;; due to keyboard conflict and lack of checker.
-(add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
-
 (rvm-use-default)
 
 (define-key global-map [remap list-buffers] 'ibuffer)
