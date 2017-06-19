@@ -71,8 +71,6 @@
 (display-battery-mode)
 (display-time)
 (edit-server-start)
-(global-company-mode)
-(company-quickhelp-mode)
 (global-auto-revert-mode)
 (global-flycheck-mode)
 (global-git-commit-mode)
