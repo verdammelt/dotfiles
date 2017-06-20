@@ -6,10 +6,19 @@
 ;; Save my place in files
 (use-package saveplace
   :config (setq save-place-file (locate-user-emacs-file ".places")))
+(save-place-mode)
 
 ;; Save minibuffer history
 (with-eval-after-load 'savehist
   (setq savehist-file (locate-user-emacs-file ".history")))
+(savehist-mode)
+
+(global-set-key (kbd "s-p") 'ps-print-buffer)
+(global-set-key (kbd "s-P") 'ps-print-region)
+(with-eval-after-load 'ps-print
+  (setq
+   ps-lpr-command (expand-file-name "~/bin/psprint")
+   ps-spool-duplex t))
 
 ;; Backup files
 (with-eval-after-load 'files
@@ -21,55 +30,13 @@
         delete-by-moving-to-trash t
         trash-directory (expand-file-name "~/.Trash")))
 
-;; time display the way i like it
-(with-eval-after-load 'time
-  (setq display-time-24hr-format t
-        display-time-day-and-date t
-        display-time-use-mail-icon t
-        display-time-mail-face 'cursor ; (only background color used)
-        display-time-format "%Y-%m-%dT%R"))
-
-(global-set-key (kbd "s-p") 'ps-print-buffer)
-(global-set-key (kbd "s-P") 'ps-print-region)
-(with-eval-after-load 'ps-print
-  (setq
-   ps-lpr-command (expand-file-name "~/bin/psprint")
-   ps-spool-duplex t))
-
-;; calendar
-(setq holiday-hebrew-holidays nil
-      holiday-islamic-holidays nil
-      holiday-oriental-holidays nil
-      holiday-bahai-holidays nil)
-(setq holiday-other-holidays
-      '((holiday-sexp '(if (zerop (% year 4))
-                           (calendar-gregorian-from-absolute
-                            (1+ (calendar-dayname-on-or-before
-                                 1 (+ 6 (calendar-absolute-from-gregorian
-                                         (list 11 1 year)))))))
-                      "US Presidential Election")))
-(with-eval-after-load 'calendar
-  (add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
-  (add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)
-
-  (setq
-   calendar-latitude +40.72541
-   calendar-longitude -73.70928
-   calendar-location-name "Floral Park, NY"
-   calendar-time-display-form '(24-hours ":" minutes (if time-zone " (") time-zone (if time-zone ")"))
-   diary-file "~/.diary"
-   calendar-mark-diary-entries-flag t
-   calendar-mark-holidays-flag t
-   calendar-view-diary-initially-flag t
-   calendar-view-holidays-initially-flag t)
-  (calendar-set-date-style 'iso))
-
 ;; Editing text
 (add-hook 'text-mode-hook 'fci-mode)
 (setq sentence-end-double-space nil)
 
 (with-eval-after-load 'battery
   (setq battery-mode-line-format "[%b%p%% %t] "))
+(display-battery-mode)
 
 (with-eval-after-load 'fill-column-indicator
   (setq fci-rule-color "red"))
@@ -90,6 +57,7 @@
   (diminish 'yas-minor-mode)
   (setq yas-prompt-functions
         '(yas-ido-prompt yas-completing-prompt)))
+(yas-global-mode)
 
 (global-set-key (kbd "<f7>") 'magit-status)
 (with-eval-after-load 'magit
@@ -100,6 +68,8 @@
 (with-eval-after-load 'magithub
   (magithub-toggle-issues)
   (magithub-toggle-pull-requests))
+
+(global-git-commit-mode)
 
 (with-eval-after-load 'simple
 
@@ -179,6 +149,7 @@ With argument, do this that many times.")
   (wrap-region-add-wrapper "+" "+" nil 'org-mode)
   (wrap-region-add-wrapper "_" "_" nil 'markdown-mode)
   (wrap-region-add-wrapper "*" "*" nil 'markdown-mode))
+(wrap-region-global-mode)
 
 (defun mjs/add-wgrep-key ()
   (define-key grep-mode-map (kbd "C-x C-q") 'wgrep-change-to-wgrep-mode))
@@ -233,6 +204,8 @@ symbol, not word, as I need this for programming the most."
 (add-hook 'edit-server-start-hook 'edit-server-maybe-dehtmlize-buffer)
 (add-hook 'edit-server-done-hook 'edit-server-maybe-htmlize-buffer)
 (add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))
+(edit-server-start)
+(server-start)
 
 (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
 
@@ -241,6 +214,7 @@ symbol, not word, as I need this for programming the most."
   (defvar keyfreq-file-lock)
   (setq keyfreq-file (locate-user-emacs-file ".keyfreq")
         keyfreq-file-lock (concat keyfreq-file ".lock")))
+(keyfreq-mode)
 
 (with-eval-after-load 'calc
   (setq math-additional-units
@@ -253,6 +227,7 @@ symbol, not word, as I need this for programming the most."
   (setq flycheck-completing-read-function 'ido-completing-read)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   (flycheck-credo-setup))
+(global-flycheck-mode)
 
 ;;;;
 ;;;; ========== experimental calendar loading ==========
@@ -289,3 +264,15 @@ symbol, not word, as I need this for programming the most."
 (use-package browse-kill-ring
   :defer 2
   :config (browse-kill-ring-default-keybindings))
+
+(show-paren-mode)
+
+(global-auto-revert-mode)
+
+(global-hl-line-mode)
+
+(global-prettify-symbols-mode)
+
+(midnight-mode)
+
+(miniedit-install)

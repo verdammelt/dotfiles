@@ -15,6 +15,7 @@
 
 (with-eval-after-load 'python
   (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
+(venv-initialize-interactive-shells)
 
 (with-eval-after-load 'ruby
   (setq ruby-insert-encoding-magic-comment nil))

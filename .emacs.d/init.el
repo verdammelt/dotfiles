@@ -50,6 +50,7 @@
 ;;; Exterinalized config of specific things
 ;;;
 (mjs/load-init-file "init-bbdb")
+(mjs/load-init-file "init-calendar")
 (mjs/load-init-file "init-company")
 (mjs/load-init-file "init-display")
 (mjs/load-init-file "init-gnus")
@@ -65,25 +66,4 @@
 (mjs/load-init-file "init-prog-typescript")
 (mjs/load-init-file "init-projectile")
 
-;;;
-;;; turn on all things that need turning on.
-;;;
-(display-battery-mode)
-(display-time)
-(edit-server-start)
-(global-auto-revert-mode)
-(global-flycheck-mode)
-(global-git-commit-mode)
-(global-hl-line-mode)
-(global-prettify-symbols-mode)
-(keyfreq-mode)
-(midnight-mode)
-(miniedit-install)
-(projectile-mode)
-(save-place-mode)
-(savehist-mode)
-(server-start)
-(show-paren-mode)
-(venv-initialize-interactive-shells)
-(wrap-region-global-mode)
-(yas-global-mode)
+(message "init file loading complete")

@@ -29,3 +29,4 @@
   (add-hook 'projectile-mode-hook 'projectile-rails-on)
   (setq projectile-switch-project-action 'projectile-dired
         projectile-enable-caching t))
+(projectile-mode)
