@@ -7,16 +7,14 @@
 (defun mjs/prog-fill-column ()
   (setq fill-column 80))
 
-(use-package simple
+(use-package prog-mode
   :ensure nil
+  :init (add-hook 'after-init-hook 'global-prettify-symbols-mode t)
   :config (progn
             (add-hook 'prog-mode-hook 'mjs/prog-fill-column)
             (add-hook 'prog-mode-hook 'linum-mode)
             (add-hook 'prog-mode-hook 'fci-mode)
             (add-hook 'prog-mode-hook 'whitespace-mode)))
-
-(use-package prog-mode
-  :init (add-hook 'after-init-hook 'global-prettify-symbols-mode t))
 
 (use-package python
   :config (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
