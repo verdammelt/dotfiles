@@ -13,6 +13,11 @@
   (add-hook 'prog-mode-hook 'fci-mode)
   (add-hook 'prog-mode-hook 'whitespace-mode))
 
+(use-package prog-mode
+  :ensure nil
+  :init (global-prettify-symbols-mode))
+
+
 (with-eval-after-load 'python
   (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
 (venv-initialize-interactive-shells)

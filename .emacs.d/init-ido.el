@@ -31,4 +31,5 @@
 (use-package ido-sort-mtime)
 (use-package ido-ubiquitous)
 (use-package flx-ido)
-(use-package smex)
+(use-package smex
+  :config (setq smex-save-file (locate-user-emacs-file ".smex-items")))

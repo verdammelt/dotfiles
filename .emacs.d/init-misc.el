@@ -5,102 +5,134 @@
 ;;;;
 ;; Save my place in files
 (use-package saveplace
-  :config (setq save-place-file (locate-user-emacs-file ".places")))
-(save-place-mode)
+  :ensure nil
+  :defer 2
+  :config
+  (progn (setq save-place-file (locate-user-emacs-file ".places"))
+         (save-place-mode)))
 
 ;; Save minibuffer history
-(with-eval-after-load 'savehist
-  (setq savehist-file (locate-user-emacs-file ".history")))
-(savehist-mode)
+(use-package savehist
+  :ensure nil
+  :defer 2
+  :config
+  (progn (setq savehist-file (locate-user-emacs-file ".history"))
+         (savehist-mode)))
 
-(global-set-key (kbd "s-p") 'ps-print-buffer)
-(global-set-key (kbd "s-P") 'ps-print-region)
-(with-eval-after-load 'ps-print
+(use-package ps-print
+  :ensure nil
+  :bind (("s-p" . ps-print-buffer)
+         ("s-P" . ps-print-region))
+  :config
   (setq
    ps-lpr-command (expand-file-name "~/bin/psprint")
    ps-spool-duplex t))
 
 ;; Backup files
-(with-eval-after-load 'files
-  (setq version-control t
-        delete-old-versions t
-        backup-by-copying-when-linked t
-        backup-directory-alist
-        (cl-acons "." (locate-user-emacs-file ".backups") nil)
-        delete-by-moving-to-trash t
-        trash-directory (expand-file-name "~/.Trash")))
+(use-package files
+  :ensure nil
+  :init
+  (progn (add-hook 'before-save-hook 'time-stamp)
+         (add-hook 'after-save-hook
+                   'executable-make-buffer-file-executable-if-script-p)
+         (setq confirm-kill-emacs 'yes-or-no-p
+               version-control t
+               delete-old-versions t
+               backup-by-copying-when-linked t
+               backup-directory-alist
+               (cl-acons "." (locate-user-emacs-file ".backups") nil)
+               delete-by-moving-to-trash t
+               trash-directory (expand-file-name "~/.Trash"))))
 
-;; Editing text
-(add-hook 'text-mode-hook 'fci-mode)
-(setq sentence-end-double-space nil)
+(use-package text-mode
+  :ensure nil
+  :config
+  (progn
+    (add-hook 'text-mode-hook 'fci-mode)))
 
-(with-eval-after-load 'battery
-  (setq battery-mode-line-format "[%b%p%% %t] "))
-(display-battery-mode)
+(use-package paragraphs
+  :ensure nil
+  :init (setq sentence-end-double-space nil))
 
-(with-eval-after-load 'fill-column-indicator
-  (setq fci-rule-color "red"))
+(use-package battery
+  :ensure nil
+  :config
+  (progn
+    (setq battery-mode-line-format "[%b%p%% %t] ")
+    (display-battery-mode)))
 
-;; abbrevs
-(setq-default abbrev-mode t)
-(with-eval-after-load 'abbrev (diminish 'abbrev-mode))
+(use-package fill-column-indicator
+  :config (setq fci-rule-color "red"))
+
+(use-package abbrev
+  :ensure nil
+  :init (setq-default abbrev-mode t)
+  :diminish (abbrev-mode))
 
 ;; flyspell
-(add-hook 'text-mode-hook 'flyspell-mode)
-(with-eval-after-load 'flyspell
-  (diminish 'flyspell-mode)
-  (setq flyspell-use-meta-tab nil)
-  (setq flyspell-abbrev-p t))
+(use-package flyspell
+  :ensure nil
+  :diminish (flyspell-mode)
+  :config
+  (progn
+    (add-hook 'text-mode-hook 'flyspell-mode)
+    (setq flyspell-use-meta-tab nil
+          flyspell-abbrev-p t)))
 
-;; yasnippet
-(with-eval-after-load 'yasnippet
-  (diminish 'yas-minor-mode)
-  (setq yas-prompt-functions
-        '(yas-ido-prompt yas-completing-prompt)))
-(yas-global-mode)
+(use-package yasnippet
+  :ensure nil
+  :diminish (yas-minor-mode)
+  :defer 2
+  :config
+  (progn (setq yas-prompt-functions
+               '(yas-ido-prompt yas-completing-prompt))
+         (yas-global-mode)))
 
-(global-set-key (kbd "<f7>") 'magit-status)
-(with-eval-after-load 'magit
-  (fullframe magit-status magit-mode-quit-window)
-  (magithub-feature-autoinject t))
+(use-package magit
+  :bind (("<f7>" . magit-status))
+  :functions (magit-mode-quit-window)
+  :config
+  (progn
+    (fullframe magit-status magit-mode-quit-window)
 
-(autoload 'magithub-feature-autoinject "magithub")
-(with-eval-after-load 'magithub
-  (magithub-toggle-issues)
-  (magithub-toggle-pull-requests))
+    (use-package magithub
+      :commands (magithub-feature-autoinject)
+      :functions (magithub-toggle-issues magithub-toggle-pull-requests)
+      :init (magithub-feature-autoinject t)
+      :config (progn (magithub-toggle-issues)
+                     (magithub-toggle-pull-requests)))))
 
-(global-git-commit-mode)
+(use-package git-commit
+  :defer 2
+  :config (global-git-commit-mode))
 
-(with-eval-after-load 'simple
+(use-package simple
+  :ensure nil
+  :init (setq-default indent-tabs-mode nil))
 
-  (setq-default indent-tabs-mode nil)
+(use-package whitespace
+  :diminish (whitespace-mode)
+  :config
   (setq whitespace-style '(face indentation empty trailing)
         whitespace-action '(auto-cleanup warn-if-read-only)))
-(with-eval-after-load 'whitespace
-  (diminish 'whitespace-mode))
 
-;; markdown-mode
-(with-eval-after-load 'markdown-mode
-  (setq markdown-command "markdown | smartypants"))
+(use-package markdown-mode
+  :config (setq markdown-command "markdown | smartypants"))
 
-(with-eval-after-load 'paragraphs
-  (setq sentence-end-double-space nil))
-
-(with-eval-after-load 'ns-win
+(use-package ns-win
+  :ensure nil
+  :init
   (setq ns-use-srgb-colorspace t
         mac-command-modifier 'meta
         mac-option-modifier 'super
         mac-function-modifier 'hyper))
 
-(with-eval-after-load 'smex
-  (setq smex-save-file (locate-user-emacs-file ".smex-items")))
-
-;; Update timestamps in file on save
-(add-hook 'before-save-hook 'time-stamp)
 
 ;; Misc
-(with-eval-after-load 'gnutls
-  (setq gnutls-min-prime-bits 1024))
+(use-package gnutls
+  :ensure nil
+  :init (setq gnutls-min-prime-bits 1024))
+
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
@@ -110,65 +142,74 @@
   (interactive "nsize: ")
   (if (< size 100) (setq size (* 10 size)))
   (set-face-attribute 'default nil :height size))
-
 (global-set-key (kbd "H-s") 'mjs/change-size)
 
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "M-i") 'change-inner)
-(global-set-key (kbd "M-o") 'change-outer)
+(use-package expand-region
+  :bind (("C-=" . er/expand-region)))
 
-(global-set-key (kbd "s-j") 'avy-goto-word-or-subword-1)
-(global-set-key (kbd "s-J") 'avy-goto-char-2)
-(avy-setup-default)
+(use-package change-inner
+  :bind (("M-i" . change-inner)
+         ("M-o" . change-outer)))
 
-(define-key 'help-command (kbd "C-l") 'find-library)
-(define-key 'help-command (kbd "C-f") 'find-function)
-(define-key 'help-command (kbd "C-k") 'find-function-on-key)
-(define-key 'help-command (kbd "C-v") 'find-variable)
+(use-package avy
+  :bind (("s-j" . avy-goto-word-or-subword-1)
+         ("s-J" . avy-goto-char-2))
+  :config (avy-setup-default))
 
-(autoload 'zap-up-to-char "misc"
-  "Kill up to, but not including ARGth occurance of CHAR.")
-(autoload 'forward-to-word "misc"
-  "Move forward until encountering the beginning of a word.
-With argument, do this that many times.")
-(autoload 'backward-to-word "misc"
-  "Move backward until encountering the end of a word.
-With argument, do this that many times.")
-(global-set-key (kbd "M-F") 'forward-to-word)
-(global-set-key (kbd "M-B") 'backward-to-word)
-(global-set-key (kbd "M-Z") 'zap-up-to-char)
 
-;; multiple-cursors
-(global-set-key (kbd "C-S-c C-S-c") 'mc/mark-all-like-this-dwim)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(use-package find-func
+  :ensure nil
+  :bind (:map help-map
+              ("C-l" . find-library)
+              ("C-f" . find-function)
+              ("C-k" . find-function-on-key)
+              ("C-v" . find-variable)))
 
-;; wrap-region
-(with-eval-after-load 'wrap-region
-  (diminish 'wrap-region-mode)
-  (wrap-region-add-wrapper "+" "+" nil 'org-mode)
-  (wrap-region-add-wrapper "_" "_" nil 'markdown-mode)
-  (wrap-region-add-wrapper "*" "*" nil 'markdown-mode))
-(wrap-region-global-mode)
+(use-package misc
+  :ensure nil
+  :bind (("M-F" . forward-to-word)
+         ("M-B" . backward-to-word)
+         ("M-Z" . zap-up-to-char)))
 
-(defun mjs/add-wgrep-key ()
-  (define-key grep-mode-map (kbd "C-x C-q") 'wgrep-change-to-wgrep-mode))
-(add-hook 'grep-mode-hook 'mjs/add-wgrep-key)
+(use-package multiple-cursors
+  :bind (("C-S-c C-S-c" . mc/mark-all-like-this-dwim)
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)))
 
-;; always want browser to open in background.
-(defun mjs/browse-url-default-macosx-browser-background (url &optional _new-window)
-  (interactive (browse-url-interactive-arg "URL: "))
-  (start-process (concat "open " url) nil "open" "-g" url))
-(setq browse-url-browser-function 'mjs/browse-url-default-macosx-browser-background)
+(use-package wrap-region
+  :diminish (wrap-region-mode)
+  :functions (wrap-region-add-wrappers)
+  :init (wrap-region-global-mode)
+  :config (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
+                                      ("_" "_" nil 'markdown-mode)
+                                      ("*" "*" nil 'markdown-mode))))
 
-(with-eval-after-load 'ediff
-  (setq ediff-window-setup-function 'ediff-setup-windows-plain))
+(use-package grep
+  :ensure nil
+  :config
+  (progn
+    (defun mjs/add-wgrep-key ()
+      (define-key grep-mode-map (kbd "C-x C-q") 'wgrep-change-to-wgrep-mode))
+    (add-hook 'grep-mode-hook 'mjs/add-wgrep-key)))
 
-(with-eval-after-load 'shell
-  (add-to-list 'explicit-bash-args "--login"))
+(use-package browse-url
+  :ensure nil
+  :config
+  (progn
+    (defun mjs/browse-url-default-macosx-browser-background (url &optional _new-window)
+      (interactive (browse-url-interactive-arg "URL: "))
+      (start-process (concat "open " url) nil "open" "-g" url))
+    (setq browse-url-browser-function 'mjs/browse-url-default-macosx-browser-background)))
+
+(use-package ediff
+  :ensure nil
+  :config (setq ediff-window-setup-function 'ediff-setup-windows-plain))
+
+(use-package shell
+  :ensure nil
+  :config (add-to-list 'explicit-bash-args "--login"))
 
 ;; search for symbol at point (by Jorgen Schäfer)
-(define-key isearch-mode-map (kbd "C-d") 'fc/isearch-yank-symbol)
 (defun fc/isearch-yank-symbol ()
   "Yank the symbol at point into the isearch minibuffer.
 
@@ -182,97 +223,87 @@ symbol, not word, as I need this for programming the most."
        (goto-char isearch-other-end))
      (thing-at-point 'symbol))))
 
-(setq confirm-kill-emacs 'yes-or-no-p )
+(use-package isearch
+  :ensure nil
+  :bind (:map isearch-mode-map
+              ("C-d" . fc/isearch-yank-symbol)))
 
-(add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
-
-(define-key global-map [remap list-buffers] 'ibuffer)
+(use-package ibuffer
+  :ensure nil
+  :bind (([remap list-buffers] . ibuffer)))
 
 (setq scroll-preserve-screen-position t)
 
-;; Setup Hyperspec info file
-(add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
+(use-package info
+  :ensure nil
+  :config (progn
+            (add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
+            (require 'info-look)
+            (info-lookup-add-help
+             :mode 'lisp-mode
+             :regexp "[^][()'\" \t\n]+"
+             :ignore-case t
+             :doc-spec '(("(ansicl)Symbol Index" nil nil nil)))))
 
-(require 'info-look)
-(info-lookup-add-help
- :mode 'lisp-mode
- :regexp "[^][()'\" \t\n]+"
- :ignore-case t
- :doc-spec '(("(ansicl)Symbol Index" nil nil nil)))
+(use-package edit-server
+  :ensure nil
+  :init (progn
+          (add-hook 'edit-server-start-hook 'edit-server-maybe-dehtmlize-buffer)
+          (add-hook 'edit-server-done-hook 'edit-server-maybe-htmlize-buffer)
+          (add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))
+          (edit-server-start)))
+(use-package server
+  :ensure nil
+  :init (server-start))
 
-(add-hook 'edit-server-start-hook 'edit-server-maybe-dehtmlize-buffer)
-(add-hook 'edit-server-done-hook 'edit-server-maybe-htmlize-buffer)
-(add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))
-(edit-server-start)
-(server-start)
+(use-package dired
+  :ensure nil
+  :init (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode))
 
-(add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+(use-package keyfreq
+  :init (progn
+          (defvar keyfreq-file)
+          (defvar keyfreq-file-lock)
+          (setq keyfreq-file (locate-user-emacs-file ".keyfreq")
+                keyfreq-file-lock (concat keyfreq-file ".lock"))
+          (keyfreq-mode)))
 
-(with-eval-after-load 'keyfreq
-  (defvar keyfreq-file)
-  (defvar keyfreq-file-lock)
-  (setq keyfreq-file (locate-user-emacs-file ".keyfreq")
-        keyfreq-file-lock (concat keyfreq-file ".lock")))
-(keyfreq-mode)
+(use-package calc-units
+  :ensure nil
+  :config (progn
+                 (setq math-additional-units
+                       '((fort "14 day" "Fortnight")
+                         (stone "14 lb" "Stone")
+                         (bit nil "Bit")
+                         (byte "8 bit" "Byte"))
+                       math-units-table nil)))
 
-(with-eval-after-load 'calc
-  (setq math-additional-units
-        '((fort "14 day" "Fortnight")
-          (bit nil "Bit")
-          (byte "8 bit" "Byte"))
-        math-units-table nil))
-
-(with-eval-after-load 'flycheck
-  (setq flycheck-completing-read-function 'ido-completing-read)
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  (flycheck-credo-setup))
-(global-flycheck-mode)
-
-;;;;
-;;;; ========== experimental calendar loading ==========
-;;;;
-
-(advice-add 'icalendar--convert-recurring-to-diary :filter-return #'string-trim)
-
-(defun mjs/eradicate-file (file)
-  (let ((buffer (find-buffer-visiting file))
-        (file-exists-p (file-exists-p file)))
-    (and buffer (kill-buffer buffer))
-    (and file-exists-p (delete-file file))))
-
-(defun mjs/import-calendars (calendars)
-  (let ((current-buffer (current-buffer)))
-    (let ((diary-import-file "~/.diary.imported"))
-      (mjs/eradicate-file diary-import-file)
-      (mapc (lambda (cal)
-              (let ((tmpfile (url-file-local-copy cal)))
-                (icalendar-import-file tmpfile diary-import-file)
-                (mjs/eradicate-file tmpfile)))
-            calendars))
-    (switch-to-buffer current-buffer)))
-
-(defun mjs/import-all-calendars ()
-  (defvar google-calendars)
-  (load "~/.diary.calendars-to-import.el")
-  (mjs/import-calendars google-calendars))
-
-;; turning off for now - re-evaluate [2017-04-30]
-;; (defvar mjs/calendar-import-timer
-;;   (run-with-idle-timer (* 60 10) t #'mjs/import-all-calendars))
+(use-package flycheck
+  :init (global-flycheck-mode)
+  :config (progn
+            (setq flycheck-completing-read-function 'ido-completing-read)
+            (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+            (flycheck-credo-setup)))
 
 (use-package browse-kill-ring
   :defer 2
   :config (browse-kill-ring-default-keybindings))
 
-(show-paren-mode)
+(use-package paren-mode
+  :ensure nil
+  :init (show-paren-mode))
 
-(global-auto-revert-mode)
+(use-package autorevert
+  :ensure nil
+  :init (global-auto-revert-mode))
 
-(global-hl-line-mode)
+(use-package hl-line
+  :ensure nil
+  :init (global-hl-line-mode))
 
-(global-prettify-symbols-mode)
+(use-package midnight
+  :ensure nil
+  :init (midnight-mode))
 
-(midnight-mode)
-
-(miniedit-install)
+(use-package miniedit
+  :init (miniedit-install))
