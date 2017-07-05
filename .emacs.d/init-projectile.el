@@ -4,11 +4,11 @@
          ("s-s" . projectile-switch-project))
   :functions (projectile-project-name)
   :init
-  (setq projectile-known-projects-file
-        (locate-user-emacs-file ".projectile-bookmarks.eld")
-        projectile-cache-file
-        (locate-user-emacs-file ".projectile.cache"))
-  (projectile-mode)
+  (progn (setq projectile-known-projects-file
+               (locate-user-emacs-file ".projectile-bookmarks.eld")
+               projectile-cache-file
+               (locate-user-emacs-file ".projectile.cache"))
+         (add-hook 'after-init-hook 'projectile-mode t))
 
   :config
   (progn

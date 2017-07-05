@@ -16,8 +16,7 @@
             (add-hook 'prog-mode-hook 'whitespace-mode)))
 
 (use-package prog-mode
-  :ensure nil
-  :init (global-prettify-symbols-mode))
+  :init (add-hook 'after-init-hook 'global-prettify-symbols-mode t))
 
 (use-package python
   :config (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))

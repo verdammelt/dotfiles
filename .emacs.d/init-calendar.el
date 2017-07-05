@@ -1,6 +1,8 @@
 (use-package time
   :ensure nil
   :init
+  (add-hook 'after-init-hook 'display-time t)
+  :config
   (progn
     (defvar display-time-24hr-format)
     (defvar display-time-use-mail-icon)
@@ -10,8 +12,7 @@
           display-time-day-and-date t
           display-time-use-mail-icon t
           display-time-mail-face 'cursor ; (only background color used)
-          display-time-format "%Y-%m-%dT%R")
-    (display-time)))
+          display-time-format "%Y-%m-%dT%R")))
 
 (use-package diary
   :ensure nil

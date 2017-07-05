@@ -6,18 +6,16 @@
 ;; Save my place in files
 (use-package saveplace
   :ensure nil
-  :defer 2
+  :init (add-hook 'after-init-hook 'save-place-mode t)
   :config
-  (progn (setq save-place-file (locate-user-emacs-file ".places"))
-         (save-place-mode)))
+  (setq save-place-file (locate-user-emacs-file ".places")))
 
 ;; Save minibuffer history
 (use-package savehist
   :ensure nil
-  :defer 2
+  :init (add-hook 'after-init-hook 'savehist-mode t)
   :config
-  (progn (setq savehist-file (locate-user-emacs-file ".history"))
-         (savehist-mode)))
+  (setq savehist-file (locate-user-emacs-file ".history")))
 
 (use-package ps-print
   :ensure nil
@@ -82,11 +80,10 @@
 (use-package yasnippet
   :ensure nil
   :diminish (yas-minor-mode)
-  :defer 2
+  :init (add-hook 'after-init-hook 'yas-global-mode t)
   :config
-  (progn (setq yas-prompt-functions
-               '(yas-ido-prompt yas-completing-prompt))
-         (yas-global-mode)))
+  (setq yas-prompt-functions
+        '(yas-ido-prompt yas-completing-prompt)))
 
 (use-package magit
   :bind (("<f7>" . magit-status))
@@ -103,8 +100,7 @@
                      (magithub-toggle-pull-requests)))))
 
 (use-package git-commit
-  :defer 2
-  :config (global-git-commit-mode))
+  :init (add-hook 'after-init-hook 'global-git-commit-mode t))
 
 (use-package simple
   :ensure nil
@@ -179,7 +175,7 @@
 (use-package wrap-region
   :diminish (wrap-region-mode)
   :functions (wrap-region-add-wrappers)
-  :init (wrap-region-global-mode)
+  :init (add-hook 'after-init-hook 'wrap-region-global-mode t)
   :config (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
                                       ("_" "_" nil 'markdown-mode)
                                       ("*" "*" nil 'markdown-mode))))
@@ -238,72 +234,72 @@ symbol, not word, as I need this for programming the most."
   :ensure nil
   :config (progn
             (add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
-            (require 'info-look)
-            (info-lookup-add-help
-             :mode 'lisp-mode
-             :regexp "[^][()'\" \t\n]+"
-             :ignore-case t
-             :doc-spec '(("(ansicl)Symbol Index" nil nil nil)))))
+            (use-package info-look
+              :commands (info-lookup-add-help)
+              :init (info-lookup-add-help
+                     :mode 'lisp-mode
+                     :regexp "[^][()'\" \t\n]+"
+                     :ignore-case t
+                     :doc-spec '(("(ansicl)Symbol Index" nil nil nil))))))
 
 (use-package edit-server
   :ensure nil
-  :init (progn
+  :init (add-hook 'after-init-hook 'edit-server-start t)
+  :config (progn
           (add-hook 'edit-server-start-hook 'edit-server-maybe-dehtmlize-buffer)
           (add-hook 'edit-server-done-hook 'edit-server-maybe-htmlize-buffer)
-          (add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))
-          (edit-server-start)))
+          (add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))))
 (use-package server
   :ensure nil
-  :init (server-start))
+  :init (add-hook 'after-init-hook 'server-start t))
 
 (use-package dired
   :ensure nil
   :init (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode))
 
 (use-package keyfreq
-  :init (progn
+  :init (add-hook 'after-init-hook 'keyfreq-mode t)
+  :config (progn
           (defvar keyfreq-file)
           (defvar keyfreq-file-lock)
           (setq keyfreq-file (locate-user-emacs-file ".keyfreq")
-                keyfreq-file-lock (concat keyfreq-file ".lock"))
-          (keyfreq-mode)))
+                keyfreq-file-lock (concat keyfreq-file ".lock"))))
 
 (use-package calc-units
   :ensure nil
   :config (progn
-                 (setq math-additional-units
-                       '((fort "14 day" "Fortnight")
-                         (stone "14 lb" "Stone")
-                         (bit nil "Bit")
-                         (byte "8 bit" "Byte"))
-                       math-units-table nil)))
+            (setq math-additional-units
+                  '((fort "14 day" "Fortnight")
+                    (stone "14 lb" "Stone")
+                    (bit nil "Bit")
+                    (byte "8 bit" "Byte"))
+                  math-units-table nil)))
 
 (use-package flycheck
-  :init (global-flycheck-mode)
+  :init (add-hook 'after-init-hook 'global-flycheck-mode t)
   :config (progn
             (setq flycheck-completing-read-function 'ido-completing-read)
             (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
             (flycheck-credo-setup)))
 
 (use-package browse-kill-ring
-  :defer 2
-  :config (browse-kill-ring-default-keybindings))
+  :init (add-hook 'after-init-hook 'browse-kill-ring-default-keybindings ))
 
 (use-package paren-mode
   :ensure nil
-  :init (show-paren-mode))
+  :init (add-hook 'after-init-hook 'show-paren-mode t))
 
 (use-package autorevert
   :ensure nil
-  :init (global-auto-revert-mode))
+  :init (add-hook 'after-init-hook 'global-auto-revert-mode t))
 
 (use-package hl-line
   :ensure nil
-  :init (global-hl-line-mode))
+  :init (add-hook 'after-init-hook 'global-hl-line-mode t))
 
 (use-package midnight
   :ensure nil
-  :init (midnight-mode))
+  :init (add-hook 'after-init-hook 'midnight-mode t))
 
 (use-package miniedit
-  :init (miniedit-install))
+  :init (add-hook 'after-init-hook 'miniedit-install t))

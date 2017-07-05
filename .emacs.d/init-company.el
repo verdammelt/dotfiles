@@ -8,7 +8,6 @@ Need this due to a bug/incompatibility between company-mode and fci-mode."
   (when (string= "hide" command) (turn-on-fci-mode)))
 
 (use-package company
-  :defer 2
   :diminish (company-mode)
   :bind (:map company-active-map
               ("\C-n" . company-select-next)
@@ -16,6 +15,7 @@ Need this due to a bug/incompatibility between company-mode and fci-mode."
               ("\C-d" . company-show-doc-buffer)
               ("M-." . company-show-location))
 
+  :init (add-hook 'after-init-hook 'global-company-mode t)
   :config
   (progn
     (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
@@ -31,6 +31,4 @@ Need this due to a bug/incompatibility between company-mode and fci-mode."
           company-show-numbers t
           company-tooltip-align-annotations t
           company-selection-wrap-around t)
-
-    (global-company-mode)
     (company-quickhelp-mode)))

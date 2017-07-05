@@ -3,22 +3,24 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
+(defun mjs/ido-init ()
+  (ido-vertical-mode)
+  (ido-sort-mtime-mode)
+
+  (ido-mode)
+  (ido-everywhere)
+  (ido-ubiquitous-mode)
+  (ido-hacks-mode)
+  (flx-ido-mode 1)
+  (smex-initialize))
+
 (use-package ido
-  :defer 2
   :commands (ido-everywhere)
+  :init (add-hook 'after-init-hook 'mjs/ido-init t)
   :config
   (progn
     (setq ido-show-dot-for-dired t
-          ido-enable-flex-matching t)
-    (ido-vertical-mode)
-    (ido-sort-mtime-mode)
-
-    (ido-mode)
-    (ido-everywhere)
-    (ido-ubiquitous-mode)
-    (ido-hacks-mode)
-    (flx-ido-mode 1)
-    (smex-initialize)))
+          ido-enable-flex-matching t)))
 
 (use-package ido-vertical-mode
   :config
