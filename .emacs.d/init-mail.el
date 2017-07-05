@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(setq user-mail-address (if-work "msimpson@defmethod.io" "vedammelt@gmail.com"))
+(setq user-mail-address (if-work "msimpson@defmethod.io" "verdammelt@gmail.com"))
 
 ;; this way i have Gcc: etc. in my mail buffer
 (setq mail-user-agent 'gnus-user-agent)
