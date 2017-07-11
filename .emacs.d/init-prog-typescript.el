@@ -13,11 +13,11 @@
   (eldoc-mode +1))
 
 (use-package typescript-mode
+  :init (progn
+          (add-hook 'typescript-mode-hook 'mjs/setup-tide)
+          (add-hook 'projectile-after-switch-project-hook 'mjs/setup-tslint))
   :config
-  (progn (setq typescript-indent-level 4)
-         (add-hook 'typescript-mode-hook 'mjs/setup-tide)
-         (add-hook 'projectile-after-switch-project-hook
-                   'mjs/setup-tslint)))
+  (setq typescript-indent-level 4))
 
 (use-package tide
   :config
