@@ -37,3 +37,5 @@
 	pushDefault = origin
 [pull]
 	rebase = true
+[credential]
+	helper = osxkeychain
