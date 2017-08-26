@@ -1,0 +1,71 @@
+* Setting up a new machine
+** In the beginning
+*** Drop box
+*** 1Password
+*** Launchbar
+** Basics:
+*** XCode (needed for homebrew)
+*** Restart into recovery mode and run csrutil disable
+Recovery mode = restart while pressing ⌘-R
+*** Run ~setup.sh~
+- copies in all dotfiles
+- copies in all shell scripts
+- corrects fetchmail permissions
+- installs brew
+- installs brew cask items
+- installs brew items
+*** Postfix
+- Add gmail settings to ~/etc/postfix/sasl_passwd~
+  - "[smtp.gmail.com]:587 <username>:<password>"
+- execute ~sudo postmap /etc/postfix/sasl_passwd"
+- append the following to /etc/postfix/main.cf
+#+BEGIN_SRC 
+#### GMAIL
+####
+# Gmail SMTP relay
+relayhost = [smtp.gmail.com]:587
+
+# Enable SASL authentication in the Postfix SMTP client.
+smtpd_sasl_auth_enable = yes
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options =
+smtp_sasl_mechanism_filter = AUTH LOGIN
+
+# Enable Transport Layer Security (TLS), i.e. SSL.
+smtp_use_tls = yes
+smtp_tls_security_level = encrypt
+tls_random_source = dev:/dev/urandom
+#+END_SRC
+*** FetchMail
+- copy ~.netrc~
+- copy ~.ssl~ directory into place
+- exucute ~c_rehash ~/.ssl/certs~
+- setup launchctl for fetchmail:
+#+BEGIN_SRC xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" \
+	  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>mark.fetchmail</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/fetchmail</string>
+      <string>-N</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+  </dict>
+</plist>
+#+END_SRC
+- execute ~launchctl load ~/Library/LaunchAgents/mark.fetchmail.plist~
+*** GPG Keys
+Copy keys from other machine
+*** Misc MacOSX defaults
+- ~defaults write com.apple.finder AppleShowAllFiles YES~
+- ~defaults write com.apple.finder QuitMenuItem -bool YES~
+** Other applications
+*** BeFocused
+*** Caffeine
