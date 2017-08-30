@@ -51,3 +51,5 @@ function _pscolor() {
     fi
 }
 export PS1='\[$(_pscolor)\]\A \h:\W\[${reset}\]> '
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
