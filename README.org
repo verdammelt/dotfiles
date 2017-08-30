@@ -41,25 +41,7 @@ tls_random_source = dev:/dev/urandom
 - copy ~.netrc~
 - copy ~.ssl~ directory into place
 - exucute ~c_rehash ~/.ssl/certs~
-- setup launchctl for fetchmail:
-#+BEGIN_SRC xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" \
-	  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-  <dict>
-    <key>Label</key>
-    <string>mark.fetchmail</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/usr/local/bin/fetchmail</string>
-      <string>-N</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-  </dict>
-</plist>
-#+END_SRC
+- execute ~cp $SRC/Files/mark.fetchmail.plist ~/Library/LaunchAgents~
 - execute ~launchctl load ~/Library/LaunchAgents/mark.fetchmail.plist~
 *** GPG Keys
 Copy keys from other machine
