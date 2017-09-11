@@ -24,9 +24,6 @@ function npm () {
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion"
 
-# CIM
-CIM_HOME=$HOME/.cim; [ -s "$CIM_HOME/init.sh" ] && . "$CIM_HOME/init.sh"
-
 # Completions.
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion

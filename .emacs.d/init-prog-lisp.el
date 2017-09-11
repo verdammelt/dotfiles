@@ -12,10 +12,8 @@
 (use-package slime
   :init
   (progn (setq-default slime-lisp-implementations
-                 '((sbcl ("~/.cim/bin/sbcl"))
-                   (clisp ("~/.cim/bin/clisp"))
-                   (ccl ("~/.cim/bin/ccl"))
-                   (ecl ("~/.cim/bin/ecl")))))
+                       '((sbcl ("sbcl"))
+                         (sbcl-bin ("ros run -L sbcl-bin")))))
   :config
   (progn
     (setq common-lisp-hyperspec-root
