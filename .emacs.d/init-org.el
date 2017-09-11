@@ -333,8 +333,7 @@
 
 (use-package org-duration
   :ensure org-plus-contrib
-  :init (setq org-duration-format
-              '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+  :config (setq org-duration-format `h:mm))
 
 (use-package org-mobile
   :ensure org-plus-contrib
