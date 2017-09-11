@@ -4,8 +4,6 @@ function _log() {
 
 source $HOME/.bashrc
 
-$HOME/Bin/gpg-agent-start
-
 CDPATH=.:~:~/SRC:~/Documents:~/Movies
 
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
