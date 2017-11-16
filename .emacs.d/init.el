@@ -38,8 +38,9 @@
 ;;; Load Path
 ;;;
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
-(defun mjs/load-init-file (file)
-  (load (locate-user-emacs-file file)))
+
+(defun mjs/load-init-file (file &optional noerror)
+  (load (locate-user-emacs-file file) noerror))
 
 ;;;
 ;;; Package
@@ -66,5 +67,7 @@
 (mjs/load-init-file "init-prog-lisp")
 (mjs/load-init-file "init-prog-typescript")
 (mjs/load-init-file "init-projectile")
+
+(mjs/load-init-file "secrets" 'noerror)
 
 (message "init file loading complete")

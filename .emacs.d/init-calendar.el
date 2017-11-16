@@ -56,3 +56,10 @@
         calendar-time-display-form
         '(24-hours ":" minutes
                    (if time-zone " (") time-zone (if time-zone ")"))))
+
+(use-package gcal-sync
+  :ensure nil
+  :commands (gcal-sync-calendars-to-diary)
+  :defines (gcal-diary-file)
+  :config
+  (setq gcal-diary-file (expand-file-name "~/.diary.imported")))
