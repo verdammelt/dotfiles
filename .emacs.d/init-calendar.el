@@ -50,9 +50,9 @@
 (use-package solar
   :ensure nil
   :config
-  (setq calendar-latitude +40.72541
-        calendar-longitude -73.70928
-        calendar-location-name "Floral Park, NY"
+  (setq calendar-latitude +40.869486
+        calendar-longitude -73.428620
+        calendar-location-name "Huntington, NY"
         calendar-time-display-form
         '(24-hours ":" minutes
                    (if time-zone " (") time-zone (if time-zone ")"))))
