@@ -4,7 +4,7 @@ if [ -x /usr/local/bin/keybase ]; then
     keybase pgp pull
 fi
 
-gpg2 --refresh-keys
+gpg --refresh-keys
 
-PRIV_KEYS=`gpg2 -K | grep -e '^sec' | awk '{print $2}' | awk -F/ '{print $2}'`
-gpg2 --send-keys $PRIV_KEYS
+PRIV_KEYS=`gpg -K | grep -e '^sec' | awk '{print $2}' | awk -F/ '{print $2}'`
+gpg --send-keys $PRIV_KEYS
