@@ -8,7 +8,8 @@
 (setq message-log-max 10000)
 (require 'cl-lib)
 
-(defvar *is-work-machine* (string= (system-name) "svadilfari.local"))
+
+(defvar *is-work-machine* (string-match-p "svadilfari" (system-name)))
 (defmacro if-work (then else)
   `(if *is-work-machine* ,then ,else))
 
