@@ -21,11 +21,11 @@ alias rvm?='rvm-prompt'
 alias pdfopen='pdfopen -viewer xpdf'
 alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
 
-NODE_PATH=/usr/local/lib/node_modules
-MANPATH=$MANPATH:/opt/local/man
-TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
-EDITOR=emacsclient
-VISUAL=emacsclient
+export NODE_PATH=/usr/local/lib/node_modules
+export MANPATH=$MANPATH:/opt/local/man
+export TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
+export EDITOR=emacsclient
+export VISUAL=emacsclient
 
 export AUTOFEATURE=true
 
