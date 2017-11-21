@@ -8,23 +8,10 @@ CDPATH=.:~:~/SRC:~/Documents:~/Movies
 
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
-#NVM
-export NVM_DIR=~/.nvm
-function nvm () {
-    source "$(brew --prefix nvm)/nvm.sh"
-    nvm $@
-}
-function npm () {
-    unset -f npm
-    source "$(brew --prefix nvm)/nvm.sh"
-    npm $@
-}
-
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion"
 
-# Completions.
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
     __git_complete g __git_main
