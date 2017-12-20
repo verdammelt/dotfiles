@@ -171,12 +171,13 @@
                              ("subject" "[Slack] Notifications from the UpStack"
                               "defmethod.upstack"))
 
-                          (| ("subject" "defmethodinc/nyvb" "defmethod.nyvb.builds"))
-
                           (| (from ".*@3.basecamp.com" "defmethod.dependable")
                              (from ".*@cloud66mail.com" "defmethod.dependable")
                              ("subject" "defmethodinc/dependable-.*"
                               "defmethod.dependable"))
+
+                          (| ("subject" "defmethodinc/.*" "defmethod.builds")
+                             ("subject" "cnycn-buoyant/.*" "defmethod.builds"))
 
                           (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
                              (to "all@defmethod\\.io" "defmethod.inbox")
