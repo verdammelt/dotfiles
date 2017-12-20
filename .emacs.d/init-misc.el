@@ -236,11 +236,11 @@ symbol, not word, as I need this for programming the most."
             (add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
             (use-package info-look
               :commands (info-lookup-add-help)
-              :init (info-lookup-add-help
-                     :mode 'lisp-mode
-                     :regexp "[^][()'\" \t\n]+"
-                     :ignore-case t
-                     :doc-spec '(("(ansicl)Symbol Index" nil nil nil))))))
+              :config (info-lookup-add-help
+                       :mode 'lisp-mode
+                       :regexp "[^][()'\" \t\n]+"
+                       :ignore-case t
+                       :doc-spec '(("(ansicl)Symbol Index" nil nil nil))))))
 
 (use-package edit-server
   :ensure nil
