@@ -6,36 +6,31 @@
 	ui=auto
 
 [alias]
-    man = help
+	aa = add --all
 	ci = commit -v
 	co = checkout
-	aa = add --all
-	di = diff
 	dc = diff --cached
-	l = "!source ~/.githelpers && pretty_git_log"
-    lg = !git l
-    la = !git l --all
-	r = !git l -24
-    ra = !git r --all
+	di = diff
+	l = log --oneline
+	lg = l --graph
+	lsalias = config --get-regexp alias
+	man = help
 	rehead = reset --hard HEAD
 
 [github]
 	user = verdammelt
 
-[achievement]
-	upload = true
 [push]
 	default = simple
 
 [rerere]
         enabled = true
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+	autoUpdate = true
 [remote]
 	pushDefault = origin
 [pull]
-	rebase = true
+	rebase = preserve
 [credential]
 	helper = osxkeychain
+[diff]
+	mnemonicPrefix = true
