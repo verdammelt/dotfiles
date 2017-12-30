@@ -43,6 +43,8 @@
       (org-insert-time-stamp nil t t nil nil nil)))
 
   (progn
+    (add-to-list 'org-modules 'org-checklist)
+    (add-to-list 'org-modules 'org-clock)
     (add-to-list 'org-modules 'org-habit)
 
     (set-face-attribute 'org-upcoming-deadline nil :foreground "green")
@@ -250,7 +252,6 @@
            :clock-in t :clock-resume t))))
 
 (use-package org-checklist
-  :defer nil
   :ensure org-plus-contrib)
 
 (use-package org-indent
