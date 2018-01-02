@@ -122,9 +122,9 @@
 
           org-agenda-sorting-strategy
           '((agenda time-up user-defined-up category-keep)
-            (todo todo-state-up timestamp-up alpha-up)
-            (tags todo-state-up timestamp-up alpha-up)
-            (search todo-state-up timestamp-up alpha-up))
+            (todo todo-state-up alpha-up)
+            (tags todo-state-up alpha-up)
+            (search todo-state-up alpha-up))
 
           org-agenda-clock-consistency-checks
           '(:max-duration "04:00"
