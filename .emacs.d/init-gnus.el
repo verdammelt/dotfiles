@@ -171,6 +171,10 @@
                              ("subject" "[Slack] Notifications from the UpStack"
                               "defmethod.upstack"))
 
+                          (| (from "confluence@corcorangroup.atlassian.net"
+                                   "defmethod.corcoran.inbox")
+                             (any ".*@corcoran.com" "defmethod.corcoran.inbox"))
+
                           (| (from ".*@3.basecamp.com" "defmethod.dependable")
                              (from ".*@cloud66mail.com" "defmethod.dependable")
                              ("subject" "defmethodinc/dependable-.*"
@@ -184,31 +188,6 @@
                              (from ".*@defmethod\\..*" "defmethod.inbox"))
 
                           ;;
-                          ;; Work mail: cyrus
-                          ;;
-                          (|
-                           (from "nomail@mobicorp.com" "cyrus.mobi-jenkins")
-                           (from "noreply-mobiDevelopment@mobicorp.com" "cyrus.mobi-jira")
-                           (from "confluence@pointserve.com" "cyrus.mobi-jira")
-                           (from ".*@mobicorp.com" "cyrus.mobi"))
-                          (|
-                           (to "msimpson+aetna@cyrusinnovation.com" "cyrus.aetna")
-                           (any ".*@aetna.com" "cyrus.aetna")
-                           (any ".*@itriagehealth.com" "cyrus.aetna"))
-                          (|
-                           (any ".*@upsider.co" "cyrus.upsider")
-                           (any ".*@aycron.com" "cyrus.upsider"))
-                          (any ".*@flashpoint-intel.com" "cyrus.flashpoint")
-                          (from "confluence@corcorangroup.atlassian.net"
-                                "cyrus.corcoran-confluence")
-                          (any ".*@corcoran.com" "cyrus.corcoran")
-
-                          (| (to "msimpson@cyrusinnovation.com" "cyrus.inbox")
-                             (any ".*cyrusinnovation.com" "cyrus.inbox")
-                             (any ".*cyruslists.com" "cyrus.inbox"))
-
-
-                          ;;
                           ;; Mailing lists.
                           ;;
                           (to "clojure-dev@googlegroups.com" "list.clojure-dev")
@@ -220,7 +199,8 @@
                           (| (any "ally.*" "list.bank")
                              (any ".*mint.*" "list.bank")
                              (any ".*citizensbank.*" "list.bank")
-                             (from "CitizensOneCustomerService@ha.edelivery-view.com")
+                             (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
+                             (from "webinquiry@Ascensus.com" "list.bank")
                              (any ".*@mail.fidelity.com" "list.bank"))
                           (to "boston-software-crafstmanship@googlegroups.com" "list.boston-software-crafstmanship")
                           (from "books@dailylit.com" "list.dailylit")
