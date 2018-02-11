@@ -15,7 +15,6 @@ alias frm='mail -H'
 alias exersub='exercism submit'
 alias exerfetch='exercism fetch'
 alias t='tree -C -F'
-alias gpg=gpg2
 alias rvm?='rvm-prompt'
 
 alias pdfopen='pdfopen -viewer xpdf'
