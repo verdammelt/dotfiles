@@ -395,7 +395,7 @@
     ("backend" "back end" nil 14)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 45)
+    ("caio" "Ciao" nil 46)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -686,7 +686,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 32)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 140)
+    ("tia" "Thanks in advance" nil 142)
     ("tomororw" "tomorrow" nil 1)
    ))
 
