@@ -207,10 +207,12 @@
                      (org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK|+@WORKMAC/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
-       ("x" "lost tasks" tags-todo "-{^@}")
-       ("w" "waiting" tags-todo "/WAIT")
-       ("p" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2")
-       ("l" "last week's notes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\"")))))
+       ("r" . "Review speciality agenda")
+       ("rx" "lost tasks" tags-todo "-{^@}")
+       ("rw" "waiting" tags-todo "/WAIT")
+       ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2")
+       ("rt" "loose todos" tags-todo "LEVEL=2")
+       ("rn" "last week's notes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\"")))))
 
 (use-package org-capture
   :ensure org-plus-contrib
