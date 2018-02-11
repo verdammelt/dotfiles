@@ -1,6 +1,7 @@
 [user]
 	name = Mark Simpson
 	email = verdammelt@gmail.com
+	signingkey = 795B23F016E7D220
 
 [color]
 	ui=auto
