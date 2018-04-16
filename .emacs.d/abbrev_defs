@@ -27,9 +27,7 @@
 
 (define-abbrev-table 'asm-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
 (define-abbrev-table 'bat-mode-abbrev-table '())
 
@@ -47,13 +45,9 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'calc-trail-mode-abbrev-table '())
 
@@ -275,9 +269,7 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'js-jsx-mode-abbrev-table '())
 
@@ -342,9 +334,7 @@
 
 (define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
 
-(define-abbrev-table 'mail-abbrevs
-  '(
-   ))
+(define-abbrev-table 'mail-abbrevs '())
 
 (define-abbrev-table 'makefile-automake-mode-abbrev-table '())
 
@@ -489,9 +479,7 @@
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -533,6 +521,7 @@
     ("literaly" "literally" nil 0)
     ("moustaches" "mustaches" nil 0)
     ("mumured" "murmured" nil 0)
+    ("ooo" "OO" nil 0)
     ("pertty" "pertty" nil 0)
     ("portugese" "Portuguese" nil 0)
     ("probaby" "probably" nil 0)
@@ -558,9 +547,7 @@
 
 (define-abbrev-table 'php-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
