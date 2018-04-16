@@ -172,11 +172,11 @@
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@HOME")))
-         (tags-todo "+@MAC&-@WEB&-@WORK/!-WAIT"
+         (tags-todo "+@MAC&-@WEB&/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@COMPUTER")))
-         (tags-todo "+@WEB&-@WORK/!-WAIT"
+         (tags-todo "+@WEB&/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@WEB")))
