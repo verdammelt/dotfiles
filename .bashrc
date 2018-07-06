@@ -84,3 +84,6 @@ function batt() {
 
 # added by travis gem
 [ -f /Users/mjs/.travis/travis.sh ] && source /Users/mjs/.travis/travis.sh
+
+export NVM_DIR=$HOME/.nvm
+. /usr/local/opt/nvm/nvm.sh
