@@ -1,12 +1,3 @@
-(declare-function turn-on-fci-mode "fill-column-indicator")
-(declare-function turn-off-fci-mode "fill-column-indicator")
-
-(defun on-off-fci-before-company(command)
-  "Turn fci-mode off/on when company mode is showing/hiding its popup.
-Need this due to a bug/incompatibility between company-mode and fci-mode."
-  (when (string= "show" command) (turn-off-fci-mode))
-  (when (string= "hide" command) (turn-on-fci-mode)))
-
 (use-package company
   :diminish (company-mode)
   :bind (:map company-active-map
@@ -14,13 +5,13 @@ Need this due to a bug/incompatibility between company-mode and fci-mode."
               ("\C-p" . company-select-previous)
               ("\C-d" . company-show-doc-buffer)
               ("M-." . company-show-location))
-
-  :init (add-hook 'after-init-hook 'global-company-mode t)
+    :init (add-hook 'after-init-hook 'global-company-mode t)
   :config
   (progn
-    (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
-
-    (set-face-attribute 'company-tooltip nil :background "white" :foreground "black")
+    (add-hook 'company-completion-started-hook 'mjs/fci-get-and-disable)
+    (add-hook 'company-completion-cancelled-hook 'mjs/fci-conditional-enable)
+    (add-hook 'company-completion-finished-hook 'mjs/fci-conditional-enable)
+  (set-face-attribute 'company-tooltip nil :background "white" :foreground "black")
     (set-face-attribute 'company-tooltip-selection nil :background "grey" :foreground "red")
     (set-face-attribute 'company-tooltip-common nil :slant 'italic :foreground "blue")
     (set-face-attribute 'company-scrollbar-fg nil :background "black")

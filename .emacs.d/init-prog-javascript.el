@@ -1,6 +1,4 @@
 (declare-function mjs/set-path-envvar-from-exec-path "init")
-(declare-function turn-off-fci-mode "fill-column-indicator")
-(declare-function turn-on-fci-mode "fill-column-indicator")
 
 (use-package nvm
   :commands (nvm-use nvm-use-for nvm--installed-versions))
@@ -8,15 +6,6 @@
 (use-package js2-mode
   :config
   (setq js2-basic-offset 2))
-
-(use-package rjsx-mode
-  :config
-  (advice-add 'rjsx-electric-lt :around
-              #'(lambda (next &rest args)
-                  (unwind-protect
-                      (progn (turn-off-fci-mode)
-                             (apply next args))
-                    (turn-on-fci-mode)))))
 
 (defvar mjs/previous-node-version nil)
 (defun mjs/remove-node-from-path ()

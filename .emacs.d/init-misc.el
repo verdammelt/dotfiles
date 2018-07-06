@@ -303,3 +303,7 @@ symbol, not word, as I need this for programming the most."
 
 (use-package miniedit
   :init (add-hook 'after-init-hook 'miniedit-install t))
+
+(use-package fci-mode-hacks
+  :ensure nil
+  :commands (mjs/fci-conditional-enable mjs/fci-get-and-disable mjs/fci-hack))
