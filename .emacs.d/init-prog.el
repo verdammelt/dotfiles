@@ -12,7 +12,7 @@
   :init (add-hook 'after-init-hook 'global-prettify-symbols-mode t)
   :config (progn
             (add-hook 'prog-mode-hook 'mjs/prog-fill-column)
-            (add-hook 'prog-mode-hook 'linum-mode)
+            (add-hook 'prog-mode-hook 'display-line-numbers-mode)
             (add-hook 'prog-mode-hook 'fci-mode)
             (add-hook 'prog-mode-hook 'whitespace-mode)))
 
