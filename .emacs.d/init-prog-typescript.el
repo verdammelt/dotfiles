@@ -2,27 +2,13 @@
 (defvar flycheck-tslint-args)
 (defvar flycheck-typescript-tslint-config)
 (defvar flycheck-typescript-tslint-executable)
-(defun mjs/setup-tslint ()
-  (let ((project-root (projectile-project-root)))
-    (setq flycheck-tslint-args (list "--project"
-                                     (expand-file-name "VestaWeb" project-root))
-          flycheck-typescript-tslint-config
-          (expand-file-name "VestaWeb/tslint.json" project-root)
-          flycheck-typescript-tslint-executable
-          (expand-file-name "VestaWeb/node_modules/.bin/tslint" project-root)
-
-          flycheck-javascript-eslint-executable
-          (expand-file-name "VestaWeb/node_modules/.bin/eslint" project-root)
-          )))
 
 (defun mjs/setup-tide ()
   (tide-setup)
   (eldoc-mode +1))
 
 (use-package typescript-mode
-  :init (progn
-          (add-hook 'typescript-mode-hook 'mjs/setup-tide)
-          (add-hook 'projectile-after-switch-project-hook 'mjs/setup-tslint))
+  :hook ('typescript-mode-hook . #'mjs/setup-tide)
   :config
   (setq typescript-indent-level 4))
 
