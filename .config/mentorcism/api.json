@@ -1,0 +1,1 @@
+{"BaseURL":"https://mentors-beta.exercism.io/api/v1","Endpoints":{"download":"/solutions/%s","ping":"/ping","prepare-track":"/tracks/%s","submit":"/solutions/%s"}}
