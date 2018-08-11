@@ -152,6 +152,11 @@
                           ;;
                           ;; Work mail: defmethod
                           ;;
+                          (| (from ".*@itbit.com" "defmethod.paxos.inbox")
+                             (to ".*@itbit.com" "defmethod.paxos.inbox")
+                             (from ".*@paxos.com" "defmethod.paxos.inbox")
+                             (to ".*@paxos.com" "defmethod.paxos.inbox"))
+
                           (| (from "confluence@datapipe.atlassian.net"
                                    "defmethod.datapipe-confluence")
                              (from "jira@datapipe.atlassian.net"
