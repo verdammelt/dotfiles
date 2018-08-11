@@ -2,6 +2,7 @@
   :bind (("s-b" . projectile-switch-to-buffer)
          ("s-f" . projectile-find-file)
          ("s-s" . projectile-switch-project))
+  :bind-keymap (("C-c p" . projectile-command-map))
   :functions (projectile-project-name)
   :init
   (progn (setq projectile-known-projects-file
