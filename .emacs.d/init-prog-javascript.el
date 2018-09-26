@@ -4,8 +4,17 @@
   :commands (nvm-use nvm-use-for nvm--installed-versions))
 
 (use-package js2-mode
+  :mode (("\\.js" . js2-mode))
+  :diminish (js2-mode js2-jsx-mode)
   :config
   (setq js2-basic-offset 2))
+
+(use-package rjsx-mode
+  :mode ("\\.jsx"))
+
+(use-package prettier-js
+  :diminish (prettier-js-mode "Pr")
+  :hook ((js2-mode js-mode rjsx-mode) . prettier-js-mode))
 
 (defvar mjs/previous-node-version nil)
 (defun mjs/remove-node-from-path ()
@@ -18,7 +27,7 @@
 (defun mjs/add-node-to-path ()
   (if (file-exists-p ".nvmrc")
       (nvm-use-for ".")
-    (nvm-use (caar (last (nvm--installed-versions)))))
+    (nvm-use (car (first (cl-sort (nvm--installed-versions) #'string< :key #'first)))))
   (setq mjs/previous-node-version (getenv "NVM_BIN")
         exec-path (cl-pushnew mjs/previous-node-version exec-path
                               :test #'string=))
