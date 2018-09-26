@@ -152,7 +152,14 @@
                           ;;
                           ;; Work mail: defmethod
                           ;;
-                          (| (from ".*@itbit.com" "defmethod.paxos.inbox")
+                          (| (to "itbit.*@noreply.github.com"
+                                 "defmethod.paxos.github")
+                             (from "jira@itbitwiki.atlassian.net"
+                                   "defmethod.paxos.jira")
+                             ("subject" "itBit workspace"
+                                      "defmethod.paxos.slack")
+                             (from "no-reply@appveyor.com" "defmethod.paxos.builds")
+                             (from ".*@itbit.com" "defmethod.paxos.inbox")
                              (to ".*@itbit.com" "defmethod.paxos.inbox")
                              (from ".*@paxos.com" "defmethod.paxos.inbox")
                              (to ".*@paxos.com" "defmethod.paxos.inbox"))
@@ -292,6 +299,11 @@
                ((string-match "spam" group) 1)
                ((string-match "list\\.*" group) 14)
                ((string-match "defmethod\\.datapipe-confluence" group) 7)
+               ((string-match "defmethod\\.paxos\\.github" group 7))
+               ((string-match "defmethod\\.paxos\\.jira" group 7))
+               ((string-match "defmethod\\.paxos\\.builds" group 7))
+               ((string-match "defmethod\\.paxos\\.calendar" group 7))
+               ((string-match "defmethod\\.paxos\\.slack" group 7))
                ((string-match "cyrus\\.corcoran-confluence" group) 7)
                ((string-match "tnef" group) 'never)
                ((string-match "codeandcocktails" group) 'never)
@@ -310,6 +322,11 @@
                 ((string-match "defmethod\\.upstack" group) "nnfolder+archive:defmethod.upstack-archive-%Y")
                 ((string-match "defmethod\\.nyvb\\.inbox" group) "nnfolder+archive:defmethod.nyvb-archive-%Y")
                 ((string-match "defmethod\\.nyvb\\.builds" group) 'delete)
+                ((string-match "defmethod\\.paxos\\.github" group) 'delete)
+                ((string-match "defmethod\\.paxos\\.jira" group) 'delete)
+                ((string-match "defmethod\\.paxos\\.builds" group) 'delete)
+                ((string-match "defmethod\\.paxos\\.calendar" group) 'delete)
+                ((string-match "defmethod\\.paxos\\.slack" group) 'delete)
                 ((string-match "cyrus\\.inbox" group) "nnfolder+archive:cyrus.archive-%Y")
                 ((string-match "cyrus\\.corcoran" group) "nnfolder+archive:cyrus.corcoran-archive-%Y")
                 ((string-match "cyrus\\.corcoran-confluence" group) 'delete)
