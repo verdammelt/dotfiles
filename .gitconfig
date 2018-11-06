@@ -3,6 +3,9 @@
 	email = verdammelt@gmail.com
 	signingkey = 795B23F016E7D220
 
+[commit]
+        gpgSign = true
+
 [color]
 	ui=auto
 
