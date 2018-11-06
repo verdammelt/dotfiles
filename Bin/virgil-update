@@ -13,6 +13,5 @@ brewupdate
 #tmutil startbackup -b
 
 emacsclient -e '(mjs/perform-updates)'
-read -p "Press Enter when done" FOO
 
 tmutil startbackup -b
