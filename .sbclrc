@@ -7,3 +7,16 @@
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
 
+(ql:quickload 'lisp-unit)
+
+;; for some reason lisp-unit:summarize-results causes SLIME to get all messed up
+;; due to the #\| it its output. So hacking around it here.
+(let ((original-summarize-results
+        (symbol-function 'lisp-unit:summarize-results)))
+  (setf (symbol-function 'lisp-unit:summarize-results)
+        (lambda (results &optional (stream *standard-output*))
+          (format stream
+                  (substitute
+                   #\> #\|
+                   (with-output-to-string (output)
+                     (funcall original-summarize-results results output)))))))
