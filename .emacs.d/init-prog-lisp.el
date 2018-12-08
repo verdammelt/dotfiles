@@ -31,7 +31,9 @@
 
     (mjs/setup-lispy-mode 'slime-repl-mode-hook)
 
-    (slime-setup '(slime-fancy slime-company))))
+    (slime-setup '(slime-fancy slime-company)))
+  :bind
+  (("\C-cs" . slime-selector)))
 
 (defun mjs/string-starts-with (string prefix)
   "Return t if STRING starts with prefix."
