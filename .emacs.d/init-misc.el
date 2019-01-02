@@ -92,12 +92,13 @@
   (progn
     (fullframe magit-status magit-mode-quit-window)
 
-    (use-package magithub
-      :commands (magithub-feature-autoinject)
-      :functions (magithub-toggle-issues magithub-toggle-pull-requests)
-      :init (magithub-feature-autoinject t)
-      :config (progn (magithub-toggle-issues)
-                     (magithub-toggle-pull-requests)))))
+    ;; (use-package magithub
+    ;;   :commands (magithub-feature-autoinject)
+    ;;   :functions (magithub-toggle-issues magithub-toggle-pull-requests)
+    ;;   :init (magithub-feature-autoinject t)
+    ;;   :config (progn (magithub-toggle-issues)
+    ;;                  (magithub-toggle-pull-requests)))
+    ))
 
 (use-package git-commit
   :init (add-hook 'after-init-hook 'global-git-commit-mode t))
