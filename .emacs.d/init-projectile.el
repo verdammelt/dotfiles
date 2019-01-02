@@ -25,11 +25,10 @@
 
     (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
-    (setq projectile-mode-line
-          '(:eval (propertize (format " :%s:" (projectile-project-name))
-                              'face 'bold))
-          projectile-switch-project-action 'projectile-dired
+    (setq projectile-switch-project-action 'projectile-dired
           projectile-enable-caching t)
+
+    (projectile-register-project-type 'generic '() :compile "" :test "")
 
     (defvar mjs/default-projectile-indexing-method projectile-indexing-method)
     (defun mjs/setup-gtd-project-caching ()
