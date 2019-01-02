@@ -3,6 +3,11 @@
 	email = verdammelt@gmail.com
 	signingkey = 795B23F016E7D220
 
+[work-user]
+        name = Mark Simpson
+        email = mark@defmethod.io
+        signingkey = 6EA5ACF77EA95D79
+
 [color]
 	ui=auto
 
@@ -13,7 +18,7 @@
 	dc = diff --cached
 	di = diff
 	l = log --oneline
-	lg = l --graph
+        lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
 	lsalias = config --get-regexp alias
 	man = help
 	rehead = reset --hard HEAD
@@ -35,3 +40,9 @@
 	helper = osxkeychain
 [diff]
 	mnemonicPrefix = true
+[github "paxos.github.com"]
+	user = git
+[github "api.paxos.github.com"]
+	user = git
+[github "paxos.api.github.com"]
+	user = msimpson
