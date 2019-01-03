@@ -19,9 +19,5 @@ cat $SRC/Files/brew-list | xargs -n 1 brew install
 echo "RVM"
 curl -sSL https://get.rvm.io | bash -s stable
 
-echo "ROSWELL"
-ros install sbcl
-ros use sbcl/system
-
 echo "LAUNCHBAR SCRIPTS"
 cp Files/*.applescript ~/Library/Application Support/LaunchBar/Actions
