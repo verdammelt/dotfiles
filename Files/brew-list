@@ -106,7 +106,6 @@ python3
 rbenv
 readline
 redis
-roswell
 ruby
 ruby-build
 sbcl
