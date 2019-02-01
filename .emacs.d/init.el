@@ -9,7 +9,9 @@
 (require 'cl-lib)
 
 
-(defvar *is-work-machine* (string-match-p "svadilfari" (system-name)))
+(defvar *is-work-machine* (or
+                           (string-match-p "svadilfari" (system-name))
+                           (string-match-p "PX-NYC-EN-MS" (system-name))))
 (defmacro if-work (then else)
   `(if *is-work-machine* ,then ,else))
 
