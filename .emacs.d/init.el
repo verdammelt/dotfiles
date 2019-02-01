@@ -63,6 +63,7 @@
 (mjs/load-init-file "init-org")
 (mjs/load-init-file "init-prog")
 (mjs/load-init-file "init-prog-elixir")
+(mjs/load-init-file "init-prog-go")
 (mjs/load-init-file "init-prog-javascript")
 (mjs/load-init-file "init-prog-lisp")
 (mjs/load-init-file "init-prog-typescript")
