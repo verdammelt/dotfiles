@@ -222,7 +222,7 @@
                           (|
                            (any ".*@github.com" "list.github")
                            (any ".*@gitter.im" "list.github"))
-                          (any ".*@exercism.io" "list.exercism")
+                          (any ".*@.*exercism.io" "list.exercism")
                           (| (from "nytdirect@nytimes.com" "list.news"))
                           (| (any ".*flickr" "list.social-media")
                              (any ".*facebookmail" "list.social-media")
