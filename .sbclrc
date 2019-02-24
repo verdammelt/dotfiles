@@ -20,3 +20,7 @@
                    #\> #\|
                    (with-output-to-string (output)
                      (funcall original-summarize-results results output)))))))
+
+(defun reset-asdf-registry ()
+  (asdf:clear-source-registry)
+  (asdf:ensure-source-registry nil))
