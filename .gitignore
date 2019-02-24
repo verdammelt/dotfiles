@@ -21,7 +21,6 @@
 .dvdcss
 .elinks
 .emacs.d/ac-comphist.dat
-.exercism.go
 .fetchids
 .fetchmail.pid
 .fontconfig
@@ -79,6 +78,8 @@
 /.config/configstore
 /.config/gtk-2.0/
 /.config/heroku
+/.config/exercism
+/.config/common-lisp
 /.cpan/
 /.diary.calendars-to-import.el
 /.diary.imported
@@ -89,7 +90,6 @@
 /.emacs.d/smex-items
 /.emacs.d/snippets/*/.yas-compiled-snippets.el
 /.emacs.d/var/pcache/cache
-/.exercism.json
 /.gnumericrc
 /.gpg-agent-info
 /.gtkrc-2.0.gnucash
