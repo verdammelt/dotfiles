@@ -79,7 +79,6 @@
 /.config/gtk-2.0/
 /.config/heroku
 /.config/exercism
-/.config/common-lisp
 /.cpan/
 /.diary.calendars-to-import.el
 /.diary.imported
