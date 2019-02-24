@@ -27,6 +27,10 @@
 [push]
 	default = simple
 
+[branch]
+        autoSetupMerge = always
+        autoSetupRebase = always
+
 [rerere]
         enabled = true
 	autoUpdate = true
