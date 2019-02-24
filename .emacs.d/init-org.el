@@ -342,7 +342,8 @@
   :ensure org-plus-contrib
   :config
   (setq org-mobile-directory (expand-file-name "MobileOrg" org-directory)
-        org-mobile-inbox-for-pull (mjs/expand-org-file "inbox")))
+        org-mobile-inbox-for-pull (mjs/expand-org-file "inbox")
+        org-mobile-agendas 'default))
 
 ;;
 ;; ====================
