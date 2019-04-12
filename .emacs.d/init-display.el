@@ -52,7 +52,6 @@
 ;;                (propertize "%m" 'face 'font-lock-constant-face)
 ;;                ))
 
-
 ;; (setq-default mode-line-format
 ;;               '("%e"
 ;;                 mode-line-front-space
