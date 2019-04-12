@@ -1,6 +1,7 @@
 (use-package company
   :diminish (company-mode)
-  :bind (:map company-active-map
+  :bind (("M-/" . company-complete)
+         :map company-active-map
               ("\C-n" . company-select-next)
               ("\C-p" . company-select-previous)
               ("\C-d" . company-show-doc-buffer)
