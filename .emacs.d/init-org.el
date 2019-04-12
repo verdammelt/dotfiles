@@ -24,7 +24,7 @@
          ("<f9>" . mjs/clock-in)
          ("S-<f9>" . mjs/clock-out)
          ("M-<f9>" . mjs/choose-clock-in)
-         ("C-<f9>" . org-clock-jump-to-current-clock)
+         ("C-<f9>" . org-clock-goto)
          ("s-<f9>" . mjs/morning-sam)
          ("S-s-<f9>" . mjs/punch-out))
 
