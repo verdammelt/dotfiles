@@ -12,17 +12,22 @@
 (mjs/set-path-envvar-from-exec-path)
 
 (use-package go-mode
-  :hook (before-save-hook . gofmt-before-save)
-  :bind ("M-." . godef-jump))
+  :hook (before-save . gofmt-before-save)
+  :bind ("M-." . godef-jump)
+  :config (setq-default tab-width 2))
+
+(use-package protobuf-mode)
 
 (use-package go-eldoc
-  :hook (go-mode-hook . go-eldoc-setup))
+  :hook (go-mode . go-eldoc-setup))
 
 (use-package company-go
-  :hook (go-mode-hook . company-mode)
-  :config (add-to-list 'company-backends 'company-go))
+  :hook (go-mode . company-mode)
+  :init (with-eval-after-load "company"
+          (add-to-list 'company-backends 'company-go))
+  :config (setq company-go-show-annotation t))
 
 (use-package go-snippets)
 
 (use-package go-guru
-  :hook (go-mode-hook go-guru-hl-identifier-mode))
+  :hook (go-mode . go-guru-hl-identifier-mode))
