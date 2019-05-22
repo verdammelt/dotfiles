@@ -273,51 +273,7 @@
     (defvar mjs/default-task-id "963F688C-0EAD-4217-B84E-DDA7D94C0453")
     (defvar mjs/keep-clock-running nil)
 
-    (defun mjs/clock-in-default-task ()
-      (interactive)
-      (org-with-point-at (org-id-find mjs/default-task-id 'marker)
-        (org-clock-in '(16))))
-
-    (defun mjs/clock-out-maybe ()
-      (when (and mjs/keep-clock-running
-                 (not org-clock-clocking-in)
-                 (marker-buffer org-clock-default-task)
-                 (not org-clock-resolving-clocks-due-to-idleness))
-        (mjs/clock-in-default-task)))
-
-    (defun mjs/clock-in ()
-      (interactive)
-      (if (eq major-mode 'org-agenda-mode)
-          (org-agenda-clock-in)
-        (org-clock-in)))
-
-    (defun mjs/clock-out ()
-      (interactive)
-      (org-clock-out nil t))
-
-    (defun mjs/choose-clock-in ()
-      (interactive)
-      (org-clock-in '(4)))
-
     (declare-function org-id-find "org-id")
-
-    (defun mjs/punch-in ()
-      (interactive)
-      (setq mjs/keep-clock-running t)
-      (mjs/clock-in-default-task)
-      (message "Mornin' Sam"))
-
-    (defun mjs/punch-out ()
-      (interactive)
-      (setq mjs/keep-clock-running nil)
-      (when (org-clock-is-active)
-        (org-clock-out nil t))
-      (message "Nice day eh Ralph?"))
-
-    (defun mjs/morning-sam ()
-      (interactive)
-      (org-agenda nil "k")
-      (mjs/punch-in))
 
     (setq org-clocktable-defaults (plist-put org-clocktable-defaults :stepskip0 t)
           org-clocktable-defaults (plist-put org-clocktable-defaults :fileskip0 t)
@@ -436,3 +392,47 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (defun bh/is-scheduled-late (date-str)
   (string-match "Sched\.\\(.*\\)x:" date-str))
+
+(defun mjs/clock-in-default-task ()
+  (interactive)
+  (org-with-point-at (org-id-find mjs/default-task-id 'marker)
+    (org-clock-in '(16))))
+
+(defun mjs/clock-out-maybe ()
+  (when (and mjs/keep-clock-running
+             (not org-clock-clocking-in)
+             (marker-buffer org-clock-default-task)
+             (not org-clock-resolving-clocks-due-to-idleness))
+    (mjs/clock-in-default-task)))
+
+(defun mjs/clock-in ()
+  (interactive)
+  (if (eq major-mode 'org-agenda-mode)
+      (org-agenda-clock-in)
+    (org-clock-in)))
+
+(defun mjs/clock-out ()
+  (interactive)
+  (org-clock-out nil t))
+
+(defun mjs/choose-clock-in ()
+  (interactive)
+  (org-clock-in '(4)))
+
+(defun mjs/punch-in ()
+  (interactive)
+  (setq mjs/keep-clock-running t)
+  (mjs/clock-in-default-task)
+  (message "Mornin' Sam"))
+
+(defun mjs/punch-out ()
+  (interactive)
+  (setq mjs/keep-clock-running nil)
+  (when (org-clock-is-active)
+    (org-clock-out nil t))
+  (message "Nice day eh Ralph?"))
+
+(defun mjs/morning-sam ()
+  (interactive)
+  (org-agenda nil "k")
+  (mjs/punch-in))
