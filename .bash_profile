@@ -4,6 +4,8 @@ function _log() {
 
 source $HOME/.bashrc
 
+export GPG_TTY=`tty`
+
 CDPATH=.:~:~/SRC:~/Documents:~/Movies
 
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
