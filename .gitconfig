@@ -15,8 +15,9 @@
 	co = checkout
 	dc = diff --cached
 	di = diff
-	l = log --oneline
-	lg = l --graph
+	l = "log --pretty=format:'%Cred%h%Creset %Cgreen%<(8,trunc)(%cr)%Creset %Cblue%<(15,trunc)<%an>%Creset %<(72,trunc)%s %C(yellow)%d%Creset'"
+  lo = "log --oneline"
+  lg = "!git l --graph"
 	lsalias = config --get-regexp alias
 	man = help
 	rehead = reset --hard HEAD
