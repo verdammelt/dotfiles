@@ -1,12 +1,7 @@
 [user]
 	name = Mark Simpson
-	email = verdammelt@gmail.com
-	signingkey = 795B23F016E7D220
-
-[work-user]
-        name = Mark Simpson
-        email = mark@defmethod.io
-        signingkey = 6EA5ACF77EA95D79
+	email = msimpson@itbit.com
+	signingKey = 0x3CCF1592D6E49D1B
 
 [color]
 	ui=auto
@@ -24,7 +19,7 @@
 	rehead = reset --hard HEAD
 
 [github]
-	user = verdammelt
+	user = mjs-itbit
 
 [push]
 	default = simple
@@ -46,3 +41,5 @@
 	user = git
 [github "paxos.api.github.com"]
 	user = msimpson
+[commit]
+	gpgSign = true
