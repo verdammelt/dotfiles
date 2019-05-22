@@ -91,6 +91,7 @@
   :config
   (progn
     (fullframe magit-status magit-mode-quit-window)
+    (set-face-background 'magit-section-highlight "thistle")
 
     ;; (use-package magithub
     ;;   :commands (magithub-feature-autoinject)
