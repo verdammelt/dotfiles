@@ -46,7 +46,7 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 ##
 ## Paxos stuff
 ##
-export PAXOS_DIR=~/SRC/Clients/Paxos
+export PAXOS_DIR=~/Documents/SRC
 export PAXOS_USER=msimpson
 
 export PAXOS_HOME=$PAXOS_DIR/tools
