@@ -1,0 +1,35 @@
+#!/bin/bash -e
+
+export GOPATH=$PAXOS_DIR/pax-go
+export PAXPATH=$GOPATH/src/github.com/paxosglobal/pax
+export PATH=$GOPATH/bin:$PATH
+
+source /usr/local/opt/asdf/asdf.sh
+
+export PAX_USE_TEST_SERVICE=true
+export VAULT_ADDR=http://localhost:8200
+export VAULT_TOKEN=pax-api-token
+export POSTGRES_VAULT_MOUNT=aurora-postgres
+export PAX_AUTH_ROOT_ID='auth0|5c91087fa359e62ee2b62f4a'
+export PAX_AUTOMATIC_APPROVAL=true
+
+cd $PAXPATH
+
+make terraform-init
+docker-compose down --remove-orphans
+docker-compose up -d --force-recreate --build
+
+while ! docker-compose ps local-setup | grep 'Exit'; do
+      echo 'waiting...'
+          sleep 1
+done
+
+if ! docker-compose ps local-setup | grep 'Exit 0'; then
+       echo "local-setup container failed."
+           exit 1
+fi
+
+export PAX_AUTH_ENV=test
+make setup-local
+(make run-monolith 2>&1 | tee out/monolith.log) &
+make webapp &
