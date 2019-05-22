@@ -84,3 +84,22 @@ function dochef() {
      /usr/bin/ssh administrator@$machine \
          "chef-client -o itbit-chef-dotnet::$recipe@$version")
 }
+
+function gopax() {
+    export GOPATH=$PAXOS_DIR/pax-go
+    export PAXPATH=$GOPATH/src/github.com/paxosglobal/pax
+    export PATH=$GOPATH/bin:$PATH
+
+    source /usr/local/opt/asdf/asdf.sh
+
+    export PAX_USE_TEST_SERVICE=true
+    export VAULT_ADDR=http://localhost:8200
+    export VAULT_TOKEN=pax-api-token
+    export POSTGRES_VAULT_MOUNT=aurora-postgres
+    export PAX_AUTH_ROOT_ID='auth0|5c91087fa359e62ee2b62f4a'
+    export PAX_AUTOMATIC_APPROVAL=true
+
+    cd $PAXPATH
+}
+
+alias paxmfa='oathtool --totp -b "$(pbpaste)" | pbcopy'
