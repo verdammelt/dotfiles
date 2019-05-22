@@ -81,6 +81,6 @@ function dochef() {
     version=${3}
 
     (set -x ;
-     ssh administrator@$machine \
+     /usr/bin/ssh administrator@$machine \
          "chef-client -o itbit-chef-dotnet::$recipe@$version")
 }
