@@ -1,7 +1,5 @@
 set nocompatible    " IMproved!
 
-source ~/.vim/vundle.vim
-
 let mapleader=","
 let maplocalleader=","
 
@@ -107,11 +105,8 @@ if has("autocmd")
     augroup vimrcEx
         au!
 
-        autocmd BufRead,BufNewFile *.markdown set filetype=octopress
-        autocmd BufRead,BufNewFile *.md set filetype=octopress
         autocmd BufRead,BufNewFile *.applescript set filetype=applescript
 
-        " For all text files set 'textwidth' to 78 characters.
         autocmd FileType text setlocal spell
         autocmd FileType tex setlocal spell
         autocmd FileType markdown setlocal spell
@@ -129,7 +124,6 @@ if has("autocmd")
 
         " automatically source .vimrc when it is saved.
         autocmd BufWritePost .vimrc source $MYVIMRC
-        autocmd BufWritePost vundle.vim source $MYVIMRC
 
     augroup END
 endif " has("autocmd")
@@ -140,13 +134,6 @@ cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
 map Q gq " Don't use Ex mode, use Q for formatting
 map <leader><Space> :nohlsearch<cr>
 map <leader>e :edit %%
-map <leader>f :CtrlP<CR>
-map <leader>b :CtrlPBuffer<CR>
-map <leader>gb :Gblame<CR>
-map <leader>gc :Gcommit<CR>
-map <leader>gd :Gdiff<CR>
-map <leader>gs :Gstatus<CR>
-map <leader>r :wa<CR>:!rake<CR>
 map <leader>v :edit $MYVIMRC<CR>
 noremap \ ,
 noremap <leader>y "*y
@@ -155,17 +142,4 @@ noremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 nnoremap <leader><leader> <c-^>
 
 map <f1> <NOP>
-
-" because I am INSANE!
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
-
-"function! CleverTab()
-"	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-"		return "\<Tab>"
-"	else
-"		return "\<C-N>"
-"	endif
-"endfunction
-"inoremap <Tab> <C-R>=CleverTab()<CR>
-"inoremap <s-tab> <C-P>
 
