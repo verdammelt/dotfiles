@@ -9,8 +9,8 @@
 
 (ql:quickload 'lisp-unit)
 
-;; for some reason lisp-unit:summarize-results causes SLIME to get all messed up
-;; due to the #\| it its output. So hacking around it here.
+;; for some reason lisp-unit output causes SLIME to get all messed up due to the
+;; #\| it its output. So hacking around it here.
 (let ((original-summarize-results
         (symbol-function 'lisp-unit:summarize-results)))
   (setf (symbol-function 'lisp-unit:summarize-results)
@@ -20,6 +20,16 @@
                    #\> #\|
                    (with-output-to-string (output)
                      (funcall original-summarize-results results output)))))))
+
+(defmethod lisp-unit:print-failures :around (result &optional (stream *standard-output*))
+  (format stream (substitute #\> #\|
+                             (with-output-to-string (output)
+                               (call-next-method result output)))))
+
+(defmethod lisp-unit:print-errors :around (result &optional (stream *standard-output*))
+  (format stream (substitute #\> #\|
+                             (with-output-to-string (output)
+                               (call-next-method result output)))))
 
 (defun reset-asdf-registry ()
   (asdf:clear-source-registry)
