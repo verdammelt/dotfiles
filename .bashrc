@@ -31,11 +31,11 @@ export AUTOFEATURE=true
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 
 ## LifeLines (genealogy software)
-alias llines='(cd $HOME/LifeLines ; LANG=en_US llines -n simpson)'
 export LLPROGRAMS=/usr/local/share/lifelines
 export LLREPORTS=$HOME/LifeLines/output
 export LLARCHIVE=$HOME/LifeLines/archive
 export LLDATABASES=$HOME/LifeLines
+export LANG=en_US
 
 ###
 ### GIT Stuff
