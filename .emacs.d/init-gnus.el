@@ -201,13 +201,18 @@
                           ;;
                           ;; Mailing lists.
                           ;;
+                          (from "noreply@youtube.com" "list.youtube")
+                          (| (to "LINES-L@LISTSERV.NODAK.EDU" "list.lifelines")
+                           (from "LISTSERV@LISTSERV.NODAK.EDU" "list.lifelines"))
                           (to "clojure-dev@googlegroups.com" "list.clojure-dev")
                           (to "lisp@lispnyc.org" "list.lispnyc")
                           (from "ArqBackupSystem@virgil.local" "list.arqbackup")
                           (to "discuss-bawch@googlegroups.com" "list.bawch")
-                          (to "clean-code-discussion@googlegroups.com" "list.cleancode")
                           (from "wsmith@wordsmith.org" "list.awotd")
+                          (| (from "*@patreon.com" "list.receipts")
+                             (from "service@paypal.com" "list.reciepts"))
                           (| (any "ally.*" "list.bank")
+                             (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
                              (any ".*mint.*" "list.bank")
                              (any ".*citizensbank.*" "list.bank")
                              (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
@@ -222,7 +227,10 @@
                           (|
                            (any ".*@github.com" "list.github")
                            (any ".*@gitter.im" "list.github"))
-                          (any ".*@.*exercism.io" "list.exercism")
+
+                          (| (any ".*@.*exercism.io" "list.exercism")
+                             ("subject" "\[Slack\] Notifications"))
+
                           (| (from "nytdirect@nytimes.com" "list.news"))
                           (| (any ".*flickr" "list.social-media")
                              (any ".*facebookmail" "list.social-media")
