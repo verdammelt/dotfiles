@@ -12,8 +12,7 @@
 (use-package slime
   :init
   (progn (setq-default slime-lisp-implementations
-                       '((sbcl ("sbcl"))
-                         (sbcl-bin ("ros run -L sbcl-bin")))))
+                       '((sbcl ("sbcl" "--noinform")))))
   :config
   (progn
     (setq common-lisp-hyperspec-root
