@@ -210,45 +210,6 @@
     ;;
     ;; Work mail: defmethod
     ;;
-    (| (to "itbit.*@noreply.github.com"
-           "defmethod.paxos.github")
-       (from "jira@itbitwiki.atlassian.net"
-             "defmethod.paxos.jira")
-       ("subject" "itBit workspace"
-        "defmethod.paxos.slack")
-       (from ".*@itbit.com" "defmethod.paxos.inbox")
-       (to ".*@itbit.com" "defmethod.paxos.inbox")
-       (from ".*@paxos.com" "defmethod.paxos.inbox")
-       (to ".*@paxos.com" "defmethod.paxos.inbox"))
-
-    (| (from "confluence@datapipe.atlassian.net"
-             "defmethod.datapipe-confluence")
-       (from "jira@datapipe.atlassian.net"
-             "defmethod.datapipe-stories")
-       (from "noreply@github.datapipe.net"
-             "defmethod.datapipe-stories")
-       (to "msimpson@datapipe.com" "defmethod.datapipe")
-       (from ".*@datapipe.com" "defmethod.datapipe"))
-
-    (| ("subject" "Upstack Marketplace" "defmethod.upstack")
-       (to "upstack_marketplace@noreply.github.com"
-           "defmethod.upstack")
-       (from "confluence@upstack.atlassian.net"
-             "defmethod.upstack")
-       ("subject" "TrappPartners/upstack_marketplace"
-        "defmethod.upstack")
-       ("subject" "[Slack] Notifications from the UpStack"
-        "defmethod.upstack"))
-
-    (| (from "confluence@corcorangroup.atlassian.net"
-             "defmethod.corcoran.inbox")
-       (any ".*@corcoran.com" "defmethod.corcoran.inbox"))
-
-    (| (from ".*@3.basecamp.com" "defmethod.dependable")
-       (from ".*@cloud66mail.com" "defmethod.dependable")
-       ("subject" "defmethodinc/dependable-.*"
-        "defmethod.dependable"))
-
     (| ("subject" "defmethodinc/.*" "defmethod.builds")
        ("subject" "cnycn-buoyant/.*" "defmethod.builds"))
 
