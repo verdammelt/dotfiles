@@ -144,107 +144,7 @@
      nnmail-expiry-target 'mjs/expiry-target-calculator
      nnmail-expiry-wait-function 'mjs/expiry-wait-calculator
      nnmail-split-methods 'nnmail-split-fancy
-     nnmail-split-fancy '(|
-                          ("subject" "Message left on server:.*" "mail.misc")
-                          (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
-                          (to "noreply@sourceforge.net" "mail.tnef")
-
-                          ;;
-                          ;; Work mail: defmethod
-                          ;;
-                          (| (to "itbit.*@noreply.github.com"
-                                 "defmethod.paxos.github")
-                             (from "jira@itbitwiki.atlassian.net"
-                                   "defmethod.paxos.jira")
-                             ("subject" "itBit workspace"
-                                      "defmethod.paxos.slack")
-                             (from ".*@itbit.com" "defmethod.paxos.inbox")
-                             (to ".*@itbit.com" "defmethod.paxos.inbox")
-                             (from ".*@paxos.com" "defmethod.paxos.inbox")
-                             (to ".*@paxos.com" "defmethod.paxos.inbox"))
-
-                          (| (from "confluence@datapipe.atlassian.net"
-                                   "defmethod.datapipe-confluence")
-                             (from "jira@datapipe.atlassian.net"
-                                   "defmethod.datapipe-stories")
-                             (from "noreply@github.datapipe.net"
-                                   "defmethod.datapipe-stories")
-                             (to "msimpson@datapipe.com" "defmethod.datapipe")
-                             (from ".*@datapipe.com" "defmethod.datapipe"))
-
-                          (| ("subject" "Upstack Marketplace" "defmethod.upstack")
-                             (to "upstack_marketplace@noreply.github.com"
-                                 "defmethod.upstack")
-                             (from "confluence@upstack.atlassian.net"
-                                   "defmethod.upstack")
-                             ("subject" "TrappPartners/upstack_marketplace"
-                              "defmethod.upstack")
-                             ("subject" "[Slack] Notifications from the UpStack"
-                              "defmethod.upstack"))
-
-                          (| (from "confluence@corcorangroup.atlassian.net"
-                                   "defmethod.corcoran.inbox")
-                             (any ".*@corcoran.com" "defmethod.corcoran.inbox"))
-
-                          (| (from ".*@3.basecamp.com" "defmethod.dependable")
-                             (from ".*@cloud66mail.com" "defmethod.dependable")
-                             ("subject" "defmethodinc/dependable-.*"
-                              "defmethod.dependable"))
-
-                          (| ("subject" "defmethodinc/.*" "defmethod.builds")
-                             ("subject" "cnycn-buoyant/.*" "defmethod.builds"))
-
-                          (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
-                             (to "all@defmethod\\.io" "defmethod.inbox")
-                             (from ".*@defmethod\\..*" "defmethod.inbox"))
-
-                          ;;
-                          ;; Mailing lists.
-                          ;;
-                          (from "noreply@youtube.com" "list.youtube")
-                          (| (to "LINES-L@LISTSERV.NODAK.EDU" "list.lifelines")
-                           (from "LISTSERV@LISTSERV.NODAK.EDU" "list.lifelines"))
-                          (to "clojure-dev@googlegroups.com" "list.clojure-dev")
-                          (to "lisp@lispnyc.org" "list.lispnyc")
-                          (from "ArqBackupSystem@virgil.local" "list.arqbackup")
-                          (to "discuss-bawch@googlegroups.com" "list.bawch")
-                          (from "wsmith@wordsmith.org" "list.awotd")
-                          (| (from "*@patreon.com" "list.receipts")
-                             (from "service@paypal.com" "list.reciepts"))
-                          (| (any "ally.*" "list.bank")
-                             (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
-                             (any ".*mint.*" "list.bank")
-                             (any ".*citizensbank.*" "list.bank")
-                             (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
-                             (from "webinquiry@Ascensus.com" "list.bank")
-                             (any ".*@mail.fidelity.com" "list.bank"))
-                          (to "boston-software-crafstmanship@googlegroups.com" "list.boston-software-crafstmanship")
-                          (from "books@dailylit.com" "list.dailylit")
-                          (| (any "ELine@cambridgema.gov" "list.misc")
-                             (any "info@harvard.com" "list.misc")
-                             (any ".*zipcarmail.com" "list.misc"))
-                          (any ".*@travis-ci.org" "list.ci-builds")
-                          (|
-                           (any ".*@github.com" "list.github")
-                           (any ".*@gitter.im" "list.github"))
-
-                          (| (any ".*@.*exercism.io" "list.exercism")
-                             ("subject" "\[Slack\] Notifications"))
-
-                          (| (from "nytdirect@nytimes.com" "list.news"))
-                          (| (any ".*flickr" "list.social-media")
-                             (any ".*facebookmail" "list.social-media")
-                             (any ".*twitter" "list.social-media")
-                             (any ".*linkedin" "list.social-media")
-                             (any ".*@stackexchange.com" "list.social-media")
-                             (any ".*@postcrossing.com" "list.social-media")
-                             (any ".*@meetup.com" "list.social-media"))
-
-                          ;; (: gnus-registry-split-fancy-with-parent)
-                          (: gnus-group-split-fancy nil t nil)
-                          (: spam-split)
-
-                          "mail.inbox")))
+     nnmail-split-fancy (mjs/fancy-splitting)))
 
   (use-package mail-source
     :ensure nil
@@ -300,6 +200,109 @@
   (use-package gnus-icalendar
     :ensure nil
     :config (gnus-icalendar-setup)))
+
+(defun mjs/fancy-splitting ()
+  '(|
+    ("subject" "Message left on server:.*" "mail.misc")
+    (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
+    (to "noreply@sourceforge.net" "mail.tnef")
+
+    ;;
+    ;; Work mail: defmethod
+    ;;
+    (| (to "itbit.*@noreply.github.com"
+           "defmethod.paxos.github")
+       (from "jira@itbitwiki.atlassian.net"
+             "defmethod.paxos.jira")
+       ("subject" "itBit workspace"
+        "defmethod.paxos.slack")
+       (from ".*@itbit.com" "defmethod.paxos.inbox")
+       (to ".*@itbit.com" "defmethod.paxos.inbox")
+       (from ".*@paxos.com" "defmethod.paxos.inbox")
+       (to ".*@paxos.com" "defmethod.paxos.inbox"))
+
+    (| (from "confluence@datapipe.atlassian.net"
+             "defmethod.datapipe-confluence")
+       (from "jira@datapipe.atlassian.net"
+             "defmethod.datapipe-stories")
+       (from "noreply@github.datapipe.net"
+             "defmethod.datapipe-stories")
+       (to "msimpson@datapipe.com" "defmethod.datapipe")
+       (from ".*@datapipe.com" "defmethod.datapipe"))
+
+    (| ("subject" "Upstack Marketplace" "defmethod.upstack")
+       (to "upstack_marketplace@noreply.github.com"
+           "defmethod.upstack")
+       (from "confluence@upstack.atlassian.net"
+             "defmethod.upstack")
+       ("subject" "TrappPartners/upstack_marketplace"
+        "defmethod.upstack")
+       ("subject" "[Slack] Notifications from the UpStack"
+        "defmethod.upstack"))
+
+    (| (from "confluence@corcorangroup.atlassian.net"
+             "defmethod.corcoran.inbox")
+       (any ".*@corcoran.com" "defmethod.corcoran.inbox"))
+
+    (| (from ".*@3.basecamp.com" "defmethod.dependable")
+       (from ".*@cloud66mail.com" "defmethod.dependable")
+       ("subject" "defmethodinc/dependable-.*"
+        "defmethod.dependable"))
+
+    (| ("subject" "defmethodinc/.*" "defmethod.builds")
+       ("subject" "cnycn-buoyant/.*" "defmethod.builds"))
+
+    (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
+       (to "all@defmethod\\.io" "defmethod.inbox")
+       (from ".*@defmethod\\..*" "defmethod.inbox"))
+
+    ;;
+    ;; Mailing lists.
+    ;;
+    (from "noreply@youtube.com" "list.youtube")
+    (| (to "LINES-L@LISTSERV.NODAK.EDU" "list.lifelines")
+       (from "LISTSERV@LISTSERV.NODAK.EDU" "list.lifelines"))
+    (to "clojure-dev@googlegroups.com" "list.clojure-dev")
+    (to "lisp@lispnyc.org" "list.lispnyc")
+    (from "ArqBackupSystem@virgil.local" "list.arqbackup")
+    (to "discuss-bawch@googlegroups.com" "list.bawch")
+    (from "wsmith@wordsmith.org" "list.awotd")
+    (| (from "*@patreon.com" "list.receipts")
+       (from "service@paypal.com" "list.reciepts"))
+    (| (any "ally.*" "list.bank")
+       (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
+       (any ".*mint.*" "list.bank")
+       (any ".*citizensbank.*" "list.bank")
+       (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
+       (from "webinquiry@Ascensus.com" "list.bank")
+       (any ".*@mail.fidelity.com" "list.bank"))
+    (to "boston-software-crafstmanship@googlegroups.com" "list.boston-software-crafstmanship")
+    (from "books@dailylit.com" "list.dailylit")
+    (| (any "ELine@cambridgema.gov" "list.misc")
+       (any "info@harvard.com" "list.misc")
+       (any ".*zipcarmail.com" "list.misc"))
+    (any ".*@travis-ci.org" "list.ci-builds")
+    (|
+     (any ".*@github.com" "list.github")
+     (any ".*@gitter.im" "list.github"))
+
+    (| (any ".*@.*exercism.io" "list.exercism")
+       ("subject" "\[Slack\] Notifications"))
+
+    (| (from "nytdirect@nytimes.com" "list.news"))
+    (| (any ".*flickr" "list.social-media")
+       (any ".*facebookmail" "list.social-media")
+       (any ".*twitter" "list.social-media")
+       (any ".*linkedin" "list.social-media")
+       (any ".*@stackexchange.com" "list.social-media")
+       (any ".*@postcrossing.com" "list.social-media")
+       (any ".*@meetup.com" "list.social-media"))
+
+    ;; (: gnus-registry-split-fancy-with-parent)
+    (: gnus-group-split-fancy nil t nil)
+    (: spam-split)
+
+    "mail.inbox"))
 
 (defun mjs/average-score (&rest scores)
   (/ (apply #'+ scores) (length scores)))
