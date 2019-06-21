@@ -295,7 +295,11 @@
     (use-package shr-color
       :config
       (setq shr-color-visible-distance-min 10
-            shr-color-visible-luminance-min 60))))
+            shr-color-visible-luminance-min 60)))
+
+  (use-package gnus-icalendar
+    :ensure nil
+    :config (gnus-icalendar-setup)))
 
 (defun mjs/average-score (&rest scores)
   (/ (apply #'+ scores) (length scores)))
