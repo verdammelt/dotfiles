@@ -109,8 +109,11 @@
   :config
   (progn
     (mjs/setup-lispy-mode 'cider-repl-mode-hook)
+    (add-hook 'cider-repl-mode-hook 'cider-company-enable-fuzzy-completion)
+    (add-hook 'cider-mode-hook 'cider-company-enable-fuzzy-completion)
     (cider-repl-add-shortcut "quit" 'cider-quit)
-    (setq cider-repl-display-help-banner nil)))
+    (cider-auto-test-mode 1)
+    (set-face-foreground 'cider-fringe-good-face "lightgreen")))
 
 (use-package simple
   :ensure nil
