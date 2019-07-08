@@ -4,21 +4,22 @@
   (add-hook 'after-init-hook 'display-time t)
   :config
   (progn
-    (defvar display-time-24hr-format)
     (defvar display-time-use-mail-icon)
-    (defvar display-time-mail-face)
     (defvar display-time-format)
-    (setq display-time-24hr-format t
-          display-time-day-and-date t
-          display-time-use-mail-icon t
-          display-time-mail-face 'cursor ; (only background color used)
-          display-time-format "%Y-%m-%dT%R")))
+    (setq display-time-use-mail-icon t
+          display-time-format "%FT%R"
+          display-time-mail-face
+          (defface display-time-mail-face
+            '((t :foreground "blue" :background "red" :weight bold))
+            "Face for showing mail indicator on mode line"
+            :group 'mjs-faces))))
 
 (use-package diary
   :ensure nil
   :init
   (progn
     (add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
+    (add-hook 'diary-list-entries-hook 'diary-sort-entries t)
     (add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)))
 
 (use-package holiday
@@ -28,6 +29,11 @@
         holiday-islamic-holidays nil
         holiday-oriental-holidays nil
         holiday-bahai-holidays nil
+        holiday-local-holidays ;; Def Method Holidays
+        '((holiday-fixed 7 4 "(Def Method Holiday)")
+          (holiday-float 9 1 1 "(Def Method Holiday)")
+          (holiday-float 11 5 4 "(Def Method Holiday)"))
+
         holiday-other-holidays
         '((holiday-sexp '(if (zerop (% year 4))
                              (calendar-gregorian-from-absolute
@@ -44,8 +50,11 @@
          calendar-mark-diary-entries-flag t
          calendar-mark-holidays-flag t
          calendar-view-diary-initially-flag t
-         calendar-view-holidays-initially-flag t)
-  :config (calendar-set-date-style 'iso))
+;         calendar-view-holidays-initially-flag t
+         )
+  :config (progn
+            (calendar-set-date-style 'iso)
+            (add-hook 'calendar-today-visible-hook 'calendar-mark-today)))
 
 (use-package solar
   :ensure nil
@@ -63,3 +72,17 @@
   :defines (gcal-diary-file)
   :config
   (setq gcal-diary-file (expand-file-name "~/.diary.imported")))
+
+(defun diary-schedule (m1 d1 y1 m2 d2 y2 dayname)
+  "Entry applies if date is between dates on DAYNAME.
+    Order of the parameters changes according to `calendar-date-style`.
+
+DAYNAME can also be a list of DAYNAMEs"
+  (let ((dayname (if (atom dayname) (list dayname) dayname))
+        (date1 (calendar-absolute-from-gregorian (diary-make-date m1 d1 y1)))
+        (date2 (calendar-absolute-from-gregorian (diary-make-date m2 d2 y2)))
+        (d (calendar-absolute-from-gregorian date)))
+    (when (and (<= date1 d date2)
+               (memq (calendar-day-of-week date) dayname)
+               (not (calendar-check-holidays date)))
+      entry)))
