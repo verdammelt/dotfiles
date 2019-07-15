@@ -215,6 +215,7 @@
        ("subject" "advanced-cyber-security/.*" "defmethod.builds"))
 
     (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
+       (to "mark@defmethod\\..*" "defmethod.inbox")
        (to "all@defmethod\\.io" "defmethod.inbox")
        (from ".*@defmethod\\..*" "defmethod.inbox"))
 
