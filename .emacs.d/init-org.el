@@ -129,7 +129,6 @@
 
           org-agenda-clock-consistency-checks
           '(:max-duration "04:00"
-                          :max-duration "04:00"
                           :min-duration 0
                           :max-gap 0
                           :gap-ok-around ("04:00" "09:00" "13:00" "18:00") ;; what are good settings?
