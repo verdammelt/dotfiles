@@ -51,7 +51,7 @@
     (set-face-attribute 'org-done nil :strike-through t)
     (set-face-attribute 'org-headline-done nil :strike-through t)
 
-    (setq org-directory (expand-file-name "~/Documents/GTD")
+    (setq org-directory (expand-file-name "~/Documents/Dropbox/GTD")
           org-default-notes-file (mjs/expand-org-file "inbox")
           org-use-property-inheritance t
           org-log-done 'time
@@ -78,7 +78,8 @@
           '((sequence "TODO(t!)" "WAIT(w@/!)" "BLKD(b@/!)" "DOIN(i!)" "|"
                       "DONE(d!/@)" "CNCL(c@/@)"))
           org-tag-alist '(("@HOME" . ?h)
-                          ("@CALL" . ?c) ("@EMAIL" . ?e) ("@ERRAND" . ?r)
+                          ("@CALL" . ?c) ("@EMAIL" . ?e) ("@SLACK" . ?s)
+                          ("@ERRAND" . ?r)
                           ("@MAC" . ?m) ("@WORKMAC" . ?a) ("@WEB" . ?b)
                           ("@WORK" . ?k) ("@CLIENT" . ?l)
                           ("@WENDY" . ?w))
@@ -160,7 +161,7 @@
                      (org-agenda-use-time-grid nil)))
          (tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")))
-         (tags-todo "+@CALL|+@EMAIL/!-WAIT"
+         (tags-todo "+@CALL|+@EMAIL|+@SLACK/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@COMMUNICATE")))
