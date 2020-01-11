@@ -15,7 +15,7 @@
 
 (load-theme 'tango-dark)
 (set-background-color "black")
-(set-face-attribute 'highlight nil :background "thistle")
+(set-face-attribute 'highlight nil :background "thistle3")
 
 (cl-defun mjs/bg-color-box (face &optional (width 5))
   (list :line-width width :color (face-attribute face :background)))
