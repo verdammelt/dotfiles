@@ -67,6 +67,12 @@
 
 (define-abbrev-table 'cider-browse-ns-mode-abbrev-table '())
 
+(define-abbrev-table 'cider-browse-spec-example-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-browse-spec-mode-abbrev-table '())
+
+(define-abbrev-table 'cider-browse-spec-view-mode-abbrev-table '())
+
 (define-abbrev-table 'cider-clojure-interaction-mode-abbrev-table '())
 
 (define-abbrev-table 'cider-connections-buffer-mode-abbrev-table '())
@@ -184,6 +190,8 @@
 
 (define-abbrev-table 'flycheck-error-list-mode-abbrev-table '())
 
+(define-abbrev-table 'flycheck-error-message-mode-abbrev-table '())
+
 (define-abbrev-table 'flymake-diagnostics-buffer-mode-abbrev-table '())
 
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
@@ -191,6 +199,8 @@
 (define-abbrev-table 'gdb-script-mode-abbrev-table '())
 
 (define-abbrev-table 'gfm-mode-abbrev-table '())
+
+(define-abbrev-table 'gfm-view-mode-abbrev-table '())
 
 (define-abbrev-table 'git-commit-elisp-text-mode-abbrev-table '())
 
@@ -342,11 +352,15 @@
 
 (define-abbrev-table 'magit-revision-mode-abbrev-table '())
 
+(define-abbrev-table 'magit-section-mode-abbrev-table '())
+
 (define-abbrev-table 'magit-stash-mode-abbrev-table '())
 
 (define-abbrev-table 'magit-stashes-mode-abbrev-table '())
 
 (define-abbrev-table 'magit-status-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-submodule-list-mode-abbrev-table '())
 
 (define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
 
@@ -389,6 +403,8 @@
     ("whisky" "whiskey" nil 0)
    ))
 
+(define-abbrev-table 'markdown-view-mode-abbrev-table '())
+
 (define-abbrev-table 'message-mode-abbrev-table
   '(
     ("annilhator" "Annihilator" nil 0)
@@ -403,7 +419,7 @@
     ("backend" "back end" nil 14)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 47)
+    ("caio" "Ciao" nil 55)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -413,7 +429,7 @@
     ("condolencses" "condolences" nil 0)
     ("coudl" "could" nil 11)
     ("daniel" "Daniel" nil 3)
-    ("december" "December" nil 3)
+    ("december" "December" nil 4)
     ("decidly" "decidly" nil 0)
     ("deductable" "deductible" nil 0)
     ("definately" "definitely" nil 3)
@@ -444,7 +460,7 @@
     ("intenstines" "intestines" nil 0)
     ("interfereing" "interfering" nil 0)
     ("internmittently" "intermittently" nil 0)
-    ("javascript" "JavaScript" nil 11)
+    ("javascript" "JavaScript" nil 12)
     ("judgement" "judgment" nil 0)
     ("limitied" "limited" nil 0)
     ("ludicrious" "ludicrous" nil 0)
@@ -452,7 +468,7 @@
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 7)
-    ("ok" "OK" nil 39)
+    ("ok" "OK" nil 41)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
     ("probaby" "probably" nil 0)
@@ -536,6 +552,7 @@
     ("exericse" "exercise" nil 0)
     ("extrememly" "extremely" nil 0)
     ("finanical" "Financial" nil 0)
+    ("gnucash" "GnuCash" nil 2)
     ("interpretting" "interpreting" nil 1)
     ("invstigate" "Instigate" nil 0)
     ("jp" "PTRL" nil 53)
@@ -545,6 +562,7 @@
     ("mumured" "murmured" nil 0)
     ("ooo" "OO" nil 0)
     ("pertty" "pertty" nil 0)
+    ("poodr" "POO DR" nil 0)
     ("portugese" "Portuguese" nil 0)
     ("probaby" "probably" nil 0)
     ("rearrangemnt" "rearrangement" nil 0)
@@ -609,6 +627,8 @@
 
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
+(define-abbrev-table 'sesman-browser-mode-abbrev-table '())
+
 (define-abbrev-table 'sgml-mode-abbrev-table '())
 
 (define-abbrev-table 'sh-mode-abbrev-table '())
@@ -616,6 +636,8 @@
 (define-abbrev-table 'shell-mode-abbrev-table '())
 
 (define-abbrev-table 'sldb-mode-abbrev-table '())
+
+(define-abbrev-table 'slime-company-doc-mode-abbrev-table '())
 
 (define-abbrev-table 'slime-compiler-notes-mode-abbrev-table '())
 
@@ -669,7 +691,7 @@
   '(
     ("accesibility" "accessibility" nil 0)
     ("availablility" "availability" nil 0)
-    ("cancelled" "canceled" nil 1)
+    ("cancelled" "canceled" nil 2)
     ("certifiate" "Certificate" nil 0)
     ("convinience" "convenience" nil 0)
     ("convinient" "convenient" nil 6)
@@ -697,7 +719,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 32)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 142)
+    ("tia" "Thanks in advance" nil 145)
     ("tomororw" "tomorrow" nil 1)
    ))
 
