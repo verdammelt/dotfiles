@@ -12,16 +12,11 @@
 (use-package slime
   :init
   (progn (setq-default slime-lisp-implementations
-                       '((sbcl ("sbcl" "--noinform")))))
+                       '((sbcl ("sbcl" "--noinform"))))
+         (load (expand-file-name "~/.quicklisp/slime-helper.el")))
   :config
   (progn
-    (setq common-lisp-hyperspec-root
-          "/usr/local/share/doc/hyperspec/HyperSpec/"
-          common-lisp-hyperspec-symbol-table
-          (concat common-lisp-hyperspec-root "Data/Map_Sym.txt")
-          common-lisp-hyperspec-issuex-table
-          (concat common-lisp-hyperspec-root "Data/Map_IssX.txt"))
-
+    (load (expand-file-name "~/.quicklisp/clhs-use-local.el") t)
     (mapc (lambda (symbol)
             (advice-add symbol :around #'mjs/browse-file-url-with-eww))
           '(common-lisp-hyperspec
