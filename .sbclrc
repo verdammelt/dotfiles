@@ -34,3 +34,6 @@
 (defun reset-asdf-registry ()
   (asdf:clear-source-registry)
   (asdf:ensure-source-registry nil))
+
+(defun run-all-tests (&optional (pkg *package*))
+  (lisp-unit:run-tests :all pkg))
