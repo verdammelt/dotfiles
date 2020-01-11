@@ -93,12 +93,12 @@
     (fullframe magit-status magit-mode-quit-window)
     (set-face-background 'magit-section-highlight "thistle")
 
-    (use-package magithub
-      :commands (magithub-feature-autoinject)
-      :functions (magithub-toggle-issues magithub-toggle-pull-requests)
-      :init (magithub-feature-autoinject t)
-      :config (progn (magithub-toggle-issues)
-                     (magithub-toggle-pull-requests)))))
+    ;; (use-package magithub
+    ;;   :init (magithub-feature-autoinject t))
+    ;; (use-package forge
+    ;;   :after magit)
+    ))
+
 
 (use-package git-commit
   :init (add-hook 'after-init-hook 'global-git-commit-mode t))
