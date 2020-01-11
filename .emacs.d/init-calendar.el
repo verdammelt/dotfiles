@@ -30,9 +30,7 @@
         holiday-oriental-holidays nil
         holiday-bahai-holidays nil
         holiday-local-holidays ;; Def Method Holidays
-        '((holiday-fixed 7 4 "(Def Method Holiday)")
-          (holiday-float 9 1 1 "(Def Method Holiday)")
-          (holiday-float 11 5 4 "(Def Method Holiday)"))
+        '()
 
         holiday-other-holidays
         '((holiday-sexp '(if (zerop (% year 4))
