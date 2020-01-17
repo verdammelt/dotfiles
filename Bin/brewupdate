@@ -4,3 +4,6 @@ brew update
 brew upgrade
 brew cleanup
 brew doctor
+
+brew leaves > ~/SRC/dotfiles/Files/brew-list
+brew cask list > ~/SRC/dotfiles/Files/brew-cask-list
