@@ -13,7 +13,7 @@
   (use-package gnus-start :ensure nil)
 
   (setq gnus-init-file (locate-user-emacs-file "init-gnus.el")
-        gnus-select-method '(nntp "news.gmane.org")    ; where to find my news.
+        gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
         gnus-secondary-select-methods '((nnfolder "")) ; where to find my mails
         gnus-save-killed-list nil
         gnus-default-directory gnus-directory
