@@ -185,7 +185,7 @@
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@WENDY")))
-         (tags-todo "+@WORK|+@WORKMAC/!-WAIT"
+         (tags-todo "+@WORK/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@WORK")))
@@ -198,7 +198,7 @@
                      (org-agenda-start-with-clockreport-mode t)))
          (tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")))
-         (tags-todo "+@WORK&+@CLIENT|+@WORK&+@CLIENT/!-WAIT"
+         (tags-todo "+@WORK&+@CLIENT/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "BILLABLE")))
