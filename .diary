@@ -4,4 +4,19 @@
 &%%(diary-lunar-phases)
 &%%(diary-sunrise-sunset)
 
+;;;
+;;; Def Method Holidays
+;;;
+2020-01-01 DM: New Years Day
+2020-01-20 DM: MLK Day
+2020-02-17 DM: Presidents Day
+2020-05-25 DM: Memorial Day
+2020-07-04 DM: Independance Day
+2020-09-07 DM: Labor Day
+2020-11-25 DM: Half-day (Thanksgiving)
+2020-11-26 DM: Thanksgiving
+2020-11-27 DM: Day after Thanksgiving
+2020-12-24 DM: Half-day (Christmas)
+2020-12-25 DM: Christmas
+
 #include "~/.diary.imported"
