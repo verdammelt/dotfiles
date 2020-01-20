@@ -194,8 +194,8 @@
     ;; are distinct enough to be visible.
     (use-package shr-color
       :config
-      (setq shr-color-visible-distance-min 10
-            shr-color-visible-luminance-min 60)))
+      (setq shr-color-visible-distance-min 40
+            shr-color-visible-luminance-min 70)))
 
   (use-package gnus-icalendar
     :ensure nil
