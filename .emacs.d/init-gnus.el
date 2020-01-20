@@ -205,7 +205,8 @@
   '(|
     ("subject" "Message left on server:.*" "mail.misc")
     (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
-    (to "noreply@sourceforge.net" "mail.tnef")
+    (| (to "noreply@sourceforge.net" "mail.tnef")
+       ("subject" "tnef" "mail.tnef"))
 
     ;;
     ;; Work mail: defmethod
@@ -213,6 +214,8 @@
     (| ("subject" "defmethodinc/.*" "defmethod.builds")
        ("subject" "cnycn-buoyant/.*" "defmethod.builds")
        ("subject" "advanced-cyber-security/.*" "defmethod.builds"))
+    (| (from ".*@citi.com" "defmethod.citi.inbox")
+       (to ".*@citi.com" "defmethod.citi.inbox"))
 
     (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
        (to "mark@defmethod\\..*" "defmethod.inbox")
