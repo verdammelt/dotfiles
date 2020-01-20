@@ -107,11 +107,15 @@
 
 (define-abbrev-table 'conf-colon-mode-abbrev-table '())
 
+(define-abbrev-table 'conf-desktop-mode-abbrev-table '())
+
 (define-abbrev-table 'conf-javaprop-mode-abbrev-table '())
 
 (define-abbrev-table 'conf-ppd-mode-abbrev-table '())
 
 (define-abbrev-table 'conf-space-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-toml-mode-abbrev-table '())
 
 (define-abbrev-table 'conf-unix-mode-abbrev-table '())
 
@@ -364,6 +368,14 @@
 
 (define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
 
+(define-abbrev-table 'magithub-dash-mode-abbrev-table '())
+
+(define-abbrev-table 'magithub-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'magithub-gfm-view-mode-abbrev-table '())
+
+(define-abbrev-table 'magithub-issue-view-mode-abbrev-table '())
+
 (define-abbrev-table 'mail-abbrevs
   '(
    ))
@@ -398,7 +410,7 @@
     ("retreived" "retrieved" nil 0)
     ("signup" "sign up" nil 0)
     ("suguar" "sugar" nil 0)
-    ("teh" "Ted" nil 0)
+    ("teh" "Ted" nil 2)
     ("ulitimately" "ultimately" nil 0)
     ("whisky" "whiskey" nil 0)
    ))
@@ -419,7 +431,7 @@
     ("backend" "back end" nil 14)
     ("becuase" "because" nil 6)
     ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil 0)
-    ("caio" "Ciao" nil 55)
+    ("caio" "Ciao" nil 56)
     ("cancelation" "cancellation" nil 0)
     ("chagnes" "changes" nil 2)
     ("commited" "committed" nil 0)
@@ -449,7 +461,7 @@
     ("ggroup" "group" nil 0)
     ("greenlight" "Greenlight" nil 12)
     ("havent" "haven't" nil 0)
-    ("hte" "the" nil 26)
+    ("hte" "the" nil 27)
     ("idiosyncracy" "idiosyncrasy" nil 0)
     ("immidiately" "immediately" nil 0)
     ("implemnetation" "implementation" nil 0)
@@ -468,7 +480,7 @@
     ("millenium" "Millennium" nil 0)
     ("mobild" "mobile" nil 0)
     ("mothership" "Mother ship" nil 7)
-    ("ok" "OK" nil 41)
+    ("ok" "OK" nil 42)
     ("perscription" "prescription" nil 0)
     ("precidence" "precedence" nil 0)
     ("probaby" "probably" nil 0)
@@ -476,7 +488,7 @@
     ("receieved" "received" nil 0)
     ("reconnaisance" "reconnaissance" nil 0)
     ("rememberance" "remembrance" nil 0)
-    ("remmeber" "remember" nil 0)
+    ("remmeber" "remember" nil 1)
     ("reproducable" "reproducible" nil 2)
     ("requiremnts" "requirements" nil 0)
     ("rumblings" "crumblings" nil 0)
@@ -553,6 +565,7 @@
     ("extrememly" "extremely" nil 0)
     ("finanical" "Financial" nil 0)
     ("gnucash" "GnuCash" nil 2)
+    ("haveread" "Have Read" nil 0)
     ("interpretting" "interpreting" nil 1)
     ("invstigate" "Instigate" nil 0)
     ("jp" "PTRL" nil 53)
@@ -719,7 +732,7 @@
     ("signup" "sign-up" nil 6)
     ("standup" "stand-up" nil 32)
     ("themed" "themed" nil 0)
-    ("tia" "Thanks in advance" nil 145)
+    ("tia" "Thanks in advance" nil 146)
     ("tomororw" "tomorrow" nil 1)
    ))
 
