@@ -238,7 +238,9 @@
        ("rx" "lost tasks" tags-todo "-{^@}")
        ("rw" "waiting" tags-todo "/WAIT")
        ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2")
-       ("rt" "loose todos" tags-todo "LEVEL=2")
+       ("rt" "loose todos" alltodo ""
+        ((org-agenda-sorting-strategy
+          '((tags time-up alpha-up)))))
        ("rn" "last week's notes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\"")))))
 
 (use-package org-capture
