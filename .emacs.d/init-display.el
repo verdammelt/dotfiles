@@ -13,9 +13,9 @@
                     :height 180
                     :family "DejaVu Sans Mono")
 
-(load-theme 'tango-dark)
-(set-background-color "black")
-(set-face-attribute 'highlight nil :background "thistle3")
+(use-package color-theme-sanityinc-tomorrow
+  :defer nil
+  :config (load-theme 'sanityinc-tomorrow-bright))
 
 (cl-defun mjs/bg-color-box (face &optional (width 5))
   (list :line-width width :color (face-attribute face :background)))
@@ -25,5 +25,3 @@
 
 (set-face-attribute 'mode-line-inactive nil
                     :box (mjs/bg-color-box 'mode-line-inactive))
-
-(set-cursor-color "red")
