@@ -143,38 +143,7 @@
 
     (setq
      org-agenda-custom-commands
-     '(("d" "daily"
-        ((agenda "" ((org-agenda-span 'day)
-                     (org-agenda-use-time-grid nil)))
-         (tags "REFILE"
-               ((org-agenda-overriding-header "Tasks to Refile")))
-         (tags-todo "+@CALL|+@EMAIL|+@SLACK/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@COMMUNICATE")))
-         (tags-todo "+@ERRAND/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@ERRAND")))
-         (tags-todo "+@HOME|+@ANY/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@HOME")))
-         (tags-todo "+@MAC|+@WORKMAC&-@WORK/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@COMPUTER")))
-         (tags-todo "+@WENDY/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@WENDY")))
-         (tags-todo "+@WORK/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@WORK")))
-         (tags-todo "/WAIT"
-                    ((org-agenda-overriding-header "WAITING-FOR")))))
-       ("h" "home"
+     '(("h" "home"
         ((agenda "" ((org-agenda-span 'day)
                      (org-agenda-use-time-grid nil)))
          (tags "REFILE"
@@ -203,7 +172,7 @@
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@WORK(non-client)")))
-         (tags-todo "-@WORK/WAIT"
+         (tags-todo "-@CLIENT/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("k" "work"
         ((agenda "" ((org-agenda-span 'day)
