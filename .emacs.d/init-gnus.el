@@ -1,5 +1,6 @@
 (declare-function if-work "init")
 (declare-function mjs/bbdb-init "init-bbdb")
+(defvar rss-summary-format nil)
 
 (use-package gnus
   :ensure nil
@@ -17,8 +18,12 @@
         gnus-secondary-select-methods '((nnfolder "")) ; where to find my mails
         gnus-save-killed-list nil
         gnus-default-directory gnus-directory
+
         gnus-summary-line-format
-        "%5V%U%R%[%10&user-date;%*%(%1{%-21,21uB%)%}%]%B%s\n"
+        "%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n"
+        rss-summary-format
+        "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n"
+
         gnus-update-message-archive-method t
         gnus-kill-files-directory
         (expand-file-name "score-files" gnus-directory) ;where to put the kill files
@@ -67,13 +72,23 @@
            (ham-process-destination "nnfolder:mail.inbox"))
 
           ("nnfolder+archive.*"
-           (total-expire . nil)
-           ())
+           (total-expire . nil))
 
           ("^gmane\."
            (spam-autodetect . t)
            (spam-autodetect-methods spam-use-regex-headers)
-           (spam-process (spam spam-use-gmane)))))
+           (spam-process (spam spam-use-gmane)))
+          ("^gwene\."
+           (spam-autodetect . t)
+           (spam-autodetect-methods spam-use-regex-headers)
+           (spam-process (spam spam-use-gmane)))
+
+          ("^gwene\.com\.reddit"
+           (gnus-summary-line-format rss-summary-format))
+          ("^gwene\.com\.stackoverflow"
+           (gnus-summary-line-format rss-summary-format))
+          ("nnrss:.*"
+           (gnus-summary-line-format rss-summary-format))))
 
   (use-package gnus-art
     :ensure nil
