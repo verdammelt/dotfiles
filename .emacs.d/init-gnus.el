@@ -23,6 +23,7 @@
         gnus-kill-files-directory
         (expand-file-name "score-files" gnus-directory) ;where to put the kill files
         gnus-use-adaptive-scoring t
+        gnus-topic-display-empty-topics nil
         gnus-message-archive-group (if-work "nnfolder:defmethod.inbox"
                                             '((format-time-string "archive-%Y"))))
 
