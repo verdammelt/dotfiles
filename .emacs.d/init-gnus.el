@@ -204,47 +204,43 @@
 
 (defun mjs/fancy-splitting ()
   '(|
-    ("subject" "Message left on server:.*" "mail.misc")
-    (to "codeandcocktails@gmail.com" "mail.codeandcocktails")
     (| (to "noreply@sourceforge.net" "mail.tnef")
        ("subject" "tnef" "mail.tnef"))
 
-    ;;
-    ;; Work mail: defmethod
-    ;;
-    (| ("subject" "defmethodinc/.*" "defmethod.builds")
-       ("subject" "cnycn-buoyant/.*" "defmethod.builds")
-       ("subject" "advanced-cyber-security/.*" "defmethod.builds"))
-    (| (from ".*@citi.com" "defmethod.citi.inbox")
-       (to ".*@citi.com" "defmethod.citi.inbox"))
+    (any ".*@github.com"
+         (| ("subject" "exercism/v3" "list.exercism.v3")
+            ("subject" "exercism/.*" "list.exercism.maintenance")
+            "list.github"))
 
-    (| (to "msimpson@defmethod\\..*" "defmethod.inbox")
-       (to "mark@defmethod\\..*" "defmethod.inbox")
+    (from "notification@slack.com"
+          (| ("subject" "Exercism" "list.exercism.slack")
+             ("subject" "Def.Method" "defmethod.inbox")))
+
+    (| (from "hello@mail.exercism.io" "list.exercism.mentor")
+       (from "jeremy@exercism.io" "list.exercism.announce"))
+
+    (from "notifier@codeship.com"
+          (| ("subject" "defmethodinc/.*" "defmethod.builds")))
+
+    (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
        (to "all@defmethod\\.io" "defmethod.inbox")
-       (from ".*@defmethod\\..*" "defmethod.inbox"))
+       (from ".*@defmethod\\..*" "defmethod.inbox")
+       (from "donotreply@adp.com" "defmethod.inbox"))
 
-    ;;
-    ;; Mailing lists.
-    ;;
-    (from "noreply@youtube.com" "list.youtube")
-
-    (| (to "LINES-L@LISTSERV.NODAK.EDU" "list.lifelines")
-       (from "LISTSERV@LISTSERV.NODAK.EDU" "list.lifelines"))
-
-    (to "clojure-dev@googlegroups.com" "list.clojure-dev")
-
-    (to "lisp@lispnyc.org" "list.lispnyc")
-
-    (from "ArqBackupSystem@virgil.local" "list.arqbackup")
-
-    (to "discuss-bawch@googlegroups.com" "list.bawch")
-
+    (any ".*@LISTSERV.NODAK.EDU" "list.lifelines")
     (from "wsmith@wordsmith.org" "list.awotd")
+    (to "extremeprogramming@groups.io" "list.extremeprogramming")
+    (to "testdrivendevelopment@groups.io" "list.testdrivendevelopment")
+    (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
+    (from "noreply+feedproxy@google.com" "list.newsletter.geepaw")
 
     (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
+       (from "t-mobile@digital-delivery.com" "list.receipts")
        (from "receipts@messaging.squareup.com" "list.receipts")
        (from ".*@patreon.com" "list.receipts")
-       (from "service@paypal.com" "list.receipts"))
+       (from "service@paypal.com" "list.receipts")
+       (from "orders@starbucks.com" "list.receipts")
+       ("subject" "Amazon Web Services Billing Statement Available" "list.receipts"))
 
     (| (any "ally.*" "list.bank")
        (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
@@ -254,37 +250,13 @@
        (from "webinquiry@Ascensus.com" "list.bank")
        (any ".*@mail.fidelity.com" "list.bank"))
 
-    (to "boston-software-crafstmanship@googlegroups.com"
-        "list.boston-software-crafstmanship")
+    (from "Starbucks@mg.starbucks.com" "list.starbucks")
 
-    (from "books@dailylit.com" "list.dailylit")
-    (| (any "ELine@cambridgema.gov" "list.misc")
-       (any "info@harvard.com" "list.misc")
-       (any ".*zipcarmail.com" "list.misc"))
+    (from "ArqBackupSystem@virgil.local" "list.arqbackup")
 
     (any ".*@travis-ci.org" "list.ci-builds")
 
-    (| (any ".*@github.com" "list.github")
-       (any ".*@gitter.im" "list.github"))
-
-    (| (any ".*@.*exercism.io" "list.exercism")
-       ("subject" "\[Slack\] Notifications from the Exercism Team workspace"
-        "list.exercism"))
-
-    (| (any ".*flickr" "list.social-media")
-       (any ".*facebookmail" "list.social-media")
-       (any ".*twitter" "list.social-media")
-       (any ".*linkedin" "list.social-media")
-       (any ".*@stackexchange.com" "list.social-media")
-       (any ".*@postcrossing.com" "list.social-media")
-       (any ".*@meetup.com" "list.social-media"))
-
-    (to "extremeprogramming@groups.io" "list.extremeprogramming")
-    (to "testdrivendevelopment@groups.io" "list.testdrivendevelopment")
-
-    (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
-
-    ;; (: gnus-registry-split-fancy-with-parent)
+    (: gnus-registry-split-fancy-with-parent)
     (: gnus-group-split-fancy nil t nil)
     (: spam-split)
 
