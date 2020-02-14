@@ -285,8 +285,6 @@
          (cond ((string-match "archive" group) 'never)
                ((string-match "spam" group) 1)
                ((string-match "list\\.*" group) 14)
-               ((string-match "defmethod\\.datapipe-confluence" group) 7)
-               ((string-match "cyrus\\.corcoran-confluence" group) 7)
                ((string-match "tnef" group) 'never)
                ((string-match "codeandcocktails" group) 'never)
                (t 28))))
