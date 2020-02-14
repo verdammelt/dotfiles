@@ -45,7 +45,6 @@
   (progn
     (add-to-list 'org-modules 'org-checklist)
     (add-to-list 'org-modules 'org-clock)
-    (add-to-list 'org-modules 'org-habit)
 
     (set-face-attribute 'org-upcoming-deadline nil :foreground "green")
     (set-face-attribute 'org-done nil :strike-through t)
@@ -100,19 +99,8 @@
   :functions (org-agenda-quit)
   :config
   (progn
-    ;; cribbed from https://blog.aaronbieber.com/2016/09/24/an-agenda-for-life-with-org-mode.html
-    (declare-function org-end-of-subtree "org")
-    (declare-function org-entry-get "org")
-    (defun mjs/org-skip-subtree-if-habit ()
-      "Skip an agenda entry if it has a STYLE property equal to \"habit\"."
-      (let ((subtree-end (save-excursion (org-end-of-subtree t))))
-        (if (string= (org-entry-get nil "STYLE") "habit")
-            subtree-end
-          nil)))
-
     (defvar mjs/skip-habits-and-scheduled-and-deadlines
-      '(or (mjs/org-skip-subtree-if-habit)
-           (org-agenda-skip-if nil '(scheduled deadline))))
+      '(org-agenda-skip-if nil '(scheduled deadline)))
 
     (fullframe org-agenda org-agenda-quit)
 
