@@ -1,6 +1,128 @@
 (declare-function if-work "init")
 (declare-function mjs/bbdb-init "init-bbdb")
-(defvar rss-summary-format nil)
+
+(defvar summary-line-format
+  "%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n")
+(defvar rss-summary-line-format
+  "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n")
+(defvar split-rules
+  '(|
+    (| (to "noreply@sourceforge.net" "mail.tnef")
+       ("subject" "tnef" "mail.tnef"))
+
+    (any ".*@github.com"
+         (| ("subject" "exercism/v3" "list.exercism.v3")
+            ("subject" "exercism/.*" "list.exercism.maintenance")
+            "list.github"))
+
+    (from "notification@slack.com"
+          (| ("subject" "Exercism" "list.exercism.slack")
+             ("subject" "Def.Method" "defmethod.inbox")))
+
+    (| (from "hello@mail.exercism.io" "list.exercism.mentor")
+       (from "jeremy@exercism.io" "list.exercism.announce"))
+
+    (from "notifier@codeship.com"
+          (| ("subject" "defmethodinc/.*" "defmethod.builds")))
+
+    (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
+       (to "all@defmethod\\.io" "defmethod.inbox")
+       (from ".*@defmethod\\..*" "defmethod.inbox")
+       (from "donotreply@adp.com" "defmethod.inbox"))
+
+    (any ".*@LISTSERV.NODAK.EDU" "list.lifelines")
+    (from "wsmith@wordsmith.org" "list.awotd")
+    (to "extremeprogramming@groups.io" "list.extremeprogramming")
+    (to "testdrivendevelopment@groups.io" "list.testdrivendevelopment")
+    (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
+    ("subject" "GeePawHill.Org" "list.newsletter.geepawhill")
+
+    (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
+       (from "t-mobile@digital-delivery.com" "list.receipts")
+       (from "receipts@messaging.squareup.com" "list.receipts")
+       (from ".*@patreon.com" "list.receipts")
+       (from "service@paypal.com" "list.receipts")
+       (from "Northwellhealth_no-reply@healthpay24.net" "list.receipts")
+       (from "orders@starbucks.com" "list.receipts")
+       ("subject" "Amazon Web Services Billing Statement Available" "list.receipts"))
+
+    (| (any "ally.*" "list.bank")
+       (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
+       (any ".*mint.*" "list.bank")
+       (any ".*citizensbank.*" "list.bank")
+       (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
+       (from "webinquiry@Ascensus.com" "list.bank")
+       (any ".*@mail.fidelity.com" "list.bank"))
+
+    (from "Starbucks@mg.starbucks.com" "list.starbucks")
+
+    (from "ArqBackupSystem@virgil.local" "list.arqbackup")
+
+    (any ".*@travis-ci.org" "list.ci-builds")
+
+    (: gnus-registry-split-fancy-with-parent)
+    (: gnus-group-split-fancy nil t nil)
+    (: spam-split)
+
+    "mail.inbox"))
+
+(defvar group-parameters
+  '(("nnfolder.*"
+     (spam-contents gnus-group-spam-classification-ham)
+     (spam-process ((ham spam-use-BBDB)))
+     (spam-process-destination "nnfolder:spam.spam"))
+
+    ("nnfolder+archive.*"
+     (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
+    ("nndraft:.*"
+     (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
+
+    ("mail.*"
+     (gcc-self . t)
+     (total-expire . t))
+
+    ("mail.codeandcocktails"
+     (posting-style  (address "codeandcocktails@gmail.com")))
+
+    ("list.*"
+     (total-expire . t))
+
+    ("cyrus.*"
+     (gcc-self . t)
+     (total-expire . t)
+     (posting-style (address "msimpson@cyrusinnovation.com")))
+
+    ("defmethod.*"
+     (gcc-self . t)
+     (total-expire . t)
+     (posting-style (address "msimpson@defmethod.io")))
+
+
+    ("spam\.spam"
+     (total-expire . t)
+     ;; (expiry-target . delete)
+     (spam-contents gnus-group-spam-classification-spam)
+     (spam-process ((ham spam-use-BBDB)))
+     (ham-process-destination "nnfolder:mail.inbox"))
+
+    ("nnfolder+archive.*"
+     (total-expire . nil))
+
+    ("^gmane\."
+     (spam-autodetect . t)
+     (spam-autodetect-methods spam-use-regex-headers)
+     (spam-process (spam spam-use-gmane)))
+    ("^gwene\."
+     (spam-autodetect . t)
+     (spam-autodetect-methods spam-use-regex-headers)
+     (spam-process (spam spam-use-gmane)))
+
+    ("^gwene\.com\.reddit"
+     (gnus-summary-line-format rss-summary-format))
+    ("^gwene\.com\.stackoverflow"
+     (gnus-summary-line-format rss-summary-format))
+    ("nnrss:.*"
+     (gnus-summary-line-format rss-summary-format))))
 
 (use-package gnus
   :ensure nil
@@ -11,84 +133,17 @@
   :config
   (mjs/bbdb-init 'gnus)
 
-  (use-package gnus-start :ensure nil)
-
-  (setq gnus-init-file (locate-user-emacs-file "init-gnus.el")
-        gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
-        gnus-secondary-select-methods '((nnfolder "")) ; where to find my mails
-        gnus-save-killed-list nil
-        gnus-default-directory gnus-directory
-
-        gnus-summary-line-format
-        "%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n"
-        rss-summary-format
-        "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n"
-
-        gnus-update-message-archive-method t
+  (setq gnus-default-directory gnus-directory
         gnus-kill-files-directory
         (expand-file-name "score-files" gnus-directory) ;where to put the kill files
-        gnus-use-adaptive-scoring t
-        gnus-topic-display-empty-topics nil
-        gnus-message-archive-group (if-work "nnfolder:defmethod.inbox"
-                                            '((format-time-string "archive-%Y"))))
-
-  (setq gnus-parameters
-        '(("nnfolder.*"
-           (spam-contents gnus-group-spam-classification-ham)
-           (spam-process ((ham spam-use-BBDB)))
-           (spam-process-destination "nnfolder:spam.spam"))
-
-          ("nnfolder+archive.*"
-           (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
-          ("nndraft:.*"
-           (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
-
-          ("mail.*"
-           (gcc-self . t)
-           (total-expire . t))
-
-          ("mail.codeandcocktails"
-           (posting-style  (address "codeandcocktails@gmail.com")))
-
-          ("list.*"
-           (total-expire . t))
-
-          ("cyrus.*"
-           (gcc-self . t)
-           (total-expire . t)
-           (posting-style (address "msimpson@cyrusinnovation.com")))
-
-          ("defmethod.*"
-           (gcc-self . t)
-           (total-expire . t)
-           (posting-style (address "msimpson@defmethod.io")))
-
-
-          ("spam\.spam"
-           (total-expire . t)
-           ;; (expiry-target . delete)
-           (spam-contents gnus-group-spam-classification-spam)
-           (spam-process ((ham spam-use-BBDB)))
-           (ham-process-destination "nnfolder:mail.inbox"))
-
-          ("nnfolder+archive.*"
-           (total-expire . nil))
-
-          ("^gmane\."
-           (spam-autodetect . t)
-           (spam-autodetect-methods spam-use-regex-headers)
-           (spam-process (spam spam-use-gmane)))
-          ("^gwene\."
-           (spam-autodetect . t)
-           (spam-autodetect-methods spam-use-regex-headers)
-           (spam-process (spam spam-use-gmane)))
-
-          ("^gwene\.com\.reddit"
-           (gnus-summary-line-format rss-summary-format))
-          ("^gwene\.com\.stackoverflow"
-           (gnus-summary-line-format rss-summary-format))
-          ("nnrss:.*"
-           (gnus-summary-line-format rss-summary-format))))
+        gnus-message-archive-group
+        (if-work "nnfolder:defmethod.inbox" '((format-time-string "archive-%Y")))
+        gnus-parameters group-parameters
+        gnus-secondary-select-methods '((nnfolder "")) ; where to find my mails
+        gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
+        gnus-summary-line-format summary-line-format
+        gnus-update-message-archive-method t
+        gnus-use-adaptive-scoring t)
 
   (use-package gnus-art
     :ensure nil
@@ -100,11 +155,36 @@
              gnus-treat-x-pgp-sig t
              gnus-buttonized-mime-types '("multipart/signed")))
 
+  (use-package gnus-dup
+    :ensure nil
+    :config (setq gnus-save-duplicate-list t))
+
+  (use-package gnus-group
+    :ensure nil
+    :config (setq gnus-group-sort-function
+                  '(gnus-group-sort-by-alphabet gnus-group-sort-by-rank)))
+
+  (use-package gnus-icalendar
+    :ensure nil
+    :config (gnus-icalendar-setup))
+
   (use-package gnus-msg
     :ensure nil
     :config (setq gnus-gcc-mark-as-read t ; carbon-copies should be auto-read
                   gnus-message-replysign t
                   gnus-message-replyencrypt t))
+
+  (use-package gnus-registry
+    :ensure nil
+    :init (gnus-registry-initialize)
+    :config (setq gnus-registry-install t
+                  gnus-registry-split-strategy 'majority
+                  gnus-registry-max-entries 50000))
+
+  (use-package gnus-start
+    :ensure nil
+    :config (setq gnus-init-file (locate-user-emacs-file "init-gnus.el")
+                  gnus-save-killed-list nil))
 
   (use-package gnus-sum
     :ensure nil
@@ -128,22 +208,22 @@
                   gnus-build-sparse-threads nil
                   gnus-fetch-old-headers 5000))
 
-  (use-package gnus-group
+  (use-package gnus-topic
     :ensure nil
-    :config (setq gnus-group-sort-function
-                  '(gnus-group-sort-by-alphabet gnus-group-sort-by-rank)))
+    :hook (gnus-group-mode . gnus-topic-mode)
+    :config (setq gnus-topic-display-empty-topics nil))
 
-  (use-package gnus-registry
+  (use-package mail-source
     :ensure nil
-    :init (gnus-registry-initialize)
-    :config (setq gnus-registry-install t
-                  gnus-registry-split-strategy 'majority
-                  gnus-registry-max-entries 50000))
+    :config
+    (setq
+     mail-source-directory (concat gnus-directory "incoming")
+     mail-source-primary-source (car mail-sources)
+     mail-source-crash-box (concat gnus-directory "crash-box")))
 
   (use-package message
     :ensure nil
-    :config (setq message-directory gnus-directory) ; where mail is located
-    )
+    :config (setq message-directory gnus-directory))
 
   (use-package nnfolder
     :ensure nil
@@ -160,19 +240,9 @@
      nnmail-expiry-target 'mjs/expiry-target-calculator
      nnmail-expiry-wait-function 'mjs/expiry-wait-calculator
      nnmail-split-methods 'nnmail-split-fancy
-     nnmail-split-fancy (mjs/fancy-splitting)))
+     nnmail-split-fancy split-rules))
 
-  (use-package mail-source
-    :ensure nil
-    :config
-    (setq
-     mail-source-directory (concat gnus-directory "incoming")
-     mail-source-primary-source (car mail-sources)
-     mail-source-crash-box (concat gnus-directory "crash-box")))
-
-  (use-package gnus-dup
-    :ensure nil
-    :config (setq gnus-save-duplicate-list t))
+  (use-package nnreddit)
 
 
   (use-package spam
@@ -211,71 +281,7 @@
     (use-package shr-color
       :config
       (setq shr-color-visible-distance-min 40
-            shr-color-visible-luminance-min 70)))
-
-  (use-package gnus-icalendar
-    :ensure nil
-    :config (gnus-icalendar-setup)))
-
-(defun mjs/fancy-splitting ()
-  '(|
-    (| (to "noreply@sourceforge.net" "mail.tnef")
-       ("subject" "tnef" "mail.tnef"))
-
-    (any ".*@github.com"
-         (| ("subject" "exercism/v3" "list.exercism.v3")
-            ("subject" "exercism/.*" "list.exercism.maintenance")
-            "list.github"))
-
-    (from "notification@slack.com"
-          (| ("subject" "Exercism" "list.exercism.slack")
-             ("subject" "Def.Method" "defmethod.inbox")))
-
-    (| (from "hello@mail.exercism.io" "list.exercism.mentor")
-       (from "jeremy@exercism.io" "list.exercism.announce"))
-
-    (from "notifier@codeship.com"
-          (| ("subject" "defmethodinc/.*" "defmethod.builds")))
-
-    (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
-       (to "all@defmethod\\.io" "defmethod.inbox")
-       (from ".*@defmethod\\..*" "defmethod.inbox")
-       (from "donotreply@adp.com" "defmethod.inbox"))
-
-    (any ".*@LISTSERV.NODAK.EDU" "list.lifelines")
-    (from "wsmith@wordsmith.org" "list.awotd")
-    (to "extremeprogramming@groups.io" "list.extremeprogramming")
-    (to "testdrivendevelopment@groups.io" "list.testdrivendevelopment")
-    (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
-    (from "noreply+feedproxy@google.com" "list.newsletter.geepaw")
-
-    (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
-       (from "t-mobile@digital-delivery.com" "list.receipts")
-       (from "receipts@messaging.squareup.com" "list.receipts")
-       (from ".*@patreon.com" "list.receipts")
-       (from "service@paypal.com" "list.receipts")
-       (from "orders@starbucks.com" "list.receipts")
-       ("subject" "Amazon Web Services Billing Statement Available" "list.receipts"))
-
-    (| (any "ally.*" "list.bank")
-       (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
-       (any ".*mint.*" "list.bank")
-       (any ".*citizensbank.*" "list.bank")
-       (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
-       (from "webinquiry@Ascensus.com" "list.bank")
-       (any ".*@mail.fidelity.com" "list.bank"))
-
-    (from "Starbucks@mg.starbucks.com" "list.starbucks")
-
-    (from "ArqBackupSystem@virgil.local" "list.arqbackup")
-
-    (any ".*@travis-ci.org" "list.ci-builds")
-
-    (: gnus-registry-split-fancy-with-parent)
-    (: gnus-group-split-fancy nil t nil)
-    (: spam-split)
-
-    "mail.inbox"))
+            shr-color-visible-luminance-min 70))))
 
 (defun mjs/average-score (&rest scores)
   (/ (apply #'+ scores) (length scores)))
