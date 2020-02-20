@@ -86,16 +86,14 @@
         '(yas-ido-prompt yas-completing-prompt)))
 
 (use-package magit
-  :bind (("<f7>" . magit-status))
+  :bind (("C-x g" . magit-status))
   :functions (magit-mode-quit-window)
   :config
   (progn
     (fullframe magit-status magit-mode-quit-window)
 
     (use-package magithub
-      :init (magithub-feature-autoinject t))
-
-    ))
+      :init (magithub-feature-autoinject t))))
 
 
 (use-package git-commit
