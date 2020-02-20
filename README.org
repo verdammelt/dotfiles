@@ -16,8 +16,13 @@ Recovery mode = restart while pressing ⌘-R
 - installs brew items
 *** Postfix
 - Add gmail settings to ~/etc/postfix/sasl_passwd~
+  - "work-email work-email:<work-password>"
   - "[smtp.gmail.com]:587 <username>:<password>"
-- execute ~sudo postmap /etc/postfix/sasl_passwd"
+- execute ~sudo postmap /etc/postfix/sasl_passwd"~
+- Add gmail settings to ~/etc/postfix/sender_relay~
+  - "work-email [smtp.gmail.com]:587"
+  - "home-email [smtp.gmail.com]:587"
+- execute ~sudo postmap /etc/postfix/sender_relay~
 - append the following to /etc/postfix/main.cf
 #+BEGIN_SRC 
 #### GMAIL
@@ -31,6 +36,9 @@ smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 smtp_sasl_security_options =
 smtp_sasl_mechanism_filter = AUTH LOGIN
+
+smtp_sender_dependent_authentication = yes
+sender_dependent_relayhost_maps = hash:/etc/postfix/sender_relay
 
 # Enable Transport Layer Security (TLS), i.e. SSL.
 smtp_use_tls = yes
