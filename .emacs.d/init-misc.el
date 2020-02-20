@@ -146,12 +146,6 @@
   :bind (("M-i" . change-inner)
          ("M-o" . change-outer)))
 
-(use-package avy
-  :bind (("s-j" . avy-goto-word-or-subword-1)
-         ("s-J" . avy-goto-char-2))
-  :config (avy-setup-default))
-
-
 (use-package find-func
   :ensure nil
   :bind (:map help-map
@@ -255,14 +249,6 @@ symbol, not word, as I need this for programming the most."
 (use-package dired
   :ensure nil
   :init (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode))
-
-(use-package keyfreq
-  :init (add-hook 'after-init-hook 'keyfreq-mode t)
-  :config (progn
-          (defvar keyfreq-file)
-          (defvar keyfreq-file-lock)
-          (setq keyfreq-file (locate-user-emacs-file ".keyfreq")
-                keyfreq-file-lock (concat keyfreq-file ".lock"))))
 
 (use-package calc-units
   :ensure nil
