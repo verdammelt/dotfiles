@@ -36,6 +36,7 @@
     (to "testdrivendevelopment@groups.io" "list.testdrivendevelopment")
     (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
     ("subject" "GeePawHill.Org" "list.newsletter.geepawhill")
+    (from "robert@stuffwithstuff.com" "list.newsletter.crafting-interpreters")
 
     (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
        (from "t-mobile@digital-delivery.com" "list.receipts")
