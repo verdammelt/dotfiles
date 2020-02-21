@@ -13,15 +13,6 @@
                     :height 180
                     :family "DejaVu Sans Mono")
 
-(use-package color-theme-sanityinc-tomorrow
-  :defer nil
-  :config (load-theme 'sanityinc-tomorrow-bright))
-
-(cl-defun mjs/bg-color-box (face &optional (width 5))
-  (list :line-width width :color (face-attribute face :background)))
-
-(set-face-attribute 'mode-line nil
-                    :box (mjs/bg-color-box 'mode-line))
-
-(set-face-attribute 'mode-line-inactive nil
-                    :box (mjs/bg-color-box 'mode-line-inactive))
+(use-package modus-operandi-theme :defer nil)
+(use-package modus-vivendi-theme :defer nil)
+(load-theme 'modus-vivendi)
