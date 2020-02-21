@@ -276,3 +276,7 @@
 (use-package fci-mode-hacks
   :ensure nil
   :commands (mjs/fci-conditional-enable mjs/fci-get-and-disable mjs/fci-hack))
+(use-package emacs
+  :config
+  (setq echo-keystrokes 0.25
+        save-interprogram-paste-before-kill t))
