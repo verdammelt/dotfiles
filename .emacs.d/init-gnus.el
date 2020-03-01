@@ -99,7 +99,7 @@
      (posting-style (address "msimpson@defmethod.io")))
 
 
-    ("spam\.spam"
+    ("spam\\.spam"
      (total-expire . t)
      ;; (expiry-target . delete)
      (spam-contents gnus-group-spam-classification-spam)
@@ -109,21 +109,21 @@
     ("nnfolder+archive.*"
      (total-expire . nil))
 
-    ("^gmane\."
+    ("^gmane\\."
      (spam-autodetect . t)
      (spam-autodetect-methods spam-use-regex-headers)
      (spam-process (spam spam-use-gmane)))
-    ("^gwene\."
+    ("^gwene\\."
      (spam-autodetect . t)
      (spam-autodetect-methods spam-use-regex-headers)
      (spam-process (spam spam-use-gmane)))
 
-    ("^gwene\.com\.reddit"
-     (gnus-summary-line-format rss-summary-format))
-    ("^gwene\.com\.stackoverflow"
-     (gnus-summary-line-format rss-summary-format))
+    ("^gwene\\.com\\.reddit.*"
+     (gnus-summary-line-format rss-summary-line-format))
+    ("^gwene\\.com\\stackoverflow"
+     (gnus-summary-line-format rss-summary-line-format))
     ("nnrss:.*"
-     (gnus-summary-line-format rss-summary-format))))
+     (gnus-summary-line-format rss-summary-line-format))))
 
 (use-package gnus
   :ensure nil
