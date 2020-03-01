@@ -276,6 +276,10 @@
 (use-package fci-mode-hacks
   :ensure nil
   :commands (mjs/fci-conditional-enable mjs/fci-get-and-disable mjs/fci-hack))
+
+(use-package delsel
+  :hook (after-init . delete-selection-mode))
+
 (use-package emacs
   :config
   (setq echo-keystrokes 0.25
