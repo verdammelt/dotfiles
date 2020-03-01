@@ -237,7 +237,11 @@
            :jump-to-captured t)
           ("wn" "New Task to clocked" entry (clock)
            "* TODO %?\n %U\n %a\n"
-           :clock-in t :clock-resume t))))
+           :clock-in t :clock-resume t))
+        org-capture-templates-contexts
+        '(("r" ((in-mode . "message-mode")
+                (in-mode . "gnus-summary-mode")
+                (in-mode . "gnus-article-mode"))))))
 
 (use-package org-checklist
   :ensure org-plus-contrib)
