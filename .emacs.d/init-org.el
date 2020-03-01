@@ -107,7 +107,8 @@
     (setq org-agenda-cmp-user-defined 'bh/agenda-sort
 
           org-agenda-files
-          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile"))
+          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile"
+                                          "pokemongo" "fallenlondon"))
 
           org-agenda-sorting-strategy
           '((agenda time-up user-defined-up category-keep)
