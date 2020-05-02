@@ -13,7 +13,8 @@
     (add-hook 'company-completion-cancelled-hook 'mjs/fci-conditional-enable)
     (add-hook 'company-completion-finished-hook 'mjs/fci-conditional-enable)
 
-    (setq company-idle-delay .25
+    (setq company-idle-delay .1
+          company-tooltip-idle-delay .25
           company-tooltip-limit 20
           company-show-numbers t
           company-tooltip-align-annotations t
