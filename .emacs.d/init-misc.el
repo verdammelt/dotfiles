@@ -90,7 +90,6 @@
   :functions (magit-mode-quit-window)
   :config
   (progn
-    (fullframe magit-status magit-mode-quit-window)
 
     (use-package magithub
       :init (magithub-feature-autoinject t))))
