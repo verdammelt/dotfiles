@@ -90,6 +90,8 @@
   :functions (magit-mode-quit-window)
   :config
   (progn
+    (setq magit-completing-read-function 'magit-ido-completing-read
+          magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
 
     (use-package magithub
       :init (magithub-feature-autoinject t))))
