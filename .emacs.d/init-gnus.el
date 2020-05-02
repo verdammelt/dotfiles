@@ -140,7 +140,7 @@
         gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
         gnus-summary-line-format summary-line-format
         gnus-update-message-archive-method t
-        gnus-use-adaptive-scoring '(word line))
+        gnus-use-adaptive-scoring t)
 
   (use-package gnus-art
     :ensure nil
