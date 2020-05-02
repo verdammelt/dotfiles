@@ -114,7 +114,9 @@
         whitespace-action '(auto-cleanup warn-if-read-only)))
 
 (use-package markdown-mode
-  :config (setq markdown-command "markdown | smartypants"))
+  :config
+  (setq markdown-command "markdown | smartypants")
+  (turn-off-fci-mode))
 
 (use-package ns-win
   :ensure nil
