@@ -116,16 +116,10 @@
      (spam-autodetect-methods spam-use-regex-headers)
      (spam-process (spam spam-use-gmane)))
     ("^gwene\\."
+     (gnus-summary-line-format rss-summary-line-format)
      (spam-autodetect . t)
      (spam-autodetect-methods spam-use-regex-headers)
-     (spam-process (spam spam-use-gmane)))
-
-    ("^gwene\\.com\\.reddit.*"
-     (gnus-summary-line-format rss-summary-line-format))
-    ("^gwene\\.com\\stackoverflow"
-     (gnus-summary-line-format rss-summary-line-format))
-    ("nnrss:.*"
-     (gnus-summary-line-format rss-summary-line-format))))
+     (spam-process (spam spam-use-gmane)))))
 
 (use-package gnus
   :ensure nil
