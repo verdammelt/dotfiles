@@ -174,9 +174,12 @@
   (use-package gnus-registry
     :ensure nil
     :init (gnus-registry-initialize)
-    :config (setq gnus-registry-install t
-                  gnus-registry-split-strategy 'majority
-                  gnus-registry-max-entries 50000))
+    :config
+    (progn
+      (setq gnus-registry-install t
+            gnus-registry-split-strategy 'majority
+            gnus-registry-max-entries 50000)
+      (push '("spam" t) gnus-registry-ignored-groups)))
 
   (use-package gnus-start
     :ensure nil
