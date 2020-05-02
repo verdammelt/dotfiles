@@ -232,6 +232,7 @@
           (add-hook 'edit-server-start-hook 'edit-server-maybe-dehtmlize-buffer)
           (add-hook 'edit-server-done-hook 'edit-server-maybe-htmlize-buffer)
           (add-hook 'edit-server-done-hook (lambda () (kill-ring-save (point-min) (point-max))))))
+
 (use-package server
   :ensure nil
   :init (add-hook 'after-init-hook 'server-start t))
@@ -290,3 +291,7 @@
   :config
   (setq echo-keystrokes 0.25
         save-interprogram-paste-before-kill t))
+
+(use-package autoinsert
+  :ensure nil
+  :hook (find-file . auto-insert-mode))
