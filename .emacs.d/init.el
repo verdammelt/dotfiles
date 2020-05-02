@@ -24,7 +24,6 @@
 ;;;
 ;;; Exec Path
 ;;;
-(add-to-list 'exec-path "/usr/local/share/npm/bin")
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path (expand-file-name "~/Bin"))
 (add-to-list 'exec-path "/Library/TeX/texbin" :append)
