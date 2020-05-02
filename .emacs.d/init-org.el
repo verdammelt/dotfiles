@@ -132,9 +132,6 @@
           org-agenda-clockreport-parameter-plist
           '(:link t :maxlevel 4 :fileskip0 t :compact t :narrow 80)
 
-          org-agenda-tags-todo-honor-ignore-options t
-          org-agenda-todo-ignore-scheduled 'all
-          org-agenda-todo-ignore-deadlines 'all
           org-agenda-start-on-weekday 0
           org-agenda-compact-blocks t
           org-agenda-follow-mode t
