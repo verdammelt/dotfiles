@@ -102,8 +102,6 @@
     (defvar mjs/skip-habits-and-scheduled-and-deadlines
       '(org-agenda-skip-if nil '(scheduled deadline)))
 
-    (fullframe org-agenda org-agenda-quit)
-
     (setq org-agenda-cmp-user-defined 'bh/agenda-sort
 
           org-agenda-files
