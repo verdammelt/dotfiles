@@ -43,7 +43,8 @@
        (from "receipts@messaging.squareup.com" "list.receipts")
        (from ".*@patreon.com" "list.receipts")
        (from "service@paypal.com" "list.receipts")
-       (from "Northwellhealth_no-reply@healthpay24.net" "list.receipts")
+       (| (from "Northwellhealth_no-reply@healthpay24.net" "list.receipts")
+          (subject "Northwell Health Payment Due Reminder" "list.receipts"))
        (from "orders@starbucks.com" "list.receipts")
        ("subject" "Amazon Web Services Billing Statement Available" "list.receipts"))
 
@@ -55,7 +56,8 @@
        (from "webinquiry@Ascensus.com" "list.bank")
        (any ".*@mail.fidelity.com" "list.bank"))
 
-    (from "Starbucks@mg.starbucks.com" "list.starbucks")
+    (| (from "starland@win.starbucks.com" "list.starbucks")
+       (from "Starbucks@mg.starbucks.com" "list.starbucks"))
 
     (from "ArqBackupSystem@virgil.local" "list.arqbackup")
 
