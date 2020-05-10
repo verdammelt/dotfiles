@@ -48,6 +48,11 @@
 
     (projectile-register-project-type 'generic '() :compile "" :test "")
 
+    (define-advice projectile-kill-buffers (:around (orig-fn prefix-arg) filter-switch)
+         (interactive "P")
+         (let ((projectile-kill-buffers-filter (if prefix-arg 'kill-all 'kill-only-files)))
+           (call-interactively orig-fn)))
+
     (defvar mjs/default-projectile-indexing-method projectile-indexing-method)
     (defun mjs/setup-gtd-project-caching ()
       (let ((new-value (if (string= (projectile-project-name) "GTD")
