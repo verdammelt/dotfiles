@@ -256,7 +256,7 @@
   (progn
     (declare-function org-agenda-clock-in "org-agenda")
 
-    (defvar mjs/default-task-id "963F688C-0EAD-4217-B84E-DDA7D94C0453")
+    (defvar mjs/default-task-id "DEFAULT-TASK")
     (defvar mjs/keep-clock-running nil)
 
     (declare-function org-id-find "org-id")
