@@ -13,31 +13,6 @@
       (message "Calling project setup: %s" (symbol-name setup-symbol))
       (funcall setup-symbol))))
 
-(defvar *pax-ignored-directories*
-  '("out" "webapp/node_modules" "webapp/build"))
-
-(defun setup-pax ()
-  (let ((asdf-dir "/usr/local/opt/asdf"))
-    (setenv "ASDF_DIR" asdf-dir)
-    (pushnew (expand-file-name "bin" asdf-dir) exec-path)
-    (pushnew (expand-file-name "shims" asdf-dir) exec-path)
-    (pushnew (expand-file-name "~/.asdf/.shims") exec-path)
-    (mjs/set-path-envvar-from-exec-path)
-
-    (dolist (p *pax-ignored-directories*)
-      (pushnew p projectile-globally-ignored-directories :test #'string=))))
-
-(defun teardown-pax ()
-  (let ((asdf-dir (getenv "ASDF_DIR")))
-    (setenv "ASDF_DIR")
-    (setf exec-path (cl-remove (expand-file-name "bin" asdf-dir) exec-path)
-          exec-path (cl-remove (expand-file-name "shims" asdf-dir) exec-path)
-          exec-path (cl-remove (expand-file-name "~/.asdf/.shims") exec-path))
-    (mjs/set-path-envvar-from-exec-path)
-    (dolist (d *pax-ignored-directories*)
-      (setf projectile-globally-ignored-directories
-            (cl-remove d projectile-globally-ignored-directories :test #'string=)))))
-
 (use-package projectile
   :bind (("s-b" . projectile-switch-to-buffer)
          ("s-f" . projectile-find-file)
