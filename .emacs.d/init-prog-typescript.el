@@ -27,6 +27,4 @@
                         (mjs/setup-tide)))))
   :config
   (progn
-    (flycheck-add-mode 'typescript-tslint 'web-mode)
-    (advice-add 'web-mode-on-after-change :around #'mjs/fci-hack)
-    (advice-add 'web-mode-on-post-command :around #'mjs/fci-hack)))
+    (flycheck-add-mode 'typescript-tslint 'web-mode)))

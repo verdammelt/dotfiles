@@ -9,10 +9,6 @@
     :init (add-hook 'after-init-hook 'global-company-mode t)
   :config
   (progn
-    (add-hook 'company-completion-started-hook 'mjs/fci-get-and-disable)
-    (add-hook 'company-completion-cancelled-hook 'mjs/fci-conditional-enable)
-    (add-hook 'company-completion-finished-hook 'mjs/fci-conditional-enable)
-
     (setq company-idle-delay .1
           company-tooltip-idle-delay .25
           company-tooltip-limit 20

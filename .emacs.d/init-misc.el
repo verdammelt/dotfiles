@@ -42,12 +42,6 @@
                delete-by-moving-to-trash t
                trash-directory (expand-file-name "~/.Trash"))))
 
-(use-package text-mode
-  :ensure nil
-  :config
-  (progn
-    (add-hook 'text-mode-hook 'fci-mode)))
-
 (use-package paragraphs
   :ensure nil
   :init (setq sentence-end-double-space nil))
@@ -58,9 +52,6 @@
   (progn
     (setq battery-mode-line-format "[%b%p%% %t] ")
     (display-battery-mode)))
-
-(use-package fill-column-indicator
-  :config (setq fci-rule-color "red"))
 
 (use-package abbrev
   :ensure nil
@@ -115,8 +106,7 @@
 
 (use-package markdown-mode
   :config
-  (setq markdown-command "markdown | smartypants")
-  (turn-off-fci-mode))
+  (setq markdown-command "markdown | smartypants"))
 
 (use-package ns-win
   :ensure nil
@@ -280,10 +270,6 @@
 (use-package miniedit
   :init (add-hook 'after-init-hook 'miniedit-install t))
 
-(use-package fci-mode-hacks
-  :ensure nil
-  :commands (mjs/fci-conditional-enable mjs/fci-get-and-disable mjs/fci-hack))
-
 (use-package delsel
   :hook (after-init . delete-selection-mode))
 
@@ -295,3 +281,6 @@
 (use-package autoinsert
   :ensure nil
   :hook (find-file . auto-insert-mode))
+
+(use-package display-fill-column-indicator
+  :hook (after-init . global-display-line-numbers-mode))
