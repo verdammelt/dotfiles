@@ -1,8 +1,4 @@
 (declare-function projectile-project-root "projectile")
-;; (defvar flycheck-tslint-args)
-;; (defvar flycheck-typescript-tslint-config)
-;; (defvar flycheck-typescript-tslint-executable)
-
 (defun mjs/setup-tide ()
   (tide-setup)
   (eldoc-mode +1))
