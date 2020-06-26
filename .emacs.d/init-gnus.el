@@ -216,9 +216,9 @@
     :hook (gnus-group-mode . gnus-topic-mode)
     :config (setq gnus-topic-display-empty-topics nil))
 
-  (use-package gnus-util
-    :ensure nil
-    :config (setq gnus-completing-read-function 'gnus-ido-completing-read))
+  ;; (use-package gnus-util
+  ;;   :ensure nil
+  ;;   :config (setq gnus-completing-read-function 'gnus-ido-completing-read))
 
   (use-package mail-source
     :ensure nil

@@ -72,9 +72,10 @@
   :ensure nil
   :diminish (yas-minor-mode)
   :init (add-hook 'after-init-hook 'yas-global-mode t)
-  :config
-  (setq yas-prompt-functions
-        '(yas-ido-prompt yas-completing-prompt)))
+  ;; :config
+  ;; (setq yas-prompt-functions
+  ;;       '(yas-ido-prompt yas-completing-prompt))
+  )
 
 (use-package magit
   :bind (("C-x g" . magit-status))
