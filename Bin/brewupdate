@@ -2,8 +2,15 @@
 
 brew update
 brew upgrade
+
+echo "===== CLEANUP ====="
 brew cleanup
+
+echo "===== DOCTOR ====="
 brew doctor
+
+echo "===== CASK OUTDATED ====="
+brew cask outdated
 
 brew leaves > ~/SRC/dotfiles/Files/brew-list
 brew cask list > ~/SRC/dotfiles/Files/brew-cask-list
