@@ -63,10 +63,13 @@
 
     (any ".*@travis-ci.org" "list.ci-builds")
 
-    (: gnus-registry-split-fancy-with-parent)
+    ;; apply splitting rules (if any) found in gnus-group-parameters
     (: gnus-group-split-fancy nil t nil)
+
+    ;; split with spam rules
     (: spam-split)
 
+    ;; absolute fallback
     "mail.inbox"))
 
 (defvar group-parameters
