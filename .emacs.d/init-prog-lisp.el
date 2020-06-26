@@ -70,7 +70,9 @@
     (mjs/setup-lispy-mode 'lisp-mode-hook)
     (mjs/setup-lispy-mode 'lisp-interaction-mode-hook)
 
-    (put 'define-test 'lisp-indent-function 1)))
+    (put 'define-test 'lisp-indent-function 1)
+
+    (define-auto-insert '("\\.asd" . "ASDF Defsystem file") 'asdf-defsystem)))
 
 (use-package ielm
   :ensure nil
@@ -113,3 +115,27 @@
 (use-package simple
   :ensure nil
   :config (mjs/setup-lispy-mode 'eval-expression-minibuffer-setup-hook))
+
+(define-skeleton asdf-defsystem
+  "Inserts a typical ASDF defsystem form into the current buffer"
+  "System Name: "
+  "(defsystem \"" str | (file-name-base (buffer-file-name)) "\"" \n
+  > ":description \"\"" \n
+  > ":version \"0.0.0\"" \n
+  > ":author \"" user-full-name "\"" \n
+  > ":mailto \"" user-mail-address "\"" \n
+  > \n
+  > ":depends-on ()" \n
+  > \n
+  > ":pathname \"\"" \n
+  > ":serial t" \n
+  > ":components ((:file \"packages\"))"
+  ")")
+
+(define-skeleton cl-defpacakge
+  "Inserts a typical cl:defpackage form into the current buffer"
+  "Package name: "
+  "(defpackage #:" str \n
+  > "(:use :cl)" \n
+  > "(:export)"
+  ")")
