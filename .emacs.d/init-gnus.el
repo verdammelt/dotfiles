@@ -153,7 +153,7 @@
              gnus-treat-unsplit-urls t
              gnus-treat-strip-multiple-blank-lines t
              gnus-treat-x-pgp-sig t
-             gnus-buttonized-mime-types '("multipart/signed")))
+             gnus-buttonized-mime-types '("multipart/signed" "multipart/alternative")))
 
   (use-package gnus-dup
     :ensure nil
@@ -288,7 +288,13 @@
     (use-package shr-color
       :config
       (setq shr-color-visible-distance-min 40
-            shr-color-visible-luminance-min 70))))
+            shr-color-visible-luminance-min 70)))
+
+  (use-package mm-decode
+    :ensure nil
+    :config
+    (add-to-list 'mm-discouraged-alternatives "text/html")
+    (add-to-list 'mm-discouraged-alternatives "text/richtext")))
 
 (defun mjs/average-score (&rest scores)
   (/ (apply #'+ scores) (length scores)))
