@@ -179,11 +179,9 @@
 (use-package browse-url
   :ensure nil
   :config
-  (progn
-    (defun mjs/browse-url-default-macosx-browser-background (url &optional _new-window)
-      (interactive (browse-url-interactive-arg "URL: "))
-      (start-process (concat "open " url) nil "open" "-g" url))
-    (setq browse-url-browser-function 'mjs/browse-url-default-macosx-browser-background)))
+  (setq browse-url-browser-function '(("file://.*" . eww-browse-url)
+                                      ("." . browse-url-default-browser))
+        browse-url-secondary-browser-function 'eww-browse-url))
 
 (use-package ediff
   :ensure nil

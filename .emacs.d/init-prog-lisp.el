@@ -3,8 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(declare-function 'subseq "cl-extra")
-
 (defun mjs/setup-lispy-mode (hook)
   (mapcar (lambda (f) (add-hook hook f))
           '(paredit-mode rainbow-delimiters-mode turn-on-eldoc-mode)))
@@ -17,32 +15,10 @@
   :config
   (progn
     (load (expand-file-name "~/.quicklisp/clhs-use-local.el") t)
-    (mapc (lambda (symbol)
-            (advice-add symbol :around #'mjs/browse-file-url-with-eww))
-          '(common-lisp-hyperspec
-            common-lisp-hyperspec-format
-            common-lisp-hyperspec-lookup-reader-macro))
-
     (mjs/setup-lispy-mode 'slime-repl-mode-hook)
-
     (slime-setup '(slime-fancy slime-company)))
   :bind
   (("\C-cs" . slime-selector)))
-
-(defun mjs/string-starts-with (string prefix)
-  "Return t if STRING starts with prefix."
-  (string-match (rx-to-string `(: bos ,prefix) t) string))
-
-(defun mjs/browse-file-url-with-eww (next-method &rest args)
-  (let ((browse-url-browser-function
-         (lambda (file &optional new-window)
-           (ignore new-window)
-           (let ((file (if (mjs/string-starts-with file "file://")
-                           (subseq file (length "file://"))
-                         file)))
-             (pop-to-buffer (get-buffer-create "*eww*"))
-             (eww-open-file file)))))
-    (apply next-method args)))
 
 (use-package slime-company :config (setq slime-company-completion 'fuzzy))
 
