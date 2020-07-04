@@ -277,7 +277,8 @@
   :hook (find-file . auto-insert-mode))
 
 (use-package display-fill-column-indicator
-  :hook (after-init . global-display-line-numbers-mode))
+  :hook (after-init . global-display-fill-column-indicator-mode))
+
 (use-package icomplete
   :ensure nil
   :hook (after-init . fido-mode)
