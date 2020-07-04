@@ -69,7 +69,6 @@
           flyspell-abbrev-p t)))
 
 (use-package yasnippet
-  :ensure nil
   :diminish (yas-minor-mode)
   :init (add-hook 'after-init-hook 'yas-global-mode t))
 
