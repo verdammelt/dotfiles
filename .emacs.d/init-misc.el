@@ -71,19 +71,14 @@
 (use-package yasnippet
   :ensure nil
   :diminish (yas-minor-mode)
-  :init (add-hook 'after-init-hook 'yas-global-mode t)
-  ;; :config
-  ;; (setq yas-prompt-functions
-  ;;       '(yas-ido-prompt yas-completing-prompt))
-  )
+  :init (add-hook 'after-init-hook 'yas-global-mode t))
 
 (use-package magit
   :bind (("C-x g" . magit-status))
   :functions (magit-mode-quit-window)
   :config
   (progn
-    (setq magit-completing-read-function 'magit-ido-completing-read
-          magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+    (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
 
     (use-package magithub
       :init (magithub-feature-autoinject t))))
@@ -283,3 +278,7 @@
 
 (use-package display-fill-column-indicator
   :hook (after-init . global-display-line-numbers-mode))
+(use-package icomplete
+  :ensure nil
+  :hook (after-init . fido-mode)
+  :config (setq icomplete-in-buffer t))

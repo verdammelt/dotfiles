@@ -23,7 +23,8 @@
   (progn (setq projectile-known-projects-file
                (locate-user-emacs-file ".projectile-bookmarks.eld")
                projectile-cache-file
-               (locate-user-emacs-file ".projectile.cache"))
+               (locate-user-emacs-file ".projectile.cache")
+               projectile-completion-system 'default)
          (add-hook 'after-init-hook 'projectile-mode t))
 
   :config
