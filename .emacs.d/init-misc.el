@@ -77,12 +77,10 @@
   :bind (("C-x g" . magit-status))
   :functions (magit-mode-quit-window)
   :config
-  (progn
-    (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1) )
 
-    (use-package magithub
-      :init (magithub-feature-autoinject t))))
-
+(use-package forge
+  :after magit)
 
 (use-package git-commit
   :init (add-hook 'after-init-hook 'global-git-commit-mode t))

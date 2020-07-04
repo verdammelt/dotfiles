@@ -115,3 +115,4 @@ Sites
 \#*
 /.emacs.d/secrets.el
 synctunes
+/.emacs.d/forge-database.sqlite
