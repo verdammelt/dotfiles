@@ -15,4 +15,5 @@
 
 (use-package modus-operandi-theme :defer nil)
 (use-package modus-vivendi-theme :defer nil)
-(load-theme 'modus-vivendi)
+;; (load-theme 'modus-vivendi)
+(load-theme 'modus-operandi)
