@@ -279,4 +279,8 @@
 (use-package icomplete
   :ensure nil
   :hook (after-init . fido-mode)
+  :functions (icomplete-forward-completions icomplete-backward-completions)
+  :bind (:map icomplete-fido-mode-map
+              ("C-n" . icomplete-forward-completions)
+              ("C-p" . icomplete-backward-completions))
   :config (setq icomplete-in-buffer t))
