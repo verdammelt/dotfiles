@@ -5,10 +5,6 @@
 (setq inhibit-splash-screen t
       inhibit-startup-echo-area-message "damned")
 
-;; Fallback font - helps with Unicode
-(set-fontset-font "fontset-default" nil
-                  (font-spec :size 20 :name "Symbola"))
-
 (set-face-attribute 'default nil
                     :height 180
                     :family "DejaVu Sans Mono")
