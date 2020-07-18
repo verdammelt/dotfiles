@@ -2,9 +2,11 @@
   :diminish (company-mode)
   :bind (("M-/" . company-complete)
          :map company-active-map
-              ("\C-n" . company-select-next)
-              ("\C-p" . company-select-previous)
-              ("\C-d" . company-show-doc-buffer)
+              ("C-n" . company-select-next)
+              ("C-." . company-select-next)
+              ("C-p" . company-select-previous)
+              ("C-," . company-select-previous)
+              ("C-d" . company-show-doc-buffer)
               ("M-." . company-show-location))
     :init (add-hook 'after-init-hook 'global-company-mode t)
   :config
