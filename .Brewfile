@@ -161,7 +161,6 @@ brew "w3m"
 brew "wget"
 # PDF viewer
 brew "xpdf"
-# GNU Emacs text editor
 brew "d12frosted/emacs-plus/emacs-plus@27", args: ["without-imagemagick"]
 cask "dropbox"
 cask "encryptme"
