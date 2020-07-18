@@ -37,3 +37,21 @@
 
 (defun run-all-tests (&optional (pkg *package*))
   (lisp-unit:run-tests :all pkg))
+
+(defpackage :exercism-utils
+  (:use :cl)
+  (:export :run-these-tests))
+
+(in-package :exercism-utils)
+
+(defun run-these-tests ()
+  "Runs the tests for the exercise in the currect directory. Assumes current
+directory name is the SLUG of the exercise."
+  (let* ((slug (first (last (pathname-directory (truename "."))))))
+    (load (format nil "~A-test.lisp" slug) :verbose t)
+    (load ".meta/example.lisp" :verbose t)
+    (let* ((package (find-package (format nil "~:@(~A-test~)" slug)))
+           (run-tests (find-symbol "RUN-TESTS" package)))
+      (funcall run-tests))))
+
+(in-package :cl-user)
