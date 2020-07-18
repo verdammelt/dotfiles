@@ -97,10 +97,6 @@
   (setq whitespace-style '(face indentation empty trailing)
         whitespace-action '(auto-cleanup warn-if-read-only)))
 
-(use-package markdown-mode
-  :config
-  (setq markdown-command "markdown | smartypants"))
-
 (use-package ns-win
   :ensure nil
   :init
