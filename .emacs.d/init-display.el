@@ -8,6 +8,13 @@
 (set-face-attribute 'default nil
                     :height 180
                     :family "DejaVu Sans Mono")
+(set-face-attribute 'fixed-pitch nil
+                    :height 180
+                    :family "DejaVu Sans Mono")
+(set-face-attribute 'variable-pitch nil
+                    :height 180
+                    :family "DejaVu Sans")
+
 
 (use-package modus-operandi-theme :defer nil)
 (use-package modus-vivendi-theme :defer nil)
