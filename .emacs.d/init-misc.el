@@ -119,7 +119,8 @@
 (defun mjs/change-size (size)
   (interactive "nsize: ")
   (if (< size 100) (setq size (* 10 size)))
-  (set-face-attribute 'default nil :height size))
+  (dolist (face '(default fixed-pitch variable-pitch))
+    (set-face-attribute face nil :height size)))
 (global-set-key (kbd "H-s") 'mjs/change-size)
 
 (use-package expand-region
