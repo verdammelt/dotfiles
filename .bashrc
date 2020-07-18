@@ -57,24 +57,12 @@ alias gr='git r'
 alias gra='git ra'
 
 # Keeping track of my commands
-#export HISTCONTROL=erasedups # turned off to keep all commands
-export HISTSIZE=10000
-
-# top 5 one-word commands (and total number)
-function topcmd() {
-    history | \
-        awk "{a[\$2]++}END{print NR, \"((TOTAL))\"; for(i in a) print a[i], i}" | \
-        sort -rn | \
-        head -6
-}
-
-# top 5 two-word commands
-function top2cmd(){
-    history | \
-        awk "/$1/{a[\$2 \" \" \$3]++}END{for(i in a) print a[i], i}" | \
-        sort -rn | \
-        head -5
-}
+shopt -s histappend
+export HISTCONTROL=ignoreboth
+export HISTIGNORE="ls:cd:history:bg:fg:cd:pwd"
+export HISTSIZE=100000
+export HISTFILESIZE=10000000
+export PROMPT_COMMAND="history -a; history -n"
 
 function batt() {
     pmset -g batt | \
