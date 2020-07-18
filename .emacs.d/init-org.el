@@ -46,7 +46,6 @@
     (add-to-list 'org-modules 'org-checklist)
     (add-to-list 'org-modules 'org-clock)
 
-    (set-face-attribute 'org-upcoming-deadline nil :foreground "green")
     (set-face-attribute 'org-done nil :strike-through t)
     (set-face-attribute 'org-headline-done nil :strike-through t)
 
