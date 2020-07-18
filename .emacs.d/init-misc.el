@@ -220,7 +220,17 @@
 
 (use-package dired
   :ensure nil
-  :init (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode))
+  :init (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+  :config (setq dired-recursive-copies t
+                dired-recursive-deletes t
+                dired-deletion-confirmer #'y-or-n-p
+                dired-dwim-target t
+                dired-listing-switches "-alv"
+                dired-use-ls-dired nil))
+(use-package dired-x
+  :ensure nil
+  :after dired
+  :config (setq dired-clean-up-buffers-too nil))
 
 (use-package calc-units
   :ensure nil
