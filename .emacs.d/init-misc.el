@@ -242,7 +242,6 @@
 (use-package flycheck
   :init (add-hook 'after-init-hook 'global-flycheck-mode t)
   :config (progn
-            (setq flycheck-completing-read-function 'ido-completing-read)
             (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
             (flycheck-credo-setup)))
 
