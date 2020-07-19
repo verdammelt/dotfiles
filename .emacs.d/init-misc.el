@@ -290,3 +290,8 @@
               ("C-n" . icomplete-forward-completions)
               ("C-p" . icomplete-backward-completions))
   :config (setq icomplete-in-buffer t))
+
+(use-package minibuffer
+  :ensure nil
+  :config (setq read-buffer-completion-ignore-case t
+                read-file-name-completion-ignore-case t))
