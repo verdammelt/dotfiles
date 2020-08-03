@@ -34,7 +34,6 @@ export LLPROGRAMS=/usr/local/share/lifelines
 export LLREPORTS=$HOME/LifeLines/output
 export LLARCHIVE=$HOME/LifeLines/archive
 export LLDATABASES=$HOME/LifeLines
-export LANG=en_US
 
 ###
 ### GIT Stuff
