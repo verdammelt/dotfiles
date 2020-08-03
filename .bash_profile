@@ -8,10 +8,6 @@ CDPATH=.:~:~/SRC:~/Documents:~/Movies
 
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-[[ -r "$HOME/.rvm/scripts/completion" ]] && . "$HOME/.rvm/scripts/completion"
-
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
     __git_complete g __git_main
@@ -40,3 +36,5 @@ function _pscolor() {
 export PS1='\[$(_pscolor)\]\A \h:\W\[${reset}\]> '
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+eval "$(rbenv init -)"
