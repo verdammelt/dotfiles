@@ -23,9 +23,8 @@
 (use-package ruby-mode
   :config (setq ruby-insert-encoding-magic-comment nil))
 
-(use-package rvm
-  :defer 2
-  :config (rvm-use-default))
+(use-package rvm)
+(use-package rbenv)
 
 (use-package ansi-color
   :ensure nil

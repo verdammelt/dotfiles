@@ -39,6 +39,7 @@
     (add-hook 'projectile-after-switch-project-hook 'mjs/add-node-to-path)
     (add-hook 'projectile-after-switch-project-hook 'mjs/setup-gtd-project-caching)
     (add-hook 'projectile-after-switch-project-hook 'rvm-activate-corresponding-ruby)
+    (add-hook 'projectile-after-switch-project-hook 'rbenv-use-corresponding)
     (add-hook 'projectile-after-switch-project-hook 'mjs/setup-project)
 
     (add-hook 'projectile-mode-hook 'projectile-rails-on)
