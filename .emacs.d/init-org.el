@@ -43,6 +43,8 @@
       (org-insert-time-stamp nil t t nil nil nil)))
 
   (progn
+    (fullframe org-agenda org-agenda-quit)
+
     (add-to-list 'org-modules 'org-checklist)
     (add-to-list 'org-modules 'org-clock)
 
