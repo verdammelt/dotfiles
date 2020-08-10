@@ -17,13 +17,17 @@
 
     (from "notification@slack.com"
           (| ("subject" "Exercism" "list.exercism.slack")
-             ("subject" "Def.Method" "defmethod.inbox")))
+             ("subject" "Def.Method" "defmethod.slack")))
 
     (| (from "hello@mail.exercism.io" "list.exercism.mentor")
        (from "jeremy@exercism.io" "list.exercism.announce"))
 
     (from "notifier@codeship.com"
           (| ("subject" "defmethodinc/.*" "defmethod.builds")))
+
+    (| (from ".*@knowyourteam.com" "defmethod.misc")
+       (from ".*@knowyourcompany.com" "defmethod.misc")
+       (from ".*@bonusly.com" "defmethod.misc"))
 
     (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
        (to "all@defmethod\\.io" "defmethod.inbox")
