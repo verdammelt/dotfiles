@@ -245,9 +245,8 @@
 
 (use-package flycheck
   :init (add-hook 'after-init-hook 'global-flycheck-mode t)
-  :config (progn
-            (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-            (flycheck-credo-setup)))
+  :config
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 (use-package browse-kill-ring
   :init (add-hook 'after-init-hook 'browse-kill-ring-default-keybindings ))
