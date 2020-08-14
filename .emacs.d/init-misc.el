@@ -151,11 +151,13 @@
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)))
 
+(declare-function wrap-region-add-wrapper "wrap-region")
 (use-package wrap-region
   :diminish (wrap-region-mode)
   :functions (wrap-region-add-wrappers)
   :init (add-hook 'after-init-hook 'wrap-region-global-mode t)
-  :config (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
+  :config
+  (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
                                       ("_" "_" nil 'markdown-mode)
                                       ("*" "*" nil 'markdown-mode)
                                       ("*" "*" nil 'lisp-mode)
@@ -296,5 +298,6 @@
 
 (use-package minibuffer
   :ensure nil
-  :config (setq read-buffer-completion-ignore-case t
+  :config (setq completion-ignore-case t
+                read-buffer-completion-ignore-case t
                 read-file-name-completion-ignore-case t))
