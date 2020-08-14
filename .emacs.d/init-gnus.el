@@ -25,9 +25,9 @@
     (from "notifier@codeship.com"
           (| ("subject" "defmethodinc/.*" "defmethod.builds")))
 
-    (| (from ".*@knowyourteam.com" "defmethod.misc")
-       (from ".*@knowyourcompany.com" "defmethod.misc")
-       (from ".*@bonusly.com" "defmethod.misc"))
+    (| (from ".*@knowyourteam\\.com" "defmethod.misc")
+       (from ".*@knowyourcompany\\.com" "defmethod.misc")
+       (from ".*@bonus\\.ly" "defmethod.misc"))
 
     (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
        (to "all@defmethod\\.io" "defmethod.inbox")
