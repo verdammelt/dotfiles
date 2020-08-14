@@ -33,8 +33,8 @@
                             'visible-fringes t
                             'distinct-org-blocks t
                             '3d-modeline t
-                            'intense-standard-completions t
-                            'faint-syntax t)
+                            'intense-hl-line t
+                            'intense-standard-completions t)
   :config (load-theme 'modus-operandi t t))
 
 (use-package modus-vivendi-theme
@@ -49,10 +49,11 @@
                             'visible-fringes t
                             'distinct-org-blocks t
                             '3d-modeline t
-                            'intense-standard-completions t
-                            'faint-syntax t)
+                            'intense-hl-line t
+                            'intense-standard-completions t)
   :config (load-theme 'modus-vivendi t t))
 
+(enable-theme 'modus-operandi)
 (enable-theme 'modus-vivendi)
 
 (defun mjs/toggle-theme ()
