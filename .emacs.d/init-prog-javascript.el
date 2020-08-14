@@ -1,20 +1,18 @@
 (declare-function mjs/set-path-envvar-from-exec-path "init")
 
+(defun mjs/js-mode-setup () (setq mode-name "JS"))
+(use-package js
+  :ensure nil
+  :config
+  (setq js-indent-level 2)
+  (add-hook 'js-mode-hook 'mjs/js-mode-setup))
+
 (use-package nvm
   :commands (nvm-use nvm-use-for nvm--installed-versions))
 
-(use-package js2-mode
-  :mode (("\\.js" . js2-mode))
-  :diminish (js2-mode js2-jsx-mode)
-  :config
-  (setq js2-basic-offset 2))
-
-(use-package rjsx-mode
-  :mode ("\\.jsx"))
-
 (use-package prettier-js
   :diminish (prettier-js-mode "Pr")
-  :hook ((js2-mode js-mode rjsx-mode typescript-mode web-mode) . prettier-js-mode))
+  :hook ((js-mode typescript-mode web-mode) . prettier-js-mode))
 
 (defvar mjs/previous-node-version nil)
 (defun mjs/remove-node-from-path ()
