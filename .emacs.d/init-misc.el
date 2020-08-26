@@ -158,10 +158,11 @@
   :init (add-hook 'after-init-hook 'wrap-region-global-mode t)
   :config
   (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
-                                      ("_" "_" nil 'markdown-mode)
-                                      ("*" "*" nil 'markdown-mode)
-                                      ("*" "*" nil 'lisp-mode)
-                                      ("+" "+" nil 'lisp-mode))))
+                              ("*" "*" nil 'org-mode)
+                              ("_" "_" nil 'markdown-mode)
+                              ("*" "*" nil 'markdown-mode)
+                              ("*" "*" nil 'lisp-mode)
+                              ("+" "+" nil 'lisp-mode))))
 
 (use-package grep
   :ensure nil
