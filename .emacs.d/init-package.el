@@ -10,7 +10,6 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
-(package-initialize)
 (package-install-selected-packages)
 
 (defun mjs/perform-updates ()
