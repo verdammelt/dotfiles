@@ -333,3 +333,7 @@
           company-show-numbers t
           company-tooltip-align-annotations t
           company-selection-wrap-around t)))
+
+(use-package so-long
+  :ensure nil
+  :config (global-so-long-mode))
