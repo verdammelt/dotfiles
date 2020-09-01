@@ -114,17 +114,17 @@
             (tags todo-state-up alpha-up)
             (search todo-state-up alpha-up))
 
-          org-agenda-clock-consistency-checks
-          '(:max-duration "04:00"
-                          :min-duration 0
-                          :max-gap 0
-                          :gap-ok-around ("04:00" "09:00" "13:00" "18:00") ;; what are good settings?
-                          :default-face
-                          ((:background "DarkRed")
-                           (:foreground "white"))
-                          :overlap-face nil :gap-face nil
-                          :no-end-time-face nil
-                          :long-face nil :short-face nil)
+          ;; org-agenda-clock-consistency-checks
+          ;; '(:max-duration "04:00"
+          ;;                 :min-duration 0
+          ;;                 :max-gap 0
+          ;;                 :gap-ok-around ("04:00")
+          ;;                 :default-face
+          ;;                 ((:background "DarkRed")
+          ;;                  (:foreground "white"))
+          ;;                 :overlap-face nil :gap-face nil
+          ;;                 :no-end-time-face nil
+          ;;                 :long-face nil :short-face nil)
 
           org-stuck-projects
           '("+PROJECT=\"TRUE\"+LEVEL=2" ("TODO" "WAIT") nil "")
