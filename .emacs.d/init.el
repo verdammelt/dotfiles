@@ -49,7 +49,6 @@
 ;;;
 (mjs/load-init-file "init-bbdb")
 (mjs/load-init-file "init-calendar")
-(mjs/load-init-file "init-company")
 (mjs/load-init-file "init-display")
 (mjs/load-init-file "init-gnus")
 (mjs/load-init-file "init-latex")
