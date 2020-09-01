@@ -25,9 +25,11 @@
     (add-hook 'message-setup-hook 'sm-add-random-header)
     (add-hook 'message-setup-hook 'turn-on-flyspell)
     (add-hook 'message-send-hook 'ispell-message)
+    (add-hook 'message-send-hook 'message-sign-encrypt-if-all-keys-available)
 
     (setq message-citation-line-function 'message-insert-formatted-citation-line
           message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n"
+          message-expand-name-standard-ui t
           message-wide-reply-confirm-recipients t
           message-default-headers "X-Attribution: MJS"
           message-sendmail-envelope-from 'header)))
