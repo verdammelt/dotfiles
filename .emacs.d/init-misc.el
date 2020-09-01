@@ -310,9 +310,11 @@
 
 (use-package minibuffer
   :ensure nil
-  :config (setq completion-ignore-case t
-                read-buffer-completion-ignore-case t
-                read-file-name-completion-ignore-case t))
+  :config
+  (setq completion-ignore-case t
+        read-buffer-completion-ignore-case t
+        read-file-name-completion-ignore-case t)
+  (add-to-list 'completion-styles 'flex))
 
 (use-package company
   :diminish (company-mode)
