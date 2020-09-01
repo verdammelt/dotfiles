@@ -285,6 +285,7 @@
     ;; Improve colors used in shr. These settings are to make sure colors
     ;; are distinct enough to be visible.
     (use-package shr-color
+      :ensure nil
       :config
       (setq shr-color-visible-distance-min 40
             shr-color-visible-luminance-min 70)))

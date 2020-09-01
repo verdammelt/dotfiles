@@ -21,6 +21,7 @@
   :config (venv-initialize-interactive-shells))
 
 (use-package ruby-mode
+  :ensure nil
   :config (setq ruby-insert-encoding-magic-comment nil))
 
 (use-package rvm)
@@ -37,6 +38,7 @@
      compilation-filter-start (point))))
 
 (use-package compile
+  :ensure nil
   :config
   (progn (setq compilation-scroll-output 'first-error)
          (add-hook 'compilation-filter-hook #'mjs/colorize-compilation)))

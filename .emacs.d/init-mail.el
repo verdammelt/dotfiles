@@ -65,6 +65,7 @@
            sm-add-zippy-quote))))
 
 (use-package sendmail
+  :ensure nil
   :config
   (progn
     (setq send-mail-function 'sendmail-send-it

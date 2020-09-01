@@ -94,6 +94,7 @@
   (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)))
 
 (use-package whitespace
+  :ensure nil
   :diminish (whitespace-mode)
   :config
   (setq whitespace-style '(face indentation empty trailing)
@@ -203,6 +204,7 @@
   :config (progn
             (add-to-list 'Info-directory-list (expand-file-name "~/.emacs.d/info"))
             (use-package info-look
+              :ensure nil
               :commands (info-lookup-add-help)
               :config (info-lookup-add-help
                        :mode 'lisp-mode
@@ -274,9 +276,11 @@
   :init (add-hook 'after-init-hook 'miniedit-install t))
 
 (use-package delsel
+  :ensure nil
   :hook (after-init . delete-selection-mode))
 
 (use-package emacs
+  :ensure nil
   :config
   (setq echo-keystrokes 0.25
         save-interprogram-paste-before-kill t))
@@ -286,6 +290,7 @@
   :hook (find-file . auto-insert-mode))
 
 (use-package display-fill-column-indicator
+  :ensure nil
   :hook (after-init . global-display-fill-column-indicator-mode))
 
 (use-package icomplete
