@@ -60,8 +60,10 @@
        (from "webinquiry@Ascensus.com" "list.bank")
        (any ".*@mail.fidelity.com" "list.bank"))
 
-    (| (from "starland@win.starbucks.com" "list.starbucks")
+    (| (from ".*@win.starbucks.com" "list.starbucks")
        (from "Starbucks@mg.starbucks.com" "list.starbucks"))
+
+    (from "forums@dragonsfoot.org" "list.dragonsfoot")
 
     (from "ArqBackupSystem@virgil.local" "list.arqbackup")
 
