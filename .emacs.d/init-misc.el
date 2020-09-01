@@ -191,7 +191,8 @@
 (use-package isearch
   :ensure nil
   :bind (:map isearch-mode-map
-              ("C-d" . isearch-forward-symbol-at-point)))
+              ("C-d" . isearch-forward-symbol-at-point))
+  :config (setq isearch-lazy-count t))
 
 (use-package ibuffer
   :ensure nil
