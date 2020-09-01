@@ -239,6 +239,11 @@
   :after dired
   :config (setq dired-clean-up-buffers-too nil))
 
+(use-package dired-aux
+  :ensure nil
+  :after dired
+  :config (setq dired-create-destination-dirs t))
+
 (use-package calc-units
   :ensure nil
   :config (progn
