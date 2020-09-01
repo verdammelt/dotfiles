@@ -15,12 +15,8 @@ brew "rlwrap"
 brew "abcl"
 # Search tool like grep, but optimized for programmers
 brew "ack"
-# Graphical system information display for macOS
-brew "archey"
 # Spell checker with better logic than ispell
 brew "aspell"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -51,15 +47,9 @@ brew "ctags"
 brew "curl"
 # Version control system
 brew "cvs"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
-# Isolated development environments using Docker
-brew "docker-compose"
-# Create Docker hosts locally and on cloud providers
-brew "docker-machine"
 # Command-line tool to interact with exercism.io
 brew "exercism"
-# Fetch mail from a POP, IMAP, ETRN, or ODMR-capable server
+# Client for fetching mail from POP, IMAP, ETRN or ODMR-capable servers
 brew "fetchmail"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
@@ -99,8 +89,6 @@ brew "hub"
 brew "hyperspec"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick@6"
 # String tool
 brew "intltool"
 # Library for manipulating JPEG-2000 images
@@ -161,7 +149,8 @@ brew "w3m"
 brew "wget"
 # PDF viewer
 brew "xpdf"
-brew "d12frosted/emacs-plus/emacs-plus@27", args: ["without-imagemagick"]
+brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-jansson", "without-imagemagick"]
+cask "docker"
 cask "dropbox"
 cask "encryptme"
 cask "gnucash"
@@ -172,4 +161,3 @@ cask "libreoffice"
 cask "mactex-no-gui"
 cask "shiftit"
 cask "slack"
-cask "virtualbox"
