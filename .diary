@@ -8,8 +8,7 @@
 ;;; Personal Holidays
 ;;;
 May 01 May Day
-Sep 11 Birthday
-%%(diary-anniversary 2020 09 04) John McCarthy's %d%s Birthday
+%%(diary-anniversary 1927 09 04) John McCarthy's %d%s Birthday
 %%(diary-anniversary 1970 09 11) %d%s Birthday
 %%(diary-anniversary 1994 10 31) %d%s Wedding Anniversary
 
