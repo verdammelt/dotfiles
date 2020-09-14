@@ -91,8 +91,6 @@ brew "hyperspec"
 brew "imagemagick"
 # String tool
 brew "intltool"
-# Library for manipulating JPEG-2000 images
-brew "jasper"
 # Build tool for Clojure
 brew "leiningen"
 # CSS parsing and manipulation toolkit for GNOME
@@ -125,6 +123,8 @@ brew "paperkey"
 brew "pinentry-mac"
 # GNU Portable THreads
 brew "pth"
+# Ruby version manager
+brew "rbenv"
 # Lisp installer and launcher for major environments
 brew "roswell"
 # Powerful, clean, object-oriented scripting language
