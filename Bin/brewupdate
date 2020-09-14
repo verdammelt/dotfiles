@@ -10,7 +10,7 @@ echo "===== DOCTOR ====="
 brew doctor
 
 echo "===== CASK OUTDATED ====="
-brew cask outdated
+brew outdated --cask 
 
 echo "===== DUMP BUNDLE ====="
 brew bundle dump --all --global --describe --force
