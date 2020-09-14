@@ -1,4 +1,4 @@
-PATH=$HOME/Bin:/usr/local/bin:/usr/local/sbin:$PATH
+PATH=$HOME/Bin:$PATH
 
 [[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
 
