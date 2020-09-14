@@ -1,9 +1,4 @@
 ;;-*-coding: utf-8;-*-
-(define-abbrev-table 'emacs-lisp-mode-abbrev-table
-  '(
-    ("foop" "coop" nil :count 0)
-   ))
-
 (define-abbrev-table 'erc-mode-abbrev-table
   '(
     ("conecting" "connecting" nil :count 0)
@@ -27,11 +22,6 @@
     ("multimethod" "multimethod" nil :count 0)
     ("pacakge" "package" nil :count 0)
     ("paramater" "parameter" nil :count 0)
-   ))
-
-(define-abbrev-table 'global-abbrev-table
-  '(
-    ("tia" "Thanks in advance" nil :count 2)
    ))
 
 (define-abbrev-table 'html-mode-abbrev-table
@@ -62,7 +52,6 @@
     ("retreived" "retrieved" nil :count 0)
     ("signup" "sign up" nil :count 0)
     ("suguar" "sugar" nil :count 0)
-    ("teh" "Ted" nil :count 2)
     ("ulitimately" "ultimately" nil :count 0)
     ("whisky" "whiskey" nil :count 0)
    ))
@@ -80,8 +69,7 @@
     ("attachement" "attachment" nil :count 0)
     ("backend" "back end" nil :count 14)
     ("becuase" "because" nil :count 6)
-    ("cafés" #("cafés" 0 5 (charset iso-8859-1)) nil :count 0)
-    ("caio" "Ciao" nil :count 56)
+    ("caio" "Ciao" nil :count 58)
     ("cancelation" "cancellation" nil :count 0)
     ("chagnes" "changes" nil :count 2)
     ("commited" "committed" nil :count 0)
@@ -95,7 +83,6 @@
     ("decidly" "decidly" nil :count 0)
     ("deductable" "deductible" nil :count 0)
     ("definately" "definitely" nil :count 3)
-    ("defmethod" "Def Method" nil :count 5)
     ("depencency" "dependency" nil :count 0)
     ("dependancy" "dependency" nil :count 0)
     ("depenedencies" "dependencies" nil :count 0)
@@ -129,8 +116,7 @@
     ("mattias" "Mattias" nil :count 1)
     ("millenium" "Millennium" nil :count 0)
     ("mobild" "mobile" nil :count 0)
-    ("mothership" "Mother ship" nil :count 7)
-    ("ok" "OK" nil :count 42)
+    ("ok" "OK" nil :count 43)
     ("perscription" "prescription" nil :count 0)
     ("precidence" "precedence" nil :count 0)
     ("probaby" "probably" nil :count 0)
@@ -184,11 +170,14 @@
     ("collegue" "colleague" nil :count 0)
     ("competancy" "competency" nil :count 0)
     ("dan" "Dan" nil :count 4)
-    ("defmethod" "Def Method" nil :count 3)
+    ("defm" "Def Method" nil :count 28)
+    ("desiger" "designer" nil :count 0)
     ("differnet" "different" nil :count 0)
+    ("dm" "Def Method" nil :count 1)
     ("dropbox" "drop box" nil :count 2)
     ("eh" "tech" nil :count 0)
     ("everytime" "every time" nil :count 0)
+    ("excpetions" "Exceptions" nil :count 0)
     ("exericse" "exercise" nil :count 0)
     ("extrememly" "extremely" nil :count 0)
     ("finanical" "Financial" nil :count 0)
@@ -213,10 +202,11 @@
     ("refactored" "Refactored" nil :count 0)
     ("refamiliarize" "re-familiarize" nil :count 0)
     ("repercusion" "repercussion" nil :count 0)
+    ("resposibility" "responsibility" nil :count 0)
     ("shedule" "schedule" nil :count 0)
-    ("shoudl" "should" nil :count 0)
+    ("shoudl" "should" nil :count 1)
     ("specificially" "specifically" nil :count 0)
-    ("teh" "th" nil :count 11)
+    ("teh" "th" nil :count 13)
     ("termintes" "terminates" nil :count 0)
     ("unconciously" "unconsciously" nil :count 0)
     ("wifi" "wifi" nil :count 0)
@@ -235,7 +225,6 @@
     ("curiousity" "curiosity" nil :count 0)
     ("decsion" "decision" nil :count 0)
     ("definately" "definitely" nil :count 13)
-    ("defmethod" "Def Method" nil :count 2)
     ("dyanmic" "dynamic" nil :count 0)
     ("editted" "edited" nil :count 0)
     ("excpetion" "exception" nil :count 0)
@@ -245,7 +234,6 @@
     ("fivespair" "Fives Pair" nil :count 0)
     ("hardcoded" "hard coded" nil :count 2)
     ("independant" "independent" nil :count 1)
-    ("jp" "PRTL" nil :count 39)
     ("langauge" "language" nil :count 0)
     ("marijhuana" "Marijuana" nil :count 0)
     ("permisions" "permissions" nil :count 0)
@@ -255,7 +243,7 @@
     ("signup" "sign-up" nil :count 6)
     ("standup" "stand-up" nil :count 32)
     ("themed" "themed" nil :count 0)
-    ("tia" "Thanks in advance" nil :count 146)
+    ("tia" "Thanks in advance" nil :count 147)
     ("tomororw" "tomorrow" nil :count 1)
    ))
 
