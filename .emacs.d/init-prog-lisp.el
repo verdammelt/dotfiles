@@ -8,6 +8,7 @@
           '(paredit-mode rainbow-delimiters-mode turn-on-eldoc-mode)))
 
 (use-package slime
+  :bind (("\C-cs" . slime-selector))
   :init
   (progn (setq-default slime-lisp-implementations
                        '((sbcl ("sbcl" "--noinform"))))
@@ -16,9 +17,12 @@
   (progn
     (load (expand-file-name "~/.quicklisp/clhs-use-local.el") t)
     (mjs/setup-lispy-mode 'slime-repl-mode-hook)
-    (slime-setup '(slime-fancy slime-company)))
-  :bind
-  (("\C-cs" . slime-selector)))
+
+    (slime-setup '(slime-fancy slime-company))))
+
+(use-package slime-autodoc
+  :ensure nil
+  :config (setq slime-autodoc-mode-string nil))
 
 (use-package slime-company :config (setq slime-company-completion 'fuzzy))
 
