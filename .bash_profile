@@ -38,3 +38,5 @@ export PS1='\[$(_pscolor)\]\A \h:\W\[${reset}\]> '
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 eval "$(rbenv init -)"
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
