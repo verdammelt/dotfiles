@@ -1,15 +1,22 @@
 ;;;
 ;;; Astronomical items
 ;;;
-; &%%(diary-lunar-phases)
-; &%%(diary-sunrise-sunset)
+&%%(diary-lunar-phases)
+&%%(diary-sunrise-sunset)
 
 ;;;
 ;;; Personal Holidays
 ;;;
 May 01 May Day
+%%(diary-anniversary 1971 01 30) Wendy's %d%s Birthday
+%%(diary-anniversary 1922 05 09) Tante's %d%s Birthday
+%%(diary-anniversary 1963 07 22) Karl's %d%s Birthday
 %%(diary-anniversary 1927 09 04) John McCarthy's %d%s Birthday
 %%(diary-anniversary 1970 09 11) %d%s Birthday
+%%(diary-anniversary 1925 09 12) Papa's %d%s Birthday
+%%(diary-anniversary 1924 09 15) Mama's %d%s Birthday
+%%(diary-anniversary 1930 09 28) Mama Mastandrea's %d%s Birthday
+%%(diary-anniversary 2013 09 30) %d%s Cyrus / Def Method Employement Anniversary
 %%(diary-anniversary 1994 10 31) %d%s Wedding Anniversary
 
 ;;;
