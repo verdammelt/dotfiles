@@ -204,8 +204,14 @@
      (| (from "hello@mail.exercism.io" "list.exercism.mentor")
         (from "jeremy@exercism.io" "list.exercism.announce"))
 
-     (from "notifier@codeship.com"
-           (| ("subject" "defmethodinc/.*" "defmethod.builds")))
+     ;; Work
+     (| (| (from "notifications@shortcut\\.com" "defmethod.gc.shortcut")
+           (from "notifier@mail\\.rollbar\\.com" "defmethod.gc.rollbar")
+           (from "notifications@slack\\.com" ("subject" "GameChanger" "defmethod.gc.slack"))
+           (from "firebase-noreply@google.com" "defmethod.gc.misc")
+           (from "help@gc\\.com" "defmethod.gc.misc")
+           (to "mark\\.simpson@gc\\.com" "defmethod.gc.inbox")
+           (from ".*@gc\\.com" "defmethod.gc.inbox"))
 
      (| (from ".*@bonus\\.ly" "defmethod.misc")
         (from "helpful@ninety.io" "defmethod.misc")
@@ -326,8 +332,8 @@
   (add-to-list 'mm-discouraged-alternatives "text/richtext"))
 
 (defun gnus-summary-sort-by-total-score (&optional reverse)
-         (interactive)
-         (gnus-summary-sort 'total-score reverse))
+  (interactive)
+  (gnus-summary-sort 'total-score reverse))
 
 (defun mjs/average-score (&rest scores)
   (/ (apply #'+ scores) (length scores)))
@@ -339,6 +345,8 @@
                ((string-match "list\\.*" group) 14)
                ((string-match "tnef" group) 'never)
                ((string-match "codeandcocktails" group) 'never)
+               ((string-match "defmethod\\.gc\\.inbox" group) 'never)
+               ((string-match "defmethod\\.gc\\.*" group) 7)
                (t 28))))
     (message "expiry-wait for %s is %s" group wait-days)
     wait-days))
@@ -349,6 +357,7 @@
                 ((string-match "spam\\.*" group) 'delete)
                 ((string-match "mail\\.misc" group) 'delete)
                 ((string-match "defmethod\\.inbox" group) "nnfolder+archive:defmethod.archive-%Y")
+                ((string-match "defmethod\\.gc\\.inbox" group) "nnfolder+archive:defmethod.gc.archive-%Y")
                 ((string-match "defmethod\\.*" group) 'delete)
                 (t "nnfolder+archive:archive-%Y"))))
     (message "expiry-target for %s is '%s'" group expiry-target-file)
