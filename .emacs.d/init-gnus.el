@@ -16,12 +16,17 @@
     (any ".*@github.com"
          (| ("subject" "exercism/v3" "list.exercism.v3")
             ("subject" "exercism/.*" "list.exercism.maintenance")
+            ("subject" "gamechanger/.*" "defmethod.gc.github")
             "list.github"))
 
     (from "notification@slack.com"
           (| ("subject" "Exercism" "list.exercism.slack")
              ("subject" "#maintaining-common-lisp" "list.exercism.slack")
-             ("subject" "Def.Method" "defmethod.slack")))
+             ("subject" "Def.Method" "defmethod.slack")
+             ("subject" "GameChanger" "defmethod.gc.slack")))
+
+    (From "calendar-notification@google\\.com"
+          (| (to "mark\\.simpson@gc\\.com" "defmethod.gc.calendar")))
 
     (| (from "hello@mail.exercism.io" "list.exercism.mentor")
        (from "jeremy@exercism.io" "list.exercism.announce"))
@@ -39,6 +44,11 @@
 
 
     ("sender" "calendar-notification@google.com" "defmethod.calendar")
+
+    (| (from "notifications@clubhouse\\.io" "defmethod.gc.clubhouse")
+       (from "notifier@mail\\.rollbar\\.com" "defmethod.gc.rollbar")
+       (to "mark\\.simpson@gc\\.com" "defmethod.gc.inbox")
+       (from ".*@gc\\com" "defmethod.gc.inbox"))
 
     (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
        (to "all@defmethod\\.io" "defmethod.inbox")
@@ -345,6 +355,8 @@
                ((string-match "list\\.*" group) 14)
                ((string-match "tnef" group) 'never)
                ((string-match "codeandcocktails" group) 'never)
+               ((string-match "defmethod\\.gc\\.inbox" group) 'never)
+               ((string-match "defmethod\\.gc\\.*" group) 7)
                (t 28))))
     (message "expiry-wait for %s is %s" group wait-days)
     wait-days))
@@ -355,6 +367,7 @@
                 ((string-match "spam\\.*" group) 'delete)
                 ((string-match "mail\\.misc" group) 'delete)
                 ((string-match "defmethod\\.inbox" group) "nnfolder+archive:defmethod.archive-%Y")
+                ((string-match "defmethod\\.gc\\.inbox" group) "nnfolder+archive:defmethod.gc.archive-%Y")
                 ((string-match "defmethod\\.*" group) 'delete)
                 (t "nnfolder+archive:archive-%Y"))))
     (message "expiry-target for %s is '%s'" group expiry-target-file)
