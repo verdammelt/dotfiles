@@ -5,7 +5,7 @@
 ;;;;
 (defun mjs/setup-lispy-mode (hook)
   (mapcar (lambda (f) (add-hook hook f))
-          '(paredit-mode rainbow-delimiters-mode turn-on-eldoc-mode)))
+          '(paredit-mode rainbow-delimiters-mode)))
 
 (use-package slime
   :bind (("\C-cs" . slime-selector))
@@ -28,8 +28,8 @@
 
 (use-package eldoc
   :ensure nil
-  :diminish (eldoc-mode)
-  :config (eldoc-mode))
+  :hook (after-init-hook . global-eldoc-mode)
+  :diminish (eldoc-mode))
 (use-package elisp-slime-nav
   :diminish (elisp-slime-nav-mode)
   :config (elisp-slime-nav-mode))
