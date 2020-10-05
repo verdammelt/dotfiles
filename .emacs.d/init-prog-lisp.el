@@ -17,8 +17,7 @@
   (progn
     (load (expand-file-name "~/.quicklisp/clhs-use-local.el") t)
     (mjs/setup-lispy-mode 'slime-repl-mode-hook)
-
-    (slime-setup '(slime-fancy slime-company))))
+    (slime-setup '(slime-fancy slime-company slime-asdf))))
 
 (use-package slime-autodoc
   :ensure nil
