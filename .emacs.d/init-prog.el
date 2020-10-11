@@ -16,6 +16,7 @@
             (add-hook 'prog-mode-hook 'whitespace-mode)))
 
 (use-package python
+  :ensure nil
   :config (add-hook 'python-mode-hook #'(lambda () (setq fill-column 79))))
 (use-package virtualenvwrapper
   :config (venv-initialize-interactive-shells))
