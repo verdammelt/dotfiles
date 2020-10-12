@@ -4,7 +4,7 @@ function _log() {
 
 source $HOME/.bashrc
 
-CDPATH=.:~:~/SRC:~/Documents:~/Movies
+CDPATH=.:~:~/SRC:~/SRC/Clients:~/Documents:~/Movies
 
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
