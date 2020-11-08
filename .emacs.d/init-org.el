@@ -156,7 +156,7 @@
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@ERRAND")))
-         (tags-todo "+@HOME|+@ANY&-@WORK|+@MAC|+@WORKMAC&-@WORK/!-WAIT"
+         (tags-todo "-@WORK&-@WENDY&-@ERRAND&-@EMAIL&-@SLACK&-@CALL/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@HOME")))
