@@ -44,3 +44,5 @@
 	helper = osxkeychain
 [diff]
 	mnemonicPrefix = true
+[init]
+	defaultBranch = main
