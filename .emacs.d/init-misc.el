@@ -81,7 +81,17 @@
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1) )
 
 (use-package forge
-  :after magit)
+  :after magit
+  :demand t
+  :init
+  (dolist (forge-fn '(forge-insert-requested-reviews
+                      forge-insert-assigned-pullreqs
+                      forge-insert-authored-pullreqs
+                      forge-insert-pullreqs
+                      forge-insert-issues
+                      forge-insert-assigned-issues
+                      forge-insert-authored-issues))
+    (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t)))
 
 (use-package git-commit
   :init (add-hook 'after-init-hook 'global-git-commit-mode t))
@@ -237,11 +247,13 @@
 (use-package dired-x
   :ensure nil
   :after dired
+  :demand t
   :config (setq dired-clean-up-buffers-too nil))
 
 (use-package dired-aux
   :ensure nil
   :after dired
+  :demand t
   :config (setq dired-create-destination-dirs t))
 
 (use-package calc-units
