@@ -320,6 +320,9 @@
               ("C-p" . icomplete-backward-completions))
   :config (setq icomplete-in-buffer t))
 
+(use-package icomplete-vertical
+  :hook (icomplete-mode . icomplete-vertical-mode))
+
 (use-package minibuffer
   :ensure nil
   :config
