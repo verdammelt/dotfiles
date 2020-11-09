@@ -91,7 +91,8 @@
                       forge-insert-issues
                       forge-insert-assigned-issues
                       forge-insert-authored-issues))
-    (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t)))
+    (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
+  :config (setq forge-topic-list-limit '(60 . -5)))
 
 (use-package git-commit
   :init (add-hook 'after-init-hook 'global-git-commit-mode t))
