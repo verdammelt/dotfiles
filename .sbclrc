@@ -44,12 +44,19 @@
 
 (in-package :exercism-utils)
 
-(defun run-these-tests ()
+(defun run-these-tests (&key (use-example-p t))
   "Runs the tests for the exercise in the currect directory. Assumes current
 directory name is the SLUG of the exercise."
   (let* ((slug (first (last (pathname-directory (truename "."))))))
     (load (format nil "~A-test.lisp" slug) :verbose t)
-    (load ".meta/example.lisp" :verbose t)
+
+    (when use-example-p
+      (let ((example-file (find-if #'probe-file '(".meta/example.lisp" "example.lisp"))))
+        (if example-file (load example-file :verbose t)
+            (error 'file-does-not-exist
+                   :pathname "example.lisp"
+                   :message "Expected file to be in in './meta' or './'"))))
+
     (let* ((package (find-package (format nil "~:@(~A-test~)" slug)))
            (run-tests (find-symbol "RUN-TESTS" package)))
       (funcall run-tests))))
