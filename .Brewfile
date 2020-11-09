@@ -1,4 +1,5 @@
 tap "d12frosted/emacs-plus"
+tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
@@ -17,6 +18,8 @@ brew "abcl"
 brew "ack"
 # Spell checker with better logic than ispell
 brew "aspell"
+# ISO-C API and CLI for generating UUIDs
+brew "ossp-uuid"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -33,7 +36,7 @@ brew "fontconfig"
 brew "libsigsegv"
 # GNU CLISP, a Common Lisp implementation
 brew "clisp"
-# The Clojure Programming Language
+# Dynamic, general-purpose programming language
 brew "clojure"
 # Common Lisp implementation with a long history
 brew "clozure-cl"
@@ -67,6 +70,8 @@ brew "gawk"
 brew "gcc"
 # GNU debugger
 brew "gdb"
+# GitHub command-line tool
+brew "gh"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
 # Distributed revision control system
@@ -115,8 +120,6 @@ brew "netpbm"
 brew "nvm"
 # LGPL release of the Motif toolkit
 brew "openmotif"
-# ISO-C API and CLI for generating UUIDs
-brew "ossp-uuid"
 # Extract just secret information out of OpenPGP secret keys
 brew "paperkey"
 # Pinentry for GPG on Mac
@@ -150,6 +153,8 @@ brew "wget"
 # PDF viewer
 brew "xpdf"
 brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-jansson", "without-imagemagick"]
+# Everything you need to get started with Heroku
+brew "heroku/brew/heroku"
 cask "docker"
 cask "dropbox"
 cask "encryptme"
