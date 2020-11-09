@@ -17,6 +17,8 @@ if [ -f /usr/local/Library/Contributions/brew_bash_completions.sh ]; then
     . /usr/local/Library/Contributions/brew_bash_completions.sh
 fi
 
+eval `gh completion -s bash`
+
 reset=$'\e[0m'
 cyan=$'\e[0;36m'
 yellow=$'\e[0;33m'

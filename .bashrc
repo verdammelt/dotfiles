@@ -41,7 +41,7 @@ export LANG=en_US.UTF-8
 ###
 ### GIT Stuff
 ###
-alias git=hub
+#alias git=hub
 function g() {
     git ${*:-status}
 }
