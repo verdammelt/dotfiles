@@ -23,14 +23,17 @@
   (mjs/set-path-envvar-from-exec-path))
 
 (defun mjs/add-node-to-path ()
-  (if (file-exists-p ".nvmrc")
-      (nvm-use-for ".")
-    (nvm-use (car (first (cl-sort (nvm--installed-versions) #'string< :key #'first)))))
-  (setq mjs/previous-node-version (getenv "NVM_BIN")
-        exec-path (cl-pushnew mjs/previous-node-version exec-path
-                              :test #'string=))
-  (mjs/set-path-envvar-from-exec-path)
-  (message "Added %s to path" mjs/previous-node-version))
+  (cond ((file-exists-p ".nvmrc")
+         (nvm-use-for "."))
+        ((nvm--installed-versions)
+         (nvm-use (car (first (cl-sort (nvm--installed-versions)
+                                       #'string< :key #'first))))))
+  (when (getenv "NVM_BIN")
+    (setq mjs/previous-node-version (getenv "NVM_BIN")
+          exec-path (cl-pushnew mjs/previous-node-version exec-path
+                                :test #'string=))
+    (mjs/set-path-envvar-from-exec-path)
+    (message "Added %s to path" mjs/previous-node-version)))
 
 (defvar mjs/project-node-module-special-cases (list)
   "Some projects may not have their node_modules directory at
