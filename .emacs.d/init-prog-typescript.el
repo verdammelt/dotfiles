@@ -4,9 +4,11 @@
   (setq typescript-indent-level 4))
 
 (use-package tide
+  :bind (("C-c C-d C-d" . tide-documentation-at-point))
   :config
   (setq tide-format-options
-        '(:indentSize 4 :tabSize 4))
+        '(:indentSize 4 :tabSize 4)
+        tide-always-show-documentation t)
   (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
   (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append))
 
