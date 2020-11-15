@@ -16,7 +16,7 @@
   :ensure org-plus-contrib
   :functions (org-return org-insert-time-stamp org-clock-is-active)
   :bind (("C-c a" . org-agenda)
-         ("C-c b" . org-iswitchb)
+         ("C-c b" . org-switchb)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link)
          ("C-c s-s" . org-save-all-org-buffers)
@@ -211,14 +211,14 @@
            :clock-in t :clock-resume t
            :empty-lines-after 1)
           ("r" "Process email" entry (file "")
-           "* TODO Process '%:subject' from '%:from' :@EMAIL:\nSCHEDULED: %t\n%U\n%a\n"
+           "* TODO Process '%:subject' from '%:from' :@EMAIL:\n%U\n%a\n"
            :clock-in t :clock-resume t
            :immediate-finish t)
           ("n" "Take a note" entry (file "")
-           "* %U %? :NOTE:\n%a\n"
+           "* %U %^{Title} :NOTE:\n%a\n\n	%i\n%?"
            :clock-in t :clock-resume t)
           ("k" "Tickler" entry (file+headline ,(mjs/expand-org-file "todo.org") "Tickler")
-           "* TODO %?\n  %U\n  %a\n"
+           "* %?\nSCHEDULED: %^t\n%a\n"
            :clock-in t :clock-resume t)
           ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
            "* %^{headline}\n  %U\n %a\n%?"
