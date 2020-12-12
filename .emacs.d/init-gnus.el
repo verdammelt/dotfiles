@@ -172,155 +172,160 @@
         gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
         gnus-summary-line-format summary-line-format
         gnus-update-message-archive-method t
-        gnus-use-adaptive-scoring t)
+        gnus-use-adaptive-scoring t))
 
-  (use-package gnus-art
-    :ensure nil
-    :config (setq
-             gnus-treat-from-gravatar 'head
-             gnus-treat-mail-gravatar 'head
-             gnus-treat-unsplit-urls t
-             gnus-treat-strip-multiple-blank-lines t
-             gnus-treat-x-pgp-sig t
-             gnus-buttonized-mime-types '("multipart/signed" "multipart/alternative")))
+(use-package gnus-art
+  :ensure nil
+  :config (setq
+           gnus-treat-from-gravatar 'head
+           gnus-treat-mail-gravatar 'head
+           gnus-treat-unsplit-urls t
+           gnus-treat-strip-multiple-blank-lines t
+           gnus-treat-x-pgp-sig t
+           gnus-buttonized-mime-types '("multipart/signed" "multipart/alternative")))
 
-  (use-package gnus-dup
-    :ensure nil
-    :config (setq gnus-save-duplicate-list t))
+(use-package gnus-dup
+  :ensure nil
+  :config (setq gnus-save-duplicate-list t))
 
-  (use-package gnus-group
-    :ensure nil
-    :config (setq gnus-group-sort-function
-                  '(gnus-group-sort-by-alphabet gnus-group-sort-by-rank)))
+(use-package gnus-group
+  :ensure nil
+  :config (setq gnus-group-sort-function
+                '(gnus-group-sort-by-alphabet gnus-group-sort-by-rank)))
 
-  (use-package gnus-icalendar
-    :ensure nil
-    :config (gnus-icalendar-setup))
+(use-package gnus-icalendar
+  :ensure nil
+  :config (gnus-icalendar-setup))
 
-  (use-package gnus-msg
-    :ensure nil
-    :config (setq gnus-gcc-mark-as-read t ; carbon-copies should be auto-read
-                  gnus-message-replysign t
-                  gnus-message-replyencrypt t))
+(use-package gnus-msg
+  :ensure nil
+  :config (setq gnus-gcc-mark-as-read t ; carbon-copies should be auto-read
+                gnus-message-replysign t
+                gnus-message-replyencrypt t))
 
-  (use-package gnus-registry
-    :ensure nil
-    :init (gnus-registry-initialize)
-    :config
-    (progn
-      (setq gnus-registry-install t
-            gnus-registry-split-strategy 'majority
-            gnus-registry-max-entries 50000)
-      (push '("spam" t) gnus-registry-ignored-groups)))
+(use-package gnus-registry
+  :ensure nil
+  :init (gnus-registry-initialize)
+  :config
+  (progn
+    (setq gnus-registry-install t
+          gnus-registry-split-strategy 'majority
+          gnus-registry-max-entries 50000)
+    (push '("spam" t) gnus-registry-ignored-groups)))
 
-  (use-package gnus-start
-    :ensure nil
-    :config (setq gnus-init-file (locate-user-emacs-file "init-gnus.el")
-                  gnus-save-killed-list nil))
+(use-package gnus-start
+  :ensure nil
+  :config (setq gnus-init-file (locate-user-emacs-file "init-gnus.el")
+                gnus-save-killed-list nil))
 
-  (use-package gnus-sum
-    :ensure nil
-    :init (progn (add-hook 'gnus-summary-exit-hook 'gnus-summary-bubble-group)
-                 (add-hook 'gnus-summary-exit-hook 'gnus-group-sort-groups-by-rank))
-    :config (setq gnus-sum-thread-tree-false-root "< "
-                  gnus-sum-thread-tree-single-indent "= "
-                  gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M")
-                                                (604800 . "%a %H:%M")
-                                                ((gnus-seconds-month) . "%a %d")
-                                                ((gnus-seconds-year) . "%b %d")
-                                                (t . "%Y-%m-%d"))
-                  gnus-thread-sort-functions '(gnus-thread-sort-by-number
-                                               gnus-thread-sort-by-subject
-                                               gnus-thread-sort-by-total-score)
-                  gnus-sort-gathered-threads-function 'gnus-thread-sort-by-date
-                  gnus-thread-score-function 'mjs/average-score
-                  gnus-thread-hide-subtree t
-                  gnus-auto-select-first nil
-                  gnus-summary-gather-subject-limit 'fuzzy
-                  gnus-build-sparse-threads nil
-                  gnus-fetch-old-headers 5000))
+(use-package gnus-sum
+  :ensure nil
+  :init (progn (add-hook 'gnus-summary-exit-hook 'gnus-summary-bubble-group)
+               (add-hook 'gnus-summary-exit-hook 'gnus-group-sort-groups-by-rank))
+  :config (setq gnus-sum-thread-tree-false-root "< "
+                gnus-sum-thread-tree-single-indent "= "
+                gnus-user-date-format-alist '(((gnus-seconds-today) . "%H:%M")
+                                              (604800 . "%a %H:%M")
+                                              ((gnus-seconds-month) . "%a %d")
+                                              ((gnus-seconds-year) . "%b %d")
+                                              (t . "%Y-%m-%d"))
+                gnus-thread-sort-functions '(gnus-thread-sort-by-number
+                                             gnus-thread-sort-by-subject
+                                             gnus-thread-sort-by-total-score)
+                gnus-subthread-sort-functions  '(gnus-thread-sort-by-number)
+                gnus-thread-score-function '+
+                gnus-thread-hide-subtree t
+                gnus-auto-select-first nil
+                gnus-summary-gather-subject-limit 'fuzzy
+                gnus-build-sparse-threads nil
+                gnus-fetch-old-headers 5000))
 
-  (use-package gnus-topic
-    :ensure nil
-    :hook (gnus-group-mode . gnus-topic-mode)
-    :config (setq gnus-topic-display-empty-topics nil))
+(use-package gnus-topic
+  :ensure nil
+  :hook (gnus-group-mode . gnus-topic-mode)
+  :config (setq gnus-topic-display-empty-topics nil))
 
-  (use-package mail-source
-    :ensure nil
-    :config
-    (setq
-     mail-source-directory (concat gnus-directory "incoming")
-     mail-source-primary-source (car mail-sources)
-     mail-source-crash-box (concat gnus-directory "crash-box")))
+(use-package mail-source
+  :ensure nil
+  :config
+  (setq
+   mail-source-directory (concat gnus-directory "incoming")
+   mail-source-primary-source (car mail-sources)
+   mail-source-crash-box (concat gnus-directory "crash-box")))
 
-  (use-package message
-    :ensure nil
-    :config (setq message-directory gnus-directory))
+(use-package message
+  :ensure nil
+  :config (setq message-directory gnus-directory))
 
-  (use-package nnfolder
-    :ensure nil
-    :config (setq nnfolder-directory (concat gnus-directory "mail")))
+(use-package nnfolder
+  :ensure nil
+  :config (setq nnfolder-directory (concat gnus-directory "mail")))
 
-  (use-package nnmail
-    :ensure nil
-    :functions nnmail-fancy-expiry-targets
-    :config
-    (setq
-     nnmail-treat-duplicates 'delete
-     nnmail-cache-accepted-message-ids t
-     nnmail-message-id-cache-length 5000
-     nnmail-expiry-target 'mjs/expiry-target-calculator
-     nnmail-expiry-wait-function 'mjs/expiry-wait-calculator
-     nnmail-split-methods 'nnmail-split-fancy
-     nnmail-split-fancy split-rules))
+(use-package nnmail
+  :ensure nil
+  :functions nnmail-fancy-expiry-targets
+  :config
+  (setq
+   nnmail-treat-duplicates 'delete
+   nnmail-cache-accepted-message-ids t
+   nnmail-message-id-cache-length 5000
+   nnmail-expiry-target 'mjs/expiry-target-calculator
+   nnmail-expiry-wait-function 'mjs/expiry-wait-calculator
+   nnmail-split-methods 'nnmail-split-fancy
+   nnmail-split-fancy split-rules))
 
-  (use-package nnreddit)
+(use-package nnreddit)
 
 
-  (use-package spam
-    :ensure nil
-    :init (spam-initialize)
-    :config (progn
-              (load (locate-user-emacs-file "lisp/gnus-spam-fixed-bbdb"))
-              (setq
-               spam-use-spamassassin-headers t  ; because my ISP runs spamassassin
-               spam-use-BBDB t
-               spam-use-BBDB-exclusive t
-               spam-mark-ham-unread-before-move-from-spam-group t ; ham moved from spam folders will be marked unread.
-               spam-split-group "spam.spam"
-               )))
+(use-package spam
+  :ensure nil
+  :init (spam-initialize)
+  :config (progn
+            (load (locate-user-emacs-file "lisp/gnus-spam-fixed-bbdb"))
+            (setq
+             spam-use-spamassassin-headers t  ; because my ISP runs spamassassin
+             spam-use-BBDB t
+             spam-use-BBDB-exclusive t
+             spam-mark-ham-unread-before-move-from-spam-group t ; ham moved from spam folders will be marked unread.
+             spam-split-group "spam.spam"
+             )))
 
-  (use-package gnus-score
-    :ensure nil
-    :init (progn (add-hook 'message-sent-hook 'gnus-score-followup-article)
-                 (add-hook 'message-sent-hook 'gnus-score-followup-thread))
-    :config
-    (progn
-      (setq gnus-decay-scores t  ; temporary scores should degrade over time.
-            gnus-score-find-score-files-function '(gnus-score-find-hierarchical
-                                                   (lambda (group) '("SCORE")))
-            gnus-adaptive-pretty-print t
-            gnus-adaptive-word-no-group-words t
-            gnus-score-thread-simplify t)
-      (add-to-list 'gnus-default-adaptive-score-alist
-                   '(gnus-ticked-mark (subject 10)))))
+(use-package gnus-score
+  :ensure nil
+  :init (progn (add-hook 'message-sent-hook 'gnus-score-followup-article)
+               (add-hook 'message-sent-hook 'gnus-score-followup-thread))
+  :config
+  (progn
+    (setq gnus-decay-scores t  ; temporary scores should degrade over time.
+          gnus-score-find-score-files-function '(gnus-score-find-hierarchical
+                                                 (lambda (group) '("SCORE")))
+          gnus-adaptive-pretty-print t
+          gnus-adaptive-word-no-group-words t
+          gnus-score-thread-simplify t)
+    (add-to-list 'gnus-default-adaptive-score-alist
+                 '(gnus-ticked-mark (subject 10)))))
 
-  (use-package shr
-    :ensure nil
-    :config
-    ;; Improve colors used in shr. These settings are to make sure colors
-    ;; are distinct enough to be visible.
-    (use-package shr-color
-      :ensure nil
-      :config
-      (setq shr-color-visible-distance-min 40
-            shr-color-visible-luminance-min 70)))
+;; TODO: exeripment with the need for this settings.
+;; (use-package shr
+;;   :ensure nil
+;;   :config
+;;   ;; Improve colors used in shr. These settings are to make sure colors
+;;   ;; are distinct enough to be visible.
+;;   (use-package shr-color
+;;     :ensure nil
+;;     :config
+;;     (setq shr-color-visible-distance-min 40
+;;           shr-color-visible-luminance-min 70)))
 
-  (use-package mm-decode
-    :ensure nil
-    :config
-    (add-to-list 'mm-discouraged-alternatives "text/html")
-    (add-to-list 'mm-discouraged-alternatives "text/richtext")))
+(use-package mm-decode
+  :ensure nil
+  :config
+  (add-to-list 'mm-discouraged-alternatives "text/html")
+  (add-to-list 'mm-discouraged-alternatives "text/richtext"))
+
+(defun gnus-summary-sort-by-total-score (&optional reverse)
+         (interactive)
+         (gnus-summary-sort 'total-score reverse))
 
 (defun mjs/average-score (&rest scores)
   (/ (apply #'+ scores) (length scores)))
