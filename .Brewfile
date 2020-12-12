@@ -6,8 +6,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 cask "xquartz"
-# Any-to-PostScript filter
-brew "a2ps"
 # Java build tool
 brew "ant"
 # Readline wrapper: adds readline support to tools that lack it
@@ -18,8 +16,6 @@ brew "abcl"
 brew "ack"
 # Spell checker with better logic than ispell
 brew "aspell"
-# ISO-C API and CLI for generating UUIDs
-brew "ossp-uuid"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
@@ -54,12 +50,6 @@ brew "cvs"
 brew "exercism"
 # Client for fetching mail from POP, IMAP, ETRN or ODMR-capable servers
 brew "fetchmail"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
-# High quality MPEG Audio Layer III (MP3) encoder
-brew "lame"
-# High-performance, high-quality MPEG-4 video library
-brew "xvid"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 # C library for multiple-precision floating-point computations
@@ -84,8 +74,16 @@ brew "libksba"
 brew "libusb"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
 # Command-driven, interactive function plotting
 brew "gnuplot"
+# Image manipulation
+brew "netpbm"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # Improved top (interactive process viewer)
 brew "htop"
 # Add GitHub support to git on the command-line
@@ -96,12 +94,12 @@ brew "hyperspec"
 brew "imagemagick"
 # String tool
 brew "intltool"
+# High quality MPEG Audio Layer III (MP3) encoder
+brew "lame"
 # Build tool for Clojure
 brew "leiningen"
 # CSS parsing and manipulation toolkit for GNOME
 brew "libcroco"
-# Library to render SVG files using Cairo
-brew "librsvg"
 # Text-based genealogy software
 brew "lifelines"
 # LZMA-based compression program similar to gzip or bzip2
@@ -114,12 +112,14 @@ brew "mit-scheme"
 brew "mps-youtube"
 # Single-player roguelike video game
 brew "nethack"
-# Image manipulation
-brew "netpbm"
 # Manage multiple Node.js versions
 brew "nvm"
 # LGPL release of the Motif toolkit
 brew "openmotif"
+# ISO-C API and CLI for generating UUIDs
+brew "ossp-uuid"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
 # Extract just secret information out of OpenPGP secret keys
 brew "paperkey"
 # Pinentry for GPG on Mac
@@ -152,6 +152,8 @@ brew "w3m"
 brew "wget"
 # PDF viewer
 brew "xpdf"
+# High-performance, high-quality MPEG-4 video library
+brew "xvid"
 brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-jansson", "without-imagemagick"]
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
