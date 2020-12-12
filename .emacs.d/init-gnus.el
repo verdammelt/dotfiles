@@ -5,7 +5,7 @@
 "[%4V]%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n")
 (defvar rss-summary-line-format
   "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n")
-(defvar split-rules
+(setq split-rules
   '(|
     (| (to "noreply@sourceforge.net" "mail.tnef")
        ("subject" "tnef" "mail.tnef"))
@@ -25,9 +25,16 @@
     (from "notifier@codeship.com"
           (| ("subject" "defmethodinc/.*" "defmethod.builds")))
 
+    (from "Auto_Reply@mailer.discoverybenefits.com" "list.bank")
+
     (| (from ".*@knowyourteam\\.com" "defmethod.misc")
        (from ".*@knowyourcompany\\.com" "defmethod.misc")
-       (from ".*@bonus\\.ly" "defmethod.misc"))
+       (from ".*@bonus\\.ly" "defmethod.misc")
+       (from "helpful@ninety.io" "defmethod.misc")
+       (from "noreply@organizationalcheckup.com" "defmethod.misc"))
+
+
+    ("sender" "calendar-notification@google.com" "defmethod.calendar")
 
     (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
        (to "all@defmethod\\.io" "defmethod.inbox")
@@ -41,6 +48,17 @@
     (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
     ("subject" "GeePawHill.Org" "list.newsletter.geepawhill")
     (from "robert@stuffwithstuff.com" "list.newsletter.crafting-interpreters")
+    (| (from ".*@linkedin.com" "list.misc")
+       (from "millionyearpicnic@googlegroups.com" "list.misc")
+       (from "technews-editor@acm.org" "list.misc")
+       (from "vitalsigns@prohealthcare.com" "list.misc")
+       (from "noreply@followmyhealth.com" "list.misc")
+       (from ".*@meetup.com" "list.misc")
+       (from "noreply@google.com" "list.misc")
+       (from "noreply-local-guides@google.com" "list.misc")
+       (from "info@fsf.org" "list.misc")
+       (from "morbidanatomy@gmail.com" "list.misc")
+       (from "no-reply@dropboxmail.com" "list.misc"))
 
     (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
        (from "t-mobile@digital-delivery.com" "list.receipts")
@@ -50,7 +68,11 @@
        (| (from "Northwellhealth_no-reply@healthpay24.net" "list.receipts")
           (subject "Northwell Health Payment Due Reminder" "list.receipts"))
        (from "orders@starbucks.com" "list.receipts")
-       ("subject" "Amazon Web Services Billing Statement Available" "list.receipts"))
+       (from "noreply@alerts.psegliny.com" "list.receipts")
+       ("subject" "Amazon Web Services Billing Statement Available" "list.receipts")
+       (from "shipment-tracking@amazon.com" "list.receipts")
+       (from "reload-no-reply@amazon.com" "list.receipts")
+       (from ".*@etsy.com" "list.receipts"))
 
     (| (any "ally.*" "list.bank")
        (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
@@ -58,14 +80,16 @@
        (any ".*citizensbank.*" "list.bank")
        (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
        (from "webinquiry@Ascensus.com" "list.bank")
-       (any ".*@mail.fidelity.com" "list.bank"))
+       (any ".*@mail.fidelity.com" "list.bank")
+       (from "noreply@healthsafe-id.com" "list.bank"))
 
-    (| (from ".*@win.starbucks.com" "list.starbucks")
-       (from "Starbucks@mg.starbucks.com" "list.starbucks"))
+    (from ".*\.starbucks\.com" "list.starbucks")
+
 
     (from "forums@dragonsfoot.org" "list.dragonsfoot")
 
-    (from "ArqBackupSystem@virgil.local" "list.arqbackup")
+    (| (from "ArqBackupSystem@virgil.local" "list.arqbackup")
+       (from "ArqBackupSystem@virgil.fios-router.home" "list.arqbackup"))
 
     (any ".*@travis-ci.org" "list.ci-builds")
 
