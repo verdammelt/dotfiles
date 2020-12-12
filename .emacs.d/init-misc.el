@@ -300,6 +300,8 @@
 
 (use-package emacs
   :ensure nil
+  :bind (("M-u" . #'upcase-dwim)
+         ("M-l" . #'downcase-dwim))
   :config
   (setq echo-keystrokes 0.25
         save-interprogram-paste-before-kill t))
@@ -355,3 +357,11 @@
 (use-package so-long
   :ensure nil
   :config (global-so-long-mode))
+
+(use-package pulse
+  :ensure nil
+  :init (setq pulse-command-advice-flag t)
+  :config
+  (dolist (command '(scroll-up-command scroll-down-command
+                                       recenter-top-bottom other-window))
+    (advice-add command :after #'(lambda (&rest _) (pulse-line-hook-function)))))
