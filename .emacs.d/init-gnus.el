@@ -2,7 +2,7 @@
 (declare-function mjs/bbdb-init "init-bbdb")
 
 (defvar summary-line-format
-  "%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n")
+"[%4V]%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n")
 (defvar rss-summary-line-format
   "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n")
 (defvar split-rules
