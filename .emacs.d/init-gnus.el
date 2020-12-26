@@ -1,10 +1,13 @@
 (declare-function if-work "init")
 (declare-function mjs/bbdb-init "init-bbdb")
 
-(defvar summary-line-format
-"[%4V]%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n")
-(defvar rss-summary-line-format
-  "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n")
+(defvar summary-line-format)
+(setq summary-line-format "%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n")
+
+(defvar rss-summary-line-format)
+(setq rss-summary-line-format "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n")
+
+(defvar split-rules)
 (setq split-rules
   '(|
     (| (to "noreply@sourceforge.net" "mail.tnef")
@@ -104,56 +107,57 @@
     ;; absolute fallback
     "mail.inbox"))
 
-(defvar group-parameters
-  '(("nnfolder.*"
-     (spam-contents gnus-group-spam-classification-ham)
-     (spam-process ((ham spam-use-BBDB)))
-     (spam-process-destination "nnfolder:spam.spam"))
+(defvar group-parameters)
+(setq group-parameters
+      '(("nnfolder.*"
+         (spam-contents gnus-group-spam-classification-ham)
+         (spam-process ((ham spam-use-BBDB)))
+         (spam-process-destination "nnfolder:spam.spam"))
 
-    ("nnfolder+archive.*"
-     (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
-    ("nndraft:.*"
-     (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
+        ("nnfolder+archive.*"
+         (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
+        ("nndraft:.*"
+         (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
 
-    ("mail.*"
-     (gcc-self . t)
-     (total-expire . t))
+        ("mail.*"
+         (gcc-self . t)
+         (total-expire . t))
 
-    ("mail.codeandcocktails"
-     (posting-style  (address "codeandcocktails@gmail.com")))
+        ("mail.codeandcocktails"
+         (posting-style  (address "codeandcocktails@gmail.com")))
 
-    ("list.*"
-     (total-expire . t))
+        ("list.*"
+         (total-expire . t))
 
-    ("cyrus.*"
-     (gcc-self . t)
-     (total-expire . t)
-     (posting-style (address "msimpson@cyrusinnovation.com")))
+        ("cyrus.*"
+         (gcc-self . t)
+         (total-expire . t)
+         (posting-style (address "msimpson@cyrusinnovation.com")))
 
-    ("defmethod.*"
-     (gcc-self . t)
-     (total-expire . t)
-     (posting-style (address "msimpson@defmethod.io")))
+        ("defmethod.*"
+         (gcc-self . t)
+         (total-expire . t)
+         (posting-style (address "msimpson@defmethod.io")))
 
 
-    ("spam\\.spam"
-     (total-expire . t)
-     (spam-contents gnus-group-spam-classification-spam)
-     (spam-process ((ham spam-use-BBDB)))
-     (ham-process-destination "nnfolder:mail.inbox"))
+        ("spam\\.spam"
+         (total-expire . t)
+         (spam-contents gnus-group-spam-classification-spam)
+         (spam-process ((ham spam-use-BBDB)))
+         (ham-process-destination "nnfolder:mail.inbox"))
 
-    ("nnfolder+archive.*"
-     (total-expire . nil))
+        ("nnfolder+archive.*"
+         (total-expire . nil))
 
-    ("^gmane\\."
-     (spam-autodetect . t)
-     (spam-autodetect-methods spam-use-regex-headers)
-     (spam-process (spam spam-use-gmane)))
-    ("^gwene\\."
-     (gnus-summary-line-format rss-summary-line-format)
-     (spam-autodetect . t)
-     (spam-autodetect-methods spam-use-regex-headers)
-     (spam-process (spam spam-use-gmane)))))
+        ("^gmane\\."
+         (spam-autodetect . t)
+         (spam-autodetect-methods spam-use-regex-headers)
+         (spam-process (spam spam-use-gmane)))
+        ("^gwene\\."
+         (gnus-summary-line-format rss-summary-line-format)
+         (spam-autodetect . t)
+         (spam-autodetect-methods spam-use-regex-headers)
+         (spam-process (spam spam-use-gmane)))))
 
 (use-package gnus
   :ensure nil
