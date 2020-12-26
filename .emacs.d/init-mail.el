@@ -29,7 +29,6 @@
 
     (setq message-citation-line-function 'message-insert-formatted-citation-line
           message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n"
-          message-expand-name-standard-ui t
           message-wide-reply-confirm-recipients t
           message-default-headers "X-Attribution: MJS"
           message-sendmail-envelope-from 'header)))
