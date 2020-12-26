@@ -5,7 +5,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-cask "xquartz"
 # Java build tool
 brew "ant"
 # Readline wrapper: adds readline support to tools that lack it
@@ -26,6 +25,8 @@ brew "aws-elasticbeanstalk"
 brew "awscli"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
+# Garbage collector for C and C++
+brew "bdw-gc"
 # XML-based font configuration API for X Windows
 brew "fontconfig"
 # Library for handling page faults in user mode
@@ -60,12 +61,16 @@ brew "gawk"
 brew "gcc"
 # GNU debugger
 brew "gdb"
+# Toolkit for image loading and pixel buffer manipulation
+brew "gdk-pixbuf"
 # GitHub command-line tool
 brew "gh"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
 # Distributed revision control system
 brew "git"
+# Common error values for all GnuPG components
+brew "libgpg-error"
 # Cryptographic library based on the code from GnuPG
 brew "libgcrypt"
 # X.509 and CMS library
@@ -112,6 +117,8 @@ brew "mit-scheme"
 brew "mps-youtube"
 # Single-player roguelike video game
 brew "nethack"
+# Platform built on V8 to build network applications
+brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # LGPL release of the Motif toolkit
@@ -142,8 +149,6 @@ brew "telnet"
 brew "tnef"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Extract, view, and test RAR archives
-brew "unrar"
 # Vi 'workalike' with many additional features
 brew "vim"
 # Pager/text based browser
@@ -168,3 +173,4 @@ cask "libreoffice"
 cask "mactex-no-gui"
 cask "shiftit"
 cask "slack"
+cask "xquartz"
