@@ -372,3 +372,5 @@
                                       (end (point)))
                                   (pulse-momentary-highlight-region begin end)
                                   retval))))
+(use-package mode-line-bell
+  :hook (after-init . mode-line-bell-mode))
