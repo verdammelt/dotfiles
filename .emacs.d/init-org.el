@@ -63,6 +63,8 @@
           org-log-into-drawer t
           org-treat-S-cursor-todo-selection-as-state-change nil
 
+          org-habit-graph-column 70
+
           org-hide-leading-stars nil
           org-startup-indented t
 
