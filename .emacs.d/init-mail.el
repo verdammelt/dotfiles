@@ -28,7 +28,7 @@
     (add-hook 'message-send-hook 'message-sign-encrypt-if-all-keys-available)
 
     (setq message-citation-line-function 'message-insert-formatted-citation-line
-          message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n"
+          message-citation-line-format "On %Y-%m-%dT%R%z, %f wrote:"
           message-wide-reply-confirm-recipients t
           message-default-headers "X-Attribution: MJS"
           message-sendmail-envelope-from 'header)))
