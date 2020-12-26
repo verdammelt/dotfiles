@@ -178,7 +178,7 @@
         gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
         gnus-summary-line-format summary-line-format
         gnus-update-message-archive-method t
-        gnus-use-adaptive-scoring t))
+        gnus-use-adaptive-scoring '(word line)))
 
 (use-package gnus-art
   :ensure nil
@@ -238,7 +238,7 @@
                                               (t . "%Y-%m-%d"))
                 gnus-thread-sort-functions '(gnus-thread-sort-by-number
                                              gnus-thread-sort-by-subject
-                                             gnus-thread-sort-by-total-score)
+                                             gnus-thread-sort-by-score)
                 gnus-subthread-sort-functions  '(gnus-thread-sort-by-number)
                 gnus-thread-score-function '+
                 gnus-thread-hide-subtree t
@@ -304,8 +304,7 @@
   :config
   (progn
     (setq gnus-decay-scores t  ; temporary scores should degrade over time.
-          gnus-score-find-score-files-function '(gnus-score-find-hierarchical
-                                                 (lambda (group) '("SCORE")))
+          gnus-score-find-score-files-function 'gnus-score-find-hierarchical
           gnus-adaptive-pretty-print t
           gnus-adaptive-word-no-group-words t
           gnus-score-thread-simplify t)
