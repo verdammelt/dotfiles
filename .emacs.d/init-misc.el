@@ -360,8 +360,15 @@
 
 (use-package pulse
   :ensure nil
+  :defer 5
   :init (setq pulse-command-advice-flag t)
   :config
   (dolist (command '(scroll-up-command scroll-down-command
                                        recenter-top-bottom other-window))
-    (advice-add command :after #'(lambda (&rest _) (pulse-line-hook-function)))))
+    (advice-add command :after #'(lambda (&rest _) (pulse-line-hook-function))))
+  (advice-add 'yank :around #'(lambda (next-method &rest args)
+                                (let ((begin (point))
+                                      (retval (apply next-method args))
+                                      (end (point)))
+                                  (pulse-momentary-highlight-region begin end)
+                                  retval))))
