@@ -3,10 +3,6 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(defun mjs/setup-lispy-mode (hook)
-  (mapcar (lambda (f) (add-hook hook f))
-          '(paredit-mode rainbow-delimiters-mode)))
-
 (use-package slime
   :bind (("\C-cs" . slime-selector))
   :init
@@ -16,7 +12,7 @@
   :config
   (progn
     (load (expand-file-name "~/.quicklisp/clhs-use-local.el") t)
-    (mjs/setup-lispy-mode 'slime-repl-mode-hook)
+    (add-hook 'slime-repl-mode-hook 'paredit-mode)
     (slime-setup '(slime-fancy slime-company slime-asdf slime-quicklisp))))
 
 (use-package slime-autodoc
@@ -42,12 +38,12 @@
   :ensure nil
   :config
   (progn
-    (mjs/setup-lispy-mode 'emacs-lisp-mode-hook)
+    (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
     (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
     (add-hook 'emacs-lisp-mode-hook 'mjs/emacs-lisp-mode-setup)
 
-    (mjs/setup-lispy-mode 'lisp-mode-hook)
-    (mjs/setup-lispy-mode 'lisp-interaction-mode-hook)
+    (add-hook 'lisp-mode-hook 'paredit-mode)
+    (add-hook 'lisp-interaction-mode-hook 'paredit-mode)
 
     (put 'define-test 'lisp-indent-function 1)
 
@@ -57,12 +53,12 @@
   :ensure nil
   :config
   (progn
-    (mjs/setup-lispy-mode 'ielm-mode-hook)
+    (add-hook 'ielm-mode-hook 'paredit-mode)
     (add-hook 'ielm-mode-hook 'turn-on-elisp-slime-nav-mode)))
 
 (use-package scheme
   :ensure nil
-  :config (mjs/setup-lispy-mode 'scheme-mode-hook))
+  :config (add-hook 'scheme-mode-hook 'paredit-mode))
 
 (defun mjs/clj-refactor-setup ()
   (setq mode-name "CLJ")
@@ -77,14 +73,14 @@
 (use-package clojure-mode
   :config
   (progn
-    (mjs/setup-lispy-mode 'clojure-mode-hook)
+    (add-hook 'clojure-mode-hook 'paredit-mode)
     (add-hook 'clojure-mode-hook 'mjs/clj-refactor-setup)))
 
 (use-package cider
   :commands (cider-repl-add-shortcut)
   :config
   (progn
-    (mjs/setup-lispy-mode 'cider-repl-mode-hook)
+    (add-hook 'cider-repl-mode-hook 'paredit-mode)
     (add-hook 'cider-repl-mode-hook 'cider-company-enable-fuzzy-completion)
     (add-hook 'cider-mode-hook 'cider-company-enable-fuzzy-completion)
     (cider-repl-add-shortcut "quit" 'cider-quit)
@@ -93,7 +89,7 @@
 
 (use-package simple
   :ensure nil
-  :config (mjs/setup-lispy-mode 'eval-expression-minibuffer-setup-hook))
+  :config (add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode))
 
 (define-skeleton asdf-defsystem
   "Inserts a typical ASDF defsystem form into the current buffer"
