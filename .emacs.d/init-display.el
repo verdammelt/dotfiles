@@ -53,8 +53,8 @@
                             'intense-standard-completions t)
   :config (load-theme 'modus-vivendi t t))
 
-(enable-theme 'modus-vivendi)
 (enable-theme 'modus-operandi)
+(enable-theme 'modus-vivendi)
 
 (defun mjs/toggle-theme ()
   (interactive)
