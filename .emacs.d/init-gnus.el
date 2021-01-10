@@ -20,6 +20,7 @@
 
     (from "notification@slack.com"
           (| ("subject" "Exercism" "list.exercism.slack")
+             ("subject" "#maintaining-common-lisp" "list.exercism.slack")
              ("subject" "Def.Method" "defmethod.slack")))
 
     (| (from "hello@mail.exercism.io" "list.exercism.mentor")
