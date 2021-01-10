@@ -286,12 +286,16 @@
   :ensure org-plus-contrib
   :config (setq org-duration-format `h:mm))
 
-(use-package org-mobile
-  :ensure org-plus-contrib
-  :config
-  (setq org-mobile-directory (expand-file-name "MobileOrg" org-directory)
-        org-mobile-inbox-for-pull (mjs/expand-org-file "inbox")
-        org-mobile-agendas 'default))
+(use-package org-roam
+  :hook (after-init . org-roam-mode)
+  :init (setq org-roam-directory (expand-file-name "roam" org-directory))
+  :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
 
 ;;
 ;; ====================
