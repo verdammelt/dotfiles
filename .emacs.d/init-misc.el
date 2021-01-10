@@ -348,11 +348,14 @@
   :config
   (progn
     (setq company-idle-delay .1
-          company-tooltip-idle-delay .25
+          company-tooltip-idle-delay .1
           company-tooltip-limit 20
           company-show-numbers t
           company-tooltip-align-annotations t
-          company-selection-wrap-around t)))
+          company-selection-wrap-around t)
+    (setq company-backends
+          (subst '(company-dabbrev :separate company-ispell) 'company-dabbrev
+                 company-backends))))
 
 (use-package so-long
   :ensure nil
