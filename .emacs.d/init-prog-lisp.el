@@ -13,13 +13,15 @@
   (progn
     (load (expand-file-name "~/.quicklisp/clhs-use-local.el") t)
     (add-hook 'slime-repl-mode-hook 'paredit-mode)
-    (slime-setup '(slime-fancy slime-company slime-asdf slime-quicklisp))))
+    (slime-setup '(slime-fancy
+                   slime-asdf
+                   slime-quicklisp))
+    ;; this completion does not work well with capf as it opens its own buffer which is not what we want
+    (remove-hook 'slime-completion-at-point-functions #'slime-c-p-c-completion-at-point)))
 
 (use-package slime-autodoc
   :ensure nil
   :config (setq slime-autodoc-mode-string nil))
-
-(use-package slime-company :config (setq slime-company-completion 'fuzzy))
 
 (use-package eldoc
   :ensure nil
