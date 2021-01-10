@@ -56,6 +56,7 @@ alias gl='git l'
 alias gla='git la'
 alias gr='git r'
 alias gra='git ra'
+alias gp='git push'
 
 # Keeping track of my commands
 shopt -s histappend
