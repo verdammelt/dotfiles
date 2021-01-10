@@ -29,6 +29,8 @@ brew "bash-completion"
 brew "bdw-gc"
 # XML-based font configuration API for X Windows
 brew "fontconfig"
+# Vector graphics library with cross-device output support
+brew "cairo"
 # Library for handling page faults in user mode
 brew "libsigsegv"
 # GNU CLISP, a Common Lisp implementation
@@ -95,6 +97,8 @@ brew "htop"
 brew "hub"
 # Common Lisp ANSI-standard Hyperspec
 brew "hyperspec"
+# Database of common MIME types
+brew "shared-mime-info"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # String tool
@@ -131,10 +135,14 @@ brew "pandoc"
 brew "paperkey"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Paste PNG into files
+brew "pngpaste"
 # GNU Portable THreads
 brew "pth"
 # Ruby version manager
 brew "rbenv"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Lisp installer and launcher for major environments
 brew "roswell"
 # Powerful, clean, object-oriented scripting language
