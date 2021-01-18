@@ -48,6 +48,7 @@
     (add-hook 'lisp-interaction-mode-hook 'paredit-mode)
 
     (put 'define-test 'lisp-indent-function 1)
+    (put 'test 'lisp-indent-function 1)
 
     (define-auto-insert '("\\.asd" . "ASDF Defsystem file") 'asdf-defsystem)))
 
