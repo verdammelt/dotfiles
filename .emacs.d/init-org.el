@@ -289,25 +289,30 @@
 (use-package org-roam
   :commands (org-roam-dailies-find-today org-roam-dailies-capture-today)
   :hook (after-init . org-roam-mode)
-  :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n c" . org-roam-dailies-capture-today)
-               ("C-c n n" . org-roam-dailies-find-next-note)
-               ("C-c n p" . org-roam-dailies-find-previous-note)
-               ("C-c n t" . org-roam-dailies-find-today)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate)))
+  :bind (:map
+         org-roam-mode-map
+         ("C-c n ." . #'org-roam-find-directory)
+         ("C-c n l" . #'org-roam)
+         ("C-c n f" . #'org-roam-find-file)
+         ("C-c n F" . #'org-roam-find-file-immediate)
+         ("C-c n g" . #'org-roam-graph)
+         ("C-c n i" . #'org-roam-insert)
+         ("C-c n I" . #'org-roam-insert-immediate)
+         :prefix "C-c n d" :prefix-map org-roam-dailies-map)
   :config
-  (setq
-   org-roam-directory (expand-file-name "roam" org-directory)
-   org-roam-dailies-capture-templates
-        '(("d" "default" entry #'org-roam-capture--get-point
-           "* %U %?\n%a\n\n%i\n"
-           :file-name "daily/%<%Y-%m-%d>"
-           :head "#+FILETAGS: REFILE\n#+title: %<%Y-%m-%d>\n\n"))))
+  (progn
+    (setq org-roam-directory (expand-file-name "roam" org-directory)
+          org-roam-dailies-capture-templates
+          '(("d" "default" entry #'org-roam-capture--get-point
+             "\n* %<%H:%M> %? 	:REFILE:\n%a\n\n%i\n"
+             :file-name "daily/%<%Y-%m-%d>"
+             :head "#+title: %<%Y-%m-%d>\n\n"
+             :clock-in t :clock-resume t)))
+    (pushnew (expand-file-name "daily" org-roam-directory) org-agenda-files
+             :test #'string=)))
+
+
+
 
 ;;
 ;; ====================
