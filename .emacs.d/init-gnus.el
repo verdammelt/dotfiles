@@ -82,6 +82,7 @@
 
     (| (any "ally.*" "list.bank")
        (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
+       (any "\*\.optumbank\.com" "list.bank")
        (any ".*mint.*" "list.bank")
        (any ".*citizensbank.*" "list.bank")
        (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
