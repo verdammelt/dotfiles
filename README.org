@@ -56,5 +56,7 @@ Copy keys from other machine
 *** Misc MacOSX defaults
 - ~defaults write com.apple.finder AppleShowAllFiles YES~
 - ~defaults write com.apple.finder QuitMenuItem -bool YES~
+- ~defaults write com.google.Chrome ExternalProtocolDialogShowAlwaysOpenCheckbox -bool true~
+
 ** Other applications
 *** BeFocused
