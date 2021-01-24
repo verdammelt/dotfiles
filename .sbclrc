@@ -38,6 +38,10 @@
 (defun run-all-tests (&optional (pkg *package*))
   (lisp-unit:run-tests :all pkg))
 
+(ql:quickload :alexandria)
+(sb-ext:add-package-local-nickname :alex :alexandria)
+(sb-ext:add-package-local-nickname :alex2 :alexandria-2)
+
 (defpackage :exercism-utils
   (:use :cl)
   (:export :run-these-tests))
