@@ -79,6 +79,8 @@ brew "libgcrypt"
 brew "libksba"
 # Library for USB device access
 brew "libusb"
+# Passphrase entry dialog utilizing the Assuan protocol
+brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # C/C++ and Java libraries for Unicode and globalization
@@ -133,6 +135,8 @@ brew "ossp-uuid"
 brew "pandoc"
 # Extract just secret information out of OpenPGP secret keys
 brew "paperkey"
+# Highly capable, feature-rich programming language
+brew "perl"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Paste PNG into files
