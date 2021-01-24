@@ -109,7 +109,7 @@
     (setq org-agenda-cmp-user-defined 'bh/agenda-sort
 
           org-agenda-files
-          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile"))
+          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile" "roam/daily"))
 
           org-agenda-sorting-strategy
           '((agenda time-up user-defined-up category-keep)
@@ -283,11 +283,13 @@
   :config (setq org-duration-format `h:mm))
 
 (use-package org-roam
-  :commands (org-roam-dailies-find-today org-roam-dailies-capture-today)
+  :diminish (org-roam-mode)
   :hook (after-init . org-roam-mode)
   :bind (:map
          org-roam-mode-map
          ("C-c n ." . #'org-roam-find-directory)
+         ("C-c n c" . #'org-roam-capture)
+         ("C-c n t" . #'org-roam-dailies-capture-today)
          ("C-c n l" . #'org-roam)
          ("C-c n f" . #'org-roam-find-file)
          ("C-c n F" . #'org-roam-find-file-immediate)
@@ -295,20 +297,21 @@
          ("C-c n i" . #'org-roam-insert)
          ("C-c n I" . #'org-roam-insert-immediate)
          :prefix "C-c n d" :prefix-map org-roam-dailies-map)
+  :config (setq org-roam-directory (expand-file-name "roam" org-directory)
+                org-roam-graph-viewer "/usr/bin/open"
+                org-roam-graph-exclude-matcher '("index")))
+
+(use-package org-roam-dailies
+  :ensure org-roam
+  :after org-roam
   :config
-  (progn
-    (setq org-roam-directory (expand-file-name "roam" org-directory)
-          org-roam-dailies-capture-templates
-          '(("d" "default" entry #'org-roam-capture--get-point
-             "\n* %<%H:%M> %? 	:REFILE:\n%a\n\n%i\n"
-             :file-name "daily/%<%Y-%m-%d>"
-             :head "#+title: %<%Y-%m-%d>\n\n"
-             :clock-in t :clock-resume t)))
-    (pushnew (expand-file-name "daily" org-roam-directory) org-agenda-files
-             :test #'string=)))
-
-
-
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default" entry #'org-roam-capture--get-point
+           "\n* %<%H:%M> %? 	:REFILE:\n%a\n\n%i\n"
+           :file-name "daily/%<%Y-%m-%d>"
+           :head "#+title: %<%Y-%m-%d>\n\n"
+           :clock-in t :clock-resume t))))
+(use-package org-roam-protocol :ensure org-roam :after org-roam)
 
 ;;
 ;; ====================
