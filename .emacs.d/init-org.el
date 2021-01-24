@@ -117,18 +117,6 @@
             (tags todo-state-up alpha-up)
             (search todo-state-up alpha-up))
 
-          ;; org-agenda-clock-consistency-checks
-          ;; '(:max-duration "04:00"
-          ;;                 :min-duration 0
-          ;;                 :max-gap 0
-          ;;                 :gap-ok-around ("04:00")
-          ;;                 :default-face
-          ;;                 ((:background "DarkRed")
-          ;;                  (:foreground "white"))
-          ;;                 :overlap-face nil :gap-face nil
-          ;;                 :no-end-time-face nil
-          ;;                 :long-face nil :short-face nil)
-
           org-stuck-projects
           '("+PROJECT=\"TRUE\"+LEVEL=2" ("TODO" "WAIT") nil "")
 
@@ -147,30 +135,38 @@
                      (org-agenda-use-time-grid nil)))
          (tags "REFILE"
                ((org-agenda-overriding-header "Tasks to Refile")))
-         (tags-todo "+@CALL&-@WORK/!-WAIT"
+         (tags-todo "+@CALL/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@CALL")))
-         (tags-todo "+@EMAIL&-@WORK|+@SLACK&-@WORK/!-WAIT"
+         (tags-todo "+@EMAIL|+@SLACK/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@EMAIL|@SLACK")))
-         (tags-todo "+@ERRAND&-@WORK/!-WAIT"
+         (tags-todo "+@ERRAND/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@ERRAND")))
-         (tags-todo "-@WORK&-@WENDY&-@ERRAND&-@EMAIL&-@SLACK&-@CALL/!-WAIT"
+         (tags-todo "+@HOME|+@MAC/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@HOME")))
+                     (org-agenda-overriding-header "@HOME/@MAC")))
+         (tags-todo "+@ANY/!-WAIT"
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@ANY")))
+         (tags-todo "+@WEB/!-WAIT"
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@WEB")))
          (tags-todo "+@WENDY/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@WENDY")))
-         (tags-todo "+@WORK&-@CLIENT/!-WAIT"
+         (tags-todo  "-@CLIENT&+@WORK|+@WORKMAC/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@WORK(non-client)")))
+                     (org-agenda-overriding-header "@WORK")))
          (tags-todo "-@CLIENT/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("k" "work"
