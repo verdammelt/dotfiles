@@ -99,10 +99,13 @@
 
 (use-package simple
   :ensure nil
-  :hook (markdown-mode . visual-line-mode)
+  :hook (text-mode . visual-line-mode)
   :init
   (setq-default indent-tabs-mode nil)
   (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)))
+
+(use-package visual-fill-column
+  :hook (text-mode . visual-fill-column-mode))
 
 (use-package whitespace
   :ensure nil
