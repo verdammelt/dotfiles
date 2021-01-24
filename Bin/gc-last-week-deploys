@@ -1,0 +1,6 @@
+#!/bin/sh
+
+YESTERDAY=`date -v -1d +"%Y-%m-%d"`
+WEEK_AGO_YESTERDAY=`date -v -8d +"%Y-%m-%d"`
+
+git log --first-parent --since $WEEK_AGO_YESTERDAY  --before $YESTERDAY --oneline origin/master

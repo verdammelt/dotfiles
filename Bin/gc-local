@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo `pbpaste` | \
+     sed -e 's,https://tm-staging.gc.com,http://localhost:8080,' | \
+     pbcopy

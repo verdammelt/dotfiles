@@ -1,0 +1,6 @@
+#!/bin/bash -ex
+
+git fetch origin
+git switch $1
+git reset --hard origin/$1
+make reinstall ci
