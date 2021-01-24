@@ -1,0 +1,12 @@
+#!/bin/bash -ex
+
+docker-compose down -v --remove-orphans
+docker-compose pull
+
+make clean
+
+make test_env
+
+make compile
+
+make tests
