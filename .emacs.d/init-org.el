@@ -307,7 +307,7 @@
   :config
   (setq org-roam-dailies-capture-templates
         '(("d" "default" entry #'org-roam-capture--get-point
-           "\n* %<%H:%M> %? 	:REFILE:\n%a\n\n%i\n"
+           "\n\n* %<%H:%M> %? 	:WEEKLY:REFILE:\n%a\n\n%i\n"
            :file-name "daily/%<%Y-%m-%d>"
            :head "#+title: %<%Y-%m-%d>\n\n"
            :clock-in t :clock-resume t))))
