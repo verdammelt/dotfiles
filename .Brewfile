@@ -7,8 +7,6 @@ tap "homebrew/core"
 tap "homebrew/services"
 # Java build tool
 brew "ant"
-# Readline wrapper: adds readline support to tools that lack it
-brew "rlwrap"
 # Armed Bear Common Lisp: a full implementation of Common Lisp
 brew "abcl"
 # Search tool like grep, but optimized for programmers
@@ -174,15 +172,27 @@ brew "xvid"
 brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-jansson", "without-imagemagick"]
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
+# App to build and share containerized applications and microservices
 cask "docker"
+# Client for the Dropbox cloud storage service
 cask "dropbox"
+# VPN and encryption software
 cask "encryptme"
+# Double-entry accounting program
 cask "gnucash"
+# Web browser
 cask "google-chrome"
+# End-to-end encryption software
 cask "keybase"
+# Productivity tool
 cask "launchbar"
+# Office suite
 cask "libreoffice"
+# Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
+# Tool to manage the size and position of windows
 cask "shiftit"
+# Team communication and collaboration software
 cask "slack"
+# Open-source version of the X.Org X Window System
 cask "xquartz"
