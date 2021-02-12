@@ -94,9 +94,6 @@
     (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
   :config (setq forge-topic-list-limit '(100 . -5)))
 
-(use-package git-commit
-  :init (add-hook 'after-init-hook 'global-git-commit-mode t))
-
 (use-package simple
   :ensure nil
   :hook (markdown-mode . visual-line-mode)
