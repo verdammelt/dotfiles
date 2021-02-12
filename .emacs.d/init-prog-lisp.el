@@ -25,7 +25,7 @@
 
 (use-package eldoc
   :ensure nil
-  :hook (after-init-hook . global-eldoc-mode)
+  :hook (after-init . global-eldoc-mode)
   :diminish (eldoc-mode))
 (use-package elisp-slime-nav
   :diminish (elisp-slime-nav-mode)
