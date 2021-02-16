@@ -65,6 +65,9 @@
 
           org-habit-graph-column 70
 
+          org-agenda-files
+          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile"))
+
           org-hide-leading-stars nil
           org-startup-indented t
 
@@ -107,9 +110,6 @@
       '(org-agenda-skip-if nil '(scheduled deadline)))
 
     (setq org-agenda-cmp-user-defined 'bh/agenda-sort
-
-          org-agenda-files
-          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile" "roam/daily"))
 
           org-agenda-sorting-strategy
           '((agenda time-up user-defined-up category-keep)
@@ -310,7 +310,10 @@
            "\n\n* %<%H:%M> %? 	:WEEKLY:REFILE:\n%a\n\n%i\n"
            :file-name "daily/%<%Y-%m-%d>"
            :head "#+title: %<%Y-%m-%d>\n\n"
-           :clock-in t :clock-resume t))))
+           :clock-in t :clock-resume t)))
+  (pushnew (expand-file-name org-roam-dailies-directory org-roam-directory)
+           org-agenda-files))
+
 (use-package org-roam-protocol :ensure org-roam :after org-roam)
 
 ;;
