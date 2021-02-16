@@ -15,9 +15,14 @@
     (add-hook 'slime-repl-mode-hook 'paredit-mode)
     (slime-setup '(slime-fancy
                    slime-asdf
-                   slime-quicklisp))
+                   slime-quicklisp
+                   slime-company))
     ;; this completion does not work well with capf as it opens its own buffer which is not what we want
     (remove-hook 'slime-completion-at-point-functions #'slime-c-p-c-completion-at-point)))
+
+(use-package slime-company
+  :after (slime company)
+  :config (setq slime-company-completion 'fuzzy))
 
 (use-package slime-autodoc
   :ensure nil
