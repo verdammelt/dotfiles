@@ -299,7 +299,8 @@
          :prefix "C-c n d" :prefix-map org-roam-dailies-map)
   :config (setq org-roam-directory (expand-file-name "roam" org-directory)
                 org-roam-graph-viewer "/usr/bin/open"
-                org-roam-graph-exclude-matcher '("index")))
+                org-roam-graph-exclude-matcher '("index")
+                org-roam-db-update-method 'immediate))
 
 (use-package org-roam-dailies
   :ensure org-roam
