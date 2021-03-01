@@ -29,6 +29,7 @@
          ("S-s-<f9>" . mjs/punch-out))
 
   :init
+  (setq org-directory (expand-file-name "~/Documents/Dropbox/GTD"))
   (progn (add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
          (add-hook 'org-mode-hook 'turn-on-auto-fill)
          (add-hook 'org-mode-hook 'flyspell-mode)
@@ -52,8 +53,7 @@
     (set-face-attribute 'org-done nil :strike-through t)
     (set-face-attribute 'org-headline-done nil :strike-through t)
 
-    (setq org-directory (expand-file-name "~/Documents/Dropbox/GTD")
-          org-default-notes-file (mjs/expand-org-file "inbox")
+    (setq org-default-notes-file (mjs/expand-org-file "inbox")
           org-use-property-inheritance t
           org-log-done 'time
           org-log-redeadline 'note
@@ -297,8 +297,8 @@
          ("C-c n i" . #'org-roam-insert)
          ("C-c n I" . #'org-roam-insert-immediate)
          :prefix "C-c n d" :prefix-map org-roam-dailies-map)
-  :config (setq org-roam-directory (expand-file-name "roam" org-directory)
-                org-roam-graph-viewer "/usr/bin/open"
+  :init (setq org-roam-directory (expand-file-name "memex" org-directory))
+  :config (setq org-roam-graph-viewer "/usr/bin/open"
                 org-roam-graph-exclude-matcher '("index")
                 org-roam-db-update-method 'immediate))
 
@@ -312,7 +312,7 @@
            :file-name "daily/%<%Y-%m-%d>"
            :head "#+title: %<%Y-%m-%d>\n\n"
            :clock-in t :clock-resume t)))
-  (pushnew (expand-file-name org-roam-dailies-directory org-roam-directory)
+  (cl-pushnew (expand-file-name org-roam-dailies-directory org-roam-directory)
            org-agenda-files))
 
 (use-package org-roam-protocol :ensure org-roam :after org-roam)
