@@ -3,35 +3,18 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(use-package slime
-  :bind (("\C-cs" . slime-selector))
-  :init
-  (progn (setq-default slime-lisp-implementations
-                       '((sbcl ("sbcl" "--noinform"))))
-         (load (expand-file-name "~/.quicklisp/slime-helper.el")))
-  :config
-  (progn
-    (load (expand-file-name "~/.quicklisp/clhs-use-local.el") t)
-    (add-hook 'slime-repl-mode-hook 'paredit-mode)
-    (slime-setup '(slime-fancy
-                   slime-asdf
-                   slime-quicklisp
-                   slime-company))
-    ;; this completion does not work well with capf as it opens its own buffer which is not what we want
-    (remove-hook 'slime-completion-at-point-functions #'slime-c-p-c-completion-at-point)))
+(use-package sly
+  :hook ((sly-mode . (lambda () (unless (sly-connected-p) (save-excursion (sly)))))
+         (sly-mrepl . paredit-mode)))
 
-(use-package slime-company
-  :after (slime company)
-  :config (setq slime-company-completion 'fuzzy))
-
-(use-package slime-autodoc
-  :ensure nil
-  :config (setq slime-autodoc-mode-string nil))
+(use-package sly-asdf)
+(use-package sly-quicklisp)
 
 (use-package eldoc
   :ensure nil
   :hook (after-init . global-eldoc-mode)
-  :diminish (eldoc-mode))
+  :diminish (eldoc-mode)
+  :config (setq eldoc-echo-area-use-multiline-p t))
 (use-package elisp-slime-nav
   :diminish (elisp-slime-nav-mode)
   :config (elisp-slime-nav-mode))
@@ -45,6 +28,7 @@
   :ensure nil
   :config
   (progn
+    (setq inferior-lisp-program "/usr/local/bin/sbcl")
     (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
     (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
     (add-hook 'emacs-lisp-mode-hook 'mjs/emacs-lisp-mode-setup)
