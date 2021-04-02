@@ -315,6 +315,18 @@
 
 (use-package org-roam-protocol :ensure org-roam :after org-roam)
 
+
+(use-package org-present
+  :config
+  (setq org-present-text-scale 2.5)
+  (mapcar #'(lambda (fun-pair)
+              (add-hook 'org-present-mode-hook (car fun-pair))
+              (add-hook 'org-present-mode-quit-hook (cdr fun-pair)))
+          '((org-present-big . org-present-small)
+            (org-display-inline-images . org-remove-inline-images)
+            (org-present-hide-cursor . org-present-show-cursor)
+            (org-present-read-only . org-present-read-write))))
+
 ;;
 ;; ====================
 ;;
