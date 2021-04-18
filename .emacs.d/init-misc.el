@@ -354,8 +354,8 @@
           company-tooltip-align-annotations t
           company-selection-wrap-around t)
     (setq company-backends
-          (subst '(company-dabbrev :separate company-ispell) 'company-dabbrev
-                 company-backends))))
+          (cl-subst '(company-dabbrev :separate company-ispell) 'company-dabbrev
+                    company-backends))))
 
 (use-package so-long
   :ensure nil
