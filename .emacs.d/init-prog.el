@@ -38,11 +38,23 @@
     (ansi-color-apply-on-region
      compilation-filter-start (point))))
 
+(defun mjs/add-compilation-error-regexp (sym regexp file line col highlight)
+  (add-to-list 'compilation-error-regexp-alist sym)
+  (add-to-list 'compilation-error-regexp-alist-alist
+               (list sym regexp file line col highlight)))
+
 (use-package compile
   :ensure nil
+  :defines compilation-error-regexp-alist compilation-error-regexp-alist-alist
   :config
   (progn (setq compilation-scroll-output 'first-error)
-         (add-hook 'compilation-filter-hook #'mjs/colorize-compilation)))
+         (add-hook 'compilation-filter-hook #'mjs/colorize-compilation)
+         (mjs/add-compilation-error-regexp
+          'webpack-tsc-error-regexp "ERROR in \\(.*\\)(\\(.*\\),\\(.*\\))"
+          1 2 3 1)
+         (mjs/add-compilation-error-regexp
+          'jest-error-stack "at .* (\\(.*\\):\\(.*\\):\\(.*\\))"
+          1 2 3 1)))
 
 (use-package less-css-mode)
 
