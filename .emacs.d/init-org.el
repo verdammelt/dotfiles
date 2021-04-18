@@ -214,9 +214,6 @@
            "* TODO Process '%:subject' from '%:from' :@EMAIL:\n%U\n%a\n"
            :clock-in t :clock-resume t
            :immediate-finish t)
-          ("n" "Take a note" entry (file "")
-           "* %U %^{Title} :NOTE:\n%a\n\n	%i\n%?"
-           :clock-in t :clock-resume t)
           ("k" "Tickler" entry (file+headline ,(mjs/expand-org-file "todo.org") "Tickler")
            "* %?\nSCHEDULED: %^t\n%a\n"
            :clock-in t :clock-resume t)
