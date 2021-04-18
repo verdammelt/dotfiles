@@ -17,6 +17,8 @@ brew "aspell"
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# GNU database manager
+brew "gdbm"
 # Client for Amazon Elastic Beanstalk web service
 brew "aws-elasticbeanstalk"
 # Official Amazon AWS command-line interface
@@ -69,6 +71,8 @@ brew "gh"
 brew "ghostscript"
 # Distributed revision control system
 brew "git"
+# Generic library support script
+brew "libtool"
 # Common error values for all GnuPG components
 brew "libgpg-error"
 # Cryptographic library based on the code from GnuPG
@@ -169,7 +173,7 @@ brew "wget"
 brew "xpdf"
 # High-performance, high-quality MPEG-4 video library
 brew "xvid"
-brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-jansson", "without-imagemagick"]
+brew "d12frosted/emacs-plus/emacs-plus@27", args: ["without-imagemagick"]
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
 # App to build and share containerized applications and microservices
