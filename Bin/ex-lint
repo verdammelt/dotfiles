@@ -1,0 +1,6 @@
+#!/bin/sh -ex
+
+# assumes one is in the root of an exercism language track.
+
+./bin/fetch-configlet
+./bin/configlet lint
