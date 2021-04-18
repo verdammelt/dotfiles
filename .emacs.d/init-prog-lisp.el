@@ -5,7 +5,9 @@
 ;;;;
 (use-package sly
   :hook ((sly-mode . (lambda () (unless (sly-connected-p) (save-excursion (sly)))))
-         (sly-mrepl . paredit-mode)))
+         (sly-mrepl . paredit-mode))
+  :config (setq common-lisp-hyperspec-root
+                "file:///usr/local/Cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec/"))
 
 (use-package sly-asdf)
 (use-package sly-quicklisp)
