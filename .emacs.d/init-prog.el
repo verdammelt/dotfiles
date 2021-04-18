@@ -53,3 +53,8 @@
   :config (setq lsp-disabled-clients '(jsts-ls)
                 gc-cons-threshold (* 2 gc-cons-threshold)
                 read-process-output-max (* 1024 1024)))
+
+(use-package lsp-ui
+  :after lsp-mode
+  :config (setq lsp-ui-doc-position 'top
+                lsp-ui-doc-use-childframe nil))
