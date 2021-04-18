@@ -192,10 +192,11 @@
        ("r" . "Review speciality agenda")
        ("rx" "lost tasks" tags-todo "-{^@}")
        ("rw" "waiting" tags-todo "/WAIT")
-       ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2")
+       ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2"
+        ((org-agenda-sorting-strategy '(category-keep))))
        ("rt" "loose todos" alltodo ""
         ((org-agenda-sorting-strategy
-          '((tags time-up alpha-up)))))
+          '(time-up alpha-up))))
        ("rn" "last week's notes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\"")))))
 
 (use-package org-capture
