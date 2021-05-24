@@ -15,47 +15,17 @@
                     :height 180
                     :family "DejaVu Sans")
 
-(defun set-modus-theme-settings (theme &rest settings)
-  (when settings
-    (cl-destructuring-bind (var value &rest other) settings
-      (set (intern (format "modus-%s-theme-%s" theme var)) value)
-      (apply #'set-modus-theme-settings theme other))))
-
-(use-package modus-operandi-theme
+(use-package modus-themes
   :defer nil
   :init
-  (set-modus-theme-settings 'operandi
-                            'slanted-constructs t
-                            'bold-constructs t
-                            'proportional-fonts t
-                            'rainbow-headings t
-                            'scale-headings t
-                            'visible-fringes t
-                            'distinct-org-blocks t
-                            '3d-modeline t
-                            'intense-hl-line t
-                            'intense-standard-completions t)
-  :config (load-theme 'modus-operandi t t))
-
-(use-package modus-vivendi-theme
-  :defer nil
-  :init
-  (set-modus-theme-settings 'vivendi
-                            'slanted-constructs t
-                            'bold-constructs t
-                            'proportional-fonts t
-                            'rainbow-headings t
-                            'scale-headings t
-                            'visible-fringes t
-                            'distinct-org-blocks t
-                            '3d-modeline t
-                            'intense-hl-line t
-                            'intense-standard-completions t)
-  :config (load-theme 'modus-vivendi t t))
-
-(enable-theme 'modus-operandi)
-(enable-theme 'modus-vivendi)
-
-(defun mjs/toggle-theme ()
-  (interactive)
-  (enable-theme (cl-second custom-enabled-themes)))
+  (setq modus-themes-slanted-constructs t
+        modus-themes-bold-constructs t
+        modus-themes-scale-headings t
+        modus-themes-mode-line 'borderless
+        modus-themes-hl-line 'intense-backround
+        modus-themes-completions 'moderate
+        modus-themes-diffs 'desaturated
+        )
+  (modus-themes-load-themes)
+  :config
+  (modus-themes-load-vivendi))
