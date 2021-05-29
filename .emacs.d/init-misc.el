@@ -72,6 +72,8 @@
   :diminish (yas-minor-mode)
   :init (add-hook 'after-init-hook 'yas-global-mode t))
 
+(use-package yasnippet-snippets)
+
 (use-package fullframe)
 
 (use-package magit
