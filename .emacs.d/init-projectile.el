@@ -42,8 +42,6 @@
     (add-hook 'projectile-after-switch-project-hook 'rbenv-use-corresponding)
     (add-hook 'projectile-after-switch-project-hook 'mjs/setup-project)
 
-    (add-hook 'projectile-mode-hook 'projectile-rails-on)
-
     (setq projectile-switch-project-action 'projectile-dired
           projectile-mode-line-prefix " P"
           projectile-enable-caching t)
