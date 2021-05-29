@@ -54,6 +54,8 @@
   :ensure nil
   :config (add-hook 'scheme-mode-hook 'paredit-mode))
 
+(use-package sicp)
+
 (defun mjs/clj-refactor-setup ()
   (setq mode-name "CLJ")
   (clj-refactor-mode)

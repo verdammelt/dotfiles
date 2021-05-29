@@ -178,8 +178,7 @@
                               ("*" "*" nil 'lisp-mode)
                               ("+" "+" nil 'lisp-mode))))
 
-(use-package grep
-  :ensure nil
+(use-package wgrep
   :config
   (progn
     (defun mjs/add-wgrep-key ()
@@ -375,3 +374,7 @@
 (use-package which-key
   :diminish (which-key-mode)
   :hook (after-init . which-key-mode))
+
+(use-package diminish)
+
+(use-package markdown-mode)

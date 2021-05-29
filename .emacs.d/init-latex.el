@@ -3,7 +3,7 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(use-package tex
+(use-package tex-mode
   :ensure nil
   :commands TeX-global-PDF-mode
   :init (setq-default TeX-master nil)
@@ -13,7 +13,7 @@
                TeX-parse-self t)))
 
 (use-package latex
-  :ensure nil
+  :ensure auctex
   :config
   (progn
     (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
@@ -24,3 +24,5 @@
 (use-package reftex
   :ensure nil
   :config (setq reftex-plug-into-AUCTeX t))
+
+(use-package auctex)

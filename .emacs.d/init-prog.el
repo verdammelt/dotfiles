@@ -70,3 +70,6 @@
   :after lsp-mode
   :config (setq lsp-ui-doc-position 'top
                 lsp-ui-doc-use-childframe nil))
+
+(use-package scss-mode)
+(use-package yaml-mode)
