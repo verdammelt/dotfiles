@@ -24,8 +24,14 @@
         modus-themes-mode-line 'borderless
         modus-themes-hl-line 'intense-backround
         modus-themes-completions 'moderate
-        modus-themes-diffs 'desaturated
-        )
+        modus-themes-diffs 'desaturated)
   (modus-themes-load-themes)
+
   :config
   (modus-themes-load-vivendi))
+
+(use-package circadian
+  :init
+  (setq circadian-themes '((:sunrise . modus-operandi)
+                           (:sunset . modus-vivendi)))
+  (circadian-setup))
