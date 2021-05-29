@@ -63,4 +63,4 @@
 
 (mjs/load-init-file "secrets" 'noerror)
 
-(message "init file loading complete")
+(message "init file loading complete: %s" (emacs-init-time))
