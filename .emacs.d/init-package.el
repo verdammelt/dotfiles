@@ -10,8 +10,6 @@
 (add-to-list 'package-archives '("non-gnu" . "https://elpa.nongnu.org/nongnu/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
-(package-install-selected-packages)
-
 (defun mjs/perform-updates ()
   (interactive)
   (progn
