@@ -13,7 +13,6 @@
          (expand-file-name (format "%s.org" f) org-directory))))
 
 (use-package org
-  :ensure org-plus-contrib
   :functions (org-return org-insert-time-stamp org-clock-is-active)
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-switchb)
@@ -46,7 +45,6 @@
   (progn
     (fullframe org-agenda org-agenda-quit)
 
-    (add-to-list 'org-modules 'org-checklist)
     (add-to-list 'org-modules 'org-clock)
     (add-to-list 'org-modules 'org-habit)
 
@@ -102,7 +100,7 @@
                                (,(mjs/expand-org-file "somedaymaybe") :maxlevel . 9)))))
 
 (use-package org-agenda
-  :ensure org-plus-contrib
+  :ensure org
   :functions (org-agenda-quit)
   :config
   (progn
@@ -194,13 +192,11 @@
        ("rw" "waiting" tags-todo "/WAIT")
        ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2"
         ((org-agenda-sorting-strategy '(category-keep))))
-       ("rt" "loose todos" alltodo ""
-        ((org-agenda-sorting-strategy
-          '(time-up alpha-up))))
+       ("rt" "next-actions"  tags-todo "-CATEGORY=\"habits\"/!-WAIT")
        ("rn" "last week's notes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\"")))))
 
 (use-package org-capture
-  :ensure org-plus-contrib
+  :ensure org
   :init
   (add-hook 'org-capture-mode-hook 'turn-on-auto-fill)
 
@@ -240,14 +236,16 @@
                 (in-mode . "gnus-article-mode"))))))
 
 (use-package org-checklist
-  :ensure org-plus-contrib)
+  :ensure org-contrib
+  :after org
+  :init (add-to-list 'org-modules 'org-checklist))
 
 (use-package org-indent
-  :ensure org-plus-contrib
+  :ensure org
   :diminish (org-indent-mode))
 
 (use-package org-clock
-  :ensure org-plus-contrib
+  :ensure org
   :functions (org-clock-in org-clock-out)
   :init
   (add-hook 'org-clock-out-hook 'mjs/clock-out-maybe 'append)
@@ -277,7 +275,7 @@
     (org-clock-persistence-insinuate)))
 
 (use-package org-duration
-  :ensure org-plus-contrib
+  :ensure org
   :config (setq org-duration-format `h:mm))
 
 (use-package org-roam

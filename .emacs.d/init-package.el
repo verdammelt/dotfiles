@@ -7,7 +7,7 @@
 
 (advice-add 'package--save-selected-packages :filter-args #'mjs/sort-packages)
 
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("non-gnu" . "https://elpa.nongnu.org/nongnu/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (package-install-selected-packages)
@@ -18,7 +18,6 @@
     (save-some-buffers 'save-silently)
     (package-refresh-contents)
     (package-show-package-list)
-    (let ((package-menu-async nil)) (package-menu-refresh))
     (when (package-menu--find-upgrades) (package-menu-mark-upgrades))
     (ignore-errors (package-menu-execute t))
     (package-autoremove)
