@@ -8,7 +8,12 @@
 (advice-add 'package--save-selected-packages :filter-args #'mjs/sort-packages)
 
 (add-to-list 'package-archives '("non-gnu" . "https://elpa.nongnu.org/nongnu/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
+(setq package-archive-priorities '(("gnu" . 10) ("non-gnu" . 10)
+                                   ("melpa-stable" . 1)
+                                   ("melpa" . 0)))
 
 (defun mjs/perform-updates ()
   (interactive)
