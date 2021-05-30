@@ -4,13 +4,14 @@
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
 (use-package sly
+  :pin melpa
   :hook ((sly-mode . (lambda () (unless (sly-connected-p) (save-excursion (sly)))))
          (sly-mrepl . paredit-mode))
   :config (setq common-lisp-hyperspec-root
                 "file:///usr/local/Cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec/"))
 
-(use-package sly-asdf)
-(use-package sly-quicklisp)
+(use-package sly-asdf :pin melpa)
+(use-package sly-quicklisp :pin melpa)
 
 (use-package eldoc
   :ensure nil
