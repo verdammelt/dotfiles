@@ -3,8 +3,8 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
-(use-package tex-mode
-  :ensure nil
+(use-package tex
+  :ensure auctex
   :commands TeX-global-PDF-mode
   :init (setq-default TeX-master nil)
   :config
