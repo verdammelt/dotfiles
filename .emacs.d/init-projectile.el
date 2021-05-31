@@ -14,6 +14,7 @@
       (funcall setup-symbol))))
 
 (use-package projectile
+  :diminish projectile-mode
   :bind (("s-b" . projectile-switch-to-buffer)
          ("s-f" . projectile-find-file)
          ("s-s" . projectile-switch-project))
@@ -43,7 +44,6 @@
     (add-hook 'projectile-after-switch-project-hook 'mjs/setup-project)
 
     (setq projectile-switch-project-action 'projectile-dired
-          projectile-mode-line-prefix " P"
           projectile-enable-caching t)
 
     (projectile-register-project-type 'generic '() :compile "" :test "")
