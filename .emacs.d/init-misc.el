@@ -263,6 +263,7 @@
 (use-package flycheck
   :init (add-hook 'after-init-hook 'global-flycheck-mode t)
   :config
+  (setq flycheck-global-modes '(not lisp-mode))
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
 (use-package browse-kill-ring
