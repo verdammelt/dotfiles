@@ -46,7 +46,7 @@
     (fullframe org-agenda org-agenda-quit)
 
     (add-to-list 'org-modules 'org-clock)
-    (add-to-list 'org-modules 'org-habit)
+    ;; (add-to-list 'org-modules 'org-habit)
 
     (set-face-attribute 'org-done nil :strike-through t)
     (set-face-attribute 'org-headline-done nil :strike-through t)
