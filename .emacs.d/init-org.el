@@ -235,6 +235,11 @@
                 (in-mode . "gnus-summary-mode")
                 (in-mode . "gnus-article-mode"))))))
 
+(use-package org-mac-link
+  :ensure org-contrib
+  :after org
+  :bind (:map org-mode-map ("C-c g" . #'org-mac-safari-insert-frontmost-url)))
+
 (use-package org-checklist
   :ensure org-contrib
   :after org
