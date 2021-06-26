@@ -1,7 +1,5 @@
 PATH=$HOME/Bin:$PATH
 
-[[ -f "$HOME/.githubtoken" ]] && . $HOME/.githubtoken
-
 export CLICOLOR=1
 
 alias df='df -h'
@@ -41,7 +39,6 @@ export LANG=en_US.UTF-8
 ###
 ### GIT Stuff
 ###
-#alias git=hub
 function g() {
     git ${*:-status}
 }

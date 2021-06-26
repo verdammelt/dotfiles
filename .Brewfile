@@ -97,8 +97,6 @@ brew "librsvg"
 brew "graphviz"
 # Improved top (interactive process viewer)
 brew "htop"
-# Add GitHub support to git on the command-line
-brew "hub"
 # Common Lisp ANSI-standard Hyperspec
 brew "hyperspec"
 # Database of common MIME types
