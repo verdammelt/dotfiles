@@ -161,10 +161,8 @@
          ("M-Z" . zap-up-to-char)))
 
 (use-package multiple-cursors
-  :bind (("C-S-c C-S-c" . mc/mark-all-like-this-dwim)
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
-         ("C-<" . mc/mark-previous-like-this)))
-
 (declare-function wrap-region-add-wrapper "wrap-region")
 (use-package wrap-region
   :diminish (wrap-region-mode)
