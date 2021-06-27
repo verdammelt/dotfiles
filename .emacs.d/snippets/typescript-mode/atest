@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: atest
+# key: atest
+# --
+test("$1", async () => {
+         $0
+});
