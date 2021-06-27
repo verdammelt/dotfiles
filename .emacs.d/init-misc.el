@@ -58,7 +58,6 @@
   :init (setq-default abbrev-mode t)
   :diminish (abbrev-mode))
 
-;; flyspell
 (use-package flyspell
   :ensure nil
   :diminish (flyspell-mode)
@@ -336,7 +335,7 @@
               ("C-," . company-select-previous)
               ("C-d" . company-show-doc-buffer)
               ("M-." . company-show-location))
-    :init (add-hook 'after-init-hook 'global-company-mode t)
+  :init (add-hook 'after-init-hook 'global-company-mode t)
   :config
   (progn
     (setq company-idle-delay .1
