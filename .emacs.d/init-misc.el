@@ -346,10 +346,7 @@
           company-tooltip-limit 20
           company-show-numbers t
           company-tooltip-align-annotations t
-          company-selection-wrap-around t)
-    (setq company-backends
-          (cl-subst '(company-dabbrev :separate company-ispell) 'company-dabbrev
-                    company-backends))))
+          company-selection-wrap-around t)))
 
 (use-package so-long
   :ensure nil
