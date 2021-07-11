@@ -283,9 +283,6 @@
    nnmail-split-methods 'nnmail-split-fancy
    nnmail-split-fancy split-rules))
 
-(use-package nnreddit)
-
-
 (use-package spam
   :ensure nil
   :init (spam-initialize)
