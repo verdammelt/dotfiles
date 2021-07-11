@@ -1,12 +1,6 @@
 (declare-function if-work "init")
 (declare-function mjs/bbdb-init "init-bbdb")
 
-(defvar summary-line-format)
-(setq summary-line-format "%z%U%R%[%10&user-date;%*%(%1{%-15,15uB%)%}%]%B%s\n")
-
-(defvar rss-summary-line-format)
-(setq rss-summary-line-format "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n")
-
 (defvar split-rules)
 (setq split-rules
   '(|
@@ -156,10 +150,14 @@
          (spam-autodetect-methods spam-use-regex-headers)
          (spam-process (spam spam-use-gmane)))
         ("^gwene\\."
-         (gnus-summary-line-format rss-summary-line-format)
          (spam-autodetect . t)
          (spam-autodetect-methods spam-use-regex-headers)
-         (spam-process (spam spam-use-gmane)))))
+         (spam-process (spam spam-use-gmane)))
+
+        ;; in RSS feeds HTML is probably the right choice.
+        ("\\`nnrss:"
+         (mm-discouraged-alternatives nil)
+         (gnus-summary-line-format "%z%U%R%[%10&user-date;%B%s\n"))))
 
 (use-package gnus
   :ensure nil
@@ -178,7 +176,7 @@
         gnus-parameters group-parameters
         gnus-secondary-select-methods '((nnfolder "")) ; where to find my mails
         gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
-        gnus-summary-line-format summary-line-format
+        gnus-summary-line-format "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n"
         gnus-update-message-archive-method t
         gnus-use-adaptive-scoring '(word line)))
 
@@ -359,3 +357,28 @@
         (let ((nnmail-fancy-expiry-targets `(("from" ".*" ,expiry-target-file))))
           (nnmail-fancy-expiry-target group))
       expiry-target-file)))
+
+
+(use-package nnrss
+  :ensure nil
+  :config
+  (add-to-list 'nnmail-extra-headers nnrss-url-field)
+  (add-to-list 'nnmail-extra-headers nnrss-description-field))
+
+(use-package mm-url
+  :ensure nil
+  :config
+  (defadvice mm-url-insert (after DE-convert-atom-to-rss () )
+    "Converts atom to RSS by calling xsltproc."
+    (when (re-search-forward "xmlns=\"http://www.w3.org/.*/Atom\""
+                             nil t)
+      (goto-char (point-min))
+      (message "Converting Atom to RSS... ")
+      (call-process-region (point-min) (point-max)
+                           "xsltproc"
+                           t t nil
+                           (expand-file-name "~/News/rss/atom2rss.xsl") "-")
+      (goto-char (point-min))
+      (message "Converting Atom to RSS... done"))
+
+    (ad-activate 'mm-url-insert)))
