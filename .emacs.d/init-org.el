@@ -25,7 +25,8 @@
          ("M-<f9>" . mjs/choose-clock-in)
          ("C-<f9>" . org-clock-goto)
          ("s-<f9>" . mjs/morning-sam)
-         ("S-s-<f9>" . mjs/punch-out))
+         ("S-s-<f9>" . mjs/punch-out)
+         ("M-." . org-open-at-point))
 
   :init
   (setq org-directory (expand-file-name "~/Documents/Dropbox/GTD"))
@@ -41,6 +42,10 @@
       (org-return)
       (org-cycle)
       (org-insert-time-stamp nil t t nil nil nil)))
+
+  (defun mjs/push-xref-marker (&optional args)
+    (xref-push-marker-stack))
+  (advice-add #'org-open-at-point :before #'mjs/push-xref-marker)
 
   (progn
     (fullframe org-agenda org-agenda-quit)
