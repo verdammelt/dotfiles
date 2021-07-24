@@ -221,6 +221,8 @@
           ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
            "* %^{headline}\n  %U\n %a\n%?"
            :clock-in t :clock-resume t)
+          ("u" "URL to read" entry (file "")
+           "* TODO read: %(org-mac-safari-get-frontmost-url) :@WEB:\n %U\n \n %?")
           ("w" "Templates for work")
           ("wb" "Billable Task" entry (file "")
            "* TODO %? :@CLIENT:\n %U\n %a\n"
