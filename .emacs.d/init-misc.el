@@ -162,6 +162,9 @@
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this)))
+
 (declare-function wrap-region-add-wrapper "wrap-region")
 (use-package wrap-region
   :diminish (wrap-region-mode)
