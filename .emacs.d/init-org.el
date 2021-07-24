@@ -236,7 +236,13 @@
            :jump-to-captured t)
           ("wn" "New Task to clocked" entry (clock)
            "* TODO %?\n %U\n %a\n"
-           :clock-in t :clock-resume t))
+           :clock-in t :clock-resume t)
+          ("wp" "PR Review" entry (file "")
+           "* TODO PR Review: %(org-mac-safari-get-frontmost-url) :PRREVIEW:\n %U\n\n"
+           :clock-in t :clock-keep t :jump-to-capture t)
+          ("wc" "Clubhouse" entry (file+headline "client.gamechanger.org" "Projects")
+           "* %(org-mac-safari-get-frontmost-url)\n %U\n\n"
+           :clock-in t :clock-keep t :jump-to-captured t))
         org-capture-templates-contexts
         '(("r" ((in-mode . "message-mode")
                 (in-mode . "gnus-summary-mode")
