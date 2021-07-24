@@ -47,12 +47,13 @@ May 01 May Day
 ;;; Vacation
 ;;;
 %%(diary-block 2021 07 01 2021 07 02) Vacation
-%%(diary-block 2021 07 19 2021 07 23) Vacation - Lake George
+%%(diary-block 2021 07 19 2021 07 23) Vacation - Mountain Treasure
 2021-09-10 Vacation Day
 
 ;;;
 ;;; PDT
 ;;;
+2021-07-14 17:30-19:00 NYC.rb POODR Panel Discussion
 %%(diary-block 2021 08 30 2021 08 31) PDT - Exercism Release Crunch
 %%(diary-block 2021 09 07 2021 09 09) PDT - Exercism Post-Release
 
