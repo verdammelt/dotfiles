@@ -290,39 +290,48 @@
 
 (use-package org-roam
   :diminish (org-roam-mode)
-  :hook (after-init . org-roam-mode)
-  :bind (:map
-         org-roam-mode-map
-         ("C-c m ." . #'org-roam-find-directory)
-         ("C-c m c" . #'org-roam-capture)
-         ("C-c m t" . #'org-roam-dailies-capture-today)
-         ("C-c m l" . #'org-roam)
-         ("C-c m f" . #'org-roam-find-file)
-         ("C-c m F" . #'org-roam-find-file-immediate)
+  :hook (after-init . org-roam-setup)
+  :bind (("C-c m c" . #'org-roam-capture)
+         ("C-c m f" . #'org-roam-node-find)
          ("C-c m g" . #'org-roam-graph)
-         ("C-c m i" . #'org-roam-insert)
-         ("C-c m I" . #'org-roam-insert-immediate)
+         ("C-c m i" . #'org-roam-node-insert)
+         ("C-c m l" . #'org-roam-buffer-toggle)
+         ("C-c m r" . #'org-roam-node-random)
+         ("C-c m t" . #'org-roam-dailies-capture-today)
+
          :prefix "C-c m d" :prefix-map org-roam-dailies-map)
-  :init (setq org-roam-directory (expand-file-name "memex" org-directory))
-  :config (setq org-roam-graph-viewer "/usr/bin/open"
-                org-roam-graph-exclude-matcher '("index")
-                org-roam-db-update-method 'immediate))
+  :init
+  (setq org-roam-directory (expand-file-name "memex" org-directory)
+        org-roam-v2-ack t)
+  :config
+  (cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
+    (let* ((count (caar (org-roam-db-query
+                         [:select (funcall count source)
+                                  :from links
+                                  :where (= dest $s1)
+                                  :and (= type "id")]
+                         (org-roam-node-id node)))))
+      (format "[%d]" count)))
+  (setq org-roam-node-display-template "${title:*} ${tags:10} ${backlinkscount:6}"))
+
+
+(use-package org-roam-graph
+  :ensure org-roam
+  :init (setq org-roam-graph-viewer "/usr/bin/open"))
 
 (use-package org-roam-dailies
   :ensure org-roam
-  :after org-roam
   :config
-  (setq org-roam-dailies-capture-templates
-        '(("d" "default" entry #'org-roam-capture--get-point
-           "\n\n* %<%H:%M> %? 	:WEEKLY:REFILE:\n%a\n\n%i\n"
-           :file-name "daily/%<%Y-%m-%d>"
-           :head "#+title: %<%Y-%m-%d>\n\n"
-           :clock-in t :clock-resume t)))
-  (cl-pushnew (expand-file-name org-roam-dailies-directory org-roam-directory)
-           org-agenda-files))
+  (progn (setq org-roam-dailies-capture-templates
+               '(("d" "default" entry "* %<%H:%M> %? :WEEKLY:REFILE:\n%a\n\n%i\n"
+                  :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>")
+                  :empty-lines 1
+                  :clock-in t :clock-resume t
+                  :kill-buffer t)))
+         (cl-pushnew (expand-file-name org-roam-dailies-directory org-roam-directory)
+                     org-agenda-files)))
 
 (use-package org-roam-protocol :ensure org-roam :after org-roam)
-
 
 (use-package org-present
   :config
