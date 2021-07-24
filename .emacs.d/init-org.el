@@ -136,7 +136,7 @@
      '(("h" "home"
         ((agenda "" ((org-agenda-span 'day)
                      (org-agenda-use-time-grid nil)))
-         (tags "REFILE"
+         (tags "+REFILE&+LEVEL=1"
                ((org-agenda-overriding-header "Tasks to Refile")))
          (tags-todo "+@CALL/!-WAIT"
                     ((org-agenda-skip-function
@@ -177,7 +177,7 @@
                      (org-agenda-use-time-grid t)
                      (org-agenda-start-with-log-mode t)
                      (org-agenda-start-with-clockreport-mode t)))
-         (tags "REFILE"
+         (tags "+REFILE&+LEVEL=1"
                ((org-agenda-overriding-header "Tasks to Refile")))
          (tags-todo "+@WORK&+@CLIENT/!-WAIT"
                     ((org-agenda-skip-function
