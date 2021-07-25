@@ -131,6 +131,9 @@
           org-agenda-follow-mode t
           org-agenda-include-diary t)
 
+    (dolist (face '(org-done org-agenda-done org-headline-done))
+      (set-face-attribute face nil :strike-through t))
+
     (setq
      org-agenda-custom-commands
      '(("h" "home"
