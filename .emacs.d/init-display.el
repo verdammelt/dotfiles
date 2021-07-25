@@ -24,7 +24,7 @@
 (use-package modus-themes
   :defer nil
   :init
-  (setq modus-themes-slanted-constructs t
+  (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
         modus-themes-scale-headings t
         modus-themes-mode-line 'borderless
