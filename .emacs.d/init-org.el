@@ -196,9 +196,9 @@
        ("rx" "lost tasks" tags-todo "-{^@}")
        ("rw" "waiting" tags-todo "/WAIT")
        ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2"
-        ((org-agenda-sorting-strategy '(category-keep))))
-       ("rt" "next-actions"  tags-todo "-CATEGORY=\"habits\"/!-WAIT")
-       ("rn" "last week's notes" tags "+NOTE+TIMESTAMP_IA>\"<-8d>\"")))))
+        ((org-agenda-sorting-strategy '(todo-state-down))))
+       ("rt" "next-actions"  tags-todo "!-WAIT"
+        ((org-agenda-skip-function mjs/skip-habits-and-scheduled-and-deadlines)))))))
 
 (use-package org-capture
   :ensure org
