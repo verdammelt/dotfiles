@@ -15,6 +15,12 @@
                     :height 180
                     :family "DejaVu Sans")
 
+(use-package unicode-fonts
+  ;; with this also install Symbola & Quivira fonts
+  :ensure t
+  :config
+  (unicode-fonts-setup))
+
 (use-package modus-themes
   :defer nil
   :init
