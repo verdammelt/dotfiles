@@ -24,6 +24,7 @@
 ;;;
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path (expand-file-name "~/Bin"))
+(add-to-list 'exec-path "/usr/local/sbin")
 (add-to-list 'exec-path "/Library/TeX/texbin" :append)
 
 (defun mjs/set-path-envvar-from-exec-path ()
