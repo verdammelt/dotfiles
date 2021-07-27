@@ -128,8 +128,7 @@
     (setq
      org-agenda-custom-commands
      '(("h" "home"
-        ((agenda "" ((org-agenda-span 'day)
-                     (org-agenda-use-time-grid nil)))
+        ((agenda "" ((org-agenda-span 'day)))
          (tags "+REFILE&+LEVEL=1"
                ((org-agenda-overriding-header "Tasks to Refile")))
          (tags-todo "+@CALL/!-WAIT"
@@ -167,10 +166,7 @@
          (tags-todo "-@CLIENT/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("k" "work"
-        ((agenda "" ((org-agenda-span 'day)
-                     (org-agenda-use-time-grid t)
-                     (org-agenda-start-with-log-mode t)
-                     (org-agenda-start-with-clockreport-mode t)))
+        ((agenda "" ((org-agenda-span 'day)))
          (tags "+REFILE&+LEVEL=1"
                ((org-agenda-overriding-header "Tasks to Refile")))
          (tags-todo "+@WORK&+@CLIENT/!-WAIT"
