@@ -26,6 +26,7 @@
          ("C-<f9>" . org-clock-goto)
          ("s-<f9>" . mjs/morning-sam)
          ("S-s-<f9>" . mjs/punch-out)
+         :map org-mode-map
          ("M-." . org-open-at-point))
 
   :init
