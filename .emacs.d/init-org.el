@@ -289,7 +289,8 @@
 (use-package org-roam
   :diminish (org-roam-mode)
   :hook (after-init . org-roam-setup)
-  :bind (("C-c m c" . #'org-roam-capture)
+  :bind (("C-c m ." . (lambda () (interactive) (find-file (expand-file-name org-roam-directory))))
+         ("C-c m c" . #'org-roam-capture)
          ("C-c m f" . #'org-roam-node-find)
          ("C-c m g" . #'org-roam-graph)
          ("C-c m i" . #'org-roam-node-insert)
