@@ -188,9 +188,12 @@
 (use-package browse-url
   :ensure nil
   :config
-  (setq browse-url-browser-function '(("file://.*" . eww-browse-url)
-                                      ("." . browse-url-default-browser))
-        browse-url-secondary-browser-function 'eww-browse-url))
+  (setq
+   browse-url-new-window-flag t
+   browse-url-browser-function '(("^mailto:" . browse-url-mail)
+                                 ("github.com" . browse-url-default-browser)
+                                 ("." . eww-browse-url))
+   browse-url-secondary-browser-function 'browse-url-default-browser))
 
 (use-package ediff
   :ensure nil
