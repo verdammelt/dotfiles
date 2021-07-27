@@ -51,7 +51,6 @@
     (fullframe org-agenda org-agenda-quit)
 
     (add-to-list 'org-modules 'org-clock)
-    ;; (add-to-list 'org-modules 'org-habit)
 
     (setq org-default-notes-file (mjs/expand-org-file "inbox")
           org-use-property-inheritance t
@@ -62,8 +61,6 @@
           org-log-repeat 'time
           org-log-into-drawer t
           org-treat-S-cursor-todo-selection-as-state-change nil
-
-          org-habit-graph-column 70
 
           org-agenda-files
           (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile"))
