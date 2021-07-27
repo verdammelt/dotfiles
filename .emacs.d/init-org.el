@@ -51,8 +51,6 @@
   (progn
     (fullframe org-agenda org-agenda-quit)
 
-    (add-to-list 'org-modules 'org-clock)
-
     (setq org-default-notes-file (mjs/expand-org-file "inbox")
           org-use-property-inheritance t
           org-log-done 'time
