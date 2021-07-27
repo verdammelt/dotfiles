@@ -53,9 +53,6 @@
     (add-to-list 'org-modules 'org-clock)
     ;; (add-to-list 'org-modules 'org-habit)
 
-    (set-face-attribute 'org-done nil :strike-through t)
-    (set-face-attribute 'org-headline-done nil :strike-through t)
-
     (setq org-default-notes-file (mjs/expand-org-file "inbox")
           org-use-property-inheritance t
           org-log-done 'time
