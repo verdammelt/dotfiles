@@ -287,9 +287,8 @@
   :config (setq org-duration-format `h:mm))
 
 (use-package org-roam
-  :diminish (org-roam-mode)
   :hook (after-init . org-roam-setup)
-  :bind (("C-c m ." . (lambda () (interactive) (find-file (expand-file-name org-roam-directory))))
+  :bind (("C-c m ." . #'mjs/visit-roam-directory)
          ("C-c m c" . #'org-roam-capture)
          ("C-c m f" . #'org-roam-node-find)
          ("C-c m g" . #'org-roam-graph)
@@ -303,6 +302,9 @@
   (setq org-roam-directory (expand-file-name "memex" org-directory)
         org-roam-v2-ack t)
   :config
+  (defun mjs/visit-roam-directory ()
+    (interactive)
+    (find-file (expand-file-name org-roam-directory)))
   (cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
     (let* ((count (caar (org-roam-db-query
                          [:select (funcall count source)
