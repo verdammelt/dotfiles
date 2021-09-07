@@ -141,9 +141,10 @@
 (use-package expand-region
   :bind (("C-=" . er/expand-region)))
 
-(use-package change-inner
-  :bind (("M-i" . change-inner)
-         ("M-o" . change-outer)))
+;;; Do i even need this?
+;; (use-package change-inner
+;;   :bind (("M-i" . change-inner)
+;;          ("M-o" . change-outer)))
 
 (use-package find-func
   :ensure nil
