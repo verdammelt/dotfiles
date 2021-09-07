@@ -95,6 +95,10 @@
     (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
   :config (setq forge-topic-list-limit '(100 . -5)))
 
+(use-package magit-todos
+  :after magit
+  :config (magit-todos-mode))
+
 (use-package simple
   :ensure nil
   :hook (markdown-mode . visual-line-mode)
