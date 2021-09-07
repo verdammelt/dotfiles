@@ -166,18 +166,37 @@
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
-(declare-function wrap-region-add-wrapper "wrap-region")
-(use-package wrap-region
-  :diminish (wrap-region-mode)
-  :functions (wrap-region-add-wrappers)
-  :init (add-hook 'after-init-hook 'wrap-region-global-mode t)
-  :config
-  (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
-                              ("*" "*" nil 'org-mode)
-                              ("_" "_" nil 'markdown-mode)
-                              ("*" "*" nil 'markdown-mode)
-                              ("*" "*" nil 'lisp-mode)
-                              ("+" "+" nil 'lisp-mode))))
+;;; Question: do i need wrap region? will electric-pair-region do what i need?
+;; (declare-function wrap-region-add-wrapper "wrap-region")
+;; (use-package wrap-region
+;;   :diminish (wrap-region-mode)
+;;   :functions (wrap-region-add-wrappers)
+;;   :init (add-hook 'after-init-hook 'wrap-region-global-mode t)
+;;   :config
+;;   (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
+;;                               ("*" "*" nil 'org-mode)
+;;                               ("_" "_" nil 'markdown-mode)
+;;                               ("*" "*" nil 'markdown-mode)
+;;                               ("*" "*" nil 'lisp-mode)
+;;                               ("+" "+" nil 'lisp-mode))))
+(defun mjs/append-in-pairs (chars current-pairs)
+  (append (mapcar #'(lambda (c) (cons c c)) chars) current-pairs))
+
+(use-package elec-pair
+  :ensure nil
+  :defines electric-pair-pairs
+  :hook ((markdown-mode . (lambda ()
+                            (setq-local electric-pair-pairs
+                                        (mjs/append-in-pairs '(?\* ?\_ ?\`) electric-pair-pairs))))
+         (org-mode .  (lambda ()
+                        (setq-local electric-pair-pairs
+                                    (cl-remove ?\<
+                                               (mjs/append-in-pairs '(?\/ ?\= ?\+) electric-pair-pairs)
+                                               :key #'car))))
+         (git-commit-setup . (lambda ()
+                               (setq-local electric-pair-pairs
+                                           (mjs/append-in-pairs '(?\`) electric-pair-pairs)))))
+  :init (electric-pair-mode))
 
 (use-package wgrep
   :config
