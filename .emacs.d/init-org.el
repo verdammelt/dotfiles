@@ -185,8 +185,7 @@
        ("r" . "Review speciality agenda")
        ("rx" "lost tasks" tags-todo "-{^@}")
        ("rw" "waiting" tags-todo "/WAIT")
-       ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2"
-        ((org-agenda-sorting-strategy '(todo-state-down))))
+       ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2")
        ("rt" "next-actions"  tags-todo "!-WAIT"
         ((org-agenda-skip-function mjs/skip-habits-and-scheduled-and-deadlines)))))))
 
