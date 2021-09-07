@@ -5,6 +5,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "snyk/tap"
 # Java build tool
 brew "ant"
 # Armed Bear Common Lisp: a full implementation of Common Lisp
@@ -89,6 +90,8 @@ brew "gnupg"
 brew "icu4c"
 # Command-driven, interactive function plotting
 brew "gnuplot"
+# Open-source build automation tool based on the Groovy and Kotlin DSL
+brew "gradle"
 # Image manipulation
 brew "netpbm"
 # Library to render SVG files using Cairo
@@ -105,14 +108,20 @@ brew "shared-mime-info"
 brew "imagemagick"
 # String tool
 brew "intltool"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
 # Build tool for Clojure
 brew "leiningen"
 # CSS parsing and manipulation toolkit for GNOME
 brew "libcroco"
+# C XSLT library for GNOME
+brew "libxslt"
 # Text-based genealogy software
 brew "lifelines"
+# Fast, async, resource-friendly link checker
+brew "lychee"
 # LZMA-based compression program similar to gzip or bzip2
 brew "lzip"
 # Text-to-HTML conversion tool
@@ -153,8 +162,12 @@ brew "roswell"
 brew "ruby", link: true
 # Steel Bank Common Lisp system
 brew "sbcl"
+# Count lines of code in many languages
+brew "sloccount"
 # Typography prettifier
 brew "smartypants"
+# CLI for extracting streams from various websites to a video player
+brew "streamlink"
 # User interface to the TELNET protocol
 brew "telnet"
 # Microsoft MS-TNEF attachment unpacker
@@ -174,6 +187,8 @@ brew "xvid"
 brew "d12frosted/emacs-plus/emacs-plus@27", args: ["without-imagemagick"]
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
+# Find & fix known vulnerabilities in open-source dependencies
+brew "snyk/tap/snyk"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
@@ -184,6 +199,8 @@ cask "encryptme"
 cask "gnucash"
 # Web browser
 cask "google-chrome"
+# Free, open-source and secure video conferencing app
+cask "jitsi-meet"
 # End-to-end encryption software
 cask "keybase"
 # Productivity tool
