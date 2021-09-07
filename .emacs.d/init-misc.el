@@ -216,6 +216,8 @@
    browse-url-new-window-flag t
    browse-url-browser-function '(("^mailto:" . browse-url-mail)
                                  ("github.com" . browse-url-default-browser)
+                                 ("youtube.com" . browse-url-default-browser)
+                                 ("exercism.org" . browse-url-default-browser)
                                  ("." . eww-browse-url))
    browse-url-secondary-browser-function 'browse-url-default-browser))
 
