@@ -115,7 +115,7 @@
           '("+PROJECT=\"TRUE\"+LEVEL=2" ("TODO" "WAIT") nil "")
 
           org-agenda-clockreport-parameter-plist
-          '(:link t :maxlevel 4 :fileskip0 t :compact t :narrow 80)
+          '(:link t :maxlevel 4 :fileskip0 t :compact t)
 
           org-agenda-start-on-weekday 0
           org-agenda-compact-blocks t
