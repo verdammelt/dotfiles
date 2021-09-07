@@ -61,14 +61,10 @@
   :hook ((typescript-mode . lsp)
          (web-mode . lsp))
   :init (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
+  (setq lsp-headerline-breadcrumb-enable t)
   :config (setq lsp-disabled-clients '(jsts-ls)
                 gc-cons-threshold (* 2 gc-cons-threshold)
                 read-process-output-max (* 1024 1024)))
-
-(use-package lsp-ui
-  :after lsp-mode
-  :config (setq lsp-ui-doc-position 'top
-                lsp-ui-doc-use-childframe nil))
 
 (use-package scss-mode)
 (use-package yaml-mode)
