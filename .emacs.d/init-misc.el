@@ -99,6 +99,9 @@
   :after magit
   :config (magit-todos-mode))
 
+(use-package hl-todo
+  :init (global-hl-todo-mode))
+
 (use-package simple
   :ensure nil
   :hook (markdown-mode . visual-line-mode)
