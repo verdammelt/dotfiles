@@ -42,7 +42,8 @@
     (put 'define-test 'lisp-indent-function 1)
     (put 'test 'lisp-indent-function 1)
 
-    (define-auto-insert '("\\.asd" . "ASDF Defsystem file") 'asdf-defsystem)))
+    (define-auto-insert '("\\.asd" . "ASDF Defsystem file") 'asdf-defsystem)
+    (define-auto-insert '("packages?\\.lisp" . "Defpackage file") 'cl-defpackage)))
 
 (use-package ielm
   :ensure nil
@@ -104,10 +105,10 @@
   > ":components ((:file \"packages\"))"
   ")")
 
-(define-skeleton cl-defpacakge
+(define-skeleton cl-defpackage
   "Inserts a typical cl:defpackage form into the current buffer"
   "Package name: "
-  "(defpackage #:" str \n
+  "(defpackage :" str \n
   > "(:use :cl)" \n
   > "(:export)"
   ")")
