@@ -25,7 +25,7 @@
   :ensure nil
   :config (setq ruby-insert-encoding-magic-comment nil))
 
-(use-package rvm)
+(use-package rbenv)
 
 (use-package ansi-color
   :ensure nil

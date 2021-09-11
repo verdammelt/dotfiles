@@ -34,12 +34,10 @@
 
     (add-hook 'projectile-before-switch-project-hook 'mjs/teardown-project)
     (add-hook 'projectile-before-switch-project-hook 'mjs/remove-node-from-path)
-    (add-hook 'projectile-before-switch-project-hook 'mjs/remove-node-from-path)
 
     (add-hook 'projectile-after-switch-project-hook 'mjs/add-node-modules-in-path)
     (add-hook 'projectile-after-switch-project-hook 'mjs/add-node-to-path)
     (add-hook 'projectile-after-switch-project-hook 'mjs/setup-gtd-project-caching)
-    (add-hook 'projectile-after-switch-project-hook 'rvm-activate-corresponding-ruby)
     (add-hook 'projectile-after-switch-project-hook 'mjs/setup-project)
 
     (setq projectile-switch-project-action 'projectile-dired
