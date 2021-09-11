@@ -97,7 +97,9 @@
 
 (use-package magit-todos
   :after magit
-  :config (magit-todos-mode))
+  :config
+  (magit-todos-mode)
+  (setq magit-todos-rg-extra-args '("--hidden")))
 
 (use-package hl-todo
   :init (global-hl-todo-mode))
