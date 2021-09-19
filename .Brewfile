@@ -6,12 +6,10 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "snyk/tap"
-# Java build tool
-brew "ant"
-# Armed Bear Common Lisp: a full implementation of Common Lisp
-brew "abcl"
 # Search tool like grep, but optimized for programmers
 brew "ack"
+# Java build tool
+brew "ant"
 # Spell checker with better logic than ispell
 brew "aspell"
 # Automatic configure script builder
@@ -32,14 +30,8 @@ brew "bdw-gc"
 brew "fontconfig"
 # Vector graphics library with cross-device output support
 brew "cairo"
-# Library for handling page faults in user mode
-brew "libsigsegv"
-# GNU CLISP, a Common Lisp implementation
-brew "clisp"
 # Dynamic, general-purpose programming language
 brew "clojure"
-# Common Lisp implementation with a long history
-brew "clozure-cl"
 # Convert to and from the X-Face format
 brew "compface"
 # GNU File, Shell, and Text utilities
@@ -156,8 +148,6 @@ brew "pth"
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Lisp installer and launcher for major environments
-brew "roswell"
 # Powerful, clean, object-oriented scripting language
 brew "ruby", link: true
 # Steel Bank Common Lisp system
