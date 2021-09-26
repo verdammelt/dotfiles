@@ -108,6 +108,8 @@ brew "lame"
 brew "leiningen"
 # CSS parsing and manipulation toolkit for GNOME
 brew "libcroco"
+# Library for handling page faults in user mode
+brew "libsigsegv"
 # C XSLT library for GNOME
 brew "libxslt"
 # Text-based genealogy software
@@ -175,6 +177,7 @@ brew "xpdf"
 # High-performance, high-quality MPEG-4 video library
 brew "xvid"
 brew "d12frosted/emacs-plus/emacs-plus@27", args: ["without-imagemagick"]
+brew "d12frosted/emacs-plus/emacs-plus@28", link: false
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
 # Find & fix known vulnerabilities in open-source dependencies
