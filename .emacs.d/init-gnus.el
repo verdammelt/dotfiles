@@ -47,6 +47,7 @@
     ("subject" "GeePawHill.Org" "list.newsletter.geepawhill")
     (from "robert@stuffwithstuff.com" "list.newsletter.crafting-interpreters")
     (| (from ".*@linkedin.com" "list.misc")
+       (from "joanne_adam@huntlib.org" "list.misc")
        (from "millionyearpicnic@googlegroups.com" "list.misc")
        (from ".*@acm.org" "list.misc")
        (from "vitalsigns@prohealthcare.com" "list.misc")
