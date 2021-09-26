@@ -138,7 +138,9 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+(if (mjs/emacs-27-p)
+    (defalias 'yes-or-no-p 'y-or-n-p)
+  (setq use-short-answers t))
 
 (defun mjs/change-size (size)
   (interactive "nsize: ")
@@ -335,8 +337,12 @@
               ("C-p" . icomplete-backward-completions))
   :config (setq icomplete-in-buffer t))
 
-(use-package icomplete-vertical
-  :hook (icomplete-mode . icomplete-vertical-mode))
+(if (mjs/emacs-27-p)
+  (use-package icomplete-vertical
+    :hook (icomplete-mode . icomplete-vertical-mode))
+  (use-package icomplete
+    :ensure nil
+    :hook (after-init . fido-vertical-mode)))
 
 (use-package minibuffer
   :ensure nil
