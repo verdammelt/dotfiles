@@ -173,7 +173,6 @@
     ("defm" "Def Method" nil :count 28)
     ("desiger" "designer" nil :count 0)
     ("differnet" "different" nil :count 0)
-    ("dm" "Def Method" nil :count 1)
     ("dropbox" "drop box" nil :count 2)
     ("eh" "tech" nil :count 0)
     ("everytime" "every time" nil :count 0)
