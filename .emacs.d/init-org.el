@@ -312,7 +312,7 @@
                                   :and (= type "id")]
                          (org-roam-node-id node)))))
       (format "[%d]" count)))
-  (setq org-roam-node-display-template "${title:*} ${tags:10} ${backlinkscount:6}"))
+  (setq org-roam-node-display-template "${title:70} ${tags:10} ${backlinkscount:10}"))
 
 
 (use-package org-roam-graph
