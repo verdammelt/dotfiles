@@ -56,7 +56,8 @@
 (use-package abbrev
   :ensure nil
   :init (setq-default abbrev-mode t)
-  :diminish (abbrev-mode))
+  :diminish (abbrev-mode)
+  :config (unless (mjs/emacs-27-p) (setq abbrev-suggest t)))
 
 (use-package flyspell
   :ensure nil
@@ -205,12 +206,15 @@
   :config
   (setq
    browse-url-new-window-flag t
-   browse-url-browser-function '(("^mailto:" . browse-url-mail)
-                                 ("github.com" . browse-url-default-browser)
-                                 ("youtube.com" . browse-url-default-browser)
-                                 ("exercism.org" . browse-url-default-browser)
-                                 ("." . eww-browse-url))
-   browse-url-secondary-browser-function 'browse-url-default-browser))
+   browse-url-secondary-browser-function 'browse-url-default-browser)
+  (let ((browse-url-handler-alist '(("^mailto:" . browse-url-mail)
+                                    ("github.com" . browse-url-default-browser)
+                                    ("youtube.com" . browse-url-default-browser)
+                                    ("exercism.org" . browse-url-default-browser)
+                                    ("." . eww-browse-url))))
+    (if (mjs/emacs-27-p)
+        (setq browse-url-browser-function browse-url-handler-alist)
+      (setq browse-url-handlers browse-url-handler-alist))))
 
 (use-package ediff
   :ensure nil
