@@ -404,3 +404,7 @@
 (use-package diminish)
 
 (use-package markdown-mode)
+
+(use-package eshell
+  :ensure nil
+  :config (setq eshell-hist-ignoredups t))
