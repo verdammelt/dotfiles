@@ -182,7 +182,7 @@
 (use-package wrap-region
   :diminish (wrap-region-mode)
   :functions (wrap-region-add-wrappers)
-  :init (add-hook 'after-init-hook 'wrap-region-global-mode t)
+  :hook ((org-mode markdown-mode lisp-mode) . wrap-region-mode)
   :config
   (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
                               ("*" "*" nil 'org-mode)
