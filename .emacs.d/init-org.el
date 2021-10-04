@@ -180,7 +180,7 @@
          (tags-todo "+@WORK|+@WORKMAC/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
        ("i" "inbox"
-        ((tags "REFILE"
+        ((tags "+REFILE&+LEVEL=1"
                ((org-agenda-overriding-header "Tasks to Refile")))))
        ("r" . "Review speciality agenda")
        ("rx" "lost tasks" tags-todo "-{^@}")
