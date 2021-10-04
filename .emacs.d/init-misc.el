@@ -153,11 +153,6 @@
 (use-package expand-region
   :bind (("C-=" . er/expand-region)))
 
-;;; Do i even need this?
-;; (use-package change-inner
-;;   :bind (("M-i" . change-inner)
-;;          ("M-o" . change-outer)))
-
 (use-package find-func
   :ensure nil
   :bind (:map help-map
