@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+lychee -n -b https://exercism.lol **/*.md

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [ -d .exercism ]; then
+    track=$(basename $(realpath "${PWD}/../"))
+elif [ -d .meta ]; then
+    track=$(basename $(realpath "${PWD}/../../../"))
+else
+    echo "Unknown directory structure"
+    exit 1
+fi
+
+exercise=$(basename "$PWD")
+test_runner="exercism/${track}-test-runner"
+
+docker pull "${test_runner}"
+docker run \
+    --network none \
+    --read-only \
+    --mount type=bind,src="${PWD}",dst=/solution \
+    --mount type=bind,src="${PWD}",dst=/output \
+    --mount type=tmpfs,dst=/tmp \
+    "${test_runner}" "${exercise}" /solution /output
