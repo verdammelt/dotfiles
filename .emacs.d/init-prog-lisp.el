@@ -61,16 +61,6 @@
 
 (use-package sicp)
 
-(defun mjs/clj-refactor-setup ()
-  (setq mode-name "CLJ")
-  (clj-refactor-mode)
-  (cljr-add-keybindings-with-prefix "C-c C-m")
-  (add-hook 'nrepl-connected-hook #'cljr-update-artifact-cache))
-
-(use-package clj-refactor
-  :commands (cljr-update-artifact-cache)
-  :diminish (clj-refactor-mode))
-
 (use-package clojure-mode
   :config
   (progn
