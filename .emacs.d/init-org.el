@@ -12,13 +12,18 @@
         (t
          (expand-file-name (format "%s.org" f) org-directory))))
 
+(defun mjs/save-org-buffers ()
+  (interactive)
+  (save-some-buffers t (lambda () (derived-mode-p 'org-mode))))
+
 (use-package org
   :functions (org-return org-insert-time-stamp org-clock-is-active)
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-switchb)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link)
-         ("C-c s-s" . org-save-all-org-buffers)
+         ;; ("C-c s-s" . org-save-all-org-buffers)
+         ("C-c s-s" . mjs/save-org-buffers)
          ("C-c s-u" . org-revert-all-org-buffers)
          ("<f9>" . mjs/clock-in)
          ("S-<f9>" . mjs/clock-out)
@@ -200,7 +205,7 @@
            "* TODO %?\n  %U\n %a\n"
            :clock-in t :clock-resume t :empty-lines 1)
           ("r" "Process email" entry (file "")
-           "* TODO Process '%:subject' from '%:from'\n%U\n"
+           "* TODO Process '%:subject' from '%:from'\n%U\n%a"
            :empty-lines 1 :immediate-finish t)
           ("k" "Tickler" entry (file+headline ,(mjs/expand-org-file "todo.org") "Tickler")
            "* %?\nSCHEDULED: %^t\n%a\n"
