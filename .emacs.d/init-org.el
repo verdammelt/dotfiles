@@ -67,7 +67,7 @@
           org-treat-S-cursor-todo-selection-as-state-change nil
 
           org-agenda-files
-          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile"))
+          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "journal" "inbox-mobile"))
 
           org-hide-leading-stars nil
           org-startup-indented t
@@ -213,6 +213,9 @@
           ("n" "Note" entry (file "")
            "* %U %? :NOTE:\n%a\n\n%i"
            :clock-in t :clock-resume t :empty-lines 1)
+          ("j" "Journal" entry (file+olp+datetree "journal.org")
+           "* %T %? :WEEKLY:"
+           :tree-type week)
           ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
            "* %^{headline}\n  %U\n %a\n%?"
            :clock-in t :clock-resume t :empty-lines 1)
