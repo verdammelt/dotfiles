@@ -201,46 +201,24 @@
 
   :config
   (setq org-capture-templates
-        `(("t" "Task" entry (file "")
-           "* TODO %?\n  %U\n %a\n"
-           :clock-in t :clock-resume t :empty-lines 1)
-          ("r" "Process email" entry (file "")
+        `(("c" "Capture" entry (file "")
+           "* %?\n%U"
+           :empty-lines 1)
+          ("j" "Journal" entry (file+olp+datetree "journal.org")
+           "* %T %?"
+           :empty-lines 1)
+          ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
+           "* %?\nSCHEDULED: %^t\n%U\n%a"
+           :empty-lines 1)
+          ("r" "Email" entry (file "")
            "* TODO Process '%:subject' from '%:from'\n%U\n%a"
            :empty-lines 1 :immediate-finish t)
-          ("k" "Tickler" entry (file+headline ,(mjs/expand-org-file "todo.org") "Tickler")
-           "* %?\nSCHEDULED: %^t\n%a\n"
-           :clock-in t :clock-resume t)
-          ("n" "Note" entry (file "")
-           "* %U %? :NOTE:\n%a\n\n%i"
-           :clock-in t :clock-resume t :empty-lines 1)
-          ("j" "Journal" entry (file+olp+datetree "journal.org")
-           "* %T %? :WEEKLY:"
-           :tree-type week)
-          ("s" "Someday/Maybe" entry (file ,(mjs/expand-org-file "somedaymaybe"))
-           "* %^{headline}\n  %U\n %a\n%?"
-           :clock-in t :clock-resume t :empty-lines 1)
-          ("u" "URL to read" entry (file "")
-           "* TODO read: %(org-mac-safari-get-frontmost-url) :@WEB:READ:\n %U\n"
-           :immediate-finish t :empty-lines 1)
-          ("w" "Templates for work")
-          ("wb" "Billable Task" entry (file "")
-           "* TODO %? :@CLIENT:\n %U\n %a\n"
-           :clock-in t :clock-resume t :empty-lines 1)
-          ("ww" "Non-Billable Task" entry (file "")
-           "* TODO %? :@WORK:\n %U\n %a\n"
-           :clock-in t :clock-resume t :empty-lines 1)
-          ("wi" "Interruption" entry (file "")
-           "* TODO %? :@WORK:\n %U\n %a\n"
-           :clock-in t :clock-keep t  :empty-lines 1 :jump-to-captured t)
-          ("wn" "New Task to clocked" entry (clock)
-           "* TODO %?\n %U\n %a\n"
-           :clock-in t :clock-resume t :empty-lines 1)
-          ("wp" "PR Review" entry (file "")
-           "* TODO PR Review: %(org-mac-safari-get-frontmost-url) :PRREVIEW:\n %U\n\n"
-           :clock-in t :clock-keep t :empty-lines 1 :immediate-finish 1)
-          ("wc" "Clubhouse" entry (file "")
-           "* %(org-mac-safari-get-frontmost-url)\n %U\n\n%?"
-           :clock-in t :clock-keep t :empty-lines 1))
+          ("u" "URL" entry (file "")
+           "* URL: %(org-mac-safari-get-frontmost-url)\n %U"
+           :empty-lines 1)
+          ("i" "Interruption" entry (file "")
+           "* TODO %?\n%U\n%a\n"
+           :clock-in t :clock-keep t :empty-lines 1 :jump-to-captured t))
 
         org-capture-templates-contexts
         '(("r" ((in-mode . "message-mode")
