@@ -327,21 +327,54 @@
   :ensure nil
   :hook (after-init . global-display-fill-column-indicator-mode))
 
-(use-package icomplete
-  :ensure nil
-  :hook (after-init . fido-mode)
-  :functions (icomplete-forward-completions icomplete-backward-completions)
-  :bind (:map icomplete-fido-mode-map
-              ("C-n" . icomplete-forward-completions)
-              ("C-p" . icomplete-backward-completions))
-  :config (setq icomplete-in-buffer t))
+;;;
+;;; Playing with completion
+;;;
+;; (use-package icomplete
+;;   :ensure nil
+;;   :hook (after-init . fido-mode)
+;;   :functions (icomplete-forward-completions icomplete-backward-completions)
+;;   :bind (:map icomplete-fido-mode-map
+;;               ("C-n" . icomplete-forward-completions)
+;;               ("C-p" . icomplete-backward-completions))
+;;   :config (setq icomplete-in-buffer t))
 
-(if (mjs/emacs-27-p)
-  (use-package icomplete-vertical
-    :hook (icomplete-mode . icomplete-vertical-mode))
-  (use-package icomplete
-    :ensure nil
-    :hook (after-init . fido-vertical-mode)))
+;; (if (mjs/emacs-27-p)
+;;     (progn
+;;       (use-package icomplete-vertical
+;;         :hook (icomplete-mode . icomplete-vertical-mode)))
+;;   (use-package icomplete
+;;     :ensure nil
+;;     :hook (after-init . fido-vertical-mode)))
+
+;;;
+;;; Trying out veritico
+;;;
+(use-package vertico
+  :init (vertico-mode)
+  :bind (:map vertico-map
+              ("C-." . #'vertico-next)
+              ("C-," . #'vertico-previous))
+  :config
+  (setq vertico-resize t
+        vertico-cycle t))
+
+;;;
+;;; Trying out marginalia
+;;;
+(use-package marginalia
+  :bind (:map minibuffer-local-map
+              ("M-A" . #'marginalia-cycle))
+  :init (marginalia-mode))
+
+(use-package emacs
+  :ensure nil
+  :config
+  (defun crm-indicator (args)
+    (cons (concat "[CRM] " (car args)) (cdr args)))
+  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+  (setq read-extended-command-predicate #'command-completion-default-include-p))
+
 
 (use-package minibuffer
   :ensure nil
