@@ -108,6 +108,7 @@
 (use-package simple
   :ensure nil
   :hook (markdown-mode . visual-line-mode)
+  :bind ("C-<backspace>" . #'kill-word)
   :init
   (setq-default indent-tabs-mode nil)
   (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)))
