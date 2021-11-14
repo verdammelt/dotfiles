@@ -140,10 +140,10 @@
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@CALL")))
-         (tags-todo "+@EMAIL|+@SLACK/!-WAIT"
+         (tags-todo "+@EMAIL|+@SLACK|+@DISCORD/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@EMAIL|@SLACK")))
+                     (org-agenda-overriding-header "@EMAIL|@SLACK|@DISCORD")))
          (tags-todo "+@ERRAND/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
