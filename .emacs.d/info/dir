@@ -14,5 +14,6 @@ File: dir,	Node: Top	This is the top of the INFO tree
 
 * Menu:
 
-Programming
 * ANSI Common Lisp: (ansicl).    Draft ANSI Common Lisp standard (dpANS3R).
+* Emacs Lisp: (elisp).
+* Org Mode: (org).
