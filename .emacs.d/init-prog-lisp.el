@@ -27,6 +27,11 @@
 
 (defun mjs/emacs-lisp-mode-setup () (setq mode-name "Elisp"))
 
+(use-package pp
+  :ensure nil
+  :bind (("C-x C-e" . pp-eval-last-sexp)
+         ("M-:" . pp-eval-expression)))
+
 (use-package lisp-mode
   :ensure nil
   :config
