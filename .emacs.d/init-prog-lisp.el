@@ -113,3 +113,25 @@
   > "(:use :cl)" \n
   > "(:export)"
   ")")
+
+(define-skeleton aoc-day
+  "Inserts a typical Advent-of-code day file template"
+  ""
+  "(defpackage #:aoc-" (setq year (skeleton-read "year: ")) "-" (setq day (skeleton-read "day: ")) \n
+  > "(:use :cl))" \n \n
+  > "(in-package #:aoc-" year "-" day ")" \n \n
+  > "(aoc:def-today-suite*)" \n \n
+  > "(defun read-data (file) (aoc:read-data file))" \n \n
+  > "(defparameter +example+"\n
+  > "(read-data (aoc:today-data-pathname \"example\")))" \n \n
+  > "(defparameter +input+" \n "(read-data (aoc:today-data-pathname)))" \n \n
+  > "(defun part1 (input) (declare (ignore input)) 0)" \n \n
+  > "(5am:def-test part1 (:suite :aoc-" year "-" day ")"\n
+  > "(5am:is (= -1 (part1 +example+)))" \n
+  > "(5am:is (= -1 (part1 +input+))))" \n \n
+  > "(defun part2 (input) (declare (ignore input)) 0)"\n \n
+  > "(5am:def-test part2 (:suite :aoc-" year "-" day ")" \n
+  > "(5am:skip \":aoc-" year "-" day ".2 not implemented\")" \n
+  > ";; (5am:is (= -1 (part2 +example+)))" \n
+  > ";; (5am:is (= -1 (part2 +input+)))" \n
+  > ")")
