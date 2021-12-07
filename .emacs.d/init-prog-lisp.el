@@ -25,6 +25,7 @@
   :diminish (paredit-mode)
   :config (paredit-mode))
 
+(defun mjs/set-comment-start () (setq-local comment-start "; "))
 (defun mjs/emacs-lisp-mode-setup () (setq mode-name "Elisp"))
 
 (use-package pp
@@ -32,17 +33,19 @@
   :bind (("C-x C-e" . pp-eval-last-sexp)
          ("M-:" . pp-eval-expression)))
 
+(use-package elisp-mode
+  :ensure nil
+  :config
+    (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
+    (add-hook 'emacs-lisp-mode-hook 'mjs/emacs-lisp-mode-setup))
+
 (use-package lisp-mode
   :ensure nil
   :config
   (progn
     (setq inferior-lisp-program "/usr/local/bin/sbcl")
-    (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-    (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
-    (add-hook 'emacs-lisp-mode-hook 'mjs/emacs-lisp-mode-setup)
-
-    (add-hook 'lisp-mode-hook 'paredit-mode)
-    (add-hook 'lisp-interaction-mode-hook 'paredit-mode)
+    (add-hook 'lisp-data-mode-hook 'paredit-mode)
+    (add-hook 'lisp-data-mode-hook 'mjs/set-comment-start)
 
     (put 'define-test 'lisp-indent-function 1)
     (put 'test 'lisp-indent-function 1)
