@@ -23,8 +23,6 @@
     (from "notifier@codeship.com"
           (| ("subject" "defmethodinc/.*" "defmethod.builds")))
 
-    (from "Auto_Reply@mailer.discoverybenefits.com" "list.bank")
-
     (| (from ".*@knowyourteam\\.com" "defmethod.misc")
        (from ".*@knowyourcompany\\.com" "defmethod.misc")
        (from ".*@bonus\\.ly" "defmethod.misc")
@@ -46,6 +44,7 @@
     (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
     ("subject" "GeePawHill.Org" "list.newsletter.geepawhill")
     (from "robert@stuffwithstuff.com" "list.newsletter.crafting-interpreters")
+
     (| (from ".*@linkedin.com" "list.misc")
        (from "joanne_adam@huntlib.org" "list.misc")
        (from "millionyearpicnic@googlegroups.com" "list.misc")
@@ -57,7 +56,8 @@
        (from "noreply-local-guides@google.com" "list.misc")
        (from "info@fsf.org" "list.misc")
        (from "morbidanatomy@gmail.com" "list.misc")
-       (from "no-reply@dropboxmail.com" "list.misc"))
+       (from "no-reply@dropboxmail.com" "list.misc")
+       (from "contact@executeprogram.com" "list.misc"))
 
     (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
        (from "t-mobile@digital-delivery.com" "list.receipts")
@@ -76,8 +76,9 @@
        (from "googleplay-noreply@google.com" "list.receipts"))
 
     (| (any "ally.*" "list.bank")
+       (from "Auto_Reply@mailer.discoverybenefits.com" "list.bank")
        (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
-       (any "\*\.optumbank\.com" "list.bank")
+       (from "optumbankdonotreply@optumbank.com" "list.bank")
        (any ".*mint.*" "list.bank")
        (any ".*citizensbank.*" "list.bank")
        (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
@@ -154,6 +155,8 @@
          (spam-autodetect . t)
          (spam-autodetect-methods spam-use-regex-headers)
          (spam-process (spam spam-use-gmane)))
+
+        (".*gnucash.*" (gnus-ignored-adaptive-words '("gnc")))
 
         ;; in RSS feeds HTML is probably the right choice.
         ("\\`nnrss:"
