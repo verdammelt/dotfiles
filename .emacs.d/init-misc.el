@@ -96,6 +96,8 @@
     (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
   :config (setq forge-topic-list-limit '(100 . -5)))
 
+(use-package code-review)
+
 (use-package magit-todos
   :after magit
   :config
@@ -331,34 +333,22 @@
 ;;;
 ;;; Playing with completion
 ;;;
-;; (use-package icomplete
-;;   :ensure nil
-;;   :hook (after-init . fido-mode)
-;;   :functions (icomplete-forward-completions icomplete-backward-completions)
-;;   :bind (:map icomplete-fido-mode-map
-;;               ("C-n" . icomplete-forward-completions)
-;;               ("C-p" . icomplete-backward-completions))
-;;   :config (setq icomplete-in-buffer t))
+(use-package icomplete
+  :ensure nil
+  :hook (after-init . fido-mode)
+  :functions (icomplete-forward-completions icomplete-backward-completions)
+  :bind (:map icomplete-fido-mode-map
+              ("C-n" . icomplete-forward-completions)
+              ("C-p" . icomplete-backward-completions))
+  :config (setq icomplete-in-buffer t))
 
-;; (if (mjs/emacs-27-p)
-;;     (progn
-;;       (use-package icomplete-vertical
-;;         :hook (icomplete-mode . icomplete-vertical-mode)))
-;;   (use-package icomplete
-;;     :ensure nil
-;;     :hook (after-init . fido-vertical-mode)))
-
-;;;
-;;; Trying out veritico
-;;;
-(use-package vertico
-  :init (vertico-mode)
-  :bind (:map vertico-map
-              ("C-." . #'vertico-next)
-              ("C-," . #'vertico-previous))
-  :config
-  (setq vertico-resize t
-        vertico-cycle t))
+(if (mjs/emacs-27-p)
+    (progn
+      (use-package icomplete-vertical
+        :hook (icomplete-mode . icomplete-vertical-mode)))
+  (use-package icomplete
+    :ensure nil
+    :hook (after-init . fido-vertical-mode)))
 
 ;;;
 ;;; Trying out marginalia
@@ -437,3 +427,7 @@
 (use-package eshell
   :ensure nil
   :config (setq eshell-hist-ignoredups t))
+
+(use-package :help
+  :ensure nil
+  :config (setq describe-bindings-outline t))
