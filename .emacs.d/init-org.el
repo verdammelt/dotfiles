@@ -67,7 +67,7 @@
           org-treat-S-cursor-todo-selection-as-state-change nil
 
           org-agenda-files
-          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "journal" "inbox-mobile"))
+          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "memex/journal" "inbox-mobile"))
 
           org-hide-leading-stars nil
           org-startup-indented t
@@ -204,7 +204,7 @@
         `(("c" "Capture" entry (file "")
            "* %?\n%U"
            :empty-lines 1)
-          ("j" "Journal" entry (file+olp+datetree "journal.org")
+          ("j" "Journal" entry (file+olp+datetree "memex/journal.org")
            "* %T %?"
            :empty-lines 1)
           ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
