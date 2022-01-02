@@ -281,10 +281,8 @@
          ("C-c m g" . #'org-roam-graph)
          ("C-c m i" . #'org-roam-node-insert)
          ("C-c m l" . #'org-roam-buffer-toggle)
-         ("C-c m r" . #'org-roam-node-random)
-         ("C-c m t" . #'org-roam-dailies-capture-today)
+         ("C-c m r" . #'org-roam-node-random))
 
-         :prefix "C-c m d" :prefix-map org-roam-dailies-map)
   :init
   (setq org-roam-directory (expand-file-name "memex" org-directory)
         org-roam-v2-ack t)
@@ -306,18 +304,6 @@
 (use-package org-roam-graph
   :ensure org-roam
   :init (setq org-roam-graph-viewer "/usr/bin/open"))
-
-(use-package org-roam-dailies
-  :ensure org-roam
-  :config
-  (progn (setq org-roam-dailies-capture-templates
-               '(("d" "default" entry "* %<%H:%M> %? :WEEKLY:\n%a\n\n%i\n"
-                  :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>")
-                  :empty-lines 1
-                  :clock-in t :clock-resume t
-                  :kill-buffer t)))
-         (cl-pushnew (expand-file-name org-roam-dailies-directory org-roam-directory)
-                     org-agenda-files)))
 
 (use-package org-roam-protocol :ensure org-roam :after org-roam)
 
