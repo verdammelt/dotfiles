@@ -100,6 +100,7 @@
 
 (use-package magit-todos
   :after magit
+  :demand t
   :config
   (magit-todos-mode)
   (setq magit-todos-rg-extra-args '("--hidden")))
