@@ -205,7 +205,7 @@
            "* %?\n%U"
            :empty-lines 1)
           ("j" "Journal" entry (file+olp+datetree "memex/journal.org")
-           "* %T %?"
+           "* %T \n:PROPERTIES:\n:ID: %(org-id-new)\n:END:\n%?"
            :empty-lines 1)
           ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
            "* %?\nSCHEDULED: %^t\n%U\n%a"
