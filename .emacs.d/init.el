@@ -11,8 +11,6 @@
 (defmacro if-work (then else)
   `(if *is-work-machine* ,then ,else))
 
-(defun mjs/emacs-27-p () (version< emacs-version "28"))
-
 ;;;
 ;;; Customize
 ;;;

@@ -47,9 +47,7 @@
   :defines compilation-error-regexp-alist compilation-error-regexp-alist-alist
   :config
   (progn (setq compilation-scroll-output 'first-error)
-         (if (mjs/emacs-27-p)
-             (add-hook 'compilation-filter-hook #'mjs/colorize-compilation)
-           (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter))
+         (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter)
          (mjs/add-compilation-error-regexp
           'webpack-tsc-error-regexp "ERROR in \\(.*\\)(\\(.*\\),\\(.*\\))"
           1 2 3 1)

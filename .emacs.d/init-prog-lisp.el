@@ -53,8 +53,7 @@
     (define-auto-insert '("\\.asd" . "ASDF Defsystem file") 'asdf-defsystem)
     (define-auto-insert '("packages?\\.lisp" . "Defpackage file") 'cl-defpackage)
 
-    (unless (mjs/emacs-27-p)
-      (cl-font-lock-built-in-mode))))
+    (cl-font-lock-built-in-mode)))
 
 (use-package ielm
   :ensure nil

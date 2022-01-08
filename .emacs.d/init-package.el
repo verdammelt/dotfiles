@@ -7,8 +7,6 @@
 
 (advice-add 'package--save-selected-packages :filter-args #'mjs/sort-packages)
 
-(when (mjs/emacs-27-p)
-  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 

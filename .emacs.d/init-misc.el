@@ -57,7 +57,7 @@
   :ensure nil
   :init (setq-default abbrev-mode t)
   :diminish (abbrev-mode)
-  :config (unless (mjs/emacs-27-p) (setq abbrev-suggest t)))
+  :config (setq abbrev-suggest t))
 
 (use-package flyspell
   :ensure nil
@@ -143,9 +143,7 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-(if (mjs/emacs-27-p)
-    (defalias 'yes-or-no-p 'y-or-n-p)
-  (setq use-short-answers t))
+(setq use-short-answers t)
 
 (defun mjs/change-size (size)
   (interactive "nsize: ")
@@ -211,9 +209,7 @@
                                     ("youtube.com" . browse-url-default-browser)
                                     ("exercism.org" . browse-url-default-browser)
                                     ("." . eww-browse-url))))
-    (if (mjs/emacs-27-p)
-        (setq browse-url-browser-function browse-url-handler-alist)
-      (setq browse-url-handlers browse-url-handler-alist))))
+    (setq browse-url-handlers browse-url-handler-alist)))
 
 (use-package ediff
   :ensure nil
@@ -343,13 +339,9 @@
               ("C-p" . icomplete-backward-completions))
   :config (setq icomplete-in-buffer t))
 
-(if (mjs/emacs-27-p)
-    (progn
-      (use-package icomplete-vertical
-        :hook (icomplete-mode . icomplete-vertical-mode)))
-  (use-package icomplete
-    :ensure nil
-    :hook (after-init . fido-vertical-mode)))
+(use-package icomplete
+  :ensure nil
+  :hook (after-init . fido-vertical-mode))
 
 ;;;
 ;;; Trying out marginalia
