@@ -118,3 +118,4 @@ Sites
 /.emacs.d/secrets.el
 synctunes
 /.emacs.d/forge-database.sqlite
+/.emacs.d/code-review-db-file.sqlite
