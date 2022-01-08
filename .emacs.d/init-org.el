@@ -239,6 +239,9 @@
   :ensure org
   :diminish (org-indent-mode))
 
+(defvar mjs/default-task-id "DEFAULT-TASK")
+(defvar mjs/keep-clock-running nil)
+
 (use-package org-clock
   :ensure org
   :functions (org-clock-in org-clock-out)
@@ -248,9 +251,6 @@
   :config
   (progn
     (declare-function org-agenda-clock-in "org-agenda")
-
-    (defvar mjs/default-task-id "DEFAULT-TASK")
-    (defvar mjs/keep-clock-running nil)
 
     (declare-function org-id-find "org-id")
 
