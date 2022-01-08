@@ -312,18 +312,6 @@
     (add-to-list 'gnus-default-adaptive-score-alist
                  '(gnus-ticked-mark (subject 10)))))
 
-;; TODO: exeripment with the need for this settings.
-;; (use-package shr
-;;   :ensure nil
-;;   :config
-;;   ;; Improve colors used in shr. These settings are to make sure colors
-;;   ;; are distinct enough to be visible.
-;;   (use-package shr-color
-;;     :ensure nil
-;;     :config
-;;     (setq shr-color-visible-distance-min 40
-;;           shr-color-visible-luminance-min 70)))
-
 (use-package mm-decode
   :ensure nil
   :config
