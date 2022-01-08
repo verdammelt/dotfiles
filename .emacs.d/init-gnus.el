@@ -1,168 +1,6 @@
 (declare-function if-work "init")
 (declare-function mjs/bbdb-init "init-bbdb")
 
-(defvar split-rules)
-(setq split-rules
-  '(|
-    (| (to "noreply@sourceforge.net" "mail.tnef")
-       ("subject" "tnef" "mail.tnef"))
-
-    (any ".*@github.com"
-         (| ("subject" "exercism/v3" "list.exercism.v3")
-            ("subject" "exercism/.*" "list.exercism.maintenance")
-            "list.github"))
-
-    (from "notification@slack.com"
-          (| ("subject" "Exercism" "list.exercism.slack")
-             ("subject" "#maintaining-common-lisp" "list.exercism.slack")
-             ("subject" "Def.Method" "defmethod.slack")))
-
-    (| (from "hello@mail.exercism.io" "list.exercism.mentor")
-       (from "jeremy@exercism.io" "list.exercism.announce"))
-
-    (from "notifier@codeship.com"
-          (| ("subject" "defmethodinc/.*" "defmethod.builds")))
-
-    (| (from ".*@knowyourteam\\.com" "defmethod.misc")
-       (from ".*@knowyourcompany\\.com" "defmethod.misc")
-       (from ".*@bonus\\.ly" "defmethod.misc")
-       (from "helpful@ninety.io" "defmethod.misc")
-       (from "noreply@organizationalcheckup.com" "defmethod.misc"))
-
-
-    ("sender" "calendar-notification@google.com" "defmethod.calendar")
-
-    (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
-       (to "all@defmethod\\.io" "defmethod.inbox")
-       (from ".*@defmethod\\..*" "defmethod.inbox")
-       (from "donotreply@adp.com" "defmethod.inbox"))
-
-    (any ".*@LISTSERV.NODAK.EDU" "list.lifelines")
-    (from "wsmith@wordsmith.org" "list.awotd")
-    (to "extremeprogramming@groups.io" "list.extremeprogramming")
-    (to "testdrivendevelopment@groups.io" "list.testdrivendevelopment")
-    (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
-    ("subject" "GeePawHill.Org" "list.newsletter.geepawhill")
-    (from "robert@stuffwithstuff.com" "list.newsletter.crafting-interpreters")
-
-    (| (from ".*@linkedin.com" "list.misc")
-       (from "joanne_adam@huntlib.org" "list.misc")
-       (from "millionyearpicnic@googlegroups.com" "list.misc")
-       (from ".*@acm.org" "list.misc")
-       (from "vitalsigns@prohealthcare.com" "list.misc")
-       (from "noreply@followmyhealth.com" "list.misc")
-       (from ".*@meetup.com" "list.misc")
-       (from "noreply@google.com" "list.misc")
-       (from "noreply-local-guides@google.com" "list.misc")
-       (from "info@fsf.org" "list.misc")
-       (from "morbidanatomy@gmail.com" "list.misc")
-       (from "no-reply@dropboxmail.com" "list.misc")
-       (from "contact@executeprogram.com" "list.misc"))
-
-    (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
-       (from "t-mobile@digital-delivery.com" "list.receipts")
-       (from "receipts@messaging.squareup.com" "list.receipts")
-       (from ".*@patreon.com" "list.receipts")
-       (from "service@paypal.com" "list.receipts")
-       (| (from "Northwellhealth_no-reply@healthpay24.net" "list.receipts")
-          (subject "Northwell Health Payment Due Reminder" "list.receipts"))
-       (from "orders@starbucks.com" "list.receipts")
-       (from "noreply@alerts.psegliny.com" "list.receipts")
-       ("subject" "Amazon Web Services Billing Statement Available" "list.receipts")
-       (from "shipment-tracking@amazon.com" "list.receipts")
-       (from "digital-no-reply@amazon.com" "list.receipts")
-       (from "reload-no-reply@amazon.com" "list.receipts")
-       (from ".*@etsy.com" "list.receipts")
-       (from "googleplay-noreply@google.com" "list.receipts"))
-
-    (| (any "ally.*" "list.bank")
-       (from "Auto_Reply@mailer.discoverybenefits.com" "list.bank")
-       (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
-       (from "optumbankdonotreply@optumbank.com" "list.bank")
-       (any ".*mint.*" "list.bank")
-       (any ".*citizensbank.*" "list.bank")
-       (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
-       (from "webinquiry@Ascensus.com" "list.bank")
-       (any ".*@mail.fidelity.com" "list.bank")
-       (from "noreply@healthsafe-id.com" "list.bank"))
-
-    (from ".*\.starbucks\.com" "list.starbucks")
-
-
-    (from "forums@dragonsfoot.org" "list.dragonsfoot")
-
-    (| (from "ArqBackupSystem@virgil.local" "list.arqbackup")
-       (from "ArqBackupSystem@virgil.fios-router.home" "list.arqbackup"))
-
-    (any ".*@travis-ci.org" "list.ci-builds")
-
-    ;; apply splitting rules (if any) found in gnus-group-parameters
-    (: gnus-group-split-fancy nil t nil)
-
-    ;; split with spam rules
-    (: spam-split)
-
-    ;; absolute fallback
-    "mail.inbox"))
-
-(defvar group-parameters)
-(setq group-parameters
-      '(("nnfolder.*"
-         (spam-contents gnus-group-spam-classification-ham)
-         (spam-process ((ham spam-use-BBDB)))
-         (spam-process-destination "nnfolder:spam.spam"))
-
-        ("nnfolder+archive.*"
-         (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
-        ("nndraft:.*"
-         (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
-
-        ("mail.*"
-         (gcc-self . t)
-         (total-expire . t))
-
-        ("mail.codeandcocktails"
-         (posting-style  (address "codeandcocktails@gmail.com")))
-
-        ("list.*"
-         (total-expire . t))
-
-        ("cyrus.*"
-         (gcc-self . t)
-         (total-expire . t)
-         (posting-style (address "msimpson@cyrusinnovation.com")))
-
-        ("defmethod.*"
-         (gcc-self . t)
-         (total-expire . t)
-         (posting-style (address "msimpson@defmethod.io")))
-
-
-        ("spam\\.spam"
-         (total-expire . t)
-         (spam-contents gnus-group-spam-classification-spam)
-         (spam-process ((ham spam-use-BBDB)))
-         (ham-process-destination "nnfolder:mail.inbox"))
-
-        ("nnfolder+archive.*"
-         (total-expire . nil))
-
-        ("^gmane\\."
-         (spam-autodetect . t)
-         (spam-autodetect-methods spam-use-regex-headers)
-         (spam-process (spam spam-use-gmane)))
-        ("^gwene\\."
-         (spam-autodetect . t)
-         (spam-autodetect-methods spam-use-regex-headers)
-         (spam-process (spam spam-use-gmane)))
-
-        (".*gnucash.*" (gnus-ignored-adaptive-words '("gnc")))
-
-        ;; in RSS feeds HTML is probably the right choice.
-        ("\\`nnrss:"
-         (mm-discouraged-alternatives nil)
-         (gnus-summary-line-format "%z%U%R%[%10&user-date;%B%s\n"))))
-
 (use-package gnus
   :ensure nil
   :bind (("<f6>" . gnus))
@@ -177,12 +15,68 @@
         (expand-file-name "score-files" gnus-directory) ;where to put the kill files
         gnus-message-archive-group
         (if-work "nnfolder:defmethod.inbox" '((format-time-string "archive-%Y")))
-        gnus-parameters group-parameters
         gnus-secondary-select-methods '((nnfolder "")) ; where to find my mails
         gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
         gnus-summary-line-format "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n"
         gnus-update-message-archive-method t
-        gnus-use-adaptive-scoring '(word line)))
+        gnus-use-adaptive-scoring '(word line)
+
+        gnus-parameters
+        '(("nnfolder.*"
+           (spam-contents gnus-group-spam-classification-ham)
+           (spam-process ((ham spam-use-BBDB)))
+           (spam-process-destination "nnfolder:spam.spam"))
+
+          ("nnfolder+archive.*"
+           (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
+          ("nndraft:.*"
+           (gnus-thread-sort-functions '(gnus-thread-sort-by-number)))
+
+          ("mail.*"
+           (gcc-self . t)
+           (total-expire . t))
+
+          ("mail.codeandcocktails"
+           (posting-style  (address "codeandcocktails@gmail.com")))
+
+          ("list.*"
+           (total-expire . t))
+
+          ("cyrus.*"
+           (gcc-self . t)
+           (total-expire . t)
+           (posting-style (address "msimpson@cyrusinnovation.com")))
+
+          ("defmethod.*"
+           (gcc-self . t)
+           (total-expire . t)
+           (posting-style (address "mark.simpson@defmethod.io")))
+
+
+          ("spam\\.spam"
+           (total-expire . t)
+           (spam-contents gnus-group-spam-classification-spam)
+           (spam-process ((ham spam-use-BBDB)))
+           (ham-process-destination "nnfolder:mail.inbox"))
+
+          ("nnfolder+archive.*"
+           (total-expire . nil))
+
+          ("^gmane\\."
+           (spam-autodetect . t)
+           (spam-autodetect-methods spam-use-regex-headers)
+           (spam-process (spam spam-use-gmane)))
+          ("^gwene\\."
+           (spam-autodetect . t)
+           (spam-autodetect-methods spam-use-regex-headers)
+           (spam-process (spam spam-use-gmane)))
+
+          (".*gnucash.*" (gnus-ignored-adaptive-words '("gnc")))
+
+          ;; in RSS feeds HTML is probably the right choice.
+          ("\\`nnrss:"
+           (mm-discouraged-alternatives nil)
+           (gnus-summary-line-format "%z%U%R%[%10&user-date;%B%s\n")))))
 
 (use-package gnus-art
   :ensure nil
@@ -283,7 +177,109 @@
    nnmail-expiry-target 'mjs/expiry-target-calculator
    nnmail-expiry-wait-function 'mjs/expiry-wait-calculator
    nnmail-split-methods 'nnmail-split-fancy
-   nnmail-split-fancy split-rules))
+   nnmail-split-fancy
+   '(|
+     (| (to "noreply@sourceforge.net" "mail.tnef")
+        ("subject" "tnef" "mail.tnef"))
+
+     (any ".*@github.com"
+          (| ("subject" "exercism/v3" "list.exercism.v3")
+             ("subject" "exercism/.*" "list.exercism.maintenance")
+             "list.github"))
+
+     (from "notification@slack.com"
+           (| ("subject" "Exercism" "list.exercism.slack")
+              ("subject" "#maintaining-common-lisp" "list.exercism.slack")
+              ("subject" "Def.Method" "defmethod.slack")))
+
+     (| (from "hello@mail.exercism.io" "list.exercism.mentor")
+        (from "jeremy@exercism.io" "list.exercism.announce"))
+
+     (from "notifier@codeship.com"
+           (| ("subject" "defmethodinc/.*" "defmethod.builds")))
+
+     (| (from ".*@knowyourteam\\.com" "defmethod.misc")
+        (from ".*@knowyourcompany\\.com" "defmethod.misc")
+        (from ".*@bonus\\.ly" "defmethod.misc")
+        (from "helpful@ninety.io" "defmethod.misc")
+        (from "noreply@organizationalcheckup.com" "defmethod.misc"))
+
+
+     ("sender" "calendar-notification@google.com" "defmethod.calendar")
+
+     (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
+        (to "all@defmethod\\.io" "defmethod.inbox")
+        (from ".*@defmethod\\..*" "defmethod.inbox")
+        (from "donotreply@adp.com" "defmethod.inbox"))
+
+     (any ".*@LISTSERV.NODAK.EDU" "list.lifelines")
+     (from "wsmith@wordsmith.org" "list.awotd")
+     (to "extremeprogramming@groups.io" "list.extremeprogramming")
+     (to "testdrivendevelopment@groups.io" "list.testdrivendevelopment")
+     (to "verdammelt+agiledeveloperspractices@gmail.com" "list.newsletter.tanzer")
+     ("subject" "GeePawHill.Org" "list.newsletter.geepawhill")
+     (from "robert@stuffwithstuff.com" "list.newsletter.crafting-interpreters")
+
+     (| (from ".*@linkedin.com" "list.misc")
+        (from "joanne_adam@huntlib.org" "list.misc")
+        (from "millionyearpicnic@googlegroups.com" "list.misc")
+        (from ".*@acm.org" "list.misc")
+        (from "vitalsigns@prohealthcare.com" "list.misc")
+        (from "noreply@followmyhealth.com" "list.misc")
+        (from ".*@meetup.com" "list.misc")
+        (from "noreply@google.com" "list.misc")
+        (from "noreply-local-guides@google.com" "list.misc")
+        (from "info@fsf.org" "list.misc")
+        (from "morbidanatomy@gmail.com" "list.misc")
+        (from "no-reply@dropboxmail.com" "list.misc")
+        (from "contact@executeprogram.com" "list.misc"))
+
+     (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
+        (from "t-mobile@digital-delivery.com" "list.receipts")
+        (from "receipts@messaging.squareup.com" "list.receipts")
+        (from ".*@patreon.com" "list.receipts")
+        (from "service@paypal.com" "list.receipts")
+        (| (from "Northwellhealth_no-reply@healthpay24.net" "list.receipts")
+           (subject "Northwell Health Payment Due Reminder" "list.receipts"))
+        (from "orders@starbucks.com" "list.receipts")
+        (from "noreply@alerts.psegliny.com" "list.receipts")
+        ("subject" "Amazon Web Services Billing Statement Available" "list.receipts")
+        (from "shipment-tracking@amazon.com" "list.receipts")
+        (from "digital-no-reply@amazon.com" "list.receipts")
+        (from "reload-no-reply@amazon.com" "list.receipts")
+        (from ".*@etsy.com" "list.receipts")
+        (from "googleplay-noreply@google.com" "list.receipts"))
+
+     (| (any "ally.*" "list.bank")
+        (from "Auto_Reply@mailer.discoverybenefits.com" "list.bank")
+        (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
+        (from "optumbankdonotreply@optumbank.com" "list.bank")
+        (any ".*mint.*" "list.bank")
+        (any ".*citizensbank.*" "list.bank")
+        (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
+        (from "webinquiry@Ascensus.com" "list.bank")
+        (any ".*@mail.fidelity.com" "list.bank")
+        (from "noreply@healthsafe-id.com" "list.bank"))
+
+     (from ".*\.starbucks\.com" "list.starbucks")
+
+
+     (from "forums@dragonsfoot.org" "list.dragonsfoot")
+
+     (| (from "ArqBackupSystem@virgil.local" "list.arqbackup")
+        (from "ArqBackupSystem@virgil.fios-router.home" "list.arqbackup"))
+
+     (any ".*@travis-ci.org" "list.ci-builds")
+
+     ;; apply splitting rules (if any) found in gnus-group-parameters
+     (: gnus-group-split-fancy nil t nil)
+
+     ;; split with spam rules
+     (: spam-split)
+
+     ;; absolute fallback
+     "mail.inbox")))
+
 
 (use-package spam
   :ensure nil
