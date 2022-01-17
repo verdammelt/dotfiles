@@ -202,7 +202,8 @@
         (from ".*@knowyourcompany\\.com" "defmethod.misc")
         (from ".*@bonus\\.ly" "defmethod.misc")
         (from "helpful@ninety.io" "defmethod.misc")
-        (from "noreply@organizationalcheckup.com" "defmethod.misc"))
+        (from "noreply@organizationalcheckup.com" "defmethod.misc")
+        (from "notifications@mg.latticehq.com" "defmethod.misc"))
 
 
      ("sender" "calendar-notification@google.com" "defmethod.calendar")
