@@ -27,9 +27,9 @@
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
         modus-themes-scale-headings t
-        modus-themes-mode-line 'borderless
-        modus-themes-hl-line 'intense-backround
-        modus-themes-completions 'moderate
+        modus-themes-mode-line '(borderless)
+        modus-themes-hl-line '(intense-backround)
+        modus-themes-completions '((t . (moderate)))
         modus-themes-diffs 'desaturated)
   (modus-themes-load-themes)
 
