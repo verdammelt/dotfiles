@@ -17,6 +17,7 @@
   (save-some-buffers t (lambda () (derived-mode-p 'org-mode))))
 
 (use-package org
+  :ensure nil
   :functions (org-return org-insert-time-stamp org-clock-is-active)
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-switchb)
@@ -274,7 +275,8 @@
   :config (setq org-duration-format `h:mm))
 
 (use-package org-roam
-  :hook (after-init . org-roam-setup)
+  :hook (after-init . org-roam-db-autosync-mode)
+  :functions (org-roam-buffer-toggle)
   :bind (("C-c m ." . #'mjs/visit-roam-directory)
          ("C-c m c" . #'org-roam-capture)
          ("C-c m f" . #'org-roam-node-find)
@@ -284,8 +286,7 @@
          ("C-c m r" . #'org-roam-node-random))
 
   :init
-  (setq org-roam-directory (expand-file-name "memex" org-directory)
-        org-roam-v2-ack t)
+  (setq org-roam-directory (expand-file-name "memex" org-directory))
   :config
   (defun mjs/visit-roam-directory ()
     (interactive)
