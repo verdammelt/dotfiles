@@ -85,9 +85,11 @@
 /.diary.calendars-to-import.el
 /.diary.imported
 /.emacs.d/.projectile.cache
+/.emacs.d/bbdb
 /.emacs.d/ido.last
 /.emacs.d/magithub
 /.emacs.d/network-security.data
+/.emacs.d/projects
 /.emacs.d/smex-items
 /.emacs.d/snippets/*/.yas-compiled-snippets.el
 /.emacs.d/var/pcache/cache
