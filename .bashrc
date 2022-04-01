@@ -1,40 +1,19 @@
 PATH=$HOME/Bin:$PATH
 
-export CLICOLOR=1
+export BREW_PREFIX=`brew --prefix`
 
-alias df='df -h'
-alias ls='ls -F'
-alias rm='rm -i'
-alias l=ls
-alias ll='ls -l'
-alias v=vi
-alias m=mail
-alias frm='mail -H'
-alias exersub='exercism submit'
-alias exerfetch='exercism fetch'
-alias t='tree -C -F'
-
-alias pdfopen='pdfopen -viewer xpdf'
-alias tnefrsync="rsync -av tnef.svn.sourceforge.net::svn/tnef/* ."
-
-export NODE_PATH=/usr/local/lib/node_modules
-export MANPATH=$MANPATH:/opt/local/man
-export TNEFSUBREP=https://tnef.svn.sourceforge.net/svnroot/tnef/
 export EDITOR=emacsclient
 export VISUAL=emacsclient
 
-export AUTOFEATURE=true
-
 export PYTHONSTARTUP=$HOME/.pythonrc.py
-
-## LifeLines (genealogy software)
-export LLPROGRAMS=/usr/local/share/lifelines
-export LLREPORTS=$HOME/LifeLines/output
-export LLARCHIVE=$HOME/LifeLines/archive
-export LLDATABASES=$HOME/LifeLines
 
 export LANG=en_US.UTF-8
 
+## LifeLines (genealogy software)
+export LLPROGRAMS=$BREW_PREFIX/share/lifelines
+export LLREPORTS=$HOME/LifeLines/output
+export LLARCHIVE=$HOME/LifeLines/archive
+export LLDATABASES=$HOME/LifeLines
 
 ###
 ### GIT Stuff
@@ -63,14 +42,14 @@ export HISTSIZE=100000
 export HISTFILESIZE=10000000
 export PROMPT_COMMAND="history -a; history -n"
 
+alias frm='mail -H'
+
 function batt() {
     pmset -g batt | \
         awk '/InternalBattery/{print $3 $2 " " $4 }' | \
         sed -e 's/(no//' -e 's/discharging;/-/' -e 's/charging;/+/' -e 's/;/ /g'
 }
 
-# added by travis gem
-[ -f /Users/mjs/.travis/travis.sh ] && source /Users/mjs/.travis/travis.sh
-
-export NVM_DIR=$HOME/.nvm
-. /usr/local/opt/nvm/nvm.sh
+function _log() {
+    echo `date +%FT%T%z` ' -- ' $*
+}

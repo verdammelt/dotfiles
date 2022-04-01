@@ -1,20 +1,10 @@
-function _log() {
-    echo `date +%FT%T%z` ' -- ' $*
-}
-
-source $HOME/.bashrc
-
-CDPATH=.:~:~/SRC:~/Documents:~/Movies
-
-export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
-
-if [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
-    __git_complete g __git_main
+if [ -f $HOME/.bashrc ]; then
+    source $HOME/.bashrc
 fi
 
-if [ -f /usr/local/Library/Contributions/brew_bash_completions.sh ]; then
-    . /usr/local/Library/Contributions/brew_bash_completions.sh
+if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+    . $BREW_PREFIX/etc/bash_completion
+    __git_complete g __git_main
 fi
 
 eval `gh completion -s bash`
@@ -37,8 +27,13 @@ function _pscolor() {
 }
 export PS1='\[$(_pscolor)\]\A \h:\W\[${reset}\]> '
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
 eval "$(rbenv init -)"
 
+export NVM_DIR=$HOME/.nvm
+if [ -f $BREW_PREFIX/opt/nvm/nvm.sh ]; then
+    source $BREW_PREFIX/opt/nvm/nvm.sh
+fi
+
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+mail -H
