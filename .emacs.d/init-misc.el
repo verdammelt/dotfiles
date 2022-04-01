@@ -425,5 +425,17 @@
 (use-package :help
   :ensure nil
   :config (setq describe-bindings-outline t))
+
+(defun mjs/set-path-envvar-from-exec-path ()
+  (setenv "PATH" (mapconcat 'identity exec-path ":")))
+
+(use-package path-helper
+  :demand t
+  :if (memq window-system '(mac ns))
+  :config
+  (path-helper-setenv-all)
+  (add-to-list 'exec-path (expand-file-name "~/Bin"))
+  (mjs/set-path-envvar-from-exec-path))
+
 (use-package emacsql-sqlite
   :pin melpa)
