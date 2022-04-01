@@ -425,3 +425,5 @@
 (use-package :help
   :ensure nil
   :config (setq describe-bindings-outline t))
+(use-package emacsql-sqlite
+  :pin melpa)
