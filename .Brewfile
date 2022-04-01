@@ -2,6 +2,7 @@ tap "d12frosted/emacs-plus"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
@@ -18,6 +19,8 @@ brew "autoconf"
 brew "automake"
 # GNU database manager
 brew "gdbm"
+# Command-line interface for SQLite
+brew "sqlite"
 # Client for Amazon Elastic Beanstalk web service
 brew "aws-elasticbeanstalk"
 # Official Amazon AWS command-line interface
@@ -54,8 +57,6 @@ brew "mpfr"
 brew "gawk"
 # GNU compiler collection
 brew "gcc"
-# GNU debugger
-brew "gdb"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
@@ -118,10 +119,6 @@ brew "lychee"
 brew "lzip"
 # Text-to-HTML conversion tool
 brew "markdown"
-# MIT/GNU Scheme development tools and runtime library
-brew "mit-scheme"
-# Terminal based YouTube player and downloader
-brew "mps-youtube"
 # Single-player roguelike video game
 brew "nethack"
 # Platform built on V8 to build network applications
@@ -179,28 +176,33 @@ brew "d12frosted/emacs-plus/emacs-plus@28"
 brew "heroku/brew/heroku"
 # Find & fix known vulnerabilities in open-source dependencies
 brew "snyk/tap/snyk"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # VPN and encryption software
 cask "encryptme"
+cask "font-dejavu"
 # Double-entry accounting program
 cask "gnucash"
 # Web browser
 cask "google-chrome"
+# Automated organization
+cask "hazel"
 # Secure video conferencing app
 cask "jitsi-meet"
-# End-to-end encryption software
-cask "keybase"
 # Productivity tool
 cask "launchbar"
 # Office suite
 cask "libreoffice"
 # Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
-# Tool to manage the size and position of windows
-cask "shiftit"
+# Remote pair programming
+cask "pop"
+# Collaboration platform for API development
+cask "postman"
 # Team communication and collaboration software
 cask "slack"
 # Open-source version of the X.Org X Window System
