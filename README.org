@@ -2,11 +2,8 @@
 ** In the beginning
 *** Drop box (via homebrew cask)
 *** Launchbar (via homebrew cask)
-*** 1Password (download - connect to team and/or drop box vault)
+*** 1Password (via homebrew cask)
 ** Basics:
-*** XCode (needed for homebrew)
-*** Restart into recovery mode and run csrutil disable
-Recovery mode = restart while pressing ⌘-R
 *** Run ~setup.sh~
 - copies in all dotfiles
 - copies in all shell scripts
@@ -14,7 +11,20 @@ Recovery mode = restart while pressing ⌘-R
 - installs brew
 - installs brew cask items
 - installs brew items
+*** PATH
+Edit =/etc/paths=:
+#+begin_example
+/opt/homebrew/bin
+/opt/homebrew/sbin
+/usr/local/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+#+end_example
+(or similar)
 *** Postfix
+**** Config files
 - Add gmail settings to ~/etc/postfix/sasl_passwd~
   - "work-email work-email:<work-password>"
   - "[smtp.gmail.com]:587 <username>:<password>"
@@ -45,6 +55,15 @@ smtp_use_tls = yes
 smtp_tls_security_level = encrypt
 tls_random_source = dev:/dev/urandom
 #+END_SRC
+**** Start on boot
+
+- cp /System/Library/LaunchDaemons/com.apple.postfix.master.plist /Library/LaunchDaemons
+- edit file to:
+  - change the label
+  - remove =-e 60= arguments
+  - add =<KeepAlive/><true/>=
+- launchctl load /Library/LaunchDaemons/com.apple.postfix.master.plist
+
 *** FetchMail
 - copy ~.netrc~
 - copy ~.ssl~ directory into place
@@ -53,10 +72,19 @@ tls_random_source = dev:/dev/urandom
 - execute ~launchctl load ~/Library/LaunchAgents/mark.fetchmail.plist~
 *** GPG Keys
 Copy keys from other machine
+*** SSH Keys
+Copy keys from other machine or create new.
 *** Misc MacOSX defaults
 - ~defaults write com.apple.finder AppleShowAllFiles YES~
 - ~defaults write com.apple.finder QuitMenuItem -bool YES~
 - ~defaults write com.google.Chrome ExternalProtocolDialogShowAlwaysOpenCheckbox -bool true~
 
 ** Other applications
-*** BeFocused
+*** Quicklisp
+- =curl -O https://beta.quicklisp.org/quicklisp.lisp=
+- =sbcl --no-userinit --load quicklisp.lisp=
+- =(quicklisp-quickstart:install :path "~/.quicklisp")=
+*** Amphetamine
+*** Flow
+
+
