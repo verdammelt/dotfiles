@@ -280,6 +280,7 @@
                   math-units-table nil)))
 
 (use-package flycheck
+  :pin melpa
   :init (add-hook 'after-init-hook 'global-flycheck-mode t)
   :config
   (setq flycheck-global-modes '(not lisp-mode))
