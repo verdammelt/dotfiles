@@ -36,8 +36,8 @@
   :config
   (modus-themes-load-vivendi))
 
-(use-package circadian
+(use-package auto-dark
+  :demand t
   :init
-  (setq circadian-themes '((:sunrise . modus-operandi)
-                           (:sunset . modus-vivendi)))
-  (circadian-setup))
+  (setq auto-dark--light-theme 'modus-operandi
+        auto-dark--dark-theme 'modus-vivendi))
