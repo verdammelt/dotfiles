@@ -226,6 +226,15 @@
                 (in-mode . "gnus-summary-mode")
                 (in-mode . "gnus-article-mode"))))))
 
+(use-package ox-latex
+  :ensure org
+  :config (push '("rpg-module" "\\documentclass{rpg-module}"
+                  ("\\part{%s}" . "\\part*{%s}")
+                  ("\\section{%s}" . "\\section*{%s}")
+                  ("\\subsection{%s}" . "\\subsection*{%s}")
+                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+                org-latex-classes))
+
 (use-package org-mac-link
   :ensure org-contrib
   :after org
