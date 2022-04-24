@@ -144,7 +144,7 @@ brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
-brew "ruby", link: true
+brew "ruby"
 # Steel Bank Common Lisp system
 brew "sbcl"
 # Count lines of code in many languages
@@ -178,6 +178,10 @@ brew "heroku/brew/heroku"
 brew "snyk/tap/snyk"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Multi-cloud backup application
+cask "arq"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Client for the Dropbox cloud storage service
@@ -185,6 +189,7 @@ cask "dropbox"
 # VPN and encryption software
 cask "encryptme"
 cask "font-dejavu"
+cask "font-noto-color-emoji"
 # Double-entry accounting program
 cask "gnucash"
 # Web browser
