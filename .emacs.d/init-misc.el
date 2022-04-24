@@ -317,8 +317,10 @@
   :bind (("M-u" . #'upcase-dwim)
          ("M-l" . #'downcase-dwim))
   :config
-  (setq echo-keystrokes 0.25
-        save-interprogram-paste-before-kill t))
+  (setq
+   describe-bindings-outline t
+   echo-keystrokes 0.25
+   save-interprogram-paste-before-kill t))
 
 (use-package autoinsert
   :ensure nil
