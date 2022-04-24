@@ -61,13 +61,13 @@ tls_random_source = dev:/dev/urandom
 - edit file to:
   - change the label
   - remove =-e 60= arguments
-  - add =<KeepAlive/><true/>=
+  - add =<key>KeepAlive<key/><true/>=
 - launchctl load /Library/LaunchDaemons/com.apple.postfix.master.plist
 
 *** FetchMail
 - copy ~.netrc~
 - copy ~.ssl~ directory into place
-- exucute ~c_rehash ~/.ssl/certs~
+- exucute ~c_rehash ~/.ssl/certs~ (~c_rehash~ is in brew's Cellar/openssl
 - execute ~cp $SRC/Files/mark.fetchmail.plist ~/Library/LaunchAgents~
 - execute ~launchctl load ~/Library/LaunchAgents/mark.fetchmail.plist~
 *** GPG Keys
@@ -78,6 +78,9 @@ Copy keys from other machine or create new.
 - ~defaults write com.apple.finder AppleShowAllFiles YES~
 - ~defaults write com.apple.finder QuitMenuItem -bool YES~
 - ~defaults write com.google.Chrome ExternalProtocolDialogShowAlwaysOpenCheckbox -bool true~
+*** Emacs:
+- link emacs from brew into /Applications
+- Add as custom list item in Launchbar
 
 ** Other applications
 *** Quicklisp
@@ -86,5 +89,4 @@ Copy keys from other machine or create new.
 - =(quicklisp-quickstart:install :path "~/.quicklisp")=
 *** Amphetamine
 *** Flow
-
 
