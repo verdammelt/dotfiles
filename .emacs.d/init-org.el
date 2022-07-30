@@ -206,7 +206,7 @@
            "* %?\n%U"
            :empty-lines 1)
           ("j" "Journal" entry (file+olp+datetree "memex/journal.org")
-           "* %T \n:PROPERTIES:\n:ID: %(org-id-new)\n:END:\n%?"
+           "* %T %?\n\n"
            :empty-lines 1)
           ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
            "* %?\nSCHEDULED: %^t\n%U\n%a"
@@ -287,11 +287,14 @@
   :hook (after-init . org-roam-db-autosync-mode)
   :functions (org-roam-buffer-toggle)
   :bind (("C-c m ." . #'mjs/visit-roam-directory)
+         ("C-c m a" . #'org-roam-alias-add)
          ("C-c m c" . #'org-roam-capture)
          ("C-c m f" . #'org-roam-node-find)
          ("C-c m g" . #'org-roam-graph)
          ("C-c m i" . #'org-roam-node-insert)
+         ("C-c m I" . #'mjs/org-roam-node-insert-immediate)
          ("C-c m l" . #'org-roam-buffer-toggle)
+         ("C-c m o" . #'mjs/visit-orphan-node)
          ("C-c m r" . #'org-roam-node-random))
 
   :init
@@ -371,3 +374,48 @@
   (interactive)
   (org-agenda nil "k")
   (mjs/punch-in))
+
+(defun mjs/org-roam-connected-ids ()
+  "Return a list of all ids for nodes which are connected to another node."
+  (let ((ids-on-edges (org-roam-db-query
+                       [:select :distinct [source dest] :from links :where (= type "id")])))
+    (cl-remove-duplicates (apply #'append ids-on-edges) :test #'string=)))
+
+(declare-function org-roam-node-list "org-roam-node")
+(declare-function org-roam-node-id "org-roam-node")
+(defun mjs/org-roam-orphan-nodes ()
+  "Return all nodes which have no other nodes connecting to them,
+nor that they connect to."
+  (let ((nodes (cl-remove-duplicates
+                (org-roam-node-list)
+                :key #'org-roam-node-id :test #'string=))
+        (connected-ids (mjs/org-roam-connected-ids)))
+    (cl-remove-if #'(lambda (node) (cl-position (org-roam-node-id node)
+                                           connected-ids
+                                           :test #'string=))
+                  nodes)))
+
+(defun mjs/visit-orphan-node ()
+  (interactive)
+  (let* ((template (org-roam-node--process-display-format org-roam-node-display-template))
+         (nodes (mapcar #'(lambda (node) (org-roam-node-read--to-candidate node template))
+                        (mjs/org-roam-orphan-nodes)))
+         (chosen (completing-read
+                  "Orphan Node; "
+                  (lambda (string pred action)
+                    (if (eq action 'metadata)
+                        `(metadata
+                          (annotation-function
+                           . ,(lambda (title)
+                                (funcall org-roam-node-annotation-function
+                                         (get-text-property 0 'node title))))
+                          (category . org-roam-node))
+                      (complete-with-action action nodes string pred))))))
+    (org-roam-node-open (cdr (assoc chosen orphans)))))
+
+(defun mjs/org-roam-node-insert-immediate (arg &rest args)
+  (interactive "P")
+  (let ((args (cons arg args))
+        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                  '(:immediate-finish t)))))
+    (apply #'org-roam-node-insert args)))
