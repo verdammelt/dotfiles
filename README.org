@@ -78,6 +78,8 @@ Copy keys from other machine or create new.
 - ~defaults write com.apple.finder AppleShowAllFiles YES~
 - ~defaults write com.apple.finder QuitMenuItem -bool YES~
 - ~defaults write com.google.Chrome ExternalProtocolDialogShowAlwaysOpenCheckbox -bool true~
+- ~defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 70 '<dict><key>enabled</key><false/></dict>'~
+  (globally disable CTRL-CMD-D (open dictionary definition)
 *** Emacs:
 - link emacs from brew into /Applications
 - Add as custom list item in Launchbar
