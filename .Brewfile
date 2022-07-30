@@ -178,6 +178,8 @@ brew "heroku/brew/heroku"
 brew "snyk/tap/snyk"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# View, print, and comment on PDF documents
+cask "adobe-acrobat-reader"
 # Multi-cloud backup application
 cask "arq"
 # Voice and text chat software
@@ -190,6 +192,8 @@ cask "dropbox"
 cask "encryptme"
 cask "font-dejavu"
 cask "font-noto-color-emoji"
+# Free and open-source image editor
+cask "gimp"
 # Double-entry accounting program
 cask "gnucash"
 # Web browser
@@ -198,6 +202,8 @@ cask "google-chrome"
 cask "hazel"
 # Secure video conferencing app
 cask "jitsi-meet"
+# Interface for reading and syncing eBooks
+cask "kindle"
 # Productivity tool
 cask "launchbar"
 # Office suite
@@ -208,7 +214,11 @@ cask "mactex-no-gui"
 cask "pop"
 # Collaboration platform for API development
 cask "postman"
+# Tool for sending personal documents to Kindles from Macs
+cask "send-to-kindle"
 # Team communication and collaboration software
 cask "slack"
+# Multimedia player
+cask "vlc"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
