@@ -182,6 +182,8 @@
      (| (to "noreply@sourceforge.net" "mail.tnef")
         ("subject" "tnef" "mail.tnef"))
 
+     (from ".*@thesatanictemple\.com" "list.thesatanictemple")
+
      (any ".*@github.com"
           (| ("subject" "exercism/v3" "list.exercism.v3")
              ("subject" "exercism/.*" "list.exercism.maintenance")
@@ -204,7 +206,6 @@
         (from "helpful@ninety.io" "defmethod.misc")
         (from "noreply@organizationalcheckup.com" "defmethod.misc")
         (from "notifications@mg.latticehq.com" "defmethod.misc"))
-
 
      ("sender" "calendar-notification@google.com" "defmethod.calendar")
 
