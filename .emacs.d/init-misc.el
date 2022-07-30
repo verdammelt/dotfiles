@@ -114,7 +114,9 @@
   :bind ("C-<backspace>" . #'kill-word)
   :init
   (setq-default indent-tabs-mode nil)
-  (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)))
+  (setq
+   shell-command-prompt-show-cwd t
+   visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)))
 
 (use-package visual-fill-column
   :hook (markdown-mode . visual-fill-column-mode))
