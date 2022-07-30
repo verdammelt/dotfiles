@@ -1,0 +1,12 @@
+show:
+        --info
+        --style compact
+
+stream:
+        --info
+        --style compact
+
+predicate:
+        postfix '(process == "smtp" || process == "smtpd" || process == "master") && !(sender == "libsystem_info.dylib")'
+        fetchmail 'process == "fetchmail" && !(sender == "libsystem_info.dylib")'
+        
