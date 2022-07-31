@@ -14,6 +14,14 @@
 *** PATH
 Edit =/etc/paths=:
 #+begin_example
+/opt/homebrew/opt/findutils/libexec/gnubin
+/opt/homebrew/opt/gnu-sed/libexec/gnubin
+/opt/homebrew/opt/gnu-tar/libexec/gnubin
+/opt/homebrew/opt/gnu-which/libexec/gnubin
+/opt/homebrew/opt/grep/libexec/gnubin
+/opt/homebrew/opt/make/libexec/gnubin
+/opt/homebrew/opt/openssl@3/bin
+/opt/homebrew/opt/unzip/bin
 /opt/homebrew/bin
 /opt/homebrew/sbin
 /usr/local/bin
