@@ -40,6 +40,8 @@
 	pushDefault = origin
 [pull]
 	rebase = merges
+[rebase]
+        autostash = true
 [credential]
 	helper = osxkeychain
 [diff]
