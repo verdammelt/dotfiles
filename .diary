@@ -8,6 +8,7 @@
 ;;; Personal Holidays
 ;;;
 May 01 May Day
+July 27 Gary Gygax Day
 %%(diary-anniversary 1971 01 30) Wendy's %d%s Birthday
 %%(diary-anniversary 1922 05 09) Tante's %d%s Birthday
 %%(diary-anniversary 1963 07 22) Karl's %d%s Birthday
@@ -23,40 +24,33 @@ May 01 May Day
 ;;;
 ;;; Def Method Holidays
 ;;;
-2021-01-01 DM: New Years Day
-2021-01-18 DM: MLK Day
-2021-02-15 DM: Presidents Day
-2021-05-31 DM: Memorial Day
-2021-06-18 DM: Juneteenth
-2021-07-05 DM: Independance Day
-2021-09-06 DM: Labor Day
-2021-11-24 DM: Half-day (Thanksgiving)
-2021-11-25 DM: Thanksgiving
-2021-11-26 DM: Day after Thanksgiving
-2021-12-23 DM: Half-day (Christmas)
-2021-12-24 DM: Christmas
-2021-12-31 DM: New Years Day
+2022-01-01 DM: New Years Day
+2022-01-17 DM: MLK Day
+2022-02-21 DM: Presidents Day
+2022-05-30 DM: Memorial Day
+2022-06-20 DM: Juneteenth
+2022-07-04 DM: Independance Day
+2022-09-05 DM: Labor Day
+2022-11-23 DM: Half-day (Thanksgiving)
+2022-11-24 DM: Thanksgiving
+2022-11-25 DM: Day after Thanksgiving
+2022-12-23 DM: Half-day (Christmas)
+2022-12-26 DM: Christmas
+2022-12-30 DM: New Years Day
+2023-01-02 DM: New Years Day
 
 ;;;
 ;;; Def Method Team Days
 ;;;
-2021-04-02 DM: Team Day
-2021-07-09 DM: Team Day
-2021-10-01 DM: Team Day
-2021-12-17 DM: Team Day
-2022-04-01 DM: Team Day
+%%(diary-block 2022 10 13 2022 10 15) DM Team Day (in NYC)
 
 ;;;
 ;;; Vacation
 ;;;
-%%(diary-block 2021 12 22 2021 12 24) Vacation
-%%(diary-block 2021 12 27 2021 12 31) Vacation
 
 ;;;
 ;;; PDT
 ;;;
-%%(diary-block 2021 11 22 2021 11 23) PDT
-%%(diary-block 2021 11 27 2021 11 28) 09:00-17:00 EmacsConf 2021
 
 ;;;
 ;;; Doctor Appointments
