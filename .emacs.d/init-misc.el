@@ -80,7 +80,8 @@
   :bind (("C-x g" . magit-status))
   :functions (magit-mode-quit-window)
   :config
-  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1) )
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1
+        magit-diff-refine-hunk 'all))
 
 (use-package forge
   :after magit
@@ -103,7 +104,8 @@
   :demand t
   :config
   (magit-todos-mode)
-  (setq magit-todos-rg-extra-args '("--hidden")))
+  (setq magit-todos-rg-extra-args '("--hidden")
+        magit-todos-exclude-globs '("rr-cache")))
 
 (use-package hl-todo
   :init (global-hl-todo-mode))
