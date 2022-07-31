@@ -23,8 +23,12 @@ brew "gdbm"
 brew "sqlite"
 # Client for Amazon Elastic Beanstalk web service
 brew "aws-elasticbeanstalk"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
 # Garbage collector for C and C++
@@ -49,6 +53,8 @@ brew "cvs"
 brew "exercism"
 # Client for fetching mail from POP, IMAP, ETRN or ODMR-capable servers
 brew "fetchmail"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
 # Infamous electronic fortune-cookie generator
 brew "fortune"
 # C library for multiple-precision floating-point computations
@@ -65,6 +71,12 @@ brew "gh"
 brew "ghostscript"
 # Distributed revision control system
 brew "git"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
+# GNU implementation of which utility
+brew "gnu-which"
 # Generic library support script
 brew "libtool"
 # Common error values for all GnuPG components
@@ -91,6 +103,10 @@ brew "netpbm"
 brew "librsvg"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Popular GNU data compression program
+brew "gzip"
 # Improved top (interactive process viewer)
 brew "htop"
 # Common Lisp ANSI-standard Hyperspec
@@ -117,14 +133,20 @@ brew "lifelines"
 brew "lychee"
 # LZMA-based compression program similar to gzip or bzip2
 brew "lzip"
+# Utility for directing compilation
+brew "make"
 # Text-to-HTML conversion tool
 brew "markdown"
+# Collection of tools that nobody wrote when UNIX was young
+brew "moreutils"
 # Single-player roguelike video game
 brew "nethack"
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # ISO-C API and CLI for generating UUIDs
 brew "ossp-uuid"
 # Swiss-army knife of markup format conversion
@@ -144,7 +166,7 @@ brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
-brew "ruby"
+brew "ruby", link: true
 # Steel Bank Common Lisp system
 brew "sbcl"
 # Count lines of code in many languages
@@ -155,10 +177,14 @@ brew "smartypants"
 brew "streamlink"
 # User interface to the TELNET protocol
 brew "telnet"
+# Simplified and community-driven man pages
+brew "tldr"
 # Microsoft MS-TNEF attachment unpacker
 brew "tnef"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Extraction utility for .zip compressed archives
+brew "unzip"
 # Vi 'workalike' with many additional features
 brew "vim"
 # Pager/text based browser
