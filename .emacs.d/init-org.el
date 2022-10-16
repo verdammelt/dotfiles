@@ -68,7 +68,7 @@
           org-treat-S-cursor-todo-selection-as-state-change nil
 
           org-agenda-files
-          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "memex/journal" "inbox-mobile"))
+          (mapcar #'mjs/expand-org-file '("todo" "work" "inbox" "inbox-mobile" "journal"))
 
           org-hide-leading-stars nil
           org-startup-indented t
@@ -205,7 +205,7 @@
         `(("c" "Capture" entry (file "")
            "* %?\n%U"
            :empty-lines 1)
-          ("j" "Journal" entry (file+olp+datetree "memex/journal.org")
+          ("j" "Journal" entry (file+olp+datetree "journal.org")
            "* %T %?\n\n"
            :empty-lines 1)
           ("k" "Tickler" entry (file+headline "todo.org" "Tickler")
@@ -283,43 +283,6 @@
   :ensure org
   :config (setq org-duration-format `h:mm))
 
-(use-package org-roam
-  :hook (after-init . org-roam-db-autosync-mode)
-  :functions (org-roam-buffer-toggle)
-  :bind (("C-c m ." . #'mjs/visit-roam-directory)
-         ("C-c m a" . #'org-roam-alias-add)
-         ("C-c m c" . #'org-roam-capture)
-         ("C-c m f" . #'org-roam-node-find)
-         ("C-c m g" . #'org-roam-graph)
-         ("C-c m i" . #'org-roam-node-insert)
-         ("C-c m I" . #'mjs/org-roam-node-insert-immediate)
-         ("C-c m l" . #'org-roam-buffer-toggle)
-         ("C-c m o" . #'mjs/visit-orphan-node)
-         ("C-c m r" . #'org-roam-node-random))
-
-  :init
-  (setq org-roam-directory (expand-file-name "memex" org-directory))
-  :config
-  (defun mjs/visit-roam-directory ()
-    (interactive)
-    (find-file (expand-file-name org-roam-directory)))
-  (cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
-    (let* ((count (caar (org-roam-db-query
-                         [:select (funcall count source)
-                                  :from links
-                                  :where (= dest $s1)
-                                  :and (= type "id")]
-                         (org-roam-node-id node)))))
-      (format "[%d]" count)))
-  (setq org-roam-node-display-template "${title:70} ${tags:10} ${backlinkscount:10}"))
-
-
-(use-package org-roam-graph
-  :ensure org-roam
-  :init (setq org-roam-graph-viewer "/usr/bin/open"))
-
-(use-package org-roam-protocol :ensure org-roam :after org-roam)
-
 (use-package org-present
   :config
   (setq org-present-text-scale 2.5)
@@ -375,47 +338,29 @@
   (org-agenda nil "k")
   (mjs/punch-in))
 
-(defun mjs/org-roam-connected-ids ()
-  "Return a list of all ids for nodes which are connected to another node."
-  (let ((ids-on-edges (org-roam-db-query
-                       [:select :distinct [source dest] :from links :where (= type "id")])))
-    (cl-remove-duplicates (apply #'append ids-on-edges) :test #'string=)))
-
-(declare-function org-roam-node-list "org-roam-node")
-(declare-function org-roam-node-id "org-roam-node")
-(defun mjs/org-roam-orphan-nodes ()
-  "Return all nodes which have no other nodes connecting to them,
-nor that they connect to."
-  (let ((nodes (cl-remove-duplicates
-                (org-roam-node-list)
-                :key #'org-roam-node-id :test #'string=))
-        (connected-ids (mjs/org-roam-connected-ids)))
-    (cl-remove-if #'(lambda (node) (cl-position (org-roam-node-id node)
-                                           connected-ids
-                                           :test #'string=))
-                  nodes)))
-
-(defun mjs/visit-orphan-node ()
+(defun mjs/rename-denote-file ()
   (interactive)
-  (let* ((template (org-roam-node--process-display-format org-roam-node-display-template))
-         (nodes (mapcar #'(lambda (node) (org-roam-node-read--to-candidate node template))
-                        (mjs/org-roam-orphan-nodes)))
-         (chosen (completing-read
-                  "Orphan Node; "
-                  (lambda (string pred action)
-                    (if (eq action 'metadata)
-                        `(metadata
-                          (annotation-function
-                           . ,(lambda (title)
-                                (funcall org-roam-node-annotation-function
-                                         (get-text-property 0 'node title))))
-                          (category . org-roam-node))
-                      (complete-with-action action nodes string pred))))))
-    (org-roam-node-open (cdr (assoc chosen orphans)))))
+  (condition-case nil (call-interactively #'denote-rename-file-using-front-matter)
+    (error (call-interactively #'denote-rename-file))))
 
-(defun mjs/org-roam-node-insert-immediate (arg &rest args)
-  (interactive "P")
-  (let ((args (cons arg args))
-        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
-                                                  '(:immediate-finish t)))))
-    (apply #'org-roam-node-insert args)))
+(use-package denote
+  :after org
+  :bind (("C-c m ." . mjs/visit-denote-directory)
+         ("C-c m f" . denote-open-or-create)
+         ("C-c m i" . #'denote-link)
+         ("C-c m I" . #'denote-link-after-creating)
+         ("C-c m n" . denote-create-note)
+         ("C-c m b" . denote-link-backlinks)
+         ("C-c m r" . mjs/rename-denote-file))
+  :hook ((dired-mode . denote-dired-mode-in-directories)
+         (denote-dired-mode . dired-hide-details-mode))
+  :config (setq denote-directory (expand-file-name "memex" org-directory)
+                denote-dired-directories (list denote-directory)
+                denote-date-prompt-use-org-read-date t
+                denote-known-keywords '("cite" "emacs" "lisp" "dnd")
+                denote-infer-keywords t)
+  (defun mjs/visit-denote-directory ()
+    "Open dired buffer in `DENOTE-DIRECTORY`"
+    (interactive)
+    (dired denote-directory))
+)

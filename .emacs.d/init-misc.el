@@ -435,6 +435,3 @@
   (path-helper-setenv-all)
   (add-to-list 'exec-path (expand-file-name "~/Bin"))
   (mjs/set-path-envvar-from-exec-path))
-
-(use-package emacsql-sqlite
-  :pin melpa)
