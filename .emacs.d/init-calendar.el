@@ -7,6 +7,7 @@
     (defvar display-time-use-mail-icon)
     (defvar display-time-format)
     (setq display-time-use-mail-icon t
+          display-time-default-load-average nil
           display-time-format "%FT%R"
           display-time-mail-face
           (defface display-time-mail-face
