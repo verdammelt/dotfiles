@@ -9,6 +9,11 @@
     ("woudl" "would" nil :count 0)
    ))
 
+(define-abbrev-table 'forge-post-mode-abbrev-table
+  '(
+    ("organazation" "organization" nil :count 0)
+   ))
+
 (define-abbrev-table 'git-commit-mode-abbrev-table
   '(
     ("accessiblity" "accessibility" nil :count 0)
@@ -166,6 +171,7 @@
     ("becuase" "because" nil :count 0)
     ("carb" "Crab" nil :count 0)
     ("carraige" "Carriage" nil :count 0)
+    ("chagnes" "changes" nil :count 0)
     ("changig" "changing" nil :count 0)
     ("codeship" "Code ship" nil :count 0)
     ("collegue" "colleague" nil :count 0)
@@ -242,5 +248,6 @@
     ("themed" "themed" nil :count 0)
     ("tia" "Thanks in advance" nil :count 147)
     ("tomororw" "tomorrow" nil :count 1)
+    ("unecessary" "unnecessary" nil :count 0)
    ))
 
