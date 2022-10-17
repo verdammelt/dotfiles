@@ -50,7 +50,7 @@
           ("defmethod.*"
            (gcc-self . t)
            (total-expire . t)
-           (posting-style (address "mark.simpson@defmethod.io")))
+           (posting-style (address "mark.simpson@defmethod.com")))
 
 
           ("spam\\.spam"
