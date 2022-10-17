@@ -53,6 +53,9 @@
           1 2 3 1)
          (mjs/add-compilation-error-regexp
           'jest-error-stack "at .* (\\(.*\\):\\(.*\\):\\(.*\\))"
+          1 2 3 1)
+         (mjs/add-compilation-error-regexp
+          'jest-error-stack-2 "at (\\(.*\\):\\(.*\\):\\(.*\\))"
           1 2 3 1)))
 
 (use-package less-css-mode)
