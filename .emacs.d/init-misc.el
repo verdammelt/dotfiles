@@ -121,7 +121,8 @@
    visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)))
 
 (use-package visual-fill-column
-  :hook (markdown-mode . visual-fill-column-mode))
+  :hook (markdown-mode . visual-fill-column-mode)
+  :config (setq visual-fill-column-center-text t))
 
 (use-package whitespace
   :ensure nil
