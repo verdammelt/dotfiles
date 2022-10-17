@@ -86,6 +86,7 @@
            gnus-treat-unsplit-urls t
            gnus-treat-strip-multiple-blank-lines t
            gnus-treat-x-pgp-sig t
+           gnus-article-date-headers '(combined-local-lapsed)
            gnus-buttonized-mime-types '("multipart/signed" "multipart/alternative")))
 
 (use-package gnus-dup
