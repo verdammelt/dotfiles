@@ -14,7 +14,8 @@
     (add-hook 'prog-mode-hook 'display-line-numbers-mode)
     (add-hook 'prog-mode-hook 'whitespace-mode)))
 
-(use-package scss-mode)
+(use-package scss-mode
+  :config (setq scss-compile-at-save nil))
 
 (use-package yaml-mode)
 
