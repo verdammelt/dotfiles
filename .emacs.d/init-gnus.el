@@ -19,7 +19,7 @@
         gnus-select-method '(nntp "news.gmane.io")    ; where to find my news.
         gnus-summary-line-format "%z%U%R%[%10&user-date;%*%ub%(%1{%-15,15f%)%}%*]%B%s\n"
         gnus-update-message-archive-method t
-        gnus-use-adaptive-scoring '(word line)
+        gnus-use-adaptive-scoring t
 
         gnus-parameters
         '(("nnfolder.*"
@@ -74,9 +74,18 @@
           (".*gnucash.*" (gnus-ignored-adaptive-words '("gnc")))
 
           ;; in RSS feeds HTML is probably the right choice.
+          ;; also remove 'from' adaptive scoring as RSS feeds tend to always be the same author.
           ("\\`nnrss:"
            (mm-discouraged-alternatives nil)
-           (gnus-summary-line-format "%z%U%R%[%10&user-date;%B%s\n")))))
+           (gnus-summary-line-format "%z%U%R%[%10&user-date;%*]%B%s\n")
+           (gnus-adaptive-score-alist
+            '((gnus-ticked-mark (subject 10))
+              (gnus-kill-file-mark)
+              (gnus-unread-mark)
+              (gnus-read-mark (subject 30))
+              (gnus-catchup-mark (subject -10))
+              (gnus-killed-mark (subject -20))
+              (gnus-del-mark (subject -15))))))))
 
 (use-package gnus-art
   :ensure nil
