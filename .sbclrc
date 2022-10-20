@@ -66,3 +66,6 @@ directory name is the SLUG of the exercise."
       (funcall run-tests))))
 
 (in-package :cl-user)
+
+(defun cwd () (make-pathname :directory (pathname-directory (truename "."))))
+(defun dir () (directory "*.*"))
