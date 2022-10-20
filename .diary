@@ -15,6 +15,7 @@ July 27 Gary Gygax Day
 %%(diary-anniversary 1927 09 04) John McCarthy's %d%s Birthday
 %%(diary-anniversary 1970 09 11) %d%s Birthday
 %%(diary-anniversary 1925 09 12) Papa's %d%s Birthday
+%%(diary-anniversary 1990 09 12) Karl & Maureens %d%s (ex)Anniversary
 %%(diary-anniversary 1924 09 15) Mama's %d%s Birthday
 %%(diary-anniversary 1930 09 28) Mama Mastandrea's %d%s Birthday
 %%(diary-anniversary 2013 09 30) %d%s Cyrus / Def Method Employement Anniversary
@@ -42,7 +43,7 @@ July 27 Gary Gygax Day
 ;;;
 ;;; Def Method Team Days
 ;;;
-%%(diary-block 2022 10 13 2022 10 15) DM Team Day (in NYC)
+2022-10-14 DM Team Day
 
 ;;;
 ;;; Vacation
