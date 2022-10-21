@@ -12,7 +12,7 @@
 
 (use-package prettier-js
   :diminish (prettier-js-mode "Pr")
-  :hook ((js-mode typescript-mode web-mode) . prettier-js-mode))
+  :hook ((js-mode typescript-mode typescriptreact-mode web-mode) . prettier-js-mode))
 
 (defvar mjs/previous-node-version nil)
 (defun mjs/remove-node-from-path ()

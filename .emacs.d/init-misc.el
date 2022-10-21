@@ -286,13 +286,6 @@
                     (byte "8 bit" "Byte"))
                   math-units-table nil)))
 
-(use-package flycheck
-  :pin melpa
-  :init (add-hook 'after-init-hook 'global-flycheck-mode t)
-  :config
-  (setq flycheck-global-modes '(not lisp-mode))
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
-
 (use-package browse-kill-ring
   :init (add-hook 'after-init-hook 'browse-kill-ring-default-keybindings ))
 

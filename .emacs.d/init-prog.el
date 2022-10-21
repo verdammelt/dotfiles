@@ -58,16 +58,33 @@
           'jest-error-stack-2 "at (\\(.*\\):\\(.*\\):\\(.*\\))"
           1 2 3 1)))
 
-(use-package less-css-mode)
+(use-package eglot
+  :hook ((typescript-mode . eglot-ensure)
+         (typescriptreact-mode . eglot-ensure))
+  :bind (("C-c e r" . #'eglot-rename)
+         ("C-c e a" . #'eglot-code-actions))
+  ;; need this because eglot clobbers flymake-diagnostic-functions
+  :init (setq eglot-stay-out-of '(flymake))
+  :config (add-hook 'flymake-diagnostic-functions #'eglot-flymake-backend nil t))
 
-(use-package lsp-mode
-  :hook ((typescript-mode . lsp)
-         (web-mode . lsp))
-  :init (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
-  (setq lsp-headerline-breadcrumb-enable t)
-  :config (setq lsp-disabled-clients '(jsts-ls)
-                gc-cons-threshold (* 2 gc-cons-threshold)
-                read-process-output-max (* 1024 1024)))
+(use-package flymake
+  :bind (("C-c ! c" . #'flymake-start)
+         ("C-c ! l" . #'flymake-show-buffer-diagnostics)
+         ("C-c ! L" . #'flymake-show-project-diagnostics)
+         ("M-n" . #'flymake-goto-next-error)
+         ("M-p" . #'flymake-goto-prev-error)))
+
+(defun mjs/enable-flymake-eslint ()
+  "Enable flymake-eslint and set its project root directory if possible."
+  (flymake-eslint-enable)
+  (setq flymake-eslint-project-root
+        (locate-dominating-file (buffer-file-name) ".eslintrc.js")))
+
+(use-package flymake-eslint
+  :hook ((typescript-mode typescriptreact-mode) . mjs/enable-flymake-eslint))
 
 (use-package scss-mode)
+
 (use-package yaml-mode)
+
+(provide 'init-prog)

@@ -1,6 +1,7 @@
 (use-package typescript-mode
-  :mode "\\.tsx\\'"
+  :mode ("\\.tsx\\'" . typescriptreact-mode)
   :config
+  (define-derived-mode typescriptreact-mode typescript-mode "TSX")
   (setq typescript-indent-level 4))
 
 (define-auto-insert '("\\.tsx" . "TSX Component")

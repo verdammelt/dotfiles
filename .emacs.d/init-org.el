@@ -37,8 +37,7 @@
 
   :init
   (setq org-directory (expand-file-name "~/Documents/Dropbox/GTD"))
-  (progn (add-hook 'org-mode-hook #'(lambda () (flycheck-mode 0)))
-         (add-hook 'org-mode-hook 'turn-on-auto-fill)
+  (progn (add-hook 'org-mode-hook 'turn-on-auto-fill)
          (add-hook 'org-mode-hook 'flyspell-mode)
          (add-hook 'org-insert-heading-hook
                    'mjs/insert-heading-inactive-timestamp 'append))
