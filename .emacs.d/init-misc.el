@@ -48,7 +48,7 @@
 
 (use-package battery
   :ensure nil
-  :config
+  :init
   (progn
     (setq battery-mode-line-format "[%b%p%% %t] ")
     (display-battery-mode)))
