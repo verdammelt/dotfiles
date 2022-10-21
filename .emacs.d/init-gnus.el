@@ -154,11 +154,6 @@
                 gnus-build-sparse-threads nil
                 gnus-fetch-old-headers 5000))
 
-(use-package gnus-topic
-  :ensure nil
-  :hook (gnus-group-mode . gnus-topic-mode)
-  :config (setq gnus-topic-display-empty-topics nil))
-
 (use-package mail-source
   :ensure nil
   :config
