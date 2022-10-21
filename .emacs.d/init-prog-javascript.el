@@ -14,13 +14,16 @@
   :diminish (prettier-js-mode "Pr")
   :hook ((js-mode typescript-mode typescriptreact-mode web-mode) . prettier-js-mode))
 
-(defvar mjs/previous-node-version nil)
-(defun mjs/remove-node-from-path ()
-  (message "Removing %s from path" mjs/previous-node-version)
-  (setq exec-path
-        (cl-remove mjs/previous-node-version exec-path :test #'string=)
-        mjs/previous-node-version nil)
+(defun mjs/add-to-path (dir)
+  (cl-pushnew dir exec-path :test #'string=)
   (mjs/set-path-envvar-from-exec-path))
+
+(defun mjs/remove-from-path (dir)
+  (setq exec-path (cl-remove dir exec-path :test #'string=))
+  (mjs/set-path-envvar-from-exec-path))
+
+(defun mjs/remove-node-from-path ()
+  (mjs/remove-from-path (file-name-as-directory (getenv "NVM_BIN"))))
 
 (defun mjs/add-node-to-path ()
   (cond ((file-exists-p ".nvmrc")
@@ -28,40 +31,31 @@
         ((nvm--installed-versions)
          (nvm-use (car (first (cl-sort (nvm--installed-versions)
                                        #'string< :key #'first))))))
-  (when (getenv "NVM_BIN")
-    (setq mjs/previous-node-version (getenv "NVM_BIN")
-          exec-path (cl-pushnew mjs/previous-node-version exec-path
-                                :test #'string=))
-    (mjs/set-path-envvar-from-exec-path)
-    (message "Added %s to path" mjs/previous-node-version)))
-
-(defvar mjs/project-node-module-special-cases (list)
-  "Some projects may not have their node_modules directory at
-  their top level. (Or may have additional node_modules that need
-  to be checked for as well.")
-(defvar mjs/previous-node-modules-added-to-path nil)
-(defun mjs/remove-node-modules-from-path ()
-  (message "Removed %s from path" mjs/previous-node-modules-added-to-path)
-  (setq exec-path
-        (cl-remove-if
-         #'(lambda (p) (member p mjs/previous-node-modules-added-to-path))
-         exec-path)
-        mjs/previous-node-modules-added-to-path nil)
   (mjs/set-path-envvar-from-exec-path))
 
+(defun mjs/remove-node-modules-from-path ()
+  "Remove current node_module/.bin directory from the path"
+  (when-let ((node-module-bin
+              (locate-dominating-file default-directory "node_modules/.bin/")))
+    (mjs/remove-from-path (expand-file-name "node_modules/.bin/" node-module-bin))))
+
 (defun mjs/add-node-modules-in-path ()
-  "I don't install project dependencies globally so I need to add
-the .node_modules/.bin directory to the exec path. Sometimes the
-node_modules directory is not in the project root, add special
-case subdirectory names to mjs/project-node-module-special-cases."
-  (let* ((all-possibilities
-          (mapcar #'(lambda (dir) (expand-file-name "./node_modules/.bin" dir))
-                  (cons "./" mjs/project-node-module-special-cases)))
-         (node-modules-bin-dirs
-          (cl-remove-if-not #'file-exists-p all-possibilities)))
-    (when node-modules-bin-dirs
-      (setq mjs/previous-node-modules-added-to-path node-modules-bin-dirs
-            exec-path (cl-remove-duplicates
-                       (append node-modules-bin-dirs exec-path)))
-      (mjs/set-path-envvar-from-exec-path))
-    (message "Added %s to path" mjs/previous-node-modules-added-to-path)))
+  "Add node_modules/.bin to exec-path and PATH if there is one in this project."
+  (when-let ((node-module-bin
+              (locate-dominating-file default-directory "node_modules/.bin/")))
+    (mjs/add-to-path (expand-file-name "node_modules/.bin/" node-module-bin))))
+
+(defun mjs/project-teardown-js-env ()
+  (when mjs/current-project
+    (let ((default-directory (project-root mjs/current-project)))
+      (mjs/remove-node-modules-from-path)
+      (mjs/remove-node-from-path))))
+
+(defun mjs/project-setup-js-env ()
+  (when mjs/current-project
+    (let ((default-directory (project-root mjs/current-project)))
+      (mjs/add-node-to-path)
+      (mjs/add-node-modules-in-path))))
+
+(add-hook 'mjs/project-teardown-hook 'mjs/project-teardown-js-env)
+(add-hook 'mjs/project-setup-hook 'mjs/project-setup-js-env)

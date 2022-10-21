@@ -47,7 +47,6 @@
 (mjs/load-init-file "init-prog-javascript")
 (mjs/load-init-file "init-prog-lisp")
 (mjs/load-init-file "init-prog-typescript")
-(mjs/load-init-file "init-projectile")
 
 (mjs/load-init-file "secrets" 'noerror)
 

@@ -432,6 +432,54 @@
   (add-to-list 'exec-path (expand-file-name "~/Bin"))
   (mjs/set-path-envvar-from-exec-path))
 
+(defvar mjs/project-setup-hook nil
+  "Functions to call when a new project is switched to.
+MJS/CURRENT-PROJECT will contain the project that was just
+switched to.")
+
+(defvar mjs/project-teardown-hook nil
+  "Functions to call wwhen a new porject is being switched away from.
+MJS/CURRENT-PROJECT will contain the project that is being
+switched away from.")
+
+(defvar mjs/current-project nil
+  "Holds the current project that has most recently been switched to.")
+
+(defun mjs/project-switch-project (dir)
+  "Wrapper around PROJECT-SWITCH-PROJECT to allow for
+setup/teardown of the projects."
+  (interactive (list (project-prompt-project-dir)))
+
+  ;; teardown old project
+  (run-hooks 'mjs/project-teardown-hook)
+  (setq mjs/current-project nil)
+
+  (project-switch-project dir)
+
+  ;; setup new project
+  (setq mjs/current-project (project-current nil dir))
+  (run-hooks 'mjs/project-setup-hook))
+
+(defun mjs/project-try-local (dir)
+  "Determine if DIR is a non-VC project.
+DIR must include a .project or .projectile file to be considered
+a project."
+  (if-let ((root (seq-some (lambda (n)
+                             (locate-dominating-file dir n))
+                           '(".project" ".projectile"))))
+      (cons 'local root)))
+
+(cl-defmethod project-root ((project (head local))) (cdr project))
+
+(use-package project
+  :ensure nil
+  :bind (:map project-prefix-map
+              ("p" . #'mjs/project-switch-project)
+              ("m" . #'magit-project-status))
+  :config
+  (add-hook 'project-find-functions #'mjs/project-try-local 99)
+  (setq project-switch-commands #'project-dired))
+
 (defun mjs/get-file:line ()
   "Adds FILE:LINE for current file and line number to the kill
 ring. Also echoes this to the echo area.
