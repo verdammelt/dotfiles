@@ -438,3 +438,18 @@
   (path-helper-setenv-all)
   (add-to-list 'exec-path (expand-file-name "~/Bin"))
   (mjs/set-path-envvar-from-exec-path))
+
+(defun mjs/get-file:line ()
+  "Adds FILE:LINE for current file and line number to the kill
+ring. Also echoes this to the echo area.
+
+If the file is part of a PROJECT then use a path relative to the
+project root."
+  (interactive)
+  (let ((project-root (and (project-current) (project-root (project-current)))))
+    (message
+     (kill-new
+      (format "%s:%d"
+              (file-relative-name (buffer-file-name) project-root)
+              (save-restriction (widen) (line-number-at-pos)))))))
+(global-set-key (kbd "M-g l") #'mjs/get-file:line)
