@@ -135,7 +135,6 @@
 (use-package gnus-sum
   :ensure nil
   :init (progn (add-hook 'gnus-summary-exit-hook 'gnus-summary-bubble-group)
-               (add-hook 'gnus-summary-exit-hook 'gnus-group-sort-groups-by-rank)
                (add-hook 'gnus-summary-prepared-hook 'gnus-summary-hide-all-threads))
   :config (setq gnus-sum-thread-tree-false-root "< "
                 gnus-sum-thread-tree-single-indent "= "
