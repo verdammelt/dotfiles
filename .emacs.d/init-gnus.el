@@ -188,6 +188,9 @@
 
      (from ".*@thesatanictemple\.com" "list.thesatanictemple")
 
+     (| (from ".*@nyulangone\\.org" "list.medical")
+        (from "visionworks@c.visionworks.com" "list.medical"))
+
      (any ".*@github.com"
           (| ("subject" "exercism/v3" "list.exercism.v3")
              ("subject" "exercism/.*" "list.exercism.maintenance")
@@ -238,7 +241,8 @@
         (from "info@fsf.org" "list.misc")
         (from "morbidanatomy@gmail.com" "list.misc")
         (from "no-reply@dropboxmail.com" "list.misc")
-        (from "contact@executeprogram.com" "list.misc"))
+        (from "contact@executeprogram.com" "list.misc")
+        (from "info@glossgenius.com" "list.misc"))
 
      (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
         (from "t-mobile@digital-delivery.com" "list.receipts")
@@ -254,7 +258,9 @@
         (from "digital-no-reply@amazon.com" "list.receipts")
         (from "reload-no-reply@amazon.com" "list.receipts")
         (from ".*@etsy.com" "list.receipts")
-        (from "googleplay-noreply@google.com" "list.receipts"))
+        (from "googleplay-noreply@google.com" "list.receipts")
+        (from "hello@encrypt.me" "list.receipts")
+        (from "no-reply@sns.amazonaws.com" "list.receipts"))
 
      (| (any "ally.*" "list.bank")
         (from "Auto_Reply@mailer.discoverybenefits.com" "list.bank")
@@ -263,6 +269,7 @@
         (any ".*mint.*" "list.bank")
         (any ".*citizensbank.*" "list.bank")
         (from "CitizensOneCustomerService@ha.edelivery-view.com" "list.bank")
+        (from "Citizens@statements.citizensautomation.com" "list.bank")
         (from "webinquiry@Ascensus.com" "list.bank")
         (any ".*@mail.fidelity.com" "list.bank")
         (from "noreply@healthsafe-id.com" "list.bank"))
