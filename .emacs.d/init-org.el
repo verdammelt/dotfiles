@@ -234,11 +234,6 @@
                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
                 org-latex-classes))
 
-(use-package org-mac-link
-  :ensure org-contrib
-  :after org
-  :bind (:map org-mode-map ("C-c g" . #'org-mac-safari-insert-frontmost-url)))
-
 (use-package org-checklist
   :ensure org-contrib
   :after org
