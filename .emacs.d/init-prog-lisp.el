@@ -18,15 +18,13 @@
   :hook (after-init . global-eldoc-mode)
   :diminish (eldoc-mode)
   :config (setq eldoc-echo-area-use-multiline-p t))
+
 (use-package elisp-slime-nav
   :diminish (elisp-slime-nav-mode)
   :config (elisp-slime-nav-mode))
-(use-package paredit
-  :diminish (paredit-mode)
-  :config (paredit-mode))
 
-(defun mjs/set-comment-start () (setq-local comment-start "; "))
-(defun mjs/emacs-lisp-mode-setup () (setq mode-name "Elisp"))
+(use-package paredit
+  :diminish (paredit-mode))
 
 (use-package pp
   :ensure nil
@@ -36,13 +34,18 @@
 (use-package elisp-mode
   :ensure nil
   :config
+  (progn
+    (defun mjs/emacs-lisp-mode-setup () (setq mode-name "Elisp"))
     (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
-    (add-hook 'emacs-lisp-mode-hook 'mjs/emacs-lisp-mode-setup))
+    (add-hook 'emacs-lisp-mode-hook 'mjs/emacs-lisp-mode-setup)
+    (add-hook 'emacs-lisp-mode-hook 'paredit-mode)))
 
 (use-package lisp-mode
   :ensure nil
   :config
   (progn
+    (defun mjs/set-comment-start () (setq-local comment-start "; "))
+
     (setq inferior-lisp-program "/usr/local/bin/sbcl")
     (add-hook 'lisp-data-mode-hook 'paredit-mode)
     (add-hook 'lisp-data-mode-hook 'mjs/set-comment-start)
@@ -67,23 +70,6 @@
   :config (add-hook 'scheme-mode-hook 'paredit-mode))
 
 (use-package sicp)
-
-(use-package clojure-mode
-  :config
-  (progn
-    (add-hook 'clojure-mode-hook 'paredit-mode)
-    (add-hook 'clojure-mode-hook 'mjs/clj-refactor-setup)))
-
-(use-package cider
-  :commands (cider-repl-add-shortcut)
-  :config
-  (progn
-    (add-hook 'cider-repl-mode-hook 'paredit-mode)
-    (add-hook 'cider-repl-mode-hook 'cider-company-enable-fuzzy-completion)
-    (add-hook 'cider-mode-hook 'cider-company-enable-fuzzy-completion)
-    (cider-repl-add-shortcut "quit" 'cider-quit)
-    (cider-auto-test-mode 1)
-    (set-face-foreground 'cider-fringe-good-face "lightgreen")))
 
 (use-package simple
   :ensure nil
@@ -110,7 +96,7 @@
   "Package name: "
   "(defpackage :" str \n
   > "(:use :cl)" \n
-  > "(:export)"
+v  > "(:export)"
   ")")
 
 (define-skeleton aoc-day

@@ -19,8 +19,6 @@
 
 (use-package ps-print
   :ensure nil
-  :bind (("s-p" . ps-print-buffer)
-         ("s-P" . ps-print-region))
   :config
   (setq
    ps-lpr-command (expand-file-name "~/bin/psprint")
@@ -121,7 +119,7 @@
    visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)))
 
 (use-package visual-fill-column
-  :hook (markdown-mode . visual-fill-column-mode)
+  :hook ((markdown-mode eww-mode) . visual-fill-column-mode)
   :config (setq visual-fill-column-center-text t))
 
 (use-package whitespace
@@ -138,7 +136,6 @@
         mac-command-modifier 'meta
         mac-option-modifier 'super
         mac-function-modifier 'hyper))
-
 
 ;; Misc
 (use-package gnutls
@@ -264,6 +261,7 @@
                 dired-dwim-target t
                 dired-listing-switches "-alv"
                 dired-use-ls-dired nil))
+
 (use-package dired-x
   :ensure nil
   :after dired
@@ -289,7 +287,7 @@
 (use-package browse-kill-ring
   :init (add-hook 'after-init-hook 'browse-kill-ring-default-keybindings ))
 
-(use-package paren-mode
+(use-package paren
   :ensure nil
   :init (add-hook 'after-init-hook 'show-paren-mode t))
 
@@ -339,20 +337,17 @@
               ("C-p" . icomplete-backward-completions))
   :config (setq icomplete-in-buffer t))
 
-;;;
-;;; Trying out marginalia
-;;;
 (use-package marginalia
   :bind (:map minibuffer-local-map
               ("M-A" . #'marginalia-cycle))
-  :init (marginalia-mode))
+  :hook (after-init . marginalia-mode))
 
 (use-package emacs
   :ensure nil
   :config
-  (defun crm-indicator (args)
+  (defun mjs/crm-indicator (args)
     (cons (concat "[CRM] " (car args)) (cdr args)))
-  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+  (advice-add #'completing-read-multiple :filter-args #'mjs/crm-indicator)
   (setq read-extended-command-predicate #'command-completion-default-include-p))
 
 
@@ -421,56 +416,15 @@
   :ensure nil
   :config (setq describe-bindings-outline t))
 
-(defun mjs/set-path-envvar-from-exec-path ()
-  (setenv "PATH" (mapconcat 'identity exec-path ":")))
-
+(require 'path-utils)
 (use-package path-helper
   :demand t
   :if (memq window-system '(mac ns))
   :config
   (path-helper-setenv-all)
-  (add-to-list 'exec-path (expand-file-name "~/Bin"))
-  (mjs/set-path-envvar-from-exec-path))
+  (mjs/add-to-path (expand-file-name "~/Bin")))
 
-(defvar mjs/project-setup-hook nil
-  "Functions to call when a new project is switched to.
-MJS/CURRENT-PROJECT will contain the project that was just
-switched to.")
-
-(defvar mjs/project-teardown-hook nil
-  "Functions to call wwhen a new porject is being switched away from.
-MJS/CURRENT-PROJECT will contain the project that is being
-switched away from.")
-
-(defvar mjs/current-project nil
-  "Holds the current project that has most recently been switched to.")
-
-(defun mjs/project-switch-project (dir)
-  "Wrapper around PROJECT-SWITCH-PROJECT to allow for
-setup/teardown of the projects."
-  (interactive (list (project-prompt-project-dir)))
-
-  ;; teardown old project
-  (run-hooks 'mjs/project-teardown-hook)
-  (setq mjs/current-project nil)
-
-  (project-switch-project dir)
-
-  ;; setup new project
-  (setq mjs/current-project (project-current nil dir))
-  (run-hooks 'mjs/project-setup-hook))
-
-(defun mjs/project-try-local (dir)
-  "Determine if DIR is a non-VC project.
-DIR must include a .project or .projectile file to be considered
-a project."
-  (if-let ((root (seq-some (lambda (n)
-                             (locate-dominating-file dir n))
-                           '(".project" ".projectile"))))
-      (cons 'local root)))
-
-(cl-defmethod project-root ((project (head local))) (cdr project))
-
+(require 'project-utils)
 (use-package project
   :ensure nil
   :bind (:map project-prefix-map

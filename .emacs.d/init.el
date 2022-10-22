@@ -44,9 +44,7 @@
 (mjs/load-init-file "init-misc")
 (mjs/load-init-file "init-org")
 (mjs/load-init-file "init-prog")
-(mjs/load-init-file "init-prog-javascript")
 (mjs/load-init-file "init-prog-lisp")
-(mjs/load-init-file "init-prog-typescript")
 
 (mjs/load-init-file "secrets" 'noerror)
 
