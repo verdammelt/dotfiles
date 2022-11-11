@@ -134,8 +134,22 @@
       (set-face-attribute face nil :strike-through t))
 
     (setq
+     work-agenda '((agenda "" ((org-agenda-span 'day)))
+                   (tags "+REFILE&+LEVEL=1"
+                         ((org-agenda-overriding-header "Tasks to Refile")))
+                   (tags-todo "+@WORK&+@CLIENT/!-WAIT"
+                              ((org-agenda-skip-function
+                                mjs/skip-habits-and-scheduled-and-deadlines)
+                               (org-agenda-overriding-header "BILLABLE")))
+                   (tags-todo "+@WORK&-@CLIENT|+@WORKMAC&-@CLIENT/!-WAIT"
+                              ((org-agenda-skip-function
+                                mjs/skip-habits-and-scheduled-and-deadlines)
+                               (org-agenda-overriding-header "NON-BILLABLE")))
+                   (tags-todo "+@WORK|+@WORKMAC/WAIT"
+                              ((org-agenda-overriding-header "WAITING-FOR"))))
+
      org-agenda-custom-commands
-     '(("h" "home"
+     `(("h" "home"
         ((agenda "" ((org-agenda-span 'day)))
          (tags "+REFILE&+LEVEL=1"
                ((org-agenda-overriding-header "Tasks to Refile")))
@@ -177,20 +191,10 @@
                      (org-agenda-overriding-header "@WORK")))
          (tags-todo "-@CLIENT/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
-       ("k" "work"
-        ((agenda "" ((org-agenda-span 'day)))
-         (tags "+REFILE&+LEVEL=1"
-               ((org-agenda-overriding-header "Tasks to Refile")))
-         (tags-todo "+@WORK&+@CLIENT/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "BILLABLE")))
-         (tags-todo "+@WORK&-@CLIENT|+@WORKMAC&-@CLIENT/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "NON-BILLABLE")))
-         (tags-todo "+@WORK|+@WORKMAC/WAIT"
-                    ((org-agenda-overriding-header "WAITING-FOR")))))
+       ("k" "work" ,work-agenda)
+       ("w" . "work speciality agenda")
+       ("ww" "work-focus" ,work-agenda ((org-agenda-tag-filter '("+@WORK"))))
+       ("wf" "work-very-focus" ,work-agenda ((org-agenda-tag-filter '("+@WORK" "-PDT"))))
        ("i" "inbox"
         ((tags "+REFILE&+LEVEL=1"
                ((org-agenda-overriding-header "Tasks to Refile")))))
