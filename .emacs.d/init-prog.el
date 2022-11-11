@@ -22,6 +22,8 @@
   :mode ("\\.tsx\\'" . typescriptreact-mode)
   :config
   (define-derived-mode typescriptreact-mode typescript-mode "TSX")
+  (defun mjs/diminish-typescript () (setq mode-name "TS"))
+  (add-hook 'typescript-mode-hook #'mjs/diminish-typescript)
   (setq typescript-indent-level 4))
 
 (use-package js
