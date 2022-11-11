@@ -84,6 +84,8 @@
 (use-package forge
   :after magit
   :demand t
+  :bind ((:map forge-topic-mode-map
+               ("C-c r" . #'code-review-forge-pr-at-point)))
   :init
   (dolist (forge-fn '(forge-insert-requested-reviews
                       forge-insert-assigned-pullreqs
@@ -95,7 +97,9 @@
     (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
   :config (setq forge-topic-list-limit '(100 . -5)))
 
-(use-package code-review)
+(use-package code-review
+  :config (setq code-review-lgtm-message "Looks good. :shipit:"
+                code-review-new-buffer-window-strategy #'switch-to-buffer))
 
 (use-package magit-todos
   :after magit
