@@ -334,8 +334,9 @@
 
 (defun mjs/rename-denote-file ()
   (interactive)
-  (condition-case nil (call-interactively #'denote-rename-file-using-front-matter)
-    (error (call-interactively #'denote-rename-file))))
+  (if denote-dired-mode
+      (call-interactively #'denote-rename-file)
+    (call-interactively #'denote-rename-file-using-front-matter)))
 
 (use-package denote
   :after org
