@@ -212,6 +212,7 @@
    browse-url-secondary-browser-function 'browse-url-default-browser)
   (let ((browse-url-handler-alist '(("^mailto:" . browse-url-mail)
                                     ("github.com" . browse-url-default-browser)
+                                    ("gitlab.com" . browse-url-default-browser)
                                     ("youtube.com" . browse-url-default-browser)
                                     ("exercism.org" . browse-url-default-browser)
                                     ("slack.com" . browse-url-default-browser)
@@ -406,7 +407,8 @@
 
 (use-package which-key
   :diminish (which-key-mode)
-  :hook (after-init . which-key-mode))
+  :hook (after-init . which-key-mode)
+  :config (setq which-key-max-description-length 35))
 
 (use-package diminish)
 
