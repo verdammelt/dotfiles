@@ -59,8 +59,10 @@
 (use-package eglot
   :hook ((typescript-mode . eglot-ensure)
          (typescriptreact-mode . eglot-ensure))
-  :bind (("C-c e r" . #'eglot-rename)
-         ("C-c e a" . #'eglot-code-actions))
+  :bind (:prefix-map eglot-mode-map
+                     :prefix "C-c e"
+                     ("r" . #'eglot-rename)
+                     ("a" . #'eglot-code-actions))
   ;; need this because eglot clobbers flymake-diagnostic-functions
   :init (setq eglot-stay-out-of '(flymake))
   :config
@@ -69,11 +71,13 @@
   (add-hook 'eglot-managed-mode-hook #'mjs/add-eglot-flymake-backend))
 
 (use-package flymake
-  :bind (("C-c ! c" . #'flymake-start)
-         ("C-c ! l" . #'flymake-show-buffer-diagnostics)
-         ("C-c ! L" . #'flymake-show-project-diagnostics)
-         ("M-n" . #'flymake-goto-next-error)
-         ("M-p" . #'flymake-goto-prev-error)))
+  :bind (("M-n" . #'flymake-goto-next-error)
+         ("M-p" . #'flymake-goto-prev-error)
+         :prefix-map flymake-mode-map
+         :prefix "C-c !"
+         ("c" . #'flymake-start)
+         ("l" . #'flymake-show-buffer-diagnostics)
+         ("L" . #'flymake-show-project-diagnostics)))
 
 (use-package flymake-eslint
   :hook ((typescript-mode typescriptreact-mode) . mjs/flymake-eslint-enable)
