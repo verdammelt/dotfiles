@@ -199,7 +199,7 @@
      (from "notification@slack.com"
            (| ("subject" "Exercism" "list.exercism.slack")
               ("subject" "#maintaining-common-lisp" "list.exercism.slack")
-              ("subject" "Def.Method" "defmethod.slack")))
+              ("to" "msimpson@defmethod.io" "defmethod.slack")))
 
      (| (from "hello@mail.exercism.io" "list.exercism.mentor")
         (from "jeremy@exercism.io" "list.exercism.announce"))
@@ -207,19 +207,17 @@
      (from "notifier@codeship.com"
            (| ("subject" "defmethodinc/.*" "defmethod.builds")))
 
-     (| (from ".*@knowyourteam\\.com" "defmethod.misc")
-        (from ".*@knowyourcompany\\.com" "defmethod.misc")
-        (from ".*@bonus\\.ly" "defmethod.misc")
+     (| (from ".*@bonus\\.ly" "defmethod.misc")
         (from "helpful@ninety.io" "defmethod.misc")
         (from "noreply@organizationalcheckup.com" "defmethod.misc")
-        (from "notifications@mg.latticehq.com" "defmethod.misc"))
+        (from "notifications@mg.latticehq.com" "defmethod.misc")
+        ("sender" "calendar-notification@google.com" "defmethod.calendar")
+        (subject "Out of Office" "defmethod.misc")
+        (from "noreply@adp.com" "defmethod.misc")
 
-     ("sender" "calendar-notification@google.com" "defmethod.calendar")
-
-     (| (to "\\(mark\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
-        (to "all@defmethod\\.io" "defmethod.inbox")
-        (from ".*@defmethod\\..*" "defmethod.inbox")
-        (from "donotreply@adp.com" "defmethod.inbox"))
+        (| (to "\\(mark.simpson\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
+           (to "all@defmethod\\.com" "defmethod.inbox")
+           (to "staff@defmethod\\.com" "defmethod.inbox")))
 
      (any ".*@LISTSERV.NODAK.EDU" "list.lifelines")
      (from "wsmith@wordsmith.org" "list.awotd")
