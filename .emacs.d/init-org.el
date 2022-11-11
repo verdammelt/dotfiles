@@ -184,6 +184,22 @@
                      (org-agenda-overriding-header "NON-BILLABLE")))
          (tags-todo "+@WORK|+@WORKMAC/WAIT"
                     ((org-agenda-overriding-header "WAITING-FOR")))))
+       ("w" . "work speciality agenda")
+       ("wf" "work-focus"
+        ((agenda "" ((org-agenda-span 'day)))
+         (tags "+REFILE&+LEVEL=1"
+               ((org-agenda-overriding-header "Tasks to Refile")))
+         (tags-todo "+@WORK&+@CLIENT/!-WAIT"
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "BILLABLE")))
+         (tags-todo "+@WORK&-@CLIENT|+@WORKMAC&-@CLIENT/!-WAIT"
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "NON-BILLABLE")))
+         (tags-todo "+@WORK|+@WORKMAC/WAIT"
+                    ((org-agenda-overriding-header "WAITING-FOR"))))
+        ((org-agenda-tag-filter '("+@WORK" "-PDT"))))
        ("i" "inbox"
         ((tags "+REFILE&+LEVEL=1"
                ((org-agenda-overriding-header "Tasks to Refile")))))
