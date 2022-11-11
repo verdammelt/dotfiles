@@ -189,7 +189,8 @@
      (from ".*@thesatanictemple\.com" "list.thesatanictemple")
 
      (| (from ".*@nyulangone\\.org" "list.medical")
-        (from "visionworks@c.visionworks.com" "list.medical"))
+        (from "visionworks@.*\\.visionworks\\com" "list.medical")
+        (from ".*@.*\\.empireblue\\.com" "list.medical"))
 
      (any ".*@github.com"
           (| ("subject" "exercism/v3" "list.exercism.v3")
@@ -202,7 +203,8 @@
               ("to" "msimpson@defmethod.io" "defmethod.slack")))
 
      (| (from "hello@mail.exercism.io" "list.exercism.mentor")
-        (from "jeremy@exercism.io" "list.exercism.announce"))
+        (from "jeremy@exercism.io" "list.exercism.announce")
+        (from "forum@mail.exercism.io" "list.exercism.forum"))
 
      (from "notifier@codeship.com"
            (| ("subject" "defmethodinc/.*" "defmethod.builds")))
