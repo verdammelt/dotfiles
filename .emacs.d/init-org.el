@@ -346,7 +346,8 @@
          ("C-c m I" . #'denote-link-after-creating)
          ("C-c m n" . denote-create-note)
          ("C-c m b" . denote-link-backlinks)
-         ("C-c m r" . mjs/rename-denote-file))
+         ("C-c m r" . mjs/rename-denote-file)
+         ("C-c m o" . denote-orphans-visit-orphan))
   :hook ((dired-mode . denote-dired-mode-in-directories)
          (denote-dired-mode . dired-hide-details-mode))
   :config (setq denote-directory (expand-file-name "memex" org-directory)
@@ -357,5 +358,8 @@
   (defun mjs/visit-denote-directory ()
     "Open dired buffer in `DENOTE-DIRECTORY`"
     (interactive)
-    (dired denote-directory))
-)
+    (dired denote-directory)))
+
+(use-package denote-orphans
+  :ensure nil
+  :commands denote-orphans-visit-orphan)
