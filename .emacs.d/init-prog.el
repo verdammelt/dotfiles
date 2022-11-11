@@ -65,7 +65,10 @@
          ("C-c e a" . #'eglot-code-actions))
   ;; need this because eglot clobbers flymake-diagnostic-functions
   :init (setq eglot-stay-out-of '(flymake))
-  :config (add-hook 'flymake-diagnostic-functions #'eglot-flymake-backend nil t))
+  :config
+  (defun mjs/add-eglot-flymake-backend ()
+    (add-hook 'flymake-diagnostic-functions #'eglot-flymake-backend nil t))
+  (add-hook 'eglot-managed-mode-hook #'mjs/add-eglot-flymake-backend))
 
 (use-package flymake
   :bind (("C-c ! c" . #'flymake-start)
