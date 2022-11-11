@@ -475,6 +475,7 @@ a project."
   :ensure nil
   :bind (:map project-prefix-map
               ("p" . #'mjs/project-switch-project)
+              ("v" . #'magit-project-status)
               ("m" . #'magit-project-status))
   :config
   (add-hook 'project-find-functions #'mjs/project-try-local 99)
