@@ -35,6 +35,10 @@
   (asdf:clear-source-registry)
   (asdf:ensure-source-registry nil))
 
+(defun add-system-to-registry (name)
+  (setf (gethash name asdf/source-registry:*source-registry*)
+        (truename (make-pathname :name name :type "asd"))))
+
 (defun run-all-tests (&optional (pkg *package*))
   (lisp-unit:run-tests :all pkg))
 
