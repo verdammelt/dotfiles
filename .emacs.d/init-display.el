@@ -38,6 +38,8 @@
 
 (use-package auto-dark
   :demand t
+  :diminish (auto-dark-mode)
   :init
-  (setq auto-dark--light-theme 'modus-operandi
-        auto-dark--dark-theme 'modus-vivendi))
+  (setq auto-dark-light-theme 'modus-operandi
+        auto-dark-dark-theme 'modus-vivendi)
+  (auto-dark-mode))
