@@ -53,16 +53,17 @@
 
 (use-package abbrev
   :ensure nil
-  :init (setq-default abbrev-mode t)
+  :hook (after-init . abbrev-mode)
   :diminish (abbrev-mode)
   :config (setq abbrev-suggest t))
 
 (use-package flyspell
   :ensure nil
+  :hook ((text-mode . flyspell-mode)
+         (prog-mode . flyspell-prog-mode))
   :diminish (flyspell-mode)
   :config
   (progn
-    (add-hook 'text-mode-hook 'flyspell-mode)
     (setq flyspell-use-meta-tab nil
           flyspell-abbrev-p t)))
 
