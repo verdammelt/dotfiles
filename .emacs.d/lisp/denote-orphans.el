@@ -24,13 +24,10 @@
 
 ;;; Code:
 
-(denote-link-backlinks)
-
 ;; would be nice to use:
 ;; (denote--retrieve-process-grep
 ;;  (denote-retrieve-filename-identifier f))
 ;; but this will repetedly get directory files...
-
 
 (defun denote-orphans--inbound-links (f &optional files)
   (remove f
@@ -44,8 +41,13 @@
 (defun denote-orphans--outbound-links (f)
   (with-temp-buffer
     (insert-file-contents f)
-    (denote-link--collect-identifiers
-     (denote-link--file-type-regexp f))))
+    (append
+     (denote-link--collect-identifiers
+      (let ((format (denote-link--file-type-format (denote-filetype-heuristics f) t)))
+        (if (symbolp format) (symbol-value format) format)))
+          (denote-link--collect-identifiers
+      (let ((format (denote-link--file-type-format (denote-filetype-heuristics f) nil)))
+        (if (symbolp format) (symbol-value format) format))))))
 
 (defun denote-orphans--keywords-for-file (f)
   (denote-retrieve-keywords-value f (denote-filetype-heuristics f)))
