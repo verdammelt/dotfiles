@@ -6,7 +6,7 @@
 (use-package sly
   :pin melpa
   :hook ((sly-mode . (lambda () (unless (sly-connected-p) (save-excursion (sly)))))
-         (sly-mrepl . paredit-mode))
+         (sly-mrepl . enable-paredit-mode))
   :config (setq common-lisp-hyperspec-root
                 "file:///usr/local/Cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec/"))
 
@@ -25,6 +25,10 @@
   :config (elisp-slime-nav-mode))
 
 (use-package paredit
+  :ensure nil
+  :init (progn
+          (autoload 'enable-paredit-mode "paredit")
+          (autoload 'enable-paredit-mode "paredit"))
   :diminish (paredit-mode))
 
 (use-package pp
@@ -39,7 +43,7 @@
     (defun mjs/emacs-lisp-mode-setup () (setq mode-name "Elisp"))
     (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
     (add-hook 'emacs-lisp-mode-hook 'mjs/emacs-lisp-mode-setup)
-    (add-hook 'emacs-lisp-mode-hook 'paredit-mode)))
+    (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)))
 
 (use-package lisp-mode
   :ensure nil
@@ -48,7 +52,7 @@
     (defun mjs/set-comment-start () (setq-local comment-start "; "))
 
     (setq inferior-lisp-program "/usr/local/bin/sbcl")
-    (add-hook 'lisp-data-mode-hook 'paredit-mode)
+    (add-hook 'lisp-data-mode-hook 'enable-paredit-mode)
     (add-hook 'lisp-data-mode-hook 'mjs/set-comment-start)
 
     (put 'define-test 'lisp-indent-function 1)
@@ -63,18 +67,18 @@
   :ensure nil
   :config
   (progn
-    (add-hook 'ielm-mode-hook 'paredit-mode)
+    (add-hook 'ielm-mode-hook 'enable-paredit-mode)
     (add-hook 'ielm-mode-hook 'turn-on-elisp-slime-nav-mode)))
 
 (use-package scheme
   :ensure nil
-  :config (add-hook 'scheme-mode-hook 'paredit-mode))
+  :config (add-hook 'scheme-mode-hook 'enable-paredit-mode))
 
 (use-package sicp)
 
 (use-package simple
   :ensure nil
-  :config (add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode))
+  :config (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode))
 
 (define-skeleton asdf-defsystem
   "Inserts a typical ASDF defsystem form into the current buffer"
