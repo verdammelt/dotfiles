@@ -148,18 +148,22 @@
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@ERRAND")))
-         (tags-todo "+@HOME|+@MAC/!-WAIT"
+         (tags-todo "+@MAC/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@HOME/@MAC")))
-         (tags-todo "+@ANY/!-WAIT"
-                    ((org-agenda-skip-function
-                      mjs/skip-habits-and-scheduled-and-deadlines)
-                     (org-agenda-overriding-header "@ANY")))
+                     (org-agenda-overriding-header "@MAC")))
          (tags-todo "+@WEB/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
                      (org-agenda-overriding-header "@WEB")))
+         (tags-todo "+@HOME/!-WAIT"
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@HOME")))
+         (tags-todo "+@ANY/!-WAIT"
+                    ((org-agenda-skip-function
+                      mjs/skip-habits-and-scheduled-and-deadlines)
+                     (org-agenda-overriding-header "@ANY")))
          (tags-todo "+@WENDY/!-WAIT"
                     ((org-agenda-skip-function
                       mjs/skip-habits-and-scheduled-and-deadlines)
