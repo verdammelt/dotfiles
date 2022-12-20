@@ -36,7 +36,7 @@
          ("M-." . org-open-at-point))
 
   :init
-  (setq org-directory (expand-file-name "~/Documents/Dropbox/GTD"))
+  (setq org-directory (expand-file-name "~/Documents/GTD"))
   (progn (add-hook 'org-mode-hook 'turn-on-auto-fill)
          (add-hook 'org-mode-hook 'flyspell-mode)
          (add-hook 'org-insert-heading-hook
