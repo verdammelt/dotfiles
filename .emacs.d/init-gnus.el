@@ -206,18 +206,16 @@
         (from "jeremy@exercism.io" "list.exercism.announce")
         (from "forum@mail.exercism.io" "list.exercism.forum"))
 
-     (from "notifier@codeship.com"
-           (| ("subject" "defmethodinc/.*" "defmethod.builds")))
+     ("sender" "calendar-notification@google.com" "list.calendar")
 
      (| (from ".*@bonus\\.ly" "defmethod.misc")
         (from "helpful@ninety.io" "defmethod.misc")
         (from "noreply@organizationalcheckup.com" "defmethod.misc")
         (from "notifications@mg.latticehq.com" "defmethod.misc")
-        ("sender" "calendar-notification@google.com" "defmethod.calendar")
         (subject "Out of Office" "defmethod.misc")
         (from "noreply@adp.com" "defmethod.misc")
 
-        (| (to "\\(mark.simpson\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
+        (| (to "\\(mark.simpson\\|msimpson\\|mark\\)@defmethod\\..*" "defmethod.inbox")
            (to "all@defmethod\\.com" "defmethod.inbox")
            (to "staff@defmethod\\.com" "defmethod.inbox")))
 
@@ -263,6 +261,7 @@
         (from "no-reply@sns.amazonaws.com" "list.receipts"))
 
      (| (any "ally.*" "list.bank")
+        (any "citi\\.com" "list.bank")
         (from "Auto_Reply@mailer.discoverybenefits.com" "list.bank")
         (any "hsaalerts@avidiahealthcaresolutions.com" "list.bank")
         (from "optumbankdonotreply@optumbank.com" "list.bank")
