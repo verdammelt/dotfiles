@@ -420,12 +420,6 @@
   :config (setq describe-bindings-outline t))
 
 (require 'path-utils)
-(use-package path-helper
-  :demand t
-  :if (memq window-system '(mac ns))
-  :config
-  (path-helper-setenv-all)
-  (mjs/add-to-path (expand-file-name "~/Bin")))
 
 (require 'project-utils)
 (use-package project
