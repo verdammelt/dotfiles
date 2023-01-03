@@ -29,10 +29,9 @@
   :config (elisp-slime-nav-mode))
 
 (use-package paredit
-  :ensure nil
-  :init (progn
-          (autoload 'enable-paredit-mode "paredit")
-          (autoload 'enable-paredit-mode "paredit"))
+  :ensure nil ;; using v24 which has been added to ./lisp manually
+  :defer nil
+  :init (autoload 'enable-paredit-mode "paredit")
   :diminish (paredit-mode))
 
 (use-package pp
