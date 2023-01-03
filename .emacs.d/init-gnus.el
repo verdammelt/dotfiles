@@ -215,8 +215,10 @@
         (subject "Out of Office" "defmethod.misc")
         (from "noreply@adp.com" "defmethod.misc")
 
-        (| (to "\\(mark.simpson\\|msimpson\\|mark\\)@defmethod\\..*" "defmethod.inbox")
+        (| (from "mark\\.simpson@defmethod\\.com" "defmethod.inbox")
+           (to "\\(mark.simpson\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
            (to "all@defmethod\\.com" "defmethod.inbox")
+           (to "engineering-management@defmethod\\.com" "defmethod.inbox")
            (to "staff@defmethod\\.com" "defmethod.inbox")))
 
      (any ".*@LISTSERV.NODAK.EDU" "list.lifelines")
