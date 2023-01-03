@@ -10,6 +10,7 @@
 .smex-items
 bookmarks
 elpa
+eln-cache
 org-roam.db
 projectile-bookmarks.eld
 tramp
