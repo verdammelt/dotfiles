@@ -8,7 +8,11 @@
   :hook ((sly-mode . (lambda () (unless (sly-connected-p) (save-excursion (sly)))))
          (sly-mrepl . enable-paredit-mode))
   :config (setq common-lisp-hyperspec-root
-                "file:///usr/local/Cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec/"))
+                (format
+                 "file://%s/share/doc/hyperspec/HyperSpec/"
+                 (cl-find-if #'file-exists-p
+                             '("/opt/homebrew/Cellar/hyperspec/7.0"
+                               "/usr/local/Cellar/hyperspec/7.0")))))
 
 (use-package sly-asdf :pin melpa)
 (use-package sly-quicklisp :pin melpa
@@ -50,8 +54,7 @@
   :config
   (progn
     (defun mjs/set-comment-start () (setq-local comment-start "; "))
-
-    (setq inferior-lisp-program "/usr/local/bin/sbcl")
+    (setq inferior-lisp-program (executable-find "sbcl"))
     (add-hook 'lisp-data-mode-hook 'enable-paredit-mode)
     (add-hook 'lisp-data-mode-hook 'mjs/set-comment-start)
 
