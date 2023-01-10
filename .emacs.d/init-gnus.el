@@ -200,7 +200,7 @@
      (from "notification@slack.com"
            (| ("subject" "Exercism" "list.exercism.slack")
               ("subject" "#maintaining-common-lisp" "list.exercism.slack")
-              ("to" "msimpson@defmethod.io" "defmethod.slack")))
+              (to "mark\\.simpson@defmethod\\.com" "defmethod.slack")))
 
      (| (from "hello@mail.exercism.io" "list.exercism.mentor")
         (from "jeremy@exercism.io" "list.exercism.announce")
@@ -214,9 +214,10 @@
         (from "notifications@mg.latticehq.com" "defmethod.misc")
         (subject "Out of Office" "defmethod.misc")
         (from "noreply@adp.com" "defmethod.misc")
+        (from "concierge@expensify\\.com" "defmethod.misc")
 
         (| (from "mark\\.simpson@defmethod\\.com" "defmethod.inbox")
-           (to "\\(mark.simpson\\|msimpson\\)@defmethod\\..*" "defmethod.inbox")
+           (to "\\(mark.simpson\\|msimpson\\|mark\\)@defmethod\\..*" "defmethod.inbox")
            (to "all@defmethod\\.com" "defmethod.inbox")
            (to "engineering-management@defmethod\\.com" "defmethod.inbox")
            (to "staff@defmethod\\.com" "defmethod.inbox")))
@@ -338,11 +339,13 @@
 (defun mjs/expiry-wait-calculator (group)
   (let ((wait-days
          (cond ((string-match "archive" group) 'never)
-               ((string-match "spam" group) 1)
+               ((string-match "spam" group) 7)
                ((string-match "list\\.*" group) 14)
                ((string-match "tnef" group) 'never)
                ((string-match "codeandcocktails" group) 'never)
-               (t 28))))
+               ((string-match "defmethod\\.inbox" group) 60)
+               ((string-match "defmethod\\..*" group) 14)
+               (t 60))))
     (message "expiry-wait for %s is %s" group wait-days)
     wait-days))
 
