@@ -29,6 +29,8 @@
 ;;  (denote-retrieve-filename-identifier f))
 ;; but this will repetedly get directory files...
 
+(require 'denote)
+
 (defun denote-orphans--inbound-links (f &optional files)
   (remove f
           (mapcar #'(lambda (item) (xref-location-group (xref-item-location item)))

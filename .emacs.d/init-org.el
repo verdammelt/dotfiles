@@ -342,8 +342,11 @@
       (call-interactively #'denote-rename-file)
     (call-interactively #'denote-rename-file-using-front-matter)))
 
+(use-package denote-orphans
+  :ensure nil
+  :commands denote-orphans-visit-orphan)
+
 (use-package denote
-  :after org
   :bind (("C-c m ." . mjs/visit-denote-directory)
          ("C-c m f" . denote-open-or-create)
          ("C-c m i" . #'denote-link)
@@ -365,7 +368,3 @@
     "Open dired buffer in `DENOTE-DIRECTORY`"
     (interactive)
     (dired denote-directory)))
-
-(use-package denote-orphans
-  :ensure nil
-  :commands denote-orphans-visit-orphan)
