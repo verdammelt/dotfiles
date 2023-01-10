@@ -5,8 +5,6 @@
 ;;;;
 (require 'package)
 
-(advice-add 'package--save-selected-packages :filter-args #'mjs/sort-packages)
-
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
@@ -33,11 +31,8 @@
             #'string<
             :key #'symbol-name)))
 
-;;; USE-PACKAGE boostrapping
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-when-compile (require 'use-package))
+(advice-add 'package--save-selected-packages :filter-args #'mjs/sort-packages)
+
 (use-package use-package
   :init
   (setq use-package-always-ensure t
