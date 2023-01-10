@@ -3,6 +3,11 @@
 ;;;;
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
+(use-package paredit
+  :ensure nil ;; using v24 which has been added to ./lisp manually
+  :autoload enable-paredit-mode
+  :diminish (paredit-mode))
+
 (use-package sly
   :pin melpa
   :hook ((sly-mode . (lambda () (unless (sly-connected-p) (save-excursion (sly)))))
@@ -27,12 +32,6 @@
 (use-package elisp-slime-nav
   :diminish (elisp-slime-nav-mode)
   :config (elisp-slime-nav-mode))
-
-(use-package paredit
-  :ensure nil ;; using v24 which has been added to ./lisp manually
-  :defer nil
-  :init (autoload 'enable-paredit-mode "paredit")
-  :diminish (paredit-mode))
 
 (use-package pp
   :ensure nil
