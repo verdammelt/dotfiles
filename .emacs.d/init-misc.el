@@ -261,7 +261,7 @@
                 dired-recursive-deletes t
                 dired-deletion-confirmer #'y-or-n-p
                 dired-dwim-target t
-                dired-listing-switches "-alv"
+                dired-listing-switches "-alhv"
                 dired-use-ls-dired nil))
 
 (use-package dired-x
