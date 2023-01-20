@@ -67,12 +67,6 @@
     (setq flyspell-use-meta-tab nil
           flyspell-abbrev-p t)))
 
-(use-package yasnippet
-  :diminish (yas-minor-mode)
-  :init (add-hook 'after-init-hook 'yas-global-mode t))
-
-(use-package yasnippet-snippets)
-
 (use-package fullframe)
 
 (use-package magit
@@ -329,20 +323,6 @@
   :ensure nil
   :hook (after-init . global-display-fill-column-indicator-mode))
 
-(use-package icomplete
-  :ensure nil
-  :hook (after-init . fido-vertical-mode)
-    :functions (icomplete-forward-completions icomplete-backward-completions)
-  :bind (:map icomplete-fido-mode-map
-              ("C-n" . icomplete-forward-completions)
-              ("C-p" . icomplete-backward-completions))
-  :config (setq icomplete-in-buffer t))
-
-(use-package marginalia
-  :bind (:map minibuffer-local-map
-              ("M-A" . #'marginalia-cycle))
-  :hook (after-init . marginalia-mode))
-
 (use-package emacs
   :ensure nil
   :config
@@ -351,34 +331,35 @@
   (advice-add #'completing-read-multiple :filter-args #'mjs/crm-indicator)
   (setq read-extended-command-predicate #'command-completion-default-include-p))
 
-
 (use-package minibuffer
   :ensure nil
+  :bind (:map completion-in-region-mode-map
+              ("C-n" . minibuffer-next-completion)
+              ("C-p" . minibuffer-previous-completion)
+              :map minibuffer-local-completion-map
+              ("C-n" . minibuffer-next-completion)
+              ("C-p" . minibuffer-previous-completion))
   :config
   (setq completion-ignore-case t
+        completion-auto-select 'second-tab
+        completion-auto-help 'visible
+        completion-show-help nil
+        completions-format 'vertical
         read-buffer-completion-ignore-case t
-        read-file-name-completion-ignore-case t)
+        read-file-name-completion-ignore-case t
+        tab-always-indent 'complete ;; defined in indent.el
+        )
+  (add-to-list 'completion-at-point-functions 'dabbrev-capf t)
   (add-to-list 'completion-styles 'flex))
 
-(use-package company
-  :diminish (company-mode)
-  :bind (("M-/" . company-complete)
-         :map company-active-map
-              ("C-n" . company-select-next)
-              ("C-." . company-select-next)
-              ("C-p" . company-select-previous)
-              ("C-," . company-select-previous)
-              ("C-d" . company-show-doc-buffer)
-              ("M-." . company-show-location))
-  :init (add-hook 'after-init-hook 'global-company-mode t)
+(use-package corfu
+  :hook ((after-init . global-corfu-mode)
+         (corfu-mode . corfu-popupinfo-mode))
   :config
-  (progn
-    (setq company-idle-delay .1
-          company-tooltip-idle-delay .1
-          company-tooltip-limit 20
-          company-show-numbers t
-          company-tooltip-align-annotations t
-          company-selection-wrap-around t)))
+  (setq corfu-auto t
+        corfu-cycle t
+        corfu-preselect-first t
+        corfu-max-width 80))
 
 (use-package so-long
   :ensure nil
