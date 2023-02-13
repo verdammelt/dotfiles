@@ -183,6 +183,7 @@
    nnmail-split-methods 'nnmail-split-fancy
    nnmail-split-fancy
    '(|
+     (: nnmail-split-fancy-with-parent)
      (| (to "noreply@sourceforge.net" "mail.tnef")
         ("subject" "tnef" "mail.tnef"))
 
@@ -215,12 +216,15 @@
         (subject "Out of Office" "defmethod.misc")
         (from "noreply@adp.com" "defmethod.misc")
         (from "concierge@expensify\\.com" "defmethod.misc")
+        (from ".*@.*salesforce\\.com" "defmethod.misc")
+        (from ".*@defmethod\\.atlassian\\.net" "defmethod.misc")
+        (from "comments-noreply@docs.google.com" "defmethod.misc"))
 
-        (| (from "mark\\.simpson@defmethod\\.com" "defmethod.inbox")
-           (to "\\(mark.simpson\\|msimpson\\|mark\\)@defmethod\\..*" "defmethod.inbox")
-           (to "all@defmethod\\.com" "defmethod.inbox")
-           (to "engineering-management@defmethod\\.com" "defmethod.inbox")
-           (to "staff@defmethod\\.com" "defmethod.inbox")))
+     (| (from "mark\\.simpson@defmethod\\.com" "defmethod.inbox")
+        (to "\\(mark.simpson\\|msimpson\\|mark\\)@defmethod\\..*" "defmethod.inbox")
+        (to "all@defmethod\\.com" "defmethod.inbox")
+        (to "engineering-management@defmethod\\.com" "defmethod.inbox")
+        (to "staff@defmethod\\.com" "defmethod.inbox"))
 
      (any ".*@LISTSERV.NODAK.EDU" "list.lifelines")
      (from "wsmith@wordsmith.org" "list.awotd")
@@ -295,7 +299,6 @@
      ;; absolute fallback
      "mail.inbox")))
 
-
 (use-package spam
   :ensure nil
   :init (spam-initialize)
@@ -353,7 +356,6 @@
   (let* ((expiry-target-file
           (cond ((string-match "list\\.*" group) 'delete)
                 ((string-match "spam\\.*" group) 'delete)
-                ((string-match "mail\\.misc" group) 'delete)
                 ((string-match "defmethod\\.inbox" group) "nnfolder+archive:defmethod.archive-%Y")
                 ((string-match "defmethod\\.*" group) 'delete)
                 (t "nnfolder+archive:archive-%Y"))))
