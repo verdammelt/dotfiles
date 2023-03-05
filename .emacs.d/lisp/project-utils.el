@@ -58,25 +58,5 @@ setup/teardown of the projects."
   (setq mjs/current-project (project-current nil dir))
   (run-hooks 'mjs/project-setup-hook))
 
-;;;
-;;; Local Project type
-;;;
-;;; A local project is a directory which contains either a .project or
-;;; .projectile file and all the subdirectories there of.
-;;;
-;;; This try function should be added to project-find-functions at or near the
-;;; end so it can be used as 'last chance' type of project.
-;;;
-(defun mjs/project-try-local (dir)
-  "Determine if DIR is a non-VC project.
-DIR must include a .project or .projectile file to be considered
-a project."
-  (if-let ((root (seq-some (lambda (n)
-                             (locate-dominating-file dir n))
-                           '(".project" ".projectile"))))
-      (cons 'local root)))
-
-(cl-defmethod project-root ((project (head local))) (cdr project))
-
 (provide 'project-utils)
 ;;; project-utils.el ends here

@@ -409,8 +409,8 @@
               ("v" . #'magit-project-status)
               ("m" . #'magit-project-status))
   :config
-  (add-hook 'project-find-functions #'mjs/project-try-local 99)
-  (setq project-switch-commands #'project-dired))
+  (setq project-switch-commands #'project-dired
+        project-vc-extra-root-markers '(".project")))
 
 (defun mjs/get-file:line ()
   "Adds FILE:LINE for current file and line number to the kill
