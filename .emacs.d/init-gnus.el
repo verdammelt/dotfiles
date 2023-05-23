@@ -210,6 +210,15 @@
 
      ("sender" "calendar-notification@google.com" "list.calendar")
 
+     (| (from ".*@pivotaltracker.com" "defmethod.nycvotes.misc")
+        (from ".*@.*stripe.com" "defmethod.nycvotes.misc")
+        ("subject" "nycvotes-dev" "defmethod.nycvotes.misc")
+        ("subject" "nycvotes-production" "defmethod.nycvotes.inbox")
+        ("subject" "NYC Votes" "defmethod.nycvotes.inbox")
+        ("subject" "IPM Summary" "defmethod.nycvotes.inbox")
+        ("subject" "NYCVC.*" "defmethod.nycvotes.inbox")
+        (from ".*@nycvotes.org" "defmethod.nycvotes.inbox"))
+
      (| (from ".*@bonus\\.ly" "defmethod.misc")
         (from "helpful@ninety.io" "defmethod.misc")
         (from "noreply@organizationalcheckup.com" "defmethod.misc")
@@ -219,7 +228,11 @@
         (from "concierge@expensify\\.com" "defmethod.misc")
         (from ".*@.*salesforce\\.com" "defmethod.misc")
         (from ".*@defmethod\\.atlassian\\.net" "defmethod.misc")
-        (from "comments-noreply@docs.google.com" "defmethod.misc"))
+        (from "comments-noreply@docs.google.com" "defmethod.misc")
+        (from "invite@vimcal.com" "defmethod.misc")
+        (from ".*@tuple.app" "defmethod.misc")
+        (from ".*@user.adp.com" "defmethod.misc")
+        (from ".*@metgroupbenefits.com" "defmethod.misc"))
 
      (| (from "mark\\.simpson@defmethod\\.com" "defmethod.inbox")
         (to "\\(mark.simpson\\|msimpson\\|mark\\)@defmethod\\..*" "defmethod.inbox")
@@ -349,6 +362,7 @@
                ((string-match "tnef" group) 'never)
                ((string-match "codeandcocktails" group) 'never)
                ((string-match "defmethod\\.inbox" group) 60)
+               ((string-match "defmethod\\.nycvotes\\.*" group) 60)
                ((string-match "defmethod\\..*" group) 14)
                (t 60))))
     (message "expiry-wait for %s is %s" group wait-days)
@@ -359,6 +373,7 @@
           (cond ((string-match "list\\.*" group) 'delete)
                 ((string-match "spam\\.*" group) 'delete)
                 ((string-match "defmethod\\.inbox" group) "nnfolder+archive:defmethod.archive-%Y")
+                ((string-match "defmethod\\.nycvotes\\.*" group) "nnfolder+archive:defmethod.nycvotes-archive-%Y")
                 ((string-match "defmethod\\.*" group) 'delete)
                 (t "nnfolder+archive:archive-%Y"))))
     (message "expiry-target for %s is '%s'" group expiry-target-file)
@@ -366,7 +381,6 @@
         (let ((nnmail-fancy-expiry-targets `(("from" ".*" ,expiry-target-file))))
           (nnmail-fancy-expiry-target group))
       expiry-target-file)))
-
 
 (use-package nnrss
   :ensure nil
