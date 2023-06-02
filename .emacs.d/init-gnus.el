@@ -189,7 +189,8 @@
 
      (from ".*@thesatanictemple\.com" "list.thesatanictemple")
 
-     (| (from ".*@nyulangone\\.org" "list.medical")
+     (| (| (from ".*@nyulangone\\.org" "list.medical")
+           (from ".*@nyumc.org" "list.medical"))
         (from "visionworks@.*\\.visionworks\\com" "list.medical")
         (from ".*@.*\\.empireblue\\.com" "list.medical"))
 
@@ -283,7 +284,8 @@
      (from ".*\.starbucks\.com" "list.starbucks")
 
 
-     (from "forums@dragonsfoot.org" "list.dragonsfoot")
+     (| (from "forums@dragonsfoot.org" "list.dragonsfoot")
+        (from "admin@knights-n-knaves.com" "list.dragonsfoot"))
 
      (| (from "ArqBackupSystem@virgil.local" "list.arqbackup")
         (from "ArqBackupSystem@virgil.fios-router.home" "list.arqbackup"))
