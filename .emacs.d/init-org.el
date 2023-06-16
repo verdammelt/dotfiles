@@ -64,13 +64,12 @@
           org-log-refile 'time
           org-log-repeat 'time
           org-log-into-drawer t
-          org-treat-S-cursor-todo-selection-as-state-change nil
 
           org-agenda-files
           (mapcar #'mjs/expand-org-file '("todo" "defmethod" "nycvotes" "inbox" "inbox-mobile" "journal"))
 
-          org-hide-leading-stars nil
           org-startup-indented t
+          org-startup-folded 'fold
 
           org-enable-priority-commands nil
 
