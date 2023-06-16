@@ -15,6 +15,9 @@
                     :height 180
                     :family "DejaVu Sans")
 
+(setq custom-safe-themes '("cca1d386d4a3f645c2f8c49266e3eb9ee14cf69939141e3deb9dfd50ccaada79"
+                           default))
+
 (use-package unicode-fonts
   ;; with this also install Symbola & Quivira fonts
   :ensure t

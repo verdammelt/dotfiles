@@ -10,7 +10,8 @@
   :config
   (mjs/bbdb-init 'gnus)
 
-  (setq gnus-default-directory gnus-directory
+  (setq canlock-password "3852e20bef8b9ce61785cd355f16f621d317031e"
+        gnus-default-directory gnus-directory
         gnus-kill-files-directory
         (expand-file-name "score-files" gnus-directory) ;where to put the kill files
         gnus-message-archive-group
