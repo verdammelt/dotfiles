@@ -280,7 +280,8 @@
         (from ".*@etsy.com" "list.receipts")
         (from "googleplay-noreply@google.com" "list.receipts")
         (from "hello@encrypt.me" "list.receipts")
-        (from "no-reply@sns.amazonaws.com" "list.receipts"))
+        (from "no-reply@sns.amazonaws.com" "list.receipts")
+        (from "ebay@ebay.com" "list.receipts"))
 
      (| (any "ally.*" "list.bank")
         (any "citi\\.com" "list.bank")
