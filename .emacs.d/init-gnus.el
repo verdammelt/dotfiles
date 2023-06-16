@@ -79,7 +79,7 @@
           ("\\`nnrss:"
            (mm-discouraged-alternatives nil)
            (gnus-summary-line-format "%z%U%R%[%10&user-date;%*]%B%s\n")
-           (gnus-adaptive-score-alist
+           (gnus-default-adaptive-score-alist
             '((gnus-ticked-mark (subject 10))
               (gnus-kill-file-mark)
               (gnus-unread-mark)
