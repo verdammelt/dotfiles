@@ -6,11 +6,13 @@
 (use-package tex
   :ensure auctex
   :commands TeX-global-PDF-mode
-  :init (setq-default TeX-master nil)
   :config
   (progn (TeX-global-PDF-mode 1)
          (setq TeX-auto-save t
-               TeX-parse-self t)))
+               TeX-parse-self t
+               ;; the following is to fix a strange bug/scenario where error
+               ;; messages are shown in Japanese!
+               japanese-TeX-error-messages nil)))
 
 (use-package latex
   :ensure auctex
