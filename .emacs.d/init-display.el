@@ -31,10 +31,9 @@
         modus-themes-hl-line '(intense-backround)
         modus-themes-completions '((t . (moderate)))
         modus-themes-diffs 'desaturated)
-  (modus-themes-load-themes)
 
   :config
-  (modus-themes-load-vivendi))
+  (load-theme 'modus-vivendi))
 
 (use-package auto-dark
   :demand t
