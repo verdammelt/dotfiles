@@ -230,8 +230,8 @@
 
 (use-package ox-latex
   :ensure org
-  :config (push '("rpg-module" "\\documentclass{rpg-module}"
-                  ("\\part{%s}" . "\\part*{%s}")
+  :config (push '("adnd" "\\documentclass{adnd}"
+                  ("\\part{%s}" . "\\chapter*{%s}")
                   ("\\section{%s}" . "\\section*{%s}")
                   ("\\subsection{%s}" . "\\subsection*{%s}")
                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
