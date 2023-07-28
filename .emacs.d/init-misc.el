@@ -352,6 +352,16 @@
   (add-to-list 'completion-at-point-functions 'dabbrev-capf t)
   (add-to-list 'completion-styles 'flex))
 
+(defun mjs/advice-after/dabbrev--find-expansion (&rest _args)
+  (when (not (buffer-live-p dabbrev--last-buffer))
+    (message "LAST BUFFER IS DEAD - removing it")
+    (setq dabbrev--last-buffer nil)))
+
+(use-package dabbrev
+  :config
+  (advice-add #'dabbrev--find-expansion
+              :after #'mjs/advice-after/dabbrev--find-expansion))
+
 (use-package corfu
   :hook ((after-init . global-corfu-mode)
          (corfu-mode . corfu-popupinfo-mode))
