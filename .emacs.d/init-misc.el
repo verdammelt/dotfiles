@@ -94,9 +94,9 @@
     (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
   :config (setq forge-topic-list-limit '(100 . -5)))
 
-(use-package code-review
-  :config (setq code-review-lgtm-message "Looks good. :shipit:"
-                code-review-new-buffer-window-strategy #'switch-to-buffer))
+;; (use-package code-review
+;;   :config (setq code-review-lgtm-message "Looks good. :shipit:"
+;;                 code-review-new-buffer-window-strategy #'switch-to-buffer))
 
 (use-package magit-todos
   :after magit
@@ -419,26 +419,10 @@
   :bind (:map project-prefix-map
               ("p" . #'mjs/project-switch-project)
               ("v" . #'magit-project-status)
-              ("m" . #'magit-project-status))
+              ("m" . #'magit-project-status)
+              ("t" . #'mjs/project-run-tests))
   :config
   (setq project-switch-commands #'project-dired
         project-vc-extra-root-markers '(".project")))
 
-(defun mjs/get-file:line ()
-  "Adds FILE:LINE for current file and line number to the kill
-ring. Also echoes this to the echo area.
-
-If the file is part of a PROJECT then use a path relative to the
-project root."
-  (interactive)
-  (let ((project-root (and (project-current) (project-root (project-current)))))
-    (message
-     (kill-new
-      (format "%s:%d"
-              (file-relative-name (buffer-file-name) project-root)
-              (save-restriction (widen) (line-number-at-pos)))))))
-(global-set-key (kbd "M-g l") #'mjs/get-file:line)
-
-(use-package flymake
-  :ensure nil
-  :config (setq flymake-mode-line-lighter "FLY"))
+(global-set-key (kbd "M-g l") #'mjs/project-file:line)
