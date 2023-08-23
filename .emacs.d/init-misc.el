@@ -431,3 +431,7 @@ project root."
               (file-relative-name (buffer-file-name) project-root)
               (save-restriction (widen) (line-number-at-pos)))))))
 (global-set-key (kbd "M-g l") #'mjs/get-file:line)
+
+(use-package flymake
+  :ensure nil
+  :config (setq flymake-mode-line-lighter "FLY"))
