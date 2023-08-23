@@ -255,13 +255,8 @@
                 dired-deletion-confirmer #'y-or-n-p
                 dired-dwim-target t
                 dired-listing-switches "-alhv"
-                dired-use-ls-dired nil))
-
-(use-package dired-x
-  :ensure nil
-  :after dired
-  :demand t
-  :config (setq dired-clean-up-buffers-too nil))
+                dired-use-ls-dired nil
+                dired-clean-up-buffers-too nil))
 
 (use-package dired-aux
   :ensure nil
