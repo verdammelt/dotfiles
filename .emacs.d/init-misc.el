@@ -53,8 +53,8 @@
 
 (use-package abbrev
   :ensure nil
-  :hook (after-init . abbrev-mode)
   :diminish (abbrev-mode)
+  :init (setq-default abbrev-mode t)
   :config (setq abbrev-suggest t))
 
 (use-package flyspell
