@@ -56,7 +56,7 @@
 
 (defun denote-orphans--keyword-counts ()
   (cl-reduce
-   #'(lambda (counts tag) (incf (gethash tag counts -1)) counts)
+   #'(lambda (counts tag) (cl-incf (gethash tag counts -1)) counts)
    (cl-remove-if #'(lambda (k) (member k denote-orphans--ignore-keywords))
                  (apply #'append
                         (cl-remove ""
