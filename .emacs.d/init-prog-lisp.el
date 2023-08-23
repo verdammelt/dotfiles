@@ -102,7 +102,7 @@
   "Package name: "
   "(defpackage :" str \n
   > "(:use :cl)" \n
-v  > "(:export)"
+  > "(:export)"
   ")")
 
 (define-skeleton aoc-day
