@@ -205,9 +205,9 @@
               ("subject" "#maintaining-common-lisp" "list.exercism.slack")
               (to "mark\\.simpson@defmethod\\.com" "defmethod.slack")))
 
-     (| (from "hello@mail.exercism.io" "list.exercism.mentor")
-        (from "jeremy@exercism.io" "list.exercism.announce")
-        (from "forum@mail.exercism.io" "list.exercism.forum"))
+     (| (from "hello@mail.exercism\..*" "list.exercism.mentor")
+        (from "jeremy@exercism\..*" "list.exercism.announce")
+        (from "forum@mail.exercism\..*" "list.exercism.forum"))
 
      ("sender" "calendar-notification@google.com" "list.calendar")
 
