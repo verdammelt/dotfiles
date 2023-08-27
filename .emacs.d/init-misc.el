@@ -366,6 +366,11 @@
         corfu-preselect-first t
         corfu-max-width 80))
 
+(use-package vertico
+  :hook (after-init . vertico-mode))
+(use-package marginalia
+  :hook (after-init . marginalia-mode))
+
 (use-package so-long
   :ensure nil
   :config (global-so-long-mode))
