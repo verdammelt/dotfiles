@@ -39,6 +39,11 @@
     ("improt" "import" nil :count 1)
    ))
 
+(define-abbrev-table 'latex-mode-abbrev-table
+  '(
+    ("posessor's" "possessor's" nil :count 0)
+   ))
+
 (define-abbrev-table 'markdown-mode-abbrev-table
   '(
     ("amature" "maturer" nil :count 0)
@@ -121,7 +126,7 @@
     ("mattias" "Mattias" nil :count 1)
     ("millenium" "Millennium" nil :count 0)
     ("mobild" "mobile" nil :count 0)
-    ("ok" "OK" nil :count 43)
+    ("ok" "OK" nil :count 44)
     ("perscription" "prescription" nil :count 0)
     ("precidence" "precedence" nil :count 0)
     ("probaby" "probably" nil :count 0)
@@ -189,6 +194,7 @@
     ("finanical" "Financial" nil :count 0)
     ("gnucash" "GnuCash" nil :count 3)
     ("haveread" "Have Read" nil :count 0)
+    ("internesting" "interesting" nil :count 0)
     ("interpretting" "interpreting" nil :count 2)
     ("invstigate" "Instigate" nil :count 0)
     ("jp" "PTRL" nil :count 53)
