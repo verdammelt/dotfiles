@@ -70,6 +70,7 @@
 (use-package fullframe)
 
 (use-package magit
+  :pin melpa
   :bind (("C-x g" . magit-status))
   :functions (magit-mode-quit-window)
   :config
@@ -77,6 +78,7 @@
         magit-diff-refine-hunk 'all))
 
 (use-package forge
+  :pin melpa
   :after magit
   :demand t
   :bind ((:map forge-topic-mode-map
