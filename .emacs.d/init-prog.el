@@ -56,7 +56,10 @@
      1 2 3 1)
     (mjs/add-compilation-error-regexp
      'jest-error-stack "at .* (\\(.*\\):\\(.*\\):\\(.*\\))"
-     1 2 3 1)))
+     1 2 3 1)
+    (mjs/add-compilation-error-regexp
+     'rspec "\\(rspec\\|#\\) \\(.*?\\):\\([0-9]+\\)"
+     2 3 nil 1)))
 
 (use-package eglot
   :hook ((typescript-mode . eglot-ensure)
@@ -71,11 +74,14 @@
   (add-hook 'eglot-managed-mode-hook #'mjs/add-eglot-flymake-backend))
 
 (use-package flymake
+  :hook (ruby-mode)
   :bind (("C-c ! c" . #'flymake-start)
          ("C-c ! l" . #'flymake-show-buffer-diagnostics)
          ("C-c ! L" . #'flymake-show-project-diagnostics)
          ("M-n" . #'flymake-goto-next-error)
          ("M-p" . #'flymake-goto-prev-error)))
+
+(use-package rbenv)
 
 (use-package flymake-eslint
   :hook ((typescript-mode typescriptreact-mode) . mjs/flymake-eslint-enable)
