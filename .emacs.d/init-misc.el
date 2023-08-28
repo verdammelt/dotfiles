@@ -371,8 +371,17 @@
 
 (use-package vertico
   :hook (after-init . vertico-mode))
+
 (use-package marginalia
   :hook (after-init . marginalia-mode))
+
+(defun mjs/advice-after/dabbrev--find-expansion (&rest _args)
+  (when (not (buffer-live-p dabbrev--last-buffer))
+    (message "LAST BUFFER IS DEAD - removing it")
+    (setq dabbrev--last-buffer nil)))
+(use-package dabbrev
+  :config
+  (advice-add #'dabbrev--find-expansion :after #'mjs/advice-after/dabbrev--find-expansion))
 
 (use-package so-long
   :ensure nil
