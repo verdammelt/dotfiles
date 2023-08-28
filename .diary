@@ -24,6 +24,28 @@ May 01 May Day
 %%(diary-anniversary 1933 12 04) Repeal Day
 
 ;;;
+;;; Exercise Reminders
+;;;
+&Monday
+ Wall Pushups 2 sets of 30 (https://www.hybridcalisthenics.com/wall-pushups)
+ Knee Raises  2 sets of 10 (https://www.hybridcalisthenics.com/knee-raises)
+&Tuesday
+ Wall Pullups     2 sets of 30 (https://www.hybridcalisthenics.com/wall-pullups)
+ Jackknife Squats 2 sets of 15 (https://www.hybridcalisthenics.com/jackknife-squats)
+&Wednesday
+ Glute Bridges      2 sets of 15 (https://www.hybridcalisthenics.com/glute-bridges)
+ Straight-leg Twist 3 sets of 15 (https://www.hybridcalisthenics.com/straight-leg-twists)     
+&Thursday
+ Wall Pushups 2 sets of 30 (https://www.hybridcalisthenics.com/wall-pushups)
+ Knee Raises  2 sets of 10 (https://www.hybridcalisthenics.com/knee-raises)
+&Friday
+ Wall Pullups     2 sets of 30 (https://www.hybridcalisthenics.com/wall-pullups)
+ Jackknife Squats 2 sets of 15 (https://www.hybridcalisthenics.com/jackknife-squats)
+&Saturday
+ Glute Bridges      2 sets of 15 (https://www.hybridcalisthenics.com/glute-bridges)
+ Straight-leg Twist 3 sets of 15 (https://www.hybridcalisthenics.com/straight-leg-twists)
+
+;;;
 ;;; Def Method Holidays
 ;;;
 2023-01-02 DM: New Years Day
@@ -46,16 +68,18 @@ May 01 May Day
 ;;;
 ;;; Vacation
 ;;;
+%%(diary-block 2023 09 02 2023 09 16) Trip to CA
 
 ;;;
 ;;; PDT
 ;;;
+9/29 PDT
 
 ;;;
 ;;; Doctor Appointments
 ;;;
+2023-11-20 09:00-09:30 Kaminski Followup @ 180 E Pulaski
 
-
-Sunday 20:00-23:00 My Open Table Discord AD&D Game
-Monday 21:00-24:00 Glen's Discord AD&D Game
-Tuesday 20:30-22:00 Dungeon Delver YouTube AD&D Game
+&Sunday 20:00-23:00 My Open Table Discord AD&D Game
+&Monday 21:00-24:00 Glen's Discord AD&D Game
+&Tuesday 20:30-22:00 Dungeon Delver YouTube AD&D Game
