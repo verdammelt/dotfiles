@@ -9,11 +9,6 @@
     ("woudl" "would" nil :count 0)
    ))
 
-(define-abbrev-table 'forge-post-mode-abbrev-table
-  '(
-    ("organazation" "organization" nil :count 0)
-   ))
-
 (define-abbrev-table 'git-commit-mode-abbrev-table
   '(
     ("accessiblity" "accessibility" nil :count 0)
@@ -181,9 +176,11 @@
     ("codeship" "Code ship" nil :count 0)
     ("collegue" "colleague" nil :count 0)
     ("competancy" "competency" nil :count 0)
+    ("csv" "CVS" nil :count 0)
     ("defm" "Def Method" nil :count 33)
     ("desiger" "designer" nil :count 0)
     ("differnet" "different" nil :count 0)
+    ("discrepeancy" "discrepancy" nil :count 0)
     ("dropbox" "drop box" nil :count 2)
     ("eh" "tech" nil :count 0)
     ("entirity" "entirety" nil :count 0)
@@ -232,7 +229,7 @@
     ("cancelled" "canceled" nil :count 2)
     ("certifiate" "Certificate" nil :count 0)
     ("convinience" "convenience" nil :count 0)
-    ("convinient" "convenient" nil :count 6)
+    ("convinient" "convenient" nil :count 7)
     ("coudld" "could" nil :count 0)
     ("curiousity" "curiosity" nil :count 0)
     ("decsion" "decision" nil :count 0)
@@ -255,7 +252,7 @@
     ("signup" "sign-up" nil :count 6)
     ("standup" "stand-up" nil :count 32)
     ("themed" "themed" nil :count 0)
-    ("tia" "Thanks in advance" nil :count 149)
+    ("tia" "Thanks in advance" nil :count 154)
     ("tomororw" "tomorrow" nil :count 1)
     ("unecessary" "unnecessary" nil :count 0)
    ))
