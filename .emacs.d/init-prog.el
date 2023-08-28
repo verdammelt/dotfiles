@@ -120,3 +120,37 @@
     "describe('" str "', () => {" \n
     > "test('fails', () => expect(true).toBe(false))" \n \n
     "})" \n))
+
+(define-skeleton rspec-describe
+  "Inserts a ruby rspec describe block"
+  "What are you describing? "
+  > "describe \"" str "\" do" \n
+  - \n
+  "end")
+(define-skeleton rspec-context
+  "Inserts a ruby rspec context block"
+  "What is the context? "
+  > "context \"" str "\" do" \n
+  - \n
+  "end")
+(define-skeleton rspec-it
+  "Inserts an rspec it block"
+  "It does what? "
+  > "it \"" str "\" do" \n
+  - \n
+  "end")
+(define-skeleton rspec-subject
+  "Inserts a subject block"
+  ""
+  > "subject { " - " }")
+(define-skeleton rspec-let
+  "Inserts a subject block"
+  "variable: "
+  > "let(:" str ") { " - " }")
+
+(quietly-read-abbrev-file)
+(define-abbrev ruby-mode-abbrev-table "desc" "" 'rspec-describe)
+(define-abbrev ruby-mode-abbrev-table "cont" "" 'rspec-context)
+(define-abbrev ruby-mode-abbrev-table "test" "" 'rspec-it)
+(define-abbrev ruby-mode-abbrev-table "subj" "" 'rspec-subject)
+(define-abbrev ruby-mode-abbrev-table "let" "" 'rspec-let)
