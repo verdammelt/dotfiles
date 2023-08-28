@@ -30,7 +30,9 @@
   :ensure nil
   :config
   (setq js-indent-level 2)
-  (defun mjs/js-mode-setup () (setq mode-name "JS"))
+  (defun mjs/js-mode-setup ()
+    (setq mode-name "JS"
+          indent-tabs-mode nil))
   (add-hook 'js-mode-hook 'mjs/js-mode-setup))
 
 (use-package ansi-color

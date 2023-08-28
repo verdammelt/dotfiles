@@ -55,7 +55,8 @@
   :ensure nil
   :diminish (abbrev-mode)
   :init (setq-default abbrev-mode t)
-  :config (setq abbrev-suggest t))
+  :config
+  (setq abbrev-suggest t))
 
 (use-package flyspell
   :ensure nil
@@ -416,6 +417,7 @@
 (require 'project-utils)
 (use-package project
   :ensure nil
+  :autoload (project-prompt-project-dir)
   :bind (:map project-prefix-map
               ("p" . #'mjs/project-switch-project)
               ("v" . #'magit-project-status)
