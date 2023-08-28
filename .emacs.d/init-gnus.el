@@ -213,6 +213,8 @@
 
      (| (from ".*@pivotaltracker.com" "defmethod.nycvotes.misc")
         (from ".*@.*stripe.com" "defmethod.nycvotes.misc")
+        ("subject" "[Workflow] Failed: NYCVotes/NYCVotes" "defmethod.nycvotes.misc")
+        ("subject" "Contribute System Usage Report" "defmethod.nycvotes.misc")
         ("subject" "nycvotes-dev" "defmethod.nycvotes.misc")
         ("subject" "nycvotes-production" "defmethod.nycvotes.inbox")
         ("subject" "NYC Votes" "defmethod.nycvotes.inbox")
