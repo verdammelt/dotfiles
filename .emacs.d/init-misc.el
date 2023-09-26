@@ -437,3 +437,8 @@
         project-vc-extra-root-markers '(".project")))
 
 (global-set-key (kbd "M-g l") #'mjs/project-file:line)
+
+(use-package scratch
+  :bind ("C-c s" . #'scratch))
+
+(use-package visual-fill-column)
