@@ -9,6 +9,11 @@
     ("woudl" "would" nil :count 0)
    ))
 
+(define-abbrev-table 'forge-post-mode-abbrev-table
+  '(
+    ("responsibitliy" "responsibility" nil :count 0)
+   ))
+
 (define-abbrev-table 'git-commit-mode-abbrev-table
   '(
     ("accessiblity" "accessibility" nil :count 0)
@@ -52,7 +57,7 @@
     ("existant" "existent" nil :count 0)
     ("geneology" "genealogy" nil :count 0)
     ("implmentation" "implementation" nil :count 0)
-    ("nad" "and" nil :count 0)
+    ("nad" "and" nil :count 1)
     ("negligble" "negligible" nil :count 0)
     ("retreived" "retrieved" nil :count 0)
     ("signup" "sign up" nil :count 0)
@@ -224,11 +229,11 @@
 
 (define-abbrev-table 'ruby-mode-abbrev-table
   '(
-    ("cont" "" rspec-context :count 0)
-    ("desc" "" rspec-describe :count 3)
-    ("let" "" rspec-let :count 0)
+    ("cont" "" rspec-context :count 23)
+    ("desc" "" rspec-describe :count 7)
+    ("let" "" rspec-let :count 37)
     ("subj" "" rspec-subject :count 0)
-    ("test" "" rspec-it :count 1)
+    ("test" "" rspec-it :count 18)
    ))
 
 (define-abbrev-table 'text-mode-abbrev-table
