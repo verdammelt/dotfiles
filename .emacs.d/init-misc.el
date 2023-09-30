@@ -95,10 +95,6 @@
     (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
   :config (setq forge-topic-list-limit '(100 . -5)))
 
-;; (use-package code-review
-;;   :config (setq code-review-lgtm-message "Looks good. :shipit:"
-;;                 code-review-new-buffer-window-strategy #'switch-to-buffer))
-
 (use-package magit-todos
   :after magit
   :demand t
