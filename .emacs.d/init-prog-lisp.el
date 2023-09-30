@@ -4,9 +4,13 @@
 ;;;; [if found please return to damned@theworld.com]
 ;;;;
 (use-package paredit
-  :ensure nil ;; using v24 which has been added to ./lisp manually
   :autoload (enable-paredit-mode)
-  :diminish (paredit-mode))
+  :diminish (paredit-mode)
+  ;; changes to bindings of RET and C-j in v25+ causes problems with REPLs
+  ;; this will change things back to the way it was.
+  :bind ((:map paredit-mode-map
+               (("RET" . nil)
+                ("C-j" . paredit-newline)))))
 
 (use-package sly
   :pin melpa
