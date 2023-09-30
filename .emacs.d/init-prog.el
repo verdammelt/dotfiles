@@ -154,9 +154,12 @@
   "variable: "
   > "let(:" str ") { " - " }")
 
-(quietly-read-abbrev-file)
-(define-abbrev ruby-mode-abbrev-table "desc" "" 'rspec-describe)
-(define-abbrev ruby-mode-abbrev-table "cont" "" 'rspec-context)
-(define-abbrev ruby-mode-abbrev-table "test" "" 'rspec-it)
-(define-abbrev ruby-mode-abbrev-table "subj" "" 'rspec-subject)
-(define-abbrev ruby-mode-abbrev-table "let" "" 'rspec-let)
+(use-package ruby
+  :ensure nil
+  :config
+  (quietly-read-abbrev-file)
+  (define-abbrev ruby-mode-abbrev-table "desc" "" 'rspec-describe)
+  (define-abbrev ruby-mode-abbrev-table "cont" "" 'rspec-context)
+  (define-abbrev ruby-mode-abbrev-table "test" "" 'rspec-it)
+  (define-abbrev ruby-mode-abbrev-table "subj" "" 'rspec-subject)
+  (define-abbrev ruby-mode-abbrev-table "let" "" 'rspec-let))
