@@ -438,3 +438,8 @@
   :bind ("C-c s" . #'scratch))
 
 (use-package visual-fill-column)
+
+(use-package dictionary
+  :ensure nil
+  :bind ("C-c d" . dictionary-search)
+  :config (setq dictionary-server "dict.org"))
