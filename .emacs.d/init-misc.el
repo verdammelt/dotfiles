@@ -95,6 +95,16 @@
     (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
   :config (setq forge-topic-list-limit '(100 . -5)))
 
+(unless (package-installed-p 'code-review)
+  (package-vc-install "https://github.com/phelrine/code-review.git"
+                      "fix/closql-update"))
+
+(use-package code-review
+  :ensure nil ;; because we are making sure it is installed above
+  :demand t
+  :bind (:map magit-status-mode-map
+              (("C-c r" . code-review-forge-pr-at-point))))
+
 (use-package magit-todos
   :after magit
   :demand t
