@@ -15,7 +15,7 @@
                     :height 180
                     :family "DejaVu Sans")
 
-(setq custom-safe-themes '("cca1d386d4a3f645c2f8c49266e3eb9ee14cf69939141e3deb9dfd50ccaada79"
+(setq custom-safe-themes '("69f7e8101867cfac410e88140f8c51b4433b93680901bb0b52014144366a08c8"
                            default))
 
 (use-package unicode-fonts
