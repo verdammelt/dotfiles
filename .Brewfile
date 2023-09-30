@@ -9,6 +9,16 @@ tap "homebrew/services"
 tap "snyk/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
+# XML-based font configuration API for X Windows
+brew "fontconfig"
+# GNU database manager
+brew "gdbm"
+# Command-line interface for SQLite
+brew "sqlite"
+# Vector graphics library with cross-device output support
+brew "cairo"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
 # Java build tool
 brew "ant"
 # Spell checker with better logic than ispell
@@ -17,30 +27,14 @@ brew "aspell"
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# GNU database manager
-brew "gdbm"
-# Command-line interface for SQLite
-brew "sqlite"
-# Client for Amazon Elastic Beanstalk web service
-brew "aws-elasticbeanstalk"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
 # Garbage collector for C and C++
 brew "bdw-gc"
-# XML-based font configuration API for X Windows
-brew "fontconfig"
-# Vector graphics library with cross-device output support
-brew "cairo"
 # Dynamic, general-purpose programming language
 brew "clojure"
-# Convert to and from the X-Face format
-brew "compface"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Reimplementation of ctags(1)
@@ -71,8 +65,6 @@ brew "gh"
 brew "ghostscript"
 # Distributed revision control system
 brew "git"
-# GNU implementation of the famous stream editor
-brew "gnu-sed"
 # GNU version of the tar archiving utility
 brew "gnu-tar"
 # GNU implementation of which utility
@@ -91,10 +83,12 @@ brew "libusb"
 brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
+# Cross-platform application and UI framework
+brew "qt@5"
 # Command-driven, interactive function plotting
 brew "gnuplot"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
 brew "gradle"
 # Image manipulation
@@ -123,6 +117,8 @@ brew "jq"
 brew "lame"
 # Build tool for Clojure
 brew "leiningen"
+# JIT library for the GNU compiler collection
+brew "libgccjit"
 # Library for handling page faults in user mode
 brew "libsigsegv"
 # C XSLT library for GNOME
@@ -145,8 +141,6 @@ brew "nethack"
 brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # ISO-C API and CLI for generating UUIDs
 brew "ossp-uuid"
 # Swiss-army knife of markup format conversion
@@ -166,7 +160,7 @@ brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
-brew "ruby", link: true
+brew "ruby"
 # Steel Bank Common Lisp system
 brew "sbcl"
 # Count lines of code in many languages
@@ -183,6 +177,8 @@ brew "tldr"
 brew "tnef"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool and incremental parsing library
+brew "tree-sitter"
 # Extraction utility for .zip compressed archives
 brew "unzip"
 # Vi 'workalike' with many additional features
@@ -197,7 +193,7 @@ brew "xpdf"
 brew "xvid"
 # JavaScript package manager
 brew "yarn"
-brew "d12frosted/emacs-plus/emacs-plus@28"
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-native-comp"]
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
 # Find & fix known vulnerabilities in open-source dependencies
@@ -236,10 +232,14 @@ cask "launchbar"
 cask "libreoffice"
 # Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
+# Media player based on MPlayer and mplayer2
+cask "mpv"
 # Remote pair programming
 cask "pop"
 # Collaboration platform for API development
 cask "postman"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Tool for sending personal documents to Kindles from Macs
 cask "send-to-kindle"
 # Team communication and collaboration software
