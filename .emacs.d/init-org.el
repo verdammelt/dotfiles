@@ -43,6 +43,8 @@
                    'mjs/insert-heading-inactive-timestamp 'append))
 
   :config
+  (load "org-hack")
+
   (defun mjs/insert-heading-inactive-timestamp ()
     (save-excursion
       (org-return)
