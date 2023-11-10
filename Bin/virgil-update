@@ -3,15 +3,10 @@
 tmutil startbackup -b
 
 sudo softwareupdate -i -a
-#tmutil startbackup -b
 
-# open /System/Applications/App\ Store.app
-/System/Applications/App\ Store.app/Contents/MacOS/App\ Store 2>&1 >/dev/null
-# read -p "Press Enter when done" FOO
-#tmutil startbackup -b
+open -W /System/Applications/App\ Store.app
 
 brewupdate
-#tmutil startbackup -b
 
 emacsclient -e '(mjs/perform-updates)'
 
