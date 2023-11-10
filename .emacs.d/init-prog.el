@@ -131,8 +131,8 @@
   "Inserts a ruby rspec describe block"
   "What are you describing? "
   > "describe \"" str "\" do" \n
-  - \n
-  "end")
+  _ \n
+  "end" > )
 (define-skeleton rspec-context
   "Inserts a ruby rspec context block"
   "What is the context? "
@@ -143,8 +143,8 @@
   "Inserts an rspec it block"
   "It does what? "
   > "it \"" str "\" do" \n
-  - \n
-  "end")
+  _ \n
+  "end" > )
 (define-skeleton rspec-subject
   "Inserts a subject block"
   ""
@@ -153,11 +153,20 @@
   "Inserts a subject block"
   "variable: "
   > "let(:" str ") { " - " }")
+(define-skeleton rspec-file
+  "Inserts typical Rspec file structure"
+  "Class/Module name: "
+  "require \"spec_helper\"" \n
+  \n
+  "describe " str " do" \n
+  > _ \n
+  "end" > \n)
 
-(use-package ruby
+(use-package ruby-mode
   :ensure nil
   :config
   (quietly-read-abbrev-file)
+  (define-auto-insert '("_spec\\.rb" . "RSpec File") 'rspec-file)
   (define-abbrev ruby-mode-abbrev-table "desc" "" 'rspec-describe)
   (define-abbrev ruby-mode-abbrev-table "cont" "" 'rspec-context)
   (define-abbrev ruby-mode-abbrev-table "test" "" 'rspec-it)

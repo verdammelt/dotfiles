@@ -238,6 +238,16 @@
     ("woudl" "would" nil :count 0)
    ))
 
+(define-abbrev-table 'ruby-mode-abbrev-table
+  '(
+    ("cont" "" rspec-context :count 0)
+    ("desc" "" rspec-describe :count 0)
+    ("let" "" rspec-let :count 0)
+    ("spec" "" rspec-it :count 19)
+    ("subj" "" rspec-subject :count 0)
+    ("test" "" rspec-it :count 0)
+   ))
+
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("accesibility" "accessibility" nil :count 0)
