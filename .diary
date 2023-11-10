@@ -23,26 +23,27 @@ May 01 May Day
 %%(diary-anniversary 2013 09 30) %d%s Cyrus / Def Method Employement Anniversary
 %%(diary-anniversary 1991 10 11) %d%s Meet-iversary
 %%(diary-anniversary 1994 10 31) %d%s Wedding Anniversary
+%%(diary-anniversary 1963 11 23) %d%s Doctor Who-iversary
 %%(diary-anniversary 1933 12 04) Repeal Day
 
 ;;;
 ;;; Exercise Reminders
 ;;;
 &Monday
- Wall Pushups 2 sets of 30 (https://www.hybridcalisthenics.com/wall-pushups)
+ Wall Pushups 2 sets of 50 (https://www.hybridcalisthenics.com/wall-pushups)
  Knee Raises  2 sets of 10 (https://www.hybridcalisthenics.com/knee-raises)
 &Tuesday
- Wall Pullups     2 sets of 30 (https://www.hybridcalisthenics.com/wall-pullups)
- Jackknife Squats 2 sets of 15 (https://www.hybridcalisthenics.com/jackknife-squats)
+ Wall Pullups 2 sets of 50 (https://www.hybridcalisthenics.com/wall-pullups)
+ Full Squats  2 sets of 10 (https://www.hybridcalisthenics.com/full-squats)
 &Wednesday
  Glute Bridges      2 sets of 15 (https://www.hybridcalisthenics.com/glute-bridges)
  Straight-leg Twist 3 sets of 15 (https://www.hybridcalisthenics.com/straight-leg-twists)     
 &Thursday
- Wall Pushups 2 sets of 30 (https://www.hybridcalisthenics.com/wall-pushups)
+ Wall Pushups 2 sets of 50 (https://www.hybridcalisthenics.com/wall-pushups)
  Knee Raises  2 sets of 10 (https://www.hybridcalisthenics.com/knee-raises)
 &Friday
- Wall Pullups     2 sets of 30 (https://www.hybridcalisthenics.com/wall-pullups)
- Jackknife Squats 2 sets of 15 (https://www.hybridcalisthenics.com/jackknife-squats)
+ Wall Pullups 2 sets of 50 (https://www.hybridcalisthenics.com/wall-pullups)
+ Full Squats  2 sets of 10 (https://www.hybridcalisthenics.com/full-squats)
 &Saturday
  Glute Bridges      2 sets of 15 (https://www.hybridcalisthenics.com/glute-bridges)
  Straight-leg Twist 3 sets of 15 (https://www.hybridcalisthenics.com/straight-leg-twists)
@@ -57,31 +58,57 @@ May 01 May Day
 2023-06-19 DM: Juneteenth
 2023-07-04 DM: Independance Day
 2023-09-04 DM: Labor Day
-2023-11-22 DM: Half-day (Thanksgiving)
+2023-11-22 13:00-17:00 DM: Half-day (Thanksgiving)
 2023-11-23 DM: Thanksgiving
 2023-11-24 DM: Day after Thanksgiving
-2023-12-22 DM: Half-day (Christmas)
+2023-12-22 13:00-17:00 DM: Half-day (Christmas)
 2023-12-25 DM: Christmas
+
+2023-10-09 NYCVotes: Holiday
+2023-10-10 NYCVotes: Prod Deploy
 
 ;;;
 ;;; Def Method Team Days
 ;;;
+2023-10-04 12:30-13:30 DM Team Day Hour 
 
 ;;;
 ;;; Vacation
 ;;;
 %%(diary-block 2023 09 02 2023 09 16) Trip to CA
+2023-10-31 Anniversary Vacation
 
 ;;;
 ;;; PDT
 ;;;
-9/29 PDT
+09/29 PDT
+10/13 PDT / Sick Time
+11/07 PDT 
+11/20 08:00-12:00 Sick Time
+11/22 08:00-12:00 PDT
+12/1 PDT
+12/8 PDT
+12/15 PDT
+12/22 PDT
 
 ;;;
 ;;; Doctor Appointments
 ;;;
 2023-11-20 09:00-09:30 Kaminski Followup @ 180 E Pulaski
+2023-12-15 09:10-09:40 Annual Physical w/ Gallagher @ 400 Park
 
+;;;
+;;; D&D Games
+;;;
 &Sunday 20:00-23:00 My Open Table Discord AD&D Game
 &Monday 21:00-24:00 Glen's Discord AD&D Game
 &Tuesday 20:30-22:00 Dungeon Delver YouTube AD&D Game
+
+;;;
+;;; NYCVotes Filing Deadlines
+;;;
+%%(diary-block 2023 10 24 2023 10 27) NYCVotes Filing Deadline
+%%(diary-block 2023 12 01 2023 12 04) NYCVotes Filing Deadline
+%%(diary-block 2024 01 13 2024 01 16) NYCVotes Filing Deadline
+%%(diary-block 2024 07 12 2024 07 15) NYCVotes Filing Deadline
+%%(diary-block 2024 10 12 2024 10 15) NYCVotes Filing Deadline
