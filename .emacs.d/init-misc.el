@@ -122,6 +122,7 @@
   :init
   (setq-default indent-tabs-mode nil)
   (setq
+   kill-whole-line t
    shell-command-prompt-show-cwd t
    visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)))
 
