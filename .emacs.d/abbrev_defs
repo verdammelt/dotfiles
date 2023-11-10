@@ -36,6 +36,14 @@
     ("javascript" "javascript" nil :count 1)
    ))
 
+(define-abbrev-table 'js-mode-abbrev-table
+  '(
+    ("before" "" jasmine-before :count 1)
+    ("descr" "" jasmine-descr :count 2)
+    ("fn" "" js-fn :count 1)
+    ("spec" "" jasmine-spec :count 0)
+   ))
+
 (define-abbrev-table 'js2-jsx-mode-abbrev-table
   '(
     ("improt" "import" nil :count 1)

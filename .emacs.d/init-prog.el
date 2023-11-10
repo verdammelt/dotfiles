@@ -163,3 +163,31 @@
   (define-abbrev ruby-mode-abbrev-table "test" "" 'rspec-it)
   (define-abbrev ruby-mode-abbrev-table "subj" "" 'rspec-subject)
   (define-abbrev ruby-mode-abbrev-table "let" "" 'rspec-let))
+
+(define-skeleton js-fn
+  "Insert a function stub"
+  "Name: "
+  > "function " str | (delete-backward-char 1) "() {" \n
+  _ \n
+  "}" >)
+
+(define-skeleton jasmine-descr
+  "Inserts jasmine describe block"
+  "Describing what? "
+  > "describe(\"" str "\", function() {" \n
+  _ \n
+  "})" >)
+
+(define-skeleton jasmine-before
+  "Inserts jasmine before block"
+  (completing-read "scope: " '("All" "Each") nil t)
+  > "before" str "(function() {" \n
+  _ \n
+  "})" > )
+
+(define-skeleton jasmine-spec
+  "Inserts a jasmine it block"
+  "it does what? "
+  > "it(\"" str "\", function() {" \n
+  _ \n
+  "})" > )
