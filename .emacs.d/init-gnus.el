@@ -213,6 +213,7 @@
 
      (| (from ".*@pivotaltracker.com" "defmethod.nycvotes.misc")
         (from ".*@.*stripe.com" "defmethod.nycvotes.misc")
+        (from "no-reply@nycvotes.org" "defmethod.nycvotes.misc")
         ("subject" "[Workflow] Failed: NYCVotes/NYCVotes" "defmethod.nycvotes.misc")
         ("subject" "Contribute System Usage Report" "defmethod.nycvotes.misc")
         ("subject" "nycvotes-dev" "defmethod.nycvotes.misc")
@@ -264,7 +265,8 @@
         (from "morbidanatomy@gmail.com" "list.misc")
         (from "no-reply@dropboxmail.com" "list.misc")
         (from "contact@executeprogram.com" "list.misc")
-        (from "info@glossgenius.com" "list.misc"))
+        (from "info@glossgenius.com" "list.misc")
+        (from "info@dailystoic.com" "list.misc"))
 
      (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
         (from "t-mobile@digital-delivery.com" "list.receipts")
@@ -283,7 +285,8 @@
         (from "googleplay-noreply@google.com" "list.receipts")
         (from "hello@encrypt.me" "list.receipts")
         (from "no-reply@sns.amazonaws.com" "list.receipts")
-        (from "ebay@ebay.com" "list.receipts"))
+        (from "ebay@ebay.com" "list.receipts")
+        (from "statement@billing.toyotafinancial.com" "list.receipts"))
 
      (| (any "ally.*" "list.bank")
         (any "citi\\.com" "list.bank")
