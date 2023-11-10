@@ -105,6 +105,9 @@
   :bind (:map magit-status-mode-map
               (("C-c r" . code-review-forge-pr-at-point))))
 
+(use-package emojify
+  :hook (code-review-mode-hook . #'emojify-mode))
+
 (use-package magit-todos
   :after magit
   :demand t
