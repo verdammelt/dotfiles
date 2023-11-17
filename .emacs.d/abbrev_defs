@@ -31,17 +31,13 @@
     ("paramater" "parameter" nil :count 0)
    ))
 
-(define-abbrev-table 'html-mode-abbrev-table
-  '(
-    ("javascript" "javascript" nil :count 1)
-   ))
-
 (define-abbrev-table 'js-mode-abbrev-table
   '(
-    ("before" "" jasmine-before :count 1)
-    ("descr" "" jasmine-descr :count 2)
+    ("before" "" jasmine-before :count 2)
+    ("descr" "" jasmine-descr :count 3)
     ("fn" "" js-fn :count 1)
-    ("spec" "" jasmine-spec :count 0)
+    ("javascript" "javascript" nil :count 1)
+    ("spec" "" jasmine-spec :count 1)
    ))
 
 (define-abbrev-table 'js2-jsx-mode-abbrev-table
@@ -238,6 +234,12 @@
     ("woudl" "would" nil :count 0)
    ))
 
+(define-abbrev-table 'prog-mode-abbrev-table
+  '(
+    ("fixme" "" fixme-comment :count 6)
+    ("todo" "" todo-comment :count 4)
+   ))
+
 (define-abbrev-table 'ruby-mode-abbrev-table
   '(
     ("cont" "" rspec-context :count 0)
@@ -262,6 +264,7 @@
     ("definately" "definitely" nil :count 13)
     ("dyanmic" "dynamic" nil :count 0)
     ("editted" "edited" nil :count 0)
+    ("everytime" "every time" nil :count 0)
     ("excpetion" "exception" nil :count 0)
     ("existance" "existence" nil :count 0)
     ("filepath" "file path" nil :count 0)
