@@ -103,7 +103,11 @@
   :ensure nil ;; because we are making sure it is installed above
   :demand t
   :bind (:map magit-status-mode-map
-              (("C-c r" . code-review-forge-pr-at-point))))
+              (("C-c r" . code-review-forge-pr-at-point)))
+  :init
+  (use-package deferred)
+  (use-package a)
+  (use-package uuidgen))
 
 (use-package emojify
   :hook (code-review-mode-hook . #'emojify-mode))
