@@ -59,7 +59,11 @@
      1 2 3 1)
     (mjs/add-compilation-error-regexp
      'rspec "\\(rspec\\|#\\) \\(.*?\\):\\([0-9]+\\)"
-     2 3 nil 1)))
+     2 3 nil 1)
+    (mjs/add-compilation-error-regexp
+     'markdownlint-error-regexp
+     "^\\(.*\\):\\(.*\\)\\(:\\(.*\\)\\)? MD"
+     1 2 3 1)))
 
 (use-package eglot
   :hook ((typescript-mode . eglot-ensure)
