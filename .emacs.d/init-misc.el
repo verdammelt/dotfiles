@@ -425,7 +425,8 @@
 
 (use-package diminish)
 
-(use-package markdown-mode)
+(use-package markdown-mode
+  :config (setq markdown-asymmetric-header t))
 
 (use-package eshell
   :ensure nil
