@@ -456,7 +456,16 @@
 (use-package scratch
   :bind ("C-c s" . #'scratch))
 
-(use-package visual-fill-column)
+(defun mjs/toggle-visual-fill-column-center-text ()
+  (interactive)
+  (setq visual-fill-column-center-text
+        (not visual-fill-column-center-text))
+      (visual-fill-column-adjust))
+
+(use-package visual-fill-column
+  :bind (:map visual-fill-column-mode-map
+              ("s-c" . #'mjs/toggle-visual-fill-column-center-text))
+  :hook (markdown-mode . visual-fill-column-mode))
 
 (use-package dictionary
   :ensure nil
