@@ -358,13 +358,16 @@
          ("C-c m o" . denote-orphans-visit-orphan))
   :hook ((dired-mode . denote-dired-mode-in-directories)
          (denote-dired-mode . dired-hide-details-mode))
-  :config (setq
-           denote-backlinks-show-context t
-           denote-directory (expand-file-name "memex" org-directory)
-           denote-dired-directories (list denote-directory)
-           denote-date-prompt-use-org-read-date t
-           denote-known-keywords '("cite" "emacs" "lisp" "dnd")
-           denote-infer-keywords t)
+  :config
+  (progn
+    (setq denote-backlinks-show-context t
+          denote-directory (expand-file-name "memex" org-directory)
+          denote-dired-directories (list denote-directory)
+          denote-date-prompt-use-org-read-date t
+          denote-known-keywords '("cite" "emacs" "lisp" "dnd")
+          denote-infer-keywords t)
+    (denote-rename-buffer-mode 1))
+
   (defun mjs/visit-denote-directory ()
     "Open dired buffer in `DENOTE-DIRECTORY`"
     (interactive)
