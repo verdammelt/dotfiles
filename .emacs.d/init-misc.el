@@ -484,3 +484,8 @@
   :ensure nil
   :bind ("C-c d" . dictionary-search)
   :config (setq dictionary-server "dict.org"))
+(use-package webjump
+  :ensure nil
+  :bind ("C-c j" . webjump)
+  :config
+  (add-to-list 'webjump-sites '("RuboCop Cop Doc" mjs/webjump-to-rubocop-cop-doc)))
