@@ -198,7 +198,9 @@
   "})" > )
 
 (define-skeleton fixme-comment "Inserts a FIXME comment" ""
-  > comment-start "FIXME: " _ comment-end)
+  > (if (> comment-add 0) (s-trim comment-start)) comment-start
+  "FIXME: " _ comment-end)
 
 (define-skeleton todo-comment "Inserts a TODO comment" ""
-  > comment-start "TODO: [" (format-time-string "%F" (current-time)) "] " _ comment-end)
+  > (if (> comment-add 0) (s-trim comment-start)) comment-start
+  "TODO: [" (format-time-string "%F" (current-time)) "] " _ comment-end)
