@@ -80,6 +80,16 @@
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1
         magit-diff-refine-hunk 'all))
 
+(defun mjs/forge-browse (arg)
+  (interactive "p")
+  (if (= arg 1)
+      (forge-browse)
+    (if-let ((target (forge--browse-target)))
+        (let ((url (if (stringp target) target (forge-get-url target))))
+          (kill-new url)
+          (message url))
+      (user-error "Nothing to browse here"))))
+
 (use-package forge
   :pin melpa
   :after magit
@@ -93,7 +103,10 @@
                       forge-insert-assigned-issues
                       forge-insert-authored-issues))
     (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
-  :config (setq forge-topic-list-limit '(100 . -5)))
+  :config
+  (setq forge-topic-list-limit '(100 . -5))
+  (keymap-set magit-mode-map "<remap> <magit-browse-thing>"
+              #'mjs/forge-browse))
 
 (unless (package-installed-p 'code-review)
   (package-vc-install "https://github.com/phelrine/code-review.git"
