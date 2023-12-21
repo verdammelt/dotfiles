@@ -484,6 +484,16 @@
   :ensure nil
   :bind ("C-c d" . dictionary-search)
   :config (setq dictionary-server "dict.org"))
+
+;; TODO: [2023-12-21] this doesn't work with rspec/rails cops sadly
+(defun mjs/webjump-to-rubocop-cop-doc ()
+  (let* ((cop-and-name (string-split (webjump-read-string "Cop") "/"))
+         (group (first cop-and-name))
+         (name (second cop-and-name)))
+    (format "https://docs.rubocop.org/rubocop/cops_%s.html%s"
+            (downcase group)
+            (if name (format "#%s%s" (downcase group) (downcase name)) ""))))
+
 (use-package webjump
   :ensure nil
   :bind ("C-c j" . webjump)
