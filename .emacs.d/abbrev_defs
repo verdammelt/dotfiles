@@ -12,8 +12,10 @@
 (define-abbrev-table 'forge-post-mode-abbrev-table
   '(
     ("errored" "error ed" nil :count 0)
+    ("hardcodes" "hard codes" nil :count 0)
     ("organazation" "organization" nil :count 0)
     ("responsibitliy" "responsibility" nil :count 0)
+    ("soley" "solely" nil :count 0)
    ))
 
 (define-abbrev-table 'git-commit-mode-abbrev-table
@@ -205,6 +207,7 @@
     ("finanical" "Financial" nil :count 0)
     ("gnucash" "GnuCash" nil :count 3)
     ("haveread" "Have Read" nil :count 0)
+    ("increaases" "increases" nil :count 0)
     ("initiaited" "initiated" nil :count 0)
     ("internesting" "interesting" nil :count 0)
     ("interpretting" "interpreting" nil :count 2)
@@ -247,12 +250,13 @@
 
 (define-abbrev-table 'ruby-mode-abbrev-table
   '(
-    ("cont" "" rspec-context :count 0)
-    ("desc" "" rspec-describe :count 0)
-    ("let" "" rspec-let :count 0)
-    ("spec" "" rspec-it :count 19)
-    ("subj" "" rspec-subject :count 0)
-    ("test" "" rspec-it :count 0)
+    ("authenitcation" "authentication" nil :count 0)
+    ("cont" "" rspec-context :count 12)
+    ("desc" "" rspec-describe :count 17)
+    ("let" "" rspec-let :count 56)
+    ("recieve" "receive" nil :count 1)
+    ("spec" "" rspec-it :count 65)
+    ("subj" "" rspec-subject :count 10)
    ))
 
 (define-abbrev-table 'text-mode-abbrev-table
@@ -275,7 +279,7 @@
     ("filepath" "file path" nil :count 0)
     ("filepicker" "FilePicker" nil :count 3)
     ("fivespair" "Fives Pair" nil :count 0)
-    ("hardcoded" "hard coded" nil :count 2)
+    ("hardcoded" "hard coded" nil :count 3)
     ("independant" "independent" nil :count 1)
     ("langauge" "language" nil :count 0)
     ("marijhuana" "Marijuana" nil :count 0)
