@@ -12,7 +12,18 @@
                TeX-parse-self t
                ;; the following is to fix a strange bug/scenario where error
                ;; messages are shown in Japanese!
-               japanese-TeX-error-messages nil)))
+               japanese-TeX-error-messages nil)
+
+         ;;;
+         ;;; experimental
+         ;;;
+         (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+               TeX-source-correlate-start-server t)
+
+         ;; Update PDF buffers after successful LaTeX runs
+         (add-hook 'TeX-after-compilation-finished-functions
+                   #'TeX-revert-document-buffer)
+))
 
 (use-package latex
   :ensure auctex
