@@ -392,6 +392,7 @@
 (use-package nnrss
   :ensure nil
   :config
+  (setq nnrss-use-local t)
   (add-to-list 'nnmail-extra-headers nnrss-url-field)
   (add-to-list 'nnmail-extra-headers nnrss-description-field))
 
