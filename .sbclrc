@@ -16,8 +16,8 @@
         (truename (make-pathname :name name :type "asd"))))
 
 (ql:quickload :alexandria)
-(sb-ext:add-package-local-nickname :alex :alexandria)
-(sb-ext:add-package-local-nickname :alex2 :alexandria-2)
+(sb-ext:add-package-local-nickname :alex :alexandria-2)
+(sb-ext:add-package-local-nickname :alex1 :alexandria-1)
 
 (defpackage :exercism-utils
   (:use :cl)
