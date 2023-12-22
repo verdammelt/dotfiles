@@ -72,7 +72,9 @@
 
 (use-package magit
   :pin melpa
-  :bind (("C-x g" . magit-status))
+  :bind (("C-x g" . magit-status)
+         (:map magit-status-mode-map
+               ("C-c r" . #'code-review-forge-pr-at-point)))
   :functions (magit-mode-quit-window)
   :config
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1
@@ -82,8 +84,6 @@
   :pin melpa
   :after magit
   :demand t
-  :bind ((:map forge-topic-mode-map
-               ("C-c r" . #'code-review-forge-pr-at-point)))
   :init
   (dolist (forge-fn '(forge-insert-requested-reviews
                       forge-insert-assigned-pullreqs
