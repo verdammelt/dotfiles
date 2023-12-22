@@ -27,6 +27,9 @@
 (use-package sly-quicklisp :pin melpa
   :config (push (cons "quickload" #'sly-quickload) sly-mrepl-shortcut-alist))
 
+(use-package sly-macrostep :pin melpa
+  :bind ("C-c e" . #'macrostep-expand))
+
 (use-package eldoc
   :ensure nil
   :hook (after-init . global-eldoc-mode)
