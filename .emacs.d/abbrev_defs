@@ -47,7 +47,11 @@
 
 (define-abbrev-table 'latex-mode-abbrev-table
   '(
+    ("hel" "Heal" nil :count 0)
+    ("hels" "Heals" nil :count 0)
+    ("posessions" "Possessions" nil :count 0)
     ("posessor's" "possessor's" nil :count 0)
+    ("precense" "preens" nil :count 0)
     ("unconcious" "unconscious" nil :count 0)
    ))
 
@@ -221,6 +225,7 @@
     ("repercusion" "repercussion" nil :count 0)
     ("resposibility" "responsibility" nil :count 0)
     ("scrollbars" "scroll bars" nil :count 0)
+    ("seque" "segue" nil :count 0)
     ("shedule" "schedule" nil :count 0)
     ("shoudl" "should" nil :count 2)
     ("somehting" "something" nil :count 0)
@@ -236,8 +241,8 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table
   '(
-    ("fixme" "" fixme-comment :count 6)
-    ("todo" "" todo-comment :count 4)
+    ("fixme" "" fixme-comment :count 18)
+    ("todo" "" todo-comment :count 10)
    ))
 
 (define-abbrev-table 'ruby-mode-abbrev-table
