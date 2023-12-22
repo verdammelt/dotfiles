@@ -8,8 +8,7 @@
     (load quicklisp-init)))
 
 (defun reset-asdf-registry ()
-  (asdf:clear-source-registry)
-  (asdf:ensure-source-registry nil))
+  (asdf:clear-configuration))
 
 (defun add-system-to-registry (name)
   (setf (gethash name asdf/source-registry:*source-registry*)
