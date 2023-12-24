@@ -33,10 +33,12 @@
     (add-hook 'LaTeX-mode-hook 'flymake-mode)
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)))
+    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+    (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup)))
 
 (use-package reftex
-  :ensure nil
   :config (setq reftex-plug-into-AUCTeX t))
 
 (use-package auctex)
+(use-package auctex-latexmk)
+(use-package pdf-tools)
