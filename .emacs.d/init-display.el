@@ -24,7 +24,14 @@
   :config
   (unicode-fonts-setup))
 
+(defun mjs/set-mode-line-highlight ()
+  (set-face-attribute
+   'mode-line nil
+   :foreground "black" :background "goldenrod"
+   :box '(:line-width 2 :color "black")))
+
 (use-package modus-themes
+  :hook ((modus-themes-after-load-theme . mjs/set-mode-line-highlight))
   :defer nil
   :init
   (setq modus-themes-italic-constructs t
@@ -36,10 +43,12 @@
         modus-themes-diffs 'desaturated)
 
   :config
-  (load-theme 'modus-vivendi))
+  (modus-themes-select 'modus-vivendi))
 
 (use-package auto-dark
   :demand t
+  :hook ((auto-dark-dark-mode . mjs/set-mode-line-highlight)
+         (auto-dark-light-mode . mjs/set-mode-line-highlight))
   :diminish (auto-dark-mode)
   :init
   (setq auto-dark-light-theme 'modus-operandi
