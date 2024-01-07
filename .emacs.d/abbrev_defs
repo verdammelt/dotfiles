@@ -194,11 +194,13 @@
     ("codeship" "Code ship" nil :count 0)
     ("collegue" "colleague" nil :count 0)
     ("competancy" "competency" nil :count 0)
+    ("contributoin" "contribution" nil :count 0)
     ("defm" "Def Method" nil :count 33)
     ("desiger" "designer" nil :count 0)
     ("differnet" "different" nil :count 0)
     ("dropbox" "drop box" nil :count 2)
     ("eh" "tech" nil :count 0)
+    ("elecion" "election" nil :count 0)
     ("entirity" "entirety" nil :count 0)
     ("everytime" "every time" nil :count 0)
     ("excpetions" "Exceptions" nil :count 0)
@@ -244,26 +246,26 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table
   '(
-    ("fixme" "" fixme-comment :count 18)
+    ("fixme" "" fixme-comment :count 21)
     ("todo" "" todo-comment :count 10)
    ))
 
 (define-abbrev-table 'ruby-mode-abbrev-table
   '(
     ("authenitcation" "authentication" nil :count 0)
-    ("cont" "" rspec-context :count 12)
-    ("desc" "" rspec-describe :count 17)
-    ("let" "" rspec-let :count 56)
+    ("cont" "" rspec-context :count 22)
+    ("desc" "" rspec-describe :count 25)
+    ("let" "" rspec-let :count 70)
     ("recieve" "receive" nil :count 1)
-    ("spec" "" rspec-it :count 65)
-    ("subj" "" rspec-subject :count 10)
+    ("spec" "" rspec-it :count 67)
+    ("subj" "" rspec-subject :count 11)
    ))
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("accesibility" "accessibility" nil :count 0)
     ("availablility" "availability" nil :count 0)
-    ("cancelled" "canceled" nil :count 2)
+    ("cancelled" "canceled" nil :count 3)
     ("certifiate" "Certificate" nil :count 0)
     ("convinience" "convenience" nil :count 0)
     ("convinient" "convenient" nil :count 6)
