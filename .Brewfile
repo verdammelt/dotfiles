@@ -1,26 +1,12 @@
 tap "d12frosted/emacs-plus"
 tap "heroku/brew"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "snyk/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
-# XML-based font configuration API for X Windows
-brew "fontconfig"
-# GNU database manager
-brew "gdbm"
-# Command-line interface for SQLite
-brew "sqlite"
-# Vector graphics library with cross-device output support
-brew "cairo"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
-# Java build tool
-brew "ant"
 # Spell checker with better logic than ispell
 brew "aspell"
 # Automatic configure script builder
@@ -33,8 +19,12 @@ brew "bash"
 brew "bash-completion"
 # Garbage collector for C and C++
 brew "bdw-gc"
-# Dynamic, general-purpose programming language
-brew "clojure"
+# XML-based font configuration API for X Windows
+brew "fontconfig"
+# Manage compile and link flags for libraries
+brew "pkg-config"
+# Vector graphics library with cross-device output support
+brew "cairo"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Reimplementation of ctags(1)
@@ -57,6 +47,8 @@ brew "mpfr"
 brew "gawk"
 # GNU compiler collection
 brew "gcc"
+# GNU database manager
+brew "gdbm"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # GitHub command-line tool
@@ -69,8 +61,6 @@ brew "git"
 brew "gnu-tar"
 # GNU implementation of which utility
 brew "gnu-which"
-# Generic library support script
-brew "libtool"
 # Common error values for all GnuPG components
 brew "libgpg-error"
 # Cryptographic library based on the code from GnuPG
@@ -83,58 +73,42 @@ brew "libusb"
 brew "pinentry"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Cross-platform application and UI framework
-brew "qt@5"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
+# Command-line interface for SQLite
+brew "sqlite"
 # Command-driven, interactive function plotting
 brew "gnuplot"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
-# Open-source build automation tool based on the Groovy and Kotlin DSL
-brew "gradle"
 # Image manipulation
 brew "netpbm"
 # Library to render SVG files using Cairo
 brew "librsvg"
+# Generic library support script
+brew "libtool"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # GNU grep, egrep and fgrep
 brew "grep"
 # Popular GNU data compression program
 brew "gzip"
-# Improved top (interactive process viewer)
-brew "htop"
 # Common Lisp ANSI-standard Hyperspec
 brew "hyperspec"
 # Database of common MIME types
 brew "shared-mime-info"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
-# String tool
-brew "intltool"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# High quality MPEG Audio Layer III (MP3) encoder
-brew "lame"
-# Build tool for Clojure
-brew "leiningen"
 # JIT library for the GNU compiler collection
 brew "libgccjit"
-# Library for handling page faults in user mode
-brew "libsigsegv"
-# C XSLT library for GNOME
-brew "libxslt"
 # Text-based genealogy software
 brew "lifelines"
 # Fast, async, resource-friendly link checker
 brew "lychee"
-# LZMA-based compression program similar to gzip or bzip2
-brew "lzip"
 # Utility for directing compilation
 brew "make"
 # Text-to-HTML conversion tool
 brew "markdown"
-# Collection of tools that nobody wrote when UNIX was young
-brew "moreutils"
 # Single-player roguelike video game
 brew "nethack"
 # Platform built on V8 to build network applications
@@ -145,16 +119,12 @@ brew "nvm"
 brew "ossp-uuid"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Extract just secret information out of OpenPGP secret keys
-brew "paperkey"
 # Highly capable, feature-rich programming language
 brew "perl"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Paste PNG into files
-brew "pngpaste"
-# GNU Portable THreads
-brew "pth"
+# Object-relational database system
+brew "postgresql@14"
 # Ruby version manager
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
@@ -163,20 +133,12 @@ brew "ripgrep"
 brew "ruby"
 # Steel Bank Common Lisp system
 brew "sbcl"
-# Count lines of code in many languages
-brew "sloccount"
 # Typography prettifier
 brew "smartypants"
-# CLI for extracting streams from various websites to a video player
-brew "streamlink"
 # User interface to the TELNET protocol
 brew "telnet"
-# Simplified and community-driven man pages
-brew "tldr"
 # Microsoft MS-TNEF attachment unpacker
 brew "tnef"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Parser generator tool and incremental parsing library
 brew "tree-sitter"
 # Extraction utility for .zip compressed archives
@@ -187,19 +149,13 @@ brew "vim"
 brew "w3m"
 # Internet file retriever
 brew "wget"
-# PDF viewer
-brew "xpdf"
-# High-performance, high-quality MPEG-4 video library
-brew "xvid"
 # JavaScript package manager
 brew "yarn"
-brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-native-comp"]
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-native-comp", "with-xwidgets"]
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
-# Find & fix known vulnerabilities in open-source dependencies
-brew "snyk/tap/snyk"
 # Password manager that keeps all passwords secure behind one password
-cask "1password"
+cask "1password7"
 # View, print, and comment on PDF documents
 cask "adobe-acrobat-reader"
 # Multi-cloud backup application
@@ -222,13 +178,9 @@ cask "gnucash"
 cask "google-chrome"
 # Automated organization
 cask "hazel"
-# Secure video conferencing app
-cask "jitsi-meet"
-# Interface for reading and syncing eBooks
-cask "kindle"
 # Productivity tool
 cask "launchbar"
-# Office suite
+# Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
@@ -238,13 +190,9 @@ cask "mpv"
 cask "pop"
 # Collaboration platform for API development
 cask "postman"
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
 # Tool for sending personal documents to Kindles from Macs
 cask "send-to-kindle"
 # Team communication and collaboration software
 cask "slack"
 # Multimedia player
 cask "vlc"
-# Open-source version of the X.Org X Window System
-cask "xquartz"
