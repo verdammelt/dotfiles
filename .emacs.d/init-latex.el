@@ -27,6 +27,13 @@
 
 (use-package latex
   :ensure auctex
+  :init
+  (setq
+   ;; used in my AD&D documents
+   font-latex-user-keyword-classes
+   '(("hexchapter" (("hexchapter" "[{")) font-latex-sectioning-1-face command)
+     ("hexion" (("hexion" "[{")) font-latex-sectioning-2-face command)
+     ("level" (("level" "[{")) font-latex-sectioning-1-face)))
   :config
   (progn
     (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
@@ -36,7 +43,10 @@
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
     (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup)
     (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
-    (add-hook 'LaTeX-mode-hook 'display-line-numbers-mode))
+    (add-hook 'LaTeX-mode-hook 'display-line-numbers-mode)
+    (add-to-list 'LaTeX-section-list '("level" 1))
+    (add-to-list 'LaTeX-section-list '("hexchapter" 1))
+    (add-to-list 'LaTeX-section-list '("hexion" 2))))
 
 (use-package reftex
   :config (setq reftex-plug-into-AUCTeX t))
