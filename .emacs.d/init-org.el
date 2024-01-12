@@ -223,7 +223,9 @@
            :empty-lines 1)
           ("i" "Interruption" entry (file "")
            "* TODO %?\n%U\n%a\n"
-           :clock-in t :clock-keep t :empty-lines 1 :jump-to-captured t))
+           :clock-in t :clock-keep t :empty-lines 1 :jump-to-captured t)
+          ("m" "MEMEX" plain (file denote-last-path) #'denote-org-capture
+           :no-save t :immediate-finish nil :kill-buffer t :jump-to-captured t))
 
         org-capture-templates-contexts
         '(("r" ((in-mode . "message-mode")

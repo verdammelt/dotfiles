@@ -10,7 +10,9 @@
   ;; this will change things back to the way it was.
   :bind ((:map paredit-mode-map
                (("RET" . nil)
-                ("C-j" . paredit-newline)))))
+                ("C-j" . paredit-newline))))
+  :config
+  (define-key paredit-mode-map (kbd "M-s") nil t)) ;; i like M-x o (occur) too much!
 
 (use-package sly
   :pin melpa
