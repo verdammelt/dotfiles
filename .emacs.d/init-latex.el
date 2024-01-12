@@ -34,7 +34,9 @@
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-    (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup)))
+    (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup)
+    (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
+    (add-hook 'LaTeX-mode-hook 'display-line-numbers-mode))
 
 (use-package reftex
   :config (setq reftex-plug-into-AUCTeX t))
