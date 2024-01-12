@@ -178,8 +178,8 @@
     (set-face-attribute face nil :height size)))
 (global-set-key (kbd "H-s") 'mjs/change-size)
 
-(use-package expand-region
-  :bind (("C-=" . er/expand-region)))
+;; (use-package expand-region
+;;   :bind (("C-=" . er/expand-region)))
 
 (use-package find-func
   :ensure nil
