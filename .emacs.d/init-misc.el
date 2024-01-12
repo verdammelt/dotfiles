@@ -201,21 +201,21 @@
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
-(declare-function wrap-region-add-wrapper "wrap-region")
-(use-package wrap-region
-  :diminish (wrap-region-mode)
-  :functions (wrap-region-add-wrappers)
-  :hook ((org-mode markdown-mode lisp-mode) . wrap-region-mode)
-  :config
-  (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
-                              ("*" "*" nil 'org-mode)
-                              ("/" "/" nil 'org-mode)
-                              ("=" "=" nil 'org-mode)
-                              ("_" "_" nil 'markdown-mode)
-                              ("*" "*" nil 'markdown-mode)
-                              ("`" "`" nil 'markdown-mode)
-                              ("*" "*" nil 'lisp-mode)
-                              ("+" "+" nil 'lisp-mode))))
+;; (declare-function wrap-region-add-wrapper "wrap-region")
+;; (use-package wrap-region
+;;   :diminish (wrap-region-mode)
+;;   :functions (wrap-region-add-wrappers)
+;;   :hook ((org-mode markdown-mode lisp-mode) . wrap-region-mode)
+;;   :config
+;;   (wrap-region-add-wrappers '(("+" "+" nil 'org-mode)
+;;                               ("*" "*" nil 'org-mode)
+;;                               ("/" "/" nil 'org-mode)
+;;                               ("=" "=" nil 'org-mode)
+;;                               ("_" "_" nil 'markdown-mode)
+;;                               ("*" "*" nil 'markdown-mode)
+;;                               ("`" "`" nil 'markdown-mode)
+;;                               ("*" "*" nil 'lisp-mode)
+;;                               ("+" "+" nil 'lisp-mode))))
 
 (use-package wgrep
   :config
@@ -504,3 +504,7 @@
   :bind ("C-c j" . webjump)
   :config
   (add-to-list 'webjump-sites '("RuboCop Cop Doc" mjs/webjump-to-rubocop-cop-doc)))
+
+(use-package electric-pair
+  :ensure nil
+  :hook (after-init . electric-pair))
