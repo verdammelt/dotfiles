@@ -507,4 +507,4 @@
 
 (use-package electric-pair
   :ensure nil
-  :hook (after-init . electric-pair))
+  :hook (after-init . electric-pair-mode))
