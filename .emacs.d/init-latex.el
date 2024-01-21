@@ -25,6 +25,9 @@
                    #'TeX-revert-document-buffer)
 ))
 
+(defun mjs/set-latex-comment-start ()
+  (setq-local comment-start "% "))
+
 (use-package latex
   :ensure auctex
   :init
@@ -44,6 +47,7 @@
     (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup)
     (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
     (add-hook 'LaTeX-mode-hook 'display-line-numbers-mode)
+    (add-hook 'LaTeX-mode-hook 'mjs/set-latex-comment-start)
     (add-to-list 'LaTeX-section-list '("level" 1))
     (add-to-list 'LaTeX-section-list '("hexchapter" 1))
     (add-to-list 'LaTeX-section-list '("hexion" 2))))
