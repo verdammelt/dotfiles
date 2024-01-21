@@ -219,7 +219,7 @@
            "* TODO Process '%:subject' from '%:from'\n%U\n%a"
            :empty-lines 1 :immediate-finish t)
           ("u" "URL" entry (file "")
-           "* URL: %(org-mac-link-safari-get-frontmost-url)\n %U"
+           "* URL: %(org-mac-link-safari-get-frontmost-url) :@WEB:\n %U"
            :empty-lines 1)
           ("i" "Interruption" entry (file "")
            "* TODO %?\n%U\n%a\n"
