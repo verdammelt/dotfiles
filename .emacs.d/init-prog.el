@@ -151,8 +151,8 @@
   "end" > )
 (define-skeleton rspec-subject
   "Inserts a subject block"
-  ""
-  > "subject { " - " }")
+  "Subject: "
+  > "subject(:" str & ")" | -2 " { " - " }")
 (define-skeleton rspec-let
   "Inserts a subject block"
   "variable: "
@@ -165,9 +165,20 @@
   "describe " str " do" \n
   > _ \n
   "end" > \n)
-
-
 (define-auto-insert '("_spec\\.rb" . "RSpec File") 'rspec-file)
+
+(define-skeleton ruby-def
+  "Insert a function"
+  "Name: "
+  > "def " str "(" (read-string "Args: ") & ")" | -1 \n
+  _ \n
+  "end" > \n)
+(define-skeleton ruby-do
+  "Insert a do block"
+  "Args: "
+  > "do" " |" str & "|" | -2 \n
+  _ \n
+  "end" > \n)
 
 (define-skeleton js-fn
   "Insert a function stub"
