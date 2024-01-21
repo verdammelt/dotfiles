@@ -237,6 +237,7 @@
                                     ("exercism.org" . browse-url-default-browser)
                                     ("slack.com" . browse-url-default-browser)
                                     ("nyulmc.org" . browse-url-default-browser)
+                                    ("google.com" . browse-url-default-browser)
                                     ("." . eww-browse-url))))
     (setq browse-url-handlers browse-url-handler-alist)))
 
