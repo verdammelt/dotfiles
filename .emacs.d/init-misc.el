@@ -289,6 +289,15 @@
                 dired-use-ls-dired nil
                 dired-clean-up-buffers-too nil))
 
+(use-package dired-x
+  :ensure nil
+  :after dired
+  :demand t
+  :config
+  (push ".dvi" dired-latex-unclean-extensions)
+  (push ".fls" dired-latex-unclean-extensions)
+  (push ".fdb_latexmk" dired-latex-unclean-extensions))
+
 (use-package dired-aux
   :ensure nil
   :after dired
