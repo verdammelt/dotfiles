@@ -77,6 +77,7 @@
     ("suguar" "sugar" nil :count 0)
     ("ulitimately" "ultimately" nil :count 0)
     ("whisky" "whiskey" nil :count 0)
+    ("worktree" "work tree" nil :count 0)
    ))
 
 (define-abbrev-table 'message-mode-abbrev-table
@@ -254,7 +255,9 @@
   '(
     ("authenitcation" "authentication" nil :count 0)
     ("cont" "" rspec-context :count 22)
+    ("def" "" ruby-def :count 2)
     ("desc" "" rspec-describe :count 25)
+    ("do" "" ruby-do :count 3)
     ("let" "" rspec-let :count 70)
     ("recieve" "receive" nil :count 1)
     ("spec" "" rspec-it :count 67)
