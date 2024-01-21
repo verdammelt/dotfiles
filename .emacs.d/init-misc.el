@@ -440,7 +440,11 @@
 (use-package diminish)
 
 (use-package markdown-mode
-  :config (setq markdown-asymmetric-header t))
+  :hook ((markdown-mode . flymake-markdownlint-setup))
+  :config (setq markdown-asymmetric-header t
+                markdown-reference-location 'end))
+
+(use-package flymake-markdownlint)
 
 (use-package eshell
   :ensure nil
