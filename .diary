@@ -51,21 +51,18 @@ May 01 May Day
 ;;;
 ;;; Def Method Holidays
 ;;;
-2023-01-02 DM: New Years Day
-2023-01-16 DM: MLK Day
-2023-02-20 DM: Presidents Day
-2023-05-29 DM: Memorial Day
-2023-06-19 DM: Juneteenth
-2023-07-04 DM: Independance Day
-2023-09-04 DM: Labor Day
-2023-11-22 13:00-17:00 DM: Half-day (Thanksgiving)
-2023-11-23 DM: Thanksgiving
-2023-11-24 DM: Day after Thanksgiving
-2023-12-22 13:00-17:00 DM: Half-day (Christmas)
-2023-12-25 DM: Christmas
-
-2023-10-09 NYCVotes: Holiday
-2023-10-10 NYCVotes: Prod Deploy
+2024-01-02 DM: New Years Day
+2024-01-15 DM: MLK Day
+2024-02-19 DM: Presidents Day
+2024-05-27 DM: Memorial Day
+2024-06-19 DM: Juneteenth
+2024-07-04 DM: Independance Day
+2024-09-02 DM: Labor Day
+2024-11-27 13:00-17:00 DM: Half-day (Thanksgiving)
+2024-11-28 DM: Thanksgiving
+2024-11-29 DM: Day after Thanksgiving
+2024-12-24 13:00-17:00 DM: Half-day (Christmas)
+2024-12-25 DM: Christmas
 
 ;;;
 ;;; Def Method Team Days
