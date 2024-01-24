@@ -10,3 +10,4 @@ pager:
 aliases:
     co: pr checkout
 git_protcol: git
+version: "1"
