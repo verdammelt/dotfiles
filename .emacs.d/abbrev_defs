@@ -49,6 +49,7 @@
 
 (define-abbrev-table 'latex-mode-abbrev-table
   '(
+    ("chantry" "chantey" nil :count 0)
     ("hel" "Heal" nil :count 0)
     ("hels" "Heals" nil :count 0)
     ("posessions" "Possessions" nil :count 0)
