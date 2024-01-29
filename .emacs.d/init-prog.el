@@ -103,6 +103,7 @@
   :diminish (prettier-js-mode "Pr")
   :hook ((js-mode typescript-mode typescriptreact-mode web-mode) . prettier-js-mode))
 
+(use-package haml-mode)
 
 (defun mjs/project-teardown-js-env ()
   (when mjs/current-project
