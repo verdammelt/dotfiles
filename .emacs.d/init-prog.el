@@ -87,6 +87,10 @@
 
 (use-package rbenv)
 
+(use-package ruby-mode
+  :ensure nil
+  :config (load "ruby-flymake-rubocop-fixed"))
+
 (use-package flymake-eslint
   :hook ((typescript-mode typescriptreact-mode) . mjs/flymake-eslint-enable)
   :init
