@@ -47,8 +47,8 @@
 
   (defun mjs/insert-heading-inactive-timestamp ()
     (save-excursion
-      (org-return)
-      (org-cycle)
+      (open-line 2)
+      (next-line)
       (org-insert-time-stamp nil t t nil nil nil)))
 
   (defun mjs/push-xref-marker (&optional args)
