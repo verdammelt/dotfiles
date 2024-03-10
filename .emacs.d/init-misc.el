@@ -393,6 +393,8 @@
     (setq dabbrev--last-buffer nil)))
 
 (use-package dabbrev
+  :bind (("M-/" . #'dabbrev-completion)
+         ("C-M-/" . #'dabbrev-expand))
   :config
   (advice-add #'dabbrev--find-expansion
               :after #'mjs/advice-after/dabbrev--find-expansion))
@@ -401,10 +403,9 @@
   :hook ((after-init . global-corfu-mode)
          (corfu-mode . corfu-popupinfo-mode))
   :config
-  (setq corfu-auto t
+  (setq corfu-auto nil
         corfu-cycle t
-        corfu-preselect-first t
-        corfu-max-width 80))
+        corfu-max-width 50))
 
 (use-package vertico
   :hook (after-init . vertico-mode))
@@ -417,6 +418,7 @@
     (message "LAST BUFFER IS DEAD - removing it")
     (setq dabbrev--last-buffer nil)))
 (use-package dabbrev
+  :autoload (dabbrev-capf)
   :config
   (advice-add #'dabbrev--find-expansion :after #'mjs/advice-after/dabbrev--find-expansion))
 
