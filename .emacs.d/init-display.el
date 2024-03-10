@@ -15,14 +15,10 @@
                     :height 180
                     :family "DejaVu Sans")
 
+(set-fontset-font "fontset-default" 'unicode "Apple Color Emoji" nil 'prepend)
+
 (setq custom-safe-themes '("69f7e8101867cfac410e88140f8c51b4433b93680901bb0b52014144366a08c8"
                            default))
-
-(use-package unicode-fonts
-  ;; with this also install Symbola & Quivira fonts
-  :ensure t
-  :config
-  (unicode-fonts-setup))
 
 (defun mjs/set-mode-line-highlight ()
   (set-face-attribute
