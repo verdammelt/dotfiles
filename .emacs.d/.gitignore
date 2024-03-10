@@ -16,3 +16,4 @@ org-roam.db
 projectile-bookmarks.eld
 tramp
 url
+org-persist/
