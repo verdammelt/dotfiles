@@ -91,6 +91,9 @@
   :ensure nil
   :config (load "ruby-flymake-rubocop-fixed"))
 
+(use-package inf-ruby)
+(use-package rails-log-mode)
+
 (use-package flymake-eslint
   :hook ((typescript-mode typescriptreact-mode) . mjs/flymake-eslint-enable)
   :init
