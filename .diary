@@ -28,28 +28,6 @@ May 01 May Day
 %%(diary-anniversary 1933 12 04) Repeal Day
 
 ;;;
-;;; Exercise Reminders
-;;;
-&Monday
- Wall Pushups 3 sets of 50 <https://www.hybridcalisthenics.com/wall-pushups>
- Knee Raises  2 sets of 20 <https://www.hybridcalisthenics.com/knee-raises>
-&Tuesday
- Wall Pullups 3 sets of 50 <https://www.hybridcalisthenics.com/wall-pullups>
- Full Squats  2 sets of 20 <https://www.hybridcalisthenics.com/full-squats>
-&Wednesday
- Glute Bridges      2 sets of 30 <https://www.hybridcalisthenics.com/glute-bridges>
- Straight-leg Twist 3 sets of 30 <https://www.hybridcalisthenics.com/straight-leg-twists>     
-&Thursday
- Wall Pushups 3 sets of 50 <https://www.hybridcalisthenics.com/wall-pushups>
- Knee Raises  2 sets of 20 <https://www.hybridcalisthenics.com/knee-raises>
-&Friday
- Wall Pullups 3 sets of 50 <https://www.hybridcalisthenics.com/wall-pullups>
- Full Squats  2 sets of 20 <https://www.hybridcalisthenics.com/full-squats>
-&Saturday
- Glute Bridges      2 sets of 30 <https://www.hybridcalisthenics.com/glute-bridges>
- Straight-leg Twist 3 sets of 30 <https://www.hybridcalisthenics.com/straight-leg-twists>
-
-;;;
 ;;; Def Method Holidays
 ;;;
 2024-01-02 DM: New Years Day
@@ -70,6 +48,7 @@ May 01 May Day
 ;;;
 2023-10-04 12:30-13:30 DM Team Day Hour
 2023-12-20 12:30-13:30 DM Team Day Hour
+2023-04-10 12:30-13:30 DM Team Day Hour
 
 ;;;
 ;;; Vacation
