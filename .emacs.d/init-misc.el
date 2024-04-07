@@ -384,7 +384,7 @@
         read-file-name-completion-ignore-case t
         tab-always-indent 'complete ;; defined in indent.el
         )
-  (add-to-list 'completion-at-point-functions 'dabbrev-capf t)
+  (add-to-list 'completion-at-point-functions 'cape-dabbrev t)
   (add-to-list 'completion-styles 'flex))
 
 (defun mjs/advice-after/dabbrev--find-expansion (&rest _args)
@@ -398,6 +398,8 @@
   :config
   (advice-add #'dabbrev--find-expansion
               :after #'mjs/advice-after/dabbrev--find-expansion))
+
+(use-package cape)
 
 (use-package corfu
   :hook ((after-init . global-corfu-mode)
