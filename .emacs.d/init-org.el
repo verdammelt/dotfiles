@@ -198,8 +198,8 @@
        ("rp" "projects" tags "+PROJECT=\"TRUE\"+LEVEL=2")
        ("rP" "projects (by age)" tags "+PROJECT=\"TRUE\"+LEVEL=2"
         ((org-agenda-sorting-strategy '(todo-state-up tsia-up))))
-       ("rt" "next actions"  tags-todo "-CATEGORY=\"habits\"/!-WAIT")
-       ("rT" "next actions (by age)"  tags-todo "-CATEGORY=\"habits\"/!-WAIT"
+       ("rt" "next actions"  tags-todo "-CATEGORY={habits\\|tickler}/!-WAIT")
+       ("rT" "next actions (by age)"  tags-todo "-CATEGORY={habits\\|tickler}/!-WAIT"
         ((org-agenda-sorting-strategy '(todo-state-up tsia-up))))))))
 
 (use-package org-capture
