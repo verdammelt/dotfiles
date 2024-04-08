@@ -188,28 +188,29 @@
 (define-skeleton js-fn
   "Insert a function stub"
   "Name: "
-  > "function " str | (delete-backward-char 1) "() {" \n
+  > "function " str | (delete-backward-char 9) "()"
+  (if (zerop (length str)) " =>") " {" \n
   _ \n
   "}" >)
 
 (define-skeleton jasmine-descr
   "Inserts jasmine describe block"
   "Describing what? "
-  > "describe(\"" str "\", function() {" \n
+  > "describe(\"" str "\", () => {" \n
   _ \n
   "})" >)
 
 (define-skeleton jasmine-before
   "Inserts jasmine before block"
   (completing-read "scope: " '("All" "Each") nil t)
-  > "before" str "(function() {" \n
+  > "before" str "(() => {" \n
   _ \n
   "})" > )
 
 (define-skeleton jasmine-spec
   "Inserts a jasmine it block"
   "it does what? "
-  > "it(\"" str "\", function() {" \n
+  > "it(\"" str "\", () => {" \n
   _ \n
   "})" > )
 
