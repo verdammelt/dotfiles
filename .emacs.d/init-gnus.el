@@ -222,6 +222,7 @@
         ("subject" "nycvotes-production" "defmethod.nycvotes.inbox")
         ("subject" "NYC Votes" "defmethod.nycvotes.inbox")
         ("subject" "IPM Summary" "defmethod.nycvotes.inbox")
+        ("subject" "IPM Notes" "defmethod.nycvotes.inbox")
         ("subject" "NYCVC.*" "defmethod.nycvotes.inbox")
         (from ".*@nycvotes.org" "defmethod.nycvotes.inbox"))
 
