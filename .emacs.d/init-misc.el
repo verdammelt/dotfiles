@@ -504,25 +504,10 @@
   :bind ("C-c d" . dictionary-search)
   :config (setq dictionary-server "dict.org"))
 
-;; FIMXE: use `rubocop --show-cop-url COP/NAME' to get the URL?
 (defun mjs/webjump-to-rubocop-cop-doc ()
   (let* ((input (read-string "Cop " (thing-at-point 'symbol t)))
-         (cop-and-name (string-split input "/"))
-         (group (first cop-and-name))
-         (name (second cop-and-name)))
-    (cond ((cl-member (downcase group) '("rake" "rspec") :test #'string=)
-           (format
-            "https://www.rubydoc.info/gems/rubocop-%s/RuboCop/Cop/%s/%s"
-            (downcase group) group
-            name))
-          (t
-           (format "https://docs.rubocop.org/%s/cops_%s.html%s"
-                   (cond ((string= group "Rails") "rubocop-rails")
-                         (t "rubocop"))
-                   (downcase group)
-                   (if name
-                       (format "#%s%s" (downcase group) (downcase name))
-                     ""))))))
+         (command (format "rubocop --show-doc-url %s" input)))
+    (message (string-trim (shell-command-to-string command)))))
 
 (use-package webjump
   :ensure nil
