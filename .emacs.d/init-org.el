@@ -379,3 +379,5 @@
     "Open dired buffer in `DENOTE-DIRECTORY`"
     (interactive)
     (dired denote-directory)))
+
+(use-package denote-explore)
