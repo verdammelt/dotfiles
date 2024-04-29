@@ -86,6 +86,9 @@
          ("M-n" . #'flymake-goto-next-error)
          ("M-p" . #'flymake-goto-prev-error)))
 
+(use-package rubocopfmt
+  :hook (ruby-mode))
+
 (use-package rbenv)
 
 (use-package ruby-mode
