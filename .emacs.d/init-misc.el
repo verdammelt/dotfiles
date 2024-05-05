@@ -406,9 +406,9 @@
   :hook ((after-init . global-corfu-mode)
          (corfu-mode . corfu-popupinfo-mode))
   :config
-  (setq corfu-auto nil
+  (setq corfu-auto t
         corfu-cycle t
-        corfu-max-width 50))
+        corfu-max-width 75))
 
 (use-package vertico
   :hook (after-init . vertico-mode))
