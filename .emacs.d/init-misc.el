@@ -525,5 +525,4 @@
   :hook (after-init . electric-pair-mode))
 
 (use-package graphviz-dot-mode)
-
 (use-package gnuplot)

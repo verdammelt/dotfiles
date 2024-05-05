@@ -93,6 +93,8 @@
 
 (use-package inf-ruby)
 (use-package rails-log-mode)
+(use-package robe
+  :hook (after-init . global-robe-mode))
 
 (use-package flymake-eslint
   :hook ((typescript-mode typescriptreact-mode) . mjs/flymake-eslint-enable)
