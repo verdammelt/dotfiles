@@ -94,19 +94,11 @@
   :pin melpa
   :after magit
   :demand t
-  :init
-  (dolist (forge-fn '(forge-insert-requested-reviews
-                      forge-insert-assigned-pullreqs
-                      forge-insert-authored-pullreqs
-                      forge-insert-pullreqs
-                      forge-insert-issues
-                      forge-insert-assigned-issues
-                      forge-insert-authored-issues))
-    (magit-add-section-hook 'magit-status-sections-hook forge-fn nil t))
   :config
-  (setq forge-topic-list-limit '(100 . -5))
-  (keymap-set magit-mode-map "<remap> <magit-browse-thing>"
-              #'mjs/forge-browse))
+  (setq forge-status-buffer-default-topic-filters
+        (forge--topics-spec :type 'topic :active t :state 'open
+                            :limit 25 :order 'recently-updated))
+  (keymap-set magit-mode-map "<remap> <magit-browse-thing>" #'mjs/forge-browse))
 
 (unless (package-installed-p 'code-review)
   (package-vc-install "https://github.com/phelrine/code-review.git"
