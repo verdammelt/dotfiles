@@ -42,6 +42,8 @@
          (add-hook 'org-insert-heading-hook
                    'mjs/insert-heading-inactive-timestamp 'append))
 
+  :custom
+  (org-babel-load-languages '((emacs-lisp . t) (shell . t) (lisp . t)))
   :config
   (load "org-hack")
 
