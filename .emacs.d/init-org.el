@@ -357,14 +357,14 @@
   :commands denote-orphans-visit-orphan)
 
 (use-package denote
-  :bind (("C-c m ." . mjs/visit-denote-directory)
-         ("C-c m f" . denote-open-or-create)
+  :bind (("C-c m ." . #'mjs/visit-denote-directory)
+         ("C-c m f" . #'denote-open-or-create)
          ("C-c m i" . #'denote-link)
          ("C-c m I" . #'denote-link-after-creating)
-         ("C-c m n" . denote-create-note)
-         ("C-c m b" . denote-link-backlinks)
-         ("C-c m r" . mjs/rename-denote-file)
-         ("C-c m o" . denote-orphans-visit-orphan))
+         ("C-c m n" . #'denote-create-note)
+         ("C-c m b" . #'denote-backlinks)
+         ("C-c m r" . #'mjs/rename-denote-file)
+         ("C-c m o" . #'denote-orphans-visit-orphan))
   :hook ((dired-mode . denote-dired-mode-in-directories)
          (denote-dired-mode . dired-hide-details-mode))
   :config
