@@ -7,25 +7,33 @@
 ;;;
 ;;; Personal Holidays
 ;;;
-May 01 May Day
 %%(diary-anniversary 1998 01 16) Rebecca's %d%s Birthday
+%%(diary-anniversary 2010 01 24) Mama's %d%s Deathday
 %%(diary-anniversary 1971 01 30) Wendy's %d%s Birthday
+%%(diary-anniversary 2010 04 10) Papa's %d%s Deathday
+May 01 May Day
 %%(diary-anniversary 1922 05 09) Tante's %d%s Birthday
-5/22 World Goth Day
+%%(diary-anniversary 2024 05 17) Tante's %d%s Deathday
+May 22 World Goth Day
+%%(diary-anniversary 1992 06 08) %d%s Date-iversary
+;; second saturday of June
+%%(diary-float 6 6 2) World Gin Day
 %%(diary-anniversary 1963 07 22) Karl's %d%s Birthday
 %%(diary-anniversary 1938 07 27) Gary Gygax Day (%d%s Birthday)
 %%(diary-anniversary 1927 09 04) John McCarthy's %d%s Birthday
-%%(diary-anniversary 2003 09 09) Eric's %d%s Birthday
+%%(diary-anniversary 2003 09 09) Erik's %d%s Birthday
 %%(diary-anniversary 1970 09 11) %d%s Birthday
 %%(diary-anniversary 1925 09 12) Papa's %d%s Birthday
 %%(diary-anniversary 1990 09 12) Karl & Maureens %d%s (ex)Anniversary
 %%(diary-anniversary 1924 09 15) Mama's %d%s Birthday
 %%(diary-anniversary 1930 09 28) Mama Mastandrea's %d%s Birthday
 %%(diary-anniversary 2013 09 30) %d%s Cyrus / Def Method Employement Anniversary
+Oct 1 International Coffee Day
 %%(diary-anniversary 1991 10 11) %d%s Meet-iversary
 %%(diary-anniversary 1994 10 31) %d%s Wedding Anniversary
 %%(diary-anniversary 1963 11 23) %d%s Doctor Who-iversary
 %%(diary-anniversary 1933 12 04) Repeal Day
+%%(diary-anniversary 2013 12 17) Papa Mastandrea's %d%s Deathday
 
 ;;;
 ;;; Def Method Holidays
@@ -59,15 +67,6 @@ May 01 May Day
 ;;;
 ;;; PDT
 ;;;
-09/29 PDT
-10/13 PDT / Sick Time
-11/07 PDT 
-11/20 08:00-12:00 Sick Time
-11/22 08:00-12:00 PDT
-12/1 PDT
-12/8 PDT
-12/15 PDT
-12/22 PDT
 
 ;;;
 ;;; Doctor Appointments
@@ -82,11 +81,12 @@ May 01 May Day
 2025-07-30 11:00-12:00 Dentist
 
 ;;;
-;;; D&D Games
+;;; Games
 ;;;
 &Sunday 20:00-23:00 My Open Table Discord AD&D Game
 &Monday 21:00-24:00 Glen's Discord AD&D Game
-&Tuesday 20:30-22:00 Dungeon Delver YouTube AD&D Game
+&Tuesday 21:00-23:00 Dungeon Delver YouTube AD&D Game
+&Wednesday 19:00-21:00 Board-game Night with Wendy
 
 ;;;
 ;;; NYCVotes Filing Deadlines
