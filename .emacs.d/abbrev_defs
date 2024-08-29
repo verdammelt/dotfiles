@@ -293,15 +293,16 @@
 
 (define-abbrev-table 'ruby-mode-abbrev-table
   '(
-    ("authenitcation" "authentication" nil :count 0)
-    ("cont" "" rspec-context :count 22)
-    ("def" "" ruby-def :count 5)
-    ("desc" "" rspec-describe :count 25)
-    ("do" "" ruby-do :count 3)
-    ("let" "" rspec-let :count 70)
-    ("recieve" "receive" nil :count 1)
-    ("spec" "" rspec-it :count 67)
-    ("subj" "" rspec-subject :count 11)
+    (";bef" "" rspec-before :count 3)
+    (";class" "" ruby-class :count 2)
+    (";cont" "" rspec-context :count 137)
+    (";def" "" ruby-def :count 159)
+    (";desc" "" rspec-describe :count 84)
+    (";do" "" ruby-do :count 1)
+    (";let" "" rspec-let :count 275)
+    (";modu" "" ruby-module :count 0)
+    (";spec" "" rspec-it :count 228)
+    (";subj" "" rspec-subject :count 30)
    ))
 
 (define-abbrev-table 'text-mode-abbrev-table

@@ -89,7 +89,10 @@
 
 (use-package ruby-mode
   :ensure nil
-  :config (load "ruby-flymake-rubocop-fixed"))
+  :config
+  (load "ruby-flymake-rubocop-fixed")
+  (abbrev-table-put ruby-mode-abbrev-table
+                    :regexp "\\(?:^\\|[:blank:]+\\)\\(?1:;?\\w+\\)"))
 
 (use-package inf-ruby)
 (use-package rails-log-mode)
@@ -147,26 +150,36 @@
   > "describe \"" str "\" do" \n
   _ \n
   "end" > )
+
 (define-skeleton rspec-context
   "Inserts a ruby rspec context block"
   "What is the context? "
   > "context \"" str "\" do" \n
-  - \n
-  "end")
+  _ \n
+  "end" > )
+
 (define-skeleton rspec-it
   "Inserts an rspec it block"
   "It does what? "
   > "it \"" str "\" do" \n
   _ \n
   "end" > )
+
 (define-skeleton rspec-subject
   "Inserts a subject block"
   "Subject: "
   > "subject(:" str & ")" | -2 " { " - " }")
+
 (define-skeleton rspec-let
   "Inserts a subject block"
   "variable: "
   > "let(:" str ") { " - " }")
+
+(define-skeleton rspec-before
+  "Insert a before block"
+  nil
+  > "before { " - " }")
+
 (define-skeleton rspec-file
   "Inserts typical Rspec file structure"
   "Class/Module name: "
@@ -183,12 +196,27 @@
   > "def " str "(" (read-string "Args: ") & ")" | -1 \n
   _ \n
   "end" > \n)
+
 (define-skeleton ruby-do
   "Insert a do block"
   "Args: "
   > "do" " |" str & "|" | -2 \n
   _ \n
   "end" > \n)
+
+(define-skeleton ruby-module
+  "Insert a module"
+  "Module: "
+  > "module " str \n
+  _ \n
+  "end" >)
+
+(define-skeleton ruby-class
+  "Insert a class"
+  "Class: "
+  > "class " str " < " (read-string "Parent: ") | -3 \n
+  _ \n
+  "end" >)
 
 (define-skeleton js-fn
   "Insert a function stub"
