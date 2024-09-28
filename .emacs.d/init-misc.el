@@ -38,7 +38,9 @@
                backup-directory-alist
                (cl-acons "." (locate-user-emacs-file ".backups") nil)
                delete-by-moving-to-trash t
-               trash-directory (expand-file-name "~/.Trash"))))
+               trash-directory (expand-file-name "~/.Trash"))
+         (setq auto-save-visited-predicate (lambda () (eq major-mode 'org-mode) ))
+         (auto-save-visited-mode)))
 
 (use-package paragraphs
   :ensure nil
