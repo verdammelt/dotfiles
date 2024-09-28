@@ -352,9 +352,6 @@
       (call-interactively #'denote-rename-file)
     (call-interactively #'denote-rename-file-using-front-matter)))
 
-(use-package denote-orphans
-  :ensure nil
-  :commands denote-orphans-visit-orphan)
 
 (use-package denote
   :bind (("C-c m ." . #'mjs/visit-denote-directory)
@@ -364,7 +361,7 @@
          ("C-c m n" . #'denote-create-note)
          ("C-c m b" . #'denote-backlinks)
          ("C-c m r" . #'mjs/rename-denote-file)
-         ("C-c m o" . #'denote-orphans-visit-orphan))
+         ("C-c m o" . #'denote-explore-isolated-notes))
   :hook ((dired-mode . denote-dired-mode-in-directories)
          (denote-dired-mode . dired-hide-details-mode))
   :config
