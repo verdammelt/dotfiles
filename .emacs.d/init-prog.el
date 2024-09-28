@@ -92,7 +92,7 @@
   :config
   (load "ruby-flymake-rubocop-fixed")
   (abbrev-table-put ruby-mode-abbrev-table
-                    :regexp "\\(?:^\\|[:blank:]+\\)\\(?1:;?\\w+\\)"))
+                    :regexp "\\(?:^\\|[[:blank:]]+\\)\\(?1:;?\\w+\\)"))
 
 (use-package inf-ruby)
 (use-package rails-log-mode)
