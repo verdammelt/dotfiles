@@ -362,11 +362,11 @@
 (use-package minibuffer
   :ensure nil
   :bind (:map completion-in-region-mode-map
-              ("C-n" . minibuffer-next-completion)
-              ("C-p" . minibuffer-previous-completion)
+              ("M-n" . minibuffer-next-completion)
+              ("M-p" . minibuffer-previous-completion)
               :map minibuffer-local-completion-map
-              ("C-n" . minibuffer-next-completion)
-              ("C-p" . minibuffer-previous-completion))
+              ("M-n" . minibuffer-next-completion)
+              ("M-p" . minibuffer-previous-completion))
   :config
   (setq completion-ignore-case t
         completion-auto-select 'second-tab
@@ -394,16 +394,27 @@
 
 (use-package cape)
 
-(use-package corfu
-  :hook ((after-init . global-corfu-mode)
-         (corfu-mode . corfu-popupinfo-mode))
-  :config
-  (setq corfu-auto t
-        corfu-cycle t
-        corfu-max-width 75))
+;; (use-package corfu
+;;   :hook ((after-init . global-corfu-mode)
+;;          (corfu-mode . corfu-popupinfo-mode))
+;;   :config
+;;   (setq corfu-auto t
+;;         corfu-cycle t
+;;         corfu-max-width 75))
 
-(use-package vertico
-  :hook (after-init . vertico-mode))
+;; (use-package vertico
+;;   :hook (after-init . vertico-mode))
+
+(use-package completion-preview
+  :ensure nil
+  :diminish completion-preview-mode
+  :hook (after-init . global-completion-preview-mode)
+  :bind (:map completion-preview-active-mode-map
+              ("M-n" . #'completion-preview-next-candidate)
+              ("M-p" . #'completion-preview-prev-candidate))
+  :config
+  (push #'org-self-insert-command completion-preview-commands)
+  (push #'paredit-backward-delete completion-preview-commands))
 
 (use-package marginalia
   :hook (after-init . marginalia-mode))
