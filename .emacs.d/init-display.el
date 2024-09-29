@@ -17,8 +17,10 @@
 
 (set-fontset-font "fontset-default" 'unicode "Apple Color Emoji" nil 'prepend)
 
-(setq custom-safe-themes '("69f7e8101867cfac410e88140f8c51b4433b93680901bb0b52014144366a08c8"
-                           default))
+(setq custom-safe-themes
+      '("9a977ddae55e0e91c09952e96d614ae0be69727ea78ca145beea1aae01ac78d2"
+        "69f7e8101867cfac410e88140f8c51b4433b93680901bb0b52014144366a08c8"
+        default))
 
 (defun mjs/set-mode-line-highlight ()
   (set-face-attribute
