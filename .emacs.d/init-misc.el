@@ -102,13 +102,11 @@
                             :limit 25 :order 'recently-updated))
   (keymap-set magit-mode-map "<remap> <magit-browse-thing>" #'mjs/forge-browse))
 
-(unless (package-installed-p 'code-review)
-  (package-vc-install "https://github.com/phelrine/code-review.git"
-                      "fix/closql-update"))
-
 (use-package code-review
   :ensure nil ;; because we are making sure it is installed above
   :demand t
+  :vc (:url "https://github.com/phelrine/code-review.git"
+            :branch "fix/closql-update")
   :bind (:map magit-status-mode-map
               (("C-c r" . code-review-forge-pr-at-point)))
   :init
