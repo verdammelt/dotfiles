@@ -55,7 +55,7 @@
 
 (use-package abbrev
   :ensure nil
-  :diminish (abbrev-mode)
+  :diminish abbrev-mode
   :init (setq-default abbrev-mode t)
   :config
   (setq abbrev-suggest t))
@@ -64,7 +64,7 @@
   :ensure nil
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode))
-  :diminish (flyspell-mode)
+  :diminish flyspell-mode
   :config
   (progn
     (setq flyspell-use-meta-tab nil
@@ -140,7 +140,7 @@
 
 (use-package whitespace
   :ensure nil
-  :diminish (whitespace-mode)
+  :diminish whitespace-mode
   :config
   (setq whitespace-style '(face indentation empty trailing)
         whitespace-action '(auto-cleanup warn-if-read-only)))
@@ -450,7 +450,7 @@
   :hook (after-init . mode-line-bell-mode))
 
 (use-package which-key
-  :diminish (which-key-mode)
+  :diminish which-key-mode
   :hook (after-init . which-key-mode)
   :config (setq which-key-max-description-length 35))
 
