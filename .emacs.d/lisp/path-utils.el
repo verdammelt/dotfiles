@@ -30,8 +30,9 @@
   (mjs/set-path-envvar-from-exec-path))
 
 (defun mjs/remove-from-path (dir)
-  (setq exec-path (cl-remove dir exec-path :test #'string=))
-  (mjs/set-path-envvar-from-exec-path))
+  (when dir
+    (setq exec-path (cl-remove dir exec-path :test #'string=))
+    (mjs/set-path-envvar-from-exec-path)))
 
 (defun mjs/set-path-envvar-from-exec-path ()
   (setenv "PATH" (mapconcat 'identity exec-path ":")))
@@ -50,8 +51,7 @@
   (cond ((file-exists-p ".nvmrc")
          (nvm-use-for "."))
         ((nvm--installed-versions)
-         (nvm-use (car (first (cl-sort (nvm--installed-versions)
-                                       #'string< :key #'first))))))
+         (nvm-use (car (car (cl-sort (nvm--installed-versions) #'string< :key #'first))))))
   (mjs/set-path-envvar-from-exec-path))
 
 ;; node_modules/.bin
