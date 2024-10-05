@@ -30,7 +30,8 @@
           message-citation-line-format "On %Y-%m-%dT%R%z, %f wrote:"
           message-wide-reply-confirm-recipients t
           message-default-headers "X-Attribution: MJS"
-          message-sendmail-envelope-from 'header)))
+          message-sendmail-envelope-from 'header
+          message-expand-name-standard-ui t)))
 
 (use-package mm-decode
   :ensure nil
