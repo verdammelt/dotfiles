@@ -484,6 +484,7 @@
               ("t" . #'mjs/project-run-tests))
   :config
   (setq project-switch-commands #'project-dired
+        project-prompter #'project-prompt-project-name
         project-vc-extra-root-markers '(".project")))
 
 (global-set-key (kbd "M-g l") #'mjs/project-file:line)

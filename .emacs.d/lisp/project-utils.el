@@ -46,7 +46,7 @@ switched away from.")
 (defun mjs/project-switch-project (dir)
   "Wrapper around PROJECT-SWITCH-PROJECT to allow for
 setup/teardown of the projects."
-  (interactive (list (project-prompt-project-dir)))
+  (interactive (list (funcall project-prompter)))
 
   ;; teardown old project
   (run-hooks 'mjs/project-teardown-hook)
