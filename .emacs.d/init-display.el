@@ -45,6 +45,7 @@
 
 (use-package auto-dark
   :demand t
+  :diminish auto-dark-mode
   :hook ((auto-dark-dark-mode . mjs/set-mode-line-highlight)
          (auto-dark-light-mode . mjs/set-mode-line-highlight))
   :diminish (auto-dark-mode)
