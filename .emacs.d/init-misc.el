@@ -368,17 +368,23 @@
               ("M-n" . minibuffer-next-completion)
               ("M-p" . minibuffer-previous-completion))
   :config
-  (setq completion-ignore-case t
-        completion-auto-select 'second-tab
-        completion-auto-help 'visible
-        completion-show-help nil
-        completions-format 'vertical
-        read-buffer-completion-ignore-case t
-        read-file-name-completion-ignore-case t
-        tab-always-indent 'complete ;; defined in indent.el
-        )
-  (add-to-list 'completion-at-point-functions 'cape-dabbrev t)
-  (add-to-list 'completion-styles 'flex))
+  (setq
+   completion-ignore-case t
+   read-file-name-completion-ignore-case t
+   read-buffer-completion-ignore-case t
+
+   completion-auto-select 'second-tab
+   tab-always-indent 'complete
+   tab-first-completion 'word
+
+   completions-show-help nil
+   completions-sort 'historical
+   completions-detailed t
+   completion-cycle-threshold 5
+
+   completion-category-overrides '((file (styles substring)))
+   )
+  )
 
 (defun mjs/advice-after/dabbrev--find-expansion (&rest _args)
   (when (not (buffer-live-p dabbrev--last-buffer))
@@ -392,7 +398,7 @@
   (advice-add #'dabbrev--find-expansion
               :after #'mjs/advice-after/dabbrev--find-expansion))
 
-(use-package cape)
+;; (use-package cape)
 
 ;; (use-package corfu
 ;;   :hook ((after-init . global-corfu-mode)
@@ -405,6 +411,9 @@
 ;; (use-package vertico
 ;;   :hook (after-init . vertico-mode))
 
+;; (use-package marginalia
+;;   :hook (after-init . marginalia-mode))
+
 (use-package completion-preview
   :ensure nil
   :diminish completion-preview-mode
@@ -415,9 +424,6 @@
   :config
   (push #'org-self-insert-command completion-preview-commands)
   (push #'paredit-backward-delete completion-preview-commands))
-
-(use-package marginalia
-  :hook (after-init . marginalia-mode))
 
 (defun mjs/advice-after/dabbrev--find-expansion (&rest _args)
   (when (not (buffer-live-p dabbrev--last-buffer))
