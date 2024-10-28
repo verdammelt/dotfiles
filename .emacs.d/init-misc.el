@@ -531,3 +531,14 @@
 
 (use-package graphviz-dot-mode)
 (use-package gnuplot)
+
+(use-package emacs-everywhere
+  :config
+  (setq emacs-everywhere-frame-parameters
+        `((name . "emacs-everywhere")
+          (fullscreen . nil) ; Helps on GNOME at least
+          (width . 80)
+          (height . 20))
+        emacs-everywhere-major-mode-function
+        #'emacs-everywhere-major-mode-org-or-markdown)
+  (remove-hook 'emacs-everywhere-init-hooks 'emacs-everywhere-set-frame-position))
