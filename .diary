@@ -15,6 +15,7 @@ May 01 May Day
 %%(diary-anniversary 1922 05 09) Tante's %d%s Birthday
 %%(diary-anniversary 2024 05 17) Tante's %d%s Deathday
 May 22 World Goth Day
+May 25 Towel Day
 %%(diary-anniversary 1992 06 08) %d%s Date-iversary
 ;; second saturday of June
 %%(diary-float 6 6 2) World Gin Day
@@ -29,9 +30,11 @@ May 22 World Goth Day
 %%(diary-anniversary 1924 09 15) Mama's %d%s Birthday
 %%(diary-anniversary 1930 09 28) Mama Mastandrea's %d%s Birthday
 %%(diary-anniversary 2013 09 30) %d%s Cyrus / Def Method Employement Anniversary
-Oct 1 International Coffee Day
+Sep 29 National Coffee Day
 %%(diary-anniversary 1991 10 11) %d%s Meet-iversary
 %%(diary-anniversary 1994 10 31) %d%s Wedding Anniversary
+%%(diary-float 11 2 1) Election Day
+Nov 5 Guy Fawkes Day
 %%(diary-anniversary 1963 11 23) %d%s Doctor Who-iversary
 %%(diary-anniversary 1933 12 04) Repeal Day
 %%(diary-anniversary 2013 12 17) Papa Mastandrea's %d%s Deathday
@@ -65,6 +68,7 @@ Oct 1 International Coffee Day
 ;;;
 %%(diary-block 2023 09 02 2023 09 16) Trip to CA
 2023-10-31 Anniversary Vacation
+%%(diary-block 2024 10 30 2024 11 06) Anniversary Vacation
 
 ;;;
 ;;; PDT
