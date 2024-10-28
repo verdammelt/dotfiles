@@ -103,8 +103,13 @@ Nov 5 Guy Fawkes Day
 ;;;
 ;;; NYCVotes Filing Deadlines
 ;;;
-%%(diary-block 2023 10 24 2023 10 27) NYCVotes Filing Deadline
-%%(diary-block 2023 12 01 2023 12 04) NYCVotes Filing Deadline
-%%(diary-block 2024 01 13 2024 01 16) NYCVotes Filing Deadline
-%%(diary-block 2024 07 12 2024 07 15) NYCVotes Filing Deadline
-%%(diary-block 2024 10 12 2024 10 15) NYCVotes Filing Deadline
+%%(diary-block 2025 01 12 2025 01 15) NYCVotes Filing Period
+%%(diary-block 2025 03 14 2025 03 17) NYCVotes Filing Period
+%%(diary-block 2025 05 20 2025 05 23) NYCVotes Filing Period
+%%(diary-block 2025 06 10 2025 06 13) NYCVotes Filing Period
+%%(diary-block 2025 07 12 2025 07 15) NYCVotes Filing Period
+%%(diary-block 2025 08 19 2025 08 22) NYCVotes Filing Period
+%%(diary-block 2025 09 30 2025 10 03) NYCVotes Filing Period
+%%(diary-block 2025 10 21 2025 10 24) NYCVotes Filing Period
+%%(diary-block 2025 11 28 2025 12 01) NYCVotes Filing Period
+%%(diary-block 2026 01 12 2026 01 15) NYCVotes Filing Period
