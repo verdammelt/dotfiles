@@ -272,6 +272,7 @@
         (from "info@dailystoic.com" "list.misc"))
 
      (| (from "Lyft Ride Receipt <no-reply@lyftmail.com>" "list.receipts")
+        (subject "Your T-Mobile bill is ready to view" "list.receipts")
         (from "t-mobile@digital-delivery.com" "list.receipts")
         (from "receipts@messaging.squareup.com" "list.receipts")
         (from ".*@patreon.com" "list.receipts")
@@ -289,7 +290,8 @@
         (from "hello@encrypt.me" "list.receipts")
         (from "no-reply@sns.amazonaws.com" "list.receipts")
         (from "ebay@ebay.com" "list.receipts")
-        (from "statement@billing.toyotafinancial.com" "list.receipts"))
+        (from "statement@billing.toyotafinancial.com" "list.receipts")
+        (from "mailer@xsolla.com" "list.receipts"))
 
      (| (any "ally.*" "list.bank")
         (any "citi\\.com" "list.bank")
