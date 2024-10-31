@@ -93,11 +93,11 @@
   :config (setq
            gnus-treat-from-gravatar 'head
            gnus-treat-mail-gravatar 'head
-           gnus-treat-unsplit-urls t
-           gnus-treat-strip-multiple-blank-lines t
            gnus-treat-x-pgp-sig t
            gnus-article-date-headers '(combined-local-lapsed)
-           gnus-buttonized-mime-types '("multipart/signed" "multipart/alternative")))
+           gnus-buttonized-mime-types '("multipart/signed" "multipart/alternative"))
+  (add-hook 'gnus-article-mode-hook #'mjs/toggle-visual-fill-column-center-text)
+  (add-hook 'gnus-article-mode-hook #'visual-fill-column-mode))
 
 (use-package gnus-dup
   :ensure nil
