@@ -49,7 +49,8 @@
       (add-to-list 'compilation-error-regexp-alist-alist
                    (list sym regexp file line col highlight)))
 
-    (setq compilation-scroll-output t)
+    (setq compilation-scroll-output t
+          compilation-max-output-line-length 500)
     (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter)
     (mjs/add-compilation-error-regexp
      'webpack-tsc-error-regexp "ERROR in \\(.*\\)(\\(.*\\),\\(.*\\))"
