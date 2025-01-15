@@ -218,6 +218,7 @@
         ("subject" "Contribute System Usage Report" "defmethod.nycvotes.misc")
         ("subject" "nycvotes-dev" "defmethod.nycvotes.misc")
         (any "nycvc-dev@defmethod.com" "defmethod.nycvotes.misc")
+        (from "notifications@linear.app" ("subject" ".*NYC-.*" "defmethod.nycvotes.misc"))
 
         ("subject" "nycvotes-production" "defmethod.nycvotes.inbox")
         ("subject" "NYC Votes" "defmethod.nycvotes.inbox")
@@ -239,7 +240,9 @@
         (from "invite@vimcal.com" "defmethod.misc")
         (from ".*@tuple.app" "defmethod.misc")
         (from ".*@user.adp.com" "defmethod.misc")
-        (from ".*@metgroupbenefits.com" "defmethod.misc"))
+        (from ".*@metgroupbenefits.com" "defmethod.misc")
+        (from "no-reply@zoom.us" "defmethod.misc")
+        (from "no-reply@fathom.video" "defmethod.misc"))
 
      (| (from "mark\\.simpson@defmethod\\.com" "defmethod.inbox")
         (to "\\(mark.simpson\\|msimpson\\|mark\\)@defmethod\\..*" "defmethod.inbox")
