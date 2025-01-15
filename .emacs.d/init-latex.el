@@ -58,3 +58,7 @@
 (use-package auctex)
 (use-package auctex-latexmk)
 (use-package pdf-tools)
+
+(define-skeleton latex-todo-comment "Inserts a TODO comment" ""
+  > (if (> comment-add 0) (s-trim comment-start)) comment-start
+  "TODO: " _ comment-end)
