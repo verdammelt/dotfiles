@@ -117,6 +117,10 @@
 
 (use-package haml-mode)
 
+(use-package jq-mode
+  :mode "\\.jq\\'"
+  :bind (:map js-json-mode-map ("C-c C-j" . #'jq-interactively)))
+
 (defun mjs/project-teardown-js-env ()
   (when mjs/current-project
     (let ((default-directory (project-root mjs/current-project)))
