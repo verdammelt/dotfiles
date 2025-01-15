@@ -18,17 +18,13 @@
   :pin melpa
   :hook ((sly-mode . (lambda () (unless (sly-connected-p) (save-excursion (sly)))))
          (sly-mrepl . enable-paredit-mode))
-  :config (setq common-lisp-hyperspec-root
-                (format
-                 "file://%s/share/doc/hyperspec/HyperSpec/"
-                 (cl-find-if #'file-exists-p
-                             '("/opt/homebrew/Cellar/hyperspec/7.0"
-                               "/usr/local/Cellar/hyperspec/7.0")))))
+  :config
+  (load "~/.quicklisp/clhs-use-local" :noerror)
+  (keymap-global-set "C-c C-/" sly-selector-map))
 
 (use-package sly-asdf :pin melpa)
 (use-package sly-quicklisp :pin melpa
   :config (push (cons "quickload" #'sly-quickload) sly-mrepl-shortcut-alist))
-
 (use-package sly-macrostep :pin melpa
   :bind ("C-c e" . #'macrostep-expand))
 
