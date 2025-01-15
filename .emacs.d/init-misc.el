@@ -518,10 +518,6 @@
   :config
   (add-to-list 'webjump-sites '("RuboCop Cop Doc" mjs/webjump-to-rubocop-cop-doc)))
 
-(use-package electric-pair
-  :ensure nil
-  :hook (after-init . electric-pair-mode))
-
 (use-package graphviz-dot-mode)
 (use-package gnuplot)
 
