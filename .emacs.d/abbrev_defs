@@ -10,6 +10,7 @@
     ("sarcophaguses" "sarcophagus's" nil :count 0)
     ("strenous" "strenuous" nil :count 1)
     ("surivivors" "survivors" nil :count 0)
+    ("todo" "" latex-todo-comment :count 2)
    ))
 
 (define-abbrev-table 'erc-mode-abbrev-table
@@ -228,12 +229,13 @@
     ("contributoin" "contribution" nil :count 0)
     ("defm" "Def Method" nil :count 33)
     ("desiger" "designer" nil :count 0)
+    ("dieties" "deities" nil :count 0)
     ("differnet" "different" nil :count 1)
     ("disbeleiving" "disbelieving" nil :count 0)
     ("disbeliving" "disbelieving" nil :count 1)
+    ("dorimitories" "dormitories" nil :count 0)
     ("dropbox" "drop box" nil :count 2)
     ("effecatious" "efficacious" nil :count 0)
-    ("eh" "tech" nil :count 0)
     ("elecion" "election" nil :count 0)
     ("entirity" "entirety" nil :count 0)
     ("everytime" "every time" nil :count 1)
@@ -255,6 +257,7 @@
     ("internesting" "interesting" nil :count 0)
     ("interpretted" "interpreted" nil :count 0)
     ("interpretting" "interpreting" nil :count 2)
+    ("judgement" "judgment" nil :count 2)
     ("lagnuages" "languages" nil :count 0)
     ("literaly" "literally" nil :count 0)
     ("moustaches" "mustaches" nil :count 0)
@@ -283,9 +286,10 @@
     ("shoudl" "should" nil :count 3)
     ("somehting" "something" nil :count 0)
     ("specificially" "specifically" nil :count 0)
-    ("spellbook" "spell book" nil :count 9)
+    ("spellbook" "spell book" nil :count 13)
+    ("stright" "straight" nil :count 0)
     ("synchrounously" "synchronously" nil :count 0)
-    ("teh" "th" nil :count 29)
+    ("teh" "th" nil :count 31)
     ("termintes" "terminates" nil :count 0)
     ("togethr" "together" nil :count 0)
     ("totalled" "totaled" nil :count 0)
@@ -301,8 +305,8 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table
   '(
-    ("fixme" "" fixme-comment :count 67)
-    ("todo" "" todo-comment :count 16)
+    ("fixme" "" fixme-comment :count 72)
+    ("todo" "" todo-comment :count 17)
    ))
 
 (define-abbrev-table 'ruby-mode-abbrev-table
@@ -327,7 +331,7 @@
     ("cancelled" "canceled" nil :count 4)
     ("certifiate" "certificate" nil :count 0)
     ("consisent" "consistent" nil :count 0)
-    ("convinience" "convenience" nil :count 0)
+    ("convinience" "convenience" nil :count 1)
     ("convinient" "convenient" nil :count 6)
     ("coudld" "could" nil :count 0)
     ("curiousity" "curiosity" nil :count 0)
@@ -362,7 +366,7 @@
     ("speciciations" "specifications" nil :count 0)
     ("standup" "stand-up" nil :count 32)
     ("themed" "themed" nil :count 0)
-    ("tia" "Thanks in advance" nil :count 159)
+    ("tia" "Thanks in advance" nil :count 160)
     ("tomororw" "tomorrow" nil :count 1)
     ("transfering" "transferring" nil :count 2)
     ("unecessary" "unnecessary" nil :count 0)
