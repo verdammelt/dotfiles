@@ -373,11 +373,8 @@
    completions-show-help nil
    completions-sort 'historical
    completions-detailed t
-   completion-cycle-threshold 5
-
-   completion-category-overrides '((file (styles substring)))
-   )
-  )
+   completion-cycle-threshold 5)
+  (push 'flex completion-styles))
 
 (defun mjs/advice-after/dabbrev--find-expansion (&rest _args)
   (when (not (buffer-live-p dabbrev--last-buffer))
