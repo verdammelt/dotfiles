@@ -7,9 +7,14 @@
 ;;;
 ;;; Personal Holidays
 ;;;
+%%(let ((dayname (calendar-day-of-week date))
+        (day (cadr date)))
+    (and (= day 13) (= dayname 5))) Friday the 13th!
+
 %%(diary-anniversary 1998 01 16) Rebecca's %d%s Birthday
 %%(diary-anniversary 2010 01 24) Mama's %d%s Deathday
 %%(diary-anniversary 1971 01 30) Wendy's %d%s Birthday
+%%(diary-anniversary 1977 03 30) %d%s anniversary of TeX's inception
 %%(diary-anniversary 2010 04 10) Papa's %d%s Deathday
 May 01 May Day
 %%(diary-anniversary 1922 05 09) Tante's %d%s Birthday
@@ -82,17 +87,19 @@ Nov 5 Guy Fawkes Day
 2024-12-17 09:25-09:55 Annual Physical w/ Gallagher @ 400 Park
 2024-01-05 11:30-12:30 Eye Exam with Dr. Panichella
 2024-02-01 09:30-09:45 Provetto (RE: Deviated Septum Surgery) @ 180 E Pulaski
+2024-02-09 12:00-14:00 Wendy Dentist (Crown & Filling) (need to drive her there an back)
+2024-07-30 11:00-12:00 Dentist
 2025-01-27 09:00-09:30 Eye Exam with Dr. Panichella
-2025-02-09 12:00-14:00 Wendy Dentist (Crown & Filling) (need to drive her there an back)
-2025-07-30 11:00-12:00 Dentist
+2025-02-04 11:00-12:00 Dentist
 
 ;;;
 ;;; Games
 ;;;
-&Sunday 20:00-23:00 My Open Table Discord AD&D Game
+; &Sunday 20:00-23:00 My Open Table Discord AD&D Game
+&Sunday 20:00-23:00 D&D Game Work
 &Monday 21:00-24:00 Glen's Discord AD&D Game
-&Tuesday 21:00-23:00 Dungeon Delver YouTube AD&D Game
-&Wednesday 19:00-21:00 Board-game Night with Wendy
+; &Tuesday 21:00-23:00 Dungeon Delver YouTube AD&D Game
+&Friday 19:00-21:00 Board-game Night with Wendy
 
 ;;;
 ;;; NYCVotes Filing Deadlines
