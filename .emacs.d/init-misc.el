@@ -528,3 +528,16 @@
         emacs-everywhere-major-mode-function
         #'emacs-everywhere-major-mode-org-or-markdown)
   (remove-hook 'emacs-everywhere-init-hooks 'emacs-everywhere-set-frame-position))
+
+(defun mjs/fill-gptel-response (beg end)
+  (fill-region beg end))
+
+(use-package gptel
+  :bind ("<f7>" . gptel-send)
+  :hook (gptel-post-response-functions . mjs/fill-gptel-response)
+  :config
+  (setq gptel-model 'mistral:latest
+        gptel-backend (gptel-make-ollama
+                          "Ollama" :host "localhost:11434"
+                          :stream t :models '(mistral:latest zephyr:latest))
+        gptel-mode 'org-mode))
