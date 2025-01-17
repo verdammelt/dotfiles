@@ -121,3 +121,4 @@ Sites
 synctunes
 /.emacs.d/forge-database.sqlite
 /.emacs.d/code-review-db-file.sqlite
+/Bin/lisp-script.core

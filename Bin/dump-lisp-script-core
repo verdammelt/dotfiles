@@ -1,0 +1,19 @@
+#!/usr/bin/env sbcl --script
+;;; -*- mode: lisp; -*-
+
+;;;
+;;; Setup and dump an SBCL core for use as the base of lisp shell scripts
+;;;
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames ".quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
+;; alias UIOP:RUN-PROGRAM as RUN
+(setf (symbol-function 'run) (symbol-function 'uiop:run-program))
+
+(ql:quickload "unix-opts")
+
+(let ((image-pathname (merge-pathnames "Bin/lisp-script.core" (user-homedir-pathname))))
+  (uiop:dump-image image-pathname :compression t))
