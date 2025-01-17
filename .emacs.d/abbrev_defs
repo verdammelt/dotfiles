@@ -229,6 +229,7 @@
     ("contributoin" "contribution" nil :count 0)
     ("defm" "Def Method" nil :count 33)
     ("desiger" "designer" nil :count 0)
+    ("deviaated" "deviated" nil :count 0)
     ("dieties" "deities" nil :count 0)
     ("differnet" "different" nil :count 1)
     ("disbeleiving" "disbelieving" nil :count 0)
