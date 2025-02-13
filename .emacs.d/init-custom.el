@@ -20,8 +20,8 @@
               multiple-cursors nvm org-contrib org-mac-link
               org-present paredit pdf-tools prettier-js rails-log-mode
               rbenv robe rubocopfmt scratch scss-mode sicp sly
-              sly-asdf sly-macrostep sly-quicklisp typescript-mode
-              visual-fill-column wgrep yaml-mode))
+              sly-asdf sly-macrostep sly-quicklisp transient
+              typescript-mode visual-fill-column wgrep yaml-mode))
  '(package-vc-selected-packages
    '((code-review :url "https://github.com/phelrine/code-review.git"
                   :branch "fix/closql-update"))))
